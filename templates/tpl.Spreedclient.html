@@ -1,0 +1,83 @@
+{VAL_1}
+<p id="infoRequirementsNotOk" style="display:none">
+{infoRequirementsNotOk}
+</p>
+<p id="infoRequirementsPartly" style="display:none">
+{infoRequirementsPartly}
+</p>
+<p id="INFOTOP">
+{INFOTOP}
+</p>
+<div id="windowStarted" style="display:none">
+	<h2>{windowStarted}</h2>
+</div>
+<div id="windowClosed" style="display:none">
+	<h2>{windowClosed}</h2>
+</div>
+<div id="xmvcStart">
+	<input type="button" onClick="xmvc_window()" value="{startWindow}"/>
+</div>
+<p id="INFOBOTTOM">
+{INFOBOTTOM}
+</p>
+<p id="infoRequirements">
+{infoRequirements}
+</p>
+<script type="text/javascript">
+var displayName = "{DISPLAYNAME}";
+var buddyPicture = "{BUDDYPICTURE}";
+var userData = {};	
+userData.displayName = displayName;
+userData.buddyPicture = buddyPicture;
+localStorage.setItem("mediastream-user", JSON.stringify(userData));
+
+var ilnonear = {ILNONEAR};
+var ildefault = "{ILDEFAULT}";
+var xmvcCmdURL = "{cmdURL}";
+
+if (navigator.userAgent.indexOf("Opera") > -1) {
+	document.getElementById('infoRequirementsPartly').style.display = "block";
+}
+else if (navigator.userAgent.indexOf("Edge") < 0 && (navigator.userAgent.indexOf("Chrome") > -1 || navigator.userAgent.indexOf("Firefox") > -1)) {
+	//ok
+} else {
+	document.getElementById('infoRequirementsNotOk').style.display = "block";
+	document.getElementById('INFOTOP').style.display = "none";
+	document.getElementById('INFOBOTTOM').style.display = "none";
+}
+
+function xmvc_window(){
+	xmvc_pingSession();
+	document.getElementById('xmvcStart').style.display = "none";
+	setTimeout("xmvc_checkWindow()", 1000);
+	if(typeof xmvcNewWindow == 'undefined' || xmvcNewWindow == null || xmvcNewWindow.closed) {
+		xmvcNewWindow = window.open(xmvcCmdURL,"xmvcWindow","width=1000,height=730,left=10,top=0,location=no,menubar=no,resizable=yes,scrollbars=yes,toolbar=no");
+	}
+}
+
+function xmvc_checkWindow(){
+	if(xmvcNewWindow != null){
+		if(typeof xmvcNewWindow == 'undefined' || xmvcNewWindow.closed){
+			document.getElementById('windowStarted').style.display = "none";
+			document.getElementById('windowClosed').style.display = "block";
+			document.getElementById('xmvcStart').style.display = "block";
+		}
+		else {
+			setTimeout("xmvc_checkWindow()", 1000);
+			document.getElementById('windowStarted').style.display = "block";
+			document.getElementById('windowClosed').style.display = "none";
+		}
+	} else {
+		document.getElementById('xmvcStart').style.display = "block";
+	}
+}
+
+function xmvc_pingSession(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open('GET', './index.php', true);
+	xhttp.send();
+	setTimeout("xmvc_pingSession()", 600000);
+}
+
+</script>
+

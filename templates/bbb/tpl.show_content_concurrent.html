@@ -1,0 +1,37 @@
+{VAL_1}
+<div id="infotop" class="col-sm-12">
+    {INFOTOP}
+</div>
+<p>&nbsp;</p>
+<div id="info_concurrent" class="col-sm-12">
+    {INFO_CONCURRENT}
+</div>
+<p>&nbsp;</p>
+<div class="col-sm-12">
+    {JOINCONTENT}
+    <div id="msgrunning" class="hidden">
+        <div id="msg" class="inline">{MEETING_RUNNUNG}</div>
+    </div>
+</div>
+<p>&nbsp;</p>
+<div id="special_id" class="col-sm-12 hidden">{SPECIALID}</div>
+
+<div id="info_bottom" class="col-sm-12">{INFOBOTTOM}</div>
+
+<div id="info_requirements" class="col-sm-12">{infoRequirements}</div>
+
+
+
+
+<script>
+
+    function logChildren(elem) {
+        console.dir(elem);
+    }
+
+    $('#join_btn', document).on('click', function(e) {
+        $('#join_btn', document).prop('class', 'hidden');
+        $('#msgrunning', document).prop('class', '');
+        console.dir($(e.target));
+    });
+</script>

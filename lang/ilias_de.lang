@@ -1,0 +1,188 @@
+// 
+// German Language File for MultiVc Plugin
+//
+<!-- language file start -->
+obj_xmvc#:#Virtueller Meetingraum
+objs_xmvc#:#Virtuelle Meetingräume
+obj_xmvc_duplicate#:#Kopieren
+objs_xmvc_duplicate#:#virtuellen Meetingraum kopieren
+obj_xmvc_select#:#virtuellen Meetingraum auswählen
+select#:#Ausw&auml;hlen
+starttime#:#Startzeit
+endtime#:#Endzeit
+playback#:#Playback
+download#:#Download
+obj_xmvc_download#:#Download
+download#:#Download
+xmvc_add#:#virtuellen Meetingraum hinzufügen
+xmvc_new#:#neuen virtuellen Meetingraum hinzufügen
+xmvc_read#:#lesender Zugriff auf dden virtuellen Meetingraum
+xmvc_write#:#virtuellen Meetingraum bearbeiten
+xmvc_copy#:#Virtuellen Meetingraum kopieren
+xmvc_delete#:#virtuellen Meetingraum löschen
+xmvc_visible#:#virtueller Meetingraum ist sichtbar
+xmvc_edit_permission#:#Berechtigungen ändern
+plugin_configuration#:#Konfiguration
+config_help_begin#:#Die Erläuterung unter Einstellungen lautet:
+showcontent#:#WebRTC Plattform
+big_blue_button#:#BigBlueButton WebRTC
+spreed#:#Spreed WebRTC
+svr_public_url#:#&Ouml;ffentliche URL des BBB-Servers
+info_svr_public_url#:#Beispiel: https://www.example.com/bigbluebutton/
+svr_public_port#:#&Ouml;ffentlicher Port des BBB-Servers
+info_svr_public_port#:#Beispiel: 443
+svr_private_url#:#Private URL des BBB-Servers
+info_svr_private_url#:#Entspricht mit Ausnahme von Amazon EC2 stets der öffentlichen URL
+svr_private_port#:#Privater Port des BBB-Servers
+info_svr_private_port#:#Beispiel: 443
+svr_salt#:#Secret des BBB-Servers
+info_svr_salt#:#ssh: bbb-conf --secret
+bbb_default_server#:#Standard BBB-Server
+info_svr_salt_om#:#Beispiel: dZ#ls2W!k6l
+info_svr_username#:#Beispiel: om_admin
+max_participants#:#Max. Teilnehmer
+info_max_participants#:#Maximale Anzahl Teilnehmer je Meeting. Bei unbegrenzter Anzahl bitte '0' angeben.
+private_chat#:#Privaten Chat erlauben
+private_chat_info#:#Auch Personen ohne Moderatorfunktion können einen privaten Chat untereinander führen.
+private_chat_choose#:#Privaten Chat erlauben: Auswahlmöglichkeit
+private_chat_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Privaten Chat erlauben' haben sollen.
+private_chat_default#:#Privaten Chat erlauben: Voreinstellung
+private_chat_default_info#:#Sofern aktiviert, können auch Personen ohne Moderatorfunktion untereinander einen privaten Chat führen. Personen mit Moderatorfunktion sehen diese Chats nicht. Da Personen mit Moderatorfunktion jederzeit private Chats unterbinden können, solle diese Option in den meisten Fällen aktiviert sein.
+recording#:#Aufnahmen
+recording_info#:#Sitzungen können aufgenommen werden.
+recording_choose#:#Aufnahmen erlauben: Auswahlmöglichkeit
+recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufnahmen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufnahme eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
+recording_default#:#Aufnahmen erlauben: Voreinstellung
+recording_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein, damit Personen nicht die Aufnahmefunktion im virtuellen Raum nutzen können.
+recording_only_for_moderated_rooms#:#Aufnahme nur in moderierten Räumen
+recording_only_for_moderated_rooms_info#:#Nur in moderierten Räumen können Personen mit Moderatorfunktion Aufnahmen starten.
+recording_only_for_moderated_rooms_default#:#Aufnahme nur in moderierten Räumen
+recording_only_for_moderated_rooms_default_info#:#Diese Option sollte in den meisten Fällen aktiviert sein. Die Option kommt nur dann zum Tragen, wenn Aufnahmen grundsätzlich erlaubt sind.
+cam_only_for_moderator#:#Kamera nur für Moderatoren
+cam_only_for_moderator_info#:#Für Sitzungen mit sehr vielen Personen empfohlen.
+cam_only_for_moderator_choose#:#Kamera nur für Moderatoren: Auswahlmöglichkeit
+cam_only_for_moderator_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Kamera nur für Moderatoren' haben sollen. Diese Option sollte in den meisten Fällen aktiviert sein.
+cam_only_for_moderator_default#:#Kamera nur für Moderatoren: Voreinstellung
+cam_only_for_moderator_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein und nur aktiviert werden, wenn bei hohen Teilnehmerzahlen Performanzprobleme zu erwarten sind. Moderatoren haben stets die Möglichkeit, während einer Sitzung in BigBlueButton die Einstellung zu ändern.
+url#:#URL
+url_info#:#Hier können Sie auch relative Pfadangaben eintragen (z.B.: /webconference). Bitte am Ende kein '/' angeben.
+protected#:#Geschützte Räume
+protected_info#:#Wenn Sie diese Option aktivieren, können nur ILIAS-Benutzer die Meetingräume betreten. Zusätzliche Voraussetzungen: ILIAS und Spreed-Meetingräume müssen über die exakt gleiche Domain aufgerufen werden und in die Spreed-Datei 'main.html' muss die ILIAS-ID dieser ILIAS-Installation in die Variable 'checkInstIds' eingetragen werden. Die ILIAS-ID lautet:
+moderated#:#moderierter Raum
+moderated_info#:#In einem moderierten Raum haben Personen mit Moderatorfunktion erweiterte Rechte. Andere Personen haben zudem nur eingeschränkte Zugangsrechte zum virtuellen Raum. Personen mit Moderatorfunktion sind alle, die die Eigenschaften des Objekts bearbeiten können sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren.
+moderated_choose#:#moderierter Raum: Auswahlmöglichkeit
+moderated_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'moderierter Raum' haben sollen.
+moderated_default#:#moderierter Raum: Voreinstellung
+moderated_default_info#:#Aktivieren Sie diese Option wenn neue Räume als moderierte Räume angelegt werden sollen.
+btn_settings#:#Einstellungen im Raum
+btn_settings_info#:#Aktivieren Sie diese Option wenn Schaltfläche und Optionen für Einstellungen im Raum sichtbar sein sollen. Gewöhnlich ist dies nicht nötig, da Name und Benutzerbild von ILIAS übernommen werden.
+btn_settings_not_protected_info#:#Sollen Gäste auch ohne ILIAS-Anmeldedaten eingeladen werden können, sollte diese Option aktiviert sein. 
+btn_settings_choose#:#Einstellungen im Raum: Auswahlmöglichkeit
+btn_settings_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Einstellungen im Raum' haben sollen.
+btn_settings_default#:#Einstellungen im Raum: Voreinstellung
+btn_settings_default_info#:#Die Voreinstellung sollte in der Regel sein, dass Option und Schaltfläche für Einstellungen nicht aktiv sind.
+btn_chat#:#Chat ein-/ausblendbar
+btn_chat_info#:#Aktivieren Sie diese Option wenn die Schaltfläche zum Aus- und Einblenden des Chats angezeigt werden soll.
+btn_chat_choose#:#Chat ein-/ausblendbar: Auswahlmöglichkeit
+btn_chat_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Chat ein-/ausblendbar' haben sollen.
+btn_chat_default#:#Chat ein-/ausblendbar: Voreinstellung
+btn_chat_default_info#:#Zur Vereinfachung der Nutzung kann es sinnvoll sein, diese Option nicht zu aktivieren und den Chat immer anzeigen zu lassen.
+with_chat#:#Start mit Chat
+with_chat_info#:#Insbesondere in moderierten Räumen sollte diese Option aktiviert sein. Der Chat wird so zum 'Warteraum'.
+with_chat_choose#:#Start mit Chat: Auswahlmöglichkeit
+with_chat_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Start mit Chat' haben sollen.
+with_chat_default#:#Start mit Chat: Voreinstellung
+with_chat_default_info#:#Sollte in der Regel aktiviert werden - insbesondere bei moderierten Räumen.
+btn_locationshare#:#Option Aufenthaltsort
+btn_locationshare_info#:#Mit dieser Option können Benutzer im Chat ihren aktuellen Aufenthaltsort anderen mitteilen und und von anderen in ein separates Meeting eingeladen werden. Aus Gründen des Datenschutzes sollte diese Option nur mit Bedacht ermöglicht werden.
+btn_locationshare_choose#:#Option Aufenthaltsort: Auswahlmöglichkeit
+btn_locationshare_choose_info#:#Meist sollte diese Option deaktiviert sein
+btn_locationshare_default#:#Option Aufenthaltsort: Voreinstellung
+btn_locationshare_default_info#:#Aktivieren Sie diese Option nur nach Rücksprache mit Beauftragten für den Datenschutz.
+member_btn_fileupload#:#Datei-Upload jedem erlauben
+member_btn_fileupload_info#:#Aktivieren Sie diese Option nur, wenn neben Personen mit erweiterten Rechten (z.B. Administratoren, ggf. Tutoren) auch weitere Personen Dateien hochladen können sollen.
+member_btn_fileupload_choose#:#Datei-Upload jedem erlauben: Auswahlmöglichkeit
+member_btn_fileupload_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Datei-Upload jedem erlauben' haben sollen.
+member_btn_fileupload_default#:#Datei-Upload jedem erlauben: Voreinstellung
+member_btn_fileupload_default_info#:#Diese Option sollte in der Regel deaktiviert sein.
+fa_expand_default#:#Maximierung der Anzeige von Bereichen: Voreinstellung
+fa_expand_default_info#:#Diese Option sollte in der Regel deaktiviert sein. Auch kann in vielen Fällen die Anzeige von Bereichen (z.B. Chat) nicht vergrößert werden
+obj_ids_special#:#Spezial-Räume
+obj_ids_special_info#:#Nur in seltenen Fällen nötig! Geben Sie hier Komma-separiert die ILIAS Objekt-IDs für in Kurse verknüpfte Räume (deshalb stets gleiche Objekt-Id) an, die je Kurs gesondert behandelt werden sollen. Die Objekt-Id wird bei den Objekt-Einstellungen angezeigt. Die Option 'Spezial-Räume' ist hilfreich, wenn die Einstellungen vieler Räume zentral erfolgen soll um z.B. weitere Funktionen sukzessive freigeben zu können.
+saving_invoked#:#Einstellungen gespeichert
+crs_create_xmvc#:#virtuellen Meetingraum erstellen
+grp_create_xmvc#:#virtuellen Meetingraum erstellen
+fold_create_xmvc#:#virtuellen Meetingraum erstellen
+root_create_xmvc#:#virtuellen Meetingraum erstellen
+cat_create_xmvc#:#virtuellen Meetingraum erstellen
+rbac_create_xmvc#:#virtuellen Meetingraum erstellen
+meeting#:#Meeting
+properties#:#Eigenschaften
+edit_properties#:#Eigenschaften bearbeiten
+cancel#:#abbrechen
+edit#:#Bearbeiten
+copy#:#Kopieren
+status#:#Status
+offline#:#Offline
+start_window#:#Virtuellen Meetingraum in einem neuen Fenster starten
+window_started#:#Der virtuelle Meetingraum wurde in einem neuen Fenster gestartet.
+window_closed#:#Der virtuelle Meetingraum wurde beendet.
+info_top_moderator_spreed#:#Willkommen im Meetingraum!<br/>&nbsp;<br/><b>Sie haben aktuell in diesem Raum die Moderatorfunktion.</b><br/>Wenn Sie den Meetingraum starten, sehen Sie rechts eine Liste aller hinzugekommenen Teilnehmerinnen und Teilnehmer. Bitte rufen Sie sie an, indem Sie mit dem Mauszeiger über die einzuladende Person fahren und anschließend auf das dann erscheinende Symbol mit dem Telefonhörer klicken.
+info_top_moderator_bbb#:#Willkommen im Meetingraum!<br/>&nbsp;<br/><b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderated_m_spreed#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Starten Sie den Meetingraum und warten Sie darin auf einen Anruf. Gegebenenfalls können Sie in der Zwischenzeit mit weiteren Wartenden chatten.<br/>Wenn Sie einen Anruf erhalten, sollten Sie diesen schnell annehmen. Nach einiger Zeit bekommt sonst der Anrufende die Meldung, dass Sie nicht abnehmen.
+info_top_moderated_m_bbb#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_not_moderated_spreed#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Dieser Meetingraum ist nicht moderiert. Bitte einigen Sie sich z.B. mit Hilfe des Chats, wer Video-Anrufe starten soll. Dies kann die erste Person in einem Meeting sein. In jedem Fall sollte diese Person über eine gute Internetverbindung und ein Headset verfügen.
+info_top_not_moderated_bbb#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
+info_bottom#:#<br/>Wichtige Hinweise:<ul><li>Bitte <b>nutzen Sie ein Headset</b> zur Vermeidung von störenden Rückkopplungen oder Echos!</li><li><b>Bei schlechter Internetverbindung</b> sollten Sie Ihre Kamera (Webcam) abschalten und bei noch schlechterer Verbindung sollten Sie für die Übertragung des Tons eine Telefonkonferenz nutzen.</li></ul>
+info_requirements_spreed#:#Technische Voraussetzungen:<ul><li>Der Spreed Meetingraum nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Die Anzahl der Personen im Raum kann bei guter Internetverbindung 6 betragen, wenn alle Personen Chrome benutzen.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und die Extension 'Spreed.ME screen sharing' installiert haben. Diese Extension erhalten Sie <a href="https://chrome.google.com/webstore/detail/spreedme-screen-sharing/labcnlicceloglidikcjbfglhnjibcbd" target="_blank"><u>hier</u></a> im <a href="https://chrome.google.com/webstore/" target="_blank">Chrome Web Store</a>. Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a> nutzen.
+info_requirements_bbb#:#Technische Voraussetzungen:<ul><li>BigBlueButton nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 80/443 (für HTTP/HTTPS) und UDP-Ports im Bereich 16384 - 32768 (<a href="https://docs.bigbluebutton.org/2.2/configure-firewall.html" target="_blank">Weiterführende Hinweise</a>).</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+user_invite_info#:#Mit dem folgenden Link k&ouml;nnen Sie G&auml;ste zum Meeting einladen:
+info_requirements_om#:#Technische Voraussetzungen:<ul><li>Openmeetings nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie die neueste Version von Microsoft Edge sowie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 8888/5443 (für HTTP/HTTPS), TCP/UDP 3478  und UDP-Ports im Bereich 49152 - 65535.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_requirements_not_ok#:#<b>Mit dem aktuell von Ihnen genutzten Browser können Sie den virtuellen Meetingraum nur sehr eingeschränkt nutzen.</b><br/>Nutzen Sie als Browser am besten Google Chrome oder mit Einschränkungen Mozilla Firefox! Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a> nutzen.<br/>Sollte es nicht möglich sein, den Browser zu wechseln, so starten Sie den virtuellen Meetingraum und schreiben Sie in den Chat, dass Sie aktuell keinen geeigneten Browser haben und dass niemand auf Sie warten solle.
+info_requirements_partly#:#Wir empfehlen als Browser Google Chrome oder mit Einschränkungen Mozilla Firefox. Ob und inwieweit der aktuell von Ihnen genutzte Browser geeignet ist, den virtuellen Meetingraum zu nutzen, müssen Sie selbst herausfinden. Bitte berichten Sie dem gegebenenfalls vorhandenen technischen Support Ihre Erfahrungen.
+info_concurrent_users_available#:#Anzahl freier Pl&auml;tze im virtuellen Klassenraum:&nbsp;
+info_concurrent_users_none#:#Aktuell stehen keine weiteren Pl&auml;tze zur Anmeldung bereit. Bitte pr&uuml;fen Sie die Verf&uuml;gbarkeit mit einem Linksklick auf folgenden Button:
+btntext_concurrent_users_check#:#Verf&uuml;gbarkeit pr&uuml;fen
+btntext_join_meeting#:#Meeting beitreten
+wait_join_meeting#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
+wait_join_meeting_guest#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und klicken Sie in einer Minute erneut auf die Schaltfläche 'Meeting beitreten'.</b>
+adm_info_appointment#:#Als Admin oder Tutor, können Sie den Raum starten. Teilnehmer hingegen, können den Raum nur während der Sitzungszeit &ouml;ffnen.
+service_unavailable#:#Dienst nicht erreichbar
+window_close#:#Fenster schlie&szligen
+tab_close#:#Bitte schlie&szligen Sie nun dieses Fenster bzw. diesen Tab.
+meeting_running#:#Der virtuelle Meetingraum wurde gestartet.
+configure#:#Konfiguration
+configure_add#:#Konfiguration anlegen
+report_log_max#:#Nutzungsübersicht
+max_meetings#:#Maximale Anzahl Meetingräume
+max_users#:#Maximale Anzahl Nutzer
+info_platform_chg_reset_data#:#Bitte beachten Sie, dass beim Wechsel der WebRTC-Plattform alle Einstellungen auf Standardwerte zurück gesetzt und ggf. hinterlegte Formulardaten dabei gelöscht werden. Zum Wechseln der WebRTC-Plattform müssen Sie die neue Auswahl zunächst durch "Speichern" bestätigen. Im n&auml;chsten Schritt wird die bisherige Konfiguration durch erneutes Speichern überschrieben.
+om_svr_username#:#SOAP Benutzername
+om_svr_userpass#:#SOAP Passwort
+om_svr_public_url#:#URL des Openmeeting-Servers
+om_svr_public_port#:#Port des Openmeeting-Servers
+title#:#Titel
+conf_title#:#Titel
+info_title#:#Dieser Titel wird zur Auswahl des Meeting-Typs bei neuen Objekten angezeigt.
+conf_availability#:#Verfügbarkeit
+info_availability#:#Hiermit steuern Sie die Verfügbarkeit des Meeting-Typs im Magazin. Alte Typen können statt gelöscht auf "Bestehende erlaubt" gesetzt werden.
+conf_availability_0#:#Nicht verfügbar
+conf_availability_1#:#Bestehende erlaubt
+conf_availability_2#:#Neue erzeugbar
+untrashed_usages#:#Anzahl Verwendungen
+create_type#:#Neuen Meeting-Typ definieren
+delete_type#:#Meeting-Typ löschen
+delete_conn#:#Meeting-Typ löschen?
+conn_deleted#:#Der Meeting-Typ wurde gelöscht.
+delete#:#löschen
+conn_id#:#Meeting-Typ
+msg_obj_deleted#:#Die Aufzeichnung wurde gelöscht.
+guestlink#:#Gastlink
+guestlink_info#:#Moderatoren können Gäste über einen Link einladen
+guestlink_choose#:#Gastlink Auswahlm&ouml;glichkeit
+guestlink_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Gastlink erlauben' haben sollen.
+guestlink_default#:#Gastlink Voreinstellung
+guestlink_default_info#:#Gastlink Voreinstellung
+guest_displayname_input#:#Titel Vorname Nachname
+guest_displayname_info#:#Bitte beachten Sie: Ausführliche Angaben zu Titeln können zu Usability-Schwierigkeiten führen aufgrund der begrenzten Länge des in BigBlueButton für den Namen verfügbaren Platzes.
+err_msg_displayname#:#Bitte geben Sie Ihren Namen ein

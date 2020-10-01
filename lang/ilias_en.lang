@@ -1,0 +1,188 @@
+//
+// English Language File for MultiVc Plugin
+//
+<!-- language file start -->
+obj_xmvc#:#Virtual meeting room
+objs_xmvc#:#Virtual meeting rooms
+obj_xmvc_duplicate#:#Copy
+objs_xmvc_duplicate#:#Copy virtual meeting room
+obj_xmvc_select#:#Select virtual meeting room
+select#:#Select
+starttime#:#Start time
+endtime#:#End Time
+playback#:#Playback
+download#:#Download
+obj_xmvc_download#:#Download
+download#:#Download
+xmvc_add#:#Add virtual meeting room
+xmvc_new#:#Add new virtual meeting room
+xmvc_read#:#read access to the virtual meeting room
+xmvc_write#:#Edit virtual meeting room
+xmvc_copy#:#Copy virtual meeting room
+xmvc_delete#:#delete virtual meeting room
+xmvc_visible#:#virtual meeting room is visible
+xmvc_edit_permission#:#Change permissions
+plugin_configuration#:#Configuration
+config_help_begin#:#The explanation under Settings is as follows:
+showcontent#:#WebRTC Platform
+big_blue_button#:#BigBlueButton WebRTC
+spreed#:#Spreed WebRTC
+svr_public_url#:#Public URL of the BBB server
+info_svr_public_url#:#Example: https://www.example.com/bigbluebutton/
+svr_public_port#:#Public port of the BBB server
+info_svr_public_port#:#Example: 443
+svr_private_url#:#Private URL of the BBB server
+info_svr_private_url#:#Always corresponds to the public URL, with the exception of Amazon EC2
+svr_private_port#:#Private port of the BBB server
+info_svr_private_port#:#Example: 443
+svr_salt#:#Secret of the BBB server
+info_svr_salt#:#ssh: bbb-conf --secret
+bbb_default_server#:#Standard BBB Server
+info_svr_salt_om#:#Example: dZ#ls2W!k6l
+info_svr_username#:#Example: om_admin
+max_participants#:#Max. Participants
+info_max_participants#:#Maximum number of participants per meeting. For unlimited number please enter '0'.
+private_chat#:#Allow private chat
+private_chat_info#:#Even people without moderator function can have a private chat with each other.
+private_chat_choose#:#Allow private chat: Selection option
+private_chat_choose_info#:#Enable this option if you want users with write permissions to have 'Allow private chat' selected under Settings.
+private_chat_default#:#Allow private chat: Default setting
+private_chat_default_info#:#If activated, even people without moderator function can have a private chat with each other. Persons with moderator function do not see these chats. Since persons with moderator function can prevent private chats at any time, this option should be activated in most cases.
+recording#:#Recordings
+recording_info#:#Sessions can be recorded.
+recording_choose#:#Allow recordings: Selection option
+recording_choose_info#:#Activate this option if you want users with write permissions to select 'Allow capturing' under Settings. Since the URL for the recording is known to be distributed to unintended persons, this option should not be activated in most cases.
+recording_default#:#Allow recordings: Default setting
+recording_default_info#:#This option should be deactivated in most cases, so that people cannot use the recording function in the virtual room.
+recording_only_for_moderated_rooms#:#Record only in moderated rooms
+recording_only_for_moderated_rooms_info#:#Only in moderated rooms can persons with moderator function start recordings.
+recording_only_for_moderated_rooms_default#:#Recording only in moderated rooms
+recording_only_for_moderated_rooms_default_info#:#This option should be activated in most cases. The option is only used if recordings are generally allowed.
+cam_only_for_moderator#:#Camera only for moderators
+cam_only_for_moderator_info#:#Recommended for sessions with a large number of people.
+cam_only_for_moderator_choose#:#Camera only for moderators: Option
+cam_only_for_moderator_choose_info#:#Activate this option if you want users with write access to select 'Camera only for moderators' under Settings. This option should be activated in most cases.
+cam_only_for_moderator_default#:#Camera for moderators only: Default setting
+cam_only_for_moderator_default_info#:#This option should be deactivated in most cases and should only be activated if performance problems are to be expected with high numbers of participants. Moderators always have the option to change the setting in BigBlueButton during a session.
+url#:#URL
+url_info#:#Here you can also enter relative paths (e.g.: /webconference). Please do not enter a '/' at the end.
+protected#:#Protected rooms
+protected_info#:#If you activate this option only ILIAS users can enter the meeting rooms. Additional requirements: ILIAS and spreed meeting rooms have to be accessed via the exact same domain and the ILIAS ID of this ILIAS installation has to be entered into the variable 'checkInstIds' in the spreed file 'main.html'. The ILIAS-ID is
+moderated#:#moderated room
+moderated_info#:#In a moderated room, persons with moderator function have extended rights. Other people also have limited access rights to the virtual room. Persons with moderator function are all those who can edit the object's properties as well as group administrators, course administrators and course tutors.
+moderated_choose#:#moderated room: selection option
+moderated_choose_info#:#Activate this option if you want users with write access to select 'moderated room' under Settings.
+moderated_default#:#moderated room: default setting
+moderated_default_info#:#Activate this option if new rooms are to be created as moderated rooms.
+btn_settings#:#Settings in the room
+btn_settings_info#:#Activate this option if you want the button and options for settings to be visible in the room. Usually this is not necessary since name and user image will be taken over by ILIAS.
+btn_settings_not_protected_info#:#If you want to invite guests without ILIAS login data this option should be activated.
+btn_settings_choose#:#Settings in the room: Selection option
+btn_settings_choose_info#:#Activate this option if you want users with write permissions to select 'Settings in room' under Settings.
+btn_settings_default#:#Settings in the room: Default setting
+btn_settings_default_info#:#The default setting should normally be that the option and button for settings are not active.
+btn_chat#:#Chat can be shown/hidden
+btn_chat_info#:#Activate this option if you want the button to hide and show the chat.
+btn_chat_choose#:#Chat can be shown/hidden: Selection option
+btn_chat_choose_info#:#Activate this option if you want users with write access to have the option 'Show/hide chat' under Settings.
+btn_chat_default#:#Chat can be shown/hidden: Default setting
+btn_chat_default_info#:#To simplify use, it can be useful not to activate this option and to always display the chat.
+with_chat#:#Start with Chat
+with_chat_info#:#Especially in moderated rooms this option should be activated. The chat becomes a 'waiting room'.
+with_chat_choose#:#Start with chat: Option
+with_chat_choose_info#:#Activate this option if you want users with write access to select 'Start with chat' under Settings.
+with_chat_default#:#Start with Chat: Default setting
+with_chat_default_info#:#Should usually be activated - especially in moderated rooms.
+btn_locationshare#:#Option Location
+btn_locationshare_info#:#This option allows users to share their current whereabouts in the chat and to be invited to a separate meeting by others. For privacy reasons, this option should be used with caution.
+btn_locationshare_choose#:#Location Option: Choice
+btn_locationshare_choose_info#:#In most cases this option should be deactivated
+btn_locationshare_default#:#Option Location: Default
+btn_locationshare_default_info#:#Only activate this option after consulting with data protection officers.
+member_btn_fileupload#:#Allow file upload to anyone
+member_btn_fileupload_info#:#Activate this option only if, in addition to people with extended rights (e.g. administrators, tutors), other people should also be able to upload files.
+member_btn_fileupload_choose#:#Allow file upload to anyone: Selection option
+member_btn_fileupload_choose_info#:#Enable this option if you want users with write permissions to have the option 'Allow file upload by anyone' under Settings.
+member_btn_fileupload_default#:#Allow file upload to anyone: Default setting
+member_btn_fileupload_default_info#:#This option should normally be disabled.
+fa_expand_default#:#Maximize the display of ranges: Default setting
+fa_expand_default_info#:#This option should normally be disabled. Also, in many cases the display of areas (e.g. chat) cannot be enlarged
+obj_ids_special#:#Special rooms
+obj_ids_special_info#:#Only necessary in rare cases! Enter the ILIAS object IDs for rooms linked to courses (therefore always the same object ID), separated by commas. The object ID is displayed in the object settings. The option 'special rooms' is helpful if the settings of many rooms should be done centrally in order to release further functions successively.
+saving_invoked#:#Settings saved
+crs_create_xmvc#:#create virtual meeting room
+grp_create_xmvc#:#create virtual meeting room
+fold_create_xmvc#:#create virtual meeting room
+root_create_xmvc#:#create virtual meeting room
+cat_create_xmvc#:#create virtual meeting room
+rbac_create_xmvc#:#create virtual meeting room
+meeting#:#Meeting
+properties#:#Features
+edit_properties#:#Edit properties
+cancel#:#Cancel
+edit#:#Edit
+copy#:#Copy
+status#:#Status
+offline#:#Offline
+start_window#:#Start virtual meeting room in a new window
+window_started#:#The virtual meeting room was started in a new window.
+window_closed#:#The virtual meeting room has been closed.
+info_top_moderator_spreed#:#Welcome to the meeting room!<br/> <br/><b>You currently have the moderator function in this room.</b><br/>When you start the meeting room, you will see a list of all added participants on the right. Please call them by moving the mouse pointer over the person to be invited and then clicking on the symbol with the telephone receiver that appears.
+info_top_moderator_bbb#:#Welcome to the meeting room!<br/> <br/><b>This is a moderated room and you have the moderator function in this room.</b><br/>People without a moderator function can only enter the meeting room when a person with a moderator function is in the room.
+info_top_moderated_m_spreed#:#Welcome to the meeting room!<br/> <br/>Start the meeting room and wait there for a call. If necessary, you can chat with other waiting people in the meantime.<br/>If you receive a call, you should answer it quickly. Otherwise the caller will receive a message after a while that you are not answering.
+info_top_moderated_m_bbb#:#Welcome to the meeting room!<br/> <br/>This is a moderated room and you can always enter the meeting room only when a person with moderator function is in the room.
+info_top_not_moderated_spreed#:#Welcome to the meeting room!<br/> <br/>This meeting room is not moderated. Please use chat, for example, to agree on who should start video calls. This can be the first person in a meeting. In any case this person should have a good internet connection and a headset.
+info_top_not_moderated_bbb#:#Welcome to the meeting room!<br/> <br/>This meeting room is not moderated. Therefore, you also have a moderator function and therefore extended rights. You can restrict the rights of other people and also end the session. Please use the extended rights responsibly.
+info_bottom#:#<br/>Important notes:<ul><li>Please <b>use a headset</b> to avoid annoying feedback or echoes!</li><li><b>If your Internet connection is poor</b>, you should switch off your camera (webcam) and if the connection is even worse, you should use a telephone conference for the transmission of the sound.</li></ul>
+info_requirements_spreed#:#Technical Requirements:<ul><li>The Spreed Meeting Room uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome or, with restrictions, Mozilla Firefox is recommended. The number of people in the room can be 6 with a good internet connection, if all people use Chrome.</li><li>To be able to transfer your screen (desktop sharing), you should use Google Chrome and have the extension 'Spreed.ME screen sharing' installed. You can get this extension <a href="https://chrome.google.com/webstore/detail/spreedme-screen-sharing/labcnlicceloglidikcjbfglhnjibcbd" target="_blank">>u>here</u></a> in the <a href="https://chrome.google.com/webstore/" target="_blank">Chrome Web Store</a>. If you do not have the rights to install a browser, you may be able to use <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a>.
+info_requirements_bbb#:#Technical requirements:<ul><li>BigBlueButton uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome, the Chromium-based browser Microsoft Edge or, with limitations, Mozilla Firefox are recommended. You can also use Safari Mobile from iOS 12.2 and Chrome Mobile from Android 6.0. Microsoft Internet Explorer and older Edge versions are not supported.</li><li>The firewall you are using must not block the following ports: TCP/IP ports 80/443 (for HTTP/HTTPS) and UDP ports in the range 16384 - 32768 (<a href="https://docs.bigbluebutton.org/2.2/configure-firewall.html" target="_blank">Reference</a>).</li><li>To transfer your screen (desktop sharing), you should use Google Chrome and have a high-performance Internet connection. We also recommend moderators and presenters to use a wired network (no WLAN).
+user_invite_info#:#With the following link you can invite guests to the meeting:
+info_requirements_om#:#Technical requirements:<ul><li>Openmeetings uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome or, with restrictions, Mozilla Firefox is recommended. You can also use the latest version of Microsoft Edge as well as Safari Mobile from iOS 12.2 and Chrome Mobile from Android 6.0. Microsoft Internet Explorer and older Edge versions are not supported.</li><li>The firewall you are using must not block the following ports: TCP/IP ports 8888/5443 (for HTTP/HTTPS), TCP/UDP 3478 and UDP ports in the range 49152 - 65535.</li><li>To transfer your screen (desktop sharing), you should use Google Chrome and have a high-performance Internet connection. We also recommend moderators and presenters to use a wired network (no WLAN).
+info_requirements_not_ok#:#<b> With the browser you are currently using, you can only use the virtual meeting room to a very limited extent.</b><br/> It is best to use Google Chrome or, with restrictions, Mozilla Firefox as your browser! If you do not have the rights to install a browser, you may be able to use <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a>.<br/>If it is not possible to change the browser, start the virtual meeting room and write in the chat that you do not currently have a suitable browser and that nobody should wait for you.
+info_requirements_partly#:#We recommend Google Chrome as browser or with restrictions Mozilla Firefox. If and to what extent the browser you are currently using is suitable to use the virtual meeting room, you have to find out yourself. Please report your experiences to the technical support team, if available.
+info_concurrent_users_available#:#Number of free seats in the virtual classroom:
+info_concurrent_users_none#:#Currently there are no more places available for registration. Please check availability by left-clicking on the following button:
+btntext_concurrent_users_check#:#Check availability
+btntext_join_meeting#:#Join Meeting
+wait_join_meeting#:#<b>Currently no person with moderator function is present in the virtual meeting room.<br/>Please wait and call this page again in one minute.</b>
+wait_join_meeting_guest#:#<b>Currently no person with moderator function is present in the virtual meeting room.<br/>Please wait and click on 'Join Meeting' again in one minute.</b>
+adm_info_appointment#:#As admin or tutor, you can start the room. Participants, however, can only open the room during the session.
+service_unavailable#:#Service not available
+window_close#:#Close window
+tab_close#:#Please close this window or tab.
+meeting_running#:#The virtual meeting room has started.
+configure#:#Configuration
+configure_add#:#Create configuration
+report_log_max#:#Overview of use
+max_meetings#:#Maximum number of meeting rooms
+max_users#:#Maximum number of users
+info_platform_chg_reset_data#:#Please note that when changing the WebRTC platform, all settings are reset to default values and any stored form data is deleted. To change the WebRTC platform, you must first confirm the new selection by clicking "Save". In the next step, the previous configuration will be overwritten by saving again.
+om_svr_username#:#SOAP user name
+om_svr_userpass#:#SOAP Password
+om_svr_public_url#:#URL of the Openmeeting server
+om_svr_public_port#:#Port of the Openmeeting server
+title#:#Title
+conf_title#:#Title
+info_title#:#This title is displayed for selecting the meeting type for new objects.
+conf_availability#:#Availability
+info_availability#:#This controls the availability of the meeting type in the repository. Old types can be set to "Existing allowed" instead of deleted.
+conf_availability_0#:#Not available
+conf_availability_1#:#Existing allowed
+conf_availability_2#:#New ones can be created
+untrashed_usages#:#Number of uses
+create_type#:#Define new meeting type
+delete_type#:#Delete meeting type
+delete_conn#:#Delete meeting type?
+conn_deleted#:#The meeting type has been deleted.
+delete#:#delete
+conn_id#:#Meeting type
+msg_obj_deleted#:#The recording was deleted.
+guestlink#:#Guest link
+guestlink_info#:#Moderators can invite guests via a link
+guestlink_choose#:#Gastlink selection option
+guestlink_choose_info#:#Enable this option if you want users with write permissions to have 'Allow guest link' selected under Settings.
+guestlink_default#:#Guestlink Default
+guestlink_default_info#:#Guestlink Preset
+guest_displayname_input#:#Title  First name  Last name
+guest_displayname_info#:#Please note: Detailed title information can lead to usability problems due to the limited length of the space available for the name in BigBlueButton.
+err_msg_displayname#:#Please enter your name

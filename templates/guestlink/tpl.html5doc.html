@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{USER_LANG}">
+<head>
+    <title>{MEETING_TITLE}</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <h1>
+        {H1}
+    </h1>
+    <div>
+        {INFO_TOP_MODERATED_M}
+    </div>
+    <div class="messages">
+        <div class="err_displayname_{ERR_STATE_DISPLAYNAME} alert alert-danger">{ERR_MSG_DISPLAYNAME}</div>
+        <div class="err_moderator_{ERR_STATE_MODERATOR} alert alert-info">{ERR_MSG_MODERATOR}</div>
+    </div>
+    <form action="{FORM_ACTION}" method="POST" class="form-inline">
+        <div class="input-group mb-3">
+            {DISPLAY_NAME}
+            <div class="input-group-append">
+                {SUBMIT_BUTTON}
+            </div>
+
+        </div>
+        <small class="form-text text-muted">
+            {DISPLAY_NAME_INFO}
+        </small>
+        <div>
+            <p>{INFO_BOTTOM}</p>
+            <p>{INFO_REQUIREMENTS}</p>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+<style type="text/css">
+    .container > h1 {
+        text-align: center;
+        margin: 10px auto 20px;
+    }
+    .container > h1 + div {
+        width: 67%;
+        margin: auto auto 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .container > form > div.input-group {
+        width: 67%;
+        margin: 20px auto auto;
+    }
+    .container > form > div.input-group + small {
+        width: 66%;
+        margin: -10px auto auto;
+        text-align: left;
+    }
+    .container > form > div.input-group + small + div {
+        width: 67%;
+        margin: 20px auto auto;
+        text-align: left;
+    }
+    .err_displayname_0,
+    .err_moderator_0,
+    .err_displayname_1 + .err_moderator_1 {
+        display: none;
+    }
+    .err_displayname_1, .err_moderator_1 {
+        display: block;
+        width: 67%;
+        margin: auto;
+    }
+    .err_moderator_1 b {
+        font-weight: normal;
+    }
+</style>
+

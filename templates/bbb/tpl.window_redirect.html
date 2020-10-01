@@ -1,0 +1,23 @@
+{VAL_1}
+<div id="redirect_msg" class="container center">
+    <h1>{REDIRECTMSG}</h1>
+</div>
+
+<script>
+    if (window.opener && typeof(window.opener) != "undefined") {
+        let parent = window.opener.document;
+        window.opener.logChildren(window);
+
+        $(window).on('beforeunload', function() {
+            $('#msgrunning', parent).prop('class', '');
+        });
+
+        $(window).on('beforeClose', function() {
+            $('#join_btn', parent).prop('class', '');
+            $('#msgrunning', parent).prop('class', 'hidden');
+        });
+    }
+    window.setTimeout(function() {
+        window.location.href = "{REDIRECTURL}";
+    }, 2000);
+</script>

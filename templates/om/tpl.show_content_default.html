@@ -1,0 +1,36 @@
+<div id="infotop" class="col-sm-12">
+    {INFOTOP}
+</div>
+<br>&nbsp;</br>
+<div class="col-sm-12">
+    {JOINCONTENT}
+    <div id="meeting" class="hidden">
+        <div class="inline">
+            <div class="dot-flashing"></div>
+        </div>
+    </div>
+    <div id="msgrunning" class="hidden">{MEETING_RUNNING}</div>
+</div>
+
+<div id="info_bottom" class="col-sm-12">{INFOBOTTOM}</div>
+
+<div id="info_requirements" class="col-sm-12">{infoRequirements}</div>
+
+<div id="recordings" class="col-sm-12">{RECORDINGS}</div>
+
+
+
+
+<script>
+
+    function logChildren(elem) {
+        console.dir(elem);
+    }
+
+    $('#join_btn', document).on('click', function(e) {
+        $('#join_btn', document).prop('class', 'hidden');
+        $('#msgrunning', document).prop('class', 'inline');
+        $('#meeting', document).prop('class', '');
+        console.dir($(e.target));
+    });
+</script>

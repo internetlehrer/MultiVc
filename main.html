@@ -1,0 +1,52 @@
+<%define "mainPage"%><!doctype html>
+<html class="no-js wf-loading"<%if.Csp%> ng-csp<%end%>>
+<head>
+<%template "head" .%>
+
+<script type="text/javascript">
+	//ILIAS PLUGIN
+	var checkInstIds=[''], ildefault='', adefault=[];
+	for (var i=0;i<checkInstIds.length;i++){
+		if (document.URL.indexOf("\/il"+checkInstIds[i]) > -1 && 
+			(!window.opener || 
+			 !window.opener.ilnonear || 
+			 typeof(window.opener.ilnonear) == "undefined" ||
+			 window.location.hostname != window.opener.location.hostname
+			)
+		) {
+			document.getElementById("globalcontext").innerHTML="";
+			alert("no access allowed");
+		}
+	}
+	if (window.opener && window.opener.ilnonear && window.opener.ildefault) {
+		for (var i=0;i<window.opener.ilnonear.length;i++){
+			document.write('<style type="text/css">'+window.opener.ilnonear[i]+'{display:none}</style>');
+		}
+		ildefault = window.opener.ildefault;
+		adefault=ildefault.split(' ');
+	}
+	function showElements() {
+		var divs = document.getElementsByTagName("DIV");
+		if (typeof(divs[0]) != "undefined" && divs[0].getAttribute("id") == "background" && typeof(divs[1]) != "undefined") {
+			var tmpCls = divs[1].getAttribute("class");
+			if (tmpCls == null) tmpCls = "ui";
+			tmpCls = tmpCls.replace(/ withRoombar/g,'');
+			tmpCls = tmpCls.replace(/ withBuddylist/g,'');
+			for (var i=1;i<adefault.length;i++) {
+				if (tmpCls.indexOf(adefault[i]) < 0) tmpCls+=' '+adefault[i];
+			}
+			divs[1].setAttribute("class", tmpCls);
+		}
+		if (adefault.length == 2) window.setTimeout("showElements()",100);
+	}
+	if (ildefault != '') showElements();
+</script>
+</head>
+<body spreed-webrtc>
+<div id="background"></div>
+<div id="loader"><div><i class="fa fa-circle-o-notch fa-spin"></i><div class="loader-message"></div></div></div>
+<ui></ui>
+<script data-main="<%.Cfg.S%>/js/<%.App%>" data-plugin="<%.Cfg.Plugin%>" src="<%.Cfg.S%>/js/libs/require/require.js"></script>
+<%template "extra-body" .%>
+</body>
+</html><%end%>

@@ -1,0 +1,24 @@
+{VAL_1}
+<div id="redirect_msg" class="container center">
+    <h1>{REDIRECTMSG}</h1>
+    <div class="dot-floating"></div>
+</div>
+
+<script>
+    let parent = window.opener.document;
+    window.opener.logChildren(this);
+
+    $(window).on('beforeunload', function() {
+        $('#meeting > #msg', parent).prop('class', 'col-sm-3');
+    });
+
+    $(window).on('beforeClose', function() {
+        $('#join_btn', parent).prop('class', '');
+        $('#meeting', parent).prop('class', 'hidden');
+        $('#meeting > #msg', parent).prop('class', 'hidden');
+    });
+
+    window.setTimeout(function() {
+        window.location.href = "{REDIRECTURL}";
+    }, 2000);
+</script>
