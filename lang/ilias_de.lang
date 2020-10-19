@@ -42,6 +42,11 @@ info_svr_salt_om#:#Beispiel: dZ#ls2W!k6l
 info_svr_username#:#Beispiel: om_admin
 max_participants#:#Max. Teilnehmer
 info_max_participants#:#Maximale Anzahl Teilnehmer je Meeting. Bei unbegrenzter Anzahl bitte '0' angeben.
+add_presentation_url#:#Startpräsentation
+info_add_presentation_url#:#Eigene Startpräsentation über URL laden. Der URL-Aufbau muss folgendes Format erfüllen: <i>https://ihre.domain/pfad_zur/praesentation.pdf</i>
+add_welcome_text#:#Individueller Willkommenstext
+info_add_welcome_text#:#Dieser individuelle Willkommenstext kann über ILIAS-Sprachvariable definiert werden. Wechseln Sie zu Administration -> Sprachen. Klicken Sie dazu auf die gewünschte 'Sprache' und tippen Sie bei 'Identifier' 'rep_robj_xmvc_welcome_text' ein. Klicken Sie dann auf 'Filter anwenden' und editieren Sie den Text.
+welcome_text#:#Herzlich Willkommen<br />im Virtuellen Meetingraum<br /><b>{MEETING_TITLE}</b><br /><br />Hilfe zur Verwendung von BigBlueButton finden Sie in diesen kurzen (englischen) <a href="http://www.bigbluebutton.org/html5" target="_blank"><u>Videos</u></a>.<br /><br />Sollte unten etwa in der Mitte ein durchgestrichener Telefonhörer zu sehen sein, werden andere Sie nicht hören und auch Sie hören nichts. Klicken Sie dann zum Starten der Audioverbindung auf den durchgestrichenen Telefonhörer. Verwenden Sie ein Headset, um Hintergrundgeräusche und Rückkopplungen zu vermeiden.
 private_chat#:#Privaten Chat erlauben
 private_chat_info#:#Auch Personen ohne Moderatorfunktion können einen privaten Chat untereinander führen.
 private_chat_choose#:#Privaten Chat erlauben: Auswahlmöglichkeit
@@ -141,12 +146,12 @@ info_requirements_om#:#Technische Voraussetzungen:<ul><li>Openmeetings nutzt den
 info_requirements_not_ok#:#<b>Mit dem aktuell von Ihnen genutzten Browser können Sie den virtuellen Meetingraum nur sehr eingeschränkt nutzen.</b><br/>Nutzen Sie als Browser am besten Google Chrome oder mit Einschränkungen Mozilla Firefox! Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a> nutzen.<br/>Sollte es nicht möglich sein, den Browser zu wechseln, so starten Sie den virtuellen Meetingraum und schreiben Sie in den Chat, dass Sie aktuell keinen geeigneten Browser haben und dass niemand auf Sie warten solle.
 info_requirements_partly#:#Wir empfehlen als Browser Google Chrome oder mit Einschränkungen Mozilla Firefox. Ob und inwieweit der aktuell von Ihnen genutzte Browser geeignet ist, den virtuellen Meetingraum zu nutzen, müssen Sie selbst herausfinden. Bitte berichten Sie dem gegebenenfalls vorhandenen technischen Support Ihre Erfahrungen.
 info_concurrent_users_available#:#Anzahl freier Pl&auml;tze im virtuellen Klassenraum:&nbsp;
-info_concurrent_users_none#:#Aktuell stehen keine weiteren Pl&auml;tze zur Anmeldung bereit. Bitte pr&uuml;fen Sie die Verf&uuml;gbarkeit mit einem Linksklick auf folgenden Button:
+info_concurrent_users_none#:#Aktuell stehen keine weiteren Pl&auml;tze zur Anmeldung bereit. Bitte pr&uuml;fen Sie in einer Minute erneut die Verf&uuml;gbarkeit mit einem <b>Klick</b> auf den Button <b>"Meeting beitreten"</b>.
 btntext_concurrent_users_check#:#Verf&uuml;gbarkeit pr&uuml;fen
 btntext_join_meeting#:#Meeting beitreten
 wait_join_meeting#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
 wait_join_meeting_guest#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und klicken Sie in einer Minute erneut auf die Schaltfläche 'Meeting beitreten'.</b>
-adm_info_appointment#:#Als Admin oder Tutor, können Sie den Raum starten. Teilnehmer hingegen, können den Raum nur während der Sitzungszeit &ouml;ffnen.
+adm_info_appointment#:#Als Admin oder Tutor können Sie den Raum starten. Teilnehmer hingegen können den Raum nur während der Sitzungszeit &ouml;ffnen.
 service_unavailable#:#Dienst nicht erreichbar
 window_close#:#Fenster schlie&szligen
 tab_close#:#Bitte schlie&szligen Sie nun dieses Fenster bzw. diesen Tab.
@@ -182,7 +187,8 @@ guestlink_info#:#Moderatoren können Gäste über einen Link einladen
 guestlink_choose#:#Gastlink Auswahlm&ouml;glichkeit
 guestlink_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Gastlink erlauben' haben sollen.
 guestlink_default#:#Gastlink Voreinstellung
-guestlink_default_info#:#Gastlink Voreinstellung
+guestlink_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein. Eine Nutzung durch Unbefugte sollte weitgehend ausgeschlossen werden können. Gäste kommen stets nur als Teilnehmer in einen moderierten Raum. Dort muss ein Moderierender bereits anwesend sein. Gäste müssen Nutzungsbedingungen zustimmen, die als ILIAS-Sprachvariable gespeichert sind. Wechseln Sie zum Editieren zu Administration -> Sprachen. Klicken Sie auf die gewünschte 'Sprache' und tippen Sie bei 'Identifier' 'rep_robj_xmvc_terms_of_use' ein. Klicken Sie dann auf 'Filter anwenden' und editieren Sie den Text.
 guest_displayname_input#:#Titel Vorname Nachname
 guest_displayname_info#:#Bitte beachten Sie: Ausführliche Angaben zu Titeln können zu Usability-Schwierigkeiten führen aufgrund der begrenzten Länge des in BigBlueButton für den Namen verfügbaren Platzes.
 err_msg_displayname#:#Bitte geben Sie Ihren Namen ein
+terms_of_use#:#<b>Schutzrechte</b><br/>Die in BigBlueButton-Konferenzen enthaltenen Informationen und Materialien wie z.B. Texte oder Bilder sind in der Regel durch Urheber-, Marken- oder Patentrechte geschützt.<br/>Die gesetzlichen Vorschriften zum Datenschutz sind zu beachten. Dies gilt insbesondere für die Aufzeichnung von BigBlueButton-Konferenzen. Das heimliche Aufzeichnen von Video- oder Audiokonferenzen ist ein Straftatbestand.<br/><br/><b>Verhaltensregeln</b><br/>Sie dürfen keine gegen gesetzliche Bestimmungen verstoßende, pornographische, obszöne, diffamierende, verleumderische, beleidigende, bedrohende, volksverhetzende oder rassistische Inhalte einstellen. Auch das Einstellen von Werbung ohne Genehmigung sowie die Übermittlung von Informationen, welche einen Virus, Manipulationen oder ähnliche schädigende Elemente enthalten, ist untersagt.<br/><br/><b>Verarbeitete Daten</b><br/>Bei der Nutzung von BigBlueButton werden folgende Daten erhoben:<ul><li>Verbindungsdaten (z. B. IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs)</li><li>Gegebenenfalls Zugangsdaten: Benutzername, Passwort in verschlüsselter Form</li><li>Inhaltsdaten (z. B. hochgeladene Dateien, Chatbeiträge, Umfragen)</li></ul>Die vorübergehende Speicherung der Verbindungsdaten, insbesondere der IP-Adresse, durch das System ist notwendig, um eine Auslieferung von BigBlueButton an den Rechner des Nutzers zu ermöglichen. Hierfür muss die IP-Adresse des Nutzers für die Dauer der Sitzung gespeichert bleiben. Rechtsgrundlage für die vorübergehende Speicherung der Daten ist Art. 6 Abs. 1 lit. f DSGVO.<br/>Die Verbindungsdaten werden ebenfalls in der Regel in Logfiles gespeichert. Der Löschzeitpunkt wird durch den Betreiber des Servers für BigBlueButton festgelegt.

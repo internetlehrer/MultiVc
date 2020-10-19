@@ -85,6 +85,11 @@ class ilMultiVcConfig
     /** @var bool $camOnlyForModeratorDefault */
     private $camOnlyForModeratorDefault = false;
 
+    /** @var string $addPresentationUrl */
+    private $addPresentationUrl = '';
+
+    /** @var bool $addWelcomeText */
+    private $addWelcomeText = false;
 
 	/** @var array $moreOptions */
 	private $moreOptions = [
@@ -232,6 +237,8 @@ class ilMultiVcConfig
             'svrUsername'		         => ['string', $this->getSvrUsername()],
             'guestlink_choose' => ['integer', (int)$this->isGuestlinkChoose()],
             'guestlink_default' => ['integer', (int)$this->isGuestlinkDefault()],
+            'add_presentation_url' => ['string', $this->getAddPresentationUrl()],
+            'add_welcome_text' => ['integer', (int)$this->issetAddWelcomeText()],
             //'more_options'			        => ['string', json_encode($this->option)],
 		);
 		//var_dump($a_data); exit;
@@ -366,6 +373,8 @@ class ilMultiVcConfig
             $this->setSvrUsername($record['svrusername']);
             $this->setGuestlinkChoose( (bool)$record["guestlink_choose"] );
             $this->setGuestlinkDefault( (bool)$record["guestlink_default"] );
+            $this->setAddPresentationUrl($record["add_presentation_url"]);
+            $this->setAddWelcomeText( (bool)$record["add_welcome_text"] );
 
             $this->setStoredOption($record);
 		}
@@ -866,6 +875,38 @@ class ilMultiVcConfig
     public function setGuestlinkDefault(bool $guestlink_default): void
     {
         $this->guestlink_default = $guestlink_default;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddPresentationUrl(): string
+    {
+        return $this->addPresentationUrl;
+    }
+
+    /**
+     * @param string $addPresentationUrl
+     */
+    public function setAddPresentationUrl(string $addPresentationUrl): void
+    {
+        $this->addPresentationUrl = $addPresentationUrl;
+    }
+
+    /**
+     * @return bool
+     */
+    public function issetAddWelcomeText(): bool
+    {
+        return $this->addWelcomeText;
+    }
+
+    /**
+     * @param bool $addWelcomeText
+     */
+    public function setAddWelcomeText(bool $addWelcomeText): void
+    {
+        $this->addWelcomeText = $addWelcomeText;
     }
 
 

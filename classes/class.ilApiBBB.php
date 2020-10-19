@@ -247,19 +247,43 @@ class ilApiBBB implements ilApiInterface
     {
         $this->concurrent = (object)[
             'meetings'  => 0,
-            'users'     => 0
+            'users'     => 0,
+            'allParentMeetingsParticipantsCount' => []
         ];
+        $all = 0;
 
         /** @var BigBlueButton\Core\Meeting[] $meetings */
         $meetings = (array)($this->bbb->getMeetings())->getMeetings();
         if( !!(bool)(sizeof($meetings)) ) {
             $checkId = $this->iliasDomain . ';' . CLIENT_ID;
             foreach ($meetings as $meeting) {
+                //if( $meeting->getMeetingName() === $this->object->getTitle() ) {}
+
                 if( substr($meeting->getMeetingId() , 0, strlen($checkId)) === $checkId ) {
+                    $all += $meeting->getParticipantCount();
+                    $this->concurrent->allParentMeetingsParticipantsCount[$meeting->getMeetingId()] = $meeting->getParticipantCount();
                     $this->concurrent->meetings += 1;
                     $this->concurrent->users += $meeting->getParticipantCount();
+                } else {
+                    $this->concurrent->allBreakoutRoomsParticipantsCount[$meeting->getMeetingId()] = $meeting->getParticipantCount();
                 }
             } // EOF foreach ($meetings as $meeting)
+            /*
+            echo '<b>$all, $this->concurrent->users</b>';
+            echo $all .', '. $this->concurrent->users;
+            echo '<br><br><br><b>$this->concurrent->allParentMeetingsParticipantsCount</b>';
+            var_dump($this->concurrent->allParentMeetingsParticipantsCount);
+            echo '<br><br><br><b>$this->concurrent->allBreakoutRoomsParticipantsCount</b>';
+            var_dump($this->concurrent->allBreakoutRoomsParticipantsCount);
+            echo '<br><br><br><b>$this->getMeetingInfo()->getRawXml()->breakoutRooms</b>';
+            var_dump($this->getMeetingInfo()->getRawXml()->breakoutRooms);
+            echo '<br><br><br><b>$this->getMeetingInfo()->getRawXml()</b>';
+            var_dump($this->getMeetingInfo()->getRawXml());
+            //var_dump([$this->getMeetingInfo(), $this->bbb->getMeetings()->getMeetings()]);
+            exit;
+            */
+
+
         }
     }
 
@@ -506,10 +530,7 @@ class ilApiBBB implements ilApiInterface
                     }
                 }
             }
-
         }
-
-        //echo $this->ilObjSession->; exit;
     }
 
     private function setRecordingOnlyForModeratedMeeting(): void {
@@ -521,11 +542,11 @@ class ilApiBBB implements ilApiInterface
         }
     }
 
-
     private function setCreateMeetingParam(): void {
         global $DIC; /** @var Container $DIC */
         $rqUri = $DIC->http()->request()->getUri();
         $joinBtnUrl = ILIAS_HTTP_PATH . '/' . substr($rqUri, strpos($rqUri, 'ilias.php')) . '&startBBB=10';
+
         $this->createMeetingParam = new CreateMeetingParameters($this->meetingId, $this->object->getTitle());
         $this->createMeetingParam->setModeratorPassword($this->object->getModeratorPwd())
             ->setAttendeePassword($this->object->getAttendeePwd())
@@ -536,12 +557,29 @@ class ilApiBBB implements ilApiInterface
             ->setWebcamsOnlyForModerator((bool)$this->object->isCamOnlyForModerator())
             ->setLogoutUrl($joinBtnUrl)
             ->setLockSettingsDisablePrivateChat(!(bool)$this->object->isPrivateChat())
-            //->setLockSettingsLockOnJoin(true)
-            //->setLockSettingsLockOnJoinConfigurable()
         ;
+
         if( !is_null($value = $this->getPluginIniSet('mute_on_start')) ) {
             $this->createMeetingParam->setMuteOnStart((bool)$value);
         }
+
+        if( (bool)(strlen($pdf = $this->settings->getAddPresentationUrl())) ) {
+            $this->createMeetingParam->addPresentation($pdf);
+        }
+
+        if( $this->settings->issetAddWelcomeText() ) {
+            $welcomeText = str_replace(
+                [
+					'{MEETING_TITLE}'
+                ],
+                [
+					$this->object->getTitle()
+                ],
+                $this->dic->language()->txt('rep_robj_xmvc_welcome_text')
+            );
+            $this->createMeetingParam->setWelcomeMessage($welcomeText);
+        }
+
     }
 
     /**
@@ -549,7 +587,7 @@ class ilApiBBB implements ilApiInterface
      */
     private function setMeetingId(): void
     {
-        global $DIC; /** @var \DI\Container $DIC */
+        global $DIC; /** @var Container $DIC */
 
         // $rawMeetingId = $DIC->settings()->get('inst_id',0) . $this->object->getId();
 		$this->iliasDomain = substr(ILIAS_HTTP_PATH,7);
@@ -668,6 +706,7 @@ class ilApiBBB implements ilApiInterface
         if( (int)$this->settings->getMaxParticipants() > 0 ) {
             $meetingParam = new \BigBlueButton\Parameters\GetMeetingInfoParameters($this->meetingId, $this->settings->getSvrSalt());
             $meetingInfo = $this->bbb->getMeetingInfo($meetingParam);
+            //var_dump($meetingInfo->getRawXml()); exit;
             $meeting = $meetingInfo->getMeeting();
             return (($available = (int)$this->settings->getMaxParticipants() - $meeting->getParticipantCount()) > 0) ? $available : 0;
         }

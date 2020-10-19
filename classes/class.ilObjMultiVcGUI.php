@@ -584,7 +584,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if( ($availableUsers = $bbb->getMaxAvailableJoins()) > 0) {
             $info_concurrent = $this->lng->txt('rep_robj_xmvc_info_concurrent_users_available') . $availableUsers;
         } else {
-            $info_concurrent = $this->lng->txt('rep_robj_xmvc_info_concurrent_users_none');
+            ilUtil::sendFailure($this->lng->txt('rep_robj_xmvc_info_concurrent_users_none'));
+            //$info_concurrent = $this->lng->txt('rep_robj_xmvc_info_concurrent_users_none');
         }
         $my_tpl->setVariable('INFO_CONCURRENT', $info_concurrent);
 
@@ -592,6 +593,13 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $my_tpl->setVariable("MEETING_RUNNING", $this->txt('meeting_running'));
         $my_tpl->setVariable("INFOBOTTOM", $this->txt('info_bottom'));
         $my_tpl->setVariable("infoRequirements", $this->txt('info_requirements_bbb'));
+        if( $bbb->isUserModerator() && $this->object->get_moderated() && $this->object->isGuestlink() ) {
+            $my_tpl->setVariable("HEADLINE_GUESTLINK", $this->txt('guestlink'));
+            $my_tpl->setVariable("userInviteInfo", $this->txt('user_invite_info'));
+            $my_tpl->setVariable("userInviteUrl", $bbb->getInviteUserUrl());
+        } else {
+            $my_tpl->setVariable("HIDE_GUESTLINK", 'hidden');
+        }
 
         // RECORDINGS
         if( $this->object->isRecordingAllowed() ) {

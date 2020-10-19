@@ -42,6 +42,11 @@ info_svr_salt_om#:#Example: dZ#ls2W!k6l
 info_svr_username#:#Example: om_admin
 max_participants#:#Max. Participants
 info_max_participants#:#Maximum number of participants per meeting. For unlimited number please enter '0'.
+add_presentation_url#:#Start presentation
+info_add_presentation_url#:#Load your own start presentation via URL. The URL structure must fulfill the following format: <i>https://your.domain/path_to/presentation.pdf</i>
+add_welcome_text#:#Add welcome text
+info_add_welcome_text#:#Individual welcome text can be defined with a ILIAS language variable. Switch to Administration -> Languages. Click on the desired 'Language' and type 'rep_robj_xmvc_welcome_text' into the 'Identifier' field. Then click on 'Apply filter' and edit the text.
+welcome_text#:#Welcome<br />to the Virtual Meeting Room<br /><b>{MEETING_TITLE}</b><br /><br />For help on using BigBlueButton see these (short) <a href="http://www.bigbluebutton.org/html5" target="_blank"><u>tutorial videos</u></a>.<br /><br />To join the audio bridge click the phone button. Use a headset to avoid causing background noise for others.
 private_chat#:#Allow private chat
 private_chat_info#:#Even people without moderator function can have a private chat with each other.
 private_chat_choose#:#Allow private chat: Selection option
@@ -140,8 +145,8 @@ user_invite_info#:#With the following link you can invite guests to the meeting:
 info_requirements_om#:#Technical requirements:<ul><li>Openmeetings uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome or, with restrictions, Mozilla Firefox is recommended. You can also use the latest version of Microsoft Edge as well as Safari Mobile from iOS 12.2 and Chrome Mobile from Android 6.0. Microsoft Internet Explorer and older Edge versions are not supported.</li><li>The firewall you are using must not block the following ports: TCP/IP ports 8888/5443 (for HTTP/HTTPS), TCP/UDP 3478 and UDP ports in the range 49152 - 65535.</li><li>To transfer your screen (desktop sharing), you should use Google Chrome and have a high-performance Internet connection. We also recommend moderators and presenters to use a wired network (no WLAN).
 info_requirements_not_ok#:#<b> With the browser you are currently using, you can only use the virtual meeting room to a very limited extent.</b><br/> It is best to use Google Chrome or, with restrictions, Mozilla Firefox as your browser! If you do not have the rights to install a browser, you may be able to use <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a>.<br/>If it is not possible to change the browser, start the virtual meeting room and write in the chat that you do not currently have a suitable browser and that nobody should wait for you.
 info_requirements_partly#:#We recommend Google Chrome as browser or with restrictions Mozilla Firefox. If and to what extent the browser you are currently using is suitable to use the virtual meeting room, you have to find out yourself. Please report your experiences to the technical support team, if available.
-info_concurrent_users_available#:#Number of free seats in the virtual classroom:
-info_concurrent_users_none#:#Currently there are no more places available for registration. Please check availability by left-clicking on the following button:
+info_concurrent_users_available#:#Number of free seats in the virtual classroom:&nbsp;
+info_concurrent_users_none#:#There are currently no more places available for login. Please check availability again in one minute with a <b>left click</b> on the button <b>"Join meeting"</b>.
 btntext_concurrent_users_check#:#Check availability
 btntext_join_meeting#:#Join Meeting
 wait_join_meeting#:#<b>Currently no person with moderator function is present in the virtual meeting room.<br/>Please wait and call this page again in one minute.</b>
@@ -182,7 +187,8 @@ guestlink_info#:#Moderators can invite guests via a link
 guestlink_choose#:#Gastlink selection option
 guestlink_choose_info#:#Enable this option if you want users with write permissions to have 'Allow guest link' selected under Settings.
 guestlink_default#:#Guestlink Default
-guestlink_default_info#:#Guestlink Preset
+guestlink_default_info#:#This option should be disabled in most cases. A use by unauthorized persons should be largely prevented. Guests always enter a moderated room as members only. A moderator must already be present there. Guests must agree to terms of use that are stored as ILIAS language variable. To edit the language variable go to Administration -> Languages. Click on the desired 'language' and type in 'rep_robj_xmvc_terms_of_use' for 'Identifier'. Then click on 'Apply filter' and edit the text.
 guest_displayname_input#:#Title  First name  Last name
 guest_displayname_info#:#Please note: Detailed title information can lead to usability problems due to the limited length of the space available for the name in BigBlueButton.
 err_msg_displayname#:#Please enter your name
+terms_of_use#:#<b>Property rights</b><br/>The information and materials contained in BigBlueButton conferences, such as text or images, are generally protected by copyright, trademark or patent laws. This applies in particular to the recording of BigBlueButton conferences. The secret recording of video or audio conferences is a criminal offence.<br/><br/><b>Rules of conduct</b><br/>You may not post any content that violates legal regulations, pornographic, obscene, defamatory, libellous, insulting, threatening, inciting or racist content. It is also forbidden to post advertising without permission and to transmit information that contains a virus, manipulation or similar damaging elements.<br/><br/><b>Processed data</b><br/>When using BigBlueButton, the following data is collected:<ul><li>Connection data (e.g. IP address, browser type, date and time of access)</li><li>If applicable, access data: User name, password in encrypted form</li><li>content data (e.g. uploaded files, chat posts, surveys)</li></ul>The temporary storage of connection data, in particular the IP address, by the system is necessary to enable BigBlueButton to be delivered to the User's computer. For this purpose, the user's IP address must remain stored for the duration of the session. The legal basis for the temporary storage of the data is Art. 6 para. 1 lit. f DSGVO.<br/>The connection data is also usually stored in log files. The time of deletion is determined by the operator of the server for BigBlueButton.

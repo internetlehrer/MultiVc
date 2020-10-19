@@ -13,6 +13,7 @@ chdir("../../../../../../../");
 require_once('./Services/Context/classes/class.ilContext.php');
 require_once("./Services/Init/classes/class.ilInitialisation.php");
 require_once("./Services/Utilities/classes/class.ilUtil.php");
+require_once('./Services/Language/classes/class.ilLanguage.php');
 //require_once("./Services/Utilities/classes/class.ilBrowser.php");
 require_once './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiBBB.php';
 require_once './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/bbb/vendor/autoload.php';
@@ -129,6 +130,8 @@ class JoinMeetingByGuestLink
 {
     const DEFAULT_LANG = 'de';
 
+    const PLUGIN_DIR = 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
+
     /** @var JoinMeetingByGuestLink|null $instance */
     static private $instance;
 
@@ -173,9 +176,15 @@ class JoinMeetingByGuestLink
     /** @var string $displayName */
     private $displayName = '';
 
+    /** @var string[] $userAccept */
+    private $userAccept = [
+        'termsOfUse' => false
+    ];
+
     /** @var bool[] $errState */
     private $errState = [
         'displayname'  => false,
+        'termsOfUse' => false,
         'moderator' => false
     ];
 
@@ -205,6 +214,7 @@ class JoinMeetingByGuestLink
     private function setMeetingId(): void
     {
         // $rawMeetingId = $DIC->settings()->get('inst_id',0) . $this->object->getId();
+        /*
         $this->iliasDomain = substr(ILIAS_HTTP_PATH,7);
         if (substr($this->iliasDomain,0,1) === "/") {
             $this->iliasDomain = substr($this->iliasDomain, 1);
@@ -212,6 +222,7 @@ class JoinMeetingByGuestLink
         if (substr($this->iliasDomain,0,4) === "www.") {
             $this->iliasDomain = substr($this->iliasDomain, 4);
         }
+        */
         $excludePathSegment = substr($this->iliasDomain, strpos($this->iliasDomain,
             false === strpos($this->iliasDomain, '/Customizing') ? '/m' : '/Customizing'));
         $rawMeetingId = str_replace($excludePathSegment, '', $this->iliasDomain) . ';' . $this->client . ';' . $this->pluginObject->getId();
@@ -292,13 +303,17 @@ class JoinMeetingByGuestLink
     {
         $this->htmlTpl = new ilTemplate( dirname(__FILE__) . '/' . 'templates/guestlink/tpl.html5doc.html', true, true);
         $this->htmlTpl->setVariable('USER_LANG', $this->isoLangCode[$this->userLang]);
+        $this->htmlTpl->setVariable('HTTP_BASE', $this->iliasDomain);
         $this->htmlTpl->setVariable('MEETING_TITLE', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));
         $this->htmlTpl->setVariable('H1', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));
         $this->htmlTpl->setVariable('INFO_TOP_MODERATED_M', $this->getLangVar('info_top_moderated_m_bbb'));
         $this->htmlTpl->setVariable('ERR_STATE_DISPLAYNAME', (int)$this->errState['displayname']);
         $this->htmlTpl->setVariable('ERR_MSG_DISPLAYNAME', !$this->errState['displayname'] ? '' : $this->getLangVar('err_msg_displayname'));
+        $this->htmlTpl->setVariable('ERR_STATE_TERMSOFUSE', (int)$this->errState['termsOfUse']);
+        $this->htmlTpl->setVariable('VAL_TERMSOFUSE', (int)$this->userAccept['termsOfUse']);
+        $this->htmlTpl->setVariable('TXT_ACCEPT_TERMSOFUSE', $this->getLangVar('terms_of_use') );
         $this->htmlTpl->setVariable('ERR_STATE_MODERATOR', (int)$this->errState['moderator']);
-        $this->htmlTpl->setVariable('ERR_MSG_MODERATOR', !$this->errState['moderator'] ? '' : $this->getLangVar('wait_join_meeting_guest'));
+        $this->htmlTpl->setVariable('ERR_MSG_MODERATOR', !$this->errState['moderator'] ? '' : $this->getLangVar('wait_join_meeting'));
         $this->htmlTpl->setVariable('FORM_ACTION', filter_var('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL));
         $this->htmlTpl->setVariable('DISPLAY_NAME', $this->getFormField('display_name'));
         $this->htmlTpl->setVariable('DISPLAY_NAME_INFO', $this->getLangVar('guest_displayname_info'));
@@ -351,7 +366,8 @@ class JoinMeetingByGuestLink
 
     private function getLangVar(string $value): string
     {
-        return isset($this->langVar[$value]) ? $this->langVar[$value] : '-' . $value . '-';
+        return ilLanguage::_lookupEntry( $this->userLang, 'rep_robj_xmvc','rep_robj_xmvc_' . $value);
+        //return isset($this->langVar[$value]) ? $this->langVar[$value] : '-' . $value . '-';
     }
 
     private function setUserLangBySvrParam(): void
@@ -398,13 +414,20 @@ class JoinMeetingByGuestLink
                     $this->displayName = filter_var($val, FILTER_SANITIZE_STRING);
                     $score += 2;
                 }
+                if( filter_var($key, FILTER_SANITIZE_STRING) === 'terms_of_use' ) {
+                    if($this->userAccept['termsOfUse'] = (bool)filter_var($val, FILTER_SANITIZE_NUMBER_INT)) {
+                        $score += 4;
+                    } else {
+                        $this->errState['termsOfUse'] = true;
+                    }
+                }
             }
             if( !(bool)strlen($this->displayName) ) {
                 $score -= 2;
                 $this->errState['displayname'] = isset($_POST['display_name']);
             }
         }
-        return $score >= 2;
+        return $score >= 6;
     }
 
     private function validateInvitation()
@@ -444,6 +467,7 @@ class JoinMeetingByGuestLink
         ilInitialisationIlias4GuestLink::initIlias($this->client);
         global $DIC; /** @var Container $DIC */
         $this->dic = $DIC;
+        //echo $this->dic->language()->txtlng('rep_robj_xmvc', 'btntext_concurrent_users_check', 'de'); exit;
 
         try {
             $this->pluginObject = ilObjectFactory::getInstanceByRefId($this->refId);
@@ -453,11 +477,21 @@ class JoinMeetingByGuestLink
         }
         $this->pluginConfig = ilMultiVcConfig::getInstance($this->pluginObject->getConnId());
 
+        $this->iliasDomain = substr(ILIAS_HTTP_PATH,7);
+        if (substr($this->iliasDomain,0,1) === "/") {
+            $this->iliasDomain = substr($this->iliasDomain, 1);
+        }
+        if (substr($this->iliasDomain,0,4) === "www.") {
+            $this->iliasDomain = substr($this->iliasDomain, 4);
+        }
+
+        #$this->httpBase =
+
         // exit if not valid
         $this->validateInvitation();
 
         $this->setUserLangBySvrParam();
-        $this->setLangVars();
+        //$this->setLangVars();
 
         // redirect to BBB if valid
         if( $this->checkPostRequest() ) {

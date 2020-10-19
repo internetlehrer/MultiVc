@@ -658,4 +658,33 @@ if($ilDB->tableExists('rep_robj_xmvc_data'))
     }
 }
 ?>
-
+<#13>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'add_presentation_url') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'add_presentation_url', array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => true,
+            'default' => ''
+        ));
+    }
+}
+?>
+<#14>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'add_welcome_text') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'add_welcome_text', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => false,
+            'default' => '0'
+        ));
+    }
+}
+?>

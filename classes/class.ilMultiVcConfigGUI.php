@@ -390,16 +390,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$ti->setInfo($pl->txt("info_svr_private_url"));
 		$combo->addSubItem($ti);
 
-		/*
-		// Password - readable
-		$ti = new ilTextInputGUI($pl->txt("svr_salt"), "svr_salt");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(6);
-		$ti->setInfo($pl->txt("info_svr_salt"));
-		$combo->addSubItem($ti);
-		*/
-
 		// Password unreadable
 		$pi = new ilPasswordInputGUI($pl->txt("svr_salt"), "svr_salt");
 		$pi->setRequired(true);
@@ -410,11 +400,22 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$combo->addSubItem($pi);
 
 		$ti = new ilTextInputGUI($pl->txt("max_participants"), "max_participants");
-		//$ti->setRequired(true);
 		$ti->setMaxLength(3);
 		$ti->setSize(6);
 		$ti->setInfo($pl->txt("info_max_participants"));
 		$combo->addSubItem($ti);
+
+		$ti = new ilTextInputGUI($pl->txt("add_presentation_url"), "add_presentation_url");
+		$ti->setMaxLength(256);
+		$ti->setSize(6);
+		//$ti->setValidationRegexp('%^https://.*%');
+		$ti->setInfo($pl->txt("info_add_presentation_url"));
+		$combo->addSubItem($ti);
+
+		$cb = new ilCheckboxInputGUI($pl->txt("add_welcome_text"), "add_welcome_text");
+		$cb->setRequired(false);
+		$cb->setInfo($pl->txt("info_add_welcome_text"));
+		$combo->addSubItem($cb);
 
 		$cb = new ilCheckboxInputGUI($pl->txt("private_chat_choose"), "private_chat_choose");
 		$cb->setRequired(false);
@@ -606,14 +607,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			$this->form->addItem($combo);
 			return $this->form;
 		}
-		/*
-		$ti = new ilTextInputGUI($pl->txt("obj_ids_special"), "frmObjIdsSpecial");
-		$ti->setRequired(false);
-		$ti->setMaxLength(1024);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("obj_ids_special_info"));
-		$combo->addSubItem($ti);
-		*/
 
 		$ti = new ilTextInputGUI($pl->txt("title"), "title");
 		$ti->setRequired(true);
@@ -766,6 +759,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["cam_only_for_moderator_default"] = $this->object->isCamOnlyForModeratorDefault();
 		$values["guestlink_choose"] = $this->object->isGuestlinkChoose();
 		$values["guestlink_default"] = $this->object->isGuestlinkDefault();
+		$values["add_presentation_url"] = $this->object->getAddPresentationUrl();
+		$values["add_welcome_text"] = $this->object->issetAddWelcomeText();
 		//$values["recording_only_for_moderator_choose"] = $this->object->isRecordOnlyForModeratorChoose();
 
 		if( $this->object->hasInitialDbEntry() ) {
@@ -773,6 +768,20 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		}
 
 		$this->form->setValuesByArray($values);
+	}
+
+	private function checkUrl(ilPropertyFormGUI &$form, array $postVar, $allowed = ['https']) {
+		foreach( $postVar as $name ) {
+			/** @var  ilTextInputGUI $field */
+			$field = $form->getItemByPostVar($name);
+			if( (bool)($value = $field->getValue()) ) {
+				foreach( $allowed as $check ) {
+					if( !(bool)substr_count($check, $value) ) {
+						return false;
+					}
+				}
+			}
+		}
 	}
 
 	/**
@@ -803,7 +812,18 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			}
 		}
 
-		if ($form->checkInput())
+		$urlCheck = true;
+		/** @var  ilTextInputGUI $field */
+		$field = $form->getItemByPostVar('add_presentation_url');
+		if( (bool)strlen(filter_var($_POST['add_presentation_url'], FILTER_SANITIZE_URL)) ) {
+			$field->setValidationRegexp('%^https://.*%');
+			if( !$field->checkInput() ) {
+				$urlCheck = false;
+				ilUtil::sendFailure($lng->txt("form_input_not_valid"));
+			}
+		}
+
+		if ( $urlCheck && $form->checkInput() )
 		{
 			if( !$this->object->hasInitialDbEntry() && $platformChanged )
 			{
@@ -851,6 +871,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setCamOnlyForModeratorDefault( (bool)$form->getInput("cam_only_for_moderator_default") );
 				$this->object->setGuestlinkChoose( (bool)$form->getInput("guestlink_choose") );
 				$this->object->setGuestlinkDefault( (bool)$form->getInput("guestlink_default") );
+				$this->object->setAddPresentationUrl( $form->getInput("add_presentation_url") );
+				$this->object->setAddWelcomeText( $form->getInput("add_welcome_text") );
 			}
 
 			$this->object->setShowContent($form->getInput("showcontent"));
@@ -910,6 +932,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["cam_only_for_moderator_default"] = 0;
 		$values["guestlink_choose"] = 0;
 		$values["guestlink_default"] = 0;
+		$values["add_presentation_url"] = 'https://';
+		$values["add_welcome_text"] = 0;
 
 		return $values;
 	}
