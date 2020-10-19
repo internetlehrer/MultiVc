@@ -42,7 +42,7 @@ Wir empfehlen die Nutzung des MultiVC-Plugin mit ILIAS Release 6 oder Release 5.
     - Wechsle auf dem Filesystem deines Webservers ins ILIAS-Verzeichnis, dann
     - mkdir -p Customizing/global/plugins/Services/Repository/RepositoryObject
     - cd Customizing/global/plugins/Services/Repository/RepositoryObject
-    - git clone https://github.com/Uwe-Kohnle/MultiVc
+    - git clone https://github.com/internetlehrer/MultiVc
 
 
 - Melden Sie sich auf Ihrer ILIAS-Installation als Administrator an und wählen Sie im Menü `Administration / Plugins`. In der Plugin-Übersicht finden Sie den Eintrag MultiVC. Führen Sie über dessen Dropdown-Menü folgende Aktionen aus:
