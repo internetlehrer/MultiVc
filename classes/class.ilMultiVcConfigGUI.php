@@ -510,11 +510,13 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 
 		// Password - unreadable
 		$pi = new ilPasswordInputGUI($pl->txt("om_svr_userpass"), "svr_salt");
+		$pi->setSkipSyntaxCheck(true);
 		$pi->setRequired(true);
 		$pi->setMaxLength(256);
 		$pi->setSize(6);
 		$pi->setInfo($pl->txt("info_svr_salt_om"));
 		$pi->setRetype(true);
+
 		$combo->addSubItem($pi);
 
 		$ti = new ilTextInputGUI($pl->txt("max_participants"), "max_participants");
@@ -822,6 +824,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				ilUtil::sendFailure($lng->txt("form_input_not_valid"));
 			}
 		}
+
+		/** @var  ilPasswordInputGUI $pwField */
+		$pwField = $form->getItemByPostVar('svr_salt');
+		$pwField->setSkipSyntaxCheck(true);
 
 		if ( $urlCheck && $form->checkInput() )
 		{
