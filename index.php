@@ -301,9 +301,14 @@ class JoinMeetingByGuestLink
 
     private function setHtmlDocument()
     {
+		$http_base = ILIAS_HTTP_PATH;
+		if (strpos($http_base,'/m/')) {
+			$http_base = strstr($http_base,'/m/',true).'/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
+		}
+		
         $this->htmlTpl = new ilTemplate( dirname(__FILE__) . '/' . 'templates/guestlink/tpl.html5doc.html', true, true);
         $this->htmlTpl->setVariable('USER_LANG', $this->isoLangCode[$this->userLang]);
-        $this->htmlTpl->setVariable('HTTP_BASE', $this->iliasDomain);
+        $this->htmlTpl->setVariable('HTTP_BASE', $http_base);
         $this->htmlTpl->setVariable('MEETING_TITLE', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));
         $this->htmlTpl->setVariable('H1', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));
         $this->htmlTpl->setVariable('INFO_TOP_MODERATED_M', $this->getLangVar('info_top_moderated_m_bbb'));
