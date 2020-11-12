@@ -775,7 +775,7 @@ class ilApiBBB implements ilApiInterface
         ];
         $guestLinkQueryParam = [
             'ref_id=' . $this->object->getRefId(),
-            'client=' . $this->dic->settings()->get('inst_name')
+            'client=' . CLIENT_ID
         ];
 
         if( (bool)$this->getPluginIniSet('guest_link_shortener') ) {
