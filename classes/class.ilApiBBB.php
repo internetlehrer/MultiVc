@@ -781,7 +781,7 @@ class ilApiBBB implements ilApiInterface
         if( (bool)$this->getPluginIniSet('guest_link_shortener') ) {
             return $guestLinkUrlPart[0] . '/' .
                 'm/' .
-                $this->dic->settings()->get('inst_name') . '/' .
+                CLIENT_ID . '/' .
                 $this->object->getRefId();
         }
 
