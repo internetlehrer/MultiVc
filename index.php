@@ -213,20 +213,12 @@ class JoinMeetingByGuestLink
 
     private function setMeetingId(): void
     {
-        // $rawMeetingId = $DIC->settings()->get('inst_id',0) . $this->object->getId();
-        /*
-        $this->iliasDomain = substr(ILIAS_HTTP_PATH,7);
-        if (substr($this->iliasDomain,0,1) === "/") {
-            $this->iliasDomain = substr($this->iliasDomain, 1);
-        }
-        if (substr($this->iliasDomain,0,4) === "www.") {
-            $this->iliasDomain = substr($this->iliasDomain, 4);
-        }
-        */
-        $excludePathSegment = substr($this->iliasDomain, strpos($this->iliasDomain,
-            false === strpos($this->iliasDomain, '/Customizing') ? '/m' : '/Customizing'));
-        $rawMeetingId = str_replace($excludePathSegment, '', $this->iliasDomain) . ';' . $this->client . ';' . $this->pluginObject->getId();
+        global $ilIliasIniFile;
+		$this->iliasDomain = $ilIliasIniFile->readVariable('server', 'http_path');
+		$this->iliasDomain = preg_replace("/^(https:\/\/)|(http:\/\/)+/", "", $this->iliasDomain);
 
+		$rawMeetingId = $this->iliasDomain . ';' . $this->client . ';' . $this->pluginObject->getId();
+		
         if ( trim($this->pluginConfig->get_objIdsSpecial()) !== '') {
             $ArObjIdsSpecial = [];
             $rawIds = explode(",", $this->pluginConfig->get_objIdsSpecial());
@@ -481,16 +473,6 @@ class JoinMeetingByGuestLink
             $this->httpExit(404);
         }
         $this->pluginConfig = ilMultiVcConfig::getInstance($this->pluginObject->getConnId());
-
-        $this->iliasDomain = substr(ILIAS_HTTP_PATH,7);
-        if (substr($this->iliasDomain,0,1) === "/") {
-            $this->iliasDomain = substr($this->iliasDomain, 1);
-        }
-        if (substr($this->iliasDomain,0,4) === "www.") {
-            $this->iliasDomain = substr($this->iliasDomain, 4);
-        }
-
-        #$this->httpBase =
 
         // exit if not valid
         $this->validateInvitation();
