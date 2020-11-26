@@ -587,16 +587,11 @@ class ilApiBBB implements ilApiInterface
      */
     private function setMeetingId(): void
     {
-        global $DIC; /** @var Container $DIC */
+        global $ilIliasIniFile, $DIC; /** @var Container $DIC */
+		
+		$this->iliasDomain = $ilIliasIniFile->readVariable('server', 'http_path');
+		$this->iliasDomain = preg_replace("/^(https:\/\/)|(http:\/\/)+/", "", $this->iliasDomain);
 
-        // $rawMeetingId = $DIC->settings()->get('inst_id',0) . $this->object->getId();
-		$this->iliasDomain = substr(ILIAS_HTTP_PATH,7);
-		if (substr($this->iliasDomain,0,1) === "/") {
-            $this->iliasDomain = substr($this->iliasDomain, 1);
-        }
-		if (substr($this->iliasDomain,0,4) === "www.") {
-            $this->iliasDomain = substr($this->iliasDomain, 4);
-        }
 		$rawMeetingId = $this->iliasDomain . ';' . CLIENT_ID . ';' . $this->object->getId();
 		
         if ( trim($this->settings->get_objIdsSpecial()) !== '') {

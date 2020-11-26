@@ -27,25 +27,25 @@ Installieren Sie Spreed gemäß https://github.com/strukturag/spreed-webrtc .
 Kopieren Sie die mit dem Plugin gelieferte main.html in das html-Verzeichnis von Spreed. Wenn Sie möchten, dass nur ILIAS-Benutzer Spreed verwenden können, editieren Sie die Datei main.html und fügen Sie die ILIAS-NIC bei checkInstIds hinzu.
 
 
-# ILIAS MultiVC-Plugin
+# ILIAS MultiVc-Plugin
 
 ## Software
  
-Wir empfehlen die Nutzung des MultiVC-Plugin mit ILIAS Release 6 oder Release 5.4. Die Mindestvoraussetzungen, mit denen das Plugin getestet wurde, finden Sie hier im Überblick:
+Wir empfehlen die Nutzung des MultiVc-Plugin mit ILIAS Release 6 oder Release 5.4. Die Mindestvoraussetzungen, mit denen das Plugin getestet wurde, finden Sie hier im Überblick:
 - ILIAS 6.x, 5.4.x
 - PHP 7.2
 - MySQL 5.7
 
 ## Installation
 
-- Kopieren Sie den Inhalt dieses Ordners oder Klonen Sie das Git Repository in folgendes Verzeichnis auf Ihrem Webserver: `<ILIAS_directory>/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVC`
+- Kopieren Sie den Inhalt dieses Ordners oder Klonen Sie das Git Repository in folgendes Verzeichnis auf Ihrem Webserver: `<ILIAS_directory>/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc`
     - Wechsle auf dem Filesystem deines Webservers ins ILIAS-Verzeichnis, dann
     - mkdir -p Customizing/global/plugins/Services/Repository/RepositoryObject
     - cd Customizing/global/plugins/Services/Repository/RepositoryObject
     - git clone https://github.com/internetlehrer/MultiVc
 
 
-- Melden Sie sich auf Ihrer ILIAS-Installation als Administrator an und wählen Sie im Menü `Administration / Plugins`. In der Plugin-Übersicht finden Sie den Eintrag MultiVC. Führen Sie über dessen Dropdown-Menü folgende Aktionen aus:
+- Melden Sie sich auf Ihrer ILIAS-Installation als Administrator an und wählen Sie im Menü `Administration / Plugins`. In der Plugin-Übersicht finden Sie den Eintrag MultiVc. Führen Sie über dessen Dropdown-Menü folgende Aktionen aus:
     - Installieren
     - Aktivieren
     - Konfigurieren
