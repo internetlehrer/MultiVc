@@ -35,7 +35,7 @@ svr_private_url#:#Private URL of the BBB server
 info_svr_private_url#:#Always corresponds to the public URL, with the exception of Amazon EC2
 svr_private_port#:#Private port of the BBB server
 info_svr_private_port#:#Example: 443
-svr_salt#:#Secret of the BBB server
+svr_salt#:#Password (secret) of the BBB server
 info_svr_salt#:#ssh: bbb-conf --secret
 bbb_default_server#:#Standard BBB Server
 info_svr_salt_om#:#Example: dZ#ls2W!k6l
