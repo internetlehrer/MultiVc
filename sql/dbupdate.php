@@ -688,3 +688,136 @@ if($ilDB->tableExists('rep_robj_xmvc_conn'))
     }
 }
 ?>
+<#15>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_log_max'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_log_max', 'log') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_log_max', 'log', array(
+            'type' => 'text',
+            'length' => 3072,
+            'notnull' => false,
+        ));
+    }
+}
+?>
+<#16>
+<?php
+if(!$ilDB->tableExists('rep_robj_xmvc_user_log'))
+{
+    $fields_log_user = [
+        'ref_id' => [
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ],
+        'user_id' => [
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ],
+        'display_name' => [
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => true
+        ],
+        'is_moderator' => [
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ],
+        'join_time' => [
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ],
+        'meeting_id' => [
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => true
+        ],
+    ];
+    $ilDB->createTable("rep_robj_xmvc_user_log", $fields_log_user);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_user_log",
+        array("join_time", "ref_id", "user_id", "display_name")
+    );
+}
+?>
+<#17>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'hint') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'hint', array(
+            'type' => 'text',
+            'length' => 1000,
+            'notnull' => false,
+        ));
+    }
+}
+?>
+<#18>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'disable_sip') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'disable_sip', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+}
+?>
+<#19>
+<?php
+//
+?>
+<#20>
+<?php
+//
+?>
+<#21>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_log_max'))
+{
+    if($ilDB->tableColumnExists('rep_robj_xmvc_log_max', 'log') )
+    {
+		$ilDB->dropTableColumn('rep_robj_xmvc_log_max', 'log');
+    }
+}
+?>
+<#22>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_log_max'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_log_max', 'log') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_log_max', 'log', array(
+            'type' => 'clob',
+            'notnull' => false,
+            'default' => null
+        ));
+    }
+}
+?>
+<#23>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'hide_username_logs') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'hide_username_logs', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 1
+        ));
+    }
+}
+?>

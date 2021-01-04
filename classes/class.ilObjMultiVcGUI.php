@@ -3,9 +3,11 @@
 use ILIAS\DI\Container;
 
 include_once("./Services/Repository/classes/class.ilObjectPluginGUI.php");
+include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
 require_once "./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiMultiVC.php";
 require_once "./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiBBB.php";
 require_once "./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiOM.php";
+
 
 /**
 * User  class for MultiVc repository object.
@@ -41,6 +43,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 	function __construct($a_ref_id = 0, $a_id_type = self::REPOSITORY_NODE_ID, $a_parent_node_id = 0)
     {
         global $DIC; /** @var Container $DIC */
+        $this->dic = $DIC;
 
         parent::__construct($a_ref_id, $a_id_type, $a_parent_node_id);
 
@@ -82,6 +85,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @throws ilDatabaseException
      * @throws ilObjectException
      * @throws ilTemplateException
+     * @throws Exception
      */
 	function performCommand($cmd)
 	{
@@ -105,6 +109,14 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 				$this->$cmd();
 				break;
 
+            case 'userLog':
+            case "applyFilterUserLog":
+            case "resetFilterUserLog":
+			case "downloadUserLog":
+                $this->checkPermission('write');
+                $this->initUserLogTableGUI($cmd);
+                break;
+
             case 'confirmDeleteRecords':
                 $this->confirmDeleteRecords();
                 break;
@@ -120,13 +132,53 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 break;
 
 			case "showContent":			// list all commands that need read permission here
-			//case "...":
-
 				$this->checkPermission("read");
 				$this->$cmd();
 				break;
 		}
 	}
+
+    /**
+     * @throws Exception
+     */
+	private function initTabContent()
+    {
+        $this->tabs->activateTab('content');
+
+        if( !ilMultiVcConfig::getInstance($this->object->getConnId())->getHideUsernameInLogs()
+            && $this->dic->access()->checkAccess("write", "", $this->object->getRefId())
+        ) {
+            $this->tabs->addSubTab("showContent", $this->txt('meeting'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'showContent'));
+            $this->tabs->addSubTab("userLog", $this->txt('user_log'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'userLog'));
+            $this->tabs->activateSubTab('showContent');
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function initUserLogTableGUI($cmd)
+    {
+        if ( ilMultiVcConfig::getInstance($this->object->getConnId())->getHideUsernameInLogs()
+            || !$this->dic->access()->checkAccess("write", "", $this->object->getRefId())
+        ) {
+            $this->dic->ctrl()->redirect($this, '');
+        }
+
+        $this->tabs->addSubTab("showContent", $this->txt('meeting'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'showContent'));
+        $this->tabs->addSubTab("userLog", $this->txt('user_log'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'userLog'));
+        $this->tabs->activateTab('content');
+        $this->tabs->activateSubTab('userLog');
+
+        require_once dirname(__FILE__) . '/class.ilMultiVcUserLogTableGUI.php';
+        $userLogTableGui = new ilMultiVcUserLogTableGUI($this, $cmd);
+
+        $this->dic->ui()->mainTemplate()->setContent($userLogTableGui->getHTML());
+
+		if( $cmd === 'downloadUserLog' ) {
+			$userLogTableGui->downloadCsv();
+		}
+    }
 
     /**
      * init create form
@@ -231,6 +283,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 		$ilTabs->activateTab("properties");
 		$this->initPropertiesForm();
 		$this->getPropertiesValues();
+        if( $this->hasChoosePermission('admin') ) {
+            ilUtil::sendQuestion($this->lng->txt('rep_robj_xmvc_sysadmin_perm_choose_all'));
+        }
 		$tpl->setContent($this->form->getHTML());
 	}
 
@@ -239,8 +294,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @param $choose
      * @return ilCheckboxInputGUI|ilHiddenInputGUI
      */
-	function formItem($item, $choose) {
-		if ($choose == true) {
+	function formItem($item) {
+		if ( $this->hasChoosePermission($item) ) {
 			$cb = new ilCheckboxInputGUI($this->lng->txt("rep_robj_xmvc_".$item), "cb_".$item);
 			$cb->setInfo($this->lng->txt("rep_robj_xmvc_".$item."_info"));
 		} else {
@@ -304,25 +359,25 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 		include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
 		$settings = ilMultiVcConfig::getInstance($this->object->getConnId());
 
-        $this->form->addItem($this->formItem("moderated", $settings->isObjConfig('moderatedChoose') && $settings->get_moderatedChoose()));
+        $this->form->addItem($this->formItem("moderated"));
 
-        $this->form->addItem($this->formItem("btn_settings", $settings->isObjConfig('btnSettingsChoose') && $settings->get_btnSettingsChoose()));
+        $this->form->addItem($this->formItem("btn_settings"));
 
-        $this->form->addItem($this->formItem("btn_chat", $settings->isObjConfig('btnChatChoose') && $settings->get_btnChatChoose()));
+        $this->form->addItem($this->formItem("btn_chat"));
 
-        $this->form->addItem($this->formItem("with_chat", $settings->isObjConfig('withChatChoose') && $settings->get_withChatChoose()));
+        $this->form->addItem($this->formItem("with_chat"));
 
-        $this->form->addItem($this->formItem("btn_locationshare", $settings->isObjConfig('btnLocationshareChoose') && $settings->get_btnLocationshareChoose()));
+        $this->form->addItem($this->formItem("btn_locationshare"));
 
-        $this->form->addItem($this->formItem("member_btn_fileupload", $settings->isObjConfig('memberBtnFileuploadChoose') && $settings->get_memberBtnFileuploadChoose()));
+        $this->form->addItem($this->formItem("member_btn_fileupload"));
 
-        $this->form->addItem($this->formItem("private_chat", $settings->isObjConfig('privateChatChoose') && $settings->isPrivateChatChoose()));
+        $this->form->addItem($this->formItem("private_chat"));
 
-        $this->form->addItem($this->formItem("cam_only_for_moderator", $settings->isObjConfig('camOnlyForModeratorChoose') && (bool)$settings->isCamOnlyForModeratorChoose()));
+        $this->form->addItem($this->formItem("cam_only_for_moderator"));
 
-        $this->form->addItem($this->formItem("guestlink", $settings->isObjConfig('guestlinkChoose') && (bool)$settings->isGuestlinkChoose()));
+        $this->form->addItem($this->formItem("guestlink"));
 
-        $this->form->addItem($this->formItem("recording", $settings->isObjConfig('recordChoose') && $this->isRecordChooseAvailable()));
+        $this->form->addItem($this->formItem("recording"));
 
 		$this->form->addCommandButton("updateProperties", $this->lng->txt("save"));
 		$this->form->setTitle($this->txt("edit_properties"));
@@ -362,6 +417,59 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 return true;
         }
         return false;
+    }
+
+    /**
+     * @param string $field
+     * @return bool
+     */
+    private function hasChoosePermission(string $field)
+    {
+		$isAdmin = false;
+        // if( isset($this->dic->rbac()->review()->getRolesByFilter(0, $this->dic->user()->getId(), 'Administrator')[0]) ) {
+            // $isAdmin = true; //check config
+        // }
+
+        $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
+
+	    switch ($field) {
+			case 'admin':
+				$state = $isAdmin;
+				break;
+            case 'moderated':
+                $state = $settings->isObjConfig('moderatedChoose') && ($settings->get_moderatedChoose() || $isAdmin);
+                break;
+            case 'btn_settings':
+                $state = $settings->isObjConfig('btnSettingsChoose') && ($settings->get_btnSettingsChoose() || $isAdmin);
+                break;
+            case 'btn_chat':
+                $state = $settings->isObjConfig('btnChatChoose') && ($settings->get_btnChatChoose() || $isAdmin);
+                break;
+            case 'with_chat':
+                $state = $settings->isObjConfig('withChatChoose') && ($settings->get_withChatChoose() || $isAdmin);
+                break;
+            case 'btn_locationshare':
+                $state = $settings->isObjConfig('btnLocationshareChoose') && ($settings->get_btnLocationshareChoose() || $isAdmin);
+                break;
+            case 'member_btn_fileupload':
+                $state = $settings->isObjConfig('memberBtnFileuploadChoose') && ($settings->get_memberBtnFileuploadChoose() || $isAdmin);
+                break;
+            case 'cam_only_for_moderator':
+                $state = $settings->isObjConfig('camOnlyForModeratorChoose') && ($settings->isCamOnlyForModeratorChoose() || $isAdmin);
+                break;
+            case 'private_chat':
+                $state = $settings->isObjConfig('privateChatChoose') && ($settings->isPrivateChatChoose() || $isAdmin);
+                break;
+            case 'guestlink':
+                $state = $settings->isObjConfig('guestlinkChoose') && ($settings->isGuestlinkChoose() || $isAdmin);
+                break;
+            case 'recording':
+                $state = $settings->isObjConfig('recordChoose') && ($this->isRecordChooseAvailable() || $isAdmin);
+                break;
+            default:
+                $state = false;
+        }
+	    return $state;
     }
 
 	/**
@@ -407,17 +515,39 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 			$this->object->setTitle($this->form->getInput("title"));
 			$this->object->setDescription($this->form->getInput("desc"));
 			$this->object->setOnline($this->form->getInput("online"));
-			$this->object->set_moderated($this->object->ilIntToBool($this->form->getInput("cb_moderated")));
-			$this->object->set_btnSettings($this->object->ilIntToBool($this->form->getInput("cb_btn_settings")));
-			$this->object->set_btnChat($this->object->ilIntToBool($this->form->getInput("cb_btn_chat")));
-			$this->object->set_withChat($this->object->ilIntToBool($this->form->getInput("cb_with_chat")));
-			$this->object->set_btnLocationshare($this->object->ilIntToBool($this->form->getInput("cb_btn_locationshare")));
-			$this->object->set_memberBtnFileupload($this->object->ilIntToBool($this->form->getInput("cb_member_btn_fileupload")));
-			$this->object->set_faExpand($this->object->ilIntToBool($this->form->getInput("cb_fa_expand")));
-            $this->object->setPrivateChat( (bool)$this->form->getInput("cb_private_chat") );
-            $this->object->setCamOnlyForModerator( (bool)$this->form->getInput("cb_cam_only_for_moderator") );
-            $this->object->setGuestlink( (bool)$this->form->getInput("cb_guestlink") );
-            $this->object->setRecord( $this->checkRecordChooseValue( (bool)$this->form->getInput("cb_moderated"), (bool)$this->form->getInput("cb_recording")) );
+			if( $this->hasChoosePermission('moderated') ) {
+                $this->object->set_moderated($this->object->ilIntToBool($this->form->getInput("cb_moderated")));
+            }
+            if( $this->hasChoosePermission('btn_settings') ) {
+                $this->object->set_btnSettings($this->object->ilIntToBool($this->form->getInput("cb_btn_settings")));
+            }
+            if( $this->hasChoosePermission('btn_chat') ) {
+                $this->object->set_btnChat($this->object->ilIntToBool($this->form->getInput("cb_btn_chat")));
+            }
+            if( $this->hasChoosePermission('with_chat') ) {
+                $this->object->set_withChat($this->object->ilIntToBool($this->form->getInput("cb_with_chat")));
+            }
+            if( $this->hasChoosePermission('btn_locationshare') ) {
+                $this->object->set_btnLocationshare($this->object->ilIntToBool($this->form->getInput("cb_btn_locationshare")));
+            }
+            if( $this->hasChoosePermission('member_btn_fileupload') ) {
+                $this->object->set_memberBtnFileupload($this->object->ilIntToBool($this->form->getInput("cb_member_btn_fileupload")));
+            }
+            if( $this->hasChoosePermission('fa_expand') ) {
+                $this->object->set_faExpand($this->object->ilIntToBool($this->form->getInput("cb_fa_expand")));
+            }
+            if( $this->hasChoosePermission('private_chat') ) {
+                $this->object->setPrivateChat( (bool)$this->form->getInput("cb_private_chat") );
+            }
+            if( $this->hasChoosePermission('cam_only_for_moderator') ) {
+                $this->object->setCamOnlyForModerator( (bool)$this->form->getInput("cb_cam_only_for_moderator") );
+            }
+            if( $this->hasChoosePermission('guestlink') ) {
+                $this->object->setGuestlink( (bool)$this->form->getInput("cb_guestlink") );
+            }
+            if( $this->hasChoosePermission('moderated') ) {
+                $this->object->setRecord( $this->checkRecordChooseValue( (bool)$this->form->getInput("cb_moderated"), (bool)$this->form->getInput("cb_recording")) );
+            }
             // $this->object->setConnId( (int)$this->form->getInput("conn_id") );
 
 			$returnVal = $this->object->update();
@@ -460,16 +590,18 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
     }
 
-	/**
-	* Show content
-	*/
+    /**
+     * Show content
+     * @throws Exception
+     */
 	function showContent(){
         global $DIC; /** @var Container $DIC */
         $ilTabs = $DIC['ilTabs'];
 
         include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
         //$ilTabs->clearTargets(); //no display of tabs
-        $ilTabs->activateTab("content");//necessary...
+        $this->initTabContent();
+        #$ilTabs->activateTab("content");//necessary...
         $showContent = ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent();
         switch($showContent) {
             case 'spreed':
@@ -527,7 +659,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         global $DIC; /** @var Container $DIC */
         $tpl = $DIC['tpl'];
 
-        //require_once "./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiBBB.php";
+        $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
+        if( (bool)strlen($hint = trim($settings->getHint())) ) {
+            ilUtil::sendQuestion($hint);
+        }
 
         try {
             $bbb = new ilApiBBB($this);
@@ -539,17 +674,17 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             case !($bbb instanceof ilApiBBB) || !ilObjMultiVcAccess::checkConnAvailability($this->obj_id):
                 $this->showContentUnavailable();
                 break;
-            case isset($_GET['windowBBB']) && (int)$_GET['windowBBB'] === 1 && $bbb->isMeetingStartable():
+            case isset($_GET['windowBBB']) && (int)filter_var($_GET['windowBBB'], FILTER_SANITIZE_NUMBER_INT) === 1 && $bbb->isMeetingStartable():
                 $this->showContentWindowRedirect();
                 break;
-            case isset($_GET['startBBB']) && (int)$_GET['startBBB'] === 10:
-            case isset($_GET['startBBB']) && (int)$_GET['startBBB'] === 1 && !$bbb->isMeetingStartable():
+            case isset($_GET['startBBB']) && (int)filter_var($_GET['startBBB'], FILTER_SANITIZE_NUMBER_INT) === 10:
+            case isset($_GET['startBBB']) && (int)filter_var($_GET['startBBB'], FILTER_SANITIZE_NUMBER_INT) === 1 && !$bbb->isMeetingStartable():
                 $this->showContentWindowClose();
                 break;
-            case isset($_GET['startBBB']) && (int)$_GET['startBBB'] === 1 && $bbb->isMeetingStartable():
+            case isset($_GET['startBBB']) && (int)filter_var($_GET['startBBB'], FILTER_SANITIZE_NUMBER_INT) === 1 && $bbb->isMeetingStartable():
                 $bbb->addConcurrent();
                 $bbb->logMaxConcurrent();
-                $this->redirectToPlatformByUrl($bbb->getUrlJoinMeeting());
+                $this->redirectToPlatformByUrl($bbb->getUrlJoinMeeting(), $bbb);
                 break;
             case null !== $bbb->getPluginIniSet('max_concurrent_users'):
                 $this->showContentConcurrent($bbb);
@@ -820,8 +955,16 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 		$tpl->setContent($my_tpl->get());
 	}
 
-    private function redirectToPlatformByUrl(string $url): void {
+    /**
+     * @param string $url
+     * @param ilApiBBB|ilApiOM|null $vcObj
+     * @throws Exception
+     */
+    private function redirectToPlatformByUrl(string $url, ?ilApiBBB $vcObj = null): void {
         //echo $url; exit;
+        if( !is_null($vcObj) && $vcObj instanceof ilApiBBB ) {
+            $this->object->setUserLog('bbb', $vcObj);
+        }
         header('Status: 303 See Other', false, 303);
         header('Location:' . $url);
         exit;

@@ -1,3 +1,9 @@
 2.0
 - added Terms of Use
-- added Support for individual presentations to be displayed at start of BBB
+- added Support for individual presentations to be displayed at start of BigBlueButton (BBB)
+3.0
+- added Option for BBB to disable telefony for Meeting Type
+- added Option for BBB to display a hint before a meeting could be started
+- added Overview of BBB-objects in use / in trash
+- extended Overview of use for BBB-objects including domains
+- Overview of users in Administration and for the object with filters

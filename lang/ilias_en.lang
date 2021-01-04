@@ -192,3 +192,20 @@ guest_displayname_input#:#Title  First name  Last name
 guest_displayname_info#:#Please note: Detailed title information can lead to usability problems due to the limited length of the space available for the name in BigBlueButton.
 err_msg_displayname#:#Please enter your name
 terms_of_use#:#<b>Property rights</b><br/>The information and materials contained in BigBlueButton conferences, such as text or images, are generally protected by copyright, trademark or patent laws. This applies in particular to the recording of BigBlueButton conferences. The secret recording of video or audio conferences is a criminal offence.<br/><br/><b>Rules of conduct</b><br/>You may not post any content that violates legal regulations, pornographic, obscene, defamatory, libellous, insulting, threatening, inciting or racist content. It is also forbidden to post advertising without permission and to transmit information that contains a virus, manipulation or similar damaging elements.<br/><br/><b>Processed data</b><br/>When using BigBlueButton, the following data is collected:<ul><li>Connection data (e.g. IP address, browser type, date and time of access)</li><li>If applicable, access data: User name, password in encrypted form</li><li>content data (e.g. uploaded files, chat posts, surveys)</li></ul>The temporary storage of connection data, in particular the IP address, by the system is necessary to enable BigBlueButton to be delivered to the User's computer. For this purpose, the user's IP address must remain stored for the duration of the session. The legal basis for the temporary storage of the data is Art. 6 para. 1 lit. f DSGVO.<br/>The connection data is also usually stored in log files. The time of deletion is determined by the operator of the server for BigBlueButton.
+usage#:#Usage
+overview_uses#:#Overview uses
+references#:#References
+user_log#:#User overview
+hide_username_logs#:#Hide username
+hide_username_logs_info#:#If selected, the user overview is only visible in the plugin administration, otherwise also at the MultiVc object.
+user_log_duration#:#Capture period
+moderator#:#Moderator
+join_time#:#Participation from
+start_time#:#Start time of meeting
+hint#:#Hint text
+info_hint#:#The hint text appears highlighted above the content of the object page.
+disable_sip#:#Disable phone dial-in
+disable_sip_info#:#This option allows you to disable SIP dial-in. No telephone dial-in is possible for the meetings.
+info_delete_vc_sure#:#Are you sure? The following virtual meeting rooms will be deleted:
+display_name#:#Display Name
+sysadmin_perm_choose_all#:#As an administrator, you can edit all properties for this object.

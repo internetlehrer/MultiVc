@@ -238,7 +238,13 @@ class ilApiBBB implements ilApiInterface
     }
 
     public function logMaxConcurrent() {
-        $this->object->saveMaxConcurrent($this->concurrent->meetings, $this->concurrent->users);
+        $details = [
+            'svrUrl' => $this->settings->getSvrPublicUrl(),
+            'meetingId' => $this->getMeetingId(),
+            'allParentMeetingsParticipantsCount' => $this->concurrent->allParentMeetingsParticipantsCount,
+        ];
+        //var_dump($this->concurrent); exit;
+        $this->object->saveMaxConcurrent($this->concurrent->meetings, $this->concurrent->users, $details);
     }
 
     /**
@@ -289,6 +295,7 @@ class ilApiBBB implements ilApiInterface
 
     public function addConcurrent(): void {
         $this->concurrent->users += 1;
+        $this->concurrent->allParentMeetingsParticipantsCount[$this->getMeetingId()] += 1;
         $this->addConcurrentMeeting();
     }
 
@@ -410,6 +417,11 @@ class ilApiBBB implements ilApiInterface
             $this->meetingInfo = $this->bbb->getMeetingInfo($meetingParam);
         }
         return $this->meetingInfo;
+    }
+
+    public function getMeetingIId()
+    {
+        return $this->getMeetingInfo()->getMeeting()->getInternalMeetingId();
     }
 
 
@@ -578,6 +590,12 @@ class ilApiBBB implements ilApiInterface
                 $this->dic->language()->txt('rep_robj_xmvc_welcome_text')
             );
             $this->createMeetingParam->setWelcomeMessage($welcomeText);
+        }
+
+        if( $this->settings->getDisableSip() ) {
+            $this->createMeetingParam
+                ->setVoiceBridge( 0 )
+                ->setDialNumber( '613-555-1234' );
         }
 
     }
@@ -824,4 +842,17 @@ class InitBBB extends \BigBlueButton\BigBlueButton
     {
         $this->urlBuilder       = new UrlBuilder($this->securitySecret, $this->bbbServerBaseUrl);
     }
+
+    /**
+     * @param string $voiceBridge
+     *
+     * @return InitBBB
+     */
+    public function setVoiceBridge(string $voiceBridge)
+    {
+        $this->voiceBridge = $voiceBridge;
+
+        return $this;
+    }
 }
+

@@ -4,6 +4,7 @@ use ILIAS\DI\Container;
 
 include_once("./Services/Component/classes/class.ilPluginConfigGUI.php");
 include_once("Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
+require_once dirname(__FILE__) . '/class.ilMultiVcUtil.php';
 
 /**
  * MultiVc configuration user interface class
@@ -23,9 +24,21 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 	 */
 	private $form;
 
+	/** @var Container $dic */
+	private $dic;
+
+
+	public function __construct()
+	{
+		global $DIC; /** @var Container $DIC */
+		$this->dic = $DIC;
+
+	}
+
 	/**
 	 * Handles all commmands, default is "configure"
 	 * @param $cmd
+	 * @throws Exception
 	 */
 	function performCommand($cmd)
 	{
@@ -67,6 +80,17 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->initTabs();
 				$this->$cmd();
 				break;
+			case "overviewUses":
+				$this->initTabs();
+				$this->initOverviewUsesTableGUI($cmd);
+				break;
+			case "userLog":
+			case "applyFilterUserLog":
+			case "resetFilterUserLog":
+			case "downloadUserLog":
+				$this->initTabs();
+				$this->initUserLogTableGUI($cmd);
+				break;
 			default:
 				$this->initTabs();
 				if (!$cmd)
@@ -106,37 +130,21 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 					$this->plugin_object->txt('configure'),
 					$ilCtrl->getLinkTarget($this, 'configure')
 				);
+				$ilTabs->addTab("overview_uses",
+					$this->plugin_object->txt('overview_uses'),
+					$ilCtrl->getLinkTarget($this, 'overviewUses')
+				);
 				$ilTabs->addTab("report_log_max",
 					$this->plugin_object->txt('report_log_max'),
 					$ilCtrl->getLinkTarget($this, 'reportLogMax')
 				);
+				$ilTabs->addTab("user_log",
+					$this->plugin_object->txt('user_log'),
+					$ilCtrl->getLinkTarget($this, 'userLog')
+				);
 				break;
 		}
-
 	}
-
-	public function reportLogMax($html = true)
-	{
-		global $DIC; /** @var Container $DIC */
-		$tpl = $DIC->ui()->mainTemplate();
-		$ilTabs = $DIC->tabs();
-
-		$ilTabs->activateTab('report_log_max');
-
-		require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcReportLogMaxTableGUI.php');
-		$table_gui = new ilMultiVcReportLogMaxTableGUI($this, 'reportLogMax');
-		$table_gui->init($this);
-		$tpl->setContent($table_gui->getHTML());
-		if( !$html ) {
-			$table_gui->downloadCsv();
-		}
-	}
-
-	public function downloadCsv() {
-		$this->reportLogMax(false);
-	}
-
-
 
 	/**
 	 * Configure screen
@@ -392,6 +400,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 
 		// Password unreadable
 		$pi = new ilPasswordInputGUI($pl->txt("svr_salt"), "svr_salt");
+		$pi->setSkipSyntaxCheck(true);
 		$pi->setRequired(true);
 		$pi->setMaxLength(256);
 		$pi->setSize(6);
@@ -416,6 +425,17 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$cb->setRequired(false);
 		$cb->setInfo($pl->txt("info_add_welcome_text"));
 		$combo->addSubItem($cb);
+
+		$cb = new ilCheckboxInputGUI($pl->txt("disable_sip"), "disable_sip");
+		$cb->setRequired(false);
+		$cb->setInfo($pl->txt("disable_sip_info"));
+		$combo->addSubItem($cb);
+
+		$cb = new ilCheckboxInputGUI($pl->txt("hide_username_logs"), "hide_username_logs");
+		$cb->setRequired(false);
+		$cb->setInfo($pl->txt("hide_username_logs_info"));
+		$combo->addSubItem($cb);
+		
 
 		$cb = new ilCheckboxInputGUI($pl->txt("private_chat_choose"), "private_chat_choose");
 		$cb->setRequired(false);
@@ -630,6 +650,11 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$item->setRequired(true);
 		$combo->addSubItem($item);
 
+		// Hint TextArea
+		$ti = new ilTextInputGUI($pl->txt("hint"), "hint");
+		$ti->setInfo($pl->txt("info_hint"));
+		$combo->addSubItem($ti);
+
 		$cb = new ilCheckboxInputGUI($pl->txt("moderated_choose"), "cb_moderated_choose");
 		$cb->setRequired(false);
 		$cb->setInfo($pl->txt("moderated_choose_info") . " " . $pl->txt("config_help_begin") . " " . $pl->txt("moderated_info"));
@@ -644,6 +669,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$cmd = 'getFormItemsForPlatform' . strtoupper($platform);
 		$combo = $this->$cmd($combo);
 		$this->form->addItem($combo);
+
 		return $this->form;
 	}
 
@@ -727,6 +753,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 	{
 		$values["conn_id"] = $this->object->getConnId();
 		$values["title"] = $this->object->getTitle();
+		$values["hint"] = $this->object->getHint();
 		$values["cb_availability"] = $this->object->getAvailability();
 		$values["frmSpreedUrl"] = $this->object->get_spreedUrl();
 		$values["frmObjIdsSpecial"] = $this->object->get_objIdsSpecial();
@@ -763,6 +790,9 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["guestlink_default"] = $this->object->isGuestlinkDefault();
 		$values["add_presentation_url"] = $this->object->getAddPresentationUrl();
 		$values["add_welcome_text"] = $this->object->issetAddWelcomeText();
+		$values["disable_sip"] = $this->object->getDisableSip();
+		$values["hide_username_logs"] = $this->object->getHideUsernameInLogs();
+
 		//$values["recording_only_for_moderator_choose"] = $this->object->isRecordOnlyForModeratorChoose();
 
 		if( $this->object->hasInitialDbEntry() ) {
@@ -770,20 +800,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		}
 
 		$this->form->setValuesByArray($values);
-	}
-
-	private function checkUrl(ilPropertyFormGUI &$form, array $postVar, $allowed = ['https']) {
-		foreach( $postVar as $name ) {
-			/** @var  ilTextInputGUI $field */
-			$field = $form->getItemByPostVar($name);
-			if( (bool)($value = $field->getValue()) ) {
-				foreach( $allowed as $check ) {
-					if( !(bool)substr_count($check, $value) ) {
-						return false;
-					}
-				}
-			}
-		}
 	}
 
 	/**
@@ -824,19 +840,17 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				ilUtil::sendFailure($lng->txt("form_input_not_valid"));
 			}
 		}
-
-		/** @var  ilPasswordInputGUI $pwField */
-		$pwField = $form->getItemByPostVar('svr_salt');
-		$pwField->setSkipSyntaxCheck(true);
-
+		
 		if ( $urlCheck && $form->checkInput() )
 		{
 			if( !$this->object->hasInitialDbEntry() && $platformChanged )
 			{
 				$this->object->setDefaultValues();
 			} else {
+		
 				$this->object->setConnId(!!(bool)($connId = $form->getInput("conn_id")) ? $connId : null);
 				$this->object->setTitle($form->getInput("title"));
+				$this->object->setHint((string)ilMultiVUtil::removeUnsafeChars($form->getInput("hint")) );
 				$this->object->setAvailability((int)$form->getInput("cb_availability"));
 				$this->object->set_spreedUrl($form->getInput("frmSpreedUrl"));
 				$this->object->set_objIdsSpecial($form->getInput("frmObjIdsSpecial"));
@@ -858,12 +872,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setSvrPublicPort((int)$form->getInput("svr_public_port"));
 				$this->object->setSvrPrivateUrl($form->getInput("svr_private_url"));
 				$this->object->setSvrPrivatePort((int)$form->getInput("svr_private_port"));
-				if( $form->getInput('svr_salt') !== self::ASTERISK_PW ) {
-					//var_dump([$form->getInput('svr_salt'), self::ASTERISK_PW]); exit;
-					$this->object->setSvrSalt($form->getInput("svr_salt"));
-				} else {
-					$this->object->keepSvrSalt();
-				}
 				$this->object->setSvrUsername($form->getInput("svr_username"));
 				$this->object->setMaxParticipants((int)$form->getInput("max_participants"));
 				$this->object->setPrivateChatChoose( (bool)$form->getInput("private_chat_choose") );
@@ -879,6 +887,20 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setGuestlinkDefault( (bool)$form->getInput("guestlink_default") );
 				$this->object->setAddPresentationUrl( $form->getInput("add_presentation_url") );
 				$this->object->setAddWelcomeText( $form->getInput("add_welcome_text") );
+				$this->object->setDisableSip( $form->getInput("disable_sip") );
+				$this->object->setHideUsernameInLogs( $form->getInput("hide_username_logs") );
+
+				if ($form->getInput("showcontent") != "spreed") {
+					if( $form->getInput('svr_salt') !== self::ASTERISK_PW ) {
+						//var_dump([$form->getInput('svr_salt'), self::ASTERISK_PW]); exit;
+						$this->object->setSvrSalt($form->getInput("svr_salt"));
+					} else {
+						$this->object->keepSvrSalt();
+					}
+				} else {
+					$this->object->setSvrSalt('');
+				}
+
 			}
 
 			$this->object->setShowContent($form->getInput("showcontent"));
@@ -905,6 +927,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values['conn_id'] = $this->object->getConnId();;
 		$values['title'] = $this->object->getTitle();
 		$values['cb_availability'] = $this->object->getAvailability();
+		$values['hint'] = $this->object->getHint();
 		$values["frmSpreedUrl"] ='';
 		$values["frmObjIdsSpecial"] = $this->object->get_objIdsSpecial();
 		$values["cb_protected"] = 1;
@@ -940,8 +963,205 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["guestlink_default"] = 0;
 		$values["add_presentation_url"] = 'https://';
 		$values["add_welcome_text"] = 0;
+		$values["disable_sip"] = 0;
+		$values["hide_username_logs"] = 1;
 
 		return $values;
+	}
+
+
+	// Max Users
+
+	public function reportLogMax($html = true)
+	{
+		global $DIC; /** @var Container $DIC */
+		$tpl = $DIC->ui()->mainTemplate();
+		$ilTabs = $DIC->tabs();
+
+		$ilTabs->activateTab('report_log_max');
+
+		require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcReportLogMaxTableGUI.php');
+		$table_gui = new ilMultiVcReportLogMaxTableGUI($this, 'reportLogMax');
+		$table_gui->init($this);
+		$tpl->setContent($table_gui->getHTML());
+		if( !$html ) {
+			$table_gui->downloadCsv();
+		}
+	}
+
+	public function downloadCsv() {
+		$this->reportLogMax(false);
+	}
+
+	public function initOverviewUsesTableGUI(string $cmd, $html = true)
+	{
+		global $DIC; /** @var Container $DIC */
+		$tpl = $DIC->ui()->mainTemplate();
+		$ilTabs = $DIC->tabs();
+		$guiClass = 'ilMultiVcOverviewUsesTableGUI';
+
+		$ilTabs->activateTab('overview_uses');
+
+		require_once(dirname(__FILE__) . '/class.ilMultiVcOverviewUsesTableGUI.php');
+		$table_gui_html = '';
+		$connIds = ilMultiVcConfig::_getMultiVcConnOverviewUses();
+		$rows = [];
+
+		foreach ($connIds as $connId => $conn) {
+			if( !(bool)sizeof($conn['uses']) ) {
+				continue;
+			}
+
+			$rows = array_merge($rows, $this->createRowFromUses($conn));
+
+		} // EOF foreach ($connIds as $connId => $conn)
+
+		$table_gui = new ilMultiVcOverviewUsesTableGUI($this, $cmd);
+		$table_gui->setData($rows);
+		$table_gui->init($this);
+		$tpl->setContent($table_gui->getHTML());
+
+		if( !$html ) {
+			#$table_gui->downloadCsv();
+		}
+	}
+
+	private function createRowFromUses($conn)
+	{
+		global $DIC; /** @var Container $DIC */
+		$row = [];
+		foreach ($conn['uses'] as $data) {
+			$allReferences = ilObject::_getAllReferences($data['obj_id']);
+			foreach ($allReferences as $key => $refId) {
+				$path = array_reverse($DIC->repositoryTree()->getPathFull($refId));
+				$keys = array_keys($path);
+				$parent = $path[$keys[1]];
+				$item = $path[$keys[0]];
+				if( ilObject::_isInTrash($refId) )  {
+					$parent = $item;
+					$item = [
+						'ref_id' => $refId,
+						'title' => ilObjectFactory::getInstanceByRefId($refId)->getTitle(),
+					];
+
+				}
+				$numReferences = sizeof($allReferences);
+				$hasReferences = 1 < $numReferences;
+				$isLink = false;
+				if( $hasReferences ) {
+					$isLink = false; // (int)(ilObjectFactory::getInstanceByObjId($item['obj_id'])->getRefId()) !== (int)$item['ref_id'];
+				}
+				#var_dump([$parent, $item, $isLink, $allReferences]);
+				#exit;
+				$row[$refId] = [
+					'connTitle' => $conn['title'],
+					'refId' => $refId,
+					'title' => $item['title'],
+					'link'	=> ilLink::_getLink($item['ref_id']),
+					'isInTrash' => ilObject::_isInTrash($refId),
+					'hasReferences' => $hasReferences,
+					'numReferences' => $numReferences,
+					'isLink' => $isLink,
+					'parent' => [
+						'title' => $parent['title'],
+						'link'	=> ilLink::_getLink($parent['ref_id']),
+						'ref_id' => $parent['ref_id'],
+					]
+				];
+
+			} // EOF foreach (ilObject::_getAllReferences($data['obj_id']) as $allReference)
+		} // EOF foreach ($uses as $data)
+		#var_dump($row); exit;
+		#var_dump($uses); exit;
+		return $row;
+	}
+
+	public function confirmDeleteUsesMultiVcConn() {
+		global $DIC; /** @var Container $DIC */
+
+		$DIC->tabs()->activateTab('overview_uses');
+
+		$item_ref_id = isset($_GET['item_ref_id']) ? (int)filter_var($_GET['item_ref_id'], FILTER_SANITIZE_NUMBER_INT) : '';
+		$parent_ref_id = isset($_GET['parent_ref_id']) ? (int)filter_var($_GET['parent_ref_id'], FILTER_SANITIZE_NUMBER_INT) : '';
+		$itemType = (bool)$item_ref_id ? ilObject::_lookupType($item_ref_id, true) : 'undefined';
+
+		if( !(bool)$item_ref_id || !(bool)$parent_ref_id || $itemType !== $this->getPluginObject()->getId() ) {
+			$this->returnFailure($DIC->language()->txt('select_one'));
+		}
+
+		$c_gui = new ilConfirmationGUI();
+
+		// set confirm/cancel commands
+		$c_gui->setFormAction($DIC->ctrl()->getFormAction($this, "overviewUses"));
+		$c_gui->setHeaderText($DIC->language()->txt("rep_robj_xmvc_info_delete_vc_sure"));
+		$c_gui->setCancel($DIC->language()->txt("cancel"), "overviewUses");
+		$c_gui->setConfirm($DIC->language()->txt("confirm"), "deleteUsesMultiVcConn");
+
+		// add items to delete
+		//include_once('Modules/Course/classes/class.ilCourseFile.php');
+		$cGuiItemContent = filter_var($_GET['cGuiItemContent'], FILTER_SANITIZE_STRING);
+		$c_gui->addItem("item_ref_id", $item_ref_id, $cGuiItemContent);
+		$c_gui->addHiddenItem('parent_ref_id', $parent_ref_id);
+		$DIC->ui()->mainTemplate()->setContent($c_gui->getHTML());
+
+	}
+
+	public function deleteUsesMultiVcConn()
+	{
+		global $DIC; /** @var Container $DIC */
+
+		$item_ref_id = isset($_POST['item_ref_id']) ? (int)filter_var($_POST['item_ref_id'], FILTER_SANITIZE_NUMBER_INT) : '';
+		$parent_ref_id = isset($_POST['parent_ref_id']) ? (int)filter_var($_POST['parent_ref_id'], FILTER_SANITIZE_NUMBER_INT) : '';
+		$itemType = (bool)$item_ref_id ? ilObject::_lookupType($item_ref_id, true) : 'undefined';
+
+		if( !(bool)$item_ref_id || !(bool)$parent_ref_id || $itemType !== $this->getPluginObject()->getId() ) {
+			$this->returnFailure($DIC->language()->txt('select_one'));
+		}
+
+		try {
+			if( ilObject::_isInTrash($item_ref_id) || !$DIC->settings()->get('enable_trash') ) {
+				ilRepUtil::removeObjectsFromSystem([$item_ref_id]);
+			} else {
+				ilRepUtil::deleteObjects($parent_ref_id, [$item_ref_id]);
+			}
+			ilUtil::sendSuccess($DIC->language()->txt('deleted'));
+		} catch (ilRepositoryException $e) {
+			ilUtil::sendFailure($DIC->language()->txt('not_deleted'));
+		}
+
+		$DIC->ctrl()->redirect($this, 'overviewUses');
+	}
+
+	/**
+	 * @param string $cmd
+	 * @throws Exception
+	 */
+	public function initUserLogTableGUI(string $cmd) {
+
+		$tpl = $this->dic->ui()->mainTemplate();
+		$ilTabs = $this->dic->tabs();
+
+		$ilTabs->activateTab('user_log');
+
+		require_once dirname(__FILE__) . '/class.ilMultiVcUserLogTableGUI.php';
+		$userLogTableGui = new ilMultiVcUserLogTableGUI($this, $cmd);
+		//$userLogTableGui->init();
+		$tpl->setContent($userLogTableGui->getHTML());
+
+		if( $cmd === 'downloadUserLog' ) {
+			$userLogTableGui->downloadCsv();
+		}
+	}
+
+
+	private function returnFailure($txt = 'error', $redirect = true, $gui = 'overviewUses') {
+		global $DIC; /** @var Container $DIC */
+
+		ilUtil::sendFailure($txt);
+		$redirect
+			? $DIC->ctrl()->redirect($this, $gui)
+			: $this->initTableGUI($gui);
+		return false;
 	}
 
 

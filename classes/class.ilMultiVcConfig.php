@@ -10,6 +10,7 @@ use ILIAS\DI\Container;
  */
 class ilMultiVcConfig
 {
+    const PLUGIN_ID = 'xmvc';
     const AVAILABLE_VC_CONN = [
         'bbb'		=> 'BigBlueButton',
         'spreed'	=> 'Spreed',
@@ -30,6 +31,8 @@ class ilMultiVcConfig
     private $title = '';
     /** @var int $availability */
     private $availability = 0;
+    /** @var string $hint */
+    private $hint = '';
 	private $spreedUrl = '';
 	private $objIdsSpecial = '';
 	private $protected = true;
@@ -72,6 +75,10 @@ class ilMultiVcConfig
     private $recordDefault = false;
     /** @var bool $recordOnlyForModeratedRoomsDefault */
     private $recordOnlyForModeratedRoomsDefault = true;
+    /** @var bool $disableSip */
+    private $disableSip = false;
+    /** @var bool $hideUsernameInLogs */
+    private $hideUsernameInLogs = true;
 
     // todo
     /** @var bool $recordOnlyForModeratorChoose */
@@ -107,7 +114,8 @@ class ilMultiVcConfig
             'moderatedChoose',
             'privateChatChoose',
             'recordChoose',
-            'camOnlyForModeratorChoose'
+            'camOnlyForModeratorChoose',
+            'guestlinkChoose'
         ],
         'spreed'=> [
             'moderatedChoose',
@@ -148,7 +156,7 @@ class ilMultiVcConfig
      */
     public function isObjConfig(string $search): bool
     {
-        return true; // false !== array_search($search, $this->objConfigAvailSetting[$this->getShowContent()]);
+        return false !== array_search($search, $this->objConfigAvailSetting[$this->getShowContent()]);
     }
 
 
@@ -203,6 +211,7 @@ class ilMultiVcConfig
 
 		$a_data=array(
             'title'		                    => ['text', $this->getTitle()],
+            'hint'		                    => ['text', $this->getHint()],
             'availability'		            => ['integer', (int)$this->getAvailability()],
 			'spreed_url'					=> array('text',$this->get_spreedUrl()),
 			'obj_ids_special'				=> array('text',$this->get_objIdsSpecial()),
@@ -239,6 +248,8 @@ class ilMultiVcConfig
             'guestlink_default' => ['integer', (int)$this->isGuestlinkDefault()],
             'add_presentation_url' => ['string', $this->getAddPresentationUrl()],
             'add_welcome_text' => ['integer', (int)$this->issetAddWelcomeText()],
+            'disable_sip' => ['integer', (int)$this->getDisableSip()],
+            'hide_username_logs' => ['integer', (int)$this->getHideUsernameInLogs()],
             //'more_options'			        => ['string', json_encode($this->option)],
 		);
 		//var_dump($a_data); exit;
@@ -339,6 +350,7 @@ class ilMultiVcConfig
 		while ($record = $ilDB->fetchAssoc($result)) {
 		    $this->setConnId($record["id"]);
             $this->setTitle($record["title"]);
+            $this->setHint("".$record["hint"]);
             $this->setAvailability((int)$record["availability"]);
 			$this->set_spreedUrl($record["spreed_url"]);
 			$this->set_objIdsSpecial($record["obj_ids_special"]);
@@ -375,6 +387,9 @@ class ilMultiVcConfig
             $this->setGuestlinkDefault( (bool)$record["guestlink_default"] );
             $this->setAddPresentationUrl($record["add_presentation_url"]);
             $this->setAddWelcomeText( (bool)$record["add_welcome_text"] );
+            $this->setDisableSip( (bool)$record["disable_sip"] );
+            $this->setHideUsernameInLogs( (bool)$record["hide_username_logs"] );
+
 
             $this->setStoredOption($record);
 		}
@@ -431,6 +446,23 @@ class ilMultiVcConfig
     {
         $this->title = $title;
     }
+
+    /**
+     * @return string
+     */
+    public function getHint(): string
+    {
+        return $this->hint;
+    }
+
+    /**
+     * @param string $hint
+     */
+    public function setHint(string $hint): void
+    {
+        $this->hint = $hint;
+    }
+
 
     /**
      * @return int
@@ -909,7 +941,63 @@ class ilMultiVcConfig
         $this->addWelcomeText = $addWelcomeText;
     }
 
+    /**
+     * @return bool
+     */
+    public function getDisableSip(): bool
+    {
+        return $this->disableSip;
+    }
 
+    /**
+     * @param bool $disableSip
+     * @return ilMultiVcConfig
+     */
+    public function setDisableSip(bool $disableSip): ilMultiVcConfig
+    {
+        $this->disableSip = $disableSip;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHideUsernameInLogs(): bool
+    {
+        return $this->hideUsernameInLogs;
+    }
+
+    /**
+     * @param bool $hideUsernameInLogs
+     * @return ilMultiVcConfig
+     */
+    public function setHideUsernameInLogs(bool $hideUsernameInLogs): ilMultiVcConfig
+    {
+        $this->hideUsernameInLogs = $hideUsernameInLogs;
+        return $this;
+    }
+
+
+    static public function _getMultiVcConnOverviewUses(?int $connId = null)
+    {
+        global $DIC; /** @var Container $DIC */
+        $ilDB = $DIC->database();
+
+        $query = "SELECT id conn_id, obj_ids_special, title FROM rep_robj_xmvc_conn";
+        if ( !is_null($connId) ) {
+            $query .= " WHERE id = " . $ilDB->quote($connId, 'integer');
+        }
+        $query .= " ORDER BY title";
+        $res = $ilDB->query($query);
+
+        $data = array();
+        while ($row = $ilDB->fetchAssoc($res))
+        {
+            $row['uses'] = self::_getMultiVcConnUsesReferences($row['conn_id']);
+            $data[$row['conn_id']] = $row;
+        }
+        return $data;
+    }
 
     /**
      * Get basic data array of all types (without field definitions)
@@ -961,6 +1049,22 @@ class ilMultiVcConfig
         $res = $ilDB->query($query);
         $row = $ilDB->fetchObject($res);
         return $row->untrashed;
+    }
+
+    static function _getMultiVcConnUsesReferences(int $connId) {
+        global $ilDB;
+        $data = [];
+
+        $query = "SELECT id obj_id FROM rep_robj_xmvc_data s"
+            . " INNER JOIN object_reference r ON s.id = r.obj_id"
+            . " WHERE s.conn_id = " . $ilDB->quote($connId, 'integer');
+
+        $res = $ilDB->query($query);
+
+        while($row = $ilDB->fetchAssoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
     }
 
     static public function _getAvailableMultiVcConn(bool $onlyCreate = false, ?int $conn_id = null): array

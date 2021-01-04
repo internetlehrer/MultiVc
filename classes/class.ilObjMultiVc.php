@@ -14,7 +14,12 @@ include_once("./Services/Repository/classes/class.ilObjectPlugin.php");
 class ilObjMultiVc extends ilObjectPlugin
 {
 	const TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
+	const TABLE_USER_LOG = 'rep_robj_xmvc_user_log';
 
+	/** @var Container $dic */
+	private $dic;
+	/** @var ilDBInterface $db */
+	protected $db;
 	private $token = 0;
 	private $moderated = true;
 	private $btnSettings = false;
@@ -43,20 +48,20 @@ class ilObjMultiVc extends ilObjectPlugin
 	public $option;
 
 
-
-
 	/**
-	* Constructor
-	*
-	* @access	public
-	*/
-	function __construct($a_ref_id = 0)
+	 * Constructor
+	 *
+	 * @access    public
+	 * @param int $a_ref_id
+	 */
+	function __construct(int $a_ref_id = 0)
 	{
+		global $DIC; /** @var Container $DIC */
+
 		parent::__construct($a_ref_id);
 
-		if( is_numeric($this->getConnId()) ) {
-			//$this->setDefaultsByPluginConfig($this->getConnId());
-		}
+		$this->dic = $DIC;
+		$this->db = $this->dic->database();
 	}
 
 	static public function getInstance() {
@@ -501,7 +506,8 @@ class ilObjMultiVc extends ilObjectPlugin
 			'hour' => date("H"),
 			'max_meetings' => 0,
 			'max_users' => 0,
-			'entries' => 0
+			'entries' => 0,
+			'log'	=> serialize([])
 		];
 
 		$values = [
@@ -513,7 +519,7 @@ class ilObjMultiVc extends ilObjectPlugin
 
 		$types = ['int','int','int','int'];
 
-		$sql = "SELECT max_meetings, max_users FROM " . self::TABLE_LOG_MAX_CONCURRENT .
+		$sql = "SELECT max_meetings, max_users, log FROM " . self::TABLE_LOG_MAX_CONCURRENT .
 			" WHERE year = %s AND month = %s AND day = %s AND hour = %s";
 		$query = $DIC->database()->queryF($sql, $types, $values);
 		$entry = $DIC->database()->fetchAssoc($query);
@@ -521,12 +527,20 @@ class ilObjMultiVc extends ilObjectPlugin
 		return null === $entry ? $defEntry : array_merge($defEntry, $entry, ['entries' => 1]);
 	}
 
-	public function saveMaxConcurrent(int $meetings, int $users): void {
+	public function saveMaxConcurrent(int $meetings, int $users, array $details): void {
 		global $DIC; /** @var Container $DIC */
 
 		$currentMax = $this->getCurrentMaxConcurrent();
 		$currentMax['max_meetings'] = $currentMax['max_meetings'] > $meetings ? $currentMax['max_meetings'] : $meetings;
 		$currentMax['max_users'] = $currentMax['max_users'] > $users ? $currentMax['max_users'] : $users;
+
+		// Logging Details
+		$log =  array_replace(
+			unserialize($currentMax['log']),
+			[$details['svrUrl'] => $details['allParentMeetingsParticipantsCount']]
+		);
+
+		$log = serialize($log);
 
 		if( !(bool)$currentMax['entries'] ) {
 			// insert
@@ -539,6 +553,7 @@ class ilObjMultiVc extends ilObjectPlugin
 					'hour'	=> ['integer', $currentMax['hour']],
 					'max_meetings'	=> ['integer', $currentMax['max_meetings']],
 					'max_users'	=> ['integer', $currentMax['max_users']],
+					'log' => ['text', $log]
 				)
 			);
 		} else {
@@ -548,6 +563,7 @@ class ilObjMultiVc extends ilObjectPlugin
 				array(
 					'max_meetings'	=> ['integer', $currentMax['max_meetings']],
 					'max_users'	=> ['integer', $currentMax['max_users']],
+					'log' => ['text', $log]
 				),
 				array(
 					'year'	=> ['integer', $currentMax['year']],
@@ -558,6 +574,73 @@ class ilObjMultiVc extends ilObjectPlugin
 			);
 		}
 		//var_dump([$currentMax, $this->getCurrentMaxConcurrent()]); exit;
+	}
+
+	/**
+	 * @param int|null $refId
+	 * @param int|null $dateFrom
+	 * @param int|null $dateTo
+	 * @param bool $getId
+	 * @return array
+	 */
+	public function getUserLog(?int $refId = null, ?int $dateFrom = null, ?int $dateTo = null, bool $getId = false): array
+	{
+		$select = "SELECT ref_id, user_id, display_name, is_moderator,min(join_time) join_time, meeting_id";
+		$from = " FROM " . self::TABLE_USER_LOG;
+		$where = []; //[" WHERE ref_id = " . ($refId ?? '.')];
+		if( !is_null($refId) ) {
+			$where[] = "ref_id = " . $refId;
+		}
+		if( !is_null($dateFrom) ) {
+			$where[] = "join_time >= " . $dateFrom;
+		}
+		if( !is_null($dateTo) ) {
+			$where[] = "join_time <= " . $dateTo;
+		}
+		$where = (bool)sizeof($where) ? " WHERE " . implode(' AND ', $where) : '';
+
+		$filter = " group by display_name, meeting_id order by display_name, meeting_id";
+
+
+		$res = $this->db->query($select . $from . $where . $filter);
+		$data = [];
+		$meetings = [];
+		$i = 1;
+		while( $row = $this->db->fetchAssoc($res) ) {
+			$replace = [
+				'start_time' => substr(explode('-', $row['meeting_id'])[1], 0, -3),
+				'meeting_id' => $getId ? $row['meeting_id'] : ''
+			];
+			$data[] = array_replace($row , $replace);
+		}
+
+		return  $data;
+	}
+
+	/**
+	 * @param string $vcType
+	 * @param ilApiBBB|ilApiOM $vcObj
+	 * @throws Exception
+	 */
+	public function setUserLog(string $vcType, $vcObj): void
+	{
+		$dateTime = new DateTime(null, new DateTimeZone('UTC'));
+		$values = [
+			'ref_id' => ['integer', $this->getRefId()],
+			'user_id' => ['integer', $this->dic->user()->getId()],
+			'join_time' => ['integer', $dateTime->getTimestamp()]
+		];
+
+		// BBB
+		if( $vcType === 'bbb' ) {
+			$values = array_merge($values, [
+				'display_name' => ['text', $vcObj->getDisplayName()],
+				'is_moderator' => ['integer', (int)$vcObj->isUserModerator()],
+				'meeting_id' => ['text', $vcObj->getMeetingIId()],
+			]);
+		}
+
+		$this->db->insert(self::TABLE_USER_LOG, $values);
 	}
 
 	/**
