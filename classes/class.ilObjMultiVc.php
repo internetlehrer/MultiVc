@@ -485,7 +485,7 @@ class ilObjMultiVc extends ilObjectPlugin
 	public function getMaxConcurrent(string $order = 'desc', int $limit = 100): array {
 		global $DIC; /** @var Container $DIC */
 		$sql = "SELECT * FROM " . self::TABLE_LOG_MAX_CONCURRENT
-		. " WHERE 1"
+		. " WHERE 1" //???
 		. " ORDER BY year, " . $DIC->database()->quote($order)
 		//. " LIMIT " . $DIC->database()->quote($limit);
 		;
@@ -523,8 +523,14 @@ class ilObjMultiVc extends ilObjectPlugin
 			" WHERE year = %s AND month = %s AND day = %s AND hour = %s";
 		$query = $DIC->database()->queryF($sql, $types, $values);
 		$entry = $DIC->database()->fetchAssoc($query);
-
-		return null === $entry ? $defEntry : array_merge($defEntry, $entry, ['entries' => 1]);
+		
+		if ($entry == null) {
+			return $defEntry;
+		}
+		if ( !is_array(unserialize($entry['log'])) ) {
+			$entry['log'] = $defEntry['log'];
+		}
+		return array_merge($defEntry, $entry, ['entries' => 1]);
 	}
 
 	public function saveMaxConcurrent(int $meetings, int $users, array $details): void {
