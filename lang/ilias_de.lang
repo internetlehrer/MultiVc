@@ -206,6 +206,6 @@ hint#:#Hinweistext
 info_hint#:#Der Hinweistext erscheint farblich hervorgehoben oberhalb des Inhaltes der Objektseite.
 disable_sip#:#Telefoneinwahl deaktivieren
 disable_sip_info#:#Mit dieser Option können Sie SIP-Einwahl deaktivieren. Es ist dann keine Telefoneinwahl möglich.
-info_delete_vc_sure#:#Sind Sie sicher? Folgende virtuelle Meetingräume werden gelöscht:
+info_delete_vc_sure#:#Sind Sie sicher? Folgender virtueller Meetingraum wird gelöscht:
 display_name#:#Angezeigter Name
 sysadmin_perm_choose_all#:#Als AdministratorIn können Sie alle Eigenschaften bei diesem Objekt bearbeiten.

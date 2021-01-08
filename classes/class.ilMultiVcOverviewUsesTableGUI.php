@@ -52,11 +52,12 @@ class ilMultiVcOverviewUsesTableGUI extends ilTable2GUI {
         $this->addColumn($this->plugin_object->txt('plugin_configuration'), 'plugin_configuration', '');
         $this->addColumn($lng->txt('repository'), 'repository', '');
         $this->addColumn($this->plugin_object->txt('obj_xmvc'), 'obj_xmvc', '');
-        $this->addColumn($this->plugin_object->txt('references'), 'num_references', '5%');
+        $this->addColumn($lng->txt('object_id'), 'obj_id', '7%');
         $this->addColumn($lng->txt('actions'), '', '5%');
         $this->addColumn($lng->txt('status'), 'status', '5%');
         $this->setEnableHeader(true);
-        $this->setRowTemplate('tpl.uses_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+		$this->disable('sort');
+		$this->setRowTemplate('tpl.uses_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
     }
 
     /**
@@ -66,30 +67,24 @@ class ilMultiVcOverviewUsesTableGUI extends ilTable2GUI {
     {
         global $lng, $ilCtrl;
         #var_dump($a_set); exit;
-        $ilCtrl->setParameter($this->parent_obj, 'conn_id', $a_set['conn_id']);
+        $ilCtrl->setParameter($this->parent_obj, 'conn_id', $a_set['xmvcConnId']);
 
         $this->tpl->setVariable('XMVC_CONN_TITLE', $a_set['connTitle']);
 
         // Link to Container
-        #$this->tpl->setVariable('TXT_PARENT', $a_set['parent']['title']);
-        #$this->tpl->setVariable('TXT_UPLINK', !$a_set['isInTrash'] ? $a_set['parent']['link'] : '');
-        $this->tpl->setVariable('TXT_PARENT', $a_set['isInTrash'] ? $a_set['parent']['title'] : '
-        <a href="' . $a_set['parent']['link'] . '" target="_blank">' . $a_set['parent']['title'] . '</a>
+        $this->tpl->setVariable('TXT_PARENT', $a_set['isInTrash'] ? $a_set['parentTitle'] : '
+        <a href="' . $a_set['parentLink'] . '" target="_blank">' . $a_set['parentTitle'] . '</a>
         ');
 
         // Link to MultiVc Object
-        #$this->tpl->setVariable('TXT_TITLE', $a_set['title']);
-        #$this->tpl->setVariable('TXT_LINK', $a_set['link']);
-        $this->tpl->setVariable('TXT_TITLE', $a_set['isInTrash'] ? $a_set['title'] : '
-        <a href="' . $a_set['link'] . '" target="_blank">' . $a_set['title'] . '</a>
+        $this->tpl->setVariable('TXT_TITLE', $a_set['isInTrash'] ? $a_set['xmvcObjTitle'] : '
+        <a href="' . $a_set['link'] . '" target="_blank">' . $a_set['xmvcObjTitle'] . '</a>
         ');
 
-        // Number of References
-        if( $a_set['hasReferences'] ) {
-            $this->tpl->setVariable('NUM_REFERENCES', $a_set['numReferences']);
-        }
+        // Object ID
+		$this->tpl->setVariable('OBJ_ID', $a_set['xmvcObjId']);
 
-
+        // Action
         $linkText = $lng->txt('delete');
         $linkTitle = $this->plugin_object->txt('obj_xmvc') . " (";
         $linkTitle .= $a_set['isInTrash'] ? $lng->txt('trash') : $lng->txt('repository');
@@ -97,18 +92,15 @@ class ilMultiVcOverviewUsesTableGUI extends ilTable2GUI {
             $this->tpl->setVariable('TXT_ACTION',
             '<a class="il_ContainerItemCommand" href="' .
             $ilCtrl->getLinkTarget($this->parent_obj, 'confirmDeleteUsesMultiVcConn') .
-            '&parent_ref_id=' . $a_set['parent']['ref_id'] .
-            '&item_ref_id=' . $a_set['refId'] .
-            '&cGuiItemContent=' . rawurlencode($a_set['title'] . ' &nbsp;<span class="small">(' . $a_set['connTitle'] . ')</span> ')
+            '&parent_ref_id=' . $a_set['parentRefId'] .
+            '&item_ref_id=' . $a_set['xmvcRefId'] .
+            '&cGuiItemContent=' . rawurlencode($a_set['xmvcObjTitle'] . ' &nbsp;<span class="small">(' . $a_set['connTitle'] . ')</span> ')
             . '" title="' . $linkTitle . '">' .
             $linkText . '</a>');
 
-        // Trash
-        $img = $a_set['isInTrash'] ? '<img src="templates/default/images/icon_trash.svg" style="height: 16px; width: auto; margin:0 5px 4px" />' : '';
-        $this->tpl->setVariable('TXT_STATUS', $img);
-        // '<img src="templates/default/images/icon_trash.svg" style="height: 16px; width: auto;" title="' . $lng->txt('deleted') . '" />&nbsp;
-
-
+        // Status
+        $StatusHtml = !(bool)$a_set['isInTrash'] ? (bool)$a_set['is_online'] ? 'online' : 'offline' : '<img src="templates/default/images/icon_trash.svg" style="height: 16px; width: auto; margin:0 5px 4px" />';
+        $this->tpl->setVariable('TXT_STATUS', '<span class="small">' . $StatusHtml . '</span>');
 
     }
 

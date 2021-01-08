@@ -206,6 +206,6 @@ hint#:#Hint text
 info_hint#:#The hint text appears highlighted above the content of the object page.
 disable_sip#:#Disable phone dial-in
 disable_sip_info#:#This option allows you to disable SIP dial-in. No telephone dial-in is possible for the meetings.
-info_delete_vc_sure#:#Are you sure? The following virtual meeting rooms will be deleted:
+info_delete_vc_sure#:#Are you sure? This virtual meeting room will be deleted:
 display_name#:#Display Name
 sysadmin_perm_choose_all#:#As an administrator, you can edit all properties for this object.

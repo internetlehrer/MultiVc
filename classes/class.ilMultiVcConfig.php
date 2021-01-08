@@ -978,25 +978,52 @@ class ilMultiVcConfig
     }
 
 
-    static public function _getMultiVcConnOverviewUses(?int $connId = null)
+    static public function _getMultiVcConnOverviewUses()
     {
         global $DIC; /** @var Container $DIC */
         $ilDB = $DIC->database();
 
-        $query = "SELECT id conn_id, obj_ids_special, title FROM rep_robj_xmvc_conn";
-        if ( !is_null($connId) ) {
-            $query .= " WHERE id = " . $ilDB->quote($connId, 'integer');
+        // Get Conn Title
+        $query = "SELECT id, title from rep_robj_xmvc_conn";
+        $result = $ilDB->query($query);
+        $data0 = [];
+        while( $row = $ilDB->fetchAssoc($result) ) {
+            $data0[$row['id']] = $row;
         }
-        $query .= " ORDER BY title";
-        $res = $ilDB->query($query);
+        // Get conn uses
+        $query = "select object_reference.ref_id xmvcRefId, rep_robj_xmvc_data.conn_id xmvcConnId, rep_robj_xmvc_data.id as xmvcObjId,".
+                " object_data.title xmvcObjTitle, not isnull(object_reference.deleted) as isInTrash, rep_robj_xmvc_data.is_online
+                 FROM rep_robj_xmvc_data, object_data, object_reference
+                 WHERE object_data.obj_id=rep_robj_xmvc_data.id
+                 AND object_reference.obj_id=rep_robj_xmvc_data.id
+                 ORDER by conn_id, xmvcObjTitle
+                 ";
+        $result = $ilDB->query($query);
+        $data = [];
+        while ($row = $ilDB->fetchAssoc($result)) {
+            $row['connTitle'] = $data0[$row['xmvcConnId']]['title'];
+            $data[$row['xmvcRefId']] = $row;
+        }
 
-        $data = array();
-        while ($row = $ilDB->fetchAssoc($res))
-        {
-            $row['uses'] = self::_getMultiVcConnUsesReferences($row['conn_id']);
-            $data[$row['conn_id']] = $row;
+        // Get repo data to conn uses
+        $query = "select tree.child, tree.parent parentRefId, object_data.title parentTitle
+                 FROM tree, object_data, object_reference
+                 WHERE object_data.obj_id=object_reference.obj_id
+                 AND object_reference.ref_id = tree.parent
+                 AND " . $ilDB->in('tree.child', array_keys($data), false, 'integer'); # object_reference.ref_id in (272)
+        $result = $ilDB->query($query);
+        $data2 = [];
+        while( $row = $ilDB->fetchAssoc($result) ) {
+            $data2[$row['child']] = $row;
         }
-        return $data;
+
+        // merge all together
+        $returnArr = [];
+        foreach ($data as $refId => $row) {
+            $returnArr[] = array_merge($data[$refId], $data2[$refId]);
+        } // EOF foreach ($data as $datum)
+
+        return $returnArr;
     }
 
     /**
@@ -1089,6 +1116,21 @@ class ilMultiVcConfig
         $ilDB->manipulate($query);
 
         return true;
+    }
+
+    static public function _getObjTitleByObjId(int $objId)
+    {
+        global $DIC; /** @var Container $DIC */
+        $ilDB = $DIC->database();
+
+        $ilDB->query("SELECT title" .
+            " FROM object_translation" .
+            " WHERE " . $ilDB->quote($objId,"integer") .
+            " AND lang_code=" . $DIC->user()->getCurrentLanguage()
+        );
+
+        $row = $ilDB->fetchObject();
+        return $row->title;
     }
 
 

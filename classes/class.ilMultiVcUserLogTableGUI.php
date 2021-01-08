@@ -66,17 +66,21 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         }
 
         $this->setId('user_log');
-        $this->setFormName('user_log');
+        #$this->setFormName('user_log');
         parent::__construct($a_parent_obj, $a_parent_cmd, $a_template_context);
-
+        $this->initColumns();
         $this->setTitle($this->plugin_object->txt('user_log'));
         $this->setFormAction($this->dic->ctrl()->getFormAction($this->parent_obj, 'applyFilterUserLog'));
         $this->setEnableHeader(true);
-        $this->setDefaultOrderDirection('DESC');
-        $this->setDefaultOrderField('join_time');
+
         $this->setExternalSorting(false);
         $this->setExternalSegmentation(false);
-        $this->setShowRowsSelector(true);
+        $this->setShowRowsSelector(false);
+
+        $this->setDefaultOrderField('ref_id'); # display_name join_time
+        $this->setDefaultOrderDirection('asc');
+        //$this->disable('sort');
+
         $this->setRowTemplate('tpl.user_log_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->initFilterDateDuration();
         $this->setFilterCommand('applyFilterUserLog');
@@ -85,7 +89,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         // if( $this->parent_obj instanceof ilMultiVcConfigGUI ) {
             $this->addCommandButton('downloadUserLog', $this->dic->language()->txt('export'));            #var_dump($this->); exit;
         // }
-        $this->initColumns();
+
         $this->getDataFromDb();
     }
 
@@ -109,16 +113,16 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         $wS = '10%';
         $wM = '15%';
         $wL = '30%';
-        $this->addColumn($lng->txt('repository'), 'ref_id');
+        $this->addColumn($lng->txt('repository'), 'REF');
         if( $this->getParentCmd() === 'downloadUserLog' ) {
-            $this->addColumn('ILIAS-'.$lng->txt('user'), 'user');
+            $this->addColumn('ILIAS-'.$lng->txt('user'), 'USER');
         }
-        $this->addColumn($this->plugin_object->txt('display_name'), 'display_name', $wM);
-        $this->addColumn($lng->txt('role'), 'moderator', $wS);
-        $this->addColumn($this->plugin_object->txt('join_time'), 'join_time', $wM);
-        $this->addColumn($this->plugin_object->txt('start_time'), 'start_time', $wM);
+        $this->addColumn($this->plugin_object->txt('DISPLAY_NAME'), 'display_name', $wM);
+        $this->addColumn($lng->txt('role'), 'IS_MODERATOR', $wS);
+        $this->addColumn($this->plugin_object->txt('join_time'), 'JOIN_TIME', $wM);
+        $this->addColumn($this->plugin_object->txt('start_time'), 'START_TIME', $wM);
         if( $this->parent_obj instanceof ilMultiVcConfigGUI ) {
-            $this->addColumn($this->plugin_object->txt('meeting') . ' ID', 'meeting_id', $wM);
+            $this->addColumn($this->plugin_object->txt('meeting') . ' ID', 'MEETING_ID', $wM);
         }
     }
 
@@ -161,7 +165,9 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
             ];
         } // EOF foreach ($userLog as $key => $row)
 
+        $data = ilUtil::sortArray($data, 4, 'asc');
         $this->setData($data);
+        return $this->data = $data;
     }
 
     /**

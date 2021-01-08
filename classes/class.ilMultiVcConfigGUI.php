@@ -1003,18 +1003,13 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$ilTabs->activateTab('overview_uses');
 
 		require_once(dirname(__FILE__) . '/class.ilMultiVcOverviewUsesTableGUI.php');
-		$table_gui_html = '';
-		$connIds = ilMultiVcConfig::_getMultiVcConnOverviewUses();
-		$rows = [];
 
-		foreach ($connIds as $connId => $conn) {
-			if( !(bool)sizeof($conn['uses']) ) {
-				continue;
-			}
-
-			$rows = array_merge($rows, $this->createRowFromUses($conn));
-
-		} // EOF foreach ($connIds as $connId => $conn)
+		$rows = ilMultiVcConfig::_getMultiVcConnOverviewUses();
+		foreach ($rows as $key => $row) {
+			$rows[$key]['parentLink'] = ilLink::_getLink($row['parentRefId']);
+			$rows[$key]['link'] = ilLink::_getLink($row['xmvcRefId']);
+		} // EOF foreach ($rows as $key => $row)
+		#var_dump($rows); exit;
 
 		$table_gui = new ilMultiVcOverviewUsesTableGUI($this, $cmd);
 		$table_gui->setData($rows);
@@ -1026,55 +1021,58 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		}
 	}
 
-	private function createRowFromUses($conn)
-	{
-		global $DIC; /** @var Container $DIC */
-		$row = [];
-		foreach ($conn['uses'] as $data) {
-			$allReferences = ilObject::_getAllReferences($data['obj_id']);
-			foreach ($allReferences as $key => $refId) {
-				$path = array_reverse($DIC->repositoryTree()->getPathFull($refId));
-				$keys = array_keys($path);
-				$parent = $path[$keys[1]];
-				$item = $path[$keys[0]];
-				if( ilObject::_isInTrash($refId) )  {
-					$parent = $item;
-					$item = [
-						'ref_id' => $refId,
-						'title' => ilObjectFactory::getInstanceByRefId($refId)->getTitle(),
-					];
-
-				}
-				$numReferences = sizeof($allReferences);
-				$hasReferences = 1 < $numReferences;
-				$isLink = false;
-				if( $hasReferences ) {
-					$isLink = false; // (int)(ilObjectFactory::getInstanceByObjId($item['obj_id'])->getRefId()) !== (int)$item['ref_id'];
-				}
-				#var_dump([$parent, $item, $isLink, $allReferences]);
-				#exit;
-				$row[$refId] = [
-					'connTitle' => $conn['title'],
-					'refId' => $refId,
-					'title' => $item['title'],
-					'link'	=> ilLink::_getLink($item['ref_id']),
-					'isInTrash' => ilObject::_isInTrash($refId),
-					'hasReferences' => $hasReferences,
-					'numReferences' => $numReferences,
-					'isLink' => $isLink,
-					'parent' => [
-						'title' => $parent['title'],
-						'link'	=> ilLink::_getLink($parent['ref_id']),
-						'ref_id' => $parent['ref_id'],
-					]
-				];
-
-			} // EOF foreach (ilObject::_getAllReferences($data['obj_id']) as $allReference)
-		} // EOF foreach ($uses as $data)
-		#var_dump($row); exit;
-		#var_dump($uses); exit;
-		return $row;
-	}
+	// private function createRowFromUses($conn)
+	// {
+		// global $DIC; /** @var Container $DIC */
+		// $row = [];
+		// foreach ($conn['uses'] as $data) {
+			// $allReferences = ilObject::_getAllReferences($data['obj_id']);
+			// foreach ($allReferences as $key => $refId) {
+				// $path = array_reverse($DIC->repositoryTree()->getPathFull($refId));
+				// $keys = array_keys($path);
+				// $parent = $path[$keys[1]];
+				// $item = $path[$keys[0]];
+				// $isInTrash = false;
+				// if( ilObject::_isInTrash($refId) )  {
+					// $parent = $item;
+					// $item = [
+						// 'ref_id' => $refId,
+						// // Todo: Title from DB?
+						// 'title' => ilMultiVcConfig::_getObjTitleByObjId(ilObject::_lookupObjId($refId)), # ilObjectFactory::getInstanceByRefId($refId)->getTitle(),
+					// ];
+					// $isInTrash = true;
+				// }
+				// $numReferences = sizeof($allReferences);
+				// $hasReferences = 1 < $numReferences;
+				// $isLink = false;
+				// /*
+				// if( $hasReferences ) {
+					// $isLink = false; // (int)(ilObjectFactory::getInstanceByObjId($item['obj_id'])->getRefId()) !== (int)$item['ref_id'];
+				// }
+				// */
+				// #var_dump([$parent, $item, $isLink, $allReferences]);
+				// #exit;
+				// $row[$refId] = [
+					// 'connTitle' => $conn['title'],
+					// 'refId' => $refId,
+					// 'title' => $item['title'],
+					// 'link'	=> ilLink::_getLink($item['ref_id']),
+					// 'isInTrash' => $isInTrash, #ilObject::_isInTrash($refId),
+					// 'hasReferences' => $hasReferences,
+					// 'numReferences' => $numReferences,
+					// 'isLink' => $isLink,
+					// 'parent' => [
+						// 'title' => $parent['title'],
+						// 'link'	=> ilLink::_getLink($parent['ref_id']),
+						// 'ref_id' => $parent['ref_id'],
+					// ]
+				// ];
+			// } // EOF foreach (ilObject::_getAllReferences($data['obj_id']) as $allReference)
+		// } // EOF foreach ($uses as $data)
+		// #var_dump($row); exit;
+		// #var_dump($uses); exit;
+		// return $row;
+	// }
 
 	public function confirmDeleteUsesMultiVcConn() {
 		global $DIC; /** @var Container $DIC */
