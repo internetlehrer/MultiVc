@@ -115,9 +115,9 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         $wM = '15%';
         $wL = '30%';
         $this->addColumn($lng->txt('repository'), 'REF');
-        if( $this->getParentCmd() === 'downloadUserLog' ) {
-            $this->addColumn('ILIAS-'.$lng->txt('user'), 'USER');
-        }
+        // if( $this->getParentCmd() === 'downloadUserLog' ) {
+            // $this->addColumn('ILIAS-'.$lng->txt('user'), 'USER');
+        // }
         $this->addColumn($this->plugin_object->txt('DISPLAY_NAME'), 'display_name', $wM);
         $this->addColumn($lng->txt('role'), 'IS_MODERATOR', $wS);
         $this->addColumn($this->plugin_object->txt('join_time'), 'JOIN_TIME', $wM);
@@ -157,7 +157,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
 
             $data[] = [
                 'REF' => implode(' / ', $tree),
-                'USER' => ilObjUser::_lookupFullname($a_set['user_id']),
+                // 'USER' => ilObjUser::_lookupFullname($a_set['user_id']),
                 'DISPLAY_NAME' => $a_set['display_name'],
                 'IS_MODERATOR' => (bool)$a_set['is_moderator'] ? $this->plugin_object->txt('moderator') : '',
                 'JOIN_TIME' => $joinTime,
@@ -192,7 +192,6 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         $meetingStart = $dtMeetingStart->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
         */
         $this->tpl->setVariable('REF', $a_set['REF']);
-        $this->tpl->setVariable('USER', $a_set['USER']);
         $this->tpl->setVariable('DISPLAY_NAME', $a_set['DISPLAY_NAME']);
         $this->tpl->setVariable('IS_MODERATOR', $a_set['IS_MODERATOR']);
         $this->tpl->setVariable('JOIN_TIME', $a_set['JOIN_TIME']);

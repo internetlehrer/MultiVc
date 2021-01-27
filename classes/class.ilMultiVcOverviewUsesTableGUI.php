@@ -57,6 +57,7 @@ class ilMultiVcOverviewUsesTableGUI extends ilTable2GUI {
         $this->addColumn($lng->txt('status'), 'status', '5%');
         $this->setEnableHeader(true);
 		$this->disable('sort');
+        $this->setEnableNumInfo(false);
 		$this->setRowTemplate('tpl.uses_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
     }
 
