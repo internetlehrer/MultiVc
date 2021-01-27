@@ -15,7 +15,7 @@ require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/
 
 class ilApiBBB implements ilApiInterface
 {
-    const INI_FILENAME = 'plugin.ini';
+    const INI_FILENAME = 'plugin';
     const PLUGIN_PATH = './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
     const PLAYBACKURL_SPLIT = '2.0/playback.html?meetingId=';
 
@@ -437,7 +437,7 @@ class ilApiBBB implements ilApiInterface
                 break;
 
             case $this->isUserModerator() || $this->isUserAdmin():
-            case !$this->isUserModerator() && $this->isMeetingRunning() && $this->isModeratorPresent() && $this->isValidAppointmentUser():
+            case !$this->isUserModerator() && $this->isMeetingRunning() && $this->isModeratorPresent() /* && $this->isValidAppointmentUser() */:
                 $this->meetingStartable = true;
                 break;
 
@@ -746,15 +746,40 @@ class ilApiBBB implements ilApiInterface
      */
     private function setPluginIniSet(): void
     {
-        global $DIC; /** @var \DI\Container $DIC */
-        $iniPathFile = self::PLUGIN_PATH . '/' . self::INI_FILENAME;
-        if( file_exists($iniPathFile) ) {
-            $iniContent = file_get_contents($iniPathFile);
-            foreach( explode("\n", $iniContent) as $line ) {
-                if( substr_count($line, '=') ) {
-                    list($key, $value) = explode('=', $line);
-                    $this->pluginIniSet[trim($key)] = trim($value);
-                }
+        // Plugin wide ini settings (plugin.ini)
+        $this->parseIniFile( self::INI_FILENAME );
+
+        // Host specific ini settings (lms.example.com.ini)
+        $this->parseIniFile( $this->dic->http()->request()->getUri() );
+
+        // xmvc_conn specific ini settings (bbb.example.com.ini)
+        $this->parseIniFile( $this->settings->getSvrPublicUrl() );
+    }
+
+    /**
+     * Parse ini file content and set key/value pairs to class param
+     * @param string $uriOrName
+     */
+    private function parseIniFile(string $uriOrName): void
+    {
+        // ascii filename
+        $iniPathFile = self::PLUGIN_PATH . '/' . $uriOrName . '.ini';
+
+        // check filename from uri
+        $regEx = "%^(https|http)://([^/\?]+)%";
+        if( (bool)preg_match($regEx, $uriOrName, $match) ) {
+            $iniPathFile = self::PLUGIN_PATH . '/' . array_pop($match) . '.ini';
+        }
+
+        if( !file_exists($iniPathFile) ) {
+            return;
+        }
+
+        $iniContent = file_get_contents($iniPathFile);
+        foreach( explode("\n", $iniContent) as $line ) {
+            if( substr_count($line, '=') ) {
+                list($key, $value) = explode('=', $line);
+                $this->pluginIniSet[trim($key)] = trim($value);
             }
         }
     }

@@ -359,6 +359,12 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 		include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
 		$settings = ilMultiVcConfig::getInstance($this->object->getConnId());
 
+		if(($settings->isRecordChoose() || $settings->isRecordDefault()) && $settings->isRecordOnlyForModeratedRoomsDefault()) {
+			$info = new ilNonEditableValueGUI($this->lng->txt("hint"));
+			$info->setValue($this->txt("recording_only_for_moderated_rooms_info"));
+			$this->form->addItem($info);
+		}
+
         $this->form->addItem($this->formItem("moderated"));
 
         $this->form->addItem($this->formItem("btn_settings"));
@@ -408,8 +414,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         switch( true ) {
             case !$settings->isRecordChoose() && !$settings->isRecordDefault():
             case $settings->isRecordChoose() && $settings->isRecordOnlyForModeratedRoomsDefault() && !$moderated:
-                return false;
+               return false;
             case $settings->isRecordChoose() && !$settings->isRecordDefault() && !$settings->isRecordOnlyForModeratedRoomsDefault():
+            case $settings->isRecordChoose() && $settings->isRecordDefault() && !$settings->isRecordOnlyForModeratedRoomsDefault():
             case $settings->isRecordChoose() && $settings->isRecordOnlyForModeratedRoomsDefault() && $moderated:
                 return $recording;
             case !$settings->isRecordChoose() && $settings->isRecordDefault() && $settings->isRecordOnlyForModeratedRoomsDefault() && $moderated:
@@ -545,7 +552,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if( $this->hasChoosePermission('guestlink') ) {
                 $this->object->setGuestlink( (bool)$this->form->getInput("cb_guestlink") );
             }
-            if( $this->hasChoosePermission('moderated') ) {
+            if( $this->hasChoosePermission('recording') ) {
                 $this->object->setRecord( $this->checkRecordChooseValue( (bool)$this->form->getInput("cb_moderated"), (bool)$this->form->getInput("cb_recording")) );
             }
             // $this->object->setConnId( (int)$this->form->getInput("conn_id") );
@@ -985,10 +992,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
 
         $showBtn = (
-            ( !$this->object->get_moderated() && $vcObj->isValidAppointmentUser() ) ||
+            ( !$this->object->get_moderated() /* && $vcObj->isValidAppointmentUser() */ ) ||
             //( $this->object->get_moderated() && $bbb->hasSessionObject() && $bbb->isValidAppointmentUser() ) ||
             ( $this->object->get_moderated() && ($vcObj->isUserModerator() || $vcObj->isUserAdmin()) ) ||
-            ( $this->object->get_moderated() && $vcObj->isMeetingRunning() && $vcObj->isModeratorPresent() && $vcObj->isValidAppointmentUser() )
+            ( $this->object->get_moderated() && $vcObj->isMeetingRunning() && $vcObj->isModeratorPresent() /* && $vcObj->isValidAppointmentUser() */ )
         );
 
         $showAdmInfoAppointment = $vcObj->hasSessionObject() && ($vcObj->isUserModerator() || $vcObj->isUserAdmin());

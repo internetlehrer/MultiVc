@@ -61,7 +61,8 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
             #var_dump($this->); exit;
         }
 
-        if( isset($_POST['cmd']['applyFilterUserLog']) ) {
+        if( isset($_POST['cmd']['applyFilterUserLog']) || $_GET['cmd'] === 'applyFilterUserLog' ) {
+            //var_dump($_SESSION); exit;
             $this->keepFilterValues = true;
         }
 
@@ -233,6 +234,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
             $this->setFilterDateDurationDefaultValues();
         } else {
             $this->writeFilterToSession();
+            $this->filterItemDateDuration->readFromSession();
         }
         $this->dateStart = $this->filterItemDateDuration->getStart();
         $this->dateEnd = $this->filterItemDateDuration->getEnd();
