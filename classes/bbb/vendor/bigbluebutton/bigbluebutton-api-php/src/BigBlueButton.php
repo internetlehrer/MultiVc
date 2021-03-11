@@ -475,6 +475,14 @@ class BigBlueButton
                     'Content-length: ' . mb_strlen($payload),
                 ]);
             }
+            //Add Proxy
+            //require_once('./Services/Http/classes/class.ilProxySettings.php');
+            if (\ilProxySettings::_getInstance()->isActive()) {
+                $proxyHost = \ilProxySettings::_getInstance()->getHost();
+                $proxyPort = \ilProxySettings::_getInstance()->getPort();
+                $proxyURL = $proxyHost . ":" . $proxyPort;
+                curl_setopt($ch, CURLOPT_PROXY, $proxyURL);
+            }
             $data = curl_exec($ch);
             if ($data === false) {
                 throw new \RuntimeException('Unhandled curl error: ' . curl_error($ch));
