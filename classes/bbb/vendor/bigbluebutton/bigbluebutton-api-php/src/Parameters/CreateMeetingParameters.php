@@ -907,6 +907,9 @@ class CreateMeetingParameters extends MetaParameters
      */
     public function getHTTPQuery()
     {
+        // Get Plugin-Infos for Metadata
+        include("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/plugin.php");
+        
         $queries = [
             'name'                               => $this->meetingName,
             'meetingID'                          => $this->meetingId,
@@ -936,6 +939,10 @@ class CreateMeetingParameters extends MetaParameters
             'lockSettingsLockedLayout'           => $this->isLockSettingsLockedLayout() ? 'true' : 'false',
             'lockSettingsLockOnJoin'             => $this->isLockSettingsLockOnJoin() ? 'true' : 'false',
             'lockSettingsLockOnJoinConfigurable' => $this->isLockSettingsLockOnJoinConfigurable() ? 'true' : 'false',
+            // Add some Metadata
+            'meta_bbb-origin'                    => urlencode('ILIASPlugin_'.$id),
+            'meta_bbb-origin-version'            => urlencode($version),
+            'meta_bbb-origin-server-name'        => urlencode(\ilUtil::_getHttpPath()),
         ];
 
         // Add breakout rooms parameters only if the meeting is a breakout room
