@@ -787,13 +787,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
 
         // RECORDING MESSAGE
-        if( $this->object->get_moderated() ) {
-        if( $this->object->isRecordingAllowed() && ( $vcObj->isMeetingRunning() || $vcObj->isUserModerator() ) ) {
-            $my_tpl->setVariable("RECORDING_WARNING", $this->txt('recordung_warning'));
-        } 
-        } else {
-            $my_tpl->setVariable("HIDE_RECORDING_WARNING", 'hidden');
-        }
+		if( $this->object->get_moderated() && $this->object->isRecordingAllowed() && ( $vcObj->isMeetingRunning() || $vcObj->isUserModerator() ) ) {
+			$my_tpl->setVariable("RECORDING_WARNING", $this->txt('recording_warning'));
+		} 
         // RECORDINGS
         if( $this->object->isRecordingAllowed() && $vcObj->isUserModerator() ) {
             $my_tpl->setVariable("HEADLINE_RECORDING", $this->txt('recording'));

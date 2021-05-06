@@ -55,7 +55,7 @@ private_chat_default#:#Privaten Chat erlauben: Voreinstellung
 private_chat_default_info#:#Sofern aktiviert, können auch Personen ohne Moderatorfunktion untereinander einen privaten Chat führen. Personen mit Moderatorfunktion sehen diese Chats nicht. Da Personen mit Moderatorfunktion jederzeit private Chats unterbinden können, solle diese Option in den meisten Fällen aktiviert sein.
 recording#:#Aufnahmen
 recording_info#:#Sitzungen können aufgenommen werden.
-recordung_warning#:#Für dieses Meeting wurde die Aufzeichnungsfunktion aktiviert! Mit der aktiven Nutzung des Chat-Systems, dem Einschalten meines persönlichen Mikrofons / meiner Kamera und/oder dem Teilen von Bildschirminhalten willige ich ein, dass diese Informationen bei der Aufzeichnung erfasst und für die spätere Verwendung im Rahmen der konkreten Lehrveranstaltung gespeichert werden.
+recording_warning#:#Für dieses Meeting wurde die Aufzeichnungsoption aktiviert! Mit der aktiven Nutzung des Chat-Systems, dem Einschalten meines persönlichen Mikrofons / meiner Kamera und/oder dem Teilen von Bildschirminhalten willige ich ein, dass diese Informationen bei der Aufzeichnung erfasst und für die spätere Verwendung gespeichert werden.
 recording_choose#:#Aufnahmen erlauben: Auswahlmöglichkeit
 recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufnahmen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufnahme eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
 recording_default#:#Aufnahmen erlauben: Voreinstellung

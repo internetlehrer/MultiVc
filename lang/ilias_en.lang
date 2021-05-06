@@ -55,7 +55,7 @@ private_chat_default#:#Allow private chat: Default setting
 private_chat_default_info#:#If activated, even people without moderator function can have a private chat with each other. Persons with moderator function do not see these chats. Since persons with moderator function can prevent private chats at any time, this option should be activated in most cases.
 recording#:#Recordings
 recording_info#:#Sessions can be recorded.
-recordung_warning#:#The recording function has been activated for this meeting! By actively using the chat system, turning on my personal microphone / camera and/or sharing screen content, I agree that this information will be captured during the recording and stored for later use in the context of the specific course.
+recording_warning#:#The recording option has been activated for this meeting! By actively using the chat system, turning on my personal microphone / camera and/or sharing screen content, I agree that this information will be captured during the recording and stored for later use.
 recording_choose#:#Allow recordings: Selection option
 recording_choose_info#:#Activate this option if you want users with write permissions to select 'Allow capturing' under Settings. Since the URL for the recording is known to be distributed to unintended persons, this option should not be activated in most cases.
 recording_default#:#Allow recordings: Default setting
@@ -74,7 +74,7 @@ url#:#URL
 url_info#:#Here you can also enter relative paths (e.g.: /webconference). Please do not enter a '/' at the end.
 protected#:#Protected rooms
 protected_info#:#If you activate this option only ILIAS users can enter the meeting rooms. Additional requirements: ILIAS and spreed meeting rooms have to be accessed via the exact same domain and the ILIAS ID of this ILIAS installation has to be entered into the variable 'checkInstIds' in the spreed file 'main.html'. The ILIAS-ID is
-moderated#:#moderated room
+moderated#:#Moderated Room
 moderated_info#:#In a moderated room, persons with moderator function have extended rights. Other people also have limited access rights to the virtual room. Persons with moderator function are all those who can edit the object's properties as well as group administrators, course administrators and course tutors.
 moderated_choose#:#moderated room: selection option
 moderated_choose_info#:#Activate this option if you want users with write access to select 'moderated room' under Settings.
@@ -123,7 +123,7 @@ root_create_xmvc#:#create virtual meeting room
 cat_create_xmvc#:#create virtual meeting room
 rbac_create_xmvc#:#create virtual meeting room
 meeting#:#Meeting
-properties#:#Features
+properties#:#Settings
 edit_properties#:#Edit properties
 cancel#:#Cancel
 edit#:#Edit
