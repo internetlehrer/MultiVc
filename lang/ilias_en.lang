@@ -55,6 +55,7 @@ private_chat_default#:#Allow private chat: Default setting
 private_chat_default_info#:#If activated, even people without moderator function can have a private chat with each other. Persons with moderator function do not see these chats. Since persons with moderator function can prevent private chats at any time, this option should be activated in most cases.
 recording#:#Recordings
 recording_info#:#Sessions can be recorded.
+recordung_warning#:#The recording function has been activated for this meeting! By actively using the chat system, turning on my personal microphone / camera and/or sharing screen content, I agree that this information will be captured during the recording and stored for later use in the context of the specific course.
 recording_choose#:#Allow recordings: Selection option
 recording_choose_info#:#Activate this option if you want users with write permissions to select 'Allow capturing' under Settings. Since the URL for the recording is known to be distributed to unintended persons, this option should not be activated in most cases.
 recording_default#:#Allow recordings: Default setting
