@@ -4,10 +4,10 @@
 use ILIAS\DI\Container;
 require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
 
-abstract class ilApiMultiVC
+class ilApiMultiVC
 {
     const PLUGIN_PATH = './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
-    const INI_FILENAME = 'plugin.ini';
+    const INI_FILENAME = 'plugin';
 
     /** @var Container $DIC */
     protected $dic;
@@ -15,8 +15,14 @@ abstract class ilApiMultiVC
     /** @var ilMultiVcConfig $settings */
     protected $settings;
 
+    /** @var ilMultiVcConfig $SETTINGS */
+    static $SETTINGS;
+
     /** @var ilObjMultiVc $object */
     protected $object;
+
+    /** @var ilObjMultiVc $OBJECT */
+    static $OBJECT;
 
     /** @var array $pluginIniSet */
     protected $pluginIniSet = [];
@@ -56,49 +62,34 @@ abstract class ilApiMultiVC
     #### CONSTRUCTOR
     ####################################################################################################################
 
-    function __construct(ilObjMultiVcGUI $a_parent)
+    function __construct(?ilObjMultiVcGUI $a_parent = null)
     {
         global $DIC; /** @var Container $DIC */
         $this->dic = $DIC;
 
-        $this->settings = ilMultiVcConfig::getInstance($a_parent->object->getConnId());
-        $this->object = $a_parent->object;
+        self::setPluginIniSet();
 
-        $this->setPluginIniSet();
+        if( null !== $a_parent ) {
+            self::$SETTINGS = $this->settings = ilMultiVcConfig::getInstance($a_parent->object->getConnId());
+            self::$OBJECT = $this->object = $a_parent->object;
+            $this->moderatedMeeting = $this->object->get_moderated();
+            $this->setMeetingId();
+            $this->setUserRole();
+            $this->setMeetingRecordable((bool)$this->object->isRecordingAllowed());
+            $this->setRecordingOnlyForModeratedMeeting();
+        }
 
-        $this->moderatedMeeting = $this->object->get_moderated();
+    }
 
-        $this->setMeetingId();
-
-        $this->setUserRole();
-
-        $this->setMeetingRecordable((bool)$this->object->isRecordingAllowed());
-        $this->setRecordingOnlyForModeratedMeeting();
-
+    static public function init()
+    {
+        return new self();
     }
 
 
     ####################################################################################################################
     #### GENERAL OBJECT SETTINGS
     ####################################################################################################################
-
-    /**
-     * Get the setting entries of plugin.ini and set them as an assoc array
-     */
-    private function setPluginIniSet(): void
-    {
-        global $DIC; /** @var \DI\Container $DIC */
-        $iniPathFile = self::PLUGIN_PATH . '/' . self::INI_FILENAME;
-        if( file_exists($iniPathFile) ) {
-            $iniContent = file_get_contents($iniPathFile);
-            foreach( explode("\n", $iniContent) as $line ) {
-                if( substr_count($line, '=') ) {
-                    list($key, $value) = explode('=', $line);
-                    $this->pluginIniSet[trim($key)] = trim($value);
-                }
-            }
-        }
-    }
 
     /**
      * @return bool
@@ -344,6 +335,68 @@ abstract class ilApiMultiVC
     public function isMeetingRecordable(): bool
     {
         return $this->meetingRecordable;
+    }
+
+    /**
+     * @param ilMultiVcConfig|null $settings
+     * @return array
+     */
+    static public function setPluginIniSet(?ilMultiVcConfig $settings = null): array
+    {
+        global $DIC; /** @var Container $DIC */
+
+        $settings = $settings ?? self::$SETTINGS;
+
+        // Plugin wide ini settings (plugin.ini)
+        $set1 = self::parseIniFile(self::INI_FILENAME);
+
+        // Host specific ini settings (lms.example.com.ini)
+        $set2 = self::parseIniFile($DIC->http()->request()->getUri());
+
+        // xmvc_conn specific ini settings (bbb.example.com.ini)
+        $set3 = self::parseIniFile($settings->getSvrPublicUrl());
+
+        return array_replace($set1, $set2, $set3);
+    }
+
+    /**
+     * Parse ini file content and set key/value pairs to class param
+     * @param string|null $uriOrName
+     * @return array
+     */
+    static public function parseIniFile( ?string $uriOrName = null): array
+    {
+        $returnParam = [];
+        if( is_null($uriOrName) ) {
+            return $returnParam;
+        }
+        // ascii filename
+        $iniPathFile = self::PLUGIN_PATH . '/' . $uriOrName . '.ini';
+
+        // check filename from uri
+        $regEx = "%^(https|http)://([^/\?]+)%";
+        if( (bool)preg_match($regEx, $uriOrName, $match) ) {
+            $iniPathFile = self::PLUGIN_PATH . '/' . array_pop($match) . '.ini';
+        }
+
+        if( !file_exists($iniPathFile) ) {
+            return $returnParam;
+        }
+
+        $iniContent = file_get_contents($iniPathFile);
+        foreach( explode("\n", $iniContent) as $line ) {
+            if( substr_count($line, '=') ) {
+                list($key, $value) = explode('=', $line);
+                if( substr_count($value, ',') ) {
+                    foreach ( explode(',', $value) as $arrVal ) {
+                        $returnParam[trim($key)][] = trim($arrVal);
+                    }
+                } else {
+                    $returnParam[trim($key)] = trim($value);
+                }
+            }
+        }
+        return $returnParam;
     }
 
 

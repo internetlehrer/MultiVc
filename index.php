@@ -176,6 +176,9 @@ class JoinMeetingByGuestLink
     /** @var string $displayName */
     private $displayName = '';
 
+    /** @var string|null $guestPassword */
+    private $guestPassword = null;
+
     /** @var string[] $userAccept */
     private $userAccept = [
         'termsOfUse' => false
@@ -280,13 +283,16 @@ class JoinMeetingByGuestLink
     // Language Vars & HTML-Form
 
     private function setFormElements() {
-        $input = function($name, $value, $type = 'text', $title = '', $class="") {
-            return '<input type="' . $type . '" name="' . $name . '" value="' . $value . '" title="' . $title . '" placeholder="' . $title . '" class="' . $class . '" />';
+        $input = function($name, $value, $type = 'text', $title = '', $class="", $addAttr = "") {
+            return '<input type="' . $type . '" name="' . $name . '" value="' . $value . '" title="' . $title . '" placeholder="' . $title . '" class="' . $class . '"' . $addAttr . ' />';
         };
         $this->formField = [
             'user_title' => $input('user_title', $this->userTitle, 'text', 'Titel'),
             'display_name' => $input('display_name', $this->displayName, 'text', $this->getLangVar('guest_displayname_input'), 'form-control'),
-            'submit' => $input('submit', $this->getLangVar('btntext_join_meeting'), 'submit', $this->getLangVar('btntext_join_meeting'), 'btn btn-primary')
+            'submit' => $input('submit', $this->getLangVar('btntext_join_meeting'), 'submit', $this->getLangVar('btntext_join_meeting'), 'btn btn-primary'),
+            'guest_password' => $input('guest_password', $this->guestPassword, 'password', $this->getLangVar('guest_password_input'), 'form-control', ' autocomplete="new-password"'),
+            'guest_password_hidden' => $input('guest_password', $this->pluginObject->getAccessToken(), 'hidden', $this->getLangVar('guest_password_input'), 'form-control'),
+            'guest_login_button' => $input('guest_login_button', $this->getLangVar('btntext_guest_login_button'), 'submit', $this->getLangVar('btntext_guest_login'), 'btn btn-primary'),
         ];
 
     }
@@ -304,20 +310,58 @@ class JoinMeetingByGuestLink
         $this->htmlTpl->setVariable('MEETING_TITLE', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));
         $this->htmlTpl->setVariable('H1', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));
         $this->htmlTpl->setVariable('INFO_TOP_MODERATED_M', $this->getLangVar('info_top_moderated_m_bbb'));
-        $this->htmlTpl->setVariable('ERR_STATE_DISPLAYNAME', (int)$this->errState['displayname']);
-        $this->htmlTpl->setVariable('ERR_MSG_DISPLAYNAME', !$this->errState['displayname'] ? '' : $this->getLangVar('err_msg_displayname'));
+        $this->htmlTpl->setVariable('ERR_STATE_INPUT_FIELD', (int)$this->errState['displayname']);
+        $this->htmlTpl->setVariable('ERR_MSG_INPUT_FIELD', !$this->errState['displayname'] ? '' : $this->getLangVar('err_msg_displayname'));
         $this->htmlTpl->setVariable('ERR_STATE_TERMSOFUSE', (int)$this->errState['termsOfUse']);
         $this->htmlTpl->setVariable('VAL_TERMSOFUSE', (int)$this->userAccept['termsOfUse']);
         $this->htmlTpl->setVariable('TXT_ACCEPT_TERMSOFUSE', $this->getLangVar('terms_of_use') );
         $this->htmlTpl->setVariable('ERR_STATE_MODERATOR', (int)$this->errState['moderator']);
         $this->htmlTpl->setVariable('ERR_MSG_MODERATOR', !$this->errState['moderator'] ? '' : $this->getLangVar('wait_join_meeting'));
         $this->htmlTpl->setVariable('FORM_ACTION', filter_var('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL));
-        $this->htmlTpl->setVariable('DISPLAY_NAME', $this->getFormField('display_name'));
-        $this->htmlTpl->setVariable('DISPLAY_NAME_INFO', $this->getLangVar('guest_displayname_info'));
         $this->htmlTpl->setVariable('INFO_BOTTOM', $this->getLangVar('info_bottom'));
         $this->htmlTpl->setVariable('INFO_REQUIREMENTS', $this->getLangVar('info_requirements_bbb'));
-        $this->htmlTpl->setVariable('SUBMIT_BUTTON', $this->getFormField('submit'));
+
+
+        if( $this->isUserLoggedIn() ) {
+            #ilSession::set('guestLoggedIn', false);
+            $this->htmlTpl->setVariable('INPUT_FIELD', $this->getFormField('display_name'));
+            $this->htmlTpl->setVariable('INPUT_FIELD_INFO', $this->getLangVar('guest_displayname_info'));
+            $this->htmlTpl->setVariable('SUBMIT_BUTTON', $this->getFormField('guest_password_hidden') . $this->getFormField('submit'));
+        }
+        // GUEST PASSWORD/LOGIN
+        if( $this->isPwEnabled() && !$this->isUserLoggedIn() ) {
+            if( isset($_POST['guest_password']) ) {
+                $this->htmlTpl->setVariable('ERR_STATE_INPUT_FIELD', 1);
+                $this->htmlTpl->setVariable('ERR_MSG_INPUT_FIELD', $this->getLangVar('err_msg_guest_password'));
+            }
+            $this->htmlTpl->setVariable('INPUT_FIELD', $this->getFormField('guest_password'));
+            $this->htmlTpl->setVariable('INPUT_FIELD_INFO', $this->getLangVar('guest_password_input_info'));
+            $this->htmlTpl->setVariable('SUBMIT_BUTTON', $this->getFormField('guest_login_button'));
+        }
+
     }
+
+    private function isPwEnabled() {
+        return (bool)strlen(trim($this->pluginObject->getAccessToken()));
+    }
+
+    private function isUserLoggedIn() {
+        return ilSession::get('guestLoggedIn');
+    }
+
+    private function checkPw( ?string $phrase = null ) {
+        return trim($phrase) === trim($this->pluginObject->getAccessToken());
+    }
+
+    private function setGuestLoginState() {
+        $phrase = isset($_POST['guest_password']) ? filter_var($_POST['guest_password'], FILTER_SANITIZE_ENCODED) : '';
+        if( $this->isUserLoggedIn() || $this->checkPw($phrase) ) {
+            ilSession::set('guestLoggedIn', true);
+        } else {
+            ilSession::set('guestLoggedIn', false);
+        }
+    }
+
 
     private function getFormField($fieldName) {
         return strlen($field = $this->formField[$fieldName]) ? $field : '';
@@ -476,6 +520,12 @@ class JoinMeetingByGuestLink
 
         // exit if not valid
         $this->validateInvitation();
+
+        #var_dump($_SESSION);
+
+        $this->setGuestLoginState();
+        #echo ilSession::get('guestLoggedIn');
+        #var_dump($_SESSION); exit;
 
         $this->setUserLangBySvrParam();
         //$this->setLangVars();

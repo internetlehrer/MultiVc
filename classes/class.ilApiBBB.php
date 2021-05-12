@@ -106,7 +106,8 @@ class ilApiBBB implements ilApiInterface
 
         $this->object = $a_parent->object;
         $this->settings = ilMultiVcConfig::getInstance($this->object->getConnId());
-        $this->setPluginIniSet();
+        #$this->setPluginIniSet();
+        $this->pluginIniSet = ilApiMultiVC::setPluginIniSet($this->settings);
         $this->bbb = new InitBBB($this->settings->getSvrSalt(), $this->settings->getSvrPrivateUrl());
         //$this->bbb = new \BigBlueButton\BigBlueButton();
         //$this->bbb->setEnv($this->settings->getSvrSalt(), $this->settings->getSvrPrivateUrl());
@@ -215,6 +216,19 @@ class ilApiBBB implements ilApiInterface
         return $this->bbb->getMeetings();
     }
 
+    // public function getUserData(): array
+    // {
+        // $style = filter_var($this->settings->getStyle(), FILTER_SANITIZE_URL);
+        // $styleType = (bool)strlen($style)
+            // ? strpos($style, 'https://') === 0
+                // ? 'userdata-bbb_custom_style_url'
+                // : 'userdata-bbb_custom_style'
+            // : false;
+        // return !$styleType ? [] : [
+            // $styleType => filter_var($this->settings->getStyle(), FILTER_DEFAULT),
+        // ];
+    // }
+
     /**
      * @return string
      */
@@ -234,6 +248,15 @@ class ilApiBBB implements ilApiInterface
         //$joinParams->setAvatarURL($this->userAvatar);
         $joinParams->setUserId($DIC->user()->getId());
         $joinParams->setClientURL($DIC->http()->request()->getUri());
+        
+        $style = filter_var($this->settings->getStyle(), FILTER_SANITIZE_URL);
+        if (strlen($style) > 0){
+            $styleType = strpos($style, 'https://') === 0
+                ? 'userdata-bbb_custom_style_url'
+                : 'userdata-bbb_custom_style';
+            $joinParams->setCustomParameter($styleType,$style);
+        }
+
         return $this->bbb->getJoinMeetingURL($joinParams);
     }
 
@@ -569,7 +592,13 @@ class ilApiBBB implements ilApiInterface
             ->setWebcamsOnlyForModerator((bool)$this->object->isCamOnlyForModerator())
             ->setLogoutUrl($joinBtnUrl)
             ->setLockSettingsDisablePrivateChat(!(bool)$this->object->isPrivateChat())
+            ->setLogo(filter_var($this->settings->getLogo(), FILTER_SANITIZE_URL))
+            ->setLockSettingsDisableCam(!$this->settings->getLockDisableCamChoose()
+                ? $this->settings->getLockDisableCamDefault()
+                : $this->object->getLockDisableCam()
+            )
         ;
+
 
         if( !is_null($value = $this->getPluginIniSet('mute_on_start')) ) {
             $this->createMeetingParam->setMuteOnStart((bool)$value);
@@ -738,49 +767,6 @@ class ilApiBBB implements ilApiInterface
                 return $this->getAvailableConcurrentUsers();
             default:
                 return 1000000000;
-        }
-    }
-
-
-    /**
-     */
-    private function setPluginIniSet(): void
-    {
-        // Plugin wide ini settings (plugin.ini)
-        $this->parseIniFile( self::INI_FILENAME );
-
-        // Host specific ini settings (lms.example.com.ini)
-        $this->parseIniFile( $this->dic->http()->request()->getUri() );
-
-        // xmvc_conn specific ini settings (bbb.example.com.ini)
-        $this->parseIniFile( $this->settings->getSvrPublicUrl() );
-    }
-
-    /**
-     * Parse ini file content and set key/value pairs to class param
-     * @param string $uriOrName
-     */
-    private function parseIniFile(string $uriOrName): void
-    {
-        // ascii filename
-        $iniPathFile = self::PLUGIN_PATH . '/' . $uriOrName . '.ini';
-
-        // check filename from uri
-        $regEx = "%^(https|http)://([^/\?]+)%";
-        if( (bool)preg_match($regEx, $uriOrName, $match) ) {
-            $iniPathFile = self::PLUGIN_PATH . '/' . array_pop($match) . '.ini';
-        }
-
-        if( !file_exists($iniPathFile) ) {
-            return;
-        }
-
-        $iniContent = file_get_contents($iniPathFile);
-        foreach( explode("\n", $iniContent) as $line ) {
-            if( substr_count($line, '=') ) {
-                list($key, $value) = explode('=', $line);
-                $this->pluginIniSet[trim($key)] = trim($value);
-            }
         }
     }
 

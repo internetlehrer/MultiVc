@@ -35,6 +35,14 @@ class ilMultiVcPlugin extends ilRepositoryObjectPlugin
 		if ($ilDB->tableExists('rep_robj_xmvc_user_log')) {
 			$ilDB->dropTable('rep_robj_xmvc_user_log');
 		}
+		
+		if ($ilDB->tableExists('rep_robj_xmvc_schedule')) {
+            $ilDB->dropTable('rep_robj_xmvc_schedule');
+        }
+
+        if ($ilDB->tableExists('rep_robj_xmvc_session')) {
+            $ilDB->dropTable('rep_robj_xmvc_session');
+        }
 
 	}
 

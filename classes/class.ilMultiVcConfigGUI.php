@@ -5,7 +5,7 @@ use ILIAS\DI\Container;
 include_once("./Services/Component/classes/class.ilPluginConfigGUI.php");
 include_once("Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
 require_once dirname(__FILE__) . '/class.ilMultiVcUtil.php';
-
+require_once __DIR__ . '/class.ilApiMultiVC.php';
 /**
  * MultiVc configuration user interface class
  *
@@ -56,6 +56,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			case 'configureNewMultiVcConn':
 				$this->object = new ilMultiVcConfig();
 				$ilCtrl->setParameter($this, 'configureNewMultiVcConn', $_POST['showcontent']);
+				$ilCtrl->setParameter($this, 'integration_auth_method', $_POST['integration_auth_method']);
 				$this->initTabs('edit_type');
 				$this->$cmd();
 				break;
@@ -66,6 +67,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 					$ilCtrl->setParameter($this, 'configureNewMultiVcConn', $_GET['configureNewMultiVcConn']);
 				}
 				$ilCtrl->setParameter($this, 'conn_id', $_GET['conn_id']);
+				$ilCtrl->setParameter($this, 'integration_auth_method', $_GET['integration_auth_method']);
 				$this->initTabs('edit_type');
 				$this->$cmd();
 				break;
@@ -75,6 +77,18 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				}
 				$this->initTabs('edit_type');
 				$this->$cmd();
+				break;
+			case 'update_token_user':
+				$this->initTabs();
+				$this->updateTokenUser();
+				break;
+			case 'delete_token_user':
+				$this->initTabs();
+				$this->deleteTokenUser();
+				break;
+			case 'authorizeWebexIntegration':
+				$this->initTabs();
+				$this->authorizeWebexIntegration();
 				break;
 			case "configure":
 				$this->initTabs();
@@ -91,6 +105,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->initTabs();
 				$this->initUserLogTableGUI($cmd);
 				break;
+			case 'addUserAutoComplete':
+				$this->$cmd();
 			default:
 				$this->initTabs();
 				if (!$cmd)
@@ -139,7 +155,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 					$ilCtrl->getLinkTarget($this, 'reportLogMax')
 				);
 				$ilTabs->addTab("user_log",
-					$this->plugin_object->txt('user_log'),
+					$this->plugin_object->txt('user_log_bbb'),
 					$ilCtrl->getLinkTarget($this, 'userLog')
 				);
 				break;
@@ -159,7 +175,13 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConnTableGUI.php');
 		$table_gui = new ilMultiVcConnTableGUI($this, 'configure');
 		$table_gui->init($this);
-		$tpl->setContent($table_gui->getHTML());
+		$html = $table_gui->getHTML();
+		if( $table_gui->isWebex() ) {
+			$tpl->addJavaScript( './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/js/modal.integration.js' );
+			$html .= file_get_contents(dirname(__FILE__) . '/../templates/webex/html/modal.integration.html');
+			#var_dump($modal); exit;
+		}
+		$tpl->setContent($html);
 	}
 
 	private function createMulitVcConn()
@@ -263,347 +285,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$ilCtrl->redirect($this, 'configure');
 	}
 
-	private function getFormItemsForPlatformSpreed(ilSelectInputGUI $combo)
-	{
-		global $DIC; /** @var Container $DIC */
-		$lng = $DIC->language();
-		$ilCtrl = $DIC->ctrl();
-		$ilDB = $DIC->database();
-		$ilSetting = $DIC->settings();
-
-		$pl = $this->getPluginObject();
-
-		$ti = new ilTextInputGUI($pl->txt("obj_ids_special"), "frmObjIdsSpecial");
-		$ti->setRequired(false);
-		$ti->setMaxLength(1024);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("obj_ids_special_info"));
-		$combo->addSubItem($ti);
-
-		// spreed_url (text)
-		$ti = new ilTextInputGUI($pl->txt("url"), "frmSpreedUrl");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("url_info"));
-		$combo->addSubItem($ti);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("protected"), "cb_protected");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("protected_info") . " " . $ilSetting->get('inst_id',0));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("btn_settings_choose"), "cb_btn_settings_choose");
-		$cb->setRequired(false);
-		$settingsText = $pl->txt("btn_settings_choose_info");
-		if ($this->object->get_protected() == false) $settingsText .= " " . $pl->txt("btn_settings_not_protected_info");
-		$settingsText .= " " . $pl->txt("config_help_begin") . " " . $pl->txt("btn_settings_info");
-		$cb->setInfo($settingsText);
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("btn_settings_default"), "cb_btn_settings_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("btn_settings_default_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("btn_chat_choose"), "cb_btn_chat_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("btn_chat_choose_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("btn_chat_default"), "cb_btn_chat_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("btn_chat_default_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("with_chat_choose"), "cb_with_chat_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("with_chat_choose_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("with_chat_default"), "cb_with_chat_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("with_chat_default_info") . " " . $pl->txt("config_help_begin") . " " . $pl->txt("with_chat_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("btn_locationshare_choose"), "cb_btn_locationshare_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("btn_locationshare_choose_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("btn_locationshare_default"), "cb_btn_locationshare_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("btn_locationshare_default_info"));
-		$combo->addSubItem($cb);
-
-
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("member_btn_fileupload_choose"), "cb_member_btn_fileupload_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("member_btn_fileupload_choose_info") . " " . $pl->txt("config_help_begin") . " " . $pl->txt("member_btn_fileupload_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("member_btn_fileupload_default"), "cb_member_btn_fileupload_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("member_btn_fileupload_default_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("fa_expand_default"), "cb_fa_expand_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("fa_expand_default_info"));
-		$combo->addSubItem($cb);
-
-		return $combo;
-	}
-
-	private function getFormItemsForPlatformBBB(ilSelectInputGUI $combo)
-	{
-		global $DIC; /** @var Container $DIC */
-		$lng = $DIC->language();
-		$ilCtrl = $DIC->ctrl();
-		$ilDB = $DIC->database();
-		$ilSetting = $DIC->settings();
-
-		$pl = $this->getPluginObject();
-
-		$ti = new ilTextInputGUI($pl->txt("obj_ids_special"), "frmObjIdsSpecial");
-		$ti->setRequired(false);
-		$ti->setMaxLength(1024);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("obj_ids_special_info"));
-		$combo->addSubItem($ti);
-
-		$ti = new ilTextInputGUI($pl->txt("svr_public_url"), "svr_public_url");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("info_svr_public_url"));
-		$combo->addSubItem($ti);
-
-		$ti = new ilTextInputGUI($pl->txt("svr_private_url"), "svr_private_url");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("info_svr_private_url"));
-		$combo->addSubItem($ti);
-
-		// Password unreadable
-		$pi = new ilPasswordInputGUI($pl->txt("svr_salt"), "svr_salt");
-		$pi->setSkipSyntaxCheck(true);
-		$pi->setRequired(true);
-		$pi->setMaxLength(256);
-		$pi->setSize(6);
-		$pi->setInfo($pl->txt("info_svr_salt"));
-		$pi->setRetype(true);
-		$combo->addSubItem($pi);
-
-		$ti = new ilTextInputGUI($pl->txt("max_participants"), "max_participants");
-		$ti->setMaxLength(3);
-		$ti->setSize(6);
-		$ti->setInfo($pl->txt("info_max_participants"));
-		$combo->addSubItem($ti);
-
-		$ti = new ilTextInputGUI($pl->txt("add_presentation_url"), "add_presentation_url");
-		$ti->setMaxLength(256);
-		$ti->setSize(6);
-		//$ti->setValidationRegexp('%^https://.*%');
-		$ti->setInfo($pl->txt("info_add_presentation_url"));
-		$combo->addSubItem($ti);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("add_welcome_text"), "add_welcome_text");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("info_add_welcome_text"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("disable_sip"), "disable_sip");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("disable_sip_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("hide_username_logs"), "hide_username_logs");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("hide_username_logs_info"));
-		$combo->addSubItem($cb);
-		
-
-		$cb = new ilCheckboxInputGUI($pl->txt("private_chat_choose"), "private_chat_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("private_chat_choose_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("private_chat_default"), "private_chat_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("private_chat_default_info"));
-		$combo->addSubItem($cb);
-
-		// RECORDING
-		$cb = new ilCheckboxInputGUI($pl->txt("recording_choose"), "recording_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("recording_choose_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("recording_default"), "recording_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("recording_default_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("recording_only_for_moderated_rooms_default"), "recording_only_for_moderated_rooms_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("recording_only_for_moderated_rooms_default_info"));
-		$combo->addSubItem($cb);
-
-
-		$cb = new ilCheckboxInputGUI($pl->txt("cam_only_for_moderator_choose"), "cam_only_for_moderator_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("cam_only_for_moderator_choose_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("cam_only_for_moderator_default"), "cam_only_for_moderator_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("cam_only_for_moderator_default_info"));
-		$combo->addSubItem($cb);
-
-		// guestlink
-		$cb = new ilCheckboxInputGUI($pl->txt("guestlink_choose"), "guestlink_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("guestlink_choose_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("guestlink_default"), "guestlink_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("guestlink_default_info"));
-		$combo->addSubItem($cb);
-
-		return $combo;
-	}
-
-	private function getFormItemsForPlatformOM(ilSelectInputGUI $combo)
-	{
-		global $DIC; /** @var Container $DIC */
-		$lng = $DIC->language();
-		$ilCtrl = $DIC->ctrl();
-		$ilDB = $DIC->database();
-		$ilSetting = $DIC->settings();
-
-		$pl = $this->getPluginObject();
-
-		$ti = new ilTextInputGUI($pl->txt("om_svr_public_url"), "svr_public_url");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(60);
-		$ti->setInfo($pl->txt("info_svr_public_url"));
-		$combo->addSubItem($ti);
-
-		$ti = new ilTextInputGUI($pl->txt("om_svr_public_port"), "svr_public_port");
-		$ti->setRequired(true);
-		$ti->setMaxLength(5);
-		$ti->setSize(6);
-		$ti->setInfo($pl->txt("info_svr_public_port"));
-		$combo->addSubItem($ti);
-
-		$ti = new ilTextInputGUI($pl->txt("om_svr_username"), "svr_username");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(6);
-		$ti->setInfo($pl->txt("info_svr_username"));
-		$combo->addSubItem($ti);
-		/*
-		// Password - readable
-		$ti = new ilTextInputGUI($pl->txt("om_svr_userpass"), "svr_salt");
-		$ti->setRequired(true);
-		$ti->setMaxLength(256);
-		$ti->setSize(6);
-		$ti->setInfo($pl->txt("info_svr_salt_om"));
-		$combo->addSubItem($ti);
-		*/
-
-		// Password - unreadable
-		$pi = new ilPasswordInputGUI($pl->txt("om_svr_userpass"), "svr_salt");
-		$pi->setSkipSyntaxCheck(true);
-		$pi->setRequired(true);
-		$pi->setMaxLength(256);
-		$pi->setSize(6);
-		$pi->setInfo($pl->txt("info_svr_salt_om"));
-		$pi->setRetype(true);
-
-		$combo->addSubItem($pi);
-
-		$ti = new ilTextInputGUI($pl->txt("max_participants"), "max_participants");
-		//$ti->setRequired(true);
-		$ti->setMaxLength(3);
-		$ti->setSize(6);
-		$ti->setInfo($pl->txt("info_max_participants"));
-		$combo->addSubItem($ti);
-
-		/*
-		$cb = new ilCheckboxInputGUI($pl->txt("private_chat_choose"), "private_chat_choose");
-		//$cb->setRequired(false);
-		$cb->setInfo($pl->txt("private_chat_choose_info"));
-		$combo->addSubItem($cb);
-
-
-		$cb = new ilCheckboxInputGUI($pl->txt("private_chat_default"), "private_chat_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("private_chat_default_info"));
-		$combo->addSubItem($cb);
-
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("om_with_chat_choose"), "cb_with_chat_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("om_with_chat_choose_info"));
-		$combo->addSubItem($cb);
-
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("om_with_chat_default"), "cb_with_chat_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("om_with_chat_default_info") . " " . $pl->txt("config_help_begin") . " " . $pl->txt("with_chat_info"));
-		$combo->addSubItem($cb);
-		*/
-
-
-		// RECORDING
-		$cb = new ilCheckboxInputGUI($pl->txt("recording_choose"), "recording_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("recording_choose_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("recording_default"), "recording_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("recording_default_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("recording_only_for_moderated_rooms_default"), "recording_only_for_moderated_rooms_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("recording_only_for_moderated_rooms_default_info"));
-		$combo->addSubItem($cb);
-
-
-		/*
-		$cb = new ilCheckboxInputGUI($pl->txt("cam_only_for_moderator_choose"), "cam_only_for_moderator_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("cam_only_for_moderator_choose_info"));
-		$combo->addSubItem($cb);
-
-		$cb = new ilCheckboxInputGUI($pl->txt("cam_only_for_moderator_default"), "cam_only_for_moderator_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("cam_only_for_moderator_default_info"));
-		$combo->addSubItem($cb);
-		*/
-		return $combo;
-	}
-
 	private function initConfigurationFormByPlatform(string $platform, string $cmd = '')
 	{
 		global $DIC; /** @var Container $DIC */
@@ -612,22 +293,85 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$ilSetting = $DIC->settings();
 		$ilTpl = $DIC->ui()->mainTemplate();
 
+		$iniSet = $this->object instanceof ilMultiVcConfig ? ilApiMultiVC::setPluginIniSet($this->object) : [];
+		$vcTypesAvailable = isset($iniSet['vc_types_available']) ? $iniSet['vc_types_available'] : ['vc_types_available' => []];
+		$filteredVcTypes = [];
+		$triggerScript = false;
+		$i = 0;
+		foreach( ilMultiVcConfig::AVAILABLE_VC_CONN as $vcKey => $vcType ) {
+			if( in_array($vcType, $vcTypesAvailable) ) {
+				$filteredVcTypes[$vcKey] = $vcType;
+				if( $vcType === 'Webex' ) {
+					$triggerScript = $i;
+				}
+				$i++;
+			}
+		}
+
+
+
 		$pl = $this->getPluginObject();
 
 		$combo = new ilSelectInputGUI($pl->txt("showcontent"), 'showcontent');
 		$combo->setRequired(true);
 		if( $cmd ===  'configureNewMultiVcConn' || isset($_GET['configureNewMultiVcConn']) ) { // editMultiVcConn configureNewMultiVcConn
 			$combo->setOptions([$platform => ilMultiVcConfig::AVAILABLE_VC_CONN[$_GET['configureNewMultiVcConn']]]);
+		} elseif( (bool)(strlen($this->object->getTitle())) ) {
+			$combo->setOptions([$platform => ilMultiVcConfig::AVAILABLE_VC_CONN[$this->object->getShowContent()]]);
 		} else {
-			$combo->setOptions(ilMultiVcConfig::AVAILABLE_VC_CONN);
+			$combo->setOptions($filteredVcTypes);
+		}
+		$combo->setInfo($pl->txt('info_platform_chg_reset_data'));
+
+
+		#$wbxAdmInteg = (bool)ilApiMultiVC::init()->getPluginIniSet('wbx_adm_integrations') ?? false;
+		#$combo->setHideSubForm(false, '=== \'' . $this->object->getShowContent() . '\'' );
+
+		// 1st form page to create new conn
+		if( $cmd === 'selectNewMultiVcConn' ) { // isset( $_POST['cmd']['createMultiVcConn'])
+			$ilTpl->addOnLoadCode('$(\'#il_prop_cont_integration_auth_method\', document).hide();');
+			if( false !== $triggerScript ) {
+				$combo->addCustomAttribute('onchange="if(this.selectedIndex===' . $triggerScript . '){$(\'#il_prop_cont_integration_auth_method\', document).show();} else {$(\'#il_prop_cont_integration_auth_method\', document).hide();}"');
+			}
+			$this->form->addItem($combo);
+
+			#if( $wbxAdmInteg ) {
+			$select = new ilSelectInputGUI($pl->txt('integration_auth_method'), 'integration_auth_method');
+			$select->setOptions(ilMultiVcConfig::INTEGRATION_AUTH_METHODS);
+			$select->setInfo(
+				$pl->txt('integration_auth_methods_info') . ' ' .
+				$pl->txt('integration_user_auth_scopes_info') . '<br />' .
+				$pl->txt('integration_admin_auth_scopes_info')
+			);
+				$this->form->addItem($select);
+			/*} else {
+				$ih = new ilHiddenInputGUI('api');
+				$this->form->addItem($ih);
+			}*/
+			return $this->form;
 		}
 
-		$combo->setHideSubForm(false, '=== \'' . $this->object->getShowContent() . '\'' );
-		$combo->setInfo($pl->txt('info_platform_chg_reset_data'));
-		if( $cmd === 'selectNewMultiVcConn' ) { // isset( $_POST['cmd']['createMultiVcConn'])
-			//var_dump($_POST); exit;
-			$this->form->addItem($combo);
-			return $this->form;
+		// 2nd form page to create new conn || edit conn
+		if( $platform === 'webex' ) {
+			#var_dump($ilCtrl->getParameterArray($this)); exit;
+			$wbxIntegAuthMethod = !(bool)(strlen($postIntegAuthMethod = $_POST['integration_auth_method']))? $ilCtrl->getParameterArray($this)['integration_auth_method'] : $postIntegAuthMethod;
+			$wbxIntegAuthMethod = !(bool)(strlen($wbxIntegAuthMethod)) ? $this->object->getAuthMethod() : $wbxIntegAuthMethod;
+			$select = new ilSelectInputGUI($pl->txt('integration_auth_method'), 'integration_auth_method');
+			$select->setOptions([$wbxIntegAuthMethod => ilMultiVcConfig::INTEGRATION_AUTH_METHODS[$wbxIntegAuthMethod]]);
+			$select->setInfo(
+				$pl->txt('integration_' . $wbxIntegAuthMethod . '_auth_method_info') . ' ' .
+				$pl->txt('integration_user_auth_scopes_info') .
+				(($wbxIntegAuthMethod === 'admin') ? ', ' . $pl->txt('integration_admin_auth_scopes_info') : '')
+			);
+			#$select->setInfo($pl->txt('integration_' . $wbxIntegAuthMethod . '_auth_method_info'));
+			$combo->addSubItem($select);
+		} else {
+			$ih = new ilHiddenInputGUI('integration_auth_method');
+			$combo->addSubItem($ih);
+		}
+
+		if( $platform === 'edudip' && !isset($_GET['configureNewMultiVcConn']) ) {
+			$this->dic->ui()->mainTemplate()->addJavaScript( ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/js/modal.config.edudip.js' );
 		}
 
 		$ti = new ilTextInputGUI($pl->txt("title"), "title");
@@ -655,19 +399,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$ti->setInfo($pl->txt("info_hint"));
 		$combo->addSubItem($ti);
 
-		$cb = new ilCheckboxInputGUI($pl->txt("moderated_choose"), "cb_moderated_choose");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("moderated_choose_info") . " " . $pl->txt("config_help_begin") . " " . $pl->txt("moderated_info"));
-		$combo->addSubItem($cb);
 
-		//
-		$cb = new ilCheckboxInputGUI($pl->txt("moderated_default"), "cb_moderated_default");
-		$cb->setRequired(false);
-		$cb->setInfo($pl->txt("moderated_default_info"));
-		$combo->addSubItem($cb);
+		// Platform specific form items
+		include_once __DIR__ . '/partial/config.form.' . strtolower($platform) . '.php';
 
-		$cmd = 'getFormItemsForPlatform' . strtoupper($platform);
-		$combo = $this->$cmd($combo);
 		$this->form->addItem($combo);
 
 		return $this->form;
@@ -697,6 +432,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 
 
 		$this->form->setTitle($pl->txt("plugin_configuration"));
+		$this->form->setId('plugin_configuration');
 		$this->form->setFormAction($ilCtrl->getFormAction($this));
 		if( $cmd === 'selectNewMultiVcConn' ) {
 			$this->form->addCommandButton("configureNewMultiVcConn", $pl->txt("configure_add"));
@@ -786,12 +522,46 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["recording_only_for_moderated_rooms_default"] = $this->object->isRecordOnlyForModeratedRoomsDefault();
 		$values["cam_only_for_moderator_choose"] = $this->object->isCamOnlyForModeratorChoose();
 		$values["cam_only_for_moderator_default"] = $this->object->isCamOnlyForModeratorDefault();
+		$values["lock_disable_cam"] = $this->object->getLockDisableCamChoose();
+		$values["lock_disable_cam_default"] = $this->object->getLockDisableCamDefault();
 		$values["guestlink_choose"] = $this->object->isGuestlinkChoose();
 		$values["guestlink_default"] = $this->object->isGuestlinkDefault();
 		$values["add_presentation_url"] = $this->object->getAddPresentationUrl();
 		$values["add_welcome_text"] = $this->object->issetAddWelcomeText();
 		$values["disable_sip"] = $this->object->getDisableSip();
 		$values["hide_username_logs"] = $this->object->getHideUsernameInLogs();
+		#$values["api"] = $this->object->getApi();
+		$values["integration_auth_method"] = $this->object->getAuthMethod();
+		$values["extra_cmd_choose"] = $this->object->getExtraCmdChoose();
+		$values["extra_cmd_default"] = $this->object->getExtraCmdDefault();
+		$values["style"] = $this->object->getStyle();
+		$values["logo"] = $this->object->getLogo();
+		$tokenUser = [];
+		if( null !== $string = $this->object->getAccessToken() ) {
+			$token = json_decode($string, 1);
+			if( is_array($token) ) {
+				foreach ( array_keys($token) as $email ) {
+					$tokenUser[] = $email;
+				}
+				#$tokenUser = ilUtil::sortArray($tokenUser, 0);
+			}
+		}
+
+		$values["token_user"] = json_encode($tokenUser);
+		#$values["refresh_token"] = $this->object->getRefreshToken();
+
+		// Edudip Button
+		$btnEditTokenVal = [
+			'formBtnAddToken' => $this->dic->language()->txt('rep_robj_xmvc_add_token'),
+			'modalBtnStore' => $this->dic->language()->txt('save'),
+			'modalBtnDelete' => $this->dic->language()->txt('delete'),
+			'modalBtnAbort' => $this->dic->language()->txt('cancel'),
+			'modalAddTokenTitle' => $this->dic->language()->txt('rep_robj_xmvc_add_token'),
+			'modalDeleteTokenTitle' => $this->dic->language()->txt('rep_robj_xmvc_delete_token'),
+
+
+		];
+		$values['btn_edit_token_user'] = json_encode($btnEditTokenVal);
 
 		//$values["recording_only_for_moderator_choose"] = $this->object->isRecordOnlyForModeratorChoose();
 
@@ -802,11 +572,65 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$this->form->setValuesByArray($values);
 	}
 
+
+	public function updateTokenUser()
+	{
+		$form = $this->initConfigurationForm();
+		if ( $form->checkInput() ) {
+			$hasMinTokenLen = strlen($form->getInput('new_token_user_access_token')) >= 8;
+			$connId = $form->getInput('conn_id');
+			$tokens = $this->object->getTokenFromDb($connId, 'access');
+			#echo '<per>'; var_dump($tokens);; exit;
+			$storedTokens = (bool)strlen($tokens) ? json_decode($tokens, 1) : [];
+			#echo '<per>'; var_dump($storedTokens); exit;
+
+			$newTokenUserAccessToken = $form->getInput('new_token_user_access_token');
+			$newTokenUserEmail = $form->getInput('new_token_user_email');
+			$validEmail = (bool)sizeof(ilObjUser::getUserLoginsByEmail($newTokenUserEmail));
+			if( $hasMinTokenLen && $validEmail && !array_key_exists($newTokenUserEmail, $storedTokens) ) {
+				$storedTokens[$newTokenUserEmail] = $newTokenUserAccessToken;
+				$_POST['token_user'] = json_encode($storedTokens);
+				ilUtil::sendSuccess($this->dic->language()->txt("rep_robj_xmvc_token_stored"), true);
+			} else {
+				$_POST['token_user'] = json_encode($storedTokens);
+				ilUtil::sendQuestion($this->dic->language()->txt("rep_robj_xmvc_token_not_stored"), true);
+			}
+			$this->save(false);
+			$this->dic->ctrl()->setParameter($this, 'conn_id', $connId);
+			$this->dic->ctrl()->redirect($this, "editMultiVcConn");
+		}
+	}
+
+	public function deleteTokenUser()
+	{
+		$form = $this->initConfigurationForm();
+		if ( $form->checkInput() ) {
+			$connId = $form->getInput('conn_id');
+			$tokens = $this->object->getTokenFromDb($connId, 'access');
+			#echo '<per>'; var_dump($tokens);; exit;
+			$storedTokens = (bool)strlen($tokens) ? json_decode($tokens, 1) : [];
+			#echo '<per>'; var_dump($storedTokens); exit;
+
+			$deleteTokenUserEmail = $form->getInput('new_token_user_email');
+			if( array_key_exists($deleteTokenUserEmail, $storedTokens) ) {
+				unset($storedTokens[$deleteTokenUserEmail]);
+				$_POST['token_user'] = json_encode($storedTokens);
+				ilUtil::sendSuccess($this->dic->language()->txt("rep_robj_xmvc_token_deleted"), true);
+			} else {
+				#ilUtil::sendQuestion($this->dic->language()->txt("rep_robj_xmvc_token_not_deleted"), true);
+			}
+			$this->save(false);
+			$this->dic->ctrl()->setParameter($this, 'conn_id', $connId);
+			$this->dic->ctrl()->redirect($this, "editMultiVcConn");
+		}
+	}
+
+
 	/**
 	 * Save form input
-	 *
+	 * @param bool $redirect
 	 */
-	public function save()
+	public function save(bool $redirect = true)
 	{
 		global $DIC; /** @var Container $DIC */
 		$lng = $DIC->language();
@@ -847,7 +671,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			{
 				$this->object->setDefaultValues();
 			} else {
-		
 				$this->object->setConnId(!!(bool)($connId = $form->getInput("conn_id")) ? $connId : null);
 				$this->object->setTitle($form->getInput("title"));
 				$this->object->setHint((string)ilMultiVUtil::removeUnsafeChars($form->getInput("hint")) );
@@ -883,15 +706,46 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				//$this->object->setRecordOnlyForModeratorDefault( (bool)$form->getInput("recording_only_for_moderated_rooms_default") );
 				$this->object->setCamOnlyForModeratorChoose( (bool)$form->getInput("cam_only_for_moderator_choose") );
 				$this->object->setCamOnlyForModeratorDefault( (bool)$form->getInput("cam_only_for_moderator_default") );
+				$this->object->setLockDisableCamChoose( (bool)$form->getInput("lock_disable_cam") );
+				$this->object->setLockDisableCamDefault( (bool)$form->getInput("lock_disable_cam_default") );
 				$this->object->setGuestlinkChoose( (bool)$form->getInput("guestlink_choose") );
 				$this->object->setGuestlinkDefault( (bool)$form->getInput("guestlink_default") );
 				$this->object->setAddPresentationUrl( $form->getInput("add_presentation_url") );
 				$this->object->setAddWelcomeText( $form->getInput("add_welcome_text") );
 				$this->object->setDisableSip( $form->getInput("disable_sip") );
 				$this->object->setHideUsernameInLogs( $form->getInput("hide_username_logs") );
+				#$this->object->setApi( $form->getInput("api") );
+				$this->object->setAuthMethod( $form->getInput("integration_auth_method") );
+				if( is_null($this->object->getConnId()) ) {
+					$token = [
+							'access_token' => null,
+							'refresh_token' => null
+						];
+				} elseif( false !== array_search($this->dic->ctrl()->getCmd(), ['update_token_user', 'delete_token_user']) && false !== array_search($this->object->getShowContent(), $this->object::ADMIN_DEFINED_TOKEN_VC) ) {
+					$token = [
+						'access_token' => $form->getInput("token_user"),
+						'refresh_token' => null
+					];
+				} else {
+					$token = $this->object->getTokenFromDb($connId);
+				}
+				$this->object->setAccessToken($token['access_token']);
+				$this->object->setRefreshToken($token['refresh_token']);
+				/*
+				$this->object->setAccessToken(false === array_search($this->object->getShowContent(), $this->object::ADMIN_DEFINED_TOKEN_VC)
+						? $form->getInput("access_token")
+						: $form->getInput("token_user")
+				);
+				$this->object->setRefreshToken( $form->getInput("refresh_token") );
+				*/
+				$this->object->setExtraCmdChoose( (bool)$form->getInput("extra_cmd_choose") );
+				$this->object->setExtraCmdDefault( (bool)$form->getInput("extra_cmd_default") );
+				$this->object->setStyle( $form->getInput("style") );
+				$this->object->setLogo( $form->getInput("logo") );
+
 
 				if ($form->getInput("showcontent") != "spreed") {
-					if( $form->getInput('svr_salt') !== self::ASTERISK_PW ) {
+					if( isset($_GET['configureNewMultiVcConn']) || $form->getInput('svr_salt') !== self::ASTERISK_PW ) {
 						//var_dump([$form->getInput('svr_salt'), self::ASTERISK_PW]); exit;
 						$this->object->setSvrSalt($form->getInput("svr_salt"));
 					} else {
@@ -911,14 +765,16 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 
 			require_once "Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilObjMultiVc.php";
 			ilObjMultiVc::getInstance()->fillEmptyPasswordsBBBVCR();
-			ilUtil::sendSuccess($pl->txt("saving_invoked"), true);
-			$ilCtrl->redirect($this, "configure");
+			if( $redirect ) {
+				ilUtil::sendSuccess($pl->txt("saving_invoked"), true);
+				$ilCtrl->redirect($this, "configure");
+			}
 		}
-		else
-		{
+		#else
+		#{
 			$form->setValuesByPost();
 			$tpl->setContent($form->getHtml());
-		}
+		#}
 	}
 
 	public function getDefaultFieldAndValues()
@@ -959,12 +815,21 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["recording_only_for_moderated_rooms_default"] = 1;
 		$values["cam_only_for_moderator_choose"] = 0;
 		$values["cam_only_for_moderator_default"] = 0;
+		$values["lock_disable_cam"] = 0;
+		$values["lock_disable_cam_default"] = 0;
 		$values["guestlink_choose"] = 0;
 		$values["guestlink_default"] = 0;
 		$values["add_presentation_url"] = 'https://';
 		$values["add_welcome_text"] = 0;
 		$values["disable_sip"] = 0;
 		$values["hide_username_logs"] = 1;
+		$values["api"] = '';
+		$values["integration_auth_method"] = '';
+		$values["access_token"] = $this->object->getAccessToken();
+		$values["refresh_token"] = $this->object->getRefreshToken();
+		$values["token_user"] = $this->object->getAccessToken();
+		$values["style"] = $this->object->getStyle();
+		$values["logo"] = $this->object->getLogo();
 
 		return $values;
 	}
@@ -1118,6 +983,48 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			: $this->initTableGUI($gui);
 		return false;
 	}
+
+
+	#################################################################################################
+	#### EDUDIP
+	#################################################################################################
+	/**
+	 * Show auto complete results
+	 */
+	public function addUserAutoComplete()
+	{
+		if( !(bool)strlen($term = filter_var($_REQUEST['term'], FILTER_SANITIZE_STRING)) ) {
+			exit();
+		}
+		include_once './Services/User/classes/class.ilUserAutoComplete.php';
+		$auto = new ilUserAutoComplete();
+		#$auto->addUserAccessFilterCallable([$this,'filterUserIdsByRbacOrPositionOfCurrentUser']);
+		$auto->setSearchFields(array('login','firstname','lastname','email', 'second_email'));
+		$auto->setResultField('email');
+		$auto->enableFieldSearchableCheck(false);
+		$auto->setMoreLinkAvailable(true);
+
+		/*
+		if (($_REQUEST['fetchall'])) {
+			$auto->setLimit(ilUserAutoComplete::MAX_ENTRIES);
+		}
+		*/
+
+		echo $auto->getList($term);
+		exit();
+	}
+
+
+	#################################################################################################
+	#### Webex
+	#################################################################################################
+
+	public function authorizeWebexIntegration()
+	{
+		require_once(__DIR__ . '/class.ilApiWebexIntegration.php');
+		ilApiWebexIntegration::init($this);
+	}
+
 
 
 }

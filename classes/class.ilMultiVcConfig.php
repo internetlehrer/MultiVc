@@ -13,18 +13,40 @@ class ilMultiVcConfig
     const PLUGIN_ID = 'xmvc';
     const AVAILABLE_VC_CONN = [
         'bbb'		=> 'BigBlueButton',
+        'edudip'     => 'Edudip',
+        'om'		=> 'Openmeetings',
         'spreed'	=> 'Spreed',
-        'om'		=> 'Openmeetings'
+        'webex'     => 'Webex',
+    ];
+    const AVAILABLE_XMVC_API = [
+        'webex'     => 'ilApiWebex',
+        'edudip'     => 'ilApiEdudip',
+        'bbb'		=> 'ilApiBBB',
+        'om'		=> 'ilApiOM'
+    ];
+    const AVAILABLE_Webex_API = [
+        'admin' => 'Admin Scopes',
+        'integration' => 'User Scopes'
+    ];
+    const INTEGRATION_AUTH_METHODS = [
+        'admin' => 'Admin Scope',
+        'user' => 'User Scope'
     ];
     const AVAILABILITY_NONE = 0;  // Type is not longer available (error message)
     const AVAILABILITY_EXISTING = 1; // Existing objects of the can be used, but no new created
     const AVAILABILITY_CREATE = 2;  // New objects of this type can be created
 
+    const ADMIN_DEFINED_TOKEN_VC = [
+        'edudip'
+    ];
+
     /** @var Container $dic */
     private $dic;
-    /** @var ilDB $db */
+    /** @var ilDBInterface $db */
     private $db;
+
 	private static $instance = null;
+
 	/** @var int|null $conn_id */
     private $conn_id = null;
     /** @var string $title */
@@ -36,7 +58,7 @@ class ilMultiVcConfig
 	private $spreedUrl = '';
 	private $objIdsSpecial = '';
 	private $protected = true;
-	private $moderatedChoose = true;
+	private $moderatedChoose = false;
 	private $moderatedDefault = true;
 	private $btnSettingsChoose = false;
 	private $btnSettingsDefault = false;
@@ -92,8 +114,21 @@ class ilMultiVcConfig
     /** @var bool $camOnlyForModeratorDefault */
     private $camOnlyForModeratorDefault = false;
 
+    /** @var $lockDisableCamDefault */
+    private $lockDisableCamDefault = false;
+
+    /** @var $lockDisableCamChoose */
+    private $lockDisableCamChoose = false;
+
     /** @var string $addPresentationUrl */
     private $addPresentationUrl = '';
+
+    /** @var string $style */
+    private $style = '';
+
+    /** @var string $logo */
+    private $logo = '';
+
 
     /** @var bool $addWelcomeText */
     private $addWelcomeText = false;
@@ -115,6 +150,7 @@ class ilMultiVcConfig
             'privateChatChoose',
             'recordChoose',
             'camOnlyForModeratorChoose',
+            'lockDisableCam',
             'guestlinkChoose'
         ],
         'spreed'=> [
@@ -124,7 +160,23 @@ class ilMultiVcConfig
             'withChatChoose',
             'btnLocationshareChoose',
             'memberBtnFileuploadChoose',
-        ]
+        ],
+        'webex'   => [
+            'moderatedChoose',
+            'privateChatChoose',
+            'recordChoose',
+            'camOnlyForModeratorChoose',
+            'guestlinkChoose',
+            'extraCmd'
+        ],
+        'edudip'   => [
+            'moderatedChoose',
+            'privateChatChoose',
+            'recordChoose',
+            #'camOnlyForModeratorChoose',
+            #'guestlinkChoose',
+            #'extraCmd'
+        ],
     ];
 
     /** @var bool $guestlink_choose */
@@ -132,6 +184,29 @@ class ilMultiVcConfig
 
     /** @var bool $guestlink_default */
     private $guestlink_default = false;
+
+    /** @var string|null $accessToken */
+    private $accessToken;
+
+    /** @var string|null $refreshToken */
+    private $refreshToken;
+
+    /** @var null|string $tokenUser */
+    private $tokenUser = null;
+
+    /** @var string|null $api */
+    private $api = '';
+
+    /** @var string|null $authMethod */
+    private $authMethod = '';
+
+    /** @var bool $extraCmdDefault */
+    private $extraCmdDefault = false;
+
+    /** @var bool $extraCmdChoose */
+    private $extraCmdChoose = false;
+
+
 
 
     /**
@@ -243,6 +318,8 @@ class ilMultiVcConfig
             'record_only_moderated_rooms' => ['integer', (int)$this->isRecordOnlyForModeratedRoomsDefault()],
             'cam_only_moderator_choose' => ['integer', (int)$this->isCamOnlyForModeratorChoose()],
             'cam_only_moderator_default' => ['integer', (int)$this->isCamOnlyForModeratorDefault()],
+            'lock_disable_cam' => ['integer', (int)$this->getLockDisableCamChoose()],
+            'lock_disable_cam_default' => ['integer', (int)$this->getLockDisableCamDefault()],
             'svrUsername'		         => ['string', $this->getSvrUsername()],
             'guestlink_choose' => ['integer', (int)$this->isGuestlinkChoose()],
             'guestlink_default' => ['integer', (int)$this->isGuestlinkDefault()],
@@ -250,6 +327,14 @@ class ilMultiVcConfig
             'add_welcome_text' => ['integer', (int)$this->issetAddWelcomeText()],
             'disable_sip' => ['integer', (int)$this->getDisableSip()],
             'hide_username_logs' => ['integer', (int)$this->getHideUsernameInLogs()],
+            'access_token'  => ['string', $this->getAccessToken()],
+            'refresh_token'  => ['string', $this->getRefreshToken()],
+            #'api'  => ['string', $this->getApi()],
+            'auth_method'  => ['string', $this->getAuthMethod()],
+            'extra_cmd_choose' => ['integer', (int)$this->getExtraCmdChoose()],
+            'extra_cmd_default' => ['integer', (int)$this->getExtraCmdDefault()],
+            'style'				=> ['string', $this->getStyle()],
+            'logo'				=> ['string', $this->getLogo()],
             //'more_options'			        => ['string', json_encode($this->option)],
 		);
 		//var_dump($a_data); exit;
@@ -271,10 +356,14 @@ class ilMultiVcConfig
 		}
 	}
 
+    /**
+     * @return string
+     */
 	public function keepSvrSalt() {
         $query = $this->db->query("SELECT svrsalt FROM rep_robj_xmvc_conn WHERE id = " . $this->getConnId());
         $row = $this->db->fetchObject($query);
-	    $this->svrSalt = $row->svrsalt;
+        $this->svrSalt = $row->svrsalt;
+
     }
 
 	private function hasPlatformChanged(): bool
@@ -308,7 +397,7 @@ class ilMultiVcConfig
         $this->spreedUrl = '';
         $this->objIdsSpecial = (false !== array_search('obj_ids_special', $exclude)) ? $this->get_objIdsSpecial() : '';
         $this->protected = true;
-        $this->moderatedChoose = true;
+        $this->moderatedChoose = false;
         $this->moderatedDefault = true;
         $this->btnSettingsChoose = false;
         $this->btnSettingsDefault = false;
@@ -336,8 +425,32 @@ class ilMultiVcConfig
         $this->recordOnlyForModeratedRoomsDefault = true;
         $this->camOnlyForModeratorChoose = false;
         $this->camOnlyForModeratorDefault = false;
+        $this->lockDisableCamChoose = false;
+        $this->lockDisableCamDefault = false;
         $this->guestlink_choose = false;
         $this->guestlink_default = false;
+        $this->api = '';
+        $this->authMethod = 'user';
+        $this->extraCmdChoose = false;
+        $this->extraCmdDefault = false;
+        $this->style =
+        $this->logo = '';
+
+    }
+
+    /**
+     * @param int $connId
+     * @param string|null $type
+     * @return array|string|null
+     */
+    public function getTokenFromDb( int $connId, string $type = null )
+    {
+        $result = $this->db->query("SELECT access_token, refresh_token FROM rep_robj_xmvc_conn WHERE" .
+            " id =" . $this->db->quote($connId, 'integer'));
+        while ($record = $this->db->fetchAssoc($result)) {
+           return is_null($type) ? $record : $record[$type . '_token'];
+        }
+        return null;
     }
 
     /**
@@ -382,6 +495,8 @@ class ilMultiVcConfig
             $this->setRecordOnlyForModeratedRoomsDefault( (bool)$record["record_only_moderated_rooms"] );
             $this->setCamOnlyForModeratorChoose( (bool)$record["cam_only_moderator_choose"] );
             $this->setCamOnlyForModeratorDefault( (bool)$record["cam_only_moderator_default"] );
+            $this->setLockDisableCamChoose( (bool)$record["lock_disable_cam"] );
+            $this->setLockDisableCamDefault( (bool)$record["lock_disable_cam_default"] );
             $this->setSvrUsername($record['svrusername']);
             $this->setGuestlinkChoose( (bool)$record["guestlink_choose"] );
             $this->setGuestlinkDefault( (bool)$record["guestlink_default"] );
@@ -389,6 +504,14 @@ class ilMultiVcConfig
             $this->setAddWelcomeText( (bool)$record["add_welcome_text"] );
             $this->setDisableSip( (bool)$record["disable_sip"] );
             $this->setHideUsernameInLogs( (bool)$record["hide_username_logs"] );
+            $this->setAccessToken($record["access_token"]);
+            $this->setRefreshToken($record["refresh_token"]);
+            #$this->setApi($record["api"]);
+            $this->setAuthMethod($record["auth_method"]);
+            $this->setExtraCmdChoose( (bool)$record["extra_cmd_choose"] );
+            $this->setExtraCmdDefault( (bool)$record["extra_cmd_default"] );
+            $this->setStyle( (string)$record["style"] );
+            $this->setLogo( (string)$record["logo"] );
 
 
             $this->setStoredOption($record);
@@ -880,6 +1003,38 @@ class ilMultiVcConfig
     /**
      * @return bool
      */
+    public function getLockDisableCamDefault(): bool
+    {
+        return $this->lockDisableCamDefault;
+    }
+
+    /**
+     * @param bool $lockDisableCamDefault
+     */
+    public function setLockDisableCamDefault(bool $lockDisableCamDefault): void
+    {
+        $this->lockDisableCamDefault = $lockDisableCamDefault;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getLockDisableCamChoose(): bool
+    {
+        return $this->lockDisableCamChoose;
+    }
+
+    /**
+     * @param bool $lockDisableCamChoose
+     */
+    public function setLockDisableCamChoose(bool $lockDisableCamChoose): void
+    {
+        $this->lockDisableCamChoose = $lockDisableCamChoose;
+    }
+
+    /**
+     * @return bool
+     */
     public function isGuestlinkChoose(): bool
     {
         return $this->guestlink_choose;
@@ -907,6 +1062,129 @@ class ilMultiVcConfig
     public function setGuestlinkDefault(bool $guestlink_default): void
     {
         $this->guestlink_default = $guestlink_default;
+    }
+
+
+    /**
+     * @return string|null
+     */
+    public function getAccessToken(): ?string
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string|null $accessToken
+     */
+    public function setAccessToken(?string $accessToken): void
+    {
+        $this->accessToken = $accessToken;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRefreshToken(): ?string
+    {
+        return $this->refreshToken;
+    }
+
+    /**
+     * @param string|null $refreshToken
+     */
+    public function setRefreshToken(?string $refreshToken): void
+    {
+        $this->refreshToken = $refreshToken;
+    }
+
+    /**
+     * @param string|null $user
+     * @return array|string|null
+     */
+    public function getTokenUser(?string $user = null)
+    {
+        $array = json_decode($this->getAccessToken(), 1);
+        $token = !is_null($user) && isset($array[$user]) ? $array[$user] : null;
+        return is_null($user) ? $array : $token;
+    }
+
+    /**
+     * @param string $user
+     * @param string $token
+     */
+    public function setTokenUser(string $user, string $token): void
+    {
+        $tokenUser = $this->getTokenUser();
+        $tokenUser[$user] = $token;
+        $this->accessToken = json_encode($tokenUser);
+    }
+
+
+    /**
+     * @return string|null
+     */
+    public function getApi(): ?string
+    {
+        return $this->api;
+    }
+
+    /**
+     * @param string|null $api
+     */
+    public function setApi(?string $api): void
+    {
+        $this->api = $api;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAuthMethod(): ?string
+    {
+        return $this->authMethod;
+    }
+
+    /**
+     * @param string|null $authMethod
+     */
+    public function setAuthMethod(?string $authMethod): void
+    {
+        $this->authMethod = $authMethod;
+    }
+
+
+
+
+    /**
+     * @return bool
+     */
+    public function getExtraCmdDefault(): bool
+    {
+        return $this->extraCmdDefault;
+    }
+
+    /**
+     * @param bool $extraCmdDefault
+     */
+    public function setExtraCmdDefault(bool $extraCmdDefault): void
+    {
+        $this->extraCmdDefault = $extraCmdDefault;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getExtraCmdChoose(): bool
+    {
+        return $this->extraCmdChoose;
+    }
+
+    /**
+     * @param bool $extraCmdChoose
+     */
+    public function setExtraCmdChoose(bool $extraCmdChoose): void
+    {
+        $this->extraCmdChoose = $extraCmdChoose;
     }
 
     /**
@@ -976,6 +1254,40 @@ class ilMultiVcConfig
         $this->hideUsernameInLogs = $hideUsernameInLogs;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getStyle(): string
+    {
+        return $this->style;
+    }
+
+    /**
+     * @param string $style
+     */
+    public function setStyle(string $style): void
+    {
+        $this->style = $style;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogo(): string
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param string $logo
+     */
+    public function setLogo(string $logo): void
+    {
+        $this->logo = $logo;
+    }
+
+
 
 
     static public function _getMultiVcConnOverviewUses()

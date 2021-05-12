@@ -13,8 +13,13 @@ include_once("./Services/Repository/classes/class.ilObjectPlugin.php");
 
 class ilObjMultiVc extends ilObjectPlugin
 {
-	const TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
+    const TABLE_XMVC_OBJECT = 'rep_robj_xmvc_data';
+
+    const TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
+
 	const TABLE_USER_LOG = 'rep_robj_xmvc_user_log';
+
+	CONST MEETING_TIME_AHEAD = 60 * 5;
 
 	/** @var Container $dic */
 	private $dic;
@@ -36,14 +41,33 @@ class ilObjMultiVc extends ilObjectPlugin
 	private $record;
 	/** @var bool $camOnlyForModerator */
 	private $camOnlyForModerator;
-	/** @var bool $guestlink */
+
+    /** @var bool $lockDisableCam */
+    private $lockDisableCam = false;
+
+    /** @var bool $guestlink */
 	private $guestlink = false;
+	/** @var int $extraCmd */
+	private $extraCmd = false;
 	/** @var string $moderatorPwd */
 	private $moderatorPwd;
 	/** @var int $roomId */
 	private $roomId;
 	/** @var int $connId */
 	private $connId;
+
+	/** @var string|null $accessToken */
+	private $accessToken = null;
+
+	/** @var string|null $refreshToken */
+	private $refreshToken = null;
+
+    /** @var string|null $authUser */
+    private $authUser = null;
+
+    /** @var string|null $authSecret */
+    private $authSecret = null;
+
 	/** @var object $option */
 	public $option;
 
@@ -108,10 +132,21 @@ class ilObjMultiVc extends ilObjectPlugin
 			'private_chat'			=> array('integer', (int)$this->isPrivateChat() ),
 			'recording'				=> array('integer', (int)$this->isRecord()),
 			'cam_only_for_moderator' => array('integer', (int)$this->isCamOnlyForModerator()),
+            'lock_disable_cam' => array('integer', (int)$this->getLockDisableCam()),
 			'conn_id' => array('integer', (int)$conn_id),
 			'guestlink' => array('integer', (int)$this->isGuestlink()),
+			'extra_cmd' => array('integer', (int)$this->getExtraCmd()),
+            #"auth_user" => ['string', $this->getAuthUser()],
 		);
 		$ilDB->insert('rep_robj_xmvc_data', $a_data);
+		/*
+		$authUser = $this->getAuthUser();
+        $objUserCreateDefaultsEntry = array_replace([
+            $authUser  => self::OBJ_USER_CREATE_DEFAULTS
+        ], $this->getMultiVcObjUser());
+        $this->setMultiVcObjUser($objUserCreateDefaultsEntry);
+        $this->setMultiVcObjUser(['email' => $authUser], $this->getRefId());
+		*/
 	}
 	
 	/**
@@ -129,7 +164,6 @@ class ilObjMultiVc extends ilObjectPlugin
 			$this->setPrivateChat( $settings->isPrivateChatDefault() );
 			$this->setRecord( $settings->isRecordDefault() );
 			$this->setCamOnlyForModerator( $settings->isCamOnlyForModeratorDefault() );
-
 			$this->setOnline($this->ilIntToBool($record["is_online"]));
 			$this->set_token($record["token"]);
 			$this->set_moderated($this->ilIntToBool($record["moderated"]));
@@ -144,10 +178,33 @@ class ilObjMultiVc extends ilObjectPlugin
 			$this->setPrivateChat( (bool)$record["private_chat"] );
 			$this->setRecord( (bool)$record["recording"] );
 			$this->setCamOnlyForModerator( (bool)$record["cam_only_for_moderator"] );
+            $this->setLockDisableCam( (bool)$record["lock_disable_cam"] );
 			$this->setRoomId( (int)$record["rmid"] );
 			$this->setConnId( (int)$record["conn_id"] );
+			$this->setAccessToken( $record["access_token"] );
+			$this->setRefreshToken( $record["refresh_token"] );
+            $this->setAuthUser( $record["auth_user"] );
+            #$this->setAuthSecret( $record["auth_secret"] );
 			$this->setGuestlink( (bool)$record["guestlink"] );
+			$this->setExtraCmd( $record["extra_cmd"] );
 		}
+
+		/*
+        $hasWritePermission = $this->dic->access()->checkAccess("write", "", $this->getRefId());
+        $objUser = $this->getMultiVcObjUser($this->getRefId());
+        $issetObjUserEntry = isset($objUser['email']);
+        if( !$issetObjUserEntry ) {
+            $this->setMultiVcObjUser(['email' => $this->dic->user()->getEmail()], $this->getRefId());
+        }
+        if( $hasWritePermission && !$issetObjUserEntry ) {
+            $objUserCreateDefaultsEntry = array_replace([
+                $this->dic->user()->getEmail()  => self::OBJ_USER_CREATE_DEFAULTS
+            ], $this->getMultiVcObjUser());
+        }
+        $objUser = $this->getMultiVcObjUser($this->getRefId());
+        $authUser = isset($objUser['email']) ? $objUser['email'] : $this->dic->user()->getEmail();
+        $this->setAuthUser( $authUser );
+		*/
 	}
 
 	/**
@@ -198,10 +255,25 @@ class ilObjMultiVc extends ilObjectPlugin
 			'private_chat'			=> ['integer', (int)$this->isPrivateChat()],
 			'recording'				=> ['integer', (int)$this->isRecord()],
 			'cam_only_for_moderator' => ['integer', (int)$this->isCamOnlyForModerator()],
+            'lock_disable_cam' => ['integer', (int)$this->getLockDisableCam()],
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
+			'access_token'				  => ['string', $this->getAccessToken()],
+			'refresh_token'				  => ['string', $this->getRefreshToken()],
+            'auth_user'				  => ['string', $this->getAuthUser()],
 			'guestlink' => ['integer', (int)$this->isGuestlink()],
+			'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
 		);
-		$ilDB->update('rep_robj_xmvc_data', $a_data, array('id' => array('integer', $this->getId())));
+        $ilDB->update('rep_robj_xmvc_data', $a_data, array('id' => array('integer', $this->getId())));
+
+        /*
+        $authUser = $this->getAuthUser();
+        $objUserCreateDefaultsEntry = array_replace([
+            $authUser  => self::OBJ_USER_CREATE_DEFAULTS
+        ], $this->getMultiVcObjUser());
+        $this->setMultiVcObjUser($objUserCreateDefaultsEntry);
+        $this->setMultiVcObjUser(['email' => $authUser], $this->getRefId());
+        $ilDB->update('rep_robj_xmvc_data', $a_data, array('id' => array('integer', $this->getId())));
+        */
 	}
 
 	public function updateRoomId($roomId): void
@@ -227,21 +299,47 @@ class ilObjMultiVc extends ilObjectPlugin
 		$ilDB->update('rep_robj_xmvc_data', $data, array('id' => array('integer', $this->getId())));
 	}
 
+	public function updateAccessRefreshToken(): void
+	{
+		global $ilDB;
+
+		$data = [
+			'access_token' => ['string', $this->accessToken],
+			'refresh_token' => ['string', $this->refreshToken]
+		];
+		$ilDB->update('rep_robj_xmvc_data', $data, array('id' => array('integer', $this->getId())));
+	}
+
+	public function resetAccessRefreshToken(): void
+	{
+		global $ilDB;
+
+		$this->setAccessToken();
+		$this->setRefreshToken();
+
+		$data = [
+			'access_token' => ['string', $this->accessToken],
+			'refresh_token' => ['string', $this->refreshToken]
+		];
+		$ilDB->update('rep_robj_xmvc_data', $data, array('id' => array('integer', $this->getId())));
+	}
+
 	/**
 	* Delete data from db
 	*/
 	function doDelete()
 	{
 		global $ilDB;
-		$ilDB->manipulate("DELETE FROM rep_robj_xmvc_data WHERE id = ".$ilDB->quote($this->getId(), "integer"));
+
+        #$ilDB->manipulate("DELETE FROM rep_robj_xmvc_session WHERE obj_id = ".$ilDB->quote($this->getId(), "integer"));
+		$ilDB->manipulate("DELETE FROM rep_robj_xmvc_schedule WHERE obj_id = " . $ilDB->quote($this->getId(), "integer"));
+        $ilDB->manipulate("DELETE FROM rep_robj_xmvc_data WHERE id = " . $ilDB->quote($this->getId(), "integer"));
 	}
 	
 	public function doCloneObject($new_obj, $a_target_id, $a_copy_id = 0)
 	{
 		global $DIC; /** @var Container $DIC */
-		//if( !$DIC->access()->checkAccessOfUser($DIC->user()->getId(), 'write', '', $this->getRefId()) ) {
-		//	return;
-		//}
+
 		$this->doClone($new_obj, $a_target_id, $a_copy_id);
 	}
 
@@ -270,8 +368,10 @@ class ilObjMultiVc extends ilObjectPlugin
 			'private_chat'			=> ['integer', (int)$this->isPrivateChat()],
 			'recording'				=> ['integer', (int)$this->isRecord()],
 			'cam_only_for_moderator' => ['integer', (int)$this->isCamOnlyForModerator()],
+            'lock_disable_cam' => ['integer', (int)$this->getLockDisableCam()],
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
 			'guestlink' => ['integer', (int)$this->isGuestlink()],
+			'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
 
 			//'more_options'			=> ['string', json_encode($this->option)],
 		);
@@ -279,6 +379,88 @@ class ilObjMultiVc extends ilObjectPlugin
 		// $new_obj->createRoom($this->getOnline());
 		// $new_obj->doUpdate();
 	}
+
+    /**
+     * @param int|null $refId
+     * @param int|null $userId
+     * @return array
+     */
+	public function getMultiVcObjUser(?int $refId = null, ?int $userId = null): array
+    {
+        $db = $this->dic->database();
+        $result = [];
+        $userId = $db->quote($userId ?? $this->dic->user()->getId(), 'integer');
+        $refId = $db->quote($refId ?? 0, 'integer');
+
+        $sql = 'SELECT rel_data FROM rep_robj_xmvc_obj_user WHERE ref_id = ' . $refId .
+            ' AND user_id = ' . $userId;
+        $query = $db->query($sql);
+        while($row = $db->fetchAssoc($query)) {
+            $result = json_decode($row['rel_data'], true);
+        }
+        return $result;
+    }
+
+    /**
+     * @param array $param
+     * @param int|null $refId
+     * @return bool
+     */
+    public function setMultiVcObjUser(array $param, ?int $refId = null): bool
+    {
+        $db = $this->dic->database();
+        $oldParam = $this->getMultiVcObjUser($refId);
+        $newParam = [
+            'rel_data' => ['string', json_encode(array_replace($oldParam, $param))]
+        ];
+        $where = [
+            'ref_id' => ['integer', $refId ?? 0],
+            'user_id' => ['integer' , $this->dic->user()->getId()]
+        ];
+        $result = false;
+        if( !(bool)sizeof($oldParam) ) {
+            $result = $db->insert('rep_robj_xmvc_obj_user', array_merge($where, $newParam));
+        } else {
+            $result = $db->update('rep_robj_xmvc_obj_user', $newParam, $where);
+        }
+        return (bool)$result;
+    }
+
+    public function setMultiVcObjUserAccessToken(string $accessToken): bool
+    {
+        $param = $this->getMultiVcObjUser();
+        $param[$this->getAuthUser()]['access_token'] = $accessToken;
+        return $this->setMultiVcObjUser($param);
+    }
+
+    public function checkAndSetMultiVcObjUserAsAuthUser(int $userId, string $email, bool $setAuthUser = false, bool $setAccessToken = false): bool
+    {
+        #$authUser = $this->object->getAuthUser();
+        $objectUser = $this->getMultiVcObjUser(0, $userId);
+        $objectUserSet = isset($objectUser[$email]) ? $objectUser[$email] : null;
+        switch(true) {
+            case is_null($objectUserSet):
+            case !($email === ilObjUser::_lookupEmail($userId)):
+                return false;
+            default:
+                break;
+        }
+
+        /*
+        if( !isset($objectUserSet['verified']) || !$objectUserSet['verified'] ||
+            !isset($objectUserSet['access_token']) ||
+            !(bool)strlen($objectUserSet['access_token']) ) {
+            return false;
+        }
+        */
+        if( $setAuthUser ) {
+            $this->setAuthUser($email);
+        }
+        if( $setAccessToken ) {
+            $this->setAccessToken($objectUserSet['access_token']);
+        }
+        return true;
+    }
 	
 	//
 	// Set/Get Methods for our MultiVc properties
@@ -464,6 +646,23 @@ class ilObjMultiVc extends ilObjectPlugin
 		$this->camOnlyForModerator = $camOnlyForModerator;
 	}
 
+    /**
+     * @return bool
+     */
+    public function getLockDisableCam(): bool
+    {
+        return $this->lockDisableCam;
+    }
+
+    /**
+     * @param bool $lockDisableCam
+     */
+    public function setLockDisableCam(bool $lockDisableCam): void
+    {
+        $this->lockDisableCam = $lockDisableCam;
+    }
+
+
 	/**
 	 * @return bool
 	 */
@@ -480,6 +679,22 @@ class ilObjMultiVc extends ilObjectPlugin
 		$this->guestlink = $guestlink;
 	}
 
+
+	/**
+	 * @return int
+	 */
+	public function getExtraCmd(): int
+	{
+		return $this->extraCmd;
+	}
+
+	/**
+	 * @param int $extraCmd
+	 */
+	public function setExtraCmd(int $extraCmd): void
+	{
+		$this->extraCmd = $extraCmd;
+	}
 
 
 	public function getMaxConcurrent(string $order = 'desc', int $limit = 100): array {
@@ -735,6 +950,134 @@ class ilObjMultiVc extends ilObjectPlugin
 		$this->connId = $connId;
 	}
 
+	/**
+	 * @return string|null
+	 */
+	public function getAccessToken(): ?string
+	{
+		return $this->accessToken;
+	}
+
+	/**
+	 * @param string|null $accessToken
+	 */
+	public function setAccessToken(?string $accessToken = null): void
+	{
+		$this->accessToken = $accessToken;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getRefreshToken(): ?string
+	{
+		return $this->refreshToken;
+	}
+
+	/**
+	 * @param string|null $refreshToken
+	 */
+	public function setRefreshToken(?string $refreshToken = null): void
+	{
+		$this->refreshToken = $refreshToken;
+	}
+
+    /**
+     * @return string|null
+     */
+    public function getAuthUser(): ?string
+    {
+        return $this->authUser;
+    }
+
+    /**
+     * @param string|null $authUser
+     */
+    public function setAuthUser(?string $authUser): void
+    {
+        $this->authUser = $authUser;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOwnerAuthUser(): bool
+    {
+        $query = $this->db->query("SELECT auth_user FROM " . self::TABLE_XMVC_OBJECT . " WHERE id = " .
+        $this->db->quote($this->getId(), 'integer'));
+        $entry = $this->db->fetchAssoc($query);
+        return isset($entry['auth_user']) && $entry['auth_user'] === ilObjUser::_lookupEmail($this->getOwner());
+    }
+
+    /**
+     * @param bool $update
+     */
+    public function makeOwnerToAuthUser(bool $update = true)
+    {
+        $this->setAuthUser($this->getOwnersEmail());
+
+        if( $update ) {
+            $values = [
+                'auth_user' => ['string', $this->getAuthUser()]
+            ];
+            $where = [
+                'id'    => ['integer', $this->getId()]
+            ];
+            $this->db->update(self::TABLE_XMVC_OBJECT, $values, $where);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getOwnersEmail(): string
+    {
+        return ilObjUser::_lookupEmail($this->getOwner());
+    }
+
+    public function getOwnersName(): string
+    {
+        return ilObjUser::_lookupOwnerName($this->getOwner());
+    }
+
+    public function isUserOwner(): bool
+    {
+        return (int)$this->getOwner() === (int)$this->dic->user()->getId();
+    }
+
+    /**
+     * @param string $email
+     * @param int $index
+     * @return int|null
+     */
+    public function getUserForEmail( string $email, int $index = 0 ): ?int
+    {
+        if( sizeof($account = ilObjUser::_getLocalAccountsForEmail($email)) && isset(array_keys($account)[$index]) ) {
+            return array_keys($account)[$index];
+        }
+        return null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAuthSecret(): ?string
+    {
+        return $this->authSecret;
+    }
+
+    /**
+     * @param string|null $authSecret
+     */
+    public function setAuthSecret(?string $authSecret): void
+    {
+        $this->authSecret = $authSecret;
+    }
+
+
+
+
+
 
 	private function setDefaultsByPluginConfig(?int $connId, bool $getObject = false): ?ilMultiVcConfig {
 		include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
@@ -758,7 +1101,674 @@ class ilObjMultiVc extends ilObjectPlugin
 		return $db->fetchObject($result);
 	}
 
+    static public function langMeeting2Webinar()
+    {
+        global $DIC; /**@var Container $DIC */
+
+        foreach($DIC->language()->global_cache->getTranslations()['rep_robj_xmvc'] as $key => $val) {
+            $DIC->language()->text[$key] = str_replace(
+                ['Meetings', 'Meeting', 'meeting', 'Webex'],
+                ['Webinare', 'Webinar', 'webinar', 'Edudip'],
+                $val
+            );
+            if( strtolower($DIC->user()->getCurrentLanguage()) !== 'de') {
+                $DIC->language()->text[$key] = str_replace(
+                    ['Webinare'],
+                    ['Webinars'],
+                    $val
+                );
+            }
+        }
+    }
+
+
+
+    ####################################################################################################################
+	#### SCHEDULED SESSIONS (MEETINGS / WEBINARS)
+    ####################################################################################################################
+
+	/**
+	 * @param string $from e. g. date('Y-m-d H:i:s')
+	 * @param string $to e. g. date('Y-m-d H:i:s')
+	 * @param int|null $refId
+	 * @param string|null $timezone
+	 * @return array|null
+	 */
+	public function getScheduledMeetingsByDateRange( string $from, string $to, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
+	{
+		$data = null;
+		$objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+		$sql = "SELECT *".
+			" FROM rep_robj_xmvc_schedule" .
+			" WHERE start >= " . $this->db->quote($from, 'string') .
+			" AND end <= " . $this->db->quote($to, 'string') .
+			((bool)$objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
+            #(!is_null($refId) && (bool)$objId ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
+			" ORDER BY start ASC";
+
+		$result = $this->db->query($sql);
+
+		while ($row = $this->db->fetchAssoc($result)) {
+		    $row['rel_data'] = json_decode($row['rel_data']);
+            $row['rel_data']->wbxmvcRelatedMeeting = true;
+            $row['rel_data'] = json_encode($row['rel_data']);
+			$data[] = $row;
+		}
+		return $data;
+	}
+
+    /**
+     * @param int $refId
+     * @param string|null $date
+     * @param int $timeAhead
+     * @return array|null
+     * @throws Exception
+     */
+    public function getScheduledSessionByRefIdAndDateTime( int $refId, ?string $date = null, int $timeAhead = 0 ): ?array
+    {
+        $objId = ilObject::_lookupObjId($refId);
+
+        $date = new DateTime($date ?? date("Y-m-d H:i:s"));
+        $start = date("Y-m-d H:i:s",  (int)$date->format('U') + $timeAhead);
+        $end = date("Y-m-d H:i:s",  (int)$date->format('U'));
+
+        $data = null;
+        $sql = "SELECT *" . #rel_data, start, end, user_id, auth_user
+            " FROM rep_robj_xmvc_schedule" .
+            " WHERE start <= " . $this->db->quote($start, 'text') .
+            " AND end >= " . $this->db->quote($end, 'text') .
+            " AND obj_id = " . $this->db->quote($objId, 'integer') .
+            " ORDER BY end DESC" .
+            " LIMIT 1";
+        $result = $this->db->query($sql);
+        while ($row = $this->db->fetchAssoc($result)) {
+            $data = $row;
+            if( isset($data['rel_data']) ) {
+                $data['rel_data'] = json_decode($data['rel_data'], 1);
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param string $from
+     * @param int|null $refId
+     * @param string|null $timezone
+     * @return array|null
+     */
+    public function getScheduledMeetingsByDateFrom( string $from, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $data = null;
+
+        $sql = "SELECT *".
+            " FROM rep_robj_xmvc_schedule" .
+            " WHERE end > " . $this->db->quote($from, 'string') .
+            ((bool)$objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
+            #(!is_null($refId) ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
+            " ORDER BY start ASC";
+
+        $result = $this->db->query($sql);
+
+        while ($row = $this->db->fetchAssoc($result)) {
+            $row['rel_data'] = json_decode($row['rel_data']);
+            $row['rel_data']->wbxmvcRelatedMeeting = true;
+            $row['rel_data'] = json_encode($row['rel_data']);
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    /**
+     * @param string $relId
+     * @param int|null $refId
+     * @param int|null $userId
+     * @return array|null
+     */
+    public function getScheduledMeetingByRelId( string $relId, ?int $refId = null, ?int $userId = null): ?array
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $data = null;
+
+        $sql = "SELECT *".
+            " FROM rep_robj_xmvc_schedule" .
+            " WHERE rel_id = " . $this->db->quote($relId, 'string') .
+            ((bool)$objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
+            #(!is_null($refId) ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
+            (!is_null($userId) ? " AND user_id = " . $this->db->quote($userId, 'integer') : '') .
+            " ORDER BY start ASC";
+
+        $result = $this->db->query($sql);
+
+        while ($row = $this->db->fetchAssoc($result)) {
+            $data = is_null($data) ? [] : $data;
+            $row['rel_data'] = json_decode($row['rel_data']);
+            $row['rel_data']->wbxmvcRelatedMeeting = true;
+            $row['rel_data'] = json_encode($row['rel_data']);
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    /**
+     * @param int $refId
+     * @param string $start
+     * @param string $end
+     * @param string $timeZone
+     * @return bool
+     */
+    public function deleteScheduledSession(int $refId, string $start, string $end, string $timeZone = 'Europe/Berlin' )
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $db = $this->dic->database();
+        return (bool)$db->manipulate('DELETE FROM rep_robj_xmvc_schedule WHERE' .
+            ' obj_id=' . $db->quote($objId, 'integer') .
+            ' AND start=' . $db->quote($start, 'text') .
+            ' AND end=' . $db->quote($end, 'text') .
+            ' AND timezone=' . $db->quote($timeZone, 'text')
+        );
+    }
+
+    /**
+     * @param int $refId
+     * @param string $from
+     * @param string $to
+     * @return array|null
+     */
+	public function hasScheduledMeetingsCollision( int $refId, string $from, string $to): ?array
+	{
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+		$data = null;
+
+		$sql = "SELECT *".
+			" FROM rep_robj_xmvc_schedule" .
+			" WHERE " .
+			" obj_id = " . $this->db->quote($objId, 'integer') .
+			" AND ((start <= " . $this->db->quote($from, 'string') .
+			" AND end > " . $this->db->quote($from, 'string') .
+			") OR (" .
+			" start < " . $this->db->quote($to, 'string') .
+			" AND end >= " . $this->db->quote($to, 'string') .
+			" )) " .
+			" ORDER BY start ASC";
+		#var_dump( $sql );
+		#exit(__FILE__ . __LINE__);
+		$result = $this->db->query($sql);
+		while ($row = $this->db->fetchAssoc($result)) {
+			$data[] = $row;
+		}
+		#date_default_timezone_set($currTimeZone);
+		return $data;
+	}
+
+
+    /**
+     * @param int $refId
+     * @param string $relId
+     * @param int $userId
+     * @return array|null
+     */
+    public function getScheduledSessionModerator(int $refId, string $relId, int $userId): ?array
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $sql = "SELECT participants".
+            " FROM rep_robj_xmvc_schedule" .
+            " WHERE obj_id = " . $this->db->quote($objId, 'integer') .
+            #" WHERE ref_id = " . $this->db->quote($refId, 'string') .
+            " AND rel_id = " . $this->db->quote($relId, 'string') .
+            #(!is_null($userId) ? " AND user_id = " . $this->db->quote($userId, 'integer') : '');
+            " AND user_id = " . $this->db->quote($userId, 'integer');
+        $result = $this->db->query($sql);
+        while($row = $this->db->fetchAssoc($result)) {
+            if( (bool)strlen($row['participants']) ) {
+                $participants = json_decode($row['participants'], 1);
+                return isset($participants['moderator']) ? $participants['moderator'] : null;
+            }
+        }
+        #var_dump( $row ); exit;
+
+        return null;
+    }
+
+    /**
+     * @param int $refId
+     * @param string $relId
+     * @param int $userId
+     * @return bool
+     */
+    public function hasScheduledSessionModerator(int $refId, string $relId, int $userId): bool
+    {
+        return !is_null($this->getScheduledSessionModerator($refId, $relId, $userId));
+    }
+
+    /**
+     * @param int $refId
+     * @param int $relId
+     * @param int $userId
+     * @param int|null $partUserId
+     * @return array|null
+     */
+    public function getScheduledSessionAttendee(int $refId, int $relId, int $userId, ?int $partUserId = null): ?array
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $sql = "SELECT participants".
+            " FROM rep_robj_xmvc_schedule" .
+            " WHERE obj_id = " . $this->db->quote($objId, 'integer') .
+            #" WHERE ref_id = " . $this->db->quote($refId, 'string') .
+            " AND rel_id = " . $this->db->quote($relId, 'string') .
+            " AND user_id = " . $this->db->quote($userId, 'integer');
+        $result = $this->db->query($sql);
+        if( (bool)strlen($json = $this->db->fetchAssoc($result)) ) {
+            $participants = json_decode($json, 1);
+            $participant = isset($participants['attendee']) ? json_decode($participants['attendee'], 1) : null;
+
+            return !is_null($participant) && !is_null($partUserId) && isset($participant[$partUserId]) ? $participant[$partUserId] : $participant;
+        }
+        return null;
+    }
+
+
+
+    ####################################################################################################################
+	#### HOST SESSIONS
+    ####################################################################################################################
+
+    /**
+     * @param string $from
+     * @param string $to
+     * @param int|null $refId
+     * @param string|null $timezone
+     * @return array|null
+     */
+    public function getStoredHostSessionsByDateRange( string $from, string $to, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $data = [];
+
+        $sql = "SELECT *".
+            " FROM rep_robj_xmvc_session" .
+            " WHERE start >= " . $this->db->quote($from, 'string') .
+            " AND end <= " . $this->db->quote($to, 'string') .
+            ((bool)$objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
+            #(!is_null($refId) ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
+            " ORDER BY start ASC";
+        $result = $this->db->query($sql);
+        while ($row = $this->db->fetchAssoc($result)) {
+            $row['rel_data'] = json_decode($row['rel_data']);
+            $row['rel_data']->wbxmvcRelatedMeeting = false;
+            $row['rel_data'] = json_encode($row['rel_data']);
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    /**
+     * @param int $refId
+     * @param array $items
+     * @return bool
+     */
+    public function storeHostSession(int $refId, array $items)
+    {
+        #echo '<pre>'; var_dump(json_decode($items, 1)); echo '</pre>'; exit;
+        $objId = ilObject::_lookupObjId($refId);
+        $state = false;
+        $db = $this->dic->database();
+        foreach ($items as $item) {
+            $item = json_decode(json_encode($item), 1);
+
+            $data = [
+                'start'     => ['text', $item['start']],
+                'end'       => ['text', $item['end']],
+                'timezone'  => ['text', $item['timezone']],
+                'rel_data'  => ['text', $item['rel_data']],
+                'host'      => ['text', $item['host']],
+                'type'      => ['text', $item['type']],
+                'obj_id'    => ['integer', $objId],
+                'rel_id'    => ['text', $item['rel_id']]
+            ];
+
+            $state = (bool)$db->insert('rep_robj_xmvc_session', $data);
+
+        } // EOF foreach ($items as $item)
+        return $state;
+    }
+
+    /**
+     * @param int $refId
+     * @param string|null $relId
+     * @return bool
+     */
+    public function deleteStoredHostSessionById(int $refId, ?string $relId = null)
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $this->db->manipulate('DELETE FROM rep_robj_xmvc_session WHERE'
+            . ' obj_id=' . $this->db->quote($objId, 'integer')
+            . (is_null($relId) ? '' : ' AND rel_id=' . $this->db->quote($relId, 'string'))
+        );
+        return true;
+    }
+
+    public function deleteStoredHostSessionByRelId( string $relId )
+    {
+        $this->db->manipulate('DELETE FROM rep_robj_xmvc_session WHERE'
+            . '  rel_id=' . $this->db->quote($relId, 'string')
+        );
+        return true;
+    }
+
+
+    ####################################################################################################################
+	#### Webex
+    ####################################################################################################################
+
+	/**
+	 * @param int $refId
+	 * @param string|null $date optional Y-m-d H:i:s focused datetime
+	 * @param int $timeAhead optional seconds ahead start
+	 * @return array|null
+	 * @throws Exception
+	 */
+	public function getWebexMeetingByRefIdAndDateTime( int $refId, ?string $date = null, int $timeAhead = 0 ): ?array
+	{
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+		$date = new DateTime($date ?? date("Y-m-d H:i:s"));
+		$start = date("Y-m-d H:i:s",  (int)$date->format('U') + $timeAhead);
+		$end = date("Y-m-d H:i:s",  (int)$date->format('U'));
+
+		$data = null;
+
+		$sql = "SELECT *". # rel_data, user_id, auth_user, start, end
+			" FROM rep_robj_xmvc_schedule" .
+			" WHERE start <= " . $this->db->quote($start, 'text') .
+			" AND end >= " . $this->db->quote($end, 'text') .
+            " AND obj_id = " . $this->db->quote($objId, 'integer') .
+            #" AND ref_id = " . $this->db->quote($refId, 'integer') .
+			" ORDER BY end DESC" .
+			" LIMIT 1";
+		$result = $this->db->query($sql);
+		while ($row = $this->db->fetchAssoc($result)) {
+			$data = $row;
+			if( isset($data['rel_data']) ) {
+				$data['rel_data'] = json_decode($data['rel_data']);
+			}
+		}
+		#date_default_timezone_set($currTimeZone);
+		return $data;
+	}
+
+	/**
+	 * @param int $refId
+	 * @param string $data
+	 * @param bool $returnEntry
+	 * @return array|null
+	 * @throws Exception
+	 */
+	public function saveWebexMeetingData( int $refId, string $data, bool $returnEntry = false )
+	{
+        $objId = ilObject::_lookupObjId($refId);
+		$dataObj = json_decode($data);
+		$dataObj->ilCreateDate = date('Y-m-d H:i:s');
+        $userId = $this->dic->user()->getId();
+        $authUser = $dataObj->email; # $this->getAuthUser();
+
+		$recurrence = strpos($dataObj->recurrence, 'FREQ') === 0 ? explode('=', explode(';', $dataObj->recurrence)[0])[1] : '';
+		$db = $this->dic->database();
+
+        $values = [
+            #'ref_id'	=> ['integer', $refId],
+            'obj_id'    => ['integer', $objId],
+            'start'	=> ['string', $dataObj->start],
+            'end'	=> ['string', $dataObj->end],
+            'timezone'	=> ['string', $dataObj->timezone],
+            'recurrence'	=> ['string', $recurrence],
+            'user_id'       => ['integer', $userId],
+            'auth_user'     => ['string', $authUser],
+            'rel_id'	=> ['string', $dataObj->id],
+            'rel_data'	=> ['string', json_encode($dataObj)]
+        ];
+
+		$this->db->insert('rep_robj_xmvc_schedule', $values);
+
+		if( $returnEntry ) {
+			return $this->getWebexMeetingByRefIdAndDateTime($refId, $dataObj->start);
+		}
+	}
+
+    /**
+     * @param int $refId
+     * @param string $start
+     * @param string $end
+     * @param string $timeZone
+     * @return bool
+     */
+	public function deleteWebexMeeting(int $refId, string $start, string $end, string $timeZone = 'Europe/Berlin' )
+	{
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+		return (bool)$this->db->manipulate('DELETE FROM rep_robj_xmvc_schedule WHERE' .
+            ' obj_id=' . $this->db->quote($objId, 'integer') .
+            #' ref_id=' . $db->quote($refId, 'integer') .
+			' AND start=' . $this->db->quote($start, 'text') .
+			' AND end=' . $this->db->quote($end, 'text') .
+			' AND timezone=' . $this->db->quote($timeZone, 'text')
+		);
+	}
+
+    /**
+     * @param int $refId
+     * @param string $relId
+     * @param int $userId
+     * @param string $data
+     * @param bool $returnEntry
+     * @return mixed
+     */
+    public function saveWebexSessionModerator( int $refId, string $relId, int $userId, string $data, bool $returnEntry = false )
+    {
+        $objId = ilObject::_lookupObjId($refId);
+        $dataArr = json_decode($data, true);
+        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
+            return false;
+        }
+        $currValues = json_decode($currEntry[0]['participants'], 1);
+        $currValues['moderator'][$this->dic->user()->getId()] = $dataArr;
+
+        $values = [ 'participants' => ['string', json_encode($currValues)]];
+
+        $where = [
+            #'ref_id'	=> ['integer', $refId],
+            'obj_id'	=> ['integer', $objId],
+            'rel_id'	=> ['string', $relId],
+            'user_id'       => ['integer', $userId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_schedule', $values, $where);
+
+        if( $returnEntry ) {
+            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+        }
+    }
+
+    /**
+     * @param int $refId
+     * @param string $relId
+     * @param int $userId
+     * @param string $data
+     * @param bool $returnEntry
+     * @return false|mixed
+     */
+    public function saveWebexSessionParticipant( int $refId, string $relId, int $userId, string $data, bool $returnEntry = false )
+    {
+        $objId = ilObject::_lookupObjId($refId);
+        $dataArr = json_decode($data, true);
+        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
+            return false;
+        }
+        $currValues = json_decode($currEntry[0]['participants'], 1);
+        $currValues['attendee'][$this->dic->user()->getId()] = [
+            'id'  => $dataArr['id'],
+            'email'  => $dataArr['email'],
+            'displayName'  => $dataArr['displayName'],
+            'coHost'  => $dataArr['coHost'],
+            'meetingId'  => $dataArr['meetingId'],
+        ];
+        $values = [ 'participants' => ['string', json_encode($currValues)]];
+
+        $where = [
+            'obj_id'	=> ['integer', $objId],
+            #'ref_id'	=> ['integer', $refId],
+            'rel_id'	=> ['string', $relId],
+            'user_id'       => ['integer', $userId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_schedule', $values, $where);
+
+        if( $returnEntry ) {
+            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+        }
+    }
+
+    ####################################################################################################################
+    #### EDUDIP
+    ####################################################################################################################
+
+
+
+    /**
+     * @param int $refId
+     * @param string $data
+     * @param bool $returnEntry
+     * @return array|null
+     * @throws Exception
+     */
+    public function saveEdudipSessionData( int $refId, string $data, bool $returnEntry = false )
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $dataObj = json_decode($data, false);
+        $dataArr = json_decode($data, true);
+        $dataObj->ilCreateDate = date('Y-m-d H:i:s');
+        $webinar = $dataArr['webinar'];
+        $dataObj->id = $webinar['id'];
+        $date = $webinar['dates'][0];
+        $dataObj->start = $date['date'];
+        $dataObj->end = $date['date_end'];
+        $dataObj->timezone = $this->dic->user()->getTimeZone();
+        $dataObj->title = $webinar['title'];
+
+        $userId = $this->dic->user()->getId();
+        $authUser = $this->getAuthUser();
+
+        $recurrence = ''; # strpos($dataObj->recurrence, 'FREQ') === 0 ? explode('=', explode(';', $dataObj->recurrence)[0])[1] : '';
+        $db = $this->dic->database();
+
+        $values = [
+            #'ref_id'	=> ['integer', $refId],
+            'obj_id'	=> ['integer', $objId],
+            'start'	=> ['string', $dataObj->start],
+            'end'	=> ['string', $dataObj->end],
+            'timezone'	=> ['string', $dataObj->timezone],
+            'recurrence'	=> ['string', $recurrence],
+            'user_id'       => ['integer', $userId],
+            'auth_user'     => ['string', $authUser],
+            'rel_id'	=> ['string', $dataObj->id],
+            'rel_data'	=> ['string', json_encode($dataObj)]
+        ];
+
+        $this->db->insert('rep_robj_xmvc_schedule', $values);
+
+        if( $returnEntry ) {
+            return $this->getScheduledMeetingByRelId($dataObj->id, $refId, $userId)[0];
+        }
+    }
+
+    /**
+     * @param int $refId
+     * @param int $relId
+     * @param int $userId
+     * @param string $data
+     * @param bool $returnEntry
+     * @return mixed
+     */
+    public function saveEdudipSessionModerator( int $refId, int $relId, int $userId, string $data, bool $returnEntry = false )
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $dataArr = json_decode($data, true);
+        $moderator = $dataArr['moderator'];
+        $moderator['user_id'] = $userId;
+        $moderator['webLink'] = $moderator['room_link'];
+        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
+            return false;
+        }
+        $currValues = json_decode($currEntry[0]['participants'], 1);
+        $currValues['moderator'][$this->dic->user()->getId()] = $moderator;
+
+        $values = [ 'participants' => ['string', json_encode($currValues)]];
+
+        $where = [
+            'obj_id'	=> ['integer', $objId],
+            #'ref_id'	=> ['integer', $refId],
+            'rel_id'	=> ['string', $relId],
+            'user_id'       => ['integer', $userId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_schedule', $values, $where);
+
+        if( $returnEntry ) {
+            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+        }
+    }
+
+    /**
+     * @param int $refId
+     * @param int $relId
+     * @param int $userId
+     * @param string $data
+     * @param bool $returnEntry
+     * @return false|mixed
+     */
+    public function saveEdudipSessionParticipant( int $refId, int $relId, int $userId, string $data, bool $returnEntry = false )
+    {
+        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+
+        $dataArr = json_decode($data, true);
+        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
+            return false;
+        }
+        $currValues = json_decode($currEntry[0]['participants'], 1);
+        $currValues['attendee'][$this->dic->user()->getId()] = array_merge(
+            $dataArr['participant'],
+            [
+                'webLink'   => $dataArr['globalWebinarLink'],
+                'email'     => $dataArr['called_param']['email']
+            ]);
+        $values = [ 'participants' => ['string', json_encode($currValues)]];
+
+        $where = [
+            'obj_id'	=> ['integer', $objId],
+            #'ref_id'	=> ['integer', $refId],
+            'rel_id'	=> ['string', $relId],
+            'user_id'       => ['integer', $userId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_schedule', $values, $where);
+
+        if( $returnEntry ) {
+            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+        }
+    }
 
 
 }
-?>
+

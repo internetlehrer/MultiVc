@@ -1,10 +1,12 @@
 <div id="infotop" class="col-sm-12">
     {INFOTOP}
 </div>
+<div id="recordingsallowed" class="col-sm-12">
+	{RECORDING_WARNING}
+</div>
 <div id="info_concurrent" class="col-sm-12">
     {INFO_CONCURRENT}
 </div>
-<br />
 <div class="col-sm-12">
     {JOINCONTENT}
     <div id="msgrunning" class="hidden">
@@ -28,6 +30,24 @@
                     <div class="btn-group">
                     <!-- Important: The next a-tag had a this.blur(); in the onclick event before. Please do not add it again, see bug #8723 -->
                         <button type="button" class="btn btn-default" id="copyUserInviteUrl">
+                            <span></span>
+                            <span class="sr-only">Copy to clipboard</span>
+                            <span class="glyphicon glyphicon-copy"></span>
+                        </button>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group{guestLinkPwHidden}">
+        <div class="il_InfoScreenProperty control-label col-xs-3">{guestLinkPwInfo}</div>
+        <div class="il_InfoScreenPropertyValue col-xs-9">
+            <div class="ilPermalinkContainer input-group">
+                <input class="form-control" readonly="readonly" id="guestLinkPw" type="text" value="{guestLinkPw}" onclick="return false;">
+                <span class="input-group-btn">
+                    <div class="btn-group">
+                    <!-- Important: The next a-tag had a this.blur(); in the onclick event before. Please do not add it again, see bug #8723 -->
+                        <button type="button" class="btn btn-default" id="copyGuestLinkPw">
                             <span></span>
                             <span class="sr-only">Copy to clipboard</span>
                             <span class="glyphicon glyphicon-copy"></span>
@@ -69,10 +89,19 @@
         copyText.setSelectionRange(0, 99999); /*For mobile devices*/
         document.execCommand("copy");
     });
+
+    $('#copyGuestLinkPw', document).on('click', function(e) {
+
+        let copyPw = $('#guestLinkPw', document).get(0);
+        copyPw.select();
+        copyPw.setSelectionRange(0, 99999); /*For mobile devices*/
+        document.execCommand("copy");
+    });
 </script>
 
 <style>
-    #infotop { margin-bottom: 20px; }
+    #infotop { margin-bottom: 15px; }
     #info_concurrent { margin-bottom: 15px; }
+    #recordingsallowed { font-weight: bold; margin-bottom: 15px;}
 </style>
 

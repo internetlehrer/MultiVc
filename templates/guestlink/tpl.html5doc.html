@@ -9,18 +9,18 @@
     <h1>{H1}</h1>
     <div id="info_top">{INFO_TOP_MODERATED_M}</div>
     <div id="err_messages" class="messages">
-        <div class="err_displayname_{ERR_STATE_DISPLAYNAME} alert alert-danger">{ERR_MSG_DISPLAYNAME}</div>
+        <div class="err_displayname_{ERR_STATE_INPUT_FIELD} alert alert-danger">{ERR_MSG_INPUT_FIELD}</div>
         <div class="err_moderator_{ERR_STATE_MODERATOR} alert alert-info">{ERR_MSG_MODERATOR}</div>
     </div>
     <form action="{FORM_ACTION}" method="POST" class="form-inline">
         <div id="input_name_submit" class="input-group mb-3">
-            {DISPLAY_NAME}
+            {INPUT_FIELD}
             <div class="input-group-append">
                 {SUBMIT_BUTTON}
             </div>
         </div>
         <small id="info_name" class="form-text text-muted">
-            {DISPLAY_NAME_INFO}
+            {INPUT_FIELD_INFO}
         </small>
         <input type="hidden" name="terms_of_use" id="terms_of_use" value="0">
     </form>
@@ -91,6 +91,12 @@
     }
     .err_moderator_1 b {
         font-weight: normal;
+    }
+
+    @media (min-width: 800px) {
+        .modal-dialog {
+            max-width: 780px;
+        }
     }
 </style>
 

@@ -821,3 +821,258 @@ if($ilDB->tableExists('rep_robj_xmvc_conn'))
     }
 }
 ?>
+<#24>
+<?php
+if(!$ilDB->tableExists('rep_robj_xmvc_schedule')) {
+    $fields_data = [
+        'obj_id' => array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ),
+        'start' => array(
+            'type' => 'timestamp',
+            'notnull' => true
+        ),
+        'end' => array(
+            'type' => 'timestamp',
+            'notnull' => true
+        ),
+        'timezone' => array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => true,
+            'default' => 'Europe/Berlin'
+        ),
+        'recurrence' => array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => false,
+            'default' => 0
+        ),
+        'user_id' => array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ),
+        'auth_user' => array(
+            'type' => 'text',
+            'length' => 80,
+            'notnull' => false
+        ),
+        'rel_id' => array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => false
+        ),
+        'rel_data' => array(
+            'type' => 'clob',
+            'notnull' => false
+        ),
+        'participants' => array(
+            'type' => 'clob',
+            'notnull' => false
+        )
+    ];
+    $ilDB->createTable("rep_robj_xmvc_schedule", $fields_data);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_schedule", array("obj_id", "rel_id"));
+}
+?>
+<#25>
+<?php
+if(!$ilDB->tableExists('rep_robj_xmvc_session')) {
+    $fields_data = [
+        'obj_id' => array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ),
+        'start' => array(
+            'type' => 'timestamp',
+            'notnull' => true
+        ),
+        'end' => array(
+            'type' => 'timestamp',
+            'notnull' => true
+        ),
+        'timezone' => array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => true,
+            'default' => 'Europe/Berlin'
+        ),
+        'host' => array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => false,
+            'default' => 0
+        ),
+        'type' => array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => false,
+            'default' => 0
+        ),
+        'rel_id' => array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => false,
+        ),
+        'rel_data' => array(
+            'type' => 'clob',
+            'notnull' => false,
+        ),
+    ];
+    $ilDB->createTable("rep_robj_xmvc_session", $fields_data);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_session", array("obj_id", "rel_id"));
+}
+?>
+<#26>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'extra_cmd_default') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'extra_cmd_default', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'extra_cmd_choose') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'extra_cmd_choose', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'access_token') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'access_token', array(
+            'type' => 'clob',
+            'notnull' => false,
+            'default' => null
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'refresh_token') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'refresh_token', array(
+            'type' => 'clob',
+            'notnull' => false,
+            'default' => null
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'auth_method') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'auth_method', array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => false
+        ));
+    }
+}
+?>
+<#27>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'extra_cmd') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'extra_cmd', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'auth_user') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'auth_user', array(
+            'type' => 'text',
+            'length' => 80,
+            'notnull' => false
+        ));
+    }
+}
+?>
+<#28>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'logo') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'logo', array(
+            'type' => 'clob',
+            'notnull' => false,
+            'default' => null
+        ));
+    }
+
+
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'style') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'style', array(
+            'type' => 'clob',
+            'notnull' => false,
+            'default' => null
+        ));
+    }
+
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'lock_disable_cam') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'lock_disable_cam', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'lock_disable_cam_default') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'lock_disable_cam_default', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+}
+
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'lock_disable_cam') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'lock_disable_cam', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+}
+?>
+<#29>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'access_token') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'access_token', array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => false
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'refresh_token') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'refresh_token', array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => false
+        ));
+    }
+}
+?>

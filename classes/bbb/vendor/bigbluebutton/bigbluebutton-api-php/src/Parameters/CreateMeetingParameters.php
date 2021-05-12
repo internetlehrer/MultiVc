@@ -23,6 +23,10 @@ namespace BigBlueButton\Parameters;
  */
 class CreateMeetingParameters extends MetaParameters
 {
+    const ALWAYS_ACCEPT = 'ALWAYS_ACCEPT';
+    const ALWAYS_DENY = 'ALWAYS_DENY';
+    const ASK_MODERATOR = 'ASK_MODERATOR';
+    
     /**
      * @var string
      */
@@ -164,6 +168,11 @@ class CreateMeetingParameters extends MetaParameters
     private $lockSettingsLockOnJoinConfigurable;
 
     /**
+     * @var bool
+     */
+    private $allowModsToUnmuteUsers;
+
+    /**
      * @var array
      */
     private $presentations = [];
@@ -187,6 +196,11 @@ class CreateMeetingParameters extends MetaParameters
      * @var boolean
      */
     private $freeJoin;
+    
+    /**
+     * @var string
+     */
+    private $guestPolicy = self::ALWAYS_ACCEPT;
 
     /**
      * CreateMeetingParameters constructor.
@@ -748,6 +762,25 @@ class CreateMeetingParameters extends MetaParameters
     }
 
     /**
+     * @return bool
+     */
+    public function isAllowModsToUnmuteUsers()
+    {
+        return $this->allowModsToUnmuteUsers;
+    }
+
+    /**
+     * @param  bool                    $allowModsToUnmuteUsers
+     * @return CreateMeetingParameters
+     */
+    public function setAllowModsToUnmuteUsers($allowModsToUnmuteUsers)
+    {
+        $this->allowModsToUnmuteUsers = $allowModsToUnmuteUsers;
+
+        return $this;
+    }
+
+    /**
      * @param $endCallbackUrl
      * @return CreateMeetingParameters
      */
@@ -846,6 +879,25 @@ class CreateMeetingParameters extends MetaParameters
     }
 
     /**
+     * @return string
+     */
+    public function getGuestPolicy()
+    {
+        return $this->guestPolicy;
+    }
+
+    /**
+     * @param  bool                    $guestPolicy
+     * @return CreateMeetingParameters
+     */
+    public function setGuestPolicy($guestPolicy)
+    {
+        $this->guestPolicy = $guestPolicy;
+
+        return $this;
+    }
+    
+    /**
      * @return array
      */
     public function getPresentations()
@@ -927,6 +979,7 @@ class CreateMeetingParameters extends MetaParameters
             'logo'                               => $this->logo,
             'copyright'                          => $this->copyright,
             'muteOnStart'                        => $this->muteOnStart ? 'true' : 'false',
+            'guestPolicy'                        => $this->guestPolicy,
             'lockSettingsDisableCam'             => $this->isLockSettingsDisableCam() ? 'true' : 'false',
             'lockSettingsDisableMic'             => $this->isLockSettingsDisableMic() ? 'true' : 'false',
             'lockSettingsDisablePrivateChat'     => $this->isLockSettingsDisablePrivateChat() ? 'true' : 'false',
@@ -936,6 +989,7 @@ class CreateMeetingParameters extends MetaParameters
             'lockSettingsLockedLayout'           => $this->isLockSettingsLockedLayout() ? 'true' : 'false',
             'lockSettingsLockOnJoin'             => $this->isLockSettingsLockOnJoin() ? 'true' : 'false',
             'lockSettingsLockOnJoinConfigurable' => $this->isLockSettingsLockOnJoinConfigurable() ? 'true' : 'false',
+            'allowModsToUnmuteUsers'             => $this->isAllowModsToUnmuteUsers() ? 'true' : 'false',
         ];
 
         // Add breakout rooms parameters only if the meeting is a breakout room

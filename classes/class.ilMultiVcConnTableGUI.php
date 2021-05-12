@@ -4,6 +4,8 @@
  * GPLv2, see LICENSE 
  */
 
+use ILIAS\DI\Container;
+
 include_once('./Services/Table/classes/class.ilTable2GUI.php');
 
 /**
@@ -16,11 +18,19 @@ class ilMultiVcConnTableGUI extends ilTable2GUI {
 
     /** @var ilPlugin|mixed|null $plugin_object */
     protected $plugin_object;
+
+    /** @var bool $isWebex */
+    private $webex = false;
+
+    /** @var Container $dic */
+    private $dic;
+
+
     /**
      * Constructor
-     * 
-     * @param 	object		parent object
-     * @param 	string		parent command
+     * @param object        parent object
+     * @param string        parent command
+     * @throws ilPluginException
      */
     function __construct($a_parent_obj, $a_parent_cmd = '', $a_template_context = '') 
     {
@@ -28,6 +38,9 @@ class ilMultiVcConnTableGUI extends ilTable2GUI {
 		$this->plugin_object = ilPlugin::getPluginObject(IL_COMP_SERVICE, 'Repository', 'robj', 'MultiVc');
 
 		parent::__construct($a_parent_obj, $a_parent_cmd, $a_template_context);
+
+        global $DIC; /** @var Container $DIC */
+        $this->dic = $DIC;
     }
 
     /**
@@ -83,6 +96,23 @@ class ilMultiVcConnTableGUI extends ilTable2GUI {
         $this->tpl->setVariable('TXT_AVAILABILITY', $this->plugin_object->txt('conf_availability_' . $a_set['availability']));
         $this->tpl->setVariable('TXT_USAGES', (int) $a_set['usages']);
 
+        if( $a_set['showcontent'] === 'webex' && $a_set['auth_method'] === 'admin' ) {
+            $this->setWebex(true);
+            $hrefSetAuth = $this->dic->ctrl()->getLinkTarget($this->getParentObject(), 'authorizeWebexIntegration');
+            $hrefSetAuth .= '&connId=' . $a_set['conn_id'];
+            #$linkInteg = 'https://webexapis.com/v1/authorize?client_id=C1cc0ecc0b6c4cf4adb19a0754a611456a4d8b38fced968c8631dba27c300fdc0&response_type=code&redirect_uri=https%3A%2F%2Fcass.aptum.net%2Frelease_6_webex%2FCustomizing%2Fglobal%2Fplugins%2FServices%2FRepository%2FRepositoryObject%2FMultiVc%2Fserver.php&scope=spark%3Akms%20meeting%3Aschedules_read%20meeting%3Aparticipants_read%20meeting%3Apreferences_write%20meeting%3Apreferences_read%20meeting%3Aparticipants_write%20meeting%3Aschedules_write&state=set_state_here';
+            $this->tpl->setVariable('TXT_INTEGRATION', $this->plugin_object->txt('authorize'));
+            $this->tpl->setVariable('LINK_INTEGRATION', $hrefSetAuth);
+            /*
+            $this->tpl->setVariable('LINK_INTEGRATION', ILIAS_HTTP_PATH . substr($this->plugin_object->getDirectory(), 1) .
+                '/server.php?cmd=authorizeWebexIntegration&iliasConnId=' . $a_set['conn_id'] . '&iliasClientId=' . CLIENT_ID);
+            */
+            #$this->tpl->setVariable('LINK_INTEGRATION', $linkInteg);
+            //$this->tpl->setVariable('ID_INTEGRATION', $a_set['svrusername']);
+        } else {
+            $this->tpl->setVariable('CSS_HIDE_INTEGRATION', 'hidden');
+        }
+
         $this->tpl->setVariable('TXT_EDIT', $lng->txt('edit'));
         $this->tpl->setVariable('LINK_EDIT', $ilCtrl->getLinkTarget($this->parent_obj, 'editMultiVcConn'));
 
@@ -91,6 +121,23 @@ class ilMultiVcConnTableGUI extends ilTable2GUI {
             $this->tpl->setVariable('LINK_DELETE', $ilCtrl->getLinkTarget($this->parent_obj, 'deleteMultiVcConn'));
         }
     }
+
+    /**
+     * @return bool
+     */
+    public function isWebex()
+    {
+        return $this->webex;
+    }
+
+    /**
+     * @param bool $webex
+     */
+    public function setWebex($webex)
+    {
+        $this->webex = $webex;
+    }
+
 
 }
 

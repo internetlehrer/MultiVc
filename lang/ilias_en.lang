@@ -159,10 +159,11 @@ tab_close#:#Please close this window or tab.
 meeting_running#:#The virtual meeting room has started.
 configure#:#Configuration
 configure_add#:#Create configuration
-report_log_max#:#Overview of use
+report_log_max#:#Overview of use (BBB)
 max_meetings#:#Maximum number of meeting rooms
 max_users#:#Maximum number of users
-info_platform_chg_reset_data#:#Please note that when changing the WebRTC platform, all settings are reset to default values and any stored form data is deleted. To change the WebRTC platform, you must first confirm the new selection by clicking "Save". In the next step, the previous configuration will be overwritten by saving again.
+info_platform_chg_reset_data#:#Your choice
+info_platform_chg_reset_data_o#:#Please note that when changing the WebRTC platform, all settings are reset to default values and any stored form data is deleted. To change the WebRTC platform, you must first confirm the new selection by clicking "Save". In the next step, the previous configuration will be overwritten by saving again.
 om_svr_username#:#SOAP user name
 om_svr_userpass#:#SOAP Password
 om_svr_public_url#:#URL of the Openmeeting server
@@ -185,12 +186,16 @@ conn_id#:#Meeting type
 msg_obj_deleted#:#The recording was deleted.
 guestlink#:#Guest link
 guestlink_info#:#Moderators can invite guests via a link
-guestlink_choose#:#Gastlink selection option
+guestlink_choose#:#Guestlink selection option
 guestlink_choose_info#:#Enable this option if you want users with write permissions to have 'Allow guest link' selected under Settings.
 guestlink_default#:#Guestlink Default
 guestlink_default_info#:#This option should be disabled in most cases. A use by unauthorized persons should be largely prevented. Guests always enter a moderated room as members only. A moderator must already be present there. Guests must agree to terms of use that are stored as ILIAS language variable. To edit the language variable go to Administration -> Languages. Click on the desired 'language' and type in 'rep_robj_xmvc_terms_of_use' for 'Identifier'. Then click on 'Apply filter' and edit the text.
 guest_displayname_input#:#Title  First name  Last name
 guest_displayname_info#:#Please note: Detailed title information can lead to usability problems due to the limited length of the space available for the name in BigBlueButton.
+guest_password_input#:#Password for guests
+guest_password_input_info#:#Please enter the password for the guest link here.
+btntext_guest_login_button#:#Login as guest
+err_msg_guest_password#:#The guest password is incorrect.
 err_msg_displayname#:#Please enter your name
 terms_of_use#:#<b>Property rights</b><br/>The information and materials contained in BigBlueButton conferences, such as text or images, are generally protected by copyright, trademark or patent laws. This applies in particular to the recording of BigBlueButton conferences. The secret recording of video or audio conferences is a criminal offence.<br/><br/><b>Rules of conduct</b><br/>You may not post any content that violates legal regulations, pornographic, obscene, defamatory, libellous, insulting, threatening, inciting or racist content. It is also forbidden to post advertising without permission and to transmit information that contains a virus, manipulation or similar damaging elements.<br/><br/><b>Processed data</b><br/>When using BigBlueButton, the following data is collected:<ul><li>Connection data (e.g. IP address, browser type, date and time of access)</li><li>If applicable, access data: User name, password in encrypted form</li><li>content data (e.g. uploaded files, chat posts, surveys)</li></ul>The temporary storage of connection data, in particular the IP address, by the system is necessary to enable BigBlueButton to be delivered to the User's computer. For this purpose, the user's IP address must remain stored for the duration of the session. The legal basis for the temporary storage of the data is Art. 6 para. 1 lit. f DSGVO.<br/>The connection data is also usually stored in log files. The time of deletion is determined by the operator of the server for BigBlueButton.
 usage#:#Usage
@@ -210,3 +215,141 @@ disable_sip_info#:#This option allows you to disable SIP dial-in. No telephone d
 info_delete_vc_sure#:#Are you sure? This virtual meeting room will be deleted:
 display_name#:#Display Name
 sysadmin_perm_choose_all#:#As an administrator, you can edit all properties for this object.
+scheduled_meetings#:#Scheduled meetings
+scheduled_meeting_created#:#Scheduled meeting created
+require_schedule_new_meeting#:#You can create meetings and start them during the scheduled time slots.
+scheduled_meeting_time_ahead#:#Lead time of the meeting
+schedule_meeting_duration_less_time#:#The minimum duration of a meeting is 10 minutes. Please correct your entries accordingly.
+scheduled_meeting_overview#:#Overview of scheduled meetings
+scheduled_meeting_create#:#Create scheduled meeting
+scheduled_meeting_create_btn#:#Create meeting
+scheduled_meeting_update#:#Update scheduled meeting
+scheduled_meeting_update_btn#:#Update meeting
+scheduled_meeting_delete_btn#:#Delete meeting
+scheduled_meeting_agenda#:#Agenda
+scheduled_meeting_recurrence#:#Recurrence
+scheduled_meeting_state#:#State
+scheduled_meeting_duration#:#Period of time
+scheduled_meeting_data_source#:#meetings
+scheduled_meeting_both_data_sources#:#assigned and created via Webex
+scheduled_meeting_local_data_sources#:#assigned sessions
+info_requirements_webex#:#Technical requirements:<ul><li>Recommended browsers: Chrome, Edge, Firefox</li></ul>
+webex_site_url#:#Webex Site URL
+webex_host_e-mail#:#Webex Host e-mail Address
+of_owner_prefix#:#of owner
+webex_host_e-mail_info#:#Webex or hosted site known e-mail address
+webex_host_e-mail_hidden_info#:#The e-mail address used for authorization is displayed only to the owners of the object and administrators.
+info_webex_site_url#:#Name of the hosted site. The subdomain before .webex.com, e.g. your-company.webex.com, or your-company.my.webex.com
+webex_client_id#:#Client ID of the Webex integration
+info_webex_client_id#:#The client ID can be found in the data for your Webex integration (e.g. admin.webex.com, developer.webex.com).
+webex_client_secret#:#Client secret of the Webex integration.
+info_webex_client_secret#:#The client secret is displayed once after creating / updating a Webex integration.
+webex_logout_user_choose#:#Allow to logout from Webex: selection option
+webex_logout_user_choose_info#:#Allow users already logged in to Webex to log out before joining the meeting.
+webex_logout_user_default#:#Logout from Webex: Default
+webex_logout_user_default_info#:#Always logout users already logged in to Webex before joining the meeting.
+webex_user_logout#:#Log out from Webex
+webex_user_do_logout#:#Logout
+webex_user_do_not_logout#:#Not logout
+webex_user_choose_logout#:#user choose
+webex_redirect_uri#:#Redirect URI
+info_webex_redirect_uri#:#Add this address as Redirect URI in the integration settings.
+authorize#:#Authorize
+reset_authorization#:#Cancel authorization
+webex_integration_auth_info#:#Webex user can allow access to their account by authorization.
+recurrence_#:#-
+recurrence_daily#:#Daily
+recurrence_weekly#:#Weekly
+recurrence_monthly#:#Monthly
+recurrence_yearly#:#Annually
+state_active#:#Active
+state_ready#:#Ready
+state_inprogress#:#Running
+modal_delete_scheduled_meeting_title#:#Do you really want to delete this meeting?
+modal_delete_scheduled_meeting_accept#:#Delete meeting
+scheduled_meeting_deleted#:#deleted meeting
+scheduled_meeting_not_deleted#:#meeting not deleted
+modal_details_scheduled_meeting_title#:#Meeting Details (Webex Response Body)
+integration_auth_method#:#Authorization of the integration
+integration_auth_methods_info#:#Authorization can be done by:<br/>- the administrator via the settings of the MultiVc plugin<br />- the user via the settings of the MultiVc object.<br />The following scopes are requested during the respective OAuth process:<br />
+integration_admin_auth_method_info#:#Authorization is done by the administrator via the settings of the MultiVc plugin. The following scopes are requested during the OAuth process:
+integration_admin_auth_scopes_info#:#(following for admins) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
+integration_user_auth_method_info#:#Authorization is done by the user through the settings of the MultiVc object. The following scopes are requested during the OAuth process:
+integration_user_auth_scopes_info#:#spark:kms meeting:schedules_read meeting:schedules_write meeting:participants_read meeting:participants_write meeting:preferences_read meeting:preferences_write
+related_meeting#:#related
+relate_meeting#:#related
+meeting_related_successful#:#meeting successfully related
+meeting_collision#:#An error has occurred. A meeting is already scheduled for the requested time period.
+schedule_meeting_error#:#An error has occurred. Please check your entries.
+webex_meetings_list_downloaded#:#Meetings successfully downloaded from Webex.
+error_object_no_access_token#:#Please perform authorization in the object properties.
+error_admin_no_access_token#:#Please tell your administrator: Token missing
+error_object_no_host_e-mail#:#Please confirm the e-mail address for the host user in the object properties.
+ext_provider_token_user#:#User / access token
+ext_provider_token_user_info#:#Enter the e-mail address of users with moderator license and then their Access Token.
+delete_sess_user_changed#:#Action on owner change
+delete_sess_user_changed_info#:#Delete all created sessions on user change
+sess_owner_changed#:#Authentication has been changed
+info_set_owner#:#owner entered
+edudip_host_e-mail#:#Edudip e-mail address
+edudip_host_e-mail_info#:#Your e-mail address known to edudip must match this one
+info_requirements_edudip#:#Technical requirements:<ul><li>edudip uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome, the Chromium-based browser Microsoft Edge or, with limitations, Mozilla Firefox are recommended. Microsoft Internet Explorer and older Edge versions are not supported.</li><li>Please contact edudip support to get more info.</li>
+add_token#:#Add token
+reseted_tokens#:#Tokens reseted
+token_stored#:#Token stored
+token_not_stored#:#Token not stored
+delete_token#:#Delete token
+token_deleted#:#Token deleted
+token_not_deleted#:#Token not deleted
+add_token_user#:#New moderator / token
+list_token_user#:#Registered moderators
+list_token_user_info#:#List of already created moderators. The stored tokens cannot be overwritten. If necessary, please delete the entry first by clicking X.
+edudip_meetings_list_downloaded#:#Webinars available at Edudip successfully integrated
+webinar#:#Webinar
+scheduled_webinars#:#Scheduled webinars
+scheduled_webinar_created#:#Scheduled webinar created
+require_schedule_new_webinar#:#You can create webinars and start them during the scheduled time slots.
+scheduled_webinar_time_ahead#:#Webinar lead time
+schedule_webinar_duration_less_time#:#The minimum duration of a webinar is 10 minutes. Please correct your entries accordingly.
+scheduled_webinar_overview#:#Overview of planned webinars
+scheduled_webinar_create#:#Create Webinar (please specify unique title)
+scheduled_webinar_create_btn#:#Create scheduled webinar
+scheduled_webinar_update#:#Update scheduled webinar
+scheduled_webinar_update_btn#:#Update webinar
+scheduled_webinar_delete_btn#:#Delete webinar
+scheduled_webinar_agenda#:#Agenda
+scheduled_webinar_recurrence#:#Repetition
+scheduled_webinar_state#:#Status
+scheduled_webinar_duration#:#Time period
+scheduled_webinar_data_source#:#Webinars
+scheduled_webinar_both_data_sources#:#all
+scheduled_webinar_local_data_sources#:#assigned
+modal_delete_scheduled_webinar_title#:#Are you sure you want to delete this webinar?
+modal_delete_scheduled_webinar_accept#:#delete webinar
+scheduled_webinar_deleted#:#Webinar deleted
+scheduled_webinar_not_deleted#:#Webinar not deleted
+modal_details_scheduled_webinar_title#:#Webinar details (Edudip Response Body)
+related_webinar#:#Assigned
+relate_webinar#:#Assign
+webinar_related_successful#:#Webinar successfully assigned
+webinar_collision#:#An error has occurred. A webinar is already scheduled for the requested time period.
+schedule_webinar_error#:#An error has occurred. Please check your entries.
+btntext_join_webinar#:#Join webinar
+wait_join_webinar#:#<b>Currently, no one has started the webinar yet.<br/>Please wait and access this page again in a minute.</b>
+info_top_moderated_edudip#:#Welcome to the webinar!
+bbb_guest_password#:#Password for guests
+custom_style#:#Custom Style
+custom_style_info#:#Here you can define CSS style parameters or a CSS file. For a file, a URL starting with https:// must be specified. Furthermore, in the settings.yml of the BBB installation, the parameter "displayBrandingArea" must be set to true.
+logo_url#:#Logo URL
+logo_url_info#:#Enter the URL to your logo here. The URL must begin with https://
+lock_disable_cam#:#Lock participant camera
+lock_disable_cam_info#:#By activating this option, the camera (webcam) of participants is blocked by default.
+lock_disable_cam_choose#:#Lock participant camera selectable
+lock_disable_cam_choose_info#:#Define whether the setting "Lock participant camera" is available on the object.
+lock_disable_cam_default#:#Lock participant camera Default
+lock_disable_cam_default_info#:#Set the default for "Lock participant camera".
+guest_link_pw_info#:#Guests must login with this password
+edudip_host_e-mail_hidden_info#:#The e-mail address used for authorization is displayed only to the owners of the object and administrators.
+wait_join_meeting_webex#:#Currently you cannot join any meeting.
+wait_join_meeting_edudip#:#Currently you cannot join any webinar.
+user_log_bbb#:#User overview (BBB)

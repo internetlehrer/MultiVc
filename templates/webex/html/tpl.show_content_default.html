@@ -1,0 +1,76 @@
+<div id="infotop" class="col-sm-12">
+    {INFOTOP}
+</div>
+<br />
+<div class="col-sm-12">
+    {JOINCONTENT}
+    <div id="msgrunning" class="hidden">
+        <div id="msg" class="inline">{MEETING_RUNNING}</div>
+    </div>
+    <div id="msgrunning" class="hidden">{MEETING_RUNNING}</div>
+</div>
+
+<div id="listMeetings" class="col-sm-12 {HIDE_LIST_MEETINGS}">
+    <h4 class="ilHeader">{HEADLINE_LIST_MEETINGS}&nbsp;</h4>
+    {LIST_MEETINGS}
+</div>
+
+<div id="info_bottom" class="col-sm-12">{INFOBOTTOM}</div>
+
+<div id="info_requirements" class="col-sm-12">{infoRequirements}</div>
+
+<div class="ilInfoScreenSec form-horizontal {HIDE_GUESTLINK}" id="infoscreen_section_2">
+    <h3 class="ilHeader">{HEADLINE_GUESTLINK}&nbsp;</h3>
+    <div class="form-group">
+        <div class="il_InfoScreenProperty control-label col-xs-3">{userInviteInfo}</div>
+        <div class="il_InfoScreenPropertyValue col-xs-9">
+            <div class="ilPermalinkContainer input-group">
+                <input class="form-control" readonly="readonly" id="userInviteUrl" type="text" value="{userInviteUrl}" onclick="return false;">
+                <span class="input-group-btn">
+                    <div class="btn-group">
+                    <!-- Important: The next a-tag had a this.blur(); in the onclick event before. Please do not add it again, see bug #8723 -->
+                        <button type="button" class="btn btn-default" id="copyUserInviteUrl">
+                            <span></span>
+                            <span class="sr-only">Copy to clipboard</span>
+                            <span class="glyphicon glyphicon-copy"></span>
+                        </button>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="recordings" class="col-sm-12 {HIDE_RECORDINGS}">
+    <h3 class="ilHeader">{HEADLINE_RECORDING}&nbsp;</h3>
+    {RECORDINGS}
+</div>
+
+<script>
+
+    function logChildren(elem) {
+        console.dir(elem);
+    }
+
+    $('#join_btn', document).on('click', function(e) {
+        $('#join_btn', document).prop('class', 'hidden');
+        $('#msgrunning', document).prop('class', 'inline');
+        $('#meeting', document).prop('class', '');
+        $('#userInvitation', document).prop('class', '');
+
+        //console.dir($(e.target));
+    });
+
+    $('#copyUserInviteUrl', document).on('click', function(e) {
+
+            let copyText = $('#userInviteUrl', document).get(0);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+            document.execCommand("copy");
+    });
+</script>
+
+<style>
+    #infotop { margin-bottom: 20px; }
+    #info_concurrent { margin-bottom: 15px; }
+</style>

@@ -61,10 +61,11 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
             #var_dump($this->); exit;
         }
 
-        if( isset($_POST['cmd']['applyFilterUserLog']) || $_GET['cmd'] === 'applyFilterUserLog' ) {
-            //var_dump($_SESSION); exit;
+        if( isset($_POST['cmd']['applyFilterUserLog']) || $_GET['cmd'] === 'applyFilterUserLog' || isset($_POST['cmd']['downloadUserLog']) ) {
             $this->keepFilterValues = true;
         }
+        $this->setPreventDoubleSubmission(false);
+        $this->setShowRowsSelector(true);
 
         $this->setId('user_log');
         #$this->setFormName('user_log');
@@ -73,15 +74,11 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         $this->setTitle($this->plugin_object->txt('user_log'));
         $this->setFormAction($this->dic->ctrl()->getFormAction($this->parent_obj, 'applyFilterUserLog'));
         $this->setEnableHeader(true);
-
         $this->setExternalSorting(false);
         $this->setExternalSegmentation(false);
-        $this->setShowRowsSelector(false);
-
         $this->setDefaultOrderField('ref_id'); # display_name join_time
         $this->setDefaultOrderDirection('asc');
         //$this->disable('sort');
-
         $this->setRowTemplate('tpl.user_log_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->initFilterDateDuration();
         $this->setFilterCommand('applyFilterUserLog');
@@ -95,7 +92,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
     }
 
     public function downloadCsv() {
-        $this->exportData(2, true);
+        return $this->exportData(2, true);
     }
 
     /**
@@ -115,9 +112,9 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         $wM = '15%';
         $wL = '30%';
         $this->addColumn($lng->txt('repository'), 'REF');
-        // if( $this->getParentCmd() === 'downloadUserLog' ) {
-            // $this->addColumn('ILIAS-'.$lng->txt('user'), 'USER');
-        // }
+        if( $this->getParentCmd() === 'downloadUserLog' ) {
+            $this->addColumn('ILIAS-'.$lng->txt('user'), 'USER');
+        }
         $this->addColumn($this->plugin_object->txt('DISPLAY_NAME'), 'display_name', $wM);
         $this->addColumn($lng->txt('role'), 'IS_MODERATOR', $wS);
         $this->addColumn($this->plugin_object->txt('join_time'), 'JOIN_TIME', $wM);
@@ -128,12 +125,37 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
     }
 
     /**
+     *
+     */
+    private function initDtFilter()
+    {
+        global $ilCtrl, $lng;
+
+        // Columns
+        $wS = '10%';
+        $wM = '15%';
+        $wL = '30%';
+        $this->addColumn($lng->txt('repository'), 'REF');
+        if( $this->getParentCmd() === 'downloadUserLog' ) {
+            $this->addColumn('ILIAS-'.$lng->txt('user'), 'USER');
+        }
+        $this->addColumn($this->plugin_object->txt('DISPLAY_NAME'), 'display_name', $wM);
+        $this->addColumn($lng->txt('role'), 'IS_MODERATOR', $wS);
+        $this->addColumn($this->plugin_object->txt('join_time'), 'JOIN_TIME', $wM);
+        $this->addColumn($this->plugin_object->txt('start_time'), 'START_TIME', $wM);
+        if( $this->parent_obj instanceof ilMultiVcConfigGUI ) {
+            $this->addColumn($this->plugin_object->txt('meeting') . ' ID', 'MEETING_ID', $wM);
+        }
+    }
+
+
+    /**
      * Get data and put it into an array
      */
     private function getDataFromDb()
     {
         require_once dirname(__FILE__) . "/class.ilObjMultiVc.php";
-
+        #echo '<pre>'; var_dump([$this->dateStart->getUnixTime(), $this->dateEnd->getUnixTime(),]); exit;
         $data = [];
         $userLog = ilObjMultiVc::getInstance()->getUserLog(
             $this->refId,
@@ -157,7 +179,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
 
             $data[] = [
                 'REF' => implode(' / ', $tree),
-                // 'USER' => ilObjUser::_lookupFullname($a_set['user_id']),
+                'USER' => ilObjUser::_lookupFullname($a_set['user_id']),
                 'DISPLAY_NAME' => $a_set['display_name'],
                 'IS_MODERATOR' => (bool)$a_set['is_moderator'] ? $this->plugin_object->txt('moderator') : '',
                 'JOIN_TIME' => $joinTime,
@@ -192,6 +214,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
         $meetingStart = $dtMeetingStart->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
         */
         $this->tpl->setVariable('REF', $a_set['REF']);
+        $this->tpl->setVariable('USER', $a_set['USER']);
         $this->tpl->setVariable('DISPLAY_NAME', $a_set['DISPLAY_NAME']);
         $this->tpl->setVariable('IS_MODERATOR', $a_set['IS_MODERATOR']);
         $this->tpl->setVariable('JOIN_TIME', $a_set['JOIN_TIME']);
