@@ -154,6 +154,13 @@ class ilApiWebexIntegration
         $curl->setopt(CURLOPT_POST, 1);
         $curl->setopt(CURLOPT_POSTFIELDS, http_build_query($post));
         $curl->setopt(CURLOPT_RETURNTRANSFER, true);
+        //Add Proxy
+        if (\ilProxySettings::_getInstance()->isActive()) {
+            $proxyHost = \ilProxySettings::_getInstance()->getHost();
+            $proxyPort = \ilProxySettings::_getInstance()->getPort();
+            $proxyURL = $proxyHost . ":" . $proxyPort;
+            $curl->setopt(CURLOPT_PROXY, $proxyURL);
+        }
         $response = $curl->exec();
         $curl->close();
         $webex = json_decode($response);
