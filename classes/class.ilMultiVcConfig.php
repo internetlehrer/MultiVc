@@ -166,16 +166,18 @@ class ilMultiVcConfig
             'privateChatChoose',
             'recordChoose',
             'camOnlyForModeratorChoose',
-            'guestlinkChoose',
+            #'guestlinkChoose',
             'extraCmd'
         ],
         'edudip'   => [
             'moderatedChoose',
             'privateChatChoose',
-            'recordChoose',
-            #'camOnlyForModeratorChoose',
-            #'guestlinkChoose',
-            #'extraCmd'
+            'recordChoose'
+        ],
+        'om'   => [
+            'moderatedChoose',
+            'privateChatChoose',
+            'recordChoose'
         ],
     ];
 
@@ -1445,27 +1447,6 @@ class ilMultiVcConfig
         return $row->title;
     }
 
-
-
-    /*
-    static public function fillEmptyShowContent()
-    {
-        global $DIC; /** @var Container $DIC */ /*
-
-        $db = $DIC->database();
-
-        $query = "SELECT id FROM rep_robj_xmvc_conn WHERE showcontent IS NULL";
-        $result = $db->query($query);
-        while( $row = $db->fetchAssoc($result) ) {
-            $where = ['id' => ['integer', $row['id']]];
-            $values = [
-                'showcontent'			=> ['string', self::generateMembersPwd()],
-                'moderatorpwd'			=> ['string', self::generateMembersPwd()]
-            ];
-            $db->update('rep_robj_xmvc_data', $values, $where);
-        }
-    }
-    */
 
 
 

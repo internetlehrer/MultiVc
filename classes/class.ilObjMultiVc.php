@@ -134,7 +134,7 @@ class ilObjMultiVc extends ilObjectPlugin
 			'cam_only_for_moderator' => array('integer', (int)$this->isCamOnlyForModerator()),
             'lock_disable_cam' => array('integer', (int)$this->getLockDisableCam()),
 			'conn_id' => array('integer', (int)$conn_id),
-			'guestlink' => array('integer', (int)$this->isGuestlink()),
+			'guestlink' => array('integer', (int)$settings->isGuestlinkDefault()),
 			'extra_cmd' => array('integer', (int)$this->getExtraCmd()),
             #"auth_user" => ['string', $this->getAuthUser()],
 		);
@@ -1573,11 +1573,13 @@ class ilObjMultiVc extends ilObjectPlugin
      * @param bool $returnEntry
      * @return mixed
      */
-    public function saveWebexSessionModerator( int $refId, string $relId, int $userId, string $data, bool $returnEntry = false )
+    public function saveWebexSessionModerator( int $refId, string $relId, int $userId, string $data, bool $returnEntry = false, ?int $lookupUserId = null  )
     {
         $objId = ilObject::_lookupObjId($refId);
+        $lookupUserId = $lookupUserId ?? $userId;
         $dataArr = json_decode($data, true);
-        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
+        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $lookupUserId) ) {
+        #if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
             return false;
         }
         $currValues = json_decode($currEntry[0]['participants'], 1);
@@ -1589,13 +1591,14 @@ class ilObjMultiVc extends ilObjectPlugin
             #'ref_id'	=> ['integer', $refId],
             'obj_id'	=> ['integer', $objId],
             'rel_id'	=> ['string', $relId],
-            'user_id'       => ['integer', $userId],
+            'user_id'       => ['integer', $lookupUserId],
+            #'user_id'       => ['integer', $userId],
         ];
 
         $this->db->update('rep_robj_xmvc_schedule', $values, $where);
 
         if( $returnEntry ) {
-            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+            return $this->getScheduledMeetingByRelId($relId, $refId, $lookupUserId)[0];
         }
     }
 
@@ -1700,19 +1703,22 @@ class ilObjMultiVc extends ilObjectPlugin
      * @param bool $returnEntry
      * @return mixed
      */
-    public function saveEdudipSessionModerator( int $refId, int $relId, int $userId, string $data, bool $returnEntry = false )
+    public function saveEdudipSessionModerator( int $refId, int $relId, int $userId, string $data, bool $returnEntry = false, ?int $lookupUserId = null  )
     {
         $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+        $lookupUserId = $lookupUserId ?? $userId;
 
         $dataArr = json_decode($data, true);
         $moderator = $dataArr['moderator'];
         $moderator['user_id'] = $userId;
         $moderator['webLink'] = $moderator['room_link'];
-        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
+        if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $lookupUserId) ) {
+        #if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
             return false;
         }
         $currValues = json_decode($currEntry[0]['participants'], 1);
-        $currValues['moderator'][$this->dic->user()->getId()] = $moderator;
+        $currValues['moderator'][$userId] = $moderator;
+        #$currValues['moderator'][$this->dic->user()->getId()] = $moderator;
 
         $values = [ 'participants' => ['string', json_encode($currValues)]];
 
@@ -1720,13 +1726,15 @@ class ilObjMultiVc extends ilObjectPlugin
             'obj_id'	=> ['integer', $objId],
             #'ref_id'	=> ['integer', $refId],
             'rel_id'	=> ['string', $relId],
-            'user_id'       => ['integer', $userId],
+            'user_id'       => ['integer', $lookupUserId],
+            #'user_id'       => ['integer', $userId],
         ];
 
         $this->db->update('rep_robj_xmvc_schedule', $values, $where);
 
         if( $returnEntry ) {
-            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+            return $this->getScheduledMeetingByRelId($relId, $refId, $lookupUserId)[0];
+            #return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
         }
     }
 

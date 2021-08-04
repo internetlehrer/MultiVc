@@ -1,6 +1,6 @@
 <!-- fim: [exco] new template. -->
 <!-- BEGIN row -->
-<tr class="{CSS_ROW} small">
+<tr class="{CSS_ROW} small {ROW_CSS}">
     <td>{TITLE}</td>
     <td>{START_TIME}</td>
     <td>{END_TIME}</td>
@@ -12,7 +12,7 @@
         &nbsp;
         <a onclick="deleteMeeting('{DELETE_DATA}')" href="javascript: return false;" class="il_ContainerItemCommand deleteScheduledMeeting {HIDE_DELETE}">{DELETE_TXT}</a>
         &nbsp;
-        <a onclick="showDetails('{MODAL_DATA}')" href="javascript: return false;" class="il_ContainerItemCommand {MODAL_HIDE}">Details</a>
+        <a style="visibility: hidden" onclick="showDetails('{MODAL_DATA}')" href="javascript: return false;" class="il_ContainerItemCommand {MODAL_HIDE}">Details</a>
     </td>
 </tr>
 <!-- END row -->

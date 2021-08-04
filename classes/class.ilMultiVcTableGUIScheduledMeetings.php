@@ -6,8 +6,7 @@
 
 use ILIAS\DI\Container;
 
-include_once('./Services/Table/classes/class.ilTable2GUI.php');
-require_once __DIR__ . "/class.ilMultiVcTableGUIWebexMeetings.php";
+include_once(ILIAS_ABSOLUTE_PATH . '/Services/Table/classes/class.ilTable2GUI.php');
 
 /**
  * MultiVc plugin: report logged max concurrent values table GUI
@@ -63,6 +62,8 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
 
     /** @var array $meetingRequestParam */
     private $meetingRequestParam = [];
+
+    private $diffLocalSessHostSessRelIds = [];
 
 
     /**
@@ -171,6 +172,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
         $end = date('Y-m-d H:i:s', $this->dateEnd->getUnixTime());
         $storedHostSessions = null;
         $getWebexMeetingsList = (bool)$this->dataSource && (int)$this->dic->user()->getId() === (int)$this->parent_obj->object->getOwner();
+        $checkLocalHasHostSess = false;
 
         if( $getWebexMeetingsList && isset($_POST['cmd']['applyFilterScheduledMeetings']) ) {
              $this->getSessionsFromHost();
@@ -180,13 +182,27 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
             $this->dic->ctrl()->redirect($this->parent_obj, 'applyFilterScheduledMeetings');
         } elseif( $getWebexMeetingsList && $_GET['cmd'] === 'applyFilterScheduledMeetings' ) {
             $storedHostSessions = $this->parent_obj->object->getStoredHostSessionsByDateRange($start, $end, $this->refId);
+            $getDiffLocalSessHostSess = true;
+            #echo '<pre>'; var_dump($storedHostSessions); exit;
         }
         else {
             $storedHostSessions = [];
         }
-        #var_dump($storedHostSessions); exit;
+        #echo '<pre>'; var_dump($storedHostSessions); exit;
 
         $allMeetings = $this->parent_obj->object->getScheduledMeetingsByDateRange( $start, $end, $this->parent_obj->object->getRefId() ) ?? [];
+
+        if( $getDiffLocalSessHostSess ) {
+            $hostSessRelIds = !count($storedHostSessions) ? [] : array_map(function ($col) {
+                return $col['rel_id'];
+            }, $storedHostSessions);
+            $localSessRelIds = array_map(function ($col) {
+                return $col['rel_id'];
+            }, $allMeetings);
+            $this->diffLocalSessHostSessRelIds = array_diff($localSessRelIds, $hostSessRelIds);
+        }
+        #echo '<pre>'; var_dump(diffLocalSessHostSessRelIds); exit;
+
         if( (int)$this->dic->user()->getId() === 6 ) {
             #echo '<pre>'; var_dump($allMeetings); exit;
             #echo '<pre>'; var_dump($storedHostSessions); exit;
@@ -249,8 +265,11 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
             $meetingEnd = $dtMeetingEnd->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
 
             $joinUrl = (bool)$json->wbxmvcRelatedMeeting ? date('Y-m-d H:i:s') > $meetingEnd ? $json->webLink : $json->startLink : '';
+
+            $deleteLocalOnly = -1 < array_search($a_set['rel_id'], $this->diffLocalSessHostSessRelIds);
 			
             $data[$key] = [
+                'ROW_CSS'       => $deleteLocalOnly ? 'danger' : '',
                 'TITLE'         => $json->title,
                 'START_TIME'    => $meetingStart,
                 'END_TIME'      => $meetingEnd,
@@ -258,7 +277,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
                 'STATE'         => $this->plugin_object->txt('state_' . $json->state),
                 'IS_RELATED'    => $this->dic->language()->txt((bool)$json->wbxmvcRelatedMeeting ? 'yes' : 'no'),
                 'JOIN_URL'      => $joinUrl,
-                'JOINBTN_HIDE'  => !(bool)$json->wbxmvcRelatedMeeting ? 'visibility: hidden' : '',
+                'JOINBTN_HIDE'  => !(bool)$json->wbxmvcRelatedMeeting || $deleteLocalOnly ? 'visibility: hidden' : '',
                 //  RELATE_MEETING_DATA
                 'RELATE_MEETING_HIDE' => (bool)$json->wbxmvcRelatedMeeting ? 'hidden' : '',
                 'RELATE_MEETING_TXT' => $this->dic->language()->txt('rep_robj_xmvc_relate_' . $this->parent_obj->sessType),
@@ -274,6 +293,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
                 // DELETE MEETING
                 'DELETE_DATA' => !(bool)$json->wbxmvcRelatedMeeting ? '' : rawurlencode(json_encode([
                     'ref_id' => $this->parent_obj->object->getRefId(),
+                    'delete_local_only' => (int)$deleteLocalOnly,
                     #'ref_id' => $a_set['ref_id'],
                     'start' => $a_set['start'],
                     'end' => $a_set['end'],
@@ -317,9 +337,12 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
     {
         global $lng;
 
+        $this->tpl->setVariable('ROW_CSS', $a_set['ROW_CSS']);
         $this->tpl->setVariable('TITLE', $a_set['TITLE']);
-        $this->tpl->setVariable('START_TIME', $a_set['START_TIME']);
-        $this->tpl->setVariable('END_TIME', $a_set['END_TIME']);
+        $startTime = new ilDateTime(strtotime($a_set['START_TIME']), IL_CAL_UNIX);
+        $endTime = new ilDateTime(strtotime($a_set['END_TIME']), IL_CAL_UNIX);
+        $this->tpl->setVariable('START_TIME', ilDatePresentation::formatDate($startTime));
+        $this->tpl->setVariable('END_TIME', ilDatePresentation::formatDate($endTime));
         $this->tpl->setVariable('IS_RELATED', $a_set['IS_RELATED']);
 
         #$this->tpl->setVariable('RECURRENCE', $a_set['RECURRENCE']);
@@ -376,13 +399,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
             $dataSourceOptions['true'] = $this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_both_data_sources');
         }
         $dataSourceOptions['false'] = $this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_local_data_sources');
-            $this->filterItemDataSource->setOptions(
-                $dataSourceOptions
-                #[
-            #'true' => $this->plugin_object->txt('scheduled_meeting_both_data_sources'),
-            #'false' => $this->plugin_object->txt('scheduled_meeting_local_data_sources'),
-        #]
-    );
+        $this->filterItemDataSource->setOptions($dataSourceOptions);
         $this->addFilterItem($this->filterItemDataSource, false);
 
 
@@ -537,7 +554,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
         $this->meetingProperty['title'] = new ilTextInputGUI($this->plugin_object->txt('title'), 'meeting_title');
         $this->meetingProperty['title']->setRequired(true);
 
-        $this->meetingProperty['agenda'] = new ilTextInputGUI($this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_agenda'), 'meeting_agenda');
+        $this->meetingProperty['agenda'] = new ilTextAreaInputGUI($this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_agenda'), 'meeting_agenda');
 
         $this->meetingProperty['duration'] = new ilDateDurationInputGUI($this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_duration'), 'meeting_duration');
         $this->meetingProperty['duration']->setRequired(true);
@@ -574,6 +591,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
 
         // DELETE MEETING HIDDEN FIELDS
         $this->meetingProperty['dsm_ref_id'] = new ilHiddenInputGUI('delete_scheduled_meeting[ref_id]');
+        $this->meetingProperty['dsm_delete_local_only'] = new ilHiddenInputGUI('delete_scheduled_meeting[delete_local_only]');
         $this->meetingProperty['dsm_start'] = new ilHiddenInputGUI('delete_scheduled_meeting[start]');
         $this->meetingProperty['dsm_end'] = new ilHiddenInputGUI('delete_scheduled_meeting[end]');
         $this->meetingProperty['dsm_timezone'] = new ilHiddenInputGUI('delete_scheduled_meeting[timezone]');

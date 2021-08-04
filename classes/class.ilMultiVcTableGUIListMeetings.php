@@ -158,9 +158,11 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI {
     {
         global $lng;
 
+        $startTime = new ilDateTime(strtotime($a_set['START_TIME']), IL_CAL_UNIX);
+        $endTime = new ilDateTime(strtotime($a_set['END_TIME']), IL_CAL_UNIX);
         $this->tpl->setVariable('TITLE', $a_set['TITLE']);
-        $this->tpl->setVariable('START_TIME', $a_set['START_TIME']);
-        $this->tpl->setVariable('END_TIME', $a_set['END_TIME']);
+        $this->tpl->setVariable('START_TIME', ilDatePresentation::formatDate($startTime));
+        $this->tpl->setVariable('END_TIME', ilDatePresentation::formatDate($endTime));
     }
 
 }

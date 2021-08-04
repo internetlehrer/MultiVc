@@ -257,7 +257,7 @@ webex_redirect_uri#:#Redirect URI
 info_webex_redirect_uri#:#Fügen Sie diese Adresse in den Einstellungen der Integration als Redirect URI hinzu
 authorize#:#Authorisieren
 reset_authorization#:#Authorisierung aufheben
-webex_integration_auth_info#:#Webex-User können durch Authorisierung den Zugriff auf ihren Account erlauben.
+webex_integration_auth_info#:#Sie können durch Authorisierung den Zugriff auf Ihren WebEx-Account erlauben. Dies ist erforderlich, zum Anlegen, Abrufen und Starten von Webex-Meetings über das MultiVc-Plugin.
 recurrence_#:#-
 recurrence_daily#:#Täglich
 recurrence_weekly#:#Wöchentlich
@@ -292,7 +292,7 @@ delete_sess_user_changed#:#Aktion bei Eigentümer-Wechsel
 delete_sess_user_changed_info#:#Bei Benutzer-Wechsel werden alle angelegten Sessions gelöscht
 sess_owner_changed#:#Authentifizierung wurde geändert
 info_set_owner#:#Eigentümer eingetragen
-edudip_host_email#:#Edudip E-Mail-Adresse
+edudip_host_email#:#edudip E-Mail-Adresse
 edudip_host_email_info#:#Ihre bei edudip bekannte E-Mail-Adresse muss mit dieser übereinstimmen
 info_requirements_edudip#:#Technische Voraussetzungen:<ul><li>edudip nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Bitte wenden Sie sich an den edudip-Support um weitere Infos zu bekommen.</li>
 add_token#:#Token hinzufügen
@@ -305,7 +305,7 @@ token_not_deleted#:#Token nicht gelöscht
 add_token_user#:#Neue ModeratorIn / Token
 list_token_user#:#Registrierte ModeratorInnen
 list_token_user_info#:#Liste bereits angelegter ModeratorInnen. Die hinterlegten Tokens können nicht überschrieben werden. Ggf. bitte den Eintrag mit Klick auf X zuerst löschen.
-edudip_meetings_list_downloaded#:#Bei Edudip vorhandene Webinare erfolgreich eingebunden
+edudip_meetings_list_downloaded#:#Bei edudip vorhandene Webinare erfolgreich eingebunden
 webinar#:#Webinar
 scheduled_webinars#:#Geplante Webinare
 scheduled_webinar_created#:#Geplantes Webinar erstellt
@@ -329,7 +329,7 @@ modal_delete_scheduled_webinar_title#:#Möchten Sie dieses Webinar wirklich lös
 modal_delete_scheduled_webinar_accept#:#Webinar löschen
 scheduled_webinar_deleted#:#Webinar gelöscht
 scheduled_webinar_not_deleted#:#Webinar nicht gelöscht
-modal_details_scheduled_webinar_title#:#Webinar Details (Edudip Response Body)
+modal_details_scheduled_webinar_title#:#Webinar Details (edudip response body)
 related_webinar#:#Zugeordnet
 relate_webinar#:#Zuordnen
 webinar_related_successful#:#Webinar erfolgreich zugeordnet
@@ -354,3 +354,4 @@ edudip_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adre
 wait_join_meeting_webex#:#Aktuell können Sie keinem Meeting beitreten.
 wait_join_meeting_edudip#:#Aktuell können Sie keinem Webinar beitreten.
 user_log_bbb#:#Benutzerübersicht (BBB)
+owners_email_not_uniqeu#:#Die E-Mailadresse des Eigentümers ist nicht unique. Diese darf nur einmal an einen ILIAS-Benutzer vergeben sein.

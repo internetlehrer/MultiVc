@@ -291,7 +291,7 @@ delete_sess_user_changed#:#Action on owner change
 delete_sess_user_changed_info#:#Delete all created sessions on user change
 sess_owner_changed#:#Authentication has been changed
 info_set_owner#:#owner entered
-edudip_host_e-mail#:#Edudip e-mail address
+edudip_host_e-mail#:#edudip e-mail address
 edudip_host_e-mail_info#:#Your e-mail address known to edudip must match this one
 info_requirements_edudip#:#Technical requirements:<ul><li>edudip uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome, the Chromium-based browser Microsoft Edge or, with limitations, Mozilla Firefox are recommended. Microsoft Internet Explorer and older Edge versions are not supported.</li><li>Please contact edudip support to get more info.</li>
 add_token#:#Add token
@@ -304,7 +304,7 @@ token_not_deleted#:#Token not deleted
 add_token_user#:#New moderator / token
 list_token_user#:#Registered moderators
 list_token_user_info#:#List of already created moderators. The stored tokens cannot be overwritten. If necessary, please delete the entry first by clicking X.
-edudip_meetings_list_downloaded#:#Webinars available at Edudip successfully integrated
+edudip_meetings_list_downloaded#:#Webinars available at edudip successfully integrated
 webinar#:#Webinar
 scheduled_webinars#:#Scheduled webinars
 scheduled_webinar_created#:#Scheduled webinar created
@@ -328,7 +328,7 @@ modal_delete_scheduled_webinar_title#:#Are you sure you want to delete this webi
 modal_delete_scheduled_webinar_accept#:#delete webinar
 scheduled_webinar_deleted#:#Webinar deleted
 scheduled_webinar_not_deleted#:#Webinar not deleted
-modal_details_scheduled_webinar_title#:#Webinar details (Edudip Response Body)
+modal_details_scheduled_webinar_title#:#Webinar details (edudip response body)
 related_webinar#:#Assigned
 relate_webinar#:#Assign
 webinar_related_successful#:#Webinar successfully assigned
@@ -353,3 +353,4 @@ edudip_host_e-mail_hidden_info#:#The e-mail address used for authorization is di
 wait_join_meeting_webex#:#Currently you cannot join any meeting.
 wait_join_meeting_edudip#:#Currently you cannot join any webinar.
 user_log_bbb#:#User overview (BBB)
+owners_email_not_uniqeu#:#The email address of the owner is not unique. This may only be assigned once to an ILIAS user.

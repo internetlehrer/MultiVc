@@ -103,6 +103,7 @@ function deleteMeeting(rawData) {
             let btnSubmit = $('#form_meeting_create input[type=submit]', document).eq(0);
             $('#meeting_title', document).prop('value', data.ref_id);
             $('#delete_scheduled_meeting__ref_id__', document).prop('value', data.ref_id);
+            $('#delete_scheduled_meeting__delete_local_only__', document).prop('value', data.delete_local_only);
             $('#delete_scheduled_meeting__start__', document).prop('value', data.start);
             $('#delete_scheduled_meeting__end__', document).prop('value', data.end);
             $('#delete_scheduled_meeting__timezone__', document).prop('value', data.timezone);

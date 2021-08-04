@@ -17,9 +17,9 @@ interface ilApiInterface
 
     public function hasSessionObject(): bool;
 
-    public function getRecordings(): array;
+    #public function getRecordings(): array;
 
-    public function getUserAvatar(): string;
+    #public function getUserAvatar(): string;
 
 
 }

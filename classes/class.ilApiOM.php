@@ -7,15 +7,21 @@ require_once ("./Customizing/global/plugins/Services/Repository/RepositoryObject
 require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiInterface.php");
 
 
-
-class ilApiOM extends ilApiMultiVC implements ilApiInterface
+class ilApiOM implements ilApiInterface
 {
     const GROUPNAME = 'inno';
     const SERVERAPPNAME = 'openmeetings';
     const SERVERVERSION = '5';
     const ROOMTYPE = 'CONFERENCE'; // PRESENTATION INTERVIEW
 
+    /** @var Container $dic */
+    private $dic;
 
+    /** @var ilObjMultiVc $object */
+    private $object;
+
+    /** @var ilMultiVcConfig $settings */
+    private $settings;
 
     /** @var object|array $user */
     private $user;
@@ -32,16 +38,38 @@ class ilApiOM extends ilApiMultiVC implements ilApiInterface
     /** @var OmGateway $gateway */
     private $gateway;
 
+    /** @var string $meetingId */
+    private $meetingId = 0;
+
+    /** @var array $pluginIniSet */
+    private $pluginIniSet = [];
+
+    /** @var bool $moderatedMeeting */
+    private $moderatedMeeting;
+
+    /** @var bool $meetingRecordable */
+    private $meetingRecordable = false;
+
 
     public function __construct(ilObjMultiVcGUI $a_parent)
     {
-        parent::__construct($a_parent);
+        #parent::__construct($a_parent);
         //var_dump($this->getMeetingId()); exit;
+        global $DIC; /** @var Container $DIC */
+        $this->dic = $DIC;
+        $this->object = $a_parent->object;
+        $this->settings = ilMultiVcConfig::getInstance($this->object->getConnId());
+        $this->pluginIniSet = ilApiMultiVC::setPluginIniSet($this->settings);
+        $this->moderatedMeeting = $this->object->get_moderated();
+        $this->setMeetingRecordable((bool)$this->object->isRecordingAllowed());
+
+
         $this->gateway = new OmGateway($this->getSoapConfig());
         try {
             $this->gateway->login();
         } catch (Exception $e) {}
 
+        $this->setMeetingId();
         $this->setMeetingStartable();
 
     }
@@ -97,6 +125,7 @@ class ilApiOM extends ilApiMultiVC implements ilApiInterface
         if( (bool)$this->settings->getMaxParticipants() ) {
             $config['capacity'] = $this->settings->getMaxParticipants();
         }
+        return $config;
     }
 
     /**
@@ -104,7 +133,7 @@ class ilApiOM extends ilApiMultiVC implements ilApiInterface
      */
     private function getUserData()
     {
-        //var_dump($this->object->getRoomId()); exit;
+        #echo '<pre>'; var_dump($this->object->getRoomId()); exit;
         return (object)[
             'username' => $this->dic->user()->getLogin(),
             'firstname' => $this->dic->user()->getFirstname(),
@@ -203,7 +232,9 @@ class ilApiOM extends ilApiMultiVC implements ilApiInterface
      */
     public function createRoom(): int
     {
+        #echo '<pre>'; var_dump($this->getSoapConfig()); exit;
         $rMgr = new OmRoomManager($this->getSoapConfig());
+        #echo '<pre>'; var_dump($this->getRoomConfig()); exit;
         return $rMgr->update($this->getRoomConfig());
     }
 
@@ -307,6 +338,91 @@ class ilApiOM extends ilApiMultiVC implements ilApiInterface
             $user_image = substr($user_image, 2);
         }
         return ILIAS_HTTP_PATH.'/'.$user_image;
+    }
+
+    public function isValidAppointmentUser(): bool
+    {
+        return true;
+        /*
+         !$this->ilObjSession ||
+            (
+                !!$this->ilObjSession &&
+                ilEventParticipants::_isRegistered($this->dic->user()->getId(), $this->ilObjSession->getId())
+            );
+        */
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUserModerator(): bool
+    {
+        return true; /* $this->userRole === 'moderator'; */
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getMeetingId(): string
+    {
+        return $this->meetingId;
+    }
+
+    private function setMeetingId(): void
+    {
+        global $ilIliasIniFile, $DIC; /** @var Container $DIC */
+
+        $this->iliasDomain = $ilIliasIniFile->readVariable('server', 'http_path');
+        $this->iliasDomain = preg_replace("/^(https:\/\/)|(http:\/\/)+/", "", $this->iliasDomain);
+
+        $rawMeetingId = $this->iliasDomain . ';' . CLIENT_ID . ';' . $this->object->getId();
+
+        if ( trim($this->settings->get_objIdsSpecial()) !== '') {
+            $ArObjIdsSpecial = [];
+            $rawIds = explode(",", $this->settings->get_objIdsSpecial());
+            foreach ($rawIds as $id) {
+                $id = trim($id);
+                if (is_numeric($id)) {
+                    array_push($ArObjIdsSpecial, $id);
+                }
+            }
+            if (in_array($this->object->getId(), $ArObjIdsSpecial)) {
+                $rawMeetingId .= 'r' . $this->object->getRefId();
+            }
+        }
+        // $this->meetingId = md5($rawMeetingId);
+        $this->meetingId = $rawMeetingId;
+    }
+
+    /**
+     * @param string $value
+     * @return string|null
+     */
+    public function getPluginIniSet(string $value = 'max_concurrent_users'): ?string
+    {
+        return isset($this->pluginIniSet[$value]) ? $this->pluginIniSet[$value] : null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isModeratedMeeting(): bool
+    {
+        return $this->moderatedMeeting;
+    }
+
+    public function isMeetingRecordable(): bool
+    {
+        return $this->meetingRecordable;
+    }
+
+    /**
+     * @param bool $meetingRecordable
+     */
+    public function setMeetingRecordable(bool $meetingRecordable): void
+    {
+        $this->meetingRecordable = $meetingRecordable;
     }
 
 

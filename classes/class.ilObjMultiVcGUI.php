@@ -37,7 +37,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     CONST START_TYPE = [
         'WEBEX'     => 'window', #'start', #'window', #
         'EDUDIP'    => 'start',
-        'BBB'       => 'start'
+        'BBB'       => 'start',
+        'OM'       => 'start',
     ];
 
 	/** @var ilObjMultiVc $object */
@@ -468,6 +469,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if( $cmd === 'delete_scheduled_meeting' ) {
             if(
                 (bool)strlen($refId = filter_var($_POST['delete_scheduled_meeting']['ref_id'], FILTER_SANITIZE_NUMBER_INT)) &&
+                (bool)strlen($deleteLocalOnly = filter_var($_POST['delete_scheduled_meeting']['delete_local_only'], FILTER_SANITIZE_NUMBER_INT)) &&
                 (bool)strlen($start = filter_var($_POST['delete_scheduled_meeting']['start'], FILTER_SANITIZE_STRING)) &&
                 (bool)strlen($end = filter_var($_POST['delete_scheduled_meeting']['end'], FILTER_SANITIZE_STRING)) &&
                 (bool)strlen($timezone = filter_var($_POST['delete_scheduled_meeting']['timezone'], FILTER_SANITIZE_STRING))
@@ -475,7 +477,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $sessDeleted = false;
                 $sessToDelete = $this->object->getScheduledMeetingsByDateRange($start, $end, $refId, $timezone);
                 if( isset($sessToDelete[0]) && (bool)strlen($sessId = $sessToDelete[0]['rel_id']) ) {
-                    if( $this->vcObj->sessionDelete($sessId) ) {
+                    #$deleteLocalOnly = false;
+                    $hostSessDeleted = $deleteLocalOnly || $this->vcObj->sessionDelete($sessId);
+                    if( $hostSessDeleted ) {
                         $sessDeleted =
                             $this->object->deleteScheduledSession($refId, $start, $end, $timezone)
                             && $this->object->deleteStoredHostSessionByRelId($sessId);
@@ -484,11 +488,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
                 if ( $sessDeleted ) {
                     ilUtil::sendSuccess($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->sessType . '_deleted'), true);
-                    $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
                 } else {
                     ilUtil::sendFailure($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->sessType . '_not_deleted'), true);
-                    $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
                 }
+                $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
             }
         }
 
@@ -523,8 +526,14 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $webexCreateMeetingData = $this->createWebexMeeting();
 
                 if (!is_null($data = $this->object->saveWebexMeetingData($this->object->ref_id, $webexCreateMeetingData, true))) {
-                    ilUtil::sendSuccess($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->sessType . '_created'), true);
-                    $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
+                    #echo '<pre>'; var_dump($data); exit;
+                    $data['host'] = $this->platform;
+                    $data['rel_data'] = json_encode($data['rel_data']);
+                    $data['type'] = '';
+                    if( $this->object->storeHostSession($this->object->ref_id, [$data]) ) {
+                        ilUtil::sendSuccess($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->sessType . '_created'), true);
+                        $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
+                    }
                 }
             } // EOF isWebex
 
@@ -1162,7 +1171,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
         $isWebex = $webex instanceof ilApiWebex;
         $isAdminOrModerator = $isWebex && ($webex->isUserModerator() || $webex->isUserAdmin());
-
+        #echo '<pre>'; var_dump($isAdminOrModerator); exit;
         $sess =
         $participants = null;
 
@@ -1184,6 +1193,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $userIsInvitedAttendee = isset($participants['attendee'][$userId]);
         $userIsCoHost = $userIsInvitedAttendee && $participants['attendee'][$userId]['coHost'];
         $isNewUser = !$userIsInvitedModerator && !$userIsInvitedAttendee;
+        #echo $isNewUser; exit;
 
         if( (bool)($startSession = $this->vcObj->isMeetingStartable()) ) {
             switch (true) {
@@ -1202,7 +1212,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         ) {
             if( $moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $this->dic->user()->getEmail()) ) {
                 #echo '<pre>'; var_dump($moderatorResult); exit;
-                $this->object->saveWebexSessionModerator($sess['ref_id'], $sess['rel_id'], $sess['user_id'], $moderatorResult);
+                $this->object->saveWebexSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
                 $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(
                     date('Y-m-d H:i:s'),
                     $this->object->getRefId()
@@ -1236,7 +1246,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
         // ADD ATTENDEE (tutor as coHost)
         #if( !$userIsInvitedAttendee && !$isAdminOrModerator && !is_null($sess) && $startSession) {
-        elseif( !$userIsInvitedAttendee && !is_null($sess) && $startSession) {
+        elseif( !$userIsInvitedAttendee && !$userIsInvitedModerator && !is_null($sess) && $startSession) {
             $email = !$isAdminOrModerator
                 ? date('YmdHis') . '.' . uniqid() . '@example.com'
                 : $this->dic->user()->getEmail();
@@ -1347,7 +1357,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if( $moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $this->dic->user()->getEmail()) ) {
                 // ability to create sessions by nonOwner Modr&Admins
                 #if( $moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $sess['auth_user']) ) {
-                $this->object->saveEdudipSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult);
+                $this->object->saveEdudipSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
+                #$this->object->saveEdudipSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult);
                 #$this->object->saveEdudipSessionModerator($sess['ref_id'], $sess['rel_id'], $sess['user_id'], $moderatorResult);
                 $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(
                     date('Y-m-d H:i:s'),
@@ -1390,7 +1401,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             }
         }
 
-        $data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
+        $data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null);
+        #$data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
         #$data = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
         if( $edudip->isUserAdmin() && null === $data ) {
             ilUtil::sendQuestion(
@@ -1614,6 +1626,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             case 'ilApiBBB':
                 $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/bbb/tpl.show_content_default.html", true, true);
                 break;
+            case 'ilApiOM':
+                $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/om/tpl.show_content_default.html", true, true);
+                break;
             case 'ilApiWebex':
             case 'ilApiEdudip':
                 $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/html/tpl.show_content_default.html", true, true);
@@ -1671,7 +1686,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         } else {
             $my_tpl->setVariable("HIDE_GUESTLINK", 'hidden');
         }
-        
+
 		if( $this->object->get_moderated() && $this->object->isRecordingAllowed() && ( $vcObj->isMeetingRunning() || $vcObj->isUserModerator() ) ) {
 			$my_tpl->setVariable("RECORDING_WARNING", $this->txt('recording_warning'));
 		}
@@ -1683,11 +1698,15 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $my_tpl->setVariable("HIDE_RECORDINGS", 'hidden');
         }
 
-        // TABLE LIST MEETINGS (Webex)
+        // TABLE LIST MEETINGS (Webex & Edudip)
         if( false !== ($showListMeetings = array_search(get_class($vcObj),  ['ilApiWebex', 'ilApiEdudip'])) ) {
             require_once __DIR__ . '/class.ilMultiVcTableGUIListMeetings.php';
-            $currMeeting = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
-            #var_dump($currMeeting); exit;
+            if( !$this->isEdudip ) {
+                $currMeeting = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
+            } else {
+                $currMeeting = $this->object->getScheduledMeetingsByDateRange(date('Y-m-d H:i:s'), date('Y-m-d H:i:s') + 60*60*24, $this->ref_id);
+            }
+            #echo '<pre>'; var_dump($currMeeting); exit;
             #if( $showListMeetings = is_null($currMeeting) ) {
             #if( !is_null($currMeeting) && $this->object->checkAndSetMultiVcObjUserAsAuthUser($currMeeting['user_id'], $currMeeting['auth_user'] ) ) {
             if( !is_null($currMeeting) ) {
@@ -1732,7 +1751,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         list($ilUrl, $ilQuery) = explode('?', $this->dic->http()->request()->getUri());
         $backUrl = ''; # $ilUrl . '?' . rawurlencode($ilQuery . '0');
 
-        $email = $attendee['email']; 
+        $email = $attendee['email'];
 
         $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/html/window_join.html", true, true);
         $my_tpl->setVariable("SITEURL", $url);
@@ -1943,10 +1962,16 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $hasSessionProvider = false !== array_search(get_class($vcObj), ['ilApiWebex', 'ilApiEdudip']);
         $isModOrAdmin = $vcObj->isUserModerator() || $vcObj->isUserAdmin();
         #$webexData = $isWebex ? $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, !$isModOrAdmin ? 0 : ilObjMultiVc::MEETING_TIME_AHEAD) : null;
-        $sessData = $hasSessionProvider ? $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, !$isModOrAdmin ? 0 : ilObjMultiVc::MEETING_TIME_AHEAD) : null;
+        $sessData =
+            $hasSessionProvider
+                ? !$isEdudip
+                    ? $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, !$isModOrAdmin ? 0 : ilObjMultiVc::MEETING_TIME_AHEAD)
+                    : $this->object->getScheduledMeetingsByDateRange(date('Y-m-d H:i:s'), date('Y-m-d H:i:s') + 60*60*24, $this->ref_id)
+                : null;
         #$showBtn = $isWebex ? null !== $webexData : $showBtn;
         $showBtn = $hasSessionProvider ? !is_null($sessData) : $showBtn;
-        $showBtn = $hasSessionProvider && $showBtn && !$isModOrAdmin ? $this->object->hasScheduledSessionModerator($this->ref_id, $sessData['rel_id'], $sessData['user_id']) : $showBtn;
+        $showBtn = $hasSessionProvider && $showBtn && (!$isModOrAdmin && !$isEdudip ) ? $this->object->hasScheduledSessionModerator($this->ref_id, $sessData['rel_id'], $sessData['user_id']) : $showBtn;
+        #echo $showBtn; exit;
 
         #$showBtn = $showBtn && $hasSessionProvider ? $sessAuthUserIsValid = $this->object->checkAndSetMultiVcObjUserAsAuthUser($sessData['user_id'], $sessData['auth_user']) : $showBtn;
         #var_dump([$isWebex, $isModOrAdmin]);
@@ -1958,7 +1983,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $joinBtnText = $this->lng->txt('rep_robj_xmvc_btntext_join_' . $this->sessType);
             $vcType = strtoupper(ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent());
             $startType = self::START_TYPE[$vcType];
-
+            #echo '<pre>'; var_dump([$vcType, $startType]); exit;
             if( $this->isWebex && $isModOrAdmin && $this->object->isUserOwner() ) {
                 $startType = 'start';
             }
@@ -2111,14 +2136,14 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
     private function prepareRoomOM(ilApiOM $om)
     {
-        if( !($roomId = $this->object->getRoomId()) ) {
+        $roomId = $this->object->getRoomId();
+        if( !is_int($roomId) || $roomId === 0 ) {
             $roomId = $om->createRoom();
             $this->object->updateRoomId($roomId);
         } else {
             // only proc if debug is true in plugin.ini
             if( !!(bool)$om->getPluginIniSet('debug') ) {
                 $rVal = $om->updateRoom($roomId);
-                // if $roomId doesn't exist on omServer, we'll get a new one
                 if( $rVal !== $roomId ) {
                     $this->object->updateRoomId($rVal);
                 }
