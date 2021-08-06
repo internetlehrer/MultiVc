@@ -52,7 +52,7 @@ $cb->setRequired(false);
 $cb->setInfo($pl->txt("moderated_default_info"));
 $combo->addSubItem($cb);
 
-/*
+
 // guestlink
 $cb = new ilCheckboxInputGUI($pl->txt("guestlink_choose"), "guestlink_choose");
 $cb->setRequired(false);
@@ -63,7 +63,7 @@ $cb = new ilCheckboxInputGUI($pl->txt("guestlink_default"), "guestlink_default")
 $cb->setRequired(false);
 $cb->setInfo($pl->txt("guestlink_default_info"));
 $combo->addSubItem($cb);
-*/
+
 
 /*
 $cb = new ilCheckboxInputGUI($pl->txt("webex_logout_user_choose"), "extra_cmd_choose");

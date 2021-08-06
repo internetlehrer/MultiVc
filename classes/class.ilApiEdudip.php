@@ -33,6 +33,12 @@ class ilApiEdudip implements ilApiInterface
     /** @var string $userRole */
     private $userRole;
 
+    /** @var bool $meetingStartable */
+    private $meetingStartable = true;
+
+    /** @var bool $meetingRecordable */
+    private $meetingRecordable = false;
+
     /** @var string $displayName */
     private $displayName;
 

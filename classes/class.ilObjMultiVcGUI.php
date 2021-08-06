@@ -1404,15 +1404,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null);
         #$data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
         #$data = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
-        if( $edudip->isUserAdmin() && null === $data ) {
-            ilUtil::sendQuestion(
-                $this->dic->language()->txt("rep_robj_xmvc_require_schedule_new_meeting") . ' ' .
-                $this->dic->language()->txt("rep_robj_xmvc_scheduled_" . $this->sessType . "_time_ahead") .
-                ': ' . ilObjMultiVc::MEETING_TIME_AHEAD .
-                ' ' . $this->dic->language()->txt('seconds'),
-                true
-            );
-        }
 
         switch(true) {
             case !ilObjMultiVcAccess::checkConnAvailability($this->obj_id):
@@ -1663,8 +1654,13 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if( $vcAllowedGuestLink && $vcObj->isUserModerator() && $this->object->isGuestlink() ) {
             #echo '<pre>'; var_dump($vcObj->isUserModerator()); exit;
         #if( $vcAllowedGuestLink && $vcObj->isUserModerator() && $this->object->get_moderated() && $this->object->isGuestlink() ) {
-            $guestLinkUrl = $vcObj->getInviteUserUrl();
-
+            // GASTLINK für Webex getScheduledSessionByRefIdAndDateTime
+            if( $this->isWebex ) {
+                $upcoming = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->ref_id);
+                $guestLinkUrl = !is_null($upcoming) ? json_decode($upcoming[0]['rel_data'])->webLink : '';
+            } else {
+                $guestLinkUrl = $vcObj->getInviteUserUrl();
+            }
             // Only Webex
             $isWebex = $apiPostFix === 'webex';
             $webexData = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
@@ -1704,7 +1700,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if( !$this->isEdudip ) {
                 $currMeeting = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
             } else {
-                $currMeeting = $this->object->getScheduledMeetingsByDateRange(date('Y-m-d H:i:s'), date('Y-m-d H:i:s') + 60*60*24, $this->ref_id);
+                $currMeeting = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id);
             }
             #echo '<pre>'; var_dump($currMeeting); exit;
             #if( $showListMeetings = is_null($currMeeting) ) {
@@ -1966,7 +1962,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $hasSessionProvider
                 ? !$isEdudip
                     ? $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, !$isModOrAdmin ? 0 : ilObjMultiVc::MEETING_TIME_AHEAD)
-                    : $this->object->getScheduledMeetingsByDateRange(date('Y-m-d H:i:s'), date('Y-m-d H:i:s') + 60*60*24, $this->ref_id)
+                    : $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id)
+                    #: $this->object->getScheduledMeetingsByDateRange(date('Y-m-d H:i:s'), date('Y-m-d H:i:s') + 60*60*24, $this->ref_id)
                 : null;
         #$showBtn = $isWebex ? null !== $webexData : $showBtn;
         $showBtn = $hasSessionProvider ? !is_null($sessData) : $showBtn;

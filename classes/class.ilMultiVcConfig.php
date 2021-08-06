@@ -166,7 +166,7 @@ class ilMultiVcConfig
             'privateChatChoose',
             'recordChoose',
             'camOnlyForModeratorChoose',
-            #'guestlinkChoose',
+            'guestlinkChoose',
             'extraCmd'
         ],
         'edudip'   => [

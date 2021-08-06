@@ -785,32 +785,6 @@ class ilApiWebex implements ilApiInterface
         return isset($this->pluginIniSet[$value]) ? $this->pluginIniSet[$value] : null;
     }
 
-    /**
-     * @param string $displayName
-     * @return string
-     */
-    public function getInviteUserUrl(string $displayName = 'Gast'): string
-    {
-        $guestLinkUrlPart = [
-            ILIAS_HTTP_PATH,
-            substr(dirname(__FILE__), strpos(dirname(__FILE__), 'Customizing'), -8),
-            'index.php?'
-        ];
-        $guestLinkQueryParam = [
-            'ref_id=' . $this->object->getRefId(),
-            'client=' . CLIENT_ID
-        ];
-
-        if( (bool)$this->getPluginIniSet('guest_link_shortener') ) {
-            return $guestLinkUrlPart[0] . '/' .
-                'm/' .
-                CLIENT_ID . '/' .
-                $this->object->getRefId();
-        }
-
-        return implode('/', $guestLinkUrlPart) . implode('&', $guestLinkQueryParam);
-    }
-
 
     /**
      * @return int|null
