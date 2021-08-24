@@ -150,14 +150,21 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 					$this->plugin_object->txt('overview_uses'),
 					$ilCtrl->getLinkTarget($this, 'overviewUses')
 				);
-				$ilTabs->addTab("report_log_max",
-					$this->plugin_object->txt('report_log_max'),
-					$ilCtrl->getLinkTarget($this, 'reportLogMax')
-				);
-				$ilTabs->addTab("user_log",
-					$this->plugin_object->txt('user_log_bbb'),
-					$ilCtrl->getLinkTarget($this, 'userLog')
-				);
+
+				// ONLY BIGBLUEBUTTON
+				$iniSet = ilApiMultiVC::setPluginIniSet();# $this->object instanceof ilMultiVcConfig ? ilApiMultiVC::setPluginIniSet($this->object) : [];
+				$vcTypesAvailable = $iniSet['vc_types_available'] ?? ['vc_types_available' => []];
+				$vcTypesAvailable = !is_array($vcTypesAvailable) ? [$vcTypesAvailable] : $vcTypesAvailable;
+				if( in_array('BigBlueButton', $vcTypesAvailable) ) {
+					$ilTabs->addTab("report_log_max",
+						$this->plugin_object->txt('report_log_max'),
+						$ilCtrl->getLinkTarget($this, 'reportLogMax')
+					);
+					$ilTabs->addTab("user_log",
+						$this->plugin_object->txt('user_log_bbb'),
+						$ilCtrl->getLinkTarget($this, 'userLog')
+					);
+				}
 				break;
 		}
 	}
@@ -294,7 +301,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$ilTpl = $DIC->ui()->mainTemplate();
 
 		$iniSet = $this->object instanceof ilMultiVcConfig ? ilApiMultiVC::setPluginIniSet($this->object) : [];
-		$vcTypesAvailable = isset($iniSet['vc_types_available']) ? $iniSet['vc_types_available'] : ['vc_types_available' => []];
+		$vcTypesAvailable = $iniSet['vc_types_available'] ?? ['vc_types_available' => []];
+		$vcTypesAvailable = !is_array($vcTypesAvailable) ? [$vcTypesAvailable] : $vcTypesAvailable;
 		$filteredVcTypes = [];
 		$triggerScript = false;
 		$i = 0;

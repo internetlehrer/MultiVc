@@ -172,7 +172,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
         $end = date('Y-m-d H:i:s', $this->dateEnd->getUnixTime());
         $storedHostSessions = null;
         $getWebexMeetingsList = (bool)$this->dataSource && (int)$this->dic->user()->getId() === (int)$this->parent_obj->object->getOwner();
-        $checkLocalHasHostSess = false;
+        $getDiffLocalSessHostSess = false;
 
         if( $getWebexMeetingsList && isset($_POST['cmd']['applyFilterScheduledMeetings']) ) {
              $this->getSessionsFromHost();
@@ -255,7 +255,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
                 $vcType = strtoupper(ilMultiVcConfig::getInstance($this->parent_obj->object->getConnId())->getShowContent());
                 #$json->webLink = ILIAS_HTTP_PATH . '/' . $this->dic->ctrl()->getLinkTarget($this->parent_obj, 'showContent') .
                 $json->startLink = ILIAS_HTTP_PATH . '/' . $this->dic->ctrl()->getLinkTarget($this->parent_obj, 'showContent') .
-                    '&start' . $vcType . '=1';
+                    '&start' . $vcType . '=1&rel_id=' . $a_set['rel_id'];
             }
 
             $dtMeetingStart = new ilDateTime($a_set['start'], IL_CAL_DATETIME, $a_set['timezone']);

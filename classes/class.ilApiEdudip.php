@@ -137,7 +137,7 @@ class ilApiEdudip implements ilApiInterface
 
         $param = [
             'title' => $param['title'],
-            'max_participants'  => 30, # 1 -
+            'max_participants'  => $param['max_participants'], # 1 -
             'recording'         => 0, # 1
             'registration_type' => 'date', # series
             'access'            => 'all', # invitation all

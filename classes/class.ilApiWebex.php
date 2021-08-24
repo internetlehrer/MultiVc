@@ -192,9 +192,9 @@ class ilApiWebex implements ilApiInterface
      * @return bool|string
      * @throws ilCurlConnectionException
      */
-    public function sessionGet( int $sessId ): string
+    public function sessionGet( string $meetingId, string $hostEmail = '' )
     {
-        return $this->restfulApiCall(self::ENDPOINT_WEBINAR . '/' . $sessId, 'get');
+        return $this->restfulApiCall(self::ENDPOINT_MEETINGS . '/' . $meetingId, 'get', ['hostEmail' => $hostEmail, 'current' => false]);
     }
 
     /**

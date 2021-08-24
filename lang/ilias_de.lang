@@ -181,7 +181,7 @@ create_type#:#Neuen Meeting-Typ definieren
 delete_type#:#Meeting-Typ löschen
 delete_conn#:#Meeting-Typ löschen?
 conn_deleted#:#Der Meeting-Typ wurde gelöscht.
-delete#:#löschen
+delete#:#Löschen
 conn_id#:#Meeting-Typ
 msg_obj_deleted#:#Die Aufzeichnung wurde gelöscht.
 guestlink#:#Gastlink
@@ -355,3 +355,6 @@ wait_join_meeting_webex#:#Aktuell können Sie keinem Meeting beitreten.
 wait_join_meeting_edudip#:#Aktuell können Sie keinem Webinar beitreten.
 user_log_bbb#:#Benutzerübersicht (BBB)
 owners_email_not_uniqeu#:#Die E-Mailadresse des Eigentümers ist nicht unique. Diese darf nur einmal an einen ILIAS-Benutzer vergeben sein.
+info_max_participants_webinar#:#Maximale Anzahl Teilnehmer je Webinar. Bitte beachten Sie Ihren edudip-Vertrag.
+error_start_meeting#:#Es ist ein Fehler beim Start des Meetings aufgetreten.
+error_start_webinar#:#Es ist ein Fehler beim Start des Webinars aufgetreten.

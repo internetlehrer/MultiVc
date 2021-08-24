@@ -354,3 +354,6 @@ wait_join_meeting_webex#:#Currently you cannot join any meeting.
 wait_join_meeting_edudip#:#Currently you cannot join any webinar.
 user_log_bbb#:#User overview (BBB)
 owners_email_not_uniqeu#:#The email address of the owner is not unique. This may only be assigned once to an ILIAS user.
+info_max_participants_webinar#:#Maximum number of participants per Webinar.
+error_start_meeting#:#An error occured on meeting start up.
+error_start_webinar#:#An error occured on webinar start up.

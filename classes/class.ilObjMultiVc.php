@@ -1274,6 +1274,14 @@ class ilObjMultiVc extends ilObjectPlugin
         );
     }
 
+    public function deleteScheduledSessionByRelId( string $relId ): bool
+    {
+        $this->db->manipulate('DELETE FROM rep_robj_xmvc_schedule WHERE'
+            . '  rel_id=' . $this->db->quote($relId, 'string')
+        );
+        return true;
+    }
+
     /**
      * @param int $refId
      * @param string $from
@@ -1466,6 +1474,18 @@ class ilObjMultiVc extends ilObjectPlugin
         return true;
     }
 
+    public function relateStoredHostSessionByRelId(string $relId, int $newRefId) {
+        $objId = ilObject::_lookupObjId($newRefId);
+
+        $values = [ 'obj_id' => ['int', $objId]];
+
+        $where = [
+            'rel_id'	=> ['string', $relId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_session', $values, $where);
+    }
+
 
     ####################################################################################################################
 	#### Webex
@@ -1651,10 +1671,10 @@ class ilObjMultiVc extends ilObjectPlugin
      * @param int $refId
      * @param string $data
      * @param bool $returnEntry
+     * @param bool $addHostSessEntry
      * @return array|null
-     * @throws Exception
      */
-    public function saveEdudipSessionData( int $refId, string $data, bool $returnEntry = false )
+    public function saveEdudipSessionData( int $refId, string $data, bool $returnEntry = false, bool $addHostSessEntry = false )
     {
         $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
 
@@ -1689,6 +1709,20 @@ class ilObjMultiVc extends ilObjectPlugin
         ];
 
         $this->db->insert('rep_robj_xmvc_schedule', $values);
+
+        if( $addHostSessEntry ) {
+            $values = [
+                'obj_id'	=> ['integer', $objId],
+                'start'	=> ['string', $dataObj->start],
+                'end'	=> ['string', $dataObj->end],
+                'timezone'	=> ['string', $dataObj->timezone],
+                'host'      => ['string', 'edudip'],
+                'type'      => ['string', 'webinar'],
+                'rel_id'	=> ['string', $dataObj->id],
+                'rel_data'	=> ['string', '{}']
+            ];
+            $this->db->insert('rep_robj_xmvc_session', $values);
+        }
 
         if( $returnEntry ) {
             return $this->getScheduledMeetingByRelId($dataObj->id, $refId, $userId)[0];

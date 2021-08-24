@@ -10,6 +10,18 @@ $actUserChanged->setInfo($pl->txt("delete_sess_user_changed_info"));
 $combo->addSubItem($actUserChanged);
 */
 
+$select = new ilSelectInputGUI($pl->txt("max_participants"), "max_participants");
+$select->setOptions([
+    20 => 20,
+    30 => 30,
+    50 => 50,
+    100 => 100,
+    200 => 200,
+    500 => 500
+]);
+$select->setInfo($pl->txt("info_max_participants_webinar"));
+$combo->addSubItem($select);
+
 
 if( isset($_GET['configureNewMultiVcConn']) ) {
     $listTokenUser = new ilHiddenInputGUI('list_token_user');

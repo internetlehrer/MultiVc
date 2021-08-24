@@ -354,7 +354,7 @@ class ilApiMultiVC
         $set2 = self::parseIniFile($DIC->http()->request()->getUri());
 
         // xmvc_conn specific ini settings (bbb.example.com.ini)
-        $set3 = self::parseIniFile($settings->getSvrPublicUrl());
+        $set3 = !is_null($settings) ? self::parseIniFile($settings->getSvrPublicUrl()) : [];
 
         return array_replace($set1, $set2, $set3);
     }
