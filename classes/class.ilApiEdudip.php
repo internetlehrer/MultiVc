@@ -265,7 +265,9 @@ class ilApiEdudip implements ilApiInterface
             $json = json_decode($response, true);
             $json['http_code'] = $code;
             $json['called_param'] = $param;
-            $json['error'] = '';
+            if( strlen($json['error']) && substr($json['error'], -1) !== '.' ) {
+                $json['error'] .= '.';
+            }
             $json['called_endpoint'] = $endpoint;
             $json['called_method'] = $method;
         } catch (ilCurlConnectionException $e) {
@@ -273,12 +275,12 @@ class ilApiEdudip implements ilApiInterface
                 'success' => false,
                 'error' => $e->getMessage()
             ];
+            if( (bool)strlen($json['error']) ) {
+                ilUtil::sendFailure($this->dic->language()->txt('error') . '<br />' . $json['error'], true);
+                $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
+            }
         }
 
-        if( (bool)strlen($json['error']) ) {
-            ilUtil::sendFailure($this->dic->language()->txt('error') . '<br />' . $json['error'], true);
-            $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
-        }
 
         return json_encode($json);
 

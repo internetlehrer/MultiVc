@@ -551,7 +551,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 if( !isset($check['success']) || !$check['success']) {
                     $_POST['keepCreateMeetingForm'] = true;
                     ilSession::set('scheduleMeetingRequestParam', $_POST);
-                    ilUtil::sendFailure($this->dic->language()->txt('error') . ' ' . $check['error'], true);
+                    if ($check['error'] == "") {
+                    	$check['error'] = $this->dic->language()->txt('error');
+                    }
+                    ilUtil::sendFailure($check['error'], true);
                     $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
                 }
 

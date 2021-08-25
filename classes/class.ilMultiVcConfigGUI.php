@@ -340,6 +340,9 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			$ilTpl->addOnLoadCode('$(\'#il_prop_cont_integration_auth_method\', document).hide();');
 			if( false !== $triggerScript ) {
 				$combo->addCustomAttribute('onchange="if(this.selectedIndex===' . $triggerScript . '){$(\'#il_prop_cont_integration_auth_method\', document).show();} else {$(\'#il_prop_cont_integration_auth_method\', document).hide();}"');
+				if( count($vcTypesAvailable) === 1 ) {
+					$ilTpl->addOnLoadCode('$(\'#showcontent\', document).trigger(\'change\');');
+				}
 			}
 			$this->form->addItem($combo);
 
