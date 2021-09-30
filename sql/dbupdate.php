@@ -400,8 +400,10 @@ $fields_data = array(
     ),
 );
 
-$ilDB->createTable("rep_robj_xmvc_log_max", $fields_data);
-$ilDB->addPrimaryKey("rep_robj_xmvc_log_max", array("year", 'month', 'day', 'hour'));
+if( !$ilDB->tableExists("rep_robj_xmvc_log_max" ) ) {
+    $ilDB->createTable("rep_robj_xmvc_log_max", $fields_data);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_log_max", array("year", 'month', 'day', 'hour'));
+}
 ?>
 <#7>
 <?php
@@ -1074,5 +1076,119 @@ if($ilDB->tableExists('rep_robj_xmvc_data'))
             'notnull' => false
         ));
     }
+}
+?>
+<#30>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'secret_expiration') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'secret_expiration', array(
+            'type' => 'text',
+            'length' => 256,
+            'notnull' => false,
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'max_duration') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'max_duration', array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => false,
+            'default' => 0
+        ));
+    }
+}
+?>
+<#31>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'max_duration') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'max_duration', array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => false,
+            'default' => 0
+        ));
+    }
+}
+?>
+<#32>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'assigned_roles') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'assigned_roles', array(
+            'type' => 'clob',
+            'notnull' => false
+        ));
+    }
+}
+?>
+<#33>
+<?php
+$fields_notify = array(
+    'id' => array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => true
+    ),
+    'obj_id' => array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => true
+    ),
+    'rel_id' => array(
+        'type' => 'text',
+        'length' => 256,
+        'notnull' => false
+    ),
+    'user_id' => array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => true
+    ),
+    'auth_user' => array(
+        'type' => 'text',
+        'length' => 80,
+        'notnull' => true
+    ),
+    'recipient' => array(
+        'type' => 'text',
+        'length' => 80,
+        'notnull' => true
+    ),
+    'status' => array(
+        'type' => 'integer',
+        'length' => 1,
+        'notnull' => true
+    ),
+    'updated' => array(
+        'type' => 'timestamp',
+        'notnull' => false
+    ),
+    'proc_id' => array(
+        'type' => 'text',
+        'length' => 64,
+        'notnull' => false
+    ),
+    'log' => array(
+        'type' => 'clob',
+        'notnull' => false
+    ),
+    'message' => array(
+        'type' => 'clob',
+        'notnull' => true
+    ),
+);
+if(!$ilDB->tableExists('rep_robj_xmvc_notify'))
+{
+    $ilDB->createTable("rep_robj_xmvc_notify", $fields_notify);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_notify", array("id"));
+    $ilDB->createSequence('rep_robj_xmvc_notify');
 }
 ?>

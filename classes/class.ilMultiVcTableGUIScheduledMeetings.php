@@ -269,7 +269,8 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
             $deleteLocalOnly = -1 < array_search($a_set['rel_id'], $this->diffLocalSessHostSessRelIds);
 			
             $data[$key] = [
-                'ROW_CSS'       => $deleteLocalOnly ? 'danger' : '',
+#                'ROW_CSS'       => $deleteLocalOnly ? 'danger' : '',
+                'ROW_CSS'       => (bool)$json->wbxmvcRelatedMeeting ? $deleteLocalOnly ? 'danger' : '' : 'info',
                 'TITLE'         => $json->title,
                 'START_TIME'    => $meetingStart,
                 'END_TIME'      => $meetingEnd,
@@ -554,7 +555,11 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI {
         $this->meetingProperty['title'] = new ilTextInputGUI($this->plugin_object->txt('title'), 'meeting_title');
         $this->meetingProperty['title']->setRequired(true);
 
-        $this->meetingProperty['agenda'] = new ilTextAreaInputGUI($this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_agenda'), 'meeting_agenda');
+        if( $this->parent_obj->isEdudip ) {
+            $this->meetingProperty['agenda'] = new ilHiddenInputGUI('meeting_agenda');
+        } else {
+            $this->meetingProperty['agenda'] = new ilTextAreaInputGUI($this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_agenda'), 'meeting_agenda');
+        }
 
         $this->meetingProperty['duration'] = new ilDateDurationInputGUI($this->plugin_object->txt('scheduled_' . $this->parent_obj->sessType . '_duration'), 'meeting_duration');
         $this->meetingProperty['duration']->setRequired(true);

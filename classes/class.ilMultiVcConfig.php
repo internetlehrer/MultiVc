@@ -10,6 +10,7 @@ use ILIAS\DI\Container;
  */
 class ilMultiVcConfig
 {
+    #region PROPERTIES
     const PLUGIN_ID = 'xmvc';
     const AVAILABLE_VC_CONN = [
         'bbb'		=> 'BigBlueButton',
@@ -38,6 +39,15 @@ class ilMultiVcConfig
 
     const ADMIN_DEFINED_TOKEN_VC = [
         'edudip'
+    ];
+
+    const VC_RELATED_FUNCTION = [
+        'globalAssignedRoles' => [
+            'bbb', 'edudip', 'webex', 'om', 'spreed'
+        ],
+        'maxDuration' => [
+            'bbb'
+        ]
     ];
 
     /** @var Container $dic */
@@ -85,6 +95,10 @@ class ilMultiVcConfig
     private $svrUsername;
 	/** @var int $maxParticipants */
 	private $maxParticipants;
+
+    /** @var int $maxDuration */
+    private $maxDuration = 0;
+
 	/** @var string $showContent */
 	private $showContent;
 	/** @var bool $privateChatChoose */
@@ -208,8 +222,12 @@ class ilMultiVcConfig
     /** @var bool $extraCmdChoose */
     private $extraCmdChoose = false;
 
+    /** @var null|array $assignedRoles  */
+    private $assignedRoles = null;
 
+    #endregion PROPERTIES
 
+    #region INIT READ WRITE
 
     /**
      * @param string $component VC e. g. spreed | bbb
@@ -312,6 +330,7 @@ class ilMultiVcConfig
 			'svrprivateport'				=> ['integer', $this->getSvrPrivatePort()],
 			'svrsalt'					    => ['string', $this->getSvrSalt()],
 			'maxparticipants'			    => ['integer', $this->getMaxParticipants()],
+            'max_duration'			        => ['integer', $this->getMaxDuration()],
             'showcontent'			        => ['string', $this->getShowContent()],
             'private_chat_choose'		    => ['integer', (int)$this->isPrivateChatChoose()],
             'private_chat_default'		    => ['integer', (int)$this->isPrivateChatDefault()],
@@ -337,6 +356,7 @@ class ilMultiVcConfig
             'extra_cmd_default' => ['integer', (int)$this->getExtraCmdDefault()],
             'style'				=> ['string', $this->getStyle()],
             'logo'				=> ['string', $this->getLogo()],
+            'assigned_roles'	=> ['string', implode(',', $this->getAssignedRoles() ?? [])],
             //'more_options'			        => ['string', json_encode($this->option)],
 		);
 		//var_dump($a_data); exit;
@@ -419,6 +439,7 @@ class ilMultiVcConfig
         $this->svrSalt = '';
         $this->svrUsername = '';
         $this->maxParticipants = 20;
+        $this->maxDuration = 0;
         //$this->showContent
         $this->privateChatChoose = false;
         $this->privateChatDefault = true;
@@ -437,6 +458,7 @@ class ilMultiVcConfig
         $this->extraCmdDefault = false;
         $this->style =
         $this->logo = '';
+        $this->assignedRoles = [];
 
     }
 
@@ -489,6 +511,7 @@ class ilMultiVcConfig
 			$this->setSvrPrivatePort($record["svrprivateport"]);
 			$this->setSvrSalt($record["svrsalt"]);
 			$this->setMaxParticipants($record["maxparticipants"]);
+            $this->setMaxDuration($record["max_duration"]);
 			$this->setShowContent($record["showcontent"]);
             $this->setPrivateChatChoose( (bool)$record["private_chat_choose"] );
 			$this->setPrivateChatDefault( (bool)$record["private_chat_default"] );
@@ -514,6 +537,7 @@ class ilMultiVcConfig
             $this->setExtraCmdDefault( (bool)$record["extra_cmd_default"] );
             $this->setStyle( (string)$record["style"] );
             $this->setLogo( (string)$record["logo"] );
+            $this->setAssignedRoles( explode(',', $record["assigned_roles"]) );
 
 
             $this->setStoredOption($record);
@@ -540,6 +564,9 @@ class ilMultiVcConfig
 	    //var_dump($this->option->cam->selected); exit;
     }
 
+    #endregion INIT READ WRITE
+
+    #region GETTER & SETTER
     /**
      * @return int|null
      */
@@ -870,6 +897,24 @@ class ilMultiVcConfig
 	{
 		$this->maxParticipants = $maxParticipants;
 	}
+
+    /**
+     * @return int
+     */
+    public function getMaxDuration(): int
+    {
+        return $this->maxDuration;
+    }
+
+    /**
+     * @param int $maxDuration
+     */
+    public function setMaxDuration(int $maxDuration): void
+    {
+        $this->maxDuration = $maxDuration;
+    }
+
+
 
 	/**
 	 * @return string
@@ -1289,6 +1334,85 @@ class ilMultiVcConfig
         $this->logo = $logo;
     }
 
+    /**
+     * @return array|null
+     */
+    public function getAssignedRoles()
+    {
+        return  $this->assignedRoles;
+    }
+
+    /**
+     * @param array|string|null $assignedRoles
+     */
+    public function setAssignedRoles(?array $assignedRoles): void
+    {
+        $this->assignedRoles = !is_array($assignedRoles) ? (array)$assignedRoles : $assignedRoles;
+        /*if( !(int)$this->assignedRoles[0] ) {
+            array_shift($this->assignedRoles);
+        }*/
+    }
+
+    public function getAssignableGlobalRoles(): array
+    {
+        $globalRoles =
+        $localRoles =
+        $assignableRoles = [];
+        foreach($this->dic->rbac()->review()->getGlobalRoles() as $roleId) {
+            $title = ilObjRole::_lookupTitle($roleId);
+            if( false !== array_search($title, ['Anonymous', 'Guest'])  ) {
+                continue;
+            }
+            $globalRoles[$roleId] = ilObjRole::_getTranslation($title);
+        }
+
+        foreach (json_decode($this->getAllLocalRoles('il_crs_admin'),1) as $localRole) {
+            $localRoleId = ilObjRole::_getIdsForTitle($localRole['value'])[0];
+            $localRoles[$localRoleId] = $localRole['label'];
+        } // EOF foreach (json_decode($this->getAllLocalRoles(),1) as $item)
+
+        return array_replace($globalRoles, $localRoles);
+    }
+
+    private function getAllLocalRoles($a_str = '%')
+    {
+        global $DIC;
+
+        $ilDB = $DIC['ilDB'];
+
+        $query = "SELECT o1.title role,o3.title course_title, o2.title container FROM object_data o1
+                    JOIN rbac_fa fa ON o1.obj_id = rol_id
+                    JOIN tree t1 ON fa.parent =  t1.child
+                    JOIN object_reference obr ON obr.ref_id = t1.parent
+                    JOIN object_data o2 ON obr.obj_id = o2.obj_id
+                    JOIN object_reference childbr ON childbr.ref_id = t1.child
+                    JOIN object_data o3 ON childbr.obj_id = o3.obj_id
+                    WHERE o1.type = 'role'
+                    AND assign = 'y'
+                    AND o1.title like '%il_crs_admin%'
+                    AND fa.parent != 8
+                    ORDER BY container,course_title,role ";
+
+        $res = $ilDB->query($query);
+        $counter = 0;
+        $result = array();
+        while ($row = $res->fetchRow(ilDBConstants::FETCHMODE_OBJECT)) {
+            $result[$counter] = new stdClass();
+            $result[$counter]->value = $row->role;
+            $result[$counter]->label = $row->role . " (" . $row->container . " / " . $row->course_title . ")";
+            ++$counter;
+        }
+
+        if ($counter == 0) {
+            return self::getListByObject($a_str);
+        }
+
+        include_once './Services/JSON/classes/class.ilJsonUtil.php';
+        return ilJsonUtil::encode($result);
+    }
+
+    #endregion GETTER & SETTER
+
 
 
 
@@ -1410,13 +1534,32 @@ class ilMultiVcConfig
 
     static public function _getAvailableMultiVcConn(bool $onlyCreate = false, ?int $conn_id = null): array
     {
+        global $DIC; /** @var Container $DIC */
         $operator = !$onlyCreate ? '<>' : '=';
         $availStatus = !$onlyCreate ? self::AVAILABILITY_NONE : self::AVAILABILITY_CREATE;
         $availItems = is_array($res = self::_getMultiVcConnData(false, $availStatus, $operator))
             ? $res
             : [];
         $list = [];
+        #echo '<pre>'; var_dump($availItems); exit;
         foreach($availItems as $key => $val) {
+            // we only check configs of defined VCs for globalAssignedRoles
+            // For existing xmvcConfigs we do not check globalAssignedRoles before a vcConfig is updated.
+            if( in_array($val['showcontent'], self::VC_RELATED_FUNCTION['globalAssignedRoles']) && (bool)$val['assigned_roles'] ) {
+                $xmvcAssignedRoles = explode(',', $val['assigned_roles'] . ',x');
+                array_pop($xmvcAssignedRoles);
+                #exit;
+                $continue = true;
+                foreach ($xmvcAssignedRoles as $roleId ) {
+                    if( $DIC->rbac()->review()->isAssigned($DIC->user()->getId(), $roleId) ) {
+                        $continue = false;
+                        break;
+                    }
+                }
+                if( $continue ) {
+                    continue;
+                }
+            }
             $list[$val['conn_id']] = $val['title'];
         }
         return $list;

@@ -518,6 +518,12 @@ class ilApiBBB implements ilApiInterface
         $path = array_reverse($DIC->repositoryTree()->getPathFull($this->object->getRefId()));
         $keys = array_keys($path);
         $parent = $path[$keys[1]];
+        foreach($keys as $key) {
+            if( in_array($path[$key]['type'], ['crs', 'grp']) ) {
+                $parent = $path[$key];
+                break;
+            }
+        }
 
         $this->parentObj = ilObjectFactory::getInstanceByRefId($parent['ref_id']);
         switch( true )
@@ -627,6 +633,10 @@ class ilApiBBB implements ilApiInterface
                 ->setDialNumber( '613-555-1234' );
         }
 
+        if( (bool)$maxDuration = $this->settings->getMaxDuration() ) {
+            $this->createMeetingParam->setDuration($maxDuration);
+        }
+
     }
 
     /**
@@ -689,10 +699,14 @@ class ilApiBBB implements ilApiInterface
      * @return string
      */
     private function getMP4DownStreamUrl(string $recordUrl): string {
+        return $recordUrl . '/video/webcams.mp4';
+        /*
         // https://github.com/createwebinar/bbb-download
         $part = explode(self::PLAYBACKURL_SPLIT, $recordUrl);
         $url = str_replace('playback', 'download', $part[0]) . $part[1] .  '/' . $part[1] . '.mp4';
         return $this->mp4Exists($url) ? $url : '';
+        */
+
     }
 
     /**

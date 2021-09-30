@@ -158,11 +158,14 @@ class ilApiEdudip implements ilApiInterface
     }
 
     /**
-     * @param int $sessId
+     * @param int|null $sessId
      * @return bool|string
      */
-    public function sessionGet( int $sessId ): string
+    public function sessionGet( ?int $sessId = null ): string
     {
+        if( null === $sessId ) {
+            return false;
+        }
         return $this->restfulApiCall(self::ENDPOINT_WEBINAR . '/' . $sessId, 'get');
     }
 

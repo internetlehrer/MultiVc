@@ -133,17 +133,17 @@ offline#:#Offline
 start_window#:#Virtuellen Meetingraum in einem neuen Fenster starten
 window_started#:#Der virtuelle Meetingraum wurde in einem neuen Fenster gestartet.
 window_closed#:#Der virtuelle Meetingraum wurde beendet.
-info_top_moderator_spreed#:#Willkommen im Meetingraum!<br/>&nbsp;<br/><b>Sie haben aktuell in diesem Raum die Moderatorfunktion.</b><br/>Wenn Sie den Meetingraum starten, sehen Sie rechts eine Liste aller hinzugekommenen Teilnehmerinnen und Teilnehmer. Bitte rufen Sie sie an, indem Sie mit dem Mauszeiger über die einzuladende Person fahren und anschließend auf das dann erscheinende Symbol mit dem Telefonhörer klicken.
-info_top_moderator_bbb#:#Willkommen im Meetingraum!<br/>&nbsp;<br/><b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
-info_top_moderated_m_spreed#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Starten Sie den Meetingraum und warten Sie darin auf einen Anruf. Gegebenenfalls können Sie in der Zwischenzeit mit weiteren Wartenden chatten.<br/>Wenn Sie einen Anruf erhalten, sollten Sie diesen schnell annehmen. Nach einiger Zeit bekommt sonst der Anrufende die Meldung, dass Sie nicht abnehmen.
-info_top_moderated_m_bbb#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
-info_top_not_moderated_spreed#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Dieser Meetingraum ist nicht moderiert. Bitte einigen Sie sich z.B. mit Hilfe des Chats, wer Video-Anrufe starten soll. Dies kann die erste Person in einem Meeting sein. In jedem Fall sollte diese Person über eine gute Internetverbindung und ein Headset verfügen.
-info_top_not_moderated_bbb#:#Willkommen im Meetingraum!<br/>&nbsp;<br/>Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
-info_bottom#:#<br/>Wichtige Hinweise:<ul><li>Bitte <b>nutzen Sie ein Headset</b> zur Vermeidung von störenden Rückkopplungen oder Echos!</li><li><b>Bei schlechter Internetverbindung</b> sollten Sie Ihre Kamera (Webcam) abschalten und bei noch schlechterer Verbindung sollten Sie für die Übertragung des Tons eine Telefonkonferenz nutzen.</li></ul>
-info_requirements_spreed#:#Technische Voraussetzungen:<ul><li>Der Spreed Meetingraum nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Die Anzahl der Personen im Raum kann bei guter Internetverbindung 6 betragen, wenn alle Personen Chrome benutzen.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und die Extension 'Spreed.ME screen sharing' installiert haben. Diese Extension erhalten Sie <a href="https://chrome.google.com/webstore/detail/spreedme-screen-sharing/labcnlicceloglidikcjbfglhnjibcbd" target="_blank"><u>hier</u></a> im <a href="https://chrome.google.com/webstore/" target="_blank">Chrome Web Store</a>. Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a> nutzen.
-info_requirements_bbb#:#Technische Voraussetzungen:<ul><li>BigBlueButton nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 80/443 (für HTTP/HTTPS) und UDP-Ports im Bereich 16384 - 32768 (<a href="https://docs.bigbluebutton.org/2.2/configure-firewall.html" target="_blank">Weiterführende Hinweise</a>).</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_top_moderator_spreed#:#<b>Sie haben aktuell in diesem Raum die Moderatorfunktion.</b><br/>Wenn Sie den Meetingraum starten, sehen Sie rechts eine Liste aller hinzugekommenen Teilnehmerinnen und Teilnehmer. Bitte rufen Sie sie an, indem Sie mit dem Mauszeiger über die einzuladende Person fahren und anschließend auf das dann erscheinende Symbol mit dem Telefonhörer klicken.
+info_top_moderator_bbb#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderated_m_spreed#:#Starten Sie den Meetingraum und warten Sie darin auf einen Anruf. Gegebenenfalls können Sie in der Zwischenzeit mit weiteren Wartenden chatten.<br/>Wenn Sie einen Anruf erhalten, sollten Sie diesen schnell annehmen. Nach einiger Zeit bekommt sonst der Anrufende die Meldung, dass Sie nicht abnehmen.
+info_top_moderated_m_bbb#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_not_moderated_spreed#:#Dieser Meetingraum ist nicht moderiert. Bitte einigen Sie sich z.B. mit Hilfe des Chats, wer Video-Anrufe starten soll. Dies kann die erste Person in einem Meeting sein. In jedem Fall sollte diese Person über eine gute Internetverbindung und ein Headset verfügen.
+info_top_not_moderated_bbb#:#Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
+info_bottom#:#<ul><li>Bitte <b>nutzen Sie ein Headset</b> zur Vermeidung von störenden Rückkopplungen oder Echos!</li><li><b>Bei schlechter Internetverbindung</b> sollten Sie Ihre Kamera (Webcam) abschalten und bei noch schlechterer Verbindung sollten Sie für die Übertragung des Tons eine Telefonkonferenz nutzen.</li></ul>
+info_requirements_spreed#:#<ul><li>Der Spreed Meetingraum nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Die Anzahl der Personen im Raum kann bei guter Internetverbindung 6 betragen, wenn alle Personen Chrome benutzen.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und die Extension 'Spreed.ME screen sharing' installiert haben. Diese Extension erhalten Sie <a href="https://chrome.google.com/webstore/detail/spreedme-screen-sharing/labcnlicceloglidikcjbfglhnjibcbd" target="_blank"><u>hier</u></a> im <a href="https://chrome.google.com/webstore/" target="_blank">Chrome Web Store</a>. Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a> nutzen.
+info_requirements_bbb#:#<ul><li>BigBlueButton nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 80/443 (für HTTP/HTTPS) und UDP-Ports im Bereich 16384 - 32768 (<a href="https://docs.bigbluebutton.org/2.2/configure-firewall.html" target="_blank">Weiterführende Hinweise</a>).</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
 user_invite_info#:#Mit dem folgenden Link k&ouml;nnen Sie G&auml;ste zum Meeting einladen:
-info_requirements_om#:#Technische Voraussetzungen:<ul><li>Openmeetings nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie die neueste Version von Microsoft Edge sowie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 8888/5443 (für HTTP/HTTPS), TCP/UDP 3478  und UDP-Ports im Bereich 49152 - 65535.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_requirements_om#:#<ul><li>Openmeetings nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie die neueste Version von Microsoft Edge sowie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 8888/5443 (für HTTP/HTTPS), TCP/UDP 3478  und UDP-Ports im Bereich 49152 - 65535.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
 info_requirements_not_ok#:#<b>Mit dem aktuell von Ihnen genutzten Browser können Sie den virtuellen Meetingraum nur sehr eingeschränkt nutzen.</b><br/>Nutzen Sie als Browser am besten Google Chrome oder mit Einschränkungen Mozilla Firefox! Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls <a href="http://portableapps.com/de/apps/internet/google_chrome_portable" target="_blank">Google Chrome Portable</a> nutzen.<br/>Sollte es nicht möglich sein, den Browser zu wechseln, so starten Sie den virtuellen Meetingraum und schreiben Sie in den Chat, dass Sie aktuell keinen geeigneten Browser haben und dass niemand auf Sie warten solle.
 info_requirements_partly#:#Wir empfehlen als Browser Google Chrome oder mit Einschränkungen Mozilla Firefox. Ob und inwieweit der aktuell von Ihnen genutzte Browser geeignet ist, den virtuellen Meetingraum zu nutzen, müssen Sie selbst herausfinden. Bitte berichten Sie dem gegebenenfalls vorhandenen technischen Support Ihre Erfahrungen.
 info_concurrent_users_available#:#Anzahl freier Pl&auml;tze im virtuellen Klassenraum:&nbsp;
@@ -195,7 +195,7 @@ guest_displayname_info#:#Bitte beachten Sie: Ausführliche Angaben zu Titeln kö
 guest_password_input#:#Passwort für Gäste
 guest_password_input_info#:#Bitte geben Sie hier das Passwort zum Gastlink ein.
 btntext_guest_login_button#:#Als Gast einloggen
-err_msg_guest_password#:#Das Gast-Passwort ist falsch.
+err_msg_guest_password#:#Das Gast-Passwort ist falsch oder abgelaufen.
 err_msg_displayname#:#Bitte geben Sie Ihren Namen ein
 terms_of_use#:#<b>Schutzrechte</b><br/>Die in BigBlueButton-Konferenzen enthaltenen Informationen und Materialien wie z.B. Texte oder Bilder sind in der Regel durch Urheber-, Marken- oder Patentrechte geschützt.<br/>Die gesetzlichen Vorschriften zum Datenschutz sind zu beachten. Dies gilt insbesondere für die Aufzeichnung von BigBlueButton-Konferenzen. Das heimliche Aufzeichnen von Video- oder Audiokonferenzen ist ein Straftatbestand.<br/><br/><b>Verhaltensregeln</b><br/>Sie dürfen keine gegen gesetzliche Bestimmungen verstoßende, pornographische, obszöne, diffamierende, verleumderische, beleidigende, bedrohende, volksverhetzende oder rassistische Inhalte einstellen. Auch das Einstellen von Werbung ohne Genehmigung sowie die Übermittlung von Informationen, welche einen Virus, Manipulationen oder ähnliche schädigende Elemente enthalten, ist untersagt.<br/><br/><b>Verarbeitete Daten</b><br/>Bei der Nutzung von BigBlueButton werden folgende Daten erhoben:<ul><li>Verbindungsdaten (z. B. IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs)</li><li>Gegebenenfalls Zugangsdaten: Benutzername, Passwort in verschlüsselter Form</li><li>Inhaltsdaten (z. B. hochgeladene Dateien, Chatbeiträge, Umfragen)</li></ul>Die vorübergehende Speicherung der Verbindungsdaten, insbesondere der IP-Adresse, durch das System ist notwendig, um eine Auslieferung von BigBlueButton an den Rechner des Nutzers zu ermöglichen. Hierfür muss die IP-Adresse des Nutzers für die Dauer der Sitzung gespeichert bleiben. Rechtsgrundlage für die vorübergehende Speicherung der Daten ist Art. 6 Abs. 1 lit. f DSGVO.<br/>Die Verbindungsdaten werden ebenfalls in der Regel in Logfiles gespeichert. Der Löschzeitpunkt wird durch den Betreiber des Servers für BigBlueButton festgelegt.
 usage#:#Auslastung
@@ -208,7 +208,6 @@ user_log_duration#:#Erfassungszeitraum
 moderator#:#Moderator
 join_time#:#Teilnahme ab
 start_time#:#Start
-end_time#:#Ende
 hint#:#Hinweistext
 info_hint#:#Der Hinweistext erscheint farblich hervorgehoben oberhalb des Inhaltes der Objektseite.
 disable_sip#:#Telefoneinwahl deaktivieren
@@ -234,12 +233,10 @@ scheduled_meeting_duration#:#Zeitraum
 scheduled_meeting_data_source#:#Sitzungen
 scheduled_meeting_both_data_sources#:#alle
 scheduled_meeting_local_data_sources#:#zugeordnete
-info_requirements_webex#:#Technische Voraussetzungen:<ul><li>Empfohlene Browser: Chrome, Edge, Firefox</li></ul>
+info_requirements_webex#:#<ul><li>Empfohlene Browser: Chrome, Edge, Firefox</li></ul>
 webex_site_url#:#Webex Site URL
 webex_host_email#:#Webex Host E-Mail-Adresse
 of_owner_prefix#:#von EigentümerIn
-webex_host_email_info#:#Bei Webex- bzw. bei der Hosted-Site bekannte E-Mail-Adresse
-webex_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adresse wird nur den Besitzern des Objekts und Administratoren angezeigt.
 info_webex_site_url#:#Name der Hosted Site. Die Subdomain vor .webex.com, z. B. your-company.webex.com, oder your-company.my.webex.com
 webex_client_id#:#Client-ID der Webex Integration
 info_webex_client_id#:#Die Client-Id finden Sie in den Daten zu Ihrer Webex-Integration (z. B. admin.webex.com, developer.webex.com).
@@ -294,7 +291,7 @@ sess_owner_changed#:#Authentifizierung wurde geändert
 info_set_owner#:#Eigentümer eingetragen
 edudip_host_email#:#edudip E-Mail-Adresse
 edudip_host_email_info#:#Ihre bei edudip bekannte E-Mail-Adresse muss mit dieser übereinstimmen
-info_requirements_edudip#:#Technische Voraussetzungen:<ul><li>edudip nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Bitte wenden Sie sich an den edudip-Support um weitere Infos zu bekommen.</li>
+info_requirements_edudip#:#<ul><li>edudip nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Bitte wenden Sie sich an den edudip-Support um weitere Infos zu bekommen.</li>
 add_token#:#Token hinzufügen
 reseted_tokens#:#Tokens zurückgesetzt
 token_stored#:#Token gespeichert
@@ -337,7 +334,7 @@ webinar_collision#:#Es ist ein Fehler aufgetreten. Für den gewünschten Zeitrau
 schedule_webinar_error#:#Es ist ein Fehler aufgetreten. Bitte prüfen Sie Ihre Eingaben.
 btntext_join_webinar#:#Webinar beitreten
 wait_join_webinar#:#<b>Aktuell hat noch niemand das Webinar gestartet.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
-info_top_moderated_edudip#:#Willkommen im Webinar!
+info_top_moderated_edudip#:#Sie haben Moderationsrechte und können das Webinar starten.
 bbb_guest_password#:#Passwort für Gäste
 custom_style#:#Custom Style
 custom_style_info#:#Hier können Sie CSS-Style-Parameter oder eine CSS-Datei definieren. Für eine Datei, muss eine URL, beginnend mit https://, angegeben werden. Des Weiteren muss in der settings.yml der BBB-Installation der Parameter "displayBrandingArea" auf true gesetzt sein.
@@ -351,10 +348,43 @@ lock_disable_cam_default#:#Teilnehmer-Kamera sperren Voreinstellung
 lock_disable_cam_default_info#:#Legen Sie die Voreinstellung zu "Teilnehmer-Kamera sperren" fest.
 guest_link_pw_info#:#Gäste müssen sich mit diesem Passswort anmelden
 edudip_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adresse wird nur den Besitzern des Objekts und Administratoren angezeigt.
-wait_join_meeting_webex#:#Aktuell können Sie keinem Meeting beitreten.
+wait_join_meeting_webex#:#Aktuell können Sie keinem Meeting beitreten. Möglicherweise wurde das Meeting noch nicht gestartet oder bereits beendet.<br />Aktualisieren Sie ggf. diese Seite, um den Status des Meetings zu prüfen.
 wait_join_meeting_edudip#:#Aktuell können Sie keinem Webinar beitreten.
 user_log_bbb#:#Benutzerübersicht (BBB)
 owners_email_not_uniqeu#:#Die E-Mailadresse des Eigentümers ist nicht unique. Diese darf nur einmal an einen ILIAS-Benutzer vergeben sein.
 info_max_participants_webinar#:#Maximale Anzahl Teilnehmer je Webinar. Bitte beachten Sie Ihren edudip-Vertrag.
 error_start_meeting#:#Es ist ein Fehler beim Start des Meetings aufgetreten.
 error_start_webinar#:#Es ist ein Fehler beim Start des Webinars aufgetreten.
+bbb_guest_password_info#:#Erlaubt sind alphanumerische- und Sonderzeichen, wie zum Beispiel: <code>a-Z_09,.#@!?</code>
+bbb_secret_expires#:#Mit Ablaufdatum
+bbb_secret_expires_info#:#Wählen Sie diese Option, wenn das Passwort zeitlich befristet sein soll.
+bbb_secret_expiration_date#:#Ablaufdatum
+bbb_secret_expiration_date_info#:#Das Passwort ist bis einschließlich dem gewählten Datum gültig.
+bbb_secret_expired_msg#:#Das Gast-Passwort ist abgelaufen
+guest#:#Gast
+max_duration#:#Maximale Dauer
+info_max_duration#:#Das Meeting wird nach den angegebenen Werten für Stunden und Minuten beendet. Bei unbegrenzter Dauer bitte jeweils '0' angeben.
+assigned_roles#:#Zugewiesene Rollen
+assigned_roles_info#:#Das Anlegen dieser MultiVc-Konfiguration kann für Benutzer beschränkt werden, die zu einer oder mehreren der gewählten Rollen gehören.
+webinar_notification_subject#:#{EVENT}: {SUBJECT}
+webinar_notification_body#:#Hallo {NAME},{NL}{NL}es wurde folgendes {EVENT}:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Mit freudlichen Grüßen{NL}{NL}{FROM}
+webinar_event_created#:#Webinar angelegt
+webinar_event_deleted#:#Webinar gelöscht
+webinar_notification_from#:#ILIAS
+notification_sending#:#Benachrichtigungen werden gesendet ...
+notification_sent#:#Benachrichtigungen erfolgreich gesendet.
+btntext_start_meeting#:#Meeting starten
+btntext_start_webinar#:#Webinar starten
+info_top_moderated_webex#:#Sie haben Moderationsrechte und können das Meeting starten. Dazu benötigen Sie einen Account bei Webex oder bei einer Webex-Hostet-Site. Teilnehmende können erst dann beitreten, wenn das Meeting von einem Moderator gestartet wurde.
+webinar_running#:#Das Webinar wurde gestartet.
+webex_host_email_info#:#Bei Webex- bzw. bei der Hosted-Site bekannte E-Mail-Adresse
+webex_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adresse wird nur den Besitzern des Objekts und Administratoren angezeigt.
+headline_welcome_webinar#:#Willkommen im Webinar!
+headline_welcome_meeting#:#Willkommen im Meetingraum!
+end_time#:#Ende
+info_bottom_headline#:#Wichtige Hinweise zur Nutzung:
+info_requirements_headline#:#Technische Voraussetzungen:
+info_top_moderator_om#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderated_m_om#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_not_moderated_om#:#Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
+info_om_svr_public_url#:#Beispiel: https://www.example.com/

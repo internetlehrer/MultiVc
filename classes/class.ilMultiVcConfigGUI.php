@@ -106,7 +106,9 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->initUserLogTableGUI($cmd);
 				break;
 			case 'addUserAutoComplete':
+			case 'getLocalRoleAutoComplete':
 				$this->$cmd();
+				break;
 			default:
 				$this->initTabs();
 				if (!$cmd)
@@ -486,13 +488,12 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		foreach ($formFieldItems as $key => $item) {
 			$formHasField[] = $item->getPostVar();
 		}
+		#echo '<pre>'; var_dump($this->getDefaultFieldAndValues($this->object->getShowContent())); exit;
 		foreach ( $this->getDefaultFieldAndValues() as $name => $value ) {
 			if( false === array_search($name, $formHasField) ) {
 				$this->form->addItem( $defField($name, $value) );
 			}
 		}
-
-
 		return $this->form;
 	}
 
@@ -525,6 +526,19 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["svr_salt"] = $this->object->getSvrSalt();
 		$values["svr_username"] = $this->object->getSvrUsername();
 		$values["max_participants"] = $this->object->getMaxParticipants();
+		// MaxDuration
+		if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['maxDuration']) ) {
+			$maxDurationDecimal = (int)$this->object->getMaxDuration() / 60;
+			list($values["max_duration"]['hh']) = explode('.', $maxDurationDecimal);
+			$values["max_duration"]['mm'] = round(($maxDurationDecimal - $values["max_duration"]['hh']) * 60);
+		} else {
+			$values["max_duration"] = 0;
+		}
+
+		// globalAssignedRoles
+		if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) ) {
+			$values["assigned_roles"] = $this->object->getAssignedRoles();
+		}
 		$values["showcontent"] = $this->object->getShowContent();
 		$values["private_chat_choose"] = $this->object->isPrivateChatChoose();
 		$values["private_chat_default"] = $this->object->isPrivateChatDefault();
@@ -547,6 +561,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["extra_cmd_default"] = $this->object->getExtraCmdDefault();
 		$values["style"] = $this->object->getStyle();
 		$values["logo"] = $this->object->getLogo();
+
 		$tokenUser = [];
 		if( null !== $string = $this->object->getAccessToken() ) {
 			$token = json_decode($string, 1);
@@ -591,9 +606,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			$hasMinTokenLen = strlen($form->getInput('new_token_user_access_token')) >= 8;
 			$connId = $form->getInput('conn_id');
 			$tokens = $this->object->getTokenFromDb($connId, 'access');
-			#echo '<per>'; var_dump($tokens);; exit;
 			$storedTokens = (bool)strlen($tokens) ? json_decode($tokens, 1) : [];
-			#echo '<per>'; var_dump($storedTokens); exit;
 
 			$newTokenUserAccessToken = $form->getInput('new_token_user_access_token');
 			$newTokenUserEmail = $form->getInput('new_token_user_email');
@@ -607,8 +620,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				ilUtil::sendQuestion($this->dic->language()->txt("rep_robj_xmvc_token_not_stored"), true);
 			}
 			$this->save(false);
-			$this->dic->ctrl()->setParameter($this, 'conn_id', $connId);
-			$this->dic->ctrl()->redirect($this, "editMultiVcConn");
 		}
 	}
 
@@ -628,11 +639,9 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$_POST['token_user'] = json_encode($storedTokens);
 				ilUtil::sendSuccess($this->dic->language()->txt("rep_robj_xmvc_token_deleted"), true);
 			} else {
-				#ilUtil::sendQuestion($this->dic->language()->txt("rep_robj_xmvc_token_not_deleted"), true);
+				ilUtil::sendQuestion($this->dic->language()->txt("rep_robj_xmvc_token_not_deleted"), true);
 			}
 			$this->save(false);
-			$this->dic->ctrl()->setParameter($this, 'conn_id', $connId);
-			$this->dic->ctrl()->redirect($this, "editMultiVcConn");
 		}
 	}
 
@@ -675,7 +684,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				ilUtil::sendFailure($lng->txt("form_input_not_valid"));
 			}
 		}
-		
+
 		if ( $urlCheck && $form->checkInput() )
 		{
 			if( !$this->object->hasInitialDbEntry() && $platformChanged )
@@ -708,6 +717,15 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setSvrPrivatePort((int)$form->getInput("svr_private_port"));
 				$this->object->setSvrUsername($form->getInput("svr_username"));
 				$this->object->setMaxParticipants((int)$form->getInput("max_participants"));
+				// Max Duration
+				if( !in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['maxDuration']) ) {
+					$maxDuration = 0;
+				} else {
+					/** @var array $valDuration */
+					$valDuration = $form->getInput("max_duration");
+					$maxDuration = (int)$valDuration['hh'] * 60 + (int)$valDuration['mm'];
+				}
+				$this->object->setMaxDuration((int)$maxDuration);
 				$this->object->setPrivateChatChoose( (bool)$form->getInput("private_chat_choose") );
 				$this->object->setPrivateChatDefault( (bool)$form->getInput("private_chat_default") );
 				$this->object->setRecordChoose( (bool)$form->getInput("recording_choose") );
@@ -742,6 +760,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				}
 				$this->object->setAccessToken($token['access_token']);
 				$this->object->setRefreshToken($token['refresh_token']);
+
 				/*
 				$this->object->setAccessToken(false === array_search($this->object->getShowContent(), $this->object::ADMIN_DEFINED_TOKEN_VC)
 						? $form->getInput("access_token")
@@ -754,6 +773,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setStyle( $form->getInput("style") );
 				$this->object->setLogo( $form->getInput("logo") );
 
+				if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) )
+				{
+					$this->object->setAssignedRoles($form->getInput("assigned_roles"));
+				}
 
 				if ($form->getInput("showcontent") != "spreed") {
 					if( isset($_GET['configureNewMultiVcConn']) || $form->getInput('svr_salt') !== self::ASTERISK_PW ) {
@@ -769,26 +792,24 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			}
 
 			$this->object->setShowContent($form->getInput("showcontent"));
-			//var_dump($this->object->getSvrPrivateUrl());
 			$this->object->save((bool)$form->getInput("conn_id"));
-			//var_dump($this->object); exit;
-
 
 			require_once "Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilObjMultiVc.php";
 			ilObjMultiVc::getInstance()->fillEmptyPasswordsBBBVCR();
 			if( $redirect ) {
 				ilUtil::sendSuccess($pl->txt("saving_invoked"), true);
 				$ilCtrl->redirect($this, "configure");
+			} else {
+				$ilCtrl->setParameter($this, 'conn_id', $_GET['conn_id']);
+				$ilCtrl->redirect($this, 'editMultiVcConn');
 			}
 		}
-		#else
-		#{
-			$form->setValuesByPost();
-			$tpl->setContent($form->getHtml());
-		#}
+
+		$form->setValuesByPost();
+		$tpl->setContent($form->getHtml());
 	}
 
-	public function getDefaultFieldAndValues()
+	public function getDefaultFieldAndValues(): array
 	{
 		$values = [];
 		$values['conn_id'] = $this->object->getConnId();;
@@ -818,6 +839,24 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["svr_salt"] ='';
 		$values["svr_username"] ='';
 		$values["max_participants"] = 20;
+		#echo $platform; exit;
+
+		// MaxDuration
+		if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['maxDuration']) ) {
+			$values["max_duration"]['hh'] =
+			$values["max_duration"]['mm'] = 0;
+		} else {
+			$values["max_duration"] = 0;
+		}
+
+		// globalAssignedRoles
+		if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) ) {
+			$values["assigned_roles"] = $this->object->getAssignedRoles();
+		}
+		#$adminRoleId = array_search('Administrator', $this->object->getAssignableGlobalRoles());
+		#$values["assigned_roles"] = $adminRoleId;
+
+
 		$values["showcontent"] = 'spreed';
 		$values["private_chat_choose"] = 0;
 		$values["private_chat_default"] = 1;
@@ -841,6 +880,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["token_user"] = $this->object->getAccessToken();
 		$values["style"] = $this->object->getStyle();
 		$values["logo"] = $this->object->getLogo();
+
 
 		return $values;
 	}
@@ -1025,6 +1065,16 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		exit();
 	}
 
+	public function getLocalRoleAutoComplete()
+	{
+		if( !(bool)strlen($term = filter_var($_REQUEST['term'], FILTER_SANITIZE_STRING)) ) {
+			exit();
+		}
+		include_once("./Services/AccessControl/classes/class.ilRoleAutoComplete.php");
+		$list = ilRoleAutoComplete::getList($term);
+		echo $list;
+		exit;
+	}
 
 	#################################################################################################
 	#### Webex

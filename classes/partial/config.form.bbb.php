@@ -6,6 +6,15 @@ $ti->setSize(60);
 $ti->setInfo($pl->txt("obj_ids_special_info"));
 $combo->addSubItem($ti);
 
+$sm = new ilMultiSelectInputGUI($pl->txt("assigned_roles"), 'assigned_roles');
+$sm->setInfo($pl->txt("assigned_roles_info"));
+#$sm->enableSelectAll(true);
+$sm->setWidth('100');
+$sm->setWidthUnit('%');
+$sm->setHeight('200');
+// $sm->setRequired(true);
+$sm->setOptions($this->object->getAssignableGlobalRoles());
+$combo->addSubItem($sm);
 
 $ti = new ilTextInputGUI($pl->txt("svr_public_url"), "svr_public_url");
 $ti->setRequired(true);
@@ -50,6 +59,12 @@ $ti = new ilTextInputGUI($pl->txt("max_participants"), "max_participants");
 $ti->setMaxLength(3);
 $ti->setSize(6);
 $ti->setInfo($pl->txt("info_max_participants"));
+$combo->addSubItem($ti);
+
+$ti = new ilDurationInputGUI($pl->txt("max_duration"), "max_duration");
+#$ti->setMaxLength(5);
+#$ti->setSize(6);
+$ti->setInfo($pl->txt("info_max_duration"));
 $combo->addSubItem($ti);
 
 $ti = new ilTextInputGUI($pl->txt("add_presentation_url"), "add_presentation_url");

@@ -62,6 +62,12 @@ class ilObjMultiVc extends ilObjectPlugin
 	/** @var string|null $refreshToken */
 	private $refreshToken = null;
 
+	/** @var string|null $secretExpiration */
+	private $secretExpiration = null;
+
+	/** @var int $maxDuration */
+	private $maxDuration = 0;
+
     /** @var string|null $authUser */
     private $authUser = null;
 
@@ -86,6 +92,7 @@ class ilObjMultiVc extends ilObjectPlugin
 
 		$this->dic = $DIC;
 		$this->db = $this->dic->database();
+        $this->getPlugin()->includeClass('class.ilMultiVcMailNotification.php');
 	}
 
 	static public function getInstance() {
@@ -136,6 +143,8 @@ class ilObjMultiVc extends ilObjectPlugin
 			'conn_id' => array('integer', (int)$conn_id),
 			'guestlink' => array('integer', (int)$settings->isGuestlinkDefault()),
 			'extra_cmd' => array('integer', (int)$this->getExtraCmd()),
+            'secret_expiration' => array('string', $this->getSecretExpiration()),
+            'max_duration' => array('integer', $this->getMaxDuration()),
             #"auth_user" => ['string', $this->getAuthUser()],
 		);
 		$ilDB->insert('rep_robj_xmvc_data', $a_data);
@@ -183,6 +192,8 @@ class ilObjMultiVc extends ilObjectPlugin
 			$this->setConnId( (int)$record["conn_id"] );
 			$this->setAccessToken( $record["access_token"] );
 			$this->setRefreshToken( $record["refresh_token"] );
+            $this->setSecretExpiration( $record["secret_expiration"] );
+            $this->setMaxDuration( $record["max_duration"] );
             $this->setAuthUser( $record["auth_user"] );
             #$this->setAuthSecret( $record["auth_secret"] );
 			$this->setGuestlink( (bool)$record["guestlink"] );
@@ -259,6 +270,8 @@ class ilObjMultiVc extends ilObjectPlugin
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
 			'access_token'				  => ['string', $this->getAccessToken()],
 			'refresh_token'				  => ['string', $this->getRefreshToken()],
+            'secret_expiration'           => ['string', $this->getSecretExpiration()],
+            'max_duration'                => ['string', $this->getMaxDuration()],
             'auth_user'				  => ['string', $this->getAuthUser()],
 			'guestlink' => ['integer', (int)$this->isGuestlink()],
 			'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
@@ -372,6 +385,7 @@ class ilObjMultiVc extends ilObjectPlugin
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
 			'guestlink' => ['integer', (int)$this->isGuestlink()],
 			'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
+            'max_duration'  => ['integer', (int)$this->getMaxDuration()],
 
 			//'more_options'			=> ['string', json_encode($this->option)],
 		);
@@ -981,6 +995,45 @@ class ilObjMultiVc extends ilObjectPlugin
 	{
 		$this->refreshToken = $refreshToken;
 	}
+
+    /**
+     * @return string|null
+     */
+    public function getSecretExpiration(): ?string
+    {
+        return $this->secretExpiration;
+    }
+
+    /**
+     * @param string|null $secretExpiration
+     */
+    public function setSecretExpiration(?string $secretExpiration): void
+    {
+        $this->secretExpiration = $secretExpiration;
+    }
+
+    public function isSecretExpired( $secretType = 'accessToken' ): bool
+    {
+        $secretExpiration = $this->getSecretExpiration();
+        $secretExpires = (bool)$secretExpiration;
+        return $secretExpires && str_replace('-', '', $secretExpiration) < date('Ymd');
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxDuration(): int
+    {
+        return $this->maxDuration;
+    }
+
+    /**
+     * @param int $maxDuration
+     */
+    public function setMaxDuration(int $maxDuration): void
+    {
+        $this->maxDuration = $maxDuration;
+    }
 
     /**
      * @return string|null
@@ -1812,5 +1865,168 @@ class ilObjMultiVc extends ilObjectPlugin
     }
 
 
+    ####################################################################################################################
+    #region MAIL NOTIFICATION
+    ####################################################################################################################
+
+    public function getNotificationEntry(?string $procId = null, int $status = ilMultiVcMailNotification::PROC_PENDING): array
+    {
+        $data = [];
+        $where = [
+            'proc_id = ' . $this->db->quote($procId, 'string'),
+            'status = ' . $this->db->quote($status, 'integer'),
+        ];
+
+        $res = $this->db->query("SELECT * FROM rep_robj_xmvc_notify WHERE " . implode(' AND ', $where));
+        while ($row = $this->db->fetchAssoc($res)) {
+            $data[$row['id']] = $row;
+        }
+
+        return $data;
+    }
+
+    public function createNotificationEntry(int $objId, int $relId, int $userId, string $authUser, string $recipient, string $message, string $procId): ?string
+    {
+
+        $log = [__FUNCTION__ => date('Y-m-d H:i:s')];
+        $data = [
+            'id'        => ['integer', $this->db->nextId('rep_robj_xmvc_notify')],
+            'obj_id'    => ['integer', $objId], # ilObject::_lookupObjId($refId)
+            'rel_id'    => ['string', $relId],
+            'user_id'   => ['integer', $userId],
+            'auth_user' => ['string', $authUser],
+            'recipient' => ['string', $recipient],
+            'status'    => ['integer', ilMultiVcMailNotification::PROC_PENDING],
+            'proc_id'   => ['string', $procId],
+            'log' => ['string', json_encode($log)],
+            'message'   => ['string', $message],
+        ];
+        if( empty($id = $this->db->insert('rep_robj_xmvc_notify', $data)) ) {
+            return null;
+        }
+        return $procId; #$data['id'];
+    }
+
+    public function storeNotificationStatusInProgress(string $procId): bool # int $refId, int $relId, int $userId, string $authUser,
+    {
+        #$log = [__FUNCTION__ => date('Y-m-d H:i:s')];
+        $where = [
+            /*
+            'obj_id'    => ['integer', ilObject::_lookupObjId($refId)],
+            'rel_id'    => ['string', $relId],
+            'user_id'   => ['integer', $userId],
+            'auth_user' => ['string', $authUser],
+            */
+            'status'        => ['integer', ilMultiVcMailNotification::PROC_PENDING],
+            'proc_id'   => ['string', $procId],
+        ];
+
+        $data = [
+            'status'    => ['integer', ilMultiVcMailNotification::PROC_IN_PROGRESS],
+            'updated' => ['datetime', date('Y-m-d H:i:s')], #$this->db->now()
+            #'proc_id'   => ['string', $procId],
+        ];
+
+        /*
+        if( empty($this->db->update('rep_robj_xmvc_notify', $data, $where)) ) {
+            return false;
+        }
+        */
+        for(;;) {
+            if( empty($this->db->update('rep_robj_xmvc_notify', $data, $where)) ) {
+                break;
+            }
+        }
+        return true;
+    }
+
+    public function storeNotificationStatusById(int $id, string $procId, int $status, ?array $log = null): bool
+    {
+        #$log = [__FUNCTION__ => date('Y-m-d H:i:s')];
+        $where = [
+            'id'    => ['integer', $id],
+            'proc_id'    => ['string', $procId],
+        ];
+
+        $data = [
+            'status'    => ['integer', $status],
+        ];
+        if( $log ) {
+            $data['log'] = ['string', json_encode($log)];
+        }
+
+        if( empty($this->db->update('rep_robj_xmvc_notify', $data, $where)) ) {
+            return false;
+        }
+        return true;
+    }
+
+    public function getContainerMembers(int $objId, ?string $role = null): array
+    {
+        $data = [];
+        $selector = '*';
+        $where = [
+            'obj_id = ' . $this->db->quote($objId, 'integer'),
+        ];
+
+        /*
+        if( $role ) {
+            $where[] = $role . ' = ' . $this->db->quote(1, 'integer');
+            $selector = 'usr_id';
+        }
+        */
+
+        $res = $this->db->query("SELECT * FROM obj_members WHERE " . implode(' AND ', $where));
+        while ($row = $this->db->fetchAssoc($res)) {
+            #$data[] = $role ? $row['usr_id'] : $row;
+            $data[] = $row;
+        }
+
+        return $data;
+    }
+
+    public function getNotificationTextPhrases(string $from, string $event, string $subject, string $dateRange, string $userName, string $link = '', string $type = 'webinar'): array
+    {
+        $lng = $this->dic->language();
+
+        $subjectReplace = [
+            '{EVENT}' => $event,
+            '{SUBJECT}' => $subject
+        ];
+
+        /*
+        $msgReplace = [
+            $userName,
+            $even,
+            $subject,
+            $link,
+            $from
+        ];
+        */
+        $msgReplace = [
+            '{NAME}' => $userName,
+            '{EVENT}' => $event,
+            '{SUBJECT}' => $subject,
+            '{DATERANGE}' => $dateRange,
+            '{LINK}' => $link,
+            '{FROM}' => $from,
+            '{NL}' => '%0D%0A'
+        ];
+
+        return [
+            'subject' => str_replace(
+                array_keys($subjectReplace),
+                $subjectReplace,
+                ilUtil::securePlainString($this->dic->language()->txt('rep_robj_xmvc_' . $type . '_notification_subject'))
+            ),
+            'body' => str_replace(
+                array_keys($msgReplace),
+                $msgReplace,
+                ilUtil::securePlainString($this->dic->language()->txt('rep_robj_xmvc_' . $type . '_notification_body'))
+            ),
+        ];
+    }
+
+    #endregion MAIL NOTIFICATION
 }
 

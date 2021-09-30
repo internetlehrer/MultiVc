@@ -95,6 +95,9 @@ class ilApiWebex implements ilApiInterface
     /** @var null|string $webLink */
     private $webLink = null;
 
+    /** @var bool $redirectOnError */
+    private $redirectOnError = true;
+
 
     /** @var ilApiWebex|null $instance */
     static private $instance = null;
@@ -188,12 +191,15 @@ class ilApiWebex implements ilApiInterface
     }
 
     /**
-     * @param int $sessId
+     * @param string|null $meetingId
+     * @param string $hostEmail
      * @return bool|string
-     * @throws ilCurlConnectionException
      */
-    public function sessionGet( string $meetingId, string $hostEmail = '' )
+    public function sessionGet( ?string $meetingId = null, string $hostEmail = '' )
     {
+        if( null === $meetingId ) {
+            return false;
+        }
         return $this->restfulApiCall(self::ENDPOINT_MEETINGS . '/' . $meetingId, 'get', ['hostEmail' => $hostEmail, 'current' => false]);
     }
 
@@ -213,6 +219,7 @@ class ilApiWebex implements ilApiInterface
      */
     public function sessionParticipantsList( string $meetingId, string $hostEmail = '' )
     {
+        $this->redirectOnError = false;
         return $this->restfulApiCall(self::ENDPOINT_PARTICIPANTS, 'get', ['meetingId' => $meetingId, 'hostEmail' => $hostEmail]);
     }
 
@@ -356,9 +363,12 @@ class ilApiWebex implements ilApiInterface
             ];
         }
 
-        if( (bool)strlen($json['error']) ) {
+        if( $this->redirectOnError && (bool)strlen($json['error']) ) {
             ilUtil::sendFailure($this->dic->language()->txt('error') . '<br />' . $json['error'], true);
             $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
+        } else {
+            // if false set it true. Next requests can set it to false again
+            $this->redirectOnError = true;
         }
 
         return json_encode($json);
@@ -424,10 +434,33 @@ class ilApiWebex implements ilApiInterface
     }
 
     /**
+     * @param string|null $meetingId
      * @return bool
      */
-    public function isMeetingRunning(): bool
+    public function isMeetingRunning(?string $meetingId = null): bool
     {
+        if( !is_null($meetingId) ) {
+            if($response = $this->sessionParticipantsList($meetingId)) {
+                $response = json_decode($response, 1);
+                #echo '<pre>'; var_dump($response); exit;
+                if( !empty($response['items']) ) {
+                    #echo '<pre>'; var_dump($response); exit;
+                    foreach( $response['items'] as $participant ) {
+                        $isModerator =
+                        $hasJoined = false;
+                        $isModerator = $participant['host'] || $participant['coHost'];
+                        $hasJoined = $isModerator && $participant['state'] === 'joined';
+                        if( $isModerator && $hasJoined ) {
+                            #echo '<pre>'; var_dump($response); exit;
+                            return true;
+                        }
+                    }
+                }
+            }
+            #echo '<pre>'; var_dump($response); exit;
+            return false;
+
+        }
         return $this->meetingRunning;
     }
 
@@ -723,7 +756,8 @@ class ilApiWebex implements ilApiInterface
         }
 
         if( !$parent['ref_id'] ) {
-            $this->dic->ui()->mainTemplate()->setMessage('error', 'No RefId given', true);
+            #$this->dic->ui()->mainTemplate()->setMessage('error', 'No RefId given', true);
+            ilUtil::sendFailure('No RefId given', true);
             $this->dic->ctrl()->redirectToURL(ILIAS_HTTP_PATH);
         }
         $this->parentObj = ilObjectFactory::getInstanceByRefId($parent['ref_id']);

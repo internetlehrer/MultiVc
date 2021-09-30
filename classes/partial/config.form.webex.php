@@ -9,6 +9,16 @@ $ti->setInfo($pl->txt("obj_ids_special_info"));
 $combo->addSubItem($ti);
 */
 
+$sm = new ilMultiSelectInputGUI($pl->txt("assigned_roles"), 'assigned_roles');
+$sm->setInfo($pl->txt("assigned_roles_info"));
+#$sm->enableSelectAll(true);
+$sm->setWidth('100');
+$sm->setWidthUnit('%');
+$sm->setHeight('200');
+// $sm->setRequired(true);
+$sm->setOptions($this->object->getAssignableGlobalRoles());
+$combo->addSubItem($sm);
+
 $ti = new ilTextInputGUI($pl->txt("webex_site_url"), "svr_public_url");
 $ti->setRequired(true);
 $ti->setMaxLength(256);

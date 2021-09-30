@@ -63,7 +63,6 @@ class ilApiOM implements ilApiInterface
         $this->moderatedMeeting = $this->object->get_moderated();
         $this->setMeetingRecordable((bool)$this->object->isRecordingAllowed());
 
-
         $this->gateway = new OmGateway($this->getSoapConfig());
         try {
             $this->gateway->login();
@@ -223,7 +222,7 @@ class ilApiOM implements ilApiInterface
      */
     public function getOmRoomUrl(): string
     {
-        return $this->gateway->getUrl() ."/hash?&secure=" . $this->getHash() . "&language=" . $this->dic->user()->getCurrentLanguage();
+        return $this->gateway->getUrl() ."/hash?secure=" . $this->getHash() . "&language=" . $this->dic->user()->getCurrentLanguage();
         // $language;   $this->getUserLanguage();
     }
 

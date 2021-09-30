@@ -181,7 +181,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI {
                 'REF' => implode(' / ', $tree),
                 'USER' => ilObjUser::_lookupFullname($a_set['user_id']),
                 'DISPLAY_NAME' => $a_set['display_name'],
-                'IS_MODERATOR' => (bool)$a_set['is_moderator'] ? $this->plugin_object->txt('moderator') : '',
+                'IS_MODERATOR' => !(bool)$a_set['is_moderator'] ? !(bool)$a_set['user_id'] ? $this->plugin_object->txt('guest') : '' : $this->plugin_object->txt('moderator'),
                 'JOIN_TIME' => $joinTime,
                 'START_TIME' => $meetingStart,
                 'MEETING_ID' => $a_set['meeting_id']

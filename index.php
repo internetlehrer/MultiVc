@@ -278,6 +278,27 @@ class JoinMeetingByGuestLink
         exit;
     }
 
+    /**
+     * @throws Exception
+     */
+    private function setUserLog() {
+        $dateTime = new DateTime(null, new DateTimeZone('UTC'));
+        $values = [
+            'ref_id' => ['integer', $this->refId],
+            'user_id' => ['integer', 0],
+            'join_time' => ['integer', $dateTime->getTimestamp()],
+            'display_name' => ['text', trim($this->userTitle . ' ' . trim($this->displayName))],
+            'is_moderator' => ['integer', 0],
+            'meeting_id' => ['text', $this->bbb->getMeetingInfo(
+                new \BigBlueButton\Parameters\GetMeetingInfoParameters(
+                    $this->meetingId,
+                    $this->pluginConfig->getSvrSalt()
+                )
+            )->getMeeting()->getInternalMeetingId()]
+        ];
+
+        $this->dic->database()->insert($this->pluginObject::TABLE_USER_LOG, $values);
+    }
 
 
     // Language Vars & HTML-Form
@@ -291,7 +312,7 @@ class JoinMeetingByGuestLink
             'display_name' => $input('display_name', $this->displayName, 'text', $this->getLangVar('guest_displayname_input'), 'form-control'),
             'submit' => $input('submit', $this->getLangVar('btntext_join_meeting'), 'submit', $this->getLangVar('btntext_join_meeting'), 'btn btn-primary'),
             'guest_password' => $input('guest_password', $this->guestPassword, 'password', $this->getLangVar('guest_password_input'), 'form-control', ' autocomplete="new-password"'),
-            'guest_password_hidden' => $input('guest_password', $this->pluginObject->getAccessToken(), 'hidden', $this->getLangVar('guest_password_input'), 'form-control'),
+            'guest_password_hidden' => $input('guest_password', rawurldecode($this->pluginObject->getAccessToken()), 'hidden', $this->getLangVar('guest_password_input'), 'form-control'),
             'guest_login_button' => $input('guest_login_button', $this->getLangVar('btntext_guest_login_button'), 'submit', $this->getLangVar('btntext_guest_login'), 'btn btn-primary'),
         ];
 
@@ -349,13 +370,15 @@ class JoinMeetingByGuestLink
         return ilSession::get('guestLoggedIn');
     }
 
-    private function checkPw( ?string $phrase = null ) {
-        return trim($phrase) === trim($this->pluginObject->getAccessToken());
+    private function checkPw( ?string $phrase = null ): bool
+    {
+        $validPw = trim($phrase) === trim($this->pluginObject->getAccessToken());
+        return $validPw && !$this->pluginObject->isSecretExpired();
     }
 
     private function setGuestLoginState() {
         $phrase = isset($_POST['guest_password']) ? filter_var($_POST['guest_password'], FILTER_SANITIZE_ENCODED) : '';
-        if( $this->isUserLoggedIn() || $this->checkPw($phrase) ) {
+        if( $this->isUserLoggedIn() || strlen($phrase) && $this->checkPw($phrase) ) {
             ilSession::set('guestLoggedIn', true);
         } else {
             ilSession::set('guestLoggedIn', false);
@@ -538,6 +561,7 @@ class JoinMeetingByGuestLink
                 $this->setMeetingId();
                 if( $this->getUrlJoinMeeting() ) {
                     //echo $this->urlJoinMeeting;
+                    $this->setUserLog();
                     $this->redirectToVc();
                 }
                 $this->errState['moderator'] = true;
