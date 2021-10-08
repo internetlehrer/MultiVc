@@ -1192,3 +1192,13 @@ if(!$ilDB->tableExists('rep_robj_xmvc_notify'))
     $ilDB->createSequence('rep_robj_xmvc_notify');
 }
 ?>
+<#34>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if($ilDB->tableColumnExists('rep_robj_xmvc_data', 'max_duration') )
+    {
+        $ilDB->dropTableColumn('rep_robj_xmvc_data', 'max_duration');
+    }
+}
+?>

@@ -8,7 +8,7 @@ use BigBlueButton\Parameters\DeleteRecordingsParameters;
 use BigBlueButton\Util\UrlBuilder;
 use ILIAS\DI\Container;
 
-require_once './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/bbb/vendor/autoload.php';
+require_once './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/bbb/autoload.php';
 require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
 require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilApiInterface.php");
 //require_once("./Services/Repository/classes/class.ilObjectPluginGUI.php");
@@ -78,13 +78,13 @@ class ilApiBBB implements ilApiInterface
     private $parentObj;
 
     /** @var bool|ilObjCourse $course */
-    private $course;
+    public $course;
 
     /** @var bool|ilObjGroup $group */
-    private $group;
+    public $group;
 
     /** @var bool|ilObjCategory $category */
-    private $category;
+    public $category;
 
     /** @var ilObjSession $ilObjSession */
     private $ilObjSession;
@@ -683,10 +683,12 @@ class ilApiBBB implements ilApiInterface
         /** @var BigBlueButton\Core\Record $rec */
         foreach ( $this->bbb->getRecordings($recParam)->getRecords() AS $key => $rec ) {
             $bbbRecId = $rec->getRecordId();
-            $ilStartTime = new ilDateTime(substr ($rec->getStartTime(),0,10), IL_CAL_UNIX);
-            $ilEndTime = new ilDateTime(substr ($rec->getEndTime(),0,10), IL_CAL_UNIX);
-            $recList[$bbbRecId]['startTime'] = ilDatePresentation::formatDate($ilStartTime);
-            $recList[$bbbRecId]['endTime'] = ilDatePresentation::formatDate($ilEndTime); // $rec->getEndTime();
+            #$ilStartTime = new ilDateTime(substr ($rec->getStartTime(),0,10), IL_CAL_UNIX);
+            #$ilEndTime = new ilDateTime(substr ($rec->getEndTime(),0,10), IL_CAL_UNIX);
+            #$recList[$bbbRecId]['startTime'] = ilDatePresentation::formatDate($ilStartTime);
+            #$recList[$bbbRecId]['endTime'] = ilDatePresentation::formatDate($ilEndTime); // $rec->getEndTime();
+            $recList[$bbbRecId]['START_TIME'] = substr ($rec->getStartTime(),0,10);
+            $recList[$bbbRecId]['END_TIME'] = substr ($rec->getEndTime(),0,10); // $rec->getEndTime();
             $recList[$bbbRecId]['playback'] = $rec->getPlaybackUrl();
             $recList[$bbbRecId]['download'] = $this->getMP4DownStreamUrl($recList[$bbbRecId]['playback']);
             $recList[$bbbRecId]['meetingId'] = $rec->getMeetingId();

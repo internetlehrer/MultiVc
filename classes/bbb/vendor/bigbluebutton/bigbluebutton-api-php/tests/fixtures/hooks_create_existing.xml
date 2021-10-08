@@ -1,6 +1,0 @@
-<response>
-    <returncode>SUCCESS</returncode>
-    <hookID>1</hookID>
-    <messageKey>duplicateWarning</messageKey>
-    <message>There is already a hook for this callback URL.</message>
-</response>

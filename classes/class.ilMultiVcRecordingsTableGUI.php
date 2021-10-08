@@ -4,6 +4,8 @@
  * GPLv2, see LICENSE 
  */
 
+use ILIAS\DI\Container;
+
 include_once('./Services/Table/classes/class.ilTable2GUI.php');
 
 /**
@@ -13,6 +15,9 @@ include_once('./Services/Table/classes/class.ilTable2GUI.php');
  * @version $Id$
  */ 
 class ilMultiVcRecordingsTableGUI extends ilTable2GUI {
+
+    /** @var Container $dic */
+    private $dic;
 
     private $plugin_object;
 
@@ -24,60 +29,50 @@ class ilMultiVcRecordingsTableGUI extends ilTable2GUI {
      */
     function __construct($a_parent_obj, $a_parent_cmd = '', $a_template_context = '') 
     {
+        global $DIC; /** @var Container $DIC */
+
+        $this->dic = $DIC;
     	// this uses the cached plugin object
 		$this->plugin_object = ilPlugin::getPluginObject(IL_COMP_SERVICE, 'Repository', 'robj', 'MultiVc');
 
-		parent::__construct($a_parent_obj, $a_parent_cmd, $a_template_context);
-    }
+        $this->setId('table_recordings');
+        parent::__construct($a_parent_obj, $a_parent_cmd, $a_template_context);
 
-    /**
-     * Init the table with some configuration
-     * 
-     * 
-     * @access public
-     */
-    public function init($a_parent_obj) 
-    {
-        global $ilCtrl, $lng;
+        $this->initColumns($this->plugin_object);
 
-            /*
-        $this->addColumn($lng->txt('year'), 'year', '15%');
-        $this->addColumn($lng->txt('month'), 'month', '15%');
-        $this->addColumn($lng->txt('day'), 'day', '15%');
-        $this->addColumn($lng->txt('hour'), 'hour', '15%');
-        $this->addColumn($this->plugin_object->txt('max_meetings'), 'max_meetings', '20%');
-        $this->addColumn($this->plugin_object->txt('max_users'), 'max_users', '20%');
+        $this->setFormAction($this->dic->ctrl()->getFormAction($this->parent_obj, 'showContent'));
         $this->setEnableHeader(true);
-        $this->setFormAction($ilCtrl->getFormAction($a_parent_obj));
-        $this->addCommandButton('downloadCsv', $lng->txt('export_csv'));
-        //$this->addCommandButton('createType', $lng->txt('rep_robj_xxcf_create_type'));
-        // $this->addCommandButton('viewLogs', $lng->txt('rep_robj_xxcf_view_logs'));
-        $this->setRowTemplate('tpl.report_log_max_concurrent_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
-        $this->getMyDataFromDb();
-        */
+
+        $this->setExternalSorting(false);
+        $this->setExternalSegmentation(false);
+        $this->setShowRowsSelector(false);
+
+        $this->setDefaultOrderField('START_TIME'); # display_name join_time
+        $this->setDefaultOrderDirection('asc');
+        $this->enable('sort');
+
+        $this->setRowTemplate('tpl.recordings_table_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+        $this->setEnableNumInfo(false);
+
+        $this->addCommandButton('confirmDeleteRecords', $DIC->language()->txt('delete'));
+
     }
 
     public function initColumns($lng)
     {
         global $DIC; /** @var \ILIAS\DI\Container $DIC */
 
-        //$lng = $DIC['lng'];
-        //$lng->loadLanguageModule('date');
-
-        //var_dump($lng); exit;
-
         $this->addColumn($lng->txt('select'), '', '5%');
-        $this->addColumn($lng->txt('starttime'), 'starttime', '');
-        $this->addColumn($lng->txt('endtime'), 'endtime', '');
+        $this->addColumn($lng->txt('starttime'), 'START_TIME', '');
+        $this->addColumn($lng->txt('endtime'), 'END_TIME', '');
         $this->addColumn($lng->txt('playback'), 'playback', '');
         $this->addColumn($lng->txt('download'), 'download', '');
-
-
     }
 
     /**
      * Fill a single data row.
      * @param array $a_set
+     * @throws ilDateTimeException
      */
     protected function fillRow($a_set) 
     {
@@ -85,11 +80,12 @@ class ilMultiVcRecordingsTableGUI extends ilTable2GUI {
         $lng = $DIC['lng'];
         $ilCtrl = $DIC['ilCtrl'];
 
-        //$ilCtrl->setParameter($this->parent_obj, 'year', $a_set['year']);
+        $a_set['START_TIME'] = new ilDateTime($a_set['START_TIME'], IL_CAL_UNIX);
+        $a_set['END_TIME'] = new ilDateTime($a_set['END_TIME'], IL_CAL_UNIX);
 
         $this->tpl->setVariable('ROWSELECTOR', $a_set['rowSelector']);
-        $this->tpl->setVariable('STARTTIME', $a_set['startTime']);
-        $this->tpl->setVariable('ENDTIME', $a_set['endTime']);
+        $this->tpl->setVariable('STARTTIME', ilDatePresentation::formatDate($a_set['START_TIME']));
+        $this->tpl->setVariable('ENDTIME', ilDatePresentation::formatDate($a_set['END_TIME']));
         $this->tpl->setVariable('PLAYBACK', $a_set['playback']);
         $this->tpl->setVariable('DOWNLOAD', $a_set['download']);
 

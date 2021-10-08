@@ -6,7 +6,7 @@
 
 use ILIAS\DI\Container;
 
-include_once(ILIAS_ABSOLUTE_PATH . '/Services/Table/classes/class.ilTable2GUI.php');
+include_once('./Services/Table/classes/class.ilTable2GUI.php');
 
 /**
  * MultiVc plugin: report logged max concurrent values table GUI

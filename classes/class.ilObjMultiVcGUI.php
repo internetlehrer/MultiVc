@@ -110,7 +110,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         switch( $this->platform ) { # ilMultiVcConfig::_getMultiVcConnData()[ilObjMultiVc::getInstance()->getConnId()]['show_content']
             case 'bbb':
                 $this->isBBB = true;
-                if( $isXmvcObj ) {
+                if( $initVc = $isXmvcObj ) {
                     $this->object->fillEmptyPasswordsBBBVCR();
                 }
                 break;
@@ -326,7 +326,12 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     {
         $this->tabs->activateTab('content');
 
-        if( $this->object->isUserOwner() && $this->dic->access()->checkAccess("write", "", $this->object->getRefId())
+        if( $this->object->isUserOwner()
+            || $this->dic->access()->checkAccess("write", "", $this->object->getRefId())
+            || false !== array_search(
+                ($this->isBBB && ($parentObj = $this->vcObj->course ?? $this->vcObj->group) ? $parentObj->getDefaultAdminRole() : null)
+                , $this->dic->rbac()->review()->assignedRoles($this->dic->user()->getId())
+            )
         ) {
             $this->tabs->addSubTab("showContent", $this->txt('meeting'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'showContent'));
             if( !ilMultiVcConfig::getInstance($this->object->getConnId())->getHideUsernameInLogs() ) {
@@ -2218,16 +2223,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
 
         $lng = (object)['txt' => function($var) { return $this->getPlugin()->txt($var); } ];
-        //var_dump($this->getPlugin()->txt('start')); exit;
-        //$pl = $this->;
 
         require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcRecordingsTableGUI.php");
-        $table = new ilMultiVcRecordingsTableGUI($this);
-        $table->initColumns($this->getPlugin());
-        $table->setRowTemplate('tpl.recordings_table_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+        $table = new ilMultiVcRecordingsTableGUI($this, $this->dic->ctrl()->getCmd());
         $table->setData($table->addRowSelector($recData));
-        $table->setFormAction($DIC->ctrl()->getFormAction($this));
-        $table->addCommandButton('confirmDeleteRecords', $DIC->language()->txt('delete'));
         return $table->getHTML();
     }
 

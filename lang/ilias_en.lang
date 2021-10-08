@@ -388,3 +388,4 @@ info_top_moderator_om#:#<b>This is a moderated room and you have the moderator f
 info_top_moderated_m_om#:#This is a moderated room and you can always enter the meeting room only when a person with moderator function is in the room.
 info_top_not_moderated_om#:#This meeting room is not moderated. Therefore, you also have a moderator function and therefore extended rights. You can restrict the rights of other people and also end the session. Please use the extended rights responsibly.
 info_om_svr_public_url#:#Example: https://www.example.com/
+err_msg_guest_password_expired#:#The guest password has expired.

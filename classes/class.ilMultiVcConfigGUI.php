@@ -106,7 +106,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->initUserLogTableGUI($cmd);
 				break;
 			case 'addUserAutoComplete':
-			case 'getLocalRoleAutoComplete':
 				$this->$cmd();
 				break;
 			default:
@@ -1063,17 +1062,6 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 
 		echo $auto->getList($term);
 		exit();
-	}
-
-	public function getLocalRoleAutoComplete()
-	{
-		if( !(bool)strlen($term = filter_var($_REQUEST['term'], FILTER_SANITIZE_STRING)) ) {
-			exit();
-		}
-		include_once("./Services/AccessControl/classes/class.ilRoleAutoComplete.php");
-		$list = ilRoleAutoComplete::getList($term);
-		echo $list;
-		exit;
 	}
 
 	#################################################################################################

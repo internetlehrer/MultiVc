@@ -65,9 +65,6 @@ class ilObjMultiVc extends ilObjectPlugin
 	/** @var string|null $secretExpiration */
 	private $secretExpiration = null;
 
-	/** @var int $maxDuration */
-	private $maxDuration = 0;
-
     /** @var string|null $authUser */
     private $authUser = null;
 
@@ -144,7 +141,6 @@ class ilObjMultiVc extends ilObjectPlugin
 			'guestlink' => array('integer', (int)$settings->isGuestlinkDefault()),
 			'extra_cmd' => array('integer', (int)$this->getExtraCmd()),
             'secret_expiration' => array('string', $this->getSecretExpiration()),
-            'max_duration' => array('integer', $this->getMaxDuration()),
             #"auth_user" => ['string', $this->getAuthUser()],
 		);
 		$ilDB->insert('rep_robj_xmvc_data', $a_data);
@@ -193,7 +189,6 @@ class ilObjMultiVc extends ilObjectPlugin
 			$this->setAccessToken( $record["access_token"] );
 			$this->setRefreshToken( $record["refresh_token"] );
             $this->setSecretExpiration( $record["secret_expiration"] );
-            $this->setMaxDuration( $record["max_duration"] );
             $this->setAuthUser( $record["auth_user"] );
             #$this->setAuthSecret( $record["auth_secret"] );
 			$this->setGuestlink( (bool)$record["guestlink"] );
@@ -271,7 +266,6 @@ class ilObjMultiVc extends ilObjectPlugin
 			'access_token'				  => ['string', $this->getAccessToken()],
 			'refresh_token'				  => ['string', $this->getRefreshToken()],
             'secret_expiration'           => ['string', $this->getSecretExpiration()],
-            'max_duration'                => ['string', $this->getMaxDuration()],
             'auth_user'				  => ['string', $this->getAuthUser()],
 			'guestlink' => ['integer', (int)$this->isGuestlink()],
 			'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
@@ -385,7 +379,6 @@ class ilObjMultiVc extends ilObjectPlugin
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
 			'guestlink' => ['integer', (int)$this->isGuestlink()],
 			'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
-            'max_duration'  => ['integer', (int)$this->getMaxDuration()],
 
 			//'more_options'			=> ['string', json_encode($this->option)],
 		);
@@ -1017,22 +1010,6 @@ class ilObjMultiVc extends ilObjectPlugin
         $secretExpiration = $this->getSecretExpiration();
         $secretExpires = (bool)$secretExpiration;
         return $secretExpires && str_replace('-', '', $secretExpiration) < date('Ymd');
-    }
-
-    /**
-     * @return int
-     */
-    public function getMaxDuration(): int
-    {
-        return $this->maxDuration;
-    }
-
-    /**
-     * @param int $maxDuration
-     */
-    public function setMaxDuration(int $maxDuration): void
-    {
-        $this->maxDuration = $maxDuration;
     }
 
     /**
@@ -1909,14 +1886,7 @@ class ilObjMultiVc extends ilObjectPlugin
 
     public function storeNotificationStatusInProgress(string $procId): bool # int $refId, int $relId, int $userId, string $authUser,
     {
-        #$log = [__FUNCTION__ => date('Y-m-d H:i:s')];
         $where = [
-            /*
-            'obj_id'    => ['integer', ilObject::_lookupObjId($refId)],
-            'rel_id'    => ['string', $relId],
-            'user_id'   => ['integer', $userId],
-            'auth_user' => ['string', $authUser],
-            */
             'status'        => ['integer', ilMultiVcMailNotification::PROC_PENDING],
             'proc_id'   => ['string', $procId],
         ];
@@ -1924,14 +1894,8 @@ class ilObjMultiVc extends ilObjectPlugin
         $data = [
             'status'    => ['integer', ilMultiVcMailNotification::PROC_IN_PROGRESS],
             'updated' => ['datetime', date('Y-m-d H:i:s')], #$this->db->now()
-            #'proc_id'   => ['string', $procId],
         ];
 
-        /*
-        if( empty($this->db->update('rep_robj_xmvc_notify', $data, $where)) ) {
-            return false;
-        }
-        */
         for(;;) {
             if( empty($this->db->update('rep_robj_xmvc_notify', $data, $where)) ) {
                 break;
@@ -1942,7 +1906,6 @@ class ilObjMultiVc extends ilObjectPlugin
 
     public function storeNotificationStatusById(int $id, string $procId, int $status, ?array $log = null): bool
     {
-        #$log = [__FUNCTION__ => date('Y-m-d H:i:s')];
         $where = [
             'id'    => ['integer', $id],
             'proc_id'    => ['string', $procId],
@@ -1969,16 +1932,8 @@ class ilObjMultiVc extends ilObjectPlugin
             'obj_id = ' . $this->db->quote($objId, 'integer'),
         ];
 
-        /*
-        if( $role ) {
-            $where[] = $role . ' = ' . $this->db->quote(1, 'integer');
-            $selector = 'usr_id';
-        }
-        */
-
         $res = $this->db->query("SELECT * FROM obj_members WHERE " . implode(' AND ', $where));
         while ($row = $this->db->fetchAssoc($res)) {
-            #$data[] = $role ? $row['usr_id'] : $row;
             $data[] = $row;
         }
 
@@ -1994,15 +1949,6 @@ class ilObjMultiVc extends ilObjectPlugin
             '{SUBJECT}' => $subject
         ];
 
-        /*
-        $msgReplace = [
-            $userName,
-            $even,
-            $subject,
-            $link,
-            $from
-        ];
-        */
         $msgReplace = [
             '{NAME}' => $userName,
             '{EVENT}' => $event,

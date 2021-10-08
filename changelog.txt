@@ -17,3 +17,6 @@
 - role-based availability for VC-configurations
 - BBB: added expire-date for guest password
 - BBB: added maximum duration for meetings
+5.0
+- compatibility with ILIAS 7
+- bugfixes for BBB-guestlink
