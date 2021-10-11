@@ -25,7 +25,7 @@ Viele weitere Plattformabhängige Features stehen zur Verfügung, wie beispielsw
 
 Wir empfehlen die Nutzung des MultiVc-Plugin mit ILIAS Release 6 oder Release 5.4. Die Mindestvoraussetzungen, mit denen das Plugin getestet wurde, finden Sie hier im Überblick:
 
-- ILIAS 6.x, 5.4.x
+- ILIAS 7.x, 6.x, 5.4.x
 - PHP 7.2
 - MySQL 5.7
 
@@ -116,7 +116,7 @@ die Konfiguration des Meeting-Typs. Im unteren Bereich des Formulars finden Sie 
     kann die jeweilige Authorisierung aufgehoben werden. Sind (noch) keine Authorisierungen vorhanden,
     signalisiert dies "keine Einträge vorhanden".
 - Neue ModeratorIn / Token
-    hier können Sie durch Texteingaabe die E-Mailadresse der zu authorisierenden ILIAS-BenutzerIn definieren.
+    hier können Sie durch Texteingabe die E-Mailadresse der zu authorisierenden ILIAS-BenutzerIn definieren.
     Das Textfeld bietet auch die Option ILIAS-BenutzerInnen durch Eingabe von Vor- / Nachname oder Benutzername auszuwählen.
     Eine Auswahlliste erscheint ab Eingabe von drei Zeichen, weitere Zeichen verfeinern das Suchergebnis. Mit Klick
     auf einen Eintrag aus der Auswahlliste, wird die entsprechende E-Mailadresse im Textfeld hinterlegt.
@@ -347,3 +347,9 @@ Sollen Kurstuten über Webinare in Gruppen informiert werden, müssen diese als 
 # Icon
 
 Icon: https://pixabay.com/de/vectors/orange-stil-treffen-pfeile-punkt-41015/
+
+## Anpassen
+
+Das Icon ist hinterlegt im Plugin-Ordner: `templates/images/icon_xmvc.svg`
+
+Der Inhalt der .svg-Datei kann nach eigenem Ermessen angepasst werden.
