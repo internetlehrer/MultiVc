@@ -1394,13 +1394,13 @@ class ilMultiVcConfig
                     ORDER BY container,course_title,role ";
 
         $res = $ilDB->query($query);
-        // $counter = 0;
+        $counter = 0;
         $result = array();
         while ($row = $res->fetchRow(ilDBConstants::FETCHMODE_OBJECT)) {
             $result[$counter] = new stdClass();
             $result[$counter]->value = $row->role;
             $result[$counter]->label = $row->role . " (" . $row->container . " / " . $row->course_title . ")";
-            // ++$counter;
+            ++$counter;
         }
 
         // if ($counter == 0) {
