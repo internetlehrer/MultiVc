@@ -326,7 +326,8 @@ class ilApiWebex implements ilApiInterface
 
         try {
             $curl = new ilCurlConnection($url);
-            $curl->init(false);
+            #$curl->init(false);
+            defined(ILIAS_VERSION) && 0 === strpos(ILIAS_VERSION, 5) ? $curl->init() : $curl->init(false);
             $curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
             $curl->setOpt(CURLOPT_SSL_VERIFYHOST, false);
             #$curl->setOpt(CURLOPT_CONNECTTIMEOUT, $timeout);

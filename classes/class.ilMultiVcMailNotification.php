@@ -279,9 +279,8 @@ class ilMultiVcMailNotification #extends ilMailNotification
 
     protected function initLanguage($usr_id)
     {
-        parent::initLanguage($usr_id);
-        $this->getLanguage()->loadLanguageModule('lso');
     }
+
 
     /*
     protected function isNotificationTypeEnabled(int $type) : bool

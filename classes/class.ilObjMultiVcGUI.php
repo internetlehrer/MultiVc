@@ -405,6 +405,32 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
     }
 
+    private function filterPostParam()
+    {
+        if( is_array($_POST) && count($_POST) ) {
+            foreach (array_keys($_POST) as $postKey) {
+                if( !is_array($_POST[$postKey]) || !isset($_POST[$postKey]['ref_id']) ) {
+                    continue;
+                }
+                $_POST[$postKey] = array_replace($_POST[$postKey], filter_var_array($_POST[$postKey], [
+                    'ref_id'    => FILTER_SANITIZE_NUMBER_INT,
+                    'rel_id'    => FILTER_SANITIZE_STRING,
+                    'rel_data'    => FILTER_UNSAFE_RAW,
+                    'participants'    => FILTER_SANITIZE_STRING,
+                    'start'    => FILTER_SANITIZE_STRING,
+                    'end'    => FILTER_SANITIZE_STRING,
+                    'timezone'    => FILTER_SANITIZE_STRING,
+                    'user_id'    => FILTER_SANITIZE_NUMBER_INT,
+                    'auth_user'    => FILTER_SANITIZE_STRING,
+                    'recurrence'    => FILTER_SANITIZE_STRING,
+                ]));
+                #echo 'POSTKEY: ' . $postKey . '<br /><pre>';
+                #var_dump($_POST[$postKey]);
+            }
+            #exit;
+        }
+    }
+
     /**
      * @param $cmd
      * @throws Exception
@@ -414,6 +440,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if ( !$this->object->isUserOwner() || !$this->dic->access()->checkAccess("write", "", $this->object->getRefId()) ) {
             $this->dic->ctrl()->redirect($this, '');
         }
+
+        $this->filterPostParam();
 
         if(
             (int)$this->dic->user()->getId() !== (int)$this->object->getOwner()
@@ -589,11 +617,18 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 ilUtil::sendFailure($this->dic->language()->txt('rep_robj_xmvc_' . $this->sessType . '_collision'), true);
                 $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
             }
-            if( !is_null($data = $this->object->saveWebexMeetingData($_POST['relate_meeting']['ref_id'], $_POST['relate_meeting']['rel_data'], true)) ) {
+
+            $fnSave = 'saveWebexMeetingData';
+            if( $this->isEdudip ) {
+                $fnSave = 'saveEdudipSessionData';
+                $_POST['relate_meeting']['rel_data'] = '{"webinar":' . $_POST['relate_meeting']['rel_data'] . "}";
+            }
+
+            if( !is_null($data = $this->object->{$fnSave}($_POST['relate_meeting']['ref_id'], $_POST['relate_meeting']['rel_data'], true)) ) {
                 // because we delete session @ provider
                 if( $this->isEdudip || $this->isWebex ) {
                     #$this->object->deleteStoredHostSessionByRelId(json_decode($_POST['relate_meeting']['rel_data'], 1)['id']);
-                    $this->object->relateStoredHostSessionByRelId(json_decode($_POST['relate_meeting']['rel_data'], 1)['id'], $_POST['relate_meeting']['ref_id']);
+                    $this->object->relateStoredHostSessionByRelId(json_decode($data['rel_data'], 1)['id'], $_POST['relate_meeting']['ref_id']);
                 }
                 ilUtil::sendSuccess($this->dic->language()->txt('rep_robj_xmvc_' . $this->sessType . '_related_successful'), true);
                 $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
@@ -897,16 +932,82 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $cb = new ilCheckboxInputGUI($this->lng->txt("online"), "online");
         $this->form->addItem($cb);
 
-        include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
-        $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
+	
+        $cbModr = $this->formItem("moderated");
+        $this->form->addItem($cbModr);
 
-        if(($settings->isRecordChoose() || $settings->isRecordDefault()) && $settings->isRecordOnlyForModeratedRoomsDefault()) {
+        if(($this->xmvcConfig->isRecordChoose() || $this->xmvcConfig->isRecordDefault()) && $this->xmvcConfig->isRecordOnlyForModeratedRoomsDefault() && $cbModr->getType() !== 'hidden') {
             $info = new ilNonEditableValueGUI($this->lng->txt("hint"));
             $info->setValue($this->txt("recording_only_for_moderated_rooms_info"));
             $this->form->addItem($info);
         }
 
-        $this->form->addItem($this->formItem("moderated"));
+        $cbGuestLink = $this->formItem("guestlink");
+		if( $this->isBBB ){
+			if( $cbModr->getType() === 'hidden' ) {
+				if ($this->object->get_moderated()) {
+					$info = new ilNonEditableValueGUI($this->lng->txt("hint"));
+					$info->setValue($this->txt("moderated"));
+					$this->form->addItem($info);
+				
+					$this->form->addItem($cbGuestLink);
+				}
+			} else {
+				if( $cbGuestLink->getType() !== 'hidden') {
+					$cbModr->addSubItem($cbGuestLink);
+				}
+			}
+		} else {
+			$this->form->addItem($cbGuestLink);
+		}
+
+
+        if( $this->isBBB && $this->object->get_moderated() && ( $cbGuestLink->getType() !== 'hidden' || $this->xmvcConfig->isGuestlinkDefault() ) ) {
+			$parentItem = null;
+			if ($cbModr->getType() !== 'hidden') {
+				$parentItem = $cbModr;
+			}
+			if ($cbGuestLink->getType() !== 'hidden') {
+				$parentItem = $cbGuestLink;
+			}
+            $guestPass = new ilTextInputGUI($this->lng->txt('rep_robj_xmvc_bbb_guest_password'), 'access_token');
+            $guestPass->setInfo($this->lng->txt('rep_robj_xmvc_bbb_guest_password_info'));
+            $guestPass->setDisableHtmlAutoComplete(true);
+			if ($parentItem) {
+				$parentItem->addSubItem($guestPass);
+			} else {
+				$this->form->addItem($guestPass);
+			}
+
+            $cbSecretExpires = new ilCheckboxInputGUI($this->lng->txt('rep_robj_xmvc_bbb_secret_expires'), 'secret_expires');
+            $cbSecretExpires->setInfo($this->lng->txt('rep_robj_xmvc_bbb_secret_expires_info'));
+            #$cbSecretExpires->setAdditionalAttributes('onchange="if(!this.checked){$(\'#il_prop_cont_secret_expiration_date\', document).hide(\'fast\');} else {$(\'#il_prop_cont_secret_expiration_date\', document).show(\'fast\');}"');
+			if ($parentItem) {
+				$parentItem->addSubItem($cbSecretExpires);
+			} else {
+				$this->form->addItem($cbSecretExpires);
+			}
+
+            $inputSecretExpirationDate = new ilDateTimeInputGUI($this->lng->txt('rep_robj_xmvc_bbb_secret_expiration_date'), 'secret_expiration_date');
+            $inputSecretExpirationDate->setInfo($this->lng->txt('rep_robj_xmvc_bbb_secret_expiration_date_info'));
+			$cbSecretExpires->addSubItem($inputSecretExpirationDate);
+        }
+
+        $cbRecordings = $this->formItem("recording");
+		if( $this->isBBB && $this->xmvcConfig->isRecordOnlyForModeratedRoomsDefault() ) {
+			if( $cbModr->getType() === 'hidden' ) {
+				if ($this->object->get_moderated()) {
+					$this->form->addItem($cbRecordings);
+				}
+			} else {
+				if($cbRecordings->getType() !== 'hidden') {//  $cbRecordings->getType() !== 'hidden'|| $this->xmvcConfig->isRecordDefault()
+					$cbModr->addSubItem($cbRecordings);
+				}
+			}
+		} else {
+			$this->form->addItem($cbRecordings);
+		}
+
 
         $this->form->addItem($this->formItem("btn_settings"));
 
@@ -924,29 +1025,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
         $this->form->addItem($this->formItem("lock_disable_cam"));
 
-        $cbGuestLink = $this->formItem("guestlink");
-        #$this->form->addItem($this->formItem("guestlink"));
-
-        if( $this->isBBB && $this->object->isGuestlink() ) {
-            $guestPass = new ilTextInputGUI($this->lng->txt('rep_robj_xmvc_bbb_guest_password'), 'access_token');
-            $guestPass->setInfo($this->lng->txt('rep_robj_xmvc_bbb_guest_password_info'));
-            $guestPass->setDisableHtmlAutoComplete(true);
-            $cbGuestLink->addSubItem($guestPass);
-
-            $cbSecretExpires = new ilCheckboxInputGUI($this->lng->txt('rep_robj_xmvc_bbb_secret_expires'), 'secret_expires');
-            $cbSecretExpires->setInfo($this->lng->txt('rep_robj_xmvc_bbb_secret_expires_info'));
-            $cbSecretExpires->setAdditionalAttributes('onchange="if(!this.checked){$(\'#il_prop_cont_secret_expiration_date\', document).hide(\'fast\');} else {$(\'#il_prop_cont_secret_expiration_date\', document).show(\'fast\');}"');
-            $cbGuestLink->addSubItem($cbSecretExpires);
-
-            $inputSecretExpirationDate = new ilDateTimeInputGUI($this->lng->txt('rep_robj_xmvc_bbb_secret_expiration_date'), 'secret_expiration_date');
-            $inputSecretExpirationDate->setInfo($this->lng->txt('rep_robj_xmvc_bbb_secret_expiration_date_info'));
-            $cbGuestLink->addSubItem($inputSecretExpirationDate);
-        }
-
-        $this->form->addItem($cbGuestLink);
-
         // If it's Webex add specific form elements
-        if ( 'webex' !== $settings->getShowContent() || !$this->hasChoosePermission('extra_cmd') ) {
+        if ( 'webex' !== $this->xmvcConfig->getShowContent() || !$this->hasChoosePermission('extra_cmd') ) {
             $extra = new ilHiddenInputGUI("cb_extra_cmd");
             $this->form->addItem($extra);
         } else {
@@ -977,7 +1057,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         // Webex Integration Set Authorization
         if( $this->isWebex ) {
             if( $this->object->isUserOwner() ) {
-                if ('user' === $settings->getAuthMethod()) {
+                if ('user' === $this->xmvcConfig->getAuthMethod()) {
                     $authLinks = [];
                     if (!(bool)$this->object->getAccessToken()) {
                         $hrefSetAuth = $this->dic->ctrl()->getLinkTarget($this, 'authorizeWebexIntegration');
@@ -999,18 +1079,16 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
             $hostMail = new ilNonEditableValueGUI($this->lng->txt('rep_robj_xmvc_webex_host_email'), 'auth_user');
             $hostMail->setInfo($hostMailInfo);
-        } // EOF if ( 'webex' === $settings->getShowContent() )
+        } // EOF if ( 'webex' === $this->xmvcConfig->getShowContent() )
 
         // Edudip Host Email
         if( $this->isEdudip ) {
             $hostMail = new ilNonEditableValueGUI($this->lng->txt('rep_robj_xmvc_edudip_host_email'), 'auth_user');
             $hostMail->setInfo($hostMailInfo);
-        } // EOF if ( 'edudip' === $settings->getShowContent() ) {
+        } // EOF 
 
         // Add Host Email Webex / Edudip
         $this->form->addItem($hostMail);
-
-        $this->form->addItem($this->formItem("recording"));
 
         $this->form->addCommandButton("updateProperties", $this->lng->txt("save"));
         $this->form->setTitle($this->txt("edit_properties"));
@@ -1051,9 +1129,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $secretExpiration = $this->object->getSecretExpiration();
             $values["secret_expires"] = (bool)$secretExpiration && (bool)$values["access_token"];
             $values["secret_expiration_date"] = (string)$secretExpiration;
-            if( !(bool)$secretExpiration ) {
-                $this->dic->ui()->mainTemplate()->addOnLoadCode('$(\'#il_prop_cont_secret_expiration_date\', document).hide();');
-            }
+            // if( !(bool)$secretExpiration ) {
+                // $this->dic->ui()->mainTemplate()->addOnLoadCode('$(\'#il_prop_cont_secret_expiration_date\', document).hide();');
+            // }
         }
 
         $this->form->setValuesByArray($values);
@@ -1117,6 +1195,11 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $this->object->setRecord( $this->checkRecordChooseValue( (bool)$this->form->getInput("cb_moderated"), (bool)$this->form->getInput("cb_recording")) );
             }
             // $this->object->setConnId( (int)$this->form->getInput("conn_id") );
+			
+            if( $this->isBBB && $this->object->get_moderated() === false ) {
+                $this->object->setGuestlink(false);
+            }
+
 
             // Webex/Edudip User Auth (AdminScope)
             $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
@@ -1162,7 +1245,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
         switch( true ) {
             case $settings->isRecordChoose() && !$settings->isRecordOnlyForModeratedRoomsDefault():
-            case $settings->isRecordChoose() && $settings->isRecordOnlyForModeratedRoomsDefault() && $this->object->get_moderated():
+            case $settings->isRecordChoose() && $settings->isRecordOnlyForModeratedRoomsDefault() && (($this->xmvcConfig->get_moderatedChoose()) || $this->xmvcConfig->get_moderatedDefault())://$this->object->get_moderated() && 
                 return true;
             default:
                 return false;
@@ -1807,7 +1890,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $my_tpl->setVariable("userInviteInfo", $this->txt('user_invite_info'));
             $my_tpl->setVariable("userInviteUrl", $guestLinkUrl);
             // if isset guestLinkPw
-            if( (bool)strlen($guestPw = trim($this->object->getAccessToken())) ) {
+            if( $this->isBBB && (bool)strlen($guestPw = trim($this->object->getAccessToken())) ) {
                 $pwExpired = $this->object->isSecretExpired();
                 $my_tpl->setVariable("guestLinkPwInfo", $this->txt('guest_link_pw_info'));
                 $my_tpl->setVariable("guestLinkPw", rawurldecode($guestPw));

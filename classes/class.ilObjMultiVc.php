@@ -1507,7 +1507,7 @@ class ilObjMultiVc extends ilObjectPlugin
     public function relateStoredHostSessionByRelId(string $relId, int $newRefId) {
         $objId = ilObject::_lookupObjId($newRefId);
 
-        $values = [ 'obj_id' => ['int', $objId]];
+        $values = [ 'obj_id' => ['integer', $objId]];
 
         $where = [
             'rel_id'	=> ['string', $relId],
