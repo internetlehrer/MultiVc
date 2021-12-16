@@ -3,15 +3,17 @@
 $actUserChanged = new ilHiddenInputGUI('act_owner_changed');
 $combo->addSubItem($actUserChanged);
 
-$sm = new ilMultiSelectInputGUI($pl->txt("assigned_roles"), 'assigned_roles');
-$sm->setInfo($pl->txt("assigned_roles_info"));
+if( !(ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0) ) {
+    $sm = new ilMultiSelectInputGUI($pl->txt("assigned_roles"), 'assigned_roles');
+    $sm->setInfo($pl->txt("assigned_roles_info"));
 #$sm->enableSelectAll(true);
-$sm->setWidth('100');
-$sm->setWidthUnit('%');
-$sm->setHeight('200');
+    $sm->setWidth('100');
+    $sm->setWidthUnit('%');
+    $sm->setHeight('200');
 // $sm->setRequired(true);
-$sm->setOptions($this->object->getAssignableGlobalRoles());
-$combo->addSubItem($sm);
+    $sm->setOptions($this->object->getAssignableGlobalRoles());
+    $combo->addSubItem($sm);
+}
 
 
 /*

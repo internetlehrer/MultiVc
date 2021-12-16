@@ -1202,3 +1202,110 @@ if($ilDB->tableExists('rep_robj_xmvc_data'))
     }
 }
 ?>
+<#35>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'pub_recs_choose') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'pub_recs_choose', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 1
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'pub_recs_default') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'pub_recs_default', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'show_hint_pub_recs') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'show_hint_pub_recs', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'hide_recs_until_date') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'hide_recs_until_date', array(
+            'type' => 'timestamp',
+            'default' => null
+        ));
+    }
+}
+?>
+<#36>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'pub_recs') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'pub_recs', array(
+            'type' => 'integer',
+            'length' => 1,
+            'notnull' => true,
+            'default' => 0
+        ));
+    }
+}
+?>
+<#37>
+<?php
+if(!$ilDB->tableExists('rep_robj_xmvc_recs_bbb'))
+{
+    $fields_data = array(
+        'ref_id' => array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true
+        ),
+        'rec_id' => array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => true
+        ),
+        'meeting_id' => array(
+            'type' => 'text',
+            'length' => 64,
+            'notnull' => true
+        ),
+        'available' => array(
+            'type' => 'integer',
+            'notnull' => false,
+            'default' => null
+        ),
+        'create_date' => array(
+            'type' => 'timestamp',
+            'notnull' => true
+        ),
+        'update_date' => array(
+            'type' => 'timestamp',
+            'notnull' => false,
+            'default' => null
+        ),
+        'updated_by' => array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => false,
+            'default' => null
+        ),
+        'task' => array(
+            'type' => 'text',
+            'length' => 32,
+            'notnull' => false,
+            'default' => null
+        ),
+    );
+
+    $ilDB->createTable("rep_robj_xmvc_recs_bbb", $fields_data);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_recs_bbb", array("ref_id", "rec_id"));
+}
+?>

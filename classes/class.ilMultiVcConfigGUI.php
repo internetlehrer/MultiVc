@@ -535,7 +535,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		}
 
 		// globalAssignedRoles
-		if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) ) {
+		$nonRoleBasedVc = ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0;
+		if( !(bool)$nonRoleBasedVc && in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) ) {
 			$values["assigned_roles"] = $this->object->getAssignedRoles();
 		}
 		$values["showcontent"] = $this->object->getShowContent();
@@ -544,6 +545,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["recording_choose"] = $this->object->isRecordChoose();
 		$values["recording_default"] = $this->object->isRecordDefault();
 		$values["recording_only_for_moderated_rooms_default"] = $this->object->isRecordOnlyForModeratedRoomsDefault();
+		$values["pub_recs_choose"] = $this->object->getPubRecsChoose();
+		$values["pub_recs_default"] = $this->object->getPubRecsDefault();
+		$values["show_hint_pub_recs"] = $this->object->getShowHintPubRecs();
+		$values["hide_recs_until_date"] = substr($this->object->getHideRecsUntilDate(), 0, 10);
 		$values["cam_only_for_moderator_choose"] = $this->object->isCamOnlyForModeratorChoose();
 		$values["cam_only_for_moderator_default"] = $this->object->isCamOnlyForModeratorDefault();
 		$values["lock_disable_cam"] = $this->object->getLockDisableCamChoose();
@@ -673,6 +678,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			}
 		}
 
+		// BBB CHECK URL 2 ADD PRESENTATION
 		$urlCheck = true;
 		/** @var  ilTextInputGUI $field */
 		$field = $form->getItemByPostVar('add_presentation_url');
@@ -681,6 +687,21 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 			if( !$field->checkInput() ) {
 				$urlCheck = false;
 				ilUtil::sendFailure($lng->txt("form_input_not_valid"));
+			}
+		}
+
+		// WEBEX CHECK SITE-URL
+		if( 'webex' === filter_var($_POST['showcontent'], FILTER_SANITIZE_STRING) ) {
+			$svrPublicUrl = filter_var($_POST['svr_public_url'], FILTER_SANITIZE_URL);
+			$regEx = "%(^(https://|http://|//)|(webex.com).*$)%";
+			if( (bool)preg_match($regEx, $svrPublicUrl, $match) )  {
+				$urlCheck = false;
+				/** @var  ilTextInputGUI $field */
+				$field = $form->getItemByPostVar('svr_public_url');
+				$field->setValidationRegexp('%^$%');
+				if( !$field->checkInput() ) {
+					ilUtil::sendFailure($lng->txt("form_input_not_valid"));
+				}
 			}
 		}
 
@@ -730,6 +751,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setRecordChoose( (bool)$form->getInput("recording_choose") );
 				$this->object->setRecordDefault( (bool)$form->getInput("recording_default") );
 				$this->object->setRecordOnlyForModeratedRoomsDefault( (bool)$form->getInput("recording_only_for_moderated_rooms_default") );
+				$this->object->setPubRecsChoose( (bool)$form->getInput("pub_recs_choose") );
+				$this->object->setPubRecsDefault( (bool)$form->getInput("pub_recs_default") );
+				$this->object->setShowHintPubRecs( (bool)$form->getInput("show_hint_pub_recs") );
+				$this->object->setHideRecsUntilDate( $form->getInput("hide_recs_until_date") );
 				//$this->object->setRecordOnlyForModeratorChoose( (bool)$form->getInput("recording_only_for_moderator_choose") );
 				//$this->object->setRecordOnlyForModeratorDefault( (bool)$form->getInput("recording_only_for_moderated_rooms_default") );
 				$this->object->setCamOnlyForModeratorChoose( (bool)$form->getInput("cam_only_for_moderator_choose") );
@@ -772,7 +797,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setStyle( $form->getInput("style") );
 				$this->object->setLogo( $form->getInput("logo") );
 
-				if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) )
+				$nonRoleBasedVc = ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0;
+				if( !(bool)$nonRoleBasedVc && in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) )
 				{
 					$this->object->setAssignedRoles($form->getInput("assigned_roles"));
 				}
@@ -849,7 +875,8 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		}
 
 		// globalAssignedRoles
-		if( in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) ) {
+		$nonRoleBasedVc = ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0;
+		if( !(bool)$nonRoleBasedVc && in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) ) {
 			$values["assigned_roles"] = $this->object->getAssignedRoles();
 		}
 		#$adminRoleId = array_search('Administrator', $this->object->getAssignableGlobalRoles());
@@ -862,6 +889,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["recording_choose"] = 0;
 		$values["recording_default"] = 0;
 		$values["recording_only_for_moderated_rooms_default"] = 1;
+		$values["pub_recs_choose"] = 0;
+		$values["pub_recs_default"] = 0;
+		$values["show_hint_pub_recs"] = 0;
+		$values["hide_recs_until_date"] = '';
 		$values["cam_only_for_moderator_choose"] = 0;
 		$values["cam_only_for_moderator_default"] = 0;
 		$values["lock_disable_cam"] = 0;

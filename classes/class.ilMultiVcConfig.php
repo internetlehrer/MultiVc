@@ -111,12 +111,18 @@ class ilMultiVcConfig
     private $recordDefault = false;
     /** @var bool $recordOnlyForModeratedRoomsDefault */
     private $recordOnlyForModeratedRoomsDefault = true;
+    /** @var bool $pubRecsChoose */
+    private $pubRecsChoose = false;
+    /** @var bool $pubRecsDefault */
+    private $pubRecsDefault = false;
+    /** @var bool $showHintPubRecs */
+    private $showHintPubRecs = false;
+    /** @var string|null $hideRecsUntilDate */
+    private $hideRecsUntilDate = null;
     /** @var bool $disableSip */
     private $disableSip = false;
     /** @var bool $hideUsernameInLogs */
     private $hideUsernameInLogs = true;
-
-    // todo
     /** @var bool $recordOnlyForModeratorChoose */
     private $recordOnlyForModeratorChoose = false;
     /** @var bool $recordOnlyForModeratorDefault */
@@ -163,6 +169,7 @@ class ilMultiVcConfig
             'moderatedChoose',
             'privateChatChoose',
             'recordChoose',
+            'pubRecs',
             'camOnlyForModeratorChoose',
             'lockDisableCam',
             'guestlinkChoose'
@@ -337,6 +344,10 @@ class ilMultiVcConfig
             'recording_choose'		        => ['integer', (int)$this->isRecordChoose()],
             'recording_default'		        => ['integer', (int)$this->isRecordDefault()],
             'record_only_moderated_rooms' => ['integer', (int)$this->isRecordOnlyForModeratedRoomsDefault()],
+            'pub_recs_choose' => ['integer', (int)$this->getPubRecsChoose()],
+            'pub_recs_default' => ['integer', (int)$this->getPubRecsDefault()],
+            'show_hint_pub_recs' => ['integer', (int)$this->getShowHintPubRecs()],
+            'hide_recs_until_date' => ['string', $this->getHideRecsUntilDate()],
             'cam_only_moderator_choose' => ['integer', (int)$this->isCamOnlyForModeratorChoose()],
             'cam_only_moderator_default' => ['integer', (int)$this->isCamOnlyForModeratorDefault()],
             'lock_disable_cam' => ['integer', (int)$this->getLockDisableCamChoose()],
@@ -518,6 +529,10 @@ class ilMultiVcConfig
             $this->setRecordChoose( (bool)$record["recording_choose"] );
             $this->setRecordDefault( (bool)$record["recording_default"] );
             $this->setRecordOnlyForModeratedRoomsDefault( (bool)$record["record_only_moderated_rooms"] );
+            $this->setPubRecsChoose( (bool)$record["pub_recs_choose"] );
+            $this->setPubRecsDefault( (bool)$record["pub_recs_default"] );
+            $this->setShowHintPubRecs( (bool)$record["show_hint_pub_recs"] );
+            $this->setHideRecsUntilDate( $record["hide_recs_until_date"] );
             $this->setCamOnlyForModeratorChoose( (bool)$record["cam_only_moderator_choose"] );
             $this->setCamOnlyForModeratorDefault( (bool)$record["cam_only_moderator_default"] );
             $this->setLockDisableCamChoose( (bool)$record["lock_disable_cam"] );
@@ -1011,6 +1026,70 @@ class ilMultiVcConfig
     public function isRecordOnlyForModeratedRoomsDefault(): bool
     {
         return $this->recordOnlyForModeratedRoomsDefault;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPubRecsChoose(): bool
+    {
+        return $this->pubRecsChoose;
+    }
+
+    /**
+     * @param bool $pubRecsChoose
+     */
+    public function setPubRecsChoose(bool $pubRecsChoose): void
+    {
+        $this->pubRecsChoose = $pubRecsChoose;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPubRecsDefault(): bool
+    {
+        return $this->pubRecsDefault;
+    }
+
+    /**
+     * @param bool $pubRecsDefault
+     */
+    public function setPubRecsDefault(bool $pubRecsDefault): void
+    {
+        $this->pubRecsDefault = $pubRecsDefault;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getShowHintPubRecs(): bool
+    {
+        return $this->showHintPubRecs;
+    }
+
+    /**
+     * @param bool $showHintPubRecs
+     */
+    public function setShowHintPubRecs(bool $showHintPubRecs): void
+    {
+        $this->showHintPubRecs = $showHintPubRecs;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getHideRecsUntilDate(): ?string
+    {
+        return $this->hideRecsUntilDate;
+    }
+
+    /**
+     * @param string|null $hideRecsUntilDate
+     */
+    public function setHideRecsUntilDate(?string $hideRecsUntilDate): void
+    {
+        $this->hideRecsUntilDate = $hideRecsUntilDate;
     }
 
 

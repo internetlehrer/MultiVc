@@ -6,15 +6,17 @@ $ti->setSize(60);
 $ti->setInfo($pl->txt("obj_ids_special_info"));
 $combo->addSubItem($ti);
 
-$sm = new ilMultiSelectInputGUI($pl->txt("assigned_roles"), 'assigned_roles');
-$sm->setInfo($pl->txt("assigned_roles_info"));
+if( !(ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0) ) {
+    $sm = new ilMultiSelectInputGUI($pl->txt("assigned_roles"), 'assigned_roles');
+    $sm->setInfo($pl->txt("assigned_roles_info"));
 #$sm->enableSelectAll(true);
-$sm->setWidth('100');
-$sm->setWidthUnit('%');
-$sm->setHeight('200');
+    $sm->setWidth('100');
+    $sm->setWidthUnit('%');
+    $sm->setHeight('200');
 // $sm->setRequired(true);
-$sm->setOptions($this->object->getAssignableGlobalRoles());
-$combo->addSubItem($sm);
+    $sm->setOptions($this->object->getAssignableGlobalRoles());
+    $combo->addSubItem($sm);
+}
 
 $ti = new ilTextInputGUI($pl->txt("svr_public_url"), "svr_public_url");
 $ti->setRequired(true);
@@ -125,6 +127,38 @@ $cb = new ilCheckboxInputGUI($pl->txt("recording_only_for_moderated_rooms_defaul
 $cb->setRequired(false);
 $cb->setInfo($pl->txt("recording_only_for_moderated_rooms_default_info"));
 $combo->addSubItem($cb);
+
+
+
+
+
+
+
+$cb = new ilCheckboxInputGUI($pl->txt("pub_recs_choose"), "pub_recs_choose");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("pub_recs_choose_info"));
+$combo->addSubItem($cb);
+
+$cb = new ilCheckboxInputGUI($pl->txt("pub_recs_default"), "pub_recs_default");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("pub_recs_default_info"));
+$combo->addSubItem($cb);
+
+$cb = new ilCheckboxInputGUI($pl->txt("show_hint_pub_recs"), "show_hint_pub_recs");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("show_hint_pub_recs_info"));
+$combo->addSubItem($cb);
+
+$dt = new ilDateTimeInputGUI($pl->txt("hide_recs_until_date"), "hide_recs_until_date");
+$dt->setRequired(false);
+$dt->setInfo($pl->txt("hide_recs_until_date_info"));
+$combo->addSubItem($dt);
+
+
+
+
+
+
 
 
 $cb = new ilCheckboxInputGUI($pl->txt("cam_only_for_moderator_choose"), "cam_only_for_moderator_choose");

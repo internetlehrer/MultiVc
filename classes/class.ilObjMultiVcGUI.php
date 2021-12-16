@@ -153,6 +153,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $api = ilMultiVcConfig::AVAILABLE_XMVC_API[$this->platform];
             $this->vcObj = new $api($this);
 
+            // run BBB Record Task
+            if( $this->isBBB ) {
+                $this->object->runBBBRecTask('delete', $this->vcObj);
+            }
             // Edudip users gets their token from plugin settings
             #$cmd = $this->dic->ctrl()->getCmd();
             $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
@@ -261,14 +265,21 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             case "deleteRecords":
                 $this->checkPermission("read");
                 if( $this->deleteRecords() ) {
-                    ilUtil::sendSuccess($DIC->language()->txt("msg_obj_deleted"), true);
+                    ilUtil::sendSuccess($DIC->language()->txt("rep_robj_xmvc_msg_obj_deleted"), true);
                     $DIC->ctrl()->redirect($this, 'showContent');
                 } else {
                     ilUtil::sendFailure($DIC->language()->txt("msg_no_objs_deleted"), true);
                     $DIC->ctrl()->redirect($this, 'showContent');
                 }
                 break;
-
+            case 'setRecordAvailable':
+                $this->checkPermission("read");
+                $this->setRecordAvailable();
+                break;
+            case 'setRecordLocked':
+                $this->checkPermission("read");
+                $this->setRecordLocked();
+                break;
             case "showContent":			// list all commands that need read permission here
                 $this->checkPermission("read");
                 $this->$cmd();
@@ -1007,7 +1018,26 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 		} else {
 			$this->form->addItem($cbRecordings);
 		}
+		
+		// if ($this->isBBB && $this->object->isRecordingAllowed() ) {
 
+        if( $this->isBBB && $this->xmvcConfig->getPubRecsChoose() ) {
+            $cbPubRecs = $this->formItem("pub_recs");
+            if($cbRecordings->getType() == 'hidden') {
+				$this->form->addItem($cbPubRecs);
+			} else {
+				$cbRecordings->addSubItem($cbPubRecs);
+			}
+        } elseif( $this->isBBB && $this->xmvcConfig->getPubRecsDefault() ) {
+            $nePubRecs  = new ilNonEditableValueGUI($this->lng->txt('rep_robj_xmvc_pub_recs'), 'pub_recs');
+            $nePubRecs->setValue($this->lng->txt('rep_robj_xmvc_pub_recs_default_for_object'));
+            if( $this->object->isRecordingAllowed() && !$this->xmvcConfig->isRecordChoose() ) {
+                $this->form->addItem($nePubRecs);
+            } elseif( $this->xmvcConfig->isRecordChoose() ) {
+                $cbRecordings->addSubItem($nePubRecs);
+            }
+        }
+		// }
 
         $this->form->addItem($this->formItem("btn_settings"));
 
@@ -1115,6 +1145,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $values["moderatorpwd"] = $this->object->getModeratorPwd();
         $values["cb_private_chat"] = $this->object->isPrivateChat();
         $values["cb_recording"] = $this->object->isRecordingAllowed();
+        $values["cb_pub_recs"] = $this->object->getPubRecs();
         $values["cb_cam_only_for_moderator"] = $this->object->isCamOnlyForModerator();
         $values["cb_lock_disable_cam"] = $this->object->getLockDisableCam();
         $values["conn_id"] = $this->object->getConnId();
@@ -1194,6 +1225,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if( $this->hasChoosePermission('recording') ) {
                 $this->object->setRecord( $this->checkRecordChooseValue( (bool)$this->form->getInput("cb_moderated"), (bool)$this->form->getInput("cb_recording")) );
             }
+            if( $this->hasChoosePermission('pub_recs') ) {
+                $this->object->setPubRecs( (bool)$this->form->getInput("cb_pub_recs") );
+            }
             // $this->object->setConnId( (int)$this->form->getInput("conn_id") );
 			
             if( $this->isBBB && $this->object->get_moderated() === false ) {
@@ -1239,7 +1273,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     /**
      * @return bool
      */
-    private function isRecordChooseAvailable()
+    private function isRecordChooseAvailable(): bool
     {
         include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
         $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
@@ -1324,6 +1358,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 break;
             case 'recording':
                 $state = $settings->isObjConfig('recordChoose') && ($this->isRecordChooseAvailable() || $isAdmin);
+                break;
+            case 'pub_recs':
+                $state = $settings->isObjConfig('pubRecs') && ($this->isRecordChooseAvailable() || $settings->getPubRecsDefault() || $isAdmin);
                 break;
             default:
                 $state = false;
@@ -1582,7 +1619,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $this->showContentUnavailable();
                 break;
             case isset($_GET['windowWEBEX']) && (int)filter_var($_GET['windowWEBEX'], FILTER_SANITIZE_NUMBER_INT) === 1 && $webex->isMeetingStartable() && !$userIsCoHost:
-                $this->showContentwindowWebex(ilMultiVcConfig::getInstance($this->object->getConnId())->getSvrPublicUrl(), $data);
+                $this->showContentWindowWebex(ilMultiVcConfig::getInstance($this->object->getConnId())->getSvrPublicUrl(), $data);
                 break;
 
             case isset($_GET['startWEBEX']) && (int)filter_var($_GET['startWEBEX'], FILTER_SANITIZE_NUMBER_INT) === 10:
@@ -1833,8 +1870,22 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $my_tpl->setVariable('MEETING_RUNNUNG', $this->txt($this->sessType . '_running'));
 
         if( $this->object->get_moderated() && $this->object->isRecordingAllowed() && ( $vcObj->isMeetingRunning() || $vcObj->isUserModerator() ) ) {
+            $recWarning = $this->txt('recording_warning');
+            $publishRecs = $this->object->getPubRecs() || $this->xmvcConfig->getPubRecsDefault();
+            if( $publishRecs ) {
+                $recWarning .= ' ' . $this->txt('pub_recs_default_for_object');
+            }
+            if( !$this->xmvcConfig->getShowHintPubRecs() ) {
+                $recWarning .= ' ' . $this->txt('hint_pub_recs');
+            }
+            /*
+            if( $publishRecs ) {
+                $recWarning .= ' ' . $this->txt('hint_availability_recs');
+            }
+            */
+
             $my_tpl->setVariable("RECORDING_WARNING", $this->getUiCompMsgBox('info',
-                $this->txt('recording_warning'))
+                $recWarning)
             );
             $my_tpl->setVariable("UNHIDE_MSG_REC_ALLOWED", 'un');
         } else {
@@ -1909,7 +1960,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
 
         // RECORDINGS
-        if( $this->object->isRecordingAllowed() && $vcObj->isUserModerator() ) {
+        if( $this->object->isRecordingAllowed() && $this->isBBB || $this->object->isRecordingAllowed() && $vcObj->isUserModerator() ) {
             $my_tpl->setVariable("UNHIDE_RECORDINGS", 'un');
             $my_tpl->setVariable("HEADLINE_RECORDING", $this->txt('recording'));
             $my_tpl->setVariable("RECORDINGS", $this->getShowRecordings($vcObj));
@@ -1963,7 +2014,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @param $data
      * @throws ilTemplateException
      */
-    private function showContentwindowWebex($url, $data)
+    private function showContentWindowWebex($url, $data)
     {
         $tpl = $this->dic['tpl'];
         #echo '<pre>'; var_dump($data['rel_data']); exit;
@@ -2308,9 +2359,16 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $lng = (object)['txt' => function($var) { return $this->getPlugin()->txt($var); } ];
 
         require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcRecordingsTableGUI.php");
-        $table = new ilMultiVcRecordingsTableGUI($this, $this->dic->ctrl()->getCmd());
+        require_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcTableGUIRecordingsBBB.php");
+
+        $table = $this->isBBB
+            ? new ilMultiVcTableGUIRecordingsBBB($this, $this->dic->ctrl()->getCmd())
+            :  new ilMultiVcRecordingsTableGUI($this, $this->dic->ctrl()->getCmd());
         $table->setData($table->addRowSelector($recData));
-        return $table->getHTML();
+        $tblAppend = $this->isBBB && !($this->vcObj->isUserModerator() || $this->vcObj->isUserAdmin()) 
+            ? $this->getUiCompMsgBox('info', $this->txt('hint_availability_recs'))
+            : '';
+        return $table->getHTML() . $tblAppend;
     }
 
     private function confirmDeleteRecords()
@@ -2321,12 +2379,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/classes/class.ilMultiVcConfig.php");
         $ilTabs->activateTab("content");//necessary...
 
-        if ( !isset($_POST['rec_id']) || !(bool)sizeof($_POST['rec_id'])) {
-            ilUtil::sendFailure($this->lng->txt('select_one'));
-            //$DIC->ctrl()->redirect($this, 'showContent');
-            $this->showContent();
-            return false;
-        }
+        $this->redirectIfNoRecordingsSelected();
 
         include_once("Services/Utilities/classes/class.ilConfirmationGUI.php");
         $c_gui = new ilConfirmationGUI();
@@ -2351,6 +2404,36 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $this->tpl->setContent($c_gui->getHTML());
     }
 
+    private function setRecordAvailable()
+    {
+        $this->redirectIfNoRecordingsSelected();
+        #echo '<pre>'; var_dump($_POST["rec_id"]); exit;
+        foreach ($_POST["rec_id"] as $key => $recId) {
+            $this->object->updateBBBRec($this->object->getRefId(), $recId, 1);
+        }
+        ilUtil::sendSuccess(count($_POST["rec_id"]) . ' ' . $this->lng->txt('rep_robj_xmvc_recs_published'), true);
+        $this->dic->ctrl()->redirect($this, 'showContent');
+    }
+
+    private function setRecordLocked()
+    {
+        $this->redirectIfNoRecordingsSelected();
+        foreach ($_POST["rec_id"] as $key => $recId) {
+            $this->object->updateBBBRec($this->object->getRefId(), $recId, 0);
+        }
+        ilUtil::sendSuccess(count($_POST["rec_id"]) . ' ' . $this->lng->txt('rep_robj_xmvc_recs_locked'), true);
+        $this->dic->ctrl()->redirect($this, 'showContent');
+    }
+
+    private function redirectIfNoRecordingsSelected() {
+        if ( !isset($_POST['rec_id']) || !(bool)sizeof($_POST['rec_id'])) {
+            ilUtil::sendFailure($this->lng->txt('select_one'), true);
+            $this->dic->ctrl()->redirect($this, 'showContent');
+            #$this->showContent();
+            return false;
+        }
+    }
+
     private function deleteRecords(): bool
     {
         $success = false;
@@ -2369,9 +2452,15 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
         if(  $this->object->isRecordingAllowed() && isset($_POST) && isset($_POST['rec_id']) ) {
             foreach ($_POST['rec_id'] as $recId) {
-                $vcObj->deleteRecord($recId);
+                $recToDelete = $vcObj->deleteRecord($recId);
                 if( !$success ) {
                     $success = true;
+                }
+                if( $recToDelete instanceof \BigBlueButton\Responses\DeleteRecordingsResponse && $recToDelete->isDeleted()) {
+                    $this->object->deleteBBBRecById($this->ref_id, $recId);
+                    #echo '<pre>'; var_dump($recDeleted); exit;
+                } else {
+                    $this->object->updateBBBRec($this->ref_id, $recId, 0, 'delete');
                 }
             } // EOF foreach ($_POST['rec_id'] as $item)
             return $success;

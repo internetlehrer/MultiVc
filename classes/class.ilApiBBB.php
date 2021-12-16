@@ -701,6 +701,7 @@ class ilApiBBB implements ilApiInterface
      * @return string
      */
     private function getMP4DownStreamUrl(string $recordUrl): string {
+        #return str_replace(['playback/', '2.3/'], '', $recordUrl) . '/deskshare/deskshare.mp4';
         return $recordUrl . '/video/webcams.mp4';
         /*
         // https://github.com/createwebinar/bbb-download

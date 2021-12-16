@@ -39,6 +39,10 @@ class ilObjMultiVc extends ilObjectPlugin
 	private $privateChat;
 	/** @var bool $record */
 	private $record;
+
+    /** @var bool $pubRecs */
+    private $pubRecs = false;
+
 	/** @var bool $camOnlyForModerator */
 	private $camOnlyForModerator;
 
@@ -182,6 +186,7 @@ class ilObjMultiVc extends ilObjectPlugin
 			$this->setModeratorPwd($record["moderatorpwd"]);
 			$this->setPrivateChat( (bool)$record["private_chat"] );
 			$this->setRecord( (bool)$record["recording"] );
+            $this->setPubRecs( (bool)$record["pub_recs"] );
 			$this->setCamOnlyForModerator( (bool)$record["cam_only_for_moderator"] );
             $this->setLockDisableCam( (bool)$record["lock_disable_cam"] );
 			$this->setRoomId( (int)$record["rmid"] );
@@ -260,6 +265,7 @@ class ilObjMultiVc extends ilObjectPlugin
 			'moderatorpwd'			=> ['string', $this->getModeratorPwd()],
 			'private_chat'			=> ['integer', (int)$this->isPrivateChat()],
 			'recording'				=> ['integer', (int)$this->isRecord()],
+            'pub_recs'				=> ['integer', (int)$this->getPubRecs()],
 			'cam_only_for_moderator' => ['integer', (int)$this->isCamOnlyForModerator()],
             'lock_disable_cam' => ['integer', (int)$this->getLockDisableCam()],
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
@@ -374,6 +380,7 @@ class ilObjMultiVc extends ilObjectPlugin
 			'moderatorpwd'			=> ['string', $this->generateMembersPwd()],
 			'private_chat'			=> ['integer', (int)$this->isPrivateChat()],
 			'recording'				=> ['integer', (int)$this->isRecord()],
+            'pub_recs'				=> ['integer', (int)$this->getPubRecs()],
 			'cam_only_for_moderator' => ['integer', (int)$this->isCamOnlyForModerator()],
             'lock_disable_cam' => ['integer', (int)$this->getLockDisableCam()],
 			'conn_id'				  => ['integer', (int)$this->getConnId()],
@@ -636,6 +643,24 @@ class ilObjMultiVc extends ilObjectPlugin
 	{
 		$this->record = $record;
 	}
+
+    /**
+     * @return bool
+     */
+    public function getPubRecs(): bool
+    {
+        return $this->pubRecs;
+    }
+
+    /**
+     * @param bool $pubRecs
+     */
+    public function setPubRecs(bool $pubRecs): void
+    {
+        $this->pubRecs = $pubRecs;
+    }
+
+
 
 	/**
 	 * @return bool
@@ -1972,7 +1997,125 @@ class ilObjMultiVc extends ilObjectPlugin
             ),
         ];
     }
+    #endregion MAIL NOFIFICATION
 
-    #endregion MAIL NOTIFICATION
+
+    ####################################################################################################################
+    #region BBB RECORDINGS
+    ####################################################################################################################
+
+    public function getBBBRecsByRefId( int $refId, ?string $createDate = null ): array
+    {
+        $data = [];
+
+        $sql = "SELECT * FROM rep_robj_xmvc_recs_bbb WHERE ref_id = " . $this->db->quote($refId, 'integer');
+        if( !is_null($createDate) ) {
+            $sql .= " AND create_date >= " . $this->db->quote($createDate, 'timestamp');
+        }
+        $res = $this->db->query($sql);
+        while ($row = $this->db->fetchAssoc($res)) {
+            $data[$row['rec_id']] = $row;
+        }
+        return $data;
+    }
+
+    public function getBBBRecByIds( $refId, $recId ): array
+    {
+        $data = [];
+
+        $sql = "SELECT * FROM rep_robj_xmvc_recs_bbb WHERE ref_id = " . $this->db->quote($refId, 'integer') .
+            " AND rec_id = " . $this->db->quote($recId, 'string');
+        $res = $this->db->query($sql);
+        while ($row = $this->db->fetchAssoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getBBBRecByTask( $task ): array
+    {
+        $data = [];
+
+        $sql = "SELECT ref_id, rec_id FROM rep_robj_xmvc_recs_bbb WHERE task = " . $this->db->quote($task, 'string');
+        $res = $this->db->query($sql);
+        while ($row = $this->db->fetchAssoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function storeBBBRec( int $refId, string $recId, string $meetingId, int $createDate, ?int $available = null ): bool
+    {
+        $isNewEntry = !count($this->getBBBRecByIds($refId, $recId));
+
+        if( $isNewEntry ) {
+            $available = $this->checkBBBRecAvailabilitySettings();
+            $values = [
+                'ref_id'	=> ['integer', $refId],
+                'rec_id'	=> ['string', $recId],
+                'meeting_id'	=> ['string', $meetingId],
+                'available' => ['integer', $available],
+                'create_date' => ['timestamp', date('Y-m-d H:i:s', $createDate)],
+            ];
+            $this->db->insert('rep_robj_xmvc_recs_bbb', $values);
+            return true;
+        }
+        return false;
+    }
+
+    public function updateBBBRec( int $refId, string $recId, ?int $available = null, ?string $task = null ): bool
+    {
+        $values = [
+            'available' => ['integer', $available],
+            'update_date' => ['timestamp', date('Y-m-d H:i:s')],
+            'updated_by' => ['integer', $this->dic->user()->getId()],
+            'task' => ['string', $task],
+        ];
+
+        $where = [
+            'ref_id'	=> ['integer', $refId],
+            'rec_id'	=> ['string', $recId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_recs_bbb', $values, $where);
+
+        return true;
+    }
+
+    public function deleteBBBRecById( int $refId, string $recId, ?ilApiBBB $vcObj = null): bool
+    {
+        if( $vcObj instanceof ilApiBBB ) {
+            if( !$vcObj->deleteRecord($recId)->isDeleted() ) {
+                return false;
+            }
+        }
+        $refId = $this->db->quote($refId, 'integer');
+        $recId = $this->db->quote($recId, 'string');
+
+        $this->db->query("DELETE FROM rep_robj_xmvc_recs_bbb WHERE ref_id = $refId AND rec_id = $recId");
+
+        return true;
+    }
+
+    public function runBBBRecTask( $task, ?ilApiBBB $vcObj = null ): bool
+    {
+        if( $vcObj instanceof ilApiBBB && count($bbbRecs = $this->getBBBRecByTask($task)) ) {
+            $cmd = $task . 'BBBRecById';
+            foreach ($bbbRecs as $bbbRec) {
+                $this->$cmd($bbbRec['ref_id'], $bbbRec['rec_id'], $vcObj);
+            }
+        }
+        return true;
+    }
+
+    private function checkBBBRecAvailabilitySettings(): int
+    {
+        $settings = new ilMultiVcConfig($this->getConnId());
+        return (int)($settings->getPubRecsChoose() && $this->getPubRecs() || $settings->getPubRecsDefault() && !$settings->getPubRecsChoose());
+    }
+
+
+    #endregion BBB RECORDINGS
+
 }
 

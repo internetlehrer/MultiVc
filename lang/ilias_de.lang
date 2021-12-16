@@ -53,17 +53,17 @@ private_chat_choose#:#Privaten Chat erlauben: Auswahlmöglichkeit
 private_chat_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Privaten Chat erlauben' haben sollen.
 private_chat_default#:#Privaten Chat erlauben: Voreinstellung
 private_chat_default_info#:#Sofern aktiviert, können auch Personen ohne Moderatorfunktion untereinander einen privaten Chat führen. Personen mit Moderatorfunktion sehen diese Chats nicht. Da Personen mit Moderatorfunktion jederzeit private Chats unterbinden können, solle diese Option in den meisten Fällen aktiviert sein.
-recording#:#Aufnahmen
+recording#:#Aufzeichnungen
 recording_info#:#Sitzungen können aufgenommen werden.
 recording_warning#:#Für dieses Meeting wurde die Aufzeichnungsoption aktiviert! Mit der aktiven Nutzung des Chat-Systems, dem Einschalten meines persönlichen Mikrofons / meiner Kamera und/oder dem Teilen von Bildschirminhalten willige ich ein, dass diese Informationen bei der Aufzeichnung erfasst und für die spätere Verwendung gespeichert werden.
-recording_choose#:#Aufnahmen erlauben: Auswahlmöglichkeit
-recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufnahmen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufnahme eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
-recording_default#:#Aufnahmen erlauben: Voreinstellung
-recording_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein, damit Personen nicht die Aufnahmefunktion im virtuellen Raum nutzen können.
-recording_only_for_moderated_rooms#:#Aufnahme nur in moderierten Räumen
-recording_only_for_moderated_rooms_info#:#Nur in moderierten Räumen können Personen mit Moderatorfunktion Aufnahmen starten.
-recording_only_for_moderated_rooms_default#:#Aufnahme nur in moderierten Räumen
-recording_only_for_moderated_rooms_default_info#:#Diese Option sollte in den meisten Fällen aktiviert sein. Die Option kommt nur dann zum Tragen, wenn Aufnahmen grundsätzlich erlaubt sind.
+recording_choose#:#Aufzeichnungen erlauben: Auswahlmöglichkeit
+recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufzeichnung eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
+recording_default#:#Aufzeichnungen erlauben: Voreinstellung
+recording_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein, damit Personen nicht die Aufzeichnungfunktion im virtuellen Raum nutzen können.
+recording_only_for_moderated_rooms#:#Aufzeichnung nur in moderierten Räumen
+recording_only_for_moderated_rooms_info#:#Nur in moderierten Räumen können Personen mit Moderatorfunktion Aufzeichnungen starten.
+recording_only_for_moderated_rooms_default#:#Aufzeichnung nur in moderierten Räumen
+recording_only_for_moderated_rooms_default_info#:#Diese Option sollte in den meisten Fällen aktiviert sein. Die Option kommt nur dann zum Tragen, wenn Aufzeichnungen grundsätzlich erlaubt sind.
 cam_only_for_moderator#:#Kamera nur für Moderatoren
 cam_only_for_moderator_info#:#Für Sitzungen mit sehr vielen Personen empfohlen.
 cam_only_for_moderator_choose#:#Kamera nur für Moderatoren: Auswahlmöglichkeit
@@ -237,7 +237,6 @@ info_requirements_webex#:#<ul><li>Empfohlene Browser: Chrome, Edge, Firefox</li>
 webex_site_url#:#Webex Site URL
 webex_host_email#:#Webex Host E-Mail-Adresse
 of_owner_prefix#:#von EigentümerIn
-info_webex_site_url#:#Name der Hosted Site. Die Subdomain vor .webex.com, z. B. your-company.webex.com, oder your-company.my.webex.com
 webex_client_id#:#Client-ID der Webex Integration
 info_webex_client_id#:#Die Client-Id finden Sie in den Daten zu Ihrer Webex-Integration (z. B. admin.webex.com, developer.webex.com).
 webex_client_secret#:#Client-Secret der Webex Integration
@@ -389,3 +388,28 @@ info_top_moderated_m_om#:#Dies ist ein moderierter Raum und Sie können stets er
 info_top_not_moderated_om#:#Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
 info_om_svr_public_url#:#Beispiel: https://www.example.com/
 err_msg_guest_password_expired#:#Das Gast-Passwort ist abgelaufen.
+info_webex_site_url#:#Name der Hosted Site. Die Subdomain vor .webex.com, z. B. <b>your-company</b>.webex.com, oder <b>your-company</b>.my.webex.com
+pub_recs_choose#:#Aufzeichnungen sofort freigeben: Auswahlmöglichkeit
+pub_recs_default#:#Aufzeichnungen sofort freigeben: Voreinstellung
+show_hint_pub_recs#:#Weitergabe von Aufzeichnungslinks erlauben
+hide_recs_until_date#:#Aufzeichnungen nicht anzeigen bis
+pub_recs_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen sofort freigeben' haben sollen.
+pub_recs_default_info#:#Aktivieren Sie diese Option, wenn Aufzeichnungen immer sofort freigegeben werden sollen oder die Auswahlmöglichkeit 'Aufzeichnungen sofort freigeben' für neue Objekte aktiviert sein sollen.
+pub_recs_default_for_object#:#Aufzeichnungen werden Teilnehmern sofort freigegeben.
+show_hint_pub_recs_info#:#Ein Hinweis zum Verbot der Weitergabe von Aufzeichnungslinks wird Benutzern auf der Meeting-Seite angezeigt. Aktivieren Sie diese Option, wenn dieser Hinweis <u>nicht</u> angezeigt werden soll.
+hide_recs_until_date_info#:#Aufzeichnungen bis zum hier angegebenen Aufzeichnungsdatum werden nicht angezeigt.
+pub_recs#:#Aufzeichnungen sofort freigeben
+pub_recs_info#:#Wenn ausgewählt, wird die Aufzeichung zu einem Meeting nach dessen Beenden sofort freigegeben. In der Übersicht auf der Meeting-Seite, haben Sie die Möglichkeit Aufzeichnungen zu sperren oder frei zu geben.
+recs_published#:#Aufzeichnung(en) freigegeben
+recs_locked#:#Aufzeichnung(en) gesperrt
+locked#:#Gesperrt
+hint_pub_recs#:#Eine Weitergabe von Aufzeichnungslinks ist nicht gestattet.
+playback#:#Aufzeichnung abspielen
+download#:#Aufzeichnung herunterladen
+rec_visible#:#Diese Aufzeichnung ist für Teilnehmende sichtbar.
+rec_hidden#:#Diese Aufzeichnung ist für Teilnehmende nicht sichtbar.
+hint_availability_recs#:#Für Fragen und Anliegen zur Zugänglichmachung von Aufzeichnungen wenden Sie sich bitte an die Verantwortlichen für diese BigBlueButton-Meetings.
+locked_by#:#Gesperrt von
+unlocked_by#:#Freigegeben von
+lock#:#Sperren
+unlock#:#Freigeben

@@ -72,8 +72,8 @@ Ausführliche Installationsanweisungen finden Sie auf https://docs.bigbluebutton
 
 Aufzeichnungen von Meetings werden nach Beenden eines Meetings tabellarisch unter dem Meeting-Tab aufgeführt. Folgende Voraussetzungen zum Aufzeichnen müssen erfüllt sein:
 
-- Zum Aufzeichnen von Meetings müssen in der Plugin-Kofiguration und in den Objekt-Eigenschaften die entsprechenden Optionen vor Beginn des Meetings aktiviert werden. 
-- Die Formate `.webm` und `.mp4`, können in der BigBlueButton Konfiguration in der Datei `/usr/local/bigbluebutton/core/scripts/presentation.yml` unter dem Block `video_formats` festgelegt werden. Detailierte Informationen dazu finden Sie hier: [BigBlueButton : Customize](https://docs.bigbluebutton.org/admin/customize#enable-playback-of-recordings-on-ios)
+- Zum Aufzeichnen von Meetings müssen in der Plugin-Konfiguration und in den Objekt-Eigenschaften die entsprechenden Optionen vor Beginn des Meetings aktiviert werden. 
+- Die Formate `.webm` und `.mp4`, können in der BigBlueButton Konfiguration in der Datei `/usr/local/bigbluebutton/core/scripts/presentation.yml` unter dem Block `video_formats` festgelegt werden. Detaillierte Informationen dazu finden Sie hier: [BigBlueButton : Customize](https://docs.bigbluebutton.org/admin/customize#enable-playback-of-recordings-on-ios)
 
 ### Anzahl maximal gleichzeitiger Nutzer definieren
 
@@ -95,9 +95,6 @@ Sie können weitere Konfigurationen hirarchisch in drei Prioritäten anlegen. Da
 1. `plugin.ini`
 2. `lms.example.com.ini`
 3. `bbb.example.com.ini`
-
-
-
 
 
 
@@ -291,6 +288,12 @@ Melden Sie sich bei ILIAS als Benutzer mit einer der zugewiesenen Rollen an. Nav
 ### Nach einem Upgrade stehen zunächst alle Verbindungen im Objekt bereit
 
 Wenn Sie das Plugin von einer früheren Version (< v4) auf die aktuelle Version upgraden, bleibt die Konfiguration bereits angelegter Verbindungen unberührt.
+
+### Rollenzuweisung ausschalten
+
+Auf Lernplattformen mit sehr vielen Kursen kann es in der Meetingtyp-Konfiguration zu langen Ladezeiten kommen. In der Konfigurationsdatei `plugin.ini` können Sie durch Setzen des folgenden Parameters das Formularfeld ausschließen: `non_role_based_vc = 1`
+
+Bitte achten Sie darauf, dass bevor Sie diesen Parameter setzen keine Rollen bereits zugewiesen sind.
 
 
 

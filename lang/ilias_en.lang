@@ -9,7 +9,7 @@ objs_xmvc_duplicate#:#Copy virtual meeting room
 obj_xmvc_select#:#Select virtual meeting room
 select#:#Select
 starttime#:#Start time
-endtime#:#End Time
+endtime#:#End time
 playback#:#Playback
 download#:#Download
 obj_xmvc_download#:#Download
@@ -78,7 +78,7 @@ moderated#:#Moderated Room
 moderated_info#:#In a moderated room, persons with moderator function have extended rights. Other people also have limited access rights to the virtual room. Persons with moderator function are all those who can edit the object's properties as well as group administrators, course administrators and course tutors.
 moderated_choose#:#moderated room: selection option
 moderated_choose_info#:#Activate this option if you want users with write access to select 'moderated room' under Settings.
-moderated_default#:#moderated room: default setting
+moderated_default#:#moderated room: Default setting
 moderated_default_info#:#Activate this option if new rooms are to be created as moderated rooms.
 btn_settings#:#Settings in the room
 btn_settings_info#:#Activate this option if you want the button and options for settings to be visible in the room. Usually this is not necessary since name and user image will be taken over by ILIAS.
@@ -237,7 +237,6 @@ info_requirements_webex#:#<ul><li>Recommended browsers: Chrome, Edge, Firefox</l
 webex_site_url#:#Webex Site URL
 webex_host_e-mail#:#Webex Host e-mail Address
 of_owner_prefix#:#of owner
-info_webex_site_url#:#Name of the hosted site. The subdomain before .webex.com, e.g. your-company.webex.com, or your-company.my.webex.com
 webex_client_id#:#Client ID of the Webex integration
 info_webex_client_id#:#The client ID can be found in the data for your Webex integration (e.g. admin.webex.com, developer.webex.com).
 webex_client_secret#:#Client secret of the Webex integration.
@@ -389,3 +388,28 @@ info_top_moderated_m_om#:#This is a moderated room and you can always enter the 
 info_top_not_moderated_om#:#This meeting room is not moderated. Therefore, you also have a moderator function and therefore extended rights. You can restrict the rights of other people and also end the session. Please use the extended rights responsibly.
 info_om_svr_public_url#:#Example: https://www.example.com/
 err_msg_guest_password_expired#:#The guest password has expired.
+info_webex_site_url#:#Name of the hosted site. The subdomain before .webex.com, e.g. <b>your-company</b>.webex.com, or <b>your-company</b>.my.webex.com
+pub_recs_choose#:#Publish recordings immediately: Selection option
+pub_recs_default#:#Publish recordings immediately: Default setting
+show_hint_pub_recs#:#Allow sharing of recording links
+hide_recs_until_date#:#Do not display recordings until
+pub_recs_choose_info#:#Enable this option if users with write permissions should have the 'Publish recordings immediately' selection under settings.
+pub_recs_default_info#:#Enable this option if recordings should always be published immediately, or if the 'Publish recordings immediately' option should be enabled for new objects.
+pub_recs_default_for_object#:#Recordings are released to participants immediately.
+show_hint_pub_recs_info#:#A hint prohibiting sharing of recording links is displayed to users on the meeting page. Check this option if this hint should <u>not</u> be displayed.
+hide_recs_until_date_info#:#Recordings up to the recording date specified here will not be displayed.
+pub_recs#:#Publish recordings immediately.
+pub_recs_info#:#If selected, the recording of a meeting will be published immediately after it has ended. In the overview on the meeting page, you have the possibility to lock or unlock recordings.
+recs_published#:#Recordings released
+recs_locked#:#Recordings locked
+locked#:#Locked
+hint_pub_recs#:#Sharing of recording links is not allowed.
+playback#:#Play video
+download#:#Download video
+rec_visible#:#This recording is visible to participants.
+rec_hidden#:#This recording is not visible for participants.
+hint_availability_recs#:#For questions and concerns about making recordings accessible, please contact the people responsible for these BigBlueButton meetings.
+locked_by#:#Locked by
+unlocked_by#:#Unlocked by
+lock#:#Lock
+unlock#:#Unlock
