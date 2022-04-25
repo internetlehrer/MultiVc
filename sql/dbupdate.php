@@ -1309,3 +1309,47 @@ if(!$ilDB->tableExists('rep_robj_xmvc_recs_bbb'))
     $ilDB->addPrimaryKey("rep_robj_xmvc_recs_bbb", array("ref_id", "rec_id"));
 }
 ?>
+<#38>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    $meetingLayoutDefault = 2;
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'meeting_layout') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'meeting_layout', array(
+            'type' => 'integer',
+            'length' => 4,
+            'notnull' => true,
+            'default' => $meetingLayoutDefault
+        ));
+    }
+
+    $queue = [];
+    $query = 'SELECT `id`, `meeting_layout` FROM `rep_robj_xmvc_conn`;';
+    $res = $ilDB->query($query);
+    while ($row = $ilDB->fetchAssoc($res)) {
+        $queue[$row['id']] = [
+            'meeting_layout' => $row['meeting_layout']
+        ];
+    }
+    if (!empty($queue)) {
+        foreach ($queue as $id => $row) {
+            if( !is_numeric($row['meeting_layout']) ) {
+                $ilDB->update(
+                    'rep_robj_xmvc_conn',
+                    [
+                        "meeting_layout"     => [
+                            "integer", $meetingLayoutDefault
+                        ]
+                    ],
+                    [
+                        "id" => [
+                            "integer", $id
+                        ]
+                    ]
+                );
+            }
+        }
+    }
+}
+?>

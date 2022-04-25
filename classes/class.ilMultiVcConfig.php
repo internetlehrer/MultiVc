@@ -37,6 +37,11 @@ class ilMultiVcConfig
     const AVAILABILITY_EXISTING = 1; // Existing objects of the can be used, but no new created
     const AVAILABILITY_CREATE = 2;  // New objects of this type can be created
 
+    const MEETING_LAYOUT_CUSTOM = 1;
+    const MEETING_LAYOUT_SMART = 2;
+    const MEETING_LAYOUT_PRESENTATION_FOCUS = 3;
+    const MEETING_LAYOUT_VIDEO_FOCUS = 4;
+
     const ADMIN_DEFINED_TOKEN_VC = [
         'edudip'
     ];
@@ -232,6 +237,8 @@ class ilMultiVcConfig
     /** @var null|array $assignedRoles  */
     private $assignedRoles = null;
 
+    /** @var int $meetingLayout */
+    private $meetingLayout = 2;
     #endregion PROPERTIES
 
     #region INIT READ WRITE
@@ -368,6 +375,7 @@ class ilMultiVcConfig
             'style'				=> ['string', $this->getStyle()],
             'logo'				=> ['string', $this->getLogo()],
             'assigned_roles'	=> ['string', implode(',', $this->getAssignedRoles() ?? [])],
+            'meeting_layout'    => ['integer', (int)$this->getMeetingLayout()],
             //'more_options'			        => ['string', json_encode($this->option)],
 		);
 		//var_dump($a_data); exit;
@@ -553,7 +561,7 @@ class ilMultiVcConfig
             $this->setStyle( (string)$record["style"] );
             $this->setLogo( (string)$record["logo"] );
             $this->setAssignedRoles( explode(',', $record["assigned_roles"]) );
-
+            $this->setMeetingLayout((int)$record["meeting_layout"]);
 
             $this->setStoredOption($record);
 		}
@@ -1451,6 +1459,22 @@ class ilMultiVcConfig
         } // EOF foreach (json_decode($this->getAllLocalRoles(),1) as $item)
 
         return array_replace($globalRoles, $localRoles);
+    }
+
+    /**
+     * @return int
+     */
+    public function getMeetingLayout(): int
+    {
+        return $this->meetingLayout;
+    }
+
+    /**
+     * @param int $meetingLayout
+     */
+    public function setMeetingLayout(int $meetingLayout)
+    {
+        $this->meetingLayout = $meetingLayout;
     }
 
     private function getAllLocalRoles($a_str = '%')

@@ -63,6 +63,19 @@ $ti->setSize(6);
 $ti->setInfo($pl->txt("info_max_participants"));
 $combo->addSubItem($ti);
 
+$si = new ilSelectInputGUI($this->plugin_object->txt('conf_meeting_layout'), 'meeting_layout');
+$si->setOptions (
+    array(
+        ilMultiVcConfig::MEETING_LAYOUT_CUSTOM => $this->plugin_object->txt('conf_meeting_layout_' . ilMultiVcConfig::MEETING_LAYOUT_CUSTOM),
+        ilMultiVcConfig::MEETING_LAYOUT_SMART => $this->plugin_object->txt('conf_meeting_layout_' . ilMultiVcConfig::MEETING_LAYOUT_SMART),
+        ilMultiVcConfig::MEETING_LAYOUT_PRESENTATION_FOCUS => $this->plugin_object->txt('conf_meeting_layout_' . ilMultiVcConfig::MEETING_LAYOUT_PRESENTATION_FOCUS),
+        ilMultiVcConfig::MEETING_LAYOUT_VIDEO_FOCUS => $this->plugin_object->txt('conf_meeting_layout_' . ilMultiVcConfig::MEETING_LAYOUT_VIDEO_FOCUS)
+    )
+);
+$si->setInfo($this->plugin_object->txt('info_meeting_layout'));
+$si->setRequired(true);
+$combo->addSubItem($si);
+
 $ti = new ilDurationInputGUI($pl->txt("max_duration"), "max_duration");
 #$ti->setMaxLength(5);
 #$ti->setSize(6);

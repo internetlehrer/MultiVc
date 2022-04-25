@@ -176,6 +176,12 @@ info_availability#:#Hiermit steuern Sie die Verfügbarkeit des Meeting-Typs im M
 conf_availability_0#:#Nicht verfügbar
 conf_availability_1#:#Bestehende erlaubt
 conf_availability_2#:#Neue erzeugbar
+conf_meeting_layout#:#Meeting Layout
+info_meeting_layout#:#Steuert das standard Layout für das Meeting.
+conf_meeting_layout_1#:#CUSTOM_LAYOUT
+conf_meeting_layout_2#:#SMART_LAYOUT
+conf_meeting_layout_3#:#PRESENTATION_FOCUS
+conf_meeting_layout_4#:#VIDEO_FOCUS
 untrashed_usages#:#Anzahl Verwendungen
 create_type#:#Neuen Meeting-Typ definieren
 delete_type#:#Meeting-Typ löschen
