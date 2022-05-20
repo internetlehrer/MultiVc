@@ -498,6 +498,11 @@ class JoinMeetingByGuestLink
 
     private function __construct()
     {
+        if(isset($_GET["client"])) {
+            $_GET["client_id"] = $_GET["client"];
+        }
+        
+        
         $this->client = filter_var($_GET['client'], FILTER_SANITIZE_STRING);
         $this->refId = filter_var($_GET['ref_id'], FILTER_SANITIZE_NUMBER_INT);
         ilMultiVcInit4Guestlink::defineClientId($this->client);
