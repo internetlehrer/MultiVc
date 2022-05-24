@@ -26,7 +26,12 @@ class CreateMeetingParameters extends MetaParameters
     const ALWAYS_ACCEPT = 'ALWAYS_ACCEPT';
     const ALWAYS_DENY   = 'ALWAYS_DENY';
     const ASK_MODERATOR = 'ASK_MODERATOR';
-    
+
+    const MEETING_LAYOUT_CUSTOM = 'CUSTOM_LAYOUT';
+    const MEETING_LAYOUT_SMART = 'SMART_LAYOUT';
+    const MEETING_LAYOUT_PRESENTATION_FOCUS = 'PRESENTATION_FOCUS';
+    const MEETING_LAYOUT_VIDEO_FOCUS = 'VIDEO_FOCUS';
+
     /**
      * @var string
      */
@@ -201,6 +206,11 @@ class CreateMeetingParameters extends MetaParameters
      * @var string
      */
     private $guestPolicy = self::ALWAYS_ACCEPT;
+
+    /**
+     * @var string
+     */
+    private $meetingLayout = self::MEETING_LAYOUT_SMART;
 
     /**
      * CreateMeetingParameters constructor.
@@ -896,6 +906,25 @@ class CreateMeetingParameters extends MetaParameters
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getMeetingLayout()
+    {
+        return $this->meetingLayout;
+    }
+
+    /**
+     * @param string $meetingLayout
+     * @return CreateMeetingParameters
+     */
+    public function setMeetingLayout($meetingLayout)
+    {
+        $this->meetingLayout = $meetingLayout;
+
+        return $this;
+    }
     
     /**
      * @return array
@@ -980,6 +1009,7 @@ class CreateMeetingParameters extends MetaParameters
             'copyright'                          => $this->copyright,
             'muteOnStart'                        => $this->muteOnStart ? 'true' : 'false',
             'guestPolicy'                        => $this->guestPolicy,
+            'meetingLayout'                      => $this->meetingLayout,
             'lockSettingsDisableCam'             => $this->isLockSettingsDisableCam() ? 'true' : 'false',
             'lockSettingsDisableMic'             => $this->isLockSettingsDisableMic() ? 'true' : 'false',
             'lockSettingsDisablePrivateChat'     => $this->isLockSettingsDisablePrivateChat() ? 'true' : 'false',

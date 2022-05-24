@@ -565,6 +565,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["extra_cmd_default"] = $this->object->getExtraCmdDefault();
 		$values["style"] = $this->object->getStyle();
 		$values["logo"] = $this->object->getLogo();
+		$values["meeting_layout"] = $this->object->getMeetingLayout();
 
 		$tokenUser = [];
 		if( null !== $string = $this->object->getAccessToken() ) {
@@ -796,6 +797,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 				$this->object->setExtraCmdDefault( (bool)$form->getInput("extra_cmd_default") );
 				$this->object->setStyle( $form->getInput("style") );
 				$this->object->setLogo( $form->getInput("logo") );
+				$this->object->setMeetingLayout((int)$form->getInput('meeting_layout'));
 
 				$nonRoleBasedVc = ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0;
 				if( !(bool)$nonRoleBasedVc && in_array($this->object->getShowContent(), ilMultiVcConfig::VC_RELATED_FUNCTION['globalAssignedRoles']) )
@@ -910,7 +912,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
 		$values["token_user"] = $this->object->getAccessToken();
 		$values["style"] = $this->object->getStyle();
 		$values["logo"] = $this->object->getLogo();
-
+		$values["meeting_layout"] = $this->object->getMeetingLayout();
 
 		return $values;
 	}

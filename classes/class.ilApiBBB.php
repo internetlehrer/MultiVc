@@ -637,6 +637,25 @@ class ilApiBBB implements ilApiInterface
             $this->createMeetingParam->setDuration($maxDuration);
         }
 
+        switch ($this->settings->getMeetingLayout()) {
+            case ilMultiVcConfig::MEETING_LAYOUT_CUSTOM:
+                $this->createMeetingParam->setMeetingLayout(CreateMeetingParameters::MEETING_LAYOUT_CUSTOM);
+                break;
+
+            case ilMultiVcConfig::MEETING_LAYOUT_PRESENTATION_FOCUS:
+                $this->createMeetingParam->setMeetingLayout(CreateMeetingParameters::MEETING_LAYOUT_PRESENTATION_FOCUS);
+                break;
+
+            case ilMultiVcConfig::MEETING_LAYOUT_VIDEO_FOCUS:
+                $this->createMeetingParam->setMeetingLayout(CreateMeetingParameters::MEETING_LAYOUT_VIDEO_FOCUS);
+                break;
+
+            case ilMultiVcConfig::MEETING_LAYOUT_SMART:
+            default:
+                $this->createMeetingParam->setMeetingLayout(CreateMeetingParameters::MEETING_LAYOUT_SMART);
+                break;
+        }
+
     }
 
     /**
