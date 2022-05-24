@@ -176,6 +176,12 @@ info_availability#:#This controls the availability of the meeting type in the re
 conf_availability_0#:#Not available
 conf_availability_1#:#Existing allowed
 conf_availability_2#:#New ones can be created
+conf_meeting_layout#:#Meeting layout
+info_meeting_layout#:#Controls the default layout for the meeting.
+conf_meeting_layout_1#:#CUSTOM_LAYOUT
+conf_meeting_layout_2#:#SMART_LAYOUT
+conf_meeting_layout_3#:#PRESENTATION_FOCUS
+conf_meeting_layout_4#:#VIDEO_FOCUS
 untrashed_usages#:#Number of uses
 create_type#:#Define new meeting type
 delete_type#:#Delete meeting type

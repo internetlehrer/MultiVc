@@ -20,3 +20,5 @@
 5.0
 - compatibility with ILIAS 7
 - bugfixes for BBB-guestlink
+5.4
+- BBB: Added setting to control meeting type
