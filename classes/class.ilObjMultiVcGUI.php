@@ -694,6 +694,19 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                     );
                     $fullname = (bool)$recipient['title'] ? $recipient['title'] . ' ' : '';
                     $fullname .= $recipient['firstname'] . ' ' . $recipient['lastname'];
+
+                    $data['rel_data']['start'] = ilDatePresentation::formatDate(
+                        new ilDateTime(strtotime(
+                            $data['rel_data']['start']
+                        ),IL_CAL_UNIX)
+                    );
+
+                    $data['rel_data']['end'] = ilDatePresentation::formatDate(
+                        new ilDateTime(strtotime(
+                            $data['rel_data']['end']
+                        ),IL_CAL_UNIX)
+                    );
+
                     $message = $this->object->getNotificationTextPhrases(
                         $this->lng->txt('rep_robj_xmvc_webinar_notification_from'),
                         $this->lng->txt('rep_robj_xmvc_webinar_event_' . $event . 'd'),

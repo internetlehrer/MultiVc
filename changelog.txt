@@ -22,3 +22,5 @@
 - bugfixes for BBB-guestlink
 5.4
 - BBB: Added setting to control meeting type
+- fix for https://github.com/ILIAS-eLearning/ILIAS/commit/2844b5d7bfffe08728ecb54c21acf00fd65d5969
+- Edudip: changed date format
