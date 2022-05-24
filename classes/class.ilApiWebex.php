@@ -340,6 +340,13 @@ class ilApiWebex implements ilApiInterface
                 $curl->setOpt(CURLOPT_POSTFIELDS, $param);
             }
             $curl->setOpt(CURLOPT_RETURNTRANSFER, true);
+            //Add Proxy
+            if (\ilProxySettings::_getInstance()->isActive()) {
+                $proxyHost = \ilProxySettings::_getInstance()->getHost();
+                $proxyPort = \ilProxySettings::_getInstance()->getPort();
+                $proxyURL = $proxyHost . ":" . $proxyPort;
+                $curl->setopt(CURLOPT_PROXY, $proxyURL);
+            }
             $response = $curl->exec();
 
             $code = (int)$curl->getInfo(CURLINFO_HTTP_CODE);
