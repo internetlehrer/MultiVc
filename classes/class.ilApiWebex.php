@@ -373,7 +373,11 @@ class ilApiWebex implements ilApiInterface
 
         if( $this->redirectOnError && (bool)strlen($json['error']) ) {
             ilUtil::sendFailure($this->dic->language()->txt('error') . '<br />' . $json['error'], true);
-            $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
+            if((int)$this->dic->user()->getId() === (int)$this->object->getOwner()) {
+                $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
+            } else {
+                $this->dic->ctrl()->redirect($this->objGui, 'showContent');
+            }
         } else {
             // if false set it true. Next requests can set it to false again
             $this->redirectOnError = true;
