@@ -303,6 +303,11 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $ilCtrl = $DIC['ilCtrl'];
         $ilAccess = $DIC['ilAccess'];
 
+        $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
+        if($this->isWebex && strlen($hint = trim($settings->getHint()))) {
+            ilUtil::sendInfo($hint, true);
+        }
+
         // tab for the "show content" command
         if ($ilAccess->checkAccess("read", "", $this->object->getRefId()))
         {
@@ -1442,7 +1447,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         //$ilTabs->clearTargets(); //no display of tabs
         $this->initTabContent();
         #$ilTabs->activateTab("content");//necessary...
-        $showContent = ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent();
+        $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
+        $showContent = $settings->getShowContent();
         switch($showContent) {
             case 'spreed':
                 $this->showContentSpreed();

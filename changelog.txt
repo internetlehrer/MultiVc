@@ -24,3 +24,8 @@
 - BBB: Added setting to control meeting type
 - fix for https://github.com/ILIAS-eLearning/ILIAS/commit/2844b5d7bfffe08728ecb54c21acf00fd65d5969
 - Edudip: changed date format
+5.5
+- Webex: fix webex unmoderated rooms
+5.6
+- Webex: fix hint
+- Webex: fix if ILIAS is running with reverse proxy

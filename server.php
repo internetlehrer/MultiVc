@@ -1,10 +1,14 @@
 <?php
 #ini_set('display_errors', 1);
 #ini_set('error_reporting', 5);
+$hasHttps = null !== $_SERVER['HTTPS'];
+$withScheme = $hasHttps ? 'https://' : 'http://';
+$hasDefaultPort = in_array((int)$_SERVER['SERVER_PORT'], [80, 443]);
+$withPort = $hasDefaultPort ? '' : ':' . $_SERVER['SERVER_PORT'];
 
-$gotoUrl = 'https://';
+$gotoUrl = $withScheme;
 $gotoUrl .= $_SERVER['SERVER_NAME'];
-$gotoUrl .= ':' . $_SERVER['SERVER_PORT'];
+$gotoUrl .= $withPort;
 $gotoUrl .= str_replace(['editProperties', 'configure'], 'authorizeWebexIntegration', rawurldecode($_GET['state']));
 $gotoUrl .= '&code=' . filter_var($_GET['code'], FILTER_SANITIZE_ENCODED);
 

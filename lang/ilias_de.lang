@@ -75,7 +75,7 @@ url_info#:#Hier können Sie auch relative Pfadangaben eintragen (z.B.: /webconfe
 protected#:#Geschützte Räume
 protected_info#:#Wenn Sie diese Option aktivieren, können nur ILIAS-Benutzer die Meetingräume betreten. Zusätzliche Voraussetzungen: ILIAS und Spreed-Meetingräume müssen über die exakt gleiche Domain aufgerufen werden und in die Spreed-Datei 'main.html' muss die ILIAS-ID dieser ILIAS-Installation in die Variable 'checkInstIds' eingetragen werden. Die ILIAS-ID lautet:
 moderated#:#moderierter Raum
-moderated_info#:#In einem moderierten Raum haben Personen mit Moderatorfunktion erweiterte Rechte. Andere Personen haben zudem nur eingeschränkte Zugangsrechte zum virtuellen Raum. Personen mit Moderatorfunktion sind alle, die die Eigenschaften des Objekts bearbeiten können sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren.<br /><b>Tipp:</b>In unmoderierten Räumen werden Beitretende nicht pseudonymisiert. Ein Beitritt ist daher nur Personen mit geeignetem Webex-Account gestattet.
+moderated_info#:#In einem moderierten Raum haben Personen mit Moderatorfunktion erweiterte Rechte. Andere Personen haben zudem nur eingeschränkte Zugangsrechte zum virtuellen Raum. Personen mit Moderatorfunktion sind alle, die die Eigenschaften des Objekts bearbeiten können sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren.<br /><b>Tipp:</b> In unmoderierten Räumen werden Beitretende nicht pseudonymisiert. Ein Beitritt ist daher nur Personen mit geeignetem Webex-Account gestattet.
 moderated_choose#:#moderierter Raum: Auswahlmöglichkeit
 moderated_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'moderierter Raum' haben sollen.
 moderated_default#:#moderierter Raum: Voreinstellung

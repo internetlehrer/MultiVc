@@ -75,7 +75,7 @@ url_info#:#Here you can also enter relative paths (e.g.: /webconference). Please
 protected#:#Protected rooms
 protected_info#:#If you activate this option only ILIAS users can enter the meeting rooms. Additional requirements: ILIAS and spreed meeting rooms have to be accessed via the exact same domain and the ILIAS ID of this ILIAS installation has to be entered into the variable 'checkInstIds' in the spreed file 'main.html'. The ILIAS-ID is
 moderated#:#Moderated Room
-moderated_info#:#In a moderated room, persons with moderator function have extended rights. Other people also have limited access rights to the virtual room. Persons with moderator function are all those who can edit the object's properties as well as group administrators, course administrators and course tutors. <br /><b>Tip:</b>In unmoderated rooms, joiners are not pseudonymized. Therefore, joining is only allowed to people with suitable Webex account.
+moderated_info#:#In a moderated room, persons with moderator function have extended rights. Other people also have limited access rights to the virtual room. Persons with moderator function are all those who can edit the object's properties as well as group administrators, course administrators and course tutors.<br /><b>Tip:</b> In unmoderated rooms, joiners are not pseudonymized. Therefore, joining is only allowed to people with suitable Webex account.
 moderated_choose#:#moderated room: selection option
 moderated_choose_info#:#Activate this option if you want users with write access to select 'moderated room' under Settings.
 moderated_default#:#moderated room: Default setting
