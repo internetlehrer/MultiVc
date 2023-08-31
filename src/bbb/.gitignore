@@ -1,0 +1,14 @@
+composer.phar
+/vendor/
+composer.lock
+.DS_Store
+
+## Directory-based project format:
+.idea/
+/nbproject
+
+# PHP CS Fixer cache file
+.php-cs-fixer.cache
+
+.phpunit.result.cache
+coverage/

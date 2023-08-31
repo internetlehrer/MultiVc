@@ -1,0 +1,46 @@
+{VAL_1}
+
+<div id="redirect_msg" class="container center">
+    <h1>{IFRAMESRC}</h1>
+</div>
+
+<script>
+    if (window.opener && typeof(window.opener) != "undefined") {
+        alert('Opener');
+        let parent = window.opener.document;
+        window.opener.logChildren(window);
+
+        $(window).on('beforeunload', function() {
+            $('#msgrunning', parent).prop('class', '');
+        });
+
+        $(window).on('beforeClose', function() {
+            $('#join_btn', parent).prop('class', '');
+            $('#msgrunning', parent).prop('class', 'hidden');
+        });
+    }
+    window.setTimeout(function() {
+        //window.location.href = "{IFRAMESRC}";
+        //xmvcNewWindow = window.open("{IFRAMESRC}","xmvcWindow","width=1000,height=730,left=10,top=0,location=no,menubar=no,resizable=yes,scrollbars=yes,toolbar=no");
+        //console.dir(xmvcNewWindow);
+        postJoin();
+    }, 2000);
+
+    function postJoin() {
+        let url = 'https://meet2.webex.com/wbxappapi/v1/meetings/join?siteurl=meet2';
+        let form = {
+            'device': "Browser",
+            'displayName': "mein name",
+            'email': "asdf@asdf.com",
+            'locale': "en_US",
+            'meetingUUID': "d803b09f122340e6b85853eea88cfc42",
+            'mtid': "mfc19719fc824efc1051400a15c0d0599",
+            //'tfsid': "Jt4Hp20fnM"
+        }
+        $.post( url, form)
+            .done(function( data ) {
+                console.log('postJoin');
+                console.dir( data );
+            });
+    }
+</script>

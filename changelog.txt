@@ -1,0 +1,31 @@
+2.0
+- added Terms of Use
+- added support for individual presentations to be displayed at start of BigBlueButton (BBB)
+3.0
+- BBB: added option to disable telefony for Meeting Type
+- added option to display a hint before a meeting could be started
+- added overview of objects in use / in trash
+- BBB: extended overview of use for objects including domains
+- BBB: overview of users in Administration and for the object with filters
+3.10
+- BBB: support for custom-style and logo
+- BBB: support to change presentation at meeting-start
+4.0
+- modified Layout
+- extended support for edudip
+- extended support for Webex
+- role-based availability for VC-configurations
+- BBB: added expire-date for guest password
+- BBB: added maximum duration for meetings
+5.0
+- compatibility with ILIAS 7
+- bugfixes for BBB-guestlink
+5.4
+- BBB: Added setting to control meeting type
+- fix for https://github.com/ILIAS-eLearning/ILIAS/commit/2844b5d7bfffe08728ecb54c21acf00fd65d5969
+- Edudip: changed date format
+5.5
+- Webex: fix webex unmoderated rooms
+5.6
+- Webex: fix hint
+- Webex: fix if ILIAS is running with reverse proxy
