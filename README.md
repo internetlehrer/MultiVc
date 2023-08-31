@@ -1,6 +1,6 @@
 # ILIAS MultiVc-Plugin
 
 ## Note
-Please use branch 'release7' for ILIAS 7, 6 and 5.4.
+Please use branch 'release7' for ILIAS 7, 6 and 5.4. Install it with 'git clone -b release7 --single-branch https://github.com/internetlehrer/MultiVc MultiVc'.
 
-A branch for ILIAS 8 is coming soon.
+Please use branch 'release8' for ILIAS 8. Install it with 'git clone -b release8 --single-branch https://github.com/internetlehrer/MultiVc MultiVc'.
