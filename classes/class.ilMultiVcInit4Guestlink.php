@@ -257,9 +257,10 @@ class JoinMeetingByGuestLink
         return (bool)strlen(trim($this->pluginObject->getAccessToken()));
     }
 
-    private function isUserLoggedIn()
+    private function isUserLoggedIn() : bool
     {
-        return ilSession::get('guestLoggedIn');
+        if (ilSession::get('guestLoggedIn') == true) return true;
+        return false;
     }
 
     //    private function checkPw( ?string $phrase = null ): bool
@@ -270,15 +271,18 @@ class JoinMeetingByGuestLink
 
     private function setGuestLoginState(): void
     {
+        $phrase = '';
         if ($this->dic->http()->wrapper()->post()->has('guest_password')) {
-            $phrase = trim($this->dic->http()->wrapper()->post()->retrieve('guest_password', $this->dic->refinery()->kindlyTo()->string()));
-            if ($this->isUserLoggedIn() || !$this->isPwEnabled()) {
-                ilSession::set('guestLoggedIn', true);
-            } elseif ($phrase === trim($this->pluginObject->getAccessToken())) {
-                ilSession::set('guestLoggedIn', !$this->pluginObject->isSecretExpired());
-            } else {
-                ilSession::set('guestLoggedIn', false);
-            }
+            $phrase = trim($this->dic->http()->wrapper()->post()->retrieve('guest_password',
+                $this->dic->refinery()->kindlyTo()->string()));
+        }
+
+        if ($this->isUserLoggedIn() || !$this->isPwEnabled()) {
+            ilSession::set('guestLoggedIn', true);
+        } elseif ($phrase === trim($this->pluginObject->getAccessToken())) {
+            ilSession::set('guestLoggedIn', !$this->pluginObject->isSecretExpired());
+        } else {
+            ilSession::set('guestLoggedIn', false);
         }
     }
 

@@ -29,3 +29,7 @@
 5.6
 - Webex: fix hint
 - Webex: fix if ILIAS is running with reverse proxy
+8.0
+- modifications for ILIAS 8
+8.1
+- fix for BBB guest login
