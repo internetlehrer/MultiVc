@@ -11,8 +11,10 @@ use ILIAS\DI\Container;
 
 //include_once("./Services/Repository/classes/class.ilObjectPlugin.php");
 
-class ilObjMultiVc extends ilObjectPlugin
+class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
 {
+    const LP_INACTIVE = 0;
+    const LP_ACTIVE = 1;
     public const TABLE_XMVC_OBJECT = 'rep_robj_xmvc_data';
 
     public const TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
@@ -51,6 +53,9 @@ class ilObjMultiVc extends ilObjectPlugin
     private ?string $secretExpiration = null;
     private ?string $authUser = null;
     private ?string $authSecret = null;
+    private int $lpMode = 0;
+    private int $lpTime = 70;
+
     public object $option;
 
     private static ?self $instance = null;
@@ -192,6 +197,8 @@ class ilObjMultiVc extends ilObjectPlugin
             #$this->setAuthSecret( $record["auth_secret"] );
             $this->setGuestlink((bool)$record["guestlink"]);
             $this->setExtraCmd($record["extra_cmd"]);
+            $this->setLPMode((int) $record["lp_mode"]);
+            $this->setLpTime((int) $record["lp_time"]);
         }
 
         /*
@@ -243,6 +250,8 @@ class ilObjMultiVc extends ilObjectPlugin
             'auth_user'				  => ['string', $this->getAuthUser()],
             'guestlink' => ['integer', (int)$this->isGuestlink()],
             'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
+            'lp_mode'   => ['integer', $this->getLPMode()],
+            'lp_time'   =>  ['integer', $this->getLpTime()]
         );
         $ilDB->update('rep_robj_xmvc_data', $a_data, array('id' => array('integer', $this->getId())));
 
@@ -349,6 +358,8 @@ class ilObjMultiVc extends ilObjectPlugin
             'conn_id'				  => ['integer', (int)$this->getConnId()],
             'guestlink' => ['integer', (int)$this->isGuestlink()],
             'extra_cmd' => ['integer', (int)$this->getExtraCmd()],
+            'lp_mode'   => ['integer', $this->getLPMode()],
+            'lp_time'   =>  ['integer', $this->getLpTime()]
 
             //'more_options'			=> ['string', json_encode($this->option)],
         );
@@ -809,7 +820,7 @@ class ilObjMultiVc extends ilObjectPlugin
      */
     public function getUserLog(?int $refId = null, ?int $dateFrom = null, ?int $dateTo = null, bool $getId = false): array
     {
-        $select = "SELECT ref_id, user_id, display_name, is_moderator,min(join_time) join_time, meeting_id";
+        $select = "SELECT ref_id, user_id, display_name, is_moderator,join_time, meeting_id, leave_time";//entfernt: min(join_time)
         $from = " FROM " . self::TABLE_USER_LOG;
         $where = []; //[" WHERE ref_id = " . ($refId ?? '.')];
         if(!is_null($refId)) {
@@ -823,10 +834,11 @@ class ilObjMultiVc extends ilObjectPlugin
         }
         $where = (bool)sizeof($where) ? " WHERE " . implode(' AND ', $where) : '';
 
-        $filter = " group by display_name, meeting_id order by display_name, meeting_id";
+        $filter = "";//" group by meeting_id order by display_name, meeting_id"; //entfernt display_name,
 
-
-        $res = $this->db->query($select . $from . $where . $filter);
+        $query = $select . $from . $where . $filter;
+        $this->log->debug($query);
+        $res = $this->db->query($query);
         $data = [];
         $meetings = [];
         $i = 1;
@@ -1101,7 +1113,25 @@ class ilObjMultiVc extends ilObjectPlugin
         $this->authSecret = $authSecret;
     }
 
+    public function getLPMode(): int
+    {
+        return $this->lpMode;
+    }
 
+    public function setLPMode(int $a_lpMode): void
+    {
+        $this->lpMode = $a_lpMode;
+    }
+
+    public function getLpTime(): int
+    {
+        return $this->lpTime;
+    }
+
+    public function setLpTime(int $a_lpTime): void
+    {
+        $this->lpTime = $a_lpTime;
+    }
 
 
 
@@ -1229,13 +1259,17 @@ class ilObjMultiVc extends ilObjectPlugin
      */
     public function getScheduledMeetingsByDateFrom(string $from, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
     {
+        if ($timezone == 'UTC') {
+            $timeMod = new ilDateTime($from, IL_CAL_DATETIME, '');
+            $from = $timeMod->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', $timezone);
+        }
         $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
 
         $data = null;
 
         $sql = "SELECT *" .
             " FROM rep_robj_xmvc_schedule" .
-            " WHERE end > " . $this->db->quote($from, 'string') .
+            " WHERE end > " . $this->db->quote($from, 'datetime') .
             ((bool)$objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
             #(!is_null($refId) ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
             " ORDER BY start ASC";
@@ -1712,6 +1746,119 @@ $data2[] = $db->insert('rep_robj_xmvc_session', $data);
     }
 
     ####################################################################################################################
+    #### Teams
+    ####################################################################################################################
+
+
+
+    /**
+     * @param int $refId
+     * @param array $data
+     * @param bool $returnEntry
+     * @param bool $addHostSessEntry
+     * @return array|null
+     */
+    public function saveTeamsSessionData(int $refId, array $data, bool $returnEntry = false, bool $addHostSessEntry = false): ?array
+    {
+        $objId = ilObject::_lookupObjId($refId);
+
+        // die(var_dump($data));
+        // $dataObj = json_decode($data, false);
+        // $dataArr = json_decode($data, true);
+        // $dataObj->ilCreateDate = date('Y-m-d H:i:s');
+        // $webinar = $dataArr['webinar'];
+        // $dataObj->id = $webinar['id'];
+        // $date = $webinar['dates'][0];
+        // $dataObj->start = $date['date'];
+        // $dataObj->end = $date['date_end'];
+        // $dataObj->timezone = $this->dic->user()->getTimeZone();
+        // $dataObj->title = $webinar['title'];
+
+
+
+        $userId = $this->dic->user()->getId();
+        $authUser = $this->getAuthUser();
+
+        $recurrence = ''; # strpos($dataObj->recurrence, 'FREQ') === 0 ? explode('=', explode(';', $dataObj->recurrence)[0])[1] : '';
+        $db = $this->dic->database();
+
+        $values = [
+            #'ref_id'	=> ['integer', $refId],
+            'obj_id'	=> ['integer', $objId],
+            'start'	=> ['datetime', $data['start']],
+            'end'	=> ['datetime', $data['end']],
+            'timezone'	=> ['string', $data['timezone']],
+            'recurrence'	=> ['string', $recurrence],
+            'user_id'       => ['integer', $userId],
+            'auth_user'     => ['string', $authUser],
+            'rel_id'	=> ['string', $data['rel_id']],
+            'rel_data'	=> ['string', $data['rel_data']]
+        ];
+
+        $this->db->insert('rep_robj_xmvc_schedule', $values);
+
+        if($addHostSessEntry) {
+            $values = [
+                'obj_id'	=> ['integer', $objId],
+                'start'	=> ['string', $data['start']],//todo Datetime
+                'end'	=> ['string', $data['end']],
+                'timezone'	=> ['string', $data['timezone']],
+                'host'      => ['string', 'teams'],
+                'type'      => ['string', 'meeting'],
+                'rel_id'	=> ['string', $data['rel_id']],
+                'rel_data'	=> ['string', $data['rel_data']]
+            ];
+            $this->db->insert('rep_robj_xmvc_session', $values);
+        }
+
+        if($returnEntry) {
+            return $this->getScheduledMeetingByRelId($data['rel_id'], $refId, $userId)[0];
+        }
+        return null;
+    }
+
+        /**
+     * @param int $refId
+     * @param int $relId
+     * @param int $userId
+     * @param string $data
+     * @param bool $returnEntry
+     * @return false|mixed
+     */
+    public function saveTeamsSessionParticipant(int $refId, int $relId, int $userId, string $data, bool $returnEntry = false)
+    {
+        $objId = ilObject::_lookupObjId($refId);
+
+        $dataArr = json_decode($data, true);
+        if(null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId)) {
+            return false;
+        }
+        $currValues = json_decode($currEntry[0]['participants'], 1);
+        $currValues['attendee'][$this->dic->user()->getId()] = array_merge(
+            $dataArr['participant'],
+            [
+                // 'webLink'   => $dataArr['globalWebinarLink'],
+                // 'email'     => $dataArr['called_param']['email']
+            ]
+        );
+        $values = [ 'participants' => ['string', json_encode($currValues)]];
+
+        $where = [
+            'obj_id'	=> ['integer', $objId],
+            'rel_id'	=> ['string', $relId],
+            'user_id'       => ['integer', $userId],
+        ];
+
+        $this->db->update('rep_robj_xmvc_schedule', $values, $where);
+
+        if($returnEntry) {
+            return $this->getScheduledMeetingByRelId($relId, $refId, $userId)[0];
+        }
+        return false;
+    }
+
+
+    ####################################################################################################################
     #### EDUDIP
     ####################################################################################################################
 
@@ -2116,4 +2263,72 @@ $data2[] = $db->insert('rep_robj_xmvc_session', $data);
 
     #endregion BBB RECORDINGS
 
+    /**
+     * Get all user ids with LP status completed
+     *
+     * @return array
+     */
+    public function getLPCompleted(): array
+    {
+        return ilMultiVcLPStatus::getLPStatusDataFromDb($this->getId(), ilLPStatus::LP_STATUS_COMPLETED_NUM);
+    }
+
+    /**
+     * Get all user ids with LP status not attempted
+     *
+     * @return array
+     */
+    public function getLPNotAttempted(): array
+    {
+        return ilMultiVcLPStatus::getLPStatusDataFromDb($this->getId(), ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM);
+    }
+
+    /**
+     * Get all user ids with LP status failed
+     *
+     * @return array
+     */
+    public function getLPFailed(): array
+    {
+        return ilMultiVcLPStatus::getLPStatusDataFromDb($this->getId(), ilLPStatus::LP_STATUS_FAILED_NUM);
+    }
+
+    /**
+     * Get all user ids with LP status in progress
+     *
+     * @return array
+     */
+    public function getLPInProgress(): array
+    {
+        return ilMultiVcLPStatus::getLPStatusDataFromDb($this->getId(), ilLPStatus::LP_STATUS_IN_PROGRESS_NUM);
+    }
+
+    /**
+     * Get current status for given user
+     *
+     * @param int $a_user_id
+     * @return int
+     */
+    public function getLPStatusForUser(int $a_user_id): int
+    {
+        return ilMultiVcLPStatus::getLPDataForUserFromDb($this->getId(), $a_user_id);
+    }
+
+    /**
+     * Track access for learning progress
+     */
+    public function trackAccess()
+    {
+        global $DIC;
+        // track access for learning progress
+        if ($DIC->user()->getId() != ANONYMOUS_USER_ID && $this->getLPMode() == self::LP_ACTIVE)
+        {
+            ilMultiVcLPStatus::trackAccess($DIC->user()->getId(),$this->getId(), $this->getRefId());
+        }
+    }
+
+    ####### userLog for Teams
+    public function getLogEntriesForTeams() {
+
+    }
 }

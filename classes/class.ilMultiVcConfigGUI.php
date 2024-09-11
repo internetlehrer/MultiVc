@@ -226,6 +226,38 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         */
     }
 
+    private function checkAdditionalRights()
+    {
+        $ilDB = $this->dic->database();
+        $typ_id = null;
+        $set = $ilDB->query("SELECT obj_id FROM object_data WHERE type='typ' AND title = 'xmvc'");
+        while ($row = $ilDB->fetchAssoc($set)) {
+            $typ_id = $row["obj_id"];
+        }
+        if (is_numeric($typ_id)) {
+            $operations = array('edit_learning_progress', 'read_learning_progress');
+            foreach ($operations as $operation) {
+                $query = "SELECT ops_id FROM rbac_operations WHERE operation = " . $ilDB->quote($operation, 'text');
+                $res = $ilDB->query($query);
+                $row = $ilDB->fetchObject($res);
+                $ops_id = $row->ops_id;
+
+                $query = "SELECT count(*) AS counter FROM rbac_ta WHERE typ_id = " . $ilDB->quote($typ_id,'integer')
+                    . " AND ops_id=" . $ilDB->quote($ops_id, 'integer');
+                $res = $ilDB->query($query);
+                $row = $ilDB->fetchObject($res);
+                $counter = (int) $row->counter;
+
+                if ($counter == 0) {
+                    $query = "INSERT INTO rbac_ta (typ_id, ops_id) VALUES ("
+                        . $ilDB->quote($typ_id, 'integer') . ","
+                        . $ilDB->quote($ops_id, 'integer') . ")";
+                    $ilDB->manipulate($query);
+                }
+            }
+        }
+    }
+
     private function selectNewMultiVcConn()
     {
         global $DIC; /** @var Container $DIC */
@@ -313,6 +345,9 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
                 $filteredVcTypes[$vcKey] = $vcType;
                 if($vcType === 'Webex') {
                     $triggerScript = $i;
+                }
+                elseif ($vcType === 'Teams') {
+                    $this->checkAdditionalRights();
                 }
                 $i++;
             }

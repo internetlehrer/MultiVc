@@ -141,7 +141,16 @@ class ilMultiVcMailNotification #extends ilMailNotification
         ) {
             $this->showSubmissionErrors($errors);
         } else {
-            $mailer->savePostData($this->user->getId(), [], ilObjUser::_lookupLogin((int)$this->moduleParam['recipient']), "", "", stripslashes($this->moduleParam['message']['subject']), $sanitizedMessage, false, "", []);
+//            $mailer->savePostData($this->user->getId(), [], ilObjUser::_lookupLogin((int)$this->moduleParam['recipient']), "", "", stripslashes($this->moduleParam['message']['subject']), $sanitizedMessage, false, "", []);
+            $mailer->persistToStage(
+                $this->user->getId(),
+                [],
+                ilObjUser::_lookupLogin((int)$this->moduleParam['recipient']),
+                '',
+                '',
+                stripslashes($this->moduleParam['message']['subject']),
+                $sanitizedMessage
+            );
         }
 
         return true;

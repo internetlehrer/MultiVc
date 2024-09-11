@@ -107,7 +107,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
         $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_display_name'), 'display_name', $wM);
         $this->addColumn($this->dic->language()->txt('role'), 'IS_MODERATOR', $wS);
         $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_join_time'), 'JOIN_TIME', $wM);
-        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_start_time'), 'START_TIME', $wM);
+        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_leave_time'), 'LEAVE_TIME', $wM);
         if($this->parent_obj instanceof ilMultiVcConfigGUI) {
             $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_meeting') . ' ID', 'MEETING_ID', $wM);
         }
@@ -129,7 +129,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
         $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_display_name'), 'display_name', $wM);
         $this->addColumn($this->dic->language()->txt('role'), 'IS_MODERATOR', $wS);
         $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_join_time'), 'JOIN_TIME', $wM);
-        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_start_time'), 'START_TIME', $wM);
+        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_leave_time'), 'LEAVE_TIME', $wM);
         if($this->parent_obj instanceof ilMultiVcConfigGUI) {
             $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_meeting') . ' ID', 'MEETING_ID', $wM);
         }
@@ -164,6 +164,8 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
             $joinTime = $dtJoinTime->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
             $dtMeetingStart = new ilDateTime($a_set['start_time'], IL_CAL_UNIX);
             $meetingStart = $dtMeetingStart->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
+            $dtLeaveTime = new ilDateTime($a_set['leave_time'], IL_CAL_UNIX);
+            $leaveTime = $dtLeaveTime->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
 
             $data[] = [
                 'REF' => implode(' / ', $tree),
@@ -172,7 +174,8 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
                 'IS_MODERATOR' => !(bool)$a_set['is_moderator'] ? !(bool)$a_set['user_id'] ? $this->dic->language()->txt('rep_robj_xmvc_guest') : '' : $this->dic->language()->txt('rep_robj_xmvc_moderator'),
                 'JOIN_TIME' => $joinTime,
                 'START_TIME' => $meetingStart,
-                'MEETING_ID' => $a_set['meeting_id']
+                'MEETING_ID' => $a_set['meeting_id'],
+                'LEAVE_TIME' => $leaveTime
             ];
         } // EOF foreach ($userLog as $key => $row)
 
@@ -205,7 +208,7 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
         $this->tpl->setVariable('DISPLAY_NAME', $a_set['DISPLAY_NAME']);
         $this->tpl->setVariable('IS_MODERATOR', $a_set['IS_MODERATOR']);
         $this->tpl->setVariable('JOIN_TIME', $a_set['JOIN_TIME']);
-        $this->tpl->setVariable('START_TIME', $a_set['START_TIME']);
+        $this->tpl->setVariable('LEAVE_TIME', $a_set['LEAVE_TIME']);
         if($this->parent_obj instanceof ilMultiVcConfigGUI) {
             $this->tpl->setVariable('MEETING_ID', $a_set['MEETING_ID']);
         } else {

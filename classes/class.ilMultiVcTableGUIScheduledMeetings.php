@@ -167,7 +167,10 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
             $getDiffLocalSessHostSess = true;
             //die(var_dump( $this->dic->http()->wrapper()->post()));
             if($this->parent_obj->isWebex) {
-                $this->dic->ui()->mainTemplate()->setOnScreenMessage('success',$this->dic->language()->txt('rep_robj_xmvc_webex_meetings_list_downloaded'), true);
+                $this->dic->ui()->mainTemplate()->setOnScreenMessage('success',
+                    $this->dic->language()->txt('rep_robj_xmvc_webex_meetings_list_downloaded'), true);
+            } elseif ($this->parent_obj->isTeams) {
+                    $this->dic->ui()->mainTemplate()->setOnScreenMessage('success',$this->dic->language()->txt('rep_robj_xmvc_teams_meetings_list_downloaded'), true);
             } else {
                 $this->dic->ui()->mainTemplate()->setOnScreenMessage('success',$this->dic->language()->txt('rep_robj_xmvc_edudip_meetings_list_downloaded'), true);
             }
@@ -244,7 +247,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                 continue;
             }
 
-            if($this->parent_obj->isEdudip || $this->parent_obj->isWebex) {
+            if($this->parent_obj->isEdudip || $this->parent_obj->isWebex || $this->parent_obj->isTeams) {
                 $vcType = strtoupper(ilMultiVcConfig::getInstance($this->parent_obj->object->getConnId())->getShowContent());
                 #$json->webLink = ILIAS_HTTP_PATH . '/' . $this->dic->ctrl()->getLinkTarget($this->parent_obj, 'showContent') .
                 $json->startLink = ILIAS_HTTP_PATH . '/' . $this->dic->ctrl()->getLinkTarget($this->parent_obj, 'showContent') .
@@ -265,7 +268,12 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                         $joinUrl = $json->webLink;
                     }
                 } else {
-                    $joinUrl = $json->startLink;
+                    if (isset($json->startLink)) {
+                        $joinUrl = $json->startLink;
+                    } else {
+                        die ($json->onlineMeeting->joinUrl);
+                    }
+
                 }
             }
 
@@ -348,7 +356,6 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                 ]))
             ];
         } // EOF foreach ($ScheduledMeeting as $key => $row)
-
         $this->setData($data);
         $this->data = $data;
     }

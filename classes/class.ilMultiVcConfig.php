@@ -16,13 +16,15 @@ class ilMultiVcConfig
         'bbb'		=> 'BigBlueButton',
         'edudip'     => 'Edudip',
         'om'		=> 'Openmeetings',
-        'webex'     => 'Webex'
+        'webex'     => 'Webex',
+        'teams'     => 'Teams'
     ];
     public const AVAILABLE_XMVC_API = [
         'webex'     => 'ilApiWebex',
         'edudip'     => 'ilApiEdudip',
         'bbb'		=> 'ilApiBBB',
-        'om'		=> 'ilApiOM'
+        'om'		=> 'ilApiOM',
+        'teams'     => 'ilApiTeams'
     ];
     public const AVAILABLE_Webex_API = [
         'admin' => 'Admin Scopes',
@@ -47,7 +49,7 @@ class ilMultiVcConfig
 
     public const VC_RELATED_FUNCTION = [
         'globalAssignedRoles' => [
-            'bbb', 'edudip', 'webex', 'om'
+            'bbb', 'edudip', 'webex', 'om', 'teams'
         ],
         'maxDuration' => [
             'bbb'
@@ -149,6 +151,13 @@ class ilMultiVcConfig
             'privateChatChoose',
             'recordChoose'
         ],
+        'teams' => [
+            'moderatedChoose',
+//            'guestlinkChoose',
+            'camOnlyForModeratorChoose',
+            'privateChatChoose',
+            'recordChoose'
+        ]
     ];
 
     private bool $guestlink_choose = false;

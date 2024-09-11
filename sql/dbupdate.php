@@ -59,10 +59,12 @@ $fields_data = array(
 		'default' => 0
 	)
 );
-
-$ilDB->createTable("rep_robj_xmvc_data", $fields_data);
-$ilDB->addPrimaryKey("rep_robj_xmvc_data", array("id"));
-
+if(!$ilDB->tableExists('rep_robj_xmvc_data')) {
+    $ilDB->createTable("rep_robj_xmvc_data", $fields_data);
+}
+if(!$ilDB->primaryExistsByFields("rep_robj_xmvc_data", array("id"))) {
+    $ilDB->addPrimaryKey("rep_robj_xmvc_data", array("id"));
+}
 $fields_conn = array(
 	'id' => array(
 			'type' => 'integer',
@@ -165,9 +167,12 @@ $fields_conn = array(
 		'default' => 0
 	)
 );
-
-$ilDB->createTable("rep_robj_xmvc_conn", $fields_conn);
-$ilDB->addPrimaryKey("rep_robj_xmvc_conn", array("id"));
+if(!$ilDB->tableExists("rep_robj_xmvc_conn")) {
+    $ilDB->createTable("rep_robj_xmvc_conn", $fields_conn);
+}
+if(!$ilDB->primaryExistsByFields("rep_robj_xmvc_conn", array("id"))) {
+    $ilDB->addPrimaryKey("rep_robj_xmvc_conn", array("id"));
+}
 ?>
 <#2>
 <?php
@@ -615,7 +620,6 @@ if($ilDB->tableExists('rep_robj_xmvc_conn'))
 
 }
 ?>
-
 <#12>
 <?php
 if($ilDB->tableExists('rep_robj_xmvc_data'))
@@ -790,7 +794,7 @@ if($ilDB->tableExists('rep_robj_xmvc_log_max'))
 {
     if($ilDB->tableColumnExists('rep_robj_xmvc_log_max', 'log') )
     {
-		$ilDB->dropTableColumn('rep_robj_xmvc_log_max', 'log');
+        $ilDB->dropTableColumn('rep_robj_xmvc_log_max', 'log');
     }
 }
 ?>
@@ -1351,5 +1355,81 @@ if($ilDB->tableExists('rep_robj_xmvc_conn'))
             }
         }
     }
+}
+?>
+<#39>
+<?php
+/**
+ * Add new RBAC operations for teams removed here
+ */
+?>
+<#40>
+<?php
+/**
+ * add the learning progress mode
+ */
+if (!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'lp_mode')) {
+    $ilDB->addTableColumn('rep_robj_xmvc_data', 'lp_mode', array(
+        'type' => 'integer',
+        'length' => 1,
+        'notnull' => true,
+        'default' => 0
+    ));
+}
+
+if (!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'lp_time')) {
+    $ilDB->addTableColumn('rep_robj_xmvc_data', 'lp_time', array(
+        'type' => 'integer',
+        'length' => 1,
+        'notnull' => true,
+        'default' => 70
+    ));
+}
+?>
+<#41>
+<?php
+if (!$ilDB->tableColumnExists('rep_robj_xmvc_user_log', 'leave_time')) {
+    $ilDB->addTableColumn('rep_robj_xmvc_user_log', 'leave_time', array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => false
+    ));
+}
+
+if (!$ilDB->tableColumnExists('rep_robj_xmvc_user_log', 'duration_seconds')) {
+    $ilDB->addTableColumn('rep_robj_xmvc_user_log', 'duration_seconds', array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => false
+    ));
+}
+?>
+<#42>
+<?php
+$ilDB->modifyTableColumn('rep_robj_xmvc_user_log', 'meeting_id', array(
+    'type' => 'text',
+    'length' => 254,
+    'notnull' => true
+));
+?>
+<#43>
+<?php
+if (!$ilDB->tableColumnExists('rep_robj_xmvc_session', 'cron')) {
+    $ilDB->addTableColumn('rep_robj_xmvc_session', 'cron', array(
+        'type' => 'integer',
+        'length' => 1,
+        'notnull' => false
+    ));
+}
+?>
+<#44>
+<?php
+if (!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'mail_lang')) {
+    $ilDB->addTableColumn('rep_robj_xmvc_conn', 'mail_lang', array(
+        'type' => 'text',
+        'length' => 3,
+        'notnull' => true,
+        'default' => 'de'
+    ));
 }
 ?>

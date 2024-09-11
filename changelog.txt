@@ -33,3 +33,5 @@
 - modifications for ILIAS 8
 8.1
 - fix for BBB guest login
+8.15
+- added Support for MS Teams (see README.md)

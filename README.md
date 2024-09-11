@@ -54,10 +54,11 @@ Des Weiteren benötigen Sie eine funktionsfähige Installation der gewünschten 
 
 # Unterstützte WebRTC-Platformen
 Aktuell werden folgende WebRTC-Platformen unterstützt:
-- Bigbluebutton
+- BigBlueButton
 - edudip (Webinar)
 - Openmeetings
 - Webex
+- Teams
 
 
 
@@ -206,7 +207,8 @@ Legen Sie in Openmeetings einen User für den SOAP-Zugriff an. Wichtig ist, dem 
 - LOGIN
 - ROOM
 
-
+### Hinweis
+Openmeetings wird mit MultiVc ab ILIAS 9 nicht mehr unterstützt.
 
 
 
@@ -218,7 +220,7 @@ In der Plugin-Administration stehen für den Meeting-Typ Webex zwei Varianten f�
 - User Scope
     Bei MultiVc-Objekten mit UserScope, müssen ILIAS-Benutzer (Objekt-Eigentümer), die Authorisierung für das jeweilige
     Objekt selbst in einem OAuth-Prozess durchführen. Für die Authorisierung werden bei Webex nur Scopes abgerufen,
-    wie sie z. B. auch im Lizenzumfang eines kostenlosen Webex-Kontos verfügbar sind. Die Optionen zum Authorisieren und Widerrufen,
+    wie sie z. B. auch im Lizenzumfang eines kostenlosen Webex-Kontos verfügbar sind. Die Optionen zum Authorisieren und Widerrufen
     stehen ausschließlich dem Objekt-Eigentümer zur Verfügung. Ändert sich der Eigentümer, oder die erste, in den Benutzereinstellungen des entsprechenden Benutzers angegebene, E-Mailadresse,
     wird die Authorisierung beim nächsten Aufruf des Objekts aufgehoben.
 - Admin Scope
@@ -249,9 +251,78 @@ Nach erfolgter Authorisierung ist hier der Button "Authorisierung aufheben" zu s
   - zuordnen
 - Gruppen- und Kursadministratoren (Eigentümer u. A.) sowie Kurstutoren können Meetings
   - starten 
-  - als Co-Moderator beitreten
-    Insofern bei Webex eingestellt, wird beim Beitritt automatisch eine E-Mail mit den Zugangsdaten versendet. Dabei erhalten auch Eigentümer eine E-Mail-Benachrichtigung. 
+  - als Co-Moderator beitreten 
 
+  Insofern bei Webex eingestellt, wird beim Beitritt automatisch eine E-Mail mit den Zugangsdaten versendet. Dabei erhalten auch Eigentümer eine E-Mail-Benachrichtigung. 
+
+## Teams
+
+### Integration
+#### App registrieren
+Sie müssen im Microsoft Entra Admin Center über Anwendungen für das MultiVc-Plugin für Ihre Organistation eine App registrieren.
+Folgende API-Berechtigungen sollten als Anwendungsberechtigungen erteilt werden:
+- Calendars.ReadWrite
+- OnlineMeetingArtifact.Read.All
+- OnlineMeetingRecording.Read.All
+- OnlineMeetings.ReadWrite.All
+- User.Read.All
+
+Nach Auswahl klicken Sie auf 'Berechtigung hinzufügen' und danach auf 'Administratorzustimmung (...) erteilen'. 
+Anschließend Klicken Sie auf 'Zertifikate & Geheimnisse' und erstellen Sie einen neuen geheimen Clientschlüssel.
+Notieren Sie sogleich den nur nach der Erstellung angezeigten 'Wert'.
+Für die Einrichtung des MultiVc-Plugins benötigen Sie neben diesem Client-Secret noch die Tenant-ID (Verzeichnis-ID, Mandant) und die Client-ID (Anwendungs-ID). 
+Diese Angaben finden Sie bei der registrierten App unter 'Übersicht'. 
+Stellen Sie sicher, dass Benutzer auch OnlineMeetings erstellen dürfen.
+
+#### ApplicationAccessPolicy erstellen
+Für die Absicherung des Zugriffs benötigen Sie noch eine ApplicationAccessPolicy. Gehen Sie wie folgt vor:  
+Öffnen Sie die Windows-PowerShell und geben Sie ein: Connect-MicrosoftTeams
+
+[Hinweis: Sollte das Ausführen von Connect-MicrosoftTeams nicht möglich sein, müssen Sie diese zuerst installieren:
+Öffnen Sie hierzu PowerShell mit Administratorrechten und geben Sie dann ein:
+
+Install-Module -Name MicrosoftTeams]
+
+Ein Login-Fenster wird nun angezeigt. Ein Account mit weitgehenden Rechten wird benötigt (hier: Obermotz). 
+
+Geben Sie nun über die PowerShell die folgenden beiden Zeilen ein:
+
+New-CsApplicationAccessPolicy -Identity _Name der ApplicationAccessPolicy_ -AppIds "_Clent-ID bzw. Anwendungs-ID_" -Description "MultiVc2 Policy"
+
+Grant-CsApplicationAccessPolicy -PolicyName _Vergebener Name der ApplicationAccessPolicy_ -Identity "_UPN oder ObjectID des Benutzers Obermotz_"
+
+### Lernfortschritt
+Mit dem erstmaligen Einrichten von Teams im MultiVc-Plugin werden die Rechte 'Lernfortschrittseinstellungen bearbeiten' und 'Lernfortschritt anderer Benutzer einsehen' hinzugefügt. Passen Sie ggfs. Objekte und insbesondere die Rollenvorlagen an. 
+
+Für den Fall, dass Sie den Lernfortschritt nutzen möchten, wird empfohlen, dass in der Konfiguration 'Benutzerübersicht verstecken' deaktiviert ist.
+Somit können Sie für abgelaufene Meetings durch Klick auf 'Anwesenheitszeiten' unter 'Meeting' den Lernfortschritt aktualisieren. Ansonsten wird der Lernfortschritt durch den täglich laufenden Cronjob 'MultiVc-Cronjob zur Ermittlung des Lernfortschritts' berechnet.
+Beachten Sie, dass der Lernfortschritt nur für diejenigen berechnet werden kann, die sich über die Teams-App angemeldet haben. Ansonsten kann eine eindeutige Nutzerzuordnung nicht erfolgen und die Teilnehmenden werden mit der Rolle 'Gast' angezeigt. Für Gäste wird kein Lernfortschritt ermittelt.
+
+Grundlage für die Ermittlung des Lernfortschritts ist die Anwesenheitszeit. In der 'Benutzerübersicht' sehen Sie die einzelne Teilnahmezeiten, gekennzeichnet mit 'Teilnahme ab' und 'Teilnahme bis'. 
+Unter dem Link 'Anwesenheitszeiten' sehen Sie die kumulierten Anwesenheitszeiten je Meeting und einen Prozentwert. 
+Dieser Prozentwert berücksichtigt die Dauer des Meetings ohne Überziehungen. Wurde beispielsweise ein Meeting von 13:00 bis 14:00 angesetzt, so werden Zeiten nach 14:00 nicht berücksichtigt. 
+Wurde das Meeting von einem (co-) Organisator vorzeitig beendet, so wird die verbleibende Zeit bis zum ursprünglich vorgesehenen Ende nicht für die Berechnung des Prozentwerts herangezogen.
+
+Anwesenheitszeiten bei vor der vorgesehener Startzeit beendeten Sitzungen werden ebenso wenig berücksichtigt, wie Anwesenheitszeiten für Sitzungen, die erst nach dem vorgesehenen Ende gestartet wurden.
+Innerhalb der vorgesehenen Startzeit und Endzeit darf nur eine Sitzung vorhanden sein. 
+Sollte zwischendurch das Meeting beendet und neu gestartet werden, so wird nur die erste Sitzung innerhalb eines Meetings berücksichtigt. 
+
+Über den Reiter 'Lernfortschritt' und den Link 'Einstellungen' können Sie bei grundsätzlich aktiviertem Lernfortschritt einen Schwellwert für den Status 'Bearbeitet' bestimmen. Die Default-Einstellung ist 70. Das bedeutet, dass mindestens 70% der möglichen Anwesenheitszeit erreicht werden muss, um den Status 'Bearbeitet' (grün) zu erhalten.
+
+Hinweis: Der CronJob sollte aus Performanzgründen in jedem Fall aktiviert sein. 
+
+### Moderierte Räume
+Moderierte Räume sind dadurch gekennzeichnet, dass Teilnehmende nicht eigenständig in Meetings gelangen, sondern durch (Co-)Organisatoren hineingelassen werden müssen. Außerdem kann in moderierten Räumen nicht jeder eigenständig Präsentator-Rechte wahrnehmen. 
+
+### Co-Organisatoren (Mitorganisatoren)
+Damit Kurs- bzw. Gruppenadministratoren bzw. Kurstutoren erweiterte Rechte als Co-Organisatoren haben, müssen sie _vor_ einem angesetzten Meeting mit ihrer Rolle im Kurs bzw. in der Gruppe eingetragen sein. Danach sind einfache Teilnehmende. 
+Nur diejenigen können Co-Organisatoren sein, die ein Konto im selben Tenant wie das Konto des Organisators verwenden.
+
+### Kalender-Einträge
+Teilnehmende werden auch dann benachrichtigt, wenn Meetings bereits vor ihrem Kurs- bzw. Gruppenbeitritt angesetzt wurden.
+
+### Sprache der Benachrichtigung
+Grundsätzlich werden die Standard-Teams-Benachrichtigungen unter Berücksichtigung der Benutzersprache und der gewählten Zeitzone genutzt. Da die Teilnehmenden außer dem Direktlink zu Teams auch den Link im ILIAS-Objekt nutzen können und ggfs. ein Hinweis zu anstehenden Aufzeichnungen übermittelt werden soll, gilt Folgendes: Möchten Sie als Organisator die ergänzenden Texte z.B. in Englisch anzeigen lassen, so wechseln Sie in ILIAS zur englischen Sprache und legen Sie dann ein Meeting an. Auch alle Folge-Benachrichtigungen etwa beim Kursbeitritt nutzen dann die zum Zeitpunkt des Anlegens eines Meetings genutzte Sprache.   
 
 
 
@@ -262,7 +333,7 @@ Nach erfolgter Authorisierung ist hier der Button "Authorisierung aufheben" zu s
 
 ## Virtuellen Meetingraum anlegen
 
-Wir empfehlen virtuelle Meetingräume in Kursen oder Gruppen anzulegen. Die Zugriffsrechte auf das Objekt können somit für Benutzer über deren zugewiesene Benutzerrolle eingestellt werden. Wir empfehlen folgende Rollenvorlagen anzupassen:
+Virtuelle Meetingräume sollten in Kursen oder Gruppen angelegt werden. Die Zugriffsrechte auf das Objekt können somit für Benutzer über deren zugewiesene Benutzerrolle eingestellt werden. Wir empfehlen folgende Rollenvorlagen anzupassen:
 
 - Gruppenadministrator
 - Gruppenmitglied
