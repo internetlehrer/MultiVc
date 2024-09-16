@@ -1,0 +1,105 @@
+<div id="xmvc">
+    <div class="ilCLI ilObjListRow row">
+        <div id="infotop" class="col-sm-12">
+            <h2 class="ilHeader">{HEADLINE_WELCOME}</h2>
+            {INFOTOP}
+        </div>
+        <div id="info_concurrent" class="{CLASS_INFO_CONCURRENT}">
+            {INFO_CONCURRENT}
+        </div>
+        <div id="join_btn" class="col-sm-12">
+            {JOINCONTENT}
+        </div>
+        <div id="msg_running" class="col-sm-12 hidden">
+            <div class="alert alert-success" role="alert">
+                <h5 class="ilAccHeadingHidden"><a id="il_message_focus" name="il_message_focus">Informationsmeldung</a></h5>
+                {MEETING_RUNNING}
+            </div>
+        </div>
+        <div id="recordingsallowed" class="col-sm-12 {UNHIDE_MSG_REC_ALLOWED}hidden">
+            {RECORDING_WARNING}
+        </div>
+    </div>
+    <div class="ilCLI ilObjListRow row {UNHIDE_LIST_MEETINGS}hidden">
+        <div id="listMeetings" class="col-sm-12">
+            <h2 class="ilHeader">{HEADLINE_LIST_MEETINGS}&nbsp;</h2>
+            {LIST_MEETINGS}
+        </div>
+    </div>
+
+    <div class="ilCLI ilObjListRow row {UNHIDE_GUESTLINK}hidden">
+        <div class="col-sm-12">
+            <h2 class="ilHeader">{HEADLINE_GUESTLINK}</h2>
+            <div class="ilInfoScreenSec form-horizontal" id="infoscreen_section_2">
+            <div class="form-group">
+                <div class="il_InfoScreenProperty control-label col-xs-3">{userInviteInfo}</div>
+                <div class="il_InfoScreenPropertyValue col-xs-9">
+                    <div class="ilPermalinkContainer input-group">
+                        <input class="form-control" readonly="readonly" id="userInviteUrl" type="text" value="{userInviteUrl}" onclick="return false;">
+                        <span class="input-group-btn">
+                            <div class="btn-group">
+                            <!-- Important: The next a-tag had a this.blur(); in the onclick event before. Please do not add it again, see bug #8723 -->
+                                <button type="button" class="btn btn-default" id="copyUserInviteUrl">
+                                    <span></span>
+                                    <span class="sr-only">Copy to clipboard</span>
+                                    <span class="glyphicon glyphicon-copy"></span>
+                                </button>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group{guestLinkPwHidden}">
+                <div class="il_InfoScreenProperty control-label col-xs-3">{guestLinkPwInfo}</div>
+                <div class="il_InfoScreenPropertyValue col-xs-9">
+                    <div class="ilPermalinkContainer input-group">
+                        <input class="form-control" readonly="readonly" id="guestLinkPw" type="text" value="{guestLinkPw}" onclick="return false;">
+                        <span class="input-group-btn">
+                            <div class="btn-group">
+                            <!-- Important: The next a-tag had a this.blur(); in the onclick event before. Please do not add it again, see bug #8723 -->
+                                <button type="button" class="btn btn-default" id="copyGuestLinkPw">
+                                    <span></span>
+                                    <span class="sr-only">Copy to clipboard</span>
+                                    <span class="glyphicon glyphicon-copy"></span>
+                                </button>
+                            </div>
+                        </span>
+                    </div>
+                    {guestLinkPwExpired}
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <div class="ilCLI ilObjListRow row {UNHIDE_RECORDINGS}hidden">
+        <div id="recordings" class="col-sm-12">
+            <h2 class="ilHeader">{HEADLINE_RECORDING}</h2>
+            {RECORDINGS}
+        </div>
+    </div>
+
+
+    <div class="ilCLI ilObjListRow row">
+        <div id="info_bottom" class="col-sm-12">
+            <h2 class="ilHeader">{HEADLINE_INFO_BOTTOM}</h2>
+            {INFOBOTTOM}
+        </div>
+    </div>
+
+
+    <div class="ilCLI ilObjListRow row">
+        <div id="info_requirements" class="col-sm-12">
+            <h2 class="ilHeader">{HEADLINE_INFO_REQUIREMENTS}</h2>
+            {INFO_REQUIREMENTS}
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+

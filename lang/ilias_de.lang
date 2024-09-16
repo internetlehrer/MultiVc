@@ -1,0 +1,462 @@
+// 
+// German Language File for MultiVc Plugin
+//
+<!-- language file start -->
+add_presentation_url#:#Startpräsentation
+add_token#:#Token hinzufügen
+add_token_user#:#Neue ModeratorIn / Token
+add_welcome_text#:#Individueller Willkommenstext
+adm_info_appointment#:#Als Admin oder Tutor können Sie den Raum starten. Teilnehmer hingegen können den Raum nur während der Sitzungszeit &ouml;ffnen.
+assigned_roles_info#:#Das Anlegen dieser MultiVc-Konfiguration kann für Benutzer beschränkt werden, die zu einer oder mehreren der gewählten Rollen gehören.
+assigned_roles#:#Zugewiesene Rollen
+authorize#:#Authorisieren
+bbb_default_server#:#Standard BBB-Server
+bbb_guest_password_info#:#Erlaubt sind alphanumerische- und Sonderzeichen, wie zum Beispiel: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Passwort für Gäste
+bbb_secret_expiration_date#:#Ablaufdatum
+bbb_secret_expiration_date_info#:#Das Passwort ist bis einschließlich dem gewählten Datum gültig.
+bbb_secret_expired_msg#:#Das Gast-Passwort ist abgelaufen
+bbb_secret_expires_info#:#Wählen Sie diese Option, wenn das Passwort zeitlich befristet sein soll.
+bbb_secret_expires#:#Mit Ablaufdatum
+big_blue_button#:#BigBlueButton WebRTC
+btn_chat#:#Chat ein-/ausblendbar
+btn_chat_choose#:#Chat ein-/ausblendbar: Auswahlmöglichkeit
+btn_chat_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Chat ein-/ausblendbar' haben sollen.
+btn_chat_default#:#Chat ein-/ausblendbar: Voreinstellung
+btn_chat_default_info#:#Zur Vereinfachung der Nutzung kann es sinnvoll sein, diese Option nicht zu aktivieren und den Chat immer anzeigen zu lassen.
+btn_chat_info#:#Aktivieren Sie diese Option wenn die Schaltfläche zum Aus- und Einblenden des Chats angezeigt werden soll.
+btn_locationshare_choose_info#:#Meist sollte diese Option deaktiviert sein
+btn_locationshare_choose#:#Option Aufenthaltsort: Auswahlmöglichkeit
+btn_locationshare_default_info#:#Aktivieren Sie diese Option nur nach Rücksprache mit Beauftragten für den Datenschutz.
+btn_locationshare_default#:#Option Aufenthaltsort: Voreinstellung
+btn_locationshare_info#:#Mit dieser Option können Benutzer im Chat ihren aktuellen Aufenthaltsort anderen mitteilen und und von anderen in ein separates Meeting eingeladen werden. Aus Gründen des Datenschutzes sollte diese Option nur mit Bedacht ermöglicht werden.
+btn_locationshare#:#Option Aufenthaltsort
+btn_settings_choose#:#Einstellungen im Raum: Auswahlmöglichkeit
+btn_settings_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Einstellungen im Raum' haben sollen.
+btn_settings_default#:#Einstellungen im Raum: Voreinstellung
+btn_settings_default_info#:#Die Voreinstellung sollte in der Regel sein, dass Option und Schaltfläche für Einstellungen nicht aktiv sind.
+btn_settings#:#Einstellungen im Raum
+btn_settings_info#:#Aktivieren Sie diese Option wenn Schaltfläche und Optionen für Einstellungen im Raum sichtbar sein sollen. Gewöhnlich ist dies nicht nötig, da Name und Benutzerbild von ILIAS übernommen werden.
+btntext_concurrent_users_check#:#Verf&uuml;gbarkeit pr&uuml;fen
+btntext_guest_login_button#:#Als Gast einloggen
+btntext_join_meeting#:#Meeting beitreten
+btntext_join_webinar#:#Webinar beitreten
+btntext_start_meeting#:#Meeting starten
+btntext_start_webinar#:#Webinar starten
+cam_mic_only_for_moderator_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die entsprechende Auswahl haben sollen. Diese Option sollte in den meisten Fällen aktiviert sein.
+cam_mic_only_for_moderator_choose#:#Teilnehmende dürfen Kamera und Mikrofon nicht aktivieren: Auswahlmöglichkeit
+cam_mic_only_for_moderator_default_info#:#Organisatoren ermöglichen Teilnehmenden gezielt die Nutzung von Mikrofon und/oder Kamera. Teilnehmende können ohne Bestätigung nicht teilen bzw. übertragen. Diese Option ist für Veranstaltungen mit sehr vielen Teilnehmenden sinnvoll.
+cam_mic_only_for_moderator_default#:#Teilnehmende dürfen Kamera und Mikrofon nicht aktivieren: Voreinstellung
+cam_mic_only_for_moderator_info#:#Organisatoren ermöglichen Teilnehmenden gezielt die Nutzung von Mikrofon und/oder Kamera. Teilnehmende können ohne Bestätigung nicht teilen bzw. übertragen.
+cam_mic_only_for_moderator#:#Teilnehmende dürfen Kamera und Mikrofon nicht aktivieren
+cam_only_for_moderator_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Kamera nur für Moderatoren' haben sollen. Diese Option sollte in den meisten Fällen aktiviert sein.
+cam_only_for_moderator_choose#:#Kamera nur für Moderatoren: Auswahlmöglichkeit
+cam_only_for_moderator_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein und nur aktiviert werden, wenn bei hohen Teilnehmerzahlen Performanzprobleme zu erwarten sind. Moderatoren haben stets die Möglichkeit, während einer Sitzung in BigBlueButton die Einstellung zu ändern.
+cam_only_for_moderator_default#:#Kamera nur für Moderatoren: Voreinstellung
+cam_only_for_moderator_info#:#Für Sitzungen mit sehr vielen Personen empfohlen.
+cam_only_for_moderator#:#Kamera nur für Moderatoren
+cancel#:#abbrechen
+cat_create_xmvc#:#virtuellen Meetingraum erstellen
+chat_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Chat erlauben' haben sollen.
+chat_choose#:#Chat erlauben: Auswahlmöglichkeit
+chat_default_info#:#Sofern aktiviert, können Personen untereinander einen Chat führen.
+chat_default#:#Chat erlauben: Voreinstellung
+chat_info#:#Personen können einen Chat untereinander führen.
+chat#:#Chat erlauben
+conf_availability_0#:#Nicht verfügbar
+conf_availability_1#:#Bestehende erlaubt
+conf_availability_2#:#Neue erzeugbar
+conf_availability#:#Verfügbarkeit
+config_help_begin#:#Die Erläuterung unter Einstellungen lautet:
+configure_add#:#Konfiguration anlegen
+configure#:#Konfiguration
+conf_meeting_layout_1#:#CUSTOM_LAYOUT
+conf_meeting_layout_2#:#SMART_LAYOUT
+conf_meeting_layout_3#:#PRESENTATION_FOCUS
+conf_meeting_layout_4#:#VIDEO_FOCUS
+conf_meeting_layout#:#Meeting Layout
+conf_title#:#Titel
+conn_deleted#:#Der Meeting-Typ wurde gelöscht.
+conn_id#:#Meeting-Typ
+copy#:#Kopieren
+create_type#:#Neuen Meeting-Typ definieren
+cronjob_description#:#Wenn aktiviert, kann die Verweildauer für die Berechnung des Lernfortschritts herangezogen werden.
+cronjob_title#:#MultiVc-Cronjob zur Ermittlung des Lernfortschritts bei Nutzung von MS Teams
+crs_create_xmvc#:#virtuellen Meetingraum erstellen
+custom_style#:#Custom Style
+custom_style_info#:#Hier können Sie CSS-Style-Parameter oder eine CSS-Datei definieren. Für eine Datei, muss eine URL, beginnend mit https://, angegeben werden. Des Weiteren muss in der settings.yml der BBB-Installation der Parameter "displayBrandingArea" auf true gesetzt sein.
+delete_conn#:#Meeting-Typ löschen?
+delete#:#Löschen
+delete_sess_user_changed#:#Aktion bei Eigentümer-Wechsel
+delete_sess_user_changed_info#:#Bei Benutzer-Wechsel werden alle angelegten Sessions gelöscht
+delete_token#:#Token löschen
+delete_type#:#Meeting-Typ löschen
+disable_sip_info#:#Mit dieser Option können Sie SIP-Einwahl deaktivieren. Es ist dann keine Telefoneinwahl möglich.
+disable_sip#:#Telefoneinwahl deaktivieren
+display_name#:#Angezeigter Name
+download#:#Download
+download_video#:#Aufzeichnung herunterladen
+duration#:#Dauer
+edit#:#Bearbeiten
+edit_properties#:#Eigenschaften bearbeiten
+edudip_host_email#:#edudip E-Mail-Adresse
+edudip_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adresse wird nur den Besitzern des Objekts und Administratoren angezeigt.
+edudip_host_email_info#:#Ihre bei edudip bekannte E-Mail-Adresse muss mit dieser übereinstimmen
+edudip_meetings_list_downloaded#:#Bei edudip vorhandene Webinare erfolgreich eingebunden
+edudip_meetings_list_unavailabe#:#Abruf vorhandener Webinare bei edudip aktuell nicht möglich
+end_time#:#Ende
+endtime#:#Endzeit
+err_msg_displayname#:#Bitte geben Sie Ihren Namen ein
+err_msg_guest_password#:#Das Gast-Passwort ist falsch.
+err_msg_guest_password_expired#:#Das Gast-Passwort ist abgelaufen.
+error_admin_no_access_token#:#Bitte teilen Sie Ihrem Administrator mit: Token fehlt
+error_object_no_access_token#:#Bitte führen Sie in den Objekt-Eigenschaften die Authorisierung durch.
+error_object_no_host_email#:#Bitte bestätigen Sie in den Objekt-Eigenschaften die E-Mail-Adresse für den Host-User.
+error_start_meeting#:#Es ist ein Fehler beim Start des Meetings aufgetreten.
+error_start_webinar#:#Es ist ein Fehler beim Start des Webinars aufgetreten.
+ext_provider_token_user#:#Benutzer / Access-Token
+ext_provider_token_user_info#:#Geben Sie die E-Mail-Adresse von Benutzern mit Moderatoren-Lizenz und anschließend deren Access Token an.
+fa_expand_default_info#:#Diese Option sollte in der Regel deaktiviert sein. Auch kann in vielen Fällen die Anzeige von Bereichen (z.B. Chat) nicht vergrößert werden
+fa_expand_default#:#Maximierung der Anzeige von Bereichen: Voreinstellung
+fold_create_xmvc#:#virtuellen Meetingraum erstellen
+grp_create_xmvc#:#virtuellen Meetingraum erstellen
+guest_displayname_info#:#Bitte beachten Sie: Ausführliche Angaben zu Titeln können zu Usability-Schwierigkeiten führen aufgrund der begrenzten Länge des in BigBlueButton für den Namen verfügbaren Platzes.
+guest_displayname_input#:#Titel Vorname Nachname
+guest#:#Gast
+guestlink_choose#:#Gastlink Auswahlm&ouml;glichkeit
+guestlink_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Gastlink erlauben' haben sollen.
+guestlink_default#:#Gastlink Voreinstellung
+guestlink_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein. Eine Nutzung durch Unbefugte sollte weitgehend ausgeschlossen werden können. Gäste kommen stets nur als Teilnehmer in einen moderierten Raum. Dort muss ein Moderierender bereits anwesend sein. Gäste müssen Nutzungsbedingungen zustimmen, die als ILIAS-Sprachvariable gespeichert sind. Wechseln Sie zum Editieren zu Administration -> Sprachen. Klicken Sie auf die gewünschte 'Sprache' und tippen Sie bei 'Identifier' 'rep_robj_xmvc_terms_of_use' ein. Klicken Sie dann auf 'Filter anwenden' und editieren Sie den Text.
+guestlink#:#Gastlink
+guestlink_info#:#Moderatoren können Gäste über einen Link einladen
+guest_link_pw_info#:#Gäste müssen sich mit diesem Passswort anmelden
+guest_password_input_info#:#Bitte geben Sie hier das Passwort zum Gastlink ein.
+guest_password_input#:#Passwort für Gäste
+headline_welcome_meeting#:#Willkommen im Meetingraum!
+headline_welcome_webinar#:#Willkommen im Webinar!
+hide_recs_until_date#:#Aufzeichnungen nicht anzeigen bis
+hide_recs_until_date_info#:#Aufzeichnungen bis zum hier angegebenen Aufzeichnungsdatum werden nicht angezeigt.
+hide_username_logs#:#Benutzerübersicht verstecken
+hide_username_logs_info#:#Wenn ausgewählt, ist die Benutzerübersicht nur in der Plugin-Administration einsehbar. Ansonsten wird auch beim MultiVc-Objekt eine Benutzerübersicht angezeigt.
+hint_availability_recs#:#Für Fragen und Anliegen zur Zugänglichmachung von Aufzeichnungen wenden Sie sich bitte an die Verantwortlichen für diese BigBlueButton-Meetings.
+hint#:#Hinweistext
+hint_pub_recs#:#Eine Weitergabe von Aufzeichnungslinks ist nicht gestattet.
+info_add_presentation_url#:#Eigene Startpräsentation über URL laden. Der URL-Aufbau muss folgendes Format erfüllen: <i>https://ihre.domain/pfad_zur/praesentation.pdf</i>
+info_add_welcome_text#:#Dieser individuelle Willkommenstext kann über ILIAS-Sprachvariable definiert werden. Wechseln Sie zu Administration -> Sprachen. Klicken Sie dazu auf die gewünschte 'Sprache' und tippen Sie bei 'Identifier' 'rep_robj_xmvc_welcome_text' ein. Klicken Sie dann auf 'Filter anwenden' und editieren Sie den Text.
+info_availability#:#Hiermit steuern Sie die Verfügbarkeit des Meeting-Typs im Magazin. Alte Typen können statt gelöscht auf "Bestehende erlaubt" gesetzt werden.
+info_bottom_headline#:#Wichtige Hinweise zur Nutzung:
+info_bottom#:#<ul><li>Bitte <b>nutzen Sie ein Headset</b> zur Vermeidung von störenden Rückkopplungen oder Echos!</li><li><b>Bei schlechter Internetverbindung</b> sollten Sie Ihre Kamera (Webcam) abschalten und bei noch schlechterer Verbindung sollten Sie für die Übertragung des Tons eine Telefonkonferenz nutzen.</li></ul>
+info_concurrent_users_available#:#Anzahl freier Pl&auml;tze im virtuellen Klassenraum:&nbsp;
+info_concurrent_users_none#:#Aktuell stehen keine weiteren Pl&auml;tze zur Anmeldung bereit. Bitte pr&uuml;fen Sie in einer Minute erneut die Verf&uuml;gbarkeit mit einem <b>Klick</b> auf den Button <b>"Meeting beitreten"</b>.
+info_delete_vc_sure#:#Sind Sie sicher? Folgender virtueller Meetingraum wird gelöscht:
+info_hint#:#Der Hinweistext erscheint farblich hervorgehoben oberhalb des Inhaltes der Objektseite.
+info_max_duration#:#Das Meeting wird nach den angegebenen Werten für Stunden und Minuten beendet. Bei unbegrenzter Dauer bitte jeweils '0' angeben.
+info_max_participants#:#Maximale Anzahl Teilnehmer je Meeting. Bei unbegrenzter Anzahl bitte '0' angeben.
+info_max_participants_webinar#:#Maximale Anzahl Teilnehmer je Webinar. Bitte beachten Sie Ihren edudip-Vertrag.
+info_meeting_layout#:#Steuert das standard Layout für das Meeting.
+info_om_svr_public_url#:#Beispiel: https://www.example.com/
+info_platform_chg_reset_data#:#Ihre Auswahl
+info_platform_chg_reset_data_o#:#Bitte beachten Sie, dass beim Wechsel der WebRTC-Plattform alle Einstellungen auf Standardwerte zurück gesetzt und ggf. hinterlegte Formulardaten dabei gelöscht werden. Zum Wechseln der WebRTC-Plattform müssen Sie die neue Auswahl zunächst durch "Speichern" bestätigen. Im n&auml;chsten Schritt wird die bisherige Konfiguration durch erneutes Speichern überschrieben.
+info_requirements_bbb#:#<ul><li>BigBlueButton nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 80/443 (für HTTP/HTTPS) und UDP-Ports im Bereich 16384 - 32768.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_requirements_edudip#:#<ul><li>edudip nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome, der auf Chromium basierende Browser Microsoft Edge oder mit Einschränkungen Mozilla Firefox empfohlen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Bitte wenden Sie sich an den edudip-Support um weitere Infos zu bekommen.</li>
+info_requirements_headline#:#Technische Voraussetzungen:
+info_requirements_not_ok#:#<b>Mit dem aktuell von Ihnen genutzten Browser können Sie den virtuellen Meetingraum nur sehr eingeschränkt nutzen.</b><br/>Nutzen Sie als Browser am besten Google Chrome oder mit Einschränkungen Mozilla Firefox! Wenn Sie nicht die Rechte zum Installieren eines Browsers haben, können Sie gegebenenfalls Google Chrome Portable nutzen.<br/>Sollte es nicht möglich sein, den Browser zu wechseln, so starten Sie den virtuellen Meetingraum und schreiben Sie in den Chat, dass Sie aktuell keinen geeigneten Browser haben und dass niemand auf Sie warten solle.
+info_requirements_om#:#<ul><li>Openmeetings nutzt den offenen Standard WebRTC, der von immer mehr Browsern unterstützt wird. Aktuell wird Google Chrome oder mit Einschränkungen Mozilla Firefox empfohlen. Ferner können Sie die neueste Version von Microsoft Edge sowie Safari Mobile ab iOS 12.2 und Chrome Mobile ab Android 6.0 nutzen. Microsoft Internet Explorer und ältere Edge-Versionen werden nicht unterstützt.</li><li>Die von Ihnen genutzte Firewall darf folgende Ports nicht blockieren: TCP/IP-Ports 8888/5443 (für HTTP/HTTPS), TCP/UDP 3478  und UDP-Ports im Bereich 49152 - 65535.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie Google Chrome nutzen und über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_requirements_partly#:#Wir empfehlen als Browser Google Chrome oder mit Einschränkungen Mozilla Firefox. Ob und inwieweit der aktuell von Ihnen genutzte Browser geeignet ist, den virtuellen Meetingraum zu nutzen, müssen Sie selbst herausfinden. Bitte berichten Sie dem gegebenenfalls vorhandenen technischen Support Ihre Erfahrungen.
+info_requirements_teams#:#<ul><li>Moderierende müssen die Teams App benutzen.</li><li>Teilnehmende können Teams über ihren Browser starten.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_requirements_webex#:#<ul><li>Empfohlene Browser: Chrome, Edge, Firefox</li></ul>
+info_set_owner#:#Eigentümer eingetragen
+info_svr_private_port#:#Beispiel: 443
+info_svr_private_url#:#Entspricht mit Ausnahme von Amazon EC2 stets der öffentlichen URL
+info_svr_public_port#:#Beispiel: 443
+info_svr_public_url#:#Beispiel: https://www.example.com/bigbluebutton/
+info_svr_salt_om#:#Beispiel: dZ#ls2W!k6l
+info_svr_salt#:#ssh: bbb-conf --secret
+info_svr_username#:#Beispiel: om_admin
+info_title#:#Dieser Titel wird zur Auswahl des Meeting-Typs bei neuen Objekten angezeigt.
+info_top_moderated_edudip#:#Sie haben Moderationsrechte und können das Webinar starten.
+info_top_moderated_m_bbb#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderated_m_om#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderated_webex#:#Sie haben Moderationsrechte und können das Meeting starten. Dazu benötigen Sie einen Account bei Webex oder bei einer Webex-Hostet-Site. Teilnehmende können erst dann beitreten, wenn das Meeting von einem Moderator gestartet wurde.
+info_top_moderator_bbb#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderator_om#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_not_moderated_bbb#:#Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
+info_top_not_moderated_om#:#Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
+info_webex_client_id#:#Die Client-Id finden Sie in den Daten zu Ihrer Webex-Integration (z. B. admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#Der Client-Secret wird nach Anlegen / Aktualisieren einer Webex-Integration einmalig angezeigt.
+info_webex_redirect_uri#:#Fügen Sie diese Adresse in den Einstellungen der Integration als Redirect URI hinzu
+info_webex_site_url#:#Name der Hosted Site. Die Subdomain vor .webex.com, z. B. <b>your-company</b>.webex.com, oder <b>your-company</b>.my.webex.com
+integration_admin_auth_method_info#:#Die Authorisierung erfolgt durch den Administrator über die Einstellungen des MultiVc-Plugins. Beim OAuth Prozess werden folgende Scopes angefragt:
+integration_admin_auth_scopes_info#:#(folgende für Admins) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
+integration_auth_method#:#Authorisierung der Integration
+integration_auth_methods_info#:#Die Authorisierung kann erfolgen durch:{br}- den Administrator über die Einstellungen des MultiVc-Plugins{br}- den User über die Einstellungen des MultiVc-Objekts.{br}Beim jeweiligen OAuth Prozess werden folgende Scopes angefragt:{br}
+integration_user_auth_method_info#:#Die Authorisierung erfolgt durch den User über die Einstellungen des MultiVc-Objekts. Beim OAuth Prozess werden folgende Scopes angefragt:
+integration_user_auth_scopes_info#:#spark:kms meeting:schedules_read meeting:schedules_write meeting:participants_read meeting:participants_write meeting:preferences_read meeting:preferences_write
+join_time#:#Teilnahme ab
+leave_time#:#Teilnahme bis
+list_token_user_info#:#Liste bereits angelegter ModeratorInnen. Die hinterlegten Tokens können nicht überschrieben werden. Gegebenenfalls bitte den Eintrag mit Klick auf X zuerst löschen.
+list_token_user#:#Registrierte ModeratorInnen
+lock_disable_cam_choose_info#:#Definieren Sie, ob die Einstellung "Teilnehmer-Kamera sperren" beim Objekt verfügbar ist.
+lock_disable_cam_choose#:#Teilnehmer-Kamera sperren auswählbar
+lock_disable_cam_default_info#:#Legen Sie die Voreinstellung zu "Teilnehmer-Kamera sperren" fest.
+lock_disable_cam_default#:#Teilnehmer-Kamera sperren Voreinstellung
+lock_disable_cam_info#:#Mit Aktivierung dieser Option ist die Kamera (Webcam) von Teilnehmenden per Voreinstellung gesperrt.
+lock_disable_cam#:#Teilnehmer-Kamera sperren
+locked_by#:#Gesperrt von
+locked#:#Gesperrt
+lock#:#Sperren
+logo_url_info#:#Geben Sie hier die URL zu Ihrem Logo ein. Die URL muss mit https:// beginnen.
+logo_url#:#URL des Logos
+lp_active#:#Aktiv
+lp_active_info#:#Der Status "In Bearbeitung" wird gesetzt, sobald der Inhalt aufgerufen wird. Der Status "Bearbeitet" oder "Nicht bestanden" wird durch die Anwesenheitszeiten bestimmt.
+lp_inactive#:#Inaktiv
+lp_inactive_info#:#Für dieses Objekt wird kein Lernfortschritt gespeichert.
+lp_mode#:#Modus
+lp_time_info#:#Dieser Prozentwert bezogen auf die möglichen Anwesenheitszeiten muss überschritten werden, damit der Status auf "Bearbeitet" gesetzt wird. Andernfalls wird er auf "Nicht bestanden" gesetzt.
+lp_time#:#Schwellwert für "Bearbeitet"
+max_duration#:#Maximale Dauer
+max_meetings#:#Maximale Anzahl Meetingräume
+max_participants#:#Max. Teilnehmer
+max_users#:#Maximale Anzahl Nutzer
+meeting_collision#:#Es ist ein Fehler aufgetreten. Für den gewünschten Zeitraum ist bereits eine Sitzung geplant.
+meeting#:#Meeting
+meeting_end#:#Meeting-Ende
+meeting_related_successful#:#Meeting erfolgreich zugeordnet
+meeting_running#:#Der virtuelle Meetingraum wurde gestartet.
+meeting_start#:#Meeting-Start
+member_btn_fileupload_choose#:#Datei-Upload jedem erlauben: Auswahlmöglichkeit
+member_btn_fileupload_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Datei-Upload jedem erlauben' haben sollen.
+member_btn_fileupload#:#Datei-Upload jedem erlauben
+member_btn_fileupload_default#:#Datei-Upload jedem erlauben: Voreinstellung
+member_btn_fileupload_default_info#:#Diese Option sollte in der Regel deaktiviert sein.
+member_btn_fileupload_info#:#Aktivieren Sie diese Option nur, wenn neben Personen mit erweiterten Rechten (z.B. Administratoren, ggf. Tutoren) auch weitere Personen Dateien hochladen können sollen.
+modal_delete_scheduled_meeting_accept#:#Meeting löschen
+modal_delete_scheduled_meeting_title#:#Möchten Sie dieses Meeting wirklich löschen?
+modal_delete_scheduled_webinar_accept#:#Webinar löschen
+modal_delete_scheduled_webinar_title#:#Möchten Sie dieses Webinar wirklich löschen?
+modal_details_scheduled_meeting_title#:#Meeting Details (Webex Response Body)
+modal_details_scheduled_webinar_title#:#Webinar Details (edudip response body)
+moderated_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'moderierter Raum' haben sollen.
+moderated_choose#:#moderierter Raum: Auswahlmöglichkeit
+moderated_default_info#:#Aktivieren Sie diese Option wenn neue Räume als moderierte Räume angelegt werden sollen.
+moderated_default#:#moderierter Raum: Voreinstellung
+moderated_info#:#In einem moderierten Raum haben Personen mit Moderatorfunktion erweiterte Rechte. Andere Personen haben zudem nur eingeschränkte Zugangsrechte zum virtuellen Raum. Personen mit Moderatorfunktion sind alle, die die Eigenschaften des Objekts bearbeiten können sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren.
+moderated_teams_info#:#In einem moderierten Raum haben Ersteller des Objekts sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren mehr Rechte: Sie können teilen bzw. übertragen und entscheiden, ob andere Personen beitreten dürfen. In einem unmoderierten Raum können alle ohne Bestätigung beitreten und teilen bzw. übertragen.
+moderated#:#moderierter Raum
+moderated_webex#:#<b>Tipp:</b> In unmoderierten Räumen werden Beitretende nicht pseudonymisiert. Ein Beitritt ist daher nur Personen mit geeignetem Webex-Account gestattet.
+moderator#:#Moderator
+msg_obj_deleted#:#Die Aufzeichnung wurde gelöscht.
+notification_sending#:#Benachrichtigungen werden gesendet ...
+notification_sent#:#Benachrichtigungen erfolgreich gesendet.
+obj_ids_special_info#:#Nur in seltenen Fällen nötig! Geben Sie hier Komma-separiert die ILIAS Objekt-IDs für in Kurse verknüpfte Räume (deshalb stets gleiche Objekt-Id) an, die je Kurs gesondert behandelt werden sollen. Die Objekt-Id wird bei den Objekt-Einstellungen angezeigt. Die Option 'Spezial-Räume' ist hilfreich, wenn die Einstellungen vieler Räume zentral erfolgen soll um z.B. weitere Funktionen sukzessive freigeben zu können.
+obj_ids_special#:#Spezial-Räume
+objs_xmvc_duplicate#:#virtuellen Meetingraum kopieren
+objs_xmvc#:#Virtuelle Meetingräume
+obj_xmvc_download#:#Download
+obj_xmvc_duplicate#:#Kopieren
+obj_xmvc_select#:#virtuellen Meetingraum auswählen
+obj_xmvc#:#Virtueller Meetingraum
+offline#:#Offline
+of_owner_prefix#:#von EigentümerIn
+om_svr_public_port#:#Port des Openmeeting-Servers
+om_svr_public_url#:#URL des Openmeeting-Servers
+om_svr_username#:#SOAP Benutzername
+om_svr_userpass#:#SOAP Passwort
+overview_uses#:#Übersicht Verwendungen
+owners_email_not_uniqeu#:#Die E-Mailadresse des Eigentümers ist nicht unique. Diese darf nur einmal an einen ILIAS-Benutzer vergeben sein.
+playback#:#Aufzeichnung abspielen
+plugin_configuration#:#Konfiguration
+private_chat_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Privaten Chat erlauben' haben sollen.
+private_chat_choose#:#Privaten Chat erlauben: Auswahlmöglichkeit
+private_chat_default_info#:#Sofern aktiviert, können auch Personen ohne Moderatorfunktion untereinander einen privaten Chat führen. Personen mit Moderatorfunktion sehen diese Chats nicht. Da Personen mit Moderatorfunktion jederzeit private Chats unterbinden können, solle diese Option in den meisten Fällen aktiviert sein.
+private_chat_default#:#Privaten Chat erlauben: Voreinstellung
+private_chat_info#:#Auch Personen ohne Moderatorfunktion können einen privaten Chat untereinander führen.
+private_chat#:#Privaten Chat erlauben
+properties#:#Eigenschaften
+protected#:#Geschützte Räume
+pub_recs#:#Aufzeichnungen sofort freigeben
+pub_recs_choose#:#Aufzeichnungen sofort freigeben: Auswahlmöglichkeit
+pub_recs_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen sofort freigeben' haben sollen.
+pub_recs_default#:#Aufzeichnungen sofort freigeben: Voreinstellung
+pub_recs_default_for_object#:#Aufzeichnungen werden Teilnehmern sofort freigegeben.
+pub_recs_default_info#:#Aktivieren Sie diese Option, wenn Aufzeichnungen immer sofort freigegeben werden sollen oder die Auswahlmöglichkeit 'Aufzeichnungen sofort freigeben' für neue Objekte aktiviert sein sollen.
+pub_recs_info#:#Wenn ausgewählt, wird die Aufzeichung zu einem Meeting nach dessen Beenden sofort freigegeben. In der Übersicht auf der Meeting-Seite, haben Sie die Möglichkeit Aufzeichnungen zu sperren oder frei zu geben.
+rbac_create_xmvc#:#virtuellen Meetingraum erstellen
+rec_hidden#:#Diese Aufzeichnung ist für Teilnehmende nicht sichtbar.
+recording#:#Aufzeichnungen
+recording_autostart#:#Aufzeichnungen werden zu Beginn automatisch gestartet. ILIAS-Nutzende werden hierzu informiert.
+recording_choose#:#Aufzeichnungen erlauben: Auswahlmöglichkeit
+recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufzeichnung eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
+recording_default#:#Aufzeichnungen erlauben: Voreinstellung
+recording_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein, damit Personen nicht die Aufzeichnungfunktion im virtuellen Raum nutzen können.
+recording_info#:#Sitzungen können aufgenommen werden.
+recording_only_for_moderated_rooms#:#Aufzeichnung nur in moderierten Räumen
+recording_only_for_moderated_rooms_default#:#Aufzeichnung nur in moderierten Räumen
+recording_only_for_moderated_rooms_default_info#:#Diese Option sollte in den meisten Fällen aktiviert sein. Die Option kommt nur dann zum Tragen, wenn Aufzeichnungen grundsätzlich erlaubt sind.
+recording_only_for_moderated_rooms_info#:#Nur in moderierten Räumen können Personen mit Moderatorfunktion Aufzeichnungen starten.
+recording_warning#:#Für dieses Meeting wurde die Aufzeichnungsoption aktiviert! Mit der aktiven Nutzung des Chat-Systems, dem Einschalten meines persönlichen Mikrofons / meiner Kamera und/oder dem Teilen von Bildschirminhalten willige ich ein, dass diese Informationen bei der Aufzeichnung erfasst und für die spätere Verwendung gespeichert werden.
+recs_locked#:#Aufzeichnung(en) gesperrt
+recs_published#:#Aufzeichnung(en) freigegeben
+recurrence_#:#-
+recurrence_daily#:#Täglich
+recurrence_monthly#:#Monatlich
+recurrence_weekly#:#Wöchentlich
+recurrence_yearly#:#Jährlich
+rec_visible#:#Diese Aufzeichnung ist für Teilnehmende sichtbar.
+references#:#Verknüpfungen
+related_meeting#:#Zugeordnet
+related_webinar#:#Zugeordnet
+relate_meeting#:#Zuordnen
+relate_webinar#:#Zuordnen
+report_log_max#:#Nutzungsübersicht (BBB)
+require_schedule_new_meeting#:#Sie können Meetings anlegen und während der geplanten Zeitfenster starten.
+require_schedule_new_webinar#:#Sie können Webinare anlegen und während der geplanten Zeitfenster starten.
+reset_authorization#:#Authorisierung aufheben
+reseted_tokens#:#Tokens zurückgesetzt
+root_create_xmvc#:#virtuellen Meetingraum erstellen
+saving_invoked#:#Einstellungen gespeichert
+scheduled_meeting_agenda#:#Agenda
+scheduled_meeting_both_data_sources#:#alle
+scheduled_meeting_create_btn#:#Meeting anlegen
+scheduled_meeting_created#:#Geplantes Meeting erstellt
+scheduled_meeting_create#:#Geplantes Meeting anlegen
+scheduled_meeting_data_source#:#Sitzungen
+scheduled_meeting_delete_btn#:#Meeting löschen
+scheduled_meeting_deleted#:#Meeting gelöscht
+scheduled_meeting_duration#:#Zeitraum
+scheduled_meeting_local_data_sources#:#zugeordnete
+scheduled_meeting_not_deleted#:#Meeting nicht gelöscht
+scheduled_meeting_overview#:#Übersicht geplanter Meetings
+scheduled_meeting_recurrence#:#Wiederholung
+scheduled_meetings#:#Geplante Meetings
+scheduled_meeting_state#:#Status
+scheduled_meeting_time_ahead#:#Vorlaufzeit des Meetings
+scheduled_meeting_update_btn#:#Meeting aktualisieren
+scheduled_meeting_update#:#Geplantes Meeting aktualisieren
+scheduled_webinar_agenda#:#Agenda
+scheduled_webinar_both_data_sources#:#alle
+scheduled_webinar_create_btn#:#Webinar anlegen
+scheduled_webinar_created#:#Geplantes Webinar erstellt
+scheduled_webinar_create#:#Webinar anlegen (bitte eindeutigen Titel angeben)
+scheduled_webinar_data_source#:#Webinare
+scheduled_webinar_delete_btn#:#Webinar löschen
+scheduled_webinar_deleted#:#Webinar gelöscht
+scheduled_webinar_duration#:#Zeitraum
+scheduled_webinar_local_data_sources#:#zugeordnete
+scheduled_webinar_not_deleted#:#Webinar nicht gelöscht
+scheduled_webinar_overview#:#Übersicht geplanter Webinare
+scheduled_webinar_recurrence#:#Wiederholung
+scheduled_webinars#:#Geplante Webinare
+scheduled_webinar_state#:#Status
+scheduled_webinar_time_ahead#:#Vorlaufzeit des Webinars
+scheduled_webinar_update_btn#:#Webinar aktualisieren
+scheduled_webinar_update#:#Geplantes Webinar aktualisieren
+schedule_meeting_duration_less_time#:#Die Mindestdauer eines Meetings beträgt 10 Minuten. Bitte korrigieren Sie Ihre Eingaben dem entsprechend.
+schedule_meeting_error#:#Es ist ein Fehler aufgetreten. Bitte prüfen Sie Ihre Eingaben.
+schedule_webinar_duration_less_time#:#Die Mindestdauer eines Webinars beträgt 10 Minuten. Bitte korrigieren Sie Ihre Eingaben entsprechend.
+schedule_webinar_error#:#Es ist ein Fehler aufgetreten. Bitte prüfen Sie Ihre Eingaben.
+select#:#Ausw&auml;hlen
+service_unavailable#:#Dienst nicht erreichbar
+sess_owner_changed#:#Authentifizierung wurde geändert
+showcontent#:#WebRTC Plattform
+show_hint_pub_recs_info#:#Ein Hinweis zum Verbot der Weitergabe von Aufzeichnungslinks wird Benutzern auf der Meeting-Seite angezeigt. Aktivieren Sie diese Option, wenn dieser Hinweis <u>nicht</u> angezeigt werden soll.
+show_hint_pub_recs#:#Weitergabe von Aufzeichnungslinks erlauben
+start_time#:#Start
+starttime#:#Startzeit
+start_window#:#Virtuellen Meetingraum in einem neuen Fenster starten
+state_active#:#Aktiv
+state_inprogress#:#Läuft
+state_ready#:#Bereit
+status#:#Status
+subject_crs#:#{MEETING_TITLE} im Kurs {PARENT_TITLE}
+subject_fld#:#{MEETING_TITLE} im Ordner {PARENT_TITLE}
+subject_grp#:#{MEETING_TITLE} in der Gruppe {PARENT_TITLE}
+svr_private_port#:#Privater Port des BBB-Servers
+svr_private_url#:#Private URL des BBB-Servers
+svr_public_port#:#&Ouml;ffentlicher Port des BBB-Servers
+svr_public_url#:#&Ouml;ffentliche URL des BBB-Servers
+svr_salt#:#Passwort (secret) des BBB-Servers
+sysadmin_perm_choose_all#:#Als AdministratorIn können Sie alle Eigenschaften bei diesem Objekt bearbeiten.
+tab_close#:#Bitte schlie&szligen Sie nun dieses Fenster bzw. diesen Tab.
+teams_client_id#:#Client-ID
+teams_client_id_info#:#Fügen Sie hier die Client-ID ein.
+teams_client_secret#:#Client-Secret
+teams_client_secret_info#:#Unmittelbar nachdem Sie in Entra bei der für MultiVc angelegten App einen geheimen Schlüssel angelegt haben, können Sie den Wert des Schlüssels kopieren und hier eintragen.
+teams_join_links#:#Hier können Sie direkt beitreten:{br}{JOIN_URL}{br}&nbsp;{br}oder Sie klicken auf: {PERMANENT_LINK}
+teams_meetings_list_downloaded#:#Bei Teams vorhandene Online-Meetings erfolgreich eingebunden
+teams_tenant_id_info#:#Fügen Sie hier die Tenant-ID ein. Alternative Bezeichnungen sind: Verzeichnis-ID (Mandant).
+teams_tenant_id#:#Tenant-ID
+terms_of_use#:#<b>Schutzrechte</b>{br}Die in BigBlueButton-Konferenzen enthaltenen Informationen und Materialien wie z.B. Texte oder Bilder sind in der Regel durch Urheber-, Marken- oder Patentrechte geschützt.{br}Die gesetzlichen Vorschriften zum Datenschutz sind zu beachten. Dies gilt insbesondere für die Aufzeichnung von BigBlueButton-Konferenzen. Das heimliche Aufzeichnen von Video- oder Audiokonferenzen ist ein Straftatbestand.{br}{br}<b>Verhaltensregeln</b>{br}Sie dürfen keine gegen gesetzliche Bestimmungen verstoßende, pornographische, obszöne, diffamierende, verleumderische, beleidigende, bedrohende, volksverhetzende oder rassistische Inhalte einstellen. Auch das Einstellen von Werbung ohne Genehmigung sowie die Übermittlung von Informationen, welche einen Virus, Manipulationen oder ähnliche schädigende Elemente enthalten, ist untersagt.{br}{br}<b>Verarbeitete Daten</b>{br}Bei der Nutzung von BigBlueButton werden folgende Daten erhoben:<ul><li>Verbindungsdaten (z. B. IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs)</li><li>Gegebenenfalls Zugangsdaten: Benutzername, Passwort in verschlüsselter Form</li><li>Inhaltsdaten (z. B. hochgeladene Dateien, Chatbeiträge, Umfragen)</li></ul>Die vorübergehende Speicherung der Verbindungsdaten, insbesondere der IP-Adresse, durch das System ist notwendig, um eine Auslieferung von BigBlueButton an den Rechner des Nutzers zu ermöglichen. Hierfür muss die IP-Adresse des Nutzers für die Dauer der Sitzung gespeichert bleiben. Rechtsgrundlage für die vorübergehende Speicherung der Daten ist Art. 6 Abs. 1 lit. f DSGVO.{br}Die Verbindungsdaten werden ebenfalls in der Regel in Logfiles gespeichert. Der Löschzeitpunkt wird durch den Betreiber des Servers für BigBlueButton festgelegt.
+title#:#Titel
+token_deleted#:#Token gelöscht
+token_not_deleted#:#Token nicht gelöscht
+token_not_stored#:#Token nicht gespeichert
+token_stored#:#Token gespeichert
+unlocked_by#:#Freigegeben von
+unlock#:#Freigeben
+untrashed_usages#:#Anzahl Verwendungen
+url_info#:#Hier können Sie auch relative Pfadangaben eintragen (z.B.: /webconference). Bitte am Ende kein '/' angeben.
+url#:#URL
+usage#:#Auslastung
+user_end#:#letztes Verlassen
+user_invite_info#:#Mit dem folgenden Link k&ouml;nnen Sie G&auml;ste zum Meeting einladen:
+user_log#:#Benutzerübersicht
+user_log_bbb#:#Benutzerübersicht (BBB/Teams)
+user_log_duration#:#Erfassungszeitraum
+user_percent#:#Prozent
+user_results#:#Anwesenheitszeiten
+user_results_desc#:#Zeiten werden nur für bereits beendete Meetings angezeigt. Meetings müssen zudem das vorgesehene Ende erreicht haben.
+user_start#:#erster Start
+user_time#:#Anwesenheitszeit
+wait_join_meeting#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
+wait_join_meeting_edudip#:#Aktuell können Sie keinem Webinar beitreten.
+wait_join_meeting_guest#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und klicken Sie in einer Minute erneut auf die Schaltfläche 'Meeting beitreten'.</b>
+wait_join_meeting_teams#:#Aktuell können Sie keinem Meeting beitreten. Möglicherweise wurde das Meeting noch nicht gestartet oder bereits beendet.{br}Aktualisieren Sie gegebenenfalls diese Seite, um den Status des Meetings zu prüfen.
+wait_join_meeting_webex#:#Aktuell können Sie keinem Meeting beitreten. Möglicherweise wurde das Meeting noch nicht gestartet oder bereits beendet.{br}Aktualisieren Sie gegebenenfalls diese Seite, um den Status des Meetings zu prüfen.
+wait_join_webinar#:#<b>Aktuell hat noch niemand das Webinar gestartet.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
+webex_client_id#:#Client-ID der Webex Integration
+webex_client_secret#:#Client-Secret der Webex Integration
+webex_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adresse wird nur den Besitzern des Objekts und Administratoren angezeigt.
+webex_host_email_info#:#Bei Webex- bzw. bei der Hosted-Site bekannte E-Mail-Adresse
+webex_host_email#:#Webex Host E-Mail-Adresse
+webex_integration_auth_info#:#Sie können durch Authorisierung den Zugriff auf Ihren WebEx-Account erlauben. Dies ist erforderlich, zum Anlegen, Abrufen und Starten von Webex-Meetings über das MultiVc-Plugin.
+webex_logout_user_choose#:#Bei Webex ausloggen erlauben: Auswahlmöglichkeit
+webex_logout_user_choose_info#:#Bei Webex bereits eingeloggte Benutzer vorm Beitritt zum Meeting bei Webex ausloggen.
+webex_logout_user_default#:#Bei Webex ausloggen: Voreinstellung
+webex_logout_user_default_info#:#Bei Webex bereits eingeloggte Benutzer vorm Beitritt zum Meeting immer bei Webex ausloggen.
+webex_meetings_list_downloaded#:#Bei Webex vorhandene Meetings erfolgreich heruntergeladen
+webex_redirect_uri#:#Redirect URI
+webex_site_url#:#Webex Site URL
+webex_user_choose_logout#:#Benutzer entscheidet
+webex_user_do_logout#:#Ausloggen
+webex_user_do_not_logout#:#Nicht ausloggen
+webex_user_logout#:#Bei Webex ausloggen
+webinar_collision#:#Es ist ein Fehler aufgetreten. Für den gewünschten Zeitraum ist bereits ein Webinar geplant.
+webinar_event_created#:#Webinar angelegt
+webinar_event_deleted#:#Webinar gelöscht
+webinar_notification_body#:#Hallo {NAME},{NL}{NL}es wurde folgendes {EVENT}:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Mit freundlichen Grüßen{NL}{NL}{FROM}
+webinar_notification_from#:#ILIAS
+webinar_notification_subject#:#{EVENT}: {SUBJECT}
+webinar_related_successful#:#Webinar erfolgreich zugeordnet
+webinar_running#:#Das Webinar wurde gestartet.
+webinar#:#Webinar
+welcome_text#:#Herzlich Willkommen {br}im Virtuellen Meetingraum{br}<b>{MEETING_TITLE}</b>{br}{br}Sollte unten etwa in der Mitte ein durchgestrichener Lautsprecher zu sehen sein, werden andere Sie nicht hören und auch Sie hören nichts. Klicken Sie dann zum Starten der Audioverbindung auf den durchgestrichenen Lautsprecher.{br}Verwenden Sie ein Headset, um Hintergrundgeräusche und Rückkopplungen zu vermeiden.
+window_closed#:#Der virtuelle Meetingraum wurde beendet.
+window_close#:#Fenster schlie&szligen
+window_started#:#Der virtuelle Meetingraum wurde in einem neuen Fenster gestartet.
+with_chat_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Start mit Chat' haben sollen.
+with_chat_choose#:#Start mit Chat: Auswahlmöglichkeit
+with_chat_default_info#:#Sollte in der Regel aktiviert werden - insbesondere bei moderierten Räumen.
+with_chat_default#:#Start mit Chat: Voreinstellung
+with_chat_info#:#Insbesondere in moderierten Räumen sollte diese Option aktiviert sein. Der Chat wird so zum 'Warteraum'.
+with_chat#:#Start mit Chat
+xmvc_add#:#virtuellen Meetingraum hinzufügen
+xmvc_copy#:#Virtuellen Meetingraum kopieren
+xmvc_delete#:#Virtuellen Meetingraum löschen
+xmvc_edit_learning_progress#:#Lernfortschrittseinstellungen bearbeiten
+xmvc_edit_permission#:#Berechtigungen ändern
+xmvc_new#:#neuen virtuellen Meetingraum hinzufügen
+xmvc_read#:#Lesezugriff: Teilnahme im virtuellen Meetingraum ist möglich
+xmvc_read_learning_progress#:#Lernfortschritt anderer Benutzer einsehen
+xmvc_visible#:#Anzeigen: Virtueller Meetingraum ist sichtbar
+xmvc_write#:#Einstellungen bearbeiten

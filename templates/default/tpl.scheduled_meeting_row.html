@@ -1,0 +1,18 @@
+<!-- fim: [exco] new template. -->
+<!-- BEGIN row -->
+<tr class="{CSS_ROW} small {ROW_CSS}">
+    <td>{TITLE}</td>
+    <td>{START_TIME}</td>
+    <td>{END_TIME}</td>
+    <td>{IS_RELATED}</td>
+    <td>
+        <a href="{JOIN_URL}" target="_blank" class="btn btn-default" style="{JOINBTN_HIDE}">{JOINBTNTEXT}</a>
+        &nbsp;
+        <a onclick="relateMeeting('{RELATE_MEETING_DATA}')" href="javascript: return false;" class="btn btn-default {RELATE_MEETING_HIDE}">{RELATE_MEETING_TXT}</a>
+        &nbsp;
+        <a onclick="deleteMeeting('{DELETE_DATA}')" href="javascript: return false;" class="btn btn-default deleteScheduledMeeting {HIDE_DELETE}">{DELETE_TXT}</a>
+        &nbsp;
+        <a style="visibility: hidden" onclick="showDetails('{MODAL_DATA}')" href="javascript: return false;" class="il_ContainerItemCommand {MODAL_HIDE}">Details</a>
+    </td>
+</tr>
+<!-- END row -->

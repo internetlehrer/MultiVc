@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="{USER_LANG}">
+<head>
+    <title>{MEETING_TITLE}</title>
+    <link rel="stylesheet" type="text/css" href="{HTTP_BASE}/src/css/bootstrap_v4.5.2.css" />
+</head>
+<body>
+<div class="container">
+    <h1>{H1}</h1>
+    <div id="info_top">{INFO_TOP_MODERATED_M}</div>
+    <div id="err_messages" class="messages">
+        <div class="err_displayname_{ERR_STATE_INPUT_FIELD} alert alert-danger">{ERR_MSG_INPUT_FIELD}</div>
+        <div class="err_moderator_{ERR_STATE_MODERATOR} alert alert-info">{ERR_MSG_MODERATOR}</div>
+    </div>
+    <form action="{FORM_ACTION}" method="POST" class="form-inline">
+        <div id="input_name_submit" class="input-group mb-3">
+            {INPUT_FIELD}
+            <div class="input-group-append">
+                {SUBMIT_BUTTON}
+            </div>
+        </div>
+        <small id="info_name" class="form-text text-muted">
+            {INPUT_FIELD_INFO}
+        </small>
+        <input type="hidden" name="terms_of_use" id="terms_of_use" value="0">
+    </form>
+    <div id="info_bottom">
+        <p>{INFO_BOTTOM}</p>
+        <p>{INFO_REQUIREMENTS}</p>
+    </div>
+</div>
+
+<div class="modal fade" id="termsOfUseModal" tabindex="-1" role="dialog" aria-labelledby="termsOfUseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nutzungsbedingungen</h5>
+            </div>
+            <div class="modal-body">
+                {TXT_ACCEPT_TERMSOFUSE}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_accept_termsoffuse">Akzeptieren</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{HTTP_BASE}/src/js/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="{HTTP_BASE}/src/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<style type="text/css">
+    .container > h1 {
+        text-align: center;
+        margin: 10px auto 20px;
+    }
+    .container > h1 + div {
+        width: 67%;
+        margin: auto auto 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .container > form > div.input-group {
+        width: 67%;
+        margin: 20px auto auto;
+    }
+    .container > form > div.input-group + small {
+        width: 66%;
+        margin: -10px auto auto;
+        text-align: left;
+    }
+    .container > form + div {
+        width: 67%;
+        margin: 20px auto auto;
+        text-align: left;
+    }
+    .err_displayname_0,
+    .err_termsofuse_0,
+    .err_moderator_0,
+    .err_displayname_1 + .err_moderator_1 {
+        display: none;
+    }
+    .err_displayname_1,
+    .err_termsofuse_1,
+    .err_moderator_1 {
+        display: block;
+        width: 67%;
+        margin: auto;
+    }
+    .err_moderator_1 b {
+        font-weight: normal;
+    }
+
+    @media (min-width: 800px) {
+        .modal-dialog {
+            max-width: 780px;
+        }
+    }
+</style>
+
+<script>
+
+    let valTermsOfUse = {VAL_TERMSOFUSE};
+    if( valTermsOfUse === 1 ) {
+        $('#terms_of_use', document).prop({value: valTermsOfUse});
+        console.log('valTermsOfUse: ' + valTermsOfUse);
+    } else {
+        $('#termsOfUseModal').modal({
+            keyboard: false,
+            backdrop: 'static'
+        });
+        $('#btn_accept_termsoffuse', document).on('click', function() {
+            $('#terms_of_use', document).prop({value: 1});
+        });
+    }
+
+
+
+</script>
+
+</body>
+</html>

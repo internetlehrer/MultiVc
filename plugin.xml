@@ -1,0 +1,10 @@
+<?php xml version = "1.0" encoding = "UTF-8"?>
+<plugin id="xmvc">
+    <events>
+        <event type="listen" id="Modules/Course" />
+        <event type="listen" id="Modules/Group" />
+    </events>
+    <crons>
+        <cron id="multivc_lp" class="ilMultiVcCron" />
+    </crons>
+</plugin>
