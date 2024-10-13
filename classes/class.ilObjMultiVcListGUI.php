@@ -66,15 +66,20 @@ class ilObjMultiVcListGUI extends ilObjectPluginListGUI
      */
     public function getProperties(): array
     {
-        //var_dump($this); exit;
         $props = array();
 
-        //$this->plugin->includeClass("class.ilObjMultiVcAccess.php");
         if (!ilObjMultiVcAccess::checkOnline($this->obj_id) || !ilObjMultiVcAccess::checkConnAvailability($this->obj_id)) {
             $props[] = array("alert" => true, "property" => $this->txt("status"),
                 "value" => $this->txt("offline"));
         }
 
+        $multiVcObj = new ilObjMultiVc($this->ref_id);
+        if ($multiVcObj->getLPMode() == ilObjMultiVc::LP_INACTIVE) {
+            unset(ilLPStatus::$list_gui_cache[$this->obj_id]);
+        }
+
         return $props;
     }
+
+
 }

@@ -13,6 +13,11 @@ $absDirPrefix = str_replace(
 );
 chdir($absDirPrefix);
 
+require_once($absDirPrefix . '/Services/Context/classes/class.ilContext.php');
+require_once($absDirPrefix . "/Services/Init/classes/class.ilInitialisation.php");
+require_once($absDirPrefix . '/Services/Language/classes/class.ilLanguage.php');
+require_once __DIR__ . '/class.ilApiBBB.php';
+
 /**
  * MultiVc initialization ilias class
  * @author  Uwe Kohnle <kohnle@internetlehrer-gmbh.de>

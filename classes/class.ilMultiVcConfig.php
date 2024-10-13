@@ -394,7 +394,9 @@ class ilMultiVcConfig
         $result = $this->db->query("SELECT access_token FROM rep_robj_xmvc_conn WHERE" .
             " id =" . $this->db->quote($connId, 'integer'));
         while ($record = $this->db->fetchAssoc($result)) {
-            return $record['access__token'];
+            if (!is_null($record['access_token'])) {
+                return $record['access_token'];
+            }
         }
         return "";
     }

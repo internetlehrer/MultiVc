@@ -73,8 +73,11 @@ trait DocumentableTrait
                 }
 
                 // Add attributes using DocumentAttributes class
-                foreach ($data['attributes']->getAttributes() as $attrName => $attrValue) {
-                    $presentation->addAttribute($attrName, $attrValue);
+                //fix by Uwe Kohnle arrording to comment in https://github.com/bigbluebutton/bigbluebutton-api-php/commit/8de307719be533fe05400113a0e420734b46ed29
+                if (isset($data['attributes'])) {
+                    foreach ($data['attributes']->getAttributes() as $attrName => $attrValue) {
+                        $presentation->addAttribute($attrName, $attrValue);
+                    }
                 }
             }
             $result = $xml->asXML();

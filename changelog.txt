@@ -38,3 +38,7 @@
 9.0
 - modifications for ILIAS 9
 - removed Support for OpenMeetings
+9.3
+- new icon
+- fix BBB start-presentation
+- fix display of learning progress for objects with deactivated learning progress

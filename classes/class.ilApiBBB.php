@@ -292,6 +292,7 @@ class ilApiBBB implements ilApiInterface
      */
     private function createMeeting(): void
     {
+//        die(var_dump($this->createMeetingParam));
         $this->bbb->createMeeting($this->createMeetingParam);
     }
 
@@ -543,8 +544,12 @@ class ilApiBBB implements ilApiInterface
             $this->createMeetingParam->setMuteOnStart((bool) $value);
         }
 
-        if((bool) (strlen($pdf = $this->settings->getAddPresentationUrl()))) {
-            $this->createMeetingParam->addPresentation($pdf);
+        if(!is_null($this->settings->getAddPresentationUrl()) && strlen($this->settings->getAddPresentationUrl()) > 0) {
+            // see also API preUploadedPresentation
+//            $this->createMeetingParam->setPresentationUploadExternalUrl($this->settings->getAddPresentationUrl());
+//            $this->createMeetingParam->setPresentationUploadExternalDescription($this->settings->getAddPresentationUrl());
+//            $this->createMeetingParam->setPreUploadedPresentationOverrideDefault(true);
+            $this->createMeetingParam->addPresentation($this->settings->getAddPresentationUrl());
         }
 
         if($this->settings->issetAddWelcomeText()) {

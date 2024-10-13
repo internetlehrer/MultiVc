@@ -371,7 +371,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $this->tabs->addSubTab("showContent", $this->txt('meeting'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'showContent'));
             if(!ilMultiVcConfig::getInstance($this->object->getConnId())->getHideUsernameInLogs()) {
                 $this->tabs->addSubTab("userLog", $this->txt('user_log'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'userLog'));
-                $this->tabs->addSubTab("lp_user_results", $this->txt('user_results'), $this->ctrl->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'lpUserResults'));
+                if ($this->isTeams) {
+                    $this->tabs->addSubTab("lp_user_results", $this->txt('user_results'),
+                        $this->ctrl->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'lpUserResults'));
+                }
             }
 
             /*

@@ -384,8 +384,9 @@ Sollen Kurstuten über Webinare in Gruppen informiert werden, müssen diese als 
 
 
 # Icon
+Icon bereitgestellt von ILIAS open source e-Learning e.V.
 
-Icon: https://pixabay.com/de/vectors/treffpunkt-pfeile-sonderziel-147329/
+Altes Icon bis Version 9.2: https://pixabay.com/de/vectors/treffpunkt-pfeile-sonderziel-147329/
 
 ## Anpassen
 
