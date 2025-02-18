@@ -35,3 +35,5 @@
 - fix for BBB guest login
 8.15
 - added Support for MS Teams (see README.md)
+8.16
+- Default settings remain for MS Teams isPasscodeRequired (see MC985483)

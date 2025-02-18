@@ -241,7 +241,8 @@ class ilApiTeams implements ilApiInterface
             "recordAutomatically" => $this->object->isRecordingAllowed(),
             "allowMeetingChat" => $meetingChatMode,
             "allowAttendeeToEnableCamera" => $allowAttendeeToEnableCameraMic,
-            "allowAttendeeToEnableMic" => $allowAttendeeToEnableCameraMic
+            "allowAttendeeToEnableMic" => $allowAttendeeToEnableCameraMic,
+            "joinMeetingIdSettings" => ["isPasscodeRequired" => false]
         ];
         // moderiert: allowedPresenters => roleIsPresenter
 
