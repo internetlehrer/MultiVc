@@ -42,3 +42,5 @@
 - new icon
 - fix BBB start-presentation
 - fix display of learning progress for objects with deactivated learning progress
+9.4
+- Default settings remain for MS Teams isPasscodeRequired (see MC985483)
