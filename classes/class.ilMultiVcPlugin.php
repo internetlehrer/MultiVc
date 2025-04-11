@@ -68,6 +68,8 @@ class ilMultiVcPlugin extends ilRepositoryObjectPlugin
     {
         global $DIC;
 
+        if (!ilMultiVcConfig::hasConnectionType('teams')) { return ; }
+
         $logger = $DIC->logger()->root();
         $tree = $DIC->repositoryTree();
 
