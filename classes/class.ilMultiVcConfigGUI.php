@@ -782,9 +782,9 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
                 $this->object->set_memberBtnFileuploadChoose($form->getInput("cb_member_btn_fileupload_choose"));
                 $this->object->set_memberBtnFileuploadDefault($form->getInput("cb_member_btn_fileupload_default"));
                 $this->object->set_faExpandDefault($form->getInput("cb_fa_expand_default"));
-                $this->object->setSvrPublicUrl($form->getInput("svr_public_url"));
+                $this->object->setSvrPublicUrl(trim($form->getInput("svr_public_url")));
                 $this->object->setSvrPublicPort((int) $form->getInput("svr_public_port"));
-                $this->object->setSvrPrivateUrl($form->getInput("svr_private_url"));
+                $this->object->setSvrPrivateUrl(trim($form->getInput("svr_private_url")));
                 $this->object->setSvrPrivatePort((int) $form->getInput("svr_private_port"));
                 $this->object->setSvrUsername($form->getInput("svr_username"));
                 $this->object->setMaxParticipants((int) $form->getInput("max_participants"));
@@ -846,7 +846,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
                 $this->object->setExtraCmdChoose((bool) $form->getInput("extra_cmd_choose"));
                 $this->object->setExtraCmdDefault((bool) $form->getInput("extra_cmd_default"));
                 $this->object->setStyle($form->getInput("style"));
-                $this->object->setLogo($form->getInput("logo"));
+                $this->object->setLogo(trim($form->getInput("logo")));
                 $this->object->setMeetingLayout((int) $form->getInput('meeting_layout'));
 
                 $nonRoleBasedVc = ilApiMultiVC::setPluginIniSet()['non_role_based_vc'] ?? 0;

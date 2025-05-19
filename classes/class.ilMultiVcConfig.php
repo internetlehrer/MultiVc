@@ -148,6 +148,7 @@ class ilMultiVcConfig
         ],
         'teams' => [
             'moderatedChoose',
+            'extraCmd',
 //            'guestlinkChoose',
             'camOnlyForModeratorChoose',
             'privateChatChoose',
@@ -790,7 +791,6 @@ class ilMultiVcConfig
 
     public function getShowContent(): ?string
     {
-        //echo $this->showContent; exit;
         return $this->showContent;
     }
 

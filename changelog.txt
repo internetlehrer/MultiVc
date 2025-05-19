@@ -44,3 +44,6 @@
 - fix display of learning progress for objects with deactivated learning progress
 9.4
 - Default settings remain for MS Teams isPasscodeRequired (see MC985483)
+9.5
+- lobbyBypassScope for MS Teams configurable
+- Support for eMail-alias of Microsoft Entra
