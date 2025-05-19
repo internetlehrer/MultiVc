@@ -153,6 +153,7 @@ class ilMultiVcConfig
         ],
         'teams' => [
             'moderatedChoose',
+            'extraCmd',
 //            'guestlinkChoose',
             'camOnlyForModeratorChoose',
             'privateChatChoose',

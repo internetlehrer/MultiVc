@@ -1204,17 +1204,41 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $this->form->addItem($this->formItem("lock_disable_cam"));
 
         // If it's Webex add specific form elements
-        if ('webex' !== $this->xmvcConfig->getShowContent() || !$this->hasChoosePermission('extra_cmd')) {
+        if (('webex' !== $this->xmvcConfig->getShowContent() && !$this->isTeams) || !$this->hasChoosePermission('extra_cmd')) {
             $extra = new ilHiddenInputGUI("cb_extra_cmd");
+            if ($this->isTeams) {
+                $info = new ilNonEditableValueGUI($this->txt("teams_lobbybypass"));
+                $infoValue = "everyone";
+                if ($this->object->getExtraCmd() == 1) {
+                    $infoValue = "invited";
+                }
+                elseif ($this->object->getExtraCmd() == 2) {
+                    $infoValue = "organizer";
+                }
+                $info->setValue($this->txt("teams_lobbybypass_" . $infoValue));
+                $this->form->addItem($info);
+            }
         } else {
-            $extra = new ilSelectInputGUI($this->lng->txt("rep_robj_xmvc_webex_user_logout"), "cb_extra_cmd");
-            $extra->setInfo($this->lng->txt("rep_robj_xmvc_webex_logout_user_choose_info"));
-            $extra->setOptions([
-                1 => $this->lng->txt("rep_robj_xmvc_webex_user_do_logout"),
-                0 => $this->lng->txt("rep_robj_xmvc_webex_user_do_not_logout"),
-                2 => $this->lng->txt("rep_robj_xmvc_webex_user_choose_logout")
-            ]);
-            #resetAccessRefreshToken
+            if ($this->isTeams) {
+                $info = new ilNonEditableValueGUI($this->lng->txt("hint"));
+                $info->setValue($this->txt("moderated"));
+                $this->form->addItem($info);
+                $extra = new ilSelectInputGUI($this->txt("teams_lobbybypass"), "cb_extra_cmd");
+                $extra->setOptions([
+                    0 => $this->txt("teams_lobbybypass_everyone"),
+                    1 => $this->txt("teams_lobbybypass_invited"),
+                    2 => $this->txt("teams_lobbybypass_organizer")
+                ]);
+            } else {
+                $extra = new ilSelectInputGUI($this->lng->txt("rep_robj_xmvc_webex_user_logout"), "cb_extra_cmd");
+                $extra->setInfo($this->lng->txt("rep_robj_xmvc_webex_logout_user_choose_info"));
+                $extra->setOptions([
+                    1 => $this->lng->txt("rep_robj_xmvc_webex_user_do_logout"),
+                    0 => $this->lng->txt("rep_robj_xmvc_webex_user_do_not_logout"),
+                    2 => $this->lng->txt("rep_robj_xmvc_webex_user_choose_logout")
+                ]);
+                #resetAccessRefreshToken
+            }
         }
         $this->form->addItem($extra);
 
@@ -1363,7 +1387,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $this->object->setGuestlink((bool)$this->form->getInput("cb_guestlink"));
             }
             if($this->hasChoosePermission('extra_cmd')) {
-                $this->object->setExtraCmd($this->form->getInput("cb_extra_cmd"));
+                $this->object->setExtraCmd((int) $this->form->getInput("cb_extra_cmd"));
             }
             if($this->hasChoosePermission('recording')) {
                 $this->object->setRecord($this->checkRecordChooseValue((bool)$this->form->getInput("cb_moderated"), (bool)$this->form->getInput("cb_recording")));

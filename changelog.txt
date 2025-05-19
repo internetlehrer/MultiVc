@@ -37,3 +37,6 @@
 - added Support for MS Teams (see README.md)
 8.16
 - Default settings remain for MS Teams isPasscodeRequired (see MC985483)
+8.17
+- lobbyBypassScope for MS Teams configurable
+- Support for eMail-alias of Microsoft Entra

@@ -383,6 +383,13 @@ teams_client_id_info#:#Add the Client ID here.
 teams_client_secret#:#Client Secret
 teams_client_secret_info#:#Add the Client Secret here.
 teams_join_links#:#You can join directly here:{br}{JOIN_URL}{br}&nbsp;{br}or you click on: {PERMANENT_LINK}
+teams_lobbybypass#:#Bypass the meeting lobby
+teams_lobbybypass_choose#:#Bypass the meeting lobby: Selection option
+teams_lobbybypass_choose_info#:#Activate this option if users with write access should have the selection 'Bypass the meeting lobby' under Settings.
+teams_lobbybypass_default#:#Bypass the meeting lobby: Default setting
+teams_lobbybypass_everyone#:#Everyone is admitted into the meeting. No participants are placed in the meeting lobby.
+teams_lobbybypass_invited#:#Only invited people are admitted into the meeting. All other participants are placed in the meeting lobby.
+teams_lobbybypass_organizer#:#Participants are placed in the meeting lobby. Administrators and tutors bypass the meeting lobby.
 teams_meetings_list_downloaded#:#Meetings successfully downloaded from Teams.
 teams_tenant_id_info#:#Add the Tenant ID here.
 teams_tenant_id#:#Tenant ID

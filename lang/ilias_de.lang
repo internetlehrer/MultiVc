@@ -379,10 +379,17 @@ svr_salt#:#Passwort (secret) des BBB-Servers
 sysadmin_perm_choose_all#:#Als AdministratorIn können Sie alle Eigenschaften bei diesem Objekt bearbeiten.
 tab_close#:#Bitte schlie&szligen Sie nun dieses Fenster bzw. diesen Tab.
 teams_client_id#:#Client-ID
-teams_client_id_info#:#Fügen Sie hier die Client-ID ein.
+teams_client_id_info#:#Fügen Sie hier die Anwendungs-ID / Client-ID ein.
 teams_client_secret#:#Client-Secret
 teams_client_secret_info#:#Unmittelbar nachdem Sie in Entra bei der für MultiVc angelegten App einen geheimen Schlüssel angelegt haben, können Sie den Wert des Schlüssels kopieren und hier eintragen.
 teams_join_links#:#Hier können Sie direkt beitreten:{br}{JOIN_URL}{br}&nbsp;{br}oder Sie klicken auf: {PERMANENT_LINK}
+teams_lobbybypass#:#Wartebereich umgehen
+teams_lobbybypass_choose#:#Wartebereich umgehen: Auswahlmöglichkeit
+teams_lobbybypass_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Wartebereich umgehen' haben sollen. Damit wird geregelt, wer im Wartebereich / in der Besprechungslobby platziert wird.
+teams_lobbybypass_default#:#Wartebereich umgehen: Voreinstellung
+teams_lobbybypass_everyone#:#Jeder wird zur Besprechung zugelassen. Niemand wird im Wartebereich platziert.
+teams_lobbybypass_invited#:#Nur eingeladene Personen werden in die Besprechung aufgenommen und umgehen den Wartebereich.
+teams_lobbybypass_organizer#:#Teilnehmende werden im Wartebereich platziert. Administrierende und Betreuende umgehen den Wartebereich.
 teams_meetings_list_downloaded#:#Bei Teams vorhandene Online-Meetings erfolgreich eingebunden
 teams_tenant_id_info#:#Fügen Sie hier die Tenant-ID ein. Alternative Bezeichnungen sind: Verzeichnis-ID (Mandant).
 teams_tenant_id#:#Tenant-ID

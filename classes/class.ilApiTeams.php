@@ -115,10 +115,23 @@ class ilApiTeams implements ilApiInterface
         try {
             $graph = new Graph();
             $graph->setAccessToken($this->getAccessToken());
-            $user = $graph->createRequest("GET", "/users('" . $mail . "')")
+            $users = [];
+            $users = $graph->createRequest("GET", "/users?\$filter=mail eq '" . $mail."'")
                           ->setReturnType(Model\User::class)
                           ->execute();
-            return $user;
+            if(empty($users[0])) {
+                //ALIAS
+                $users = $graph->createRequest("GET", "/users?\$filter=proxyAddresses/any(x:x eq 'smtp:" . $mail."')")
+                              ->setReturnType(Model\User::class)
+                              ->execute();
+            }
+            if(empty($users[0])) {
+                $user = $graph->createRequest("GET", "/users('" . $mail . "')")
+                    ->setReturnType(Model\User::class)
+                    ->execute();
+                return $user;
+            }
+            return $users[0];
         } catch (\Exception $e) {
             die($e->getMessage());
             return null;
@@ -220,10 +233,16 @@ class ilApiTeams implements ilApiInterface
         $allowedPresenters = "everyone";
         $isDialInBypassEnabled = true;
         $lobbyBypassScope = "everyone";
-        if ($this->object->get_moderated()) {
-            $allowedPresenters = "roleIsPresenter";
+        if ($this->object->getExtraCmd() == 1) {
+            $isDialInBypassEnabled = false;
+            $lobbyBypassScope = "invited";
+        }
+        elseif ($this->object->getExtraCmd() == 2) {
             $isDialInBypassEnabled = false;
             $lobbyBypassScope = "organizer";
+        }
+        if ($this->object->get_moderated()) {
+            $allowedPresenters = "roleIsPresenter";
         }
         $allowAttendeeToEnableCameraMic = true;
         if ($this->object->isCamOnlyForModerator()) {

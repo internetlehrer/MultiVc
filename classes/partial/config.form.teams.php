@@ -55,6 +55,20 @@ $cb->setRequired(false);
 $cb->setInfo($pl->txt("moderated_default_info"));
 $combo->addSubItem($cb);
 
+$cb = new ilCheckboxInputGUI($pl->txt("teams_lobbybypass_choose"), "extra_cmd_choose");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("teams_lobbybypass_choose_info"));
+$combo->addSubItem($cb);
+
+$si = new ilSelectInputGUI($pl->txt("teams_lobbybypass_default"), "extra_cmd_default");
+$si->setOptions([
+    0 => $pl->txt("teams_lobbybypass_everyone"),
+    1 => $pl->txt("teams_lobbybypass_invited"),
+    2 => $pl->txt("teams_lobbybypass_organizer")
+]);
+$combo->addSubItem($si);
+
+
 // guestlink
 //$cb = new ilCheckboxInputGUI($pl->txt("guestlink_choose"), "guestlink_choose");
 //$cb->setRequired(false);
