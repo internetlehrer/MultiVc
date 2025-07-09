@@ -155,6 +155,11 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         $result = $ilDB->query("SELECT * FROM rep_robj_xmvc_data WHERE id = " . $ilDB->quote($this->getId(), "integer"));
         while ($record = $ilDB->fetchAssoc($result)) {
             $settings = new ilMultiVcConfig($record["conn_id"]);
+            if(!isset($settings->option)) {
+                //Meeting Type for a Virtual Meeting Object does not exist anymore
+                $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('error') . ': Meeting Type for a MultiVc Object does not exist anymore', true);
+                $this->dic->ctrl()->redirectToURL(ILIAS_HTTP_PATH);
+            }
             $this->option = $settings->option;
             $this->setPrivateChat($settings->isPrivateChatDefault());
             $this->setRecord($settings->isRecordDefault());
@@ -1671,7 +1676,10 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
             #if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
             return false;
         }
-        $currValues = json_decode($currEntry[0]['participants'], 1);
+        $currValues = [];
+        if (!is_null($currEntry[0]['participants'])) {
+            $currValues = json_decode($currEntry[0]['participants'], 1);
+        }
         $currValues['moderator'][$userId] = $moderator;
         #$currValues['moderator'][$this->dic->user()->getId()] = $moderator;
 

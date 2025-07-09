@@ -82,7 +82,7 @@ class ilMultiVcOverviewUsesTableGUI extends ilTable2GUI
         );
 
         // Status
-        $StatusHtml = !(bool) $a_set['isInTrash'] ? (bool) $a_set['is_online'] ? 'online' : 'offline' : '<img src="templates/default/images/icon_trash.svg" style="height: 16px; width: auto; margin:0 5px 4px" />';
+        $StatusHtml = !(bool) $a_set['isInTrash'] ? (bool) $a_set['is_online'] ? 'online' : 'offline' : '<img src="templates/default/images/standard/icon_trash.svg" style="height: 16px; width: auto; margin:0 5px 4px" title="trash"/>';
         $this->tpl->setVariable('TXT_STATUS', '<span class="small">' . $StatusHtml . '</span>');
 
     }

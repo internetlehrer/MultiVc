@@ -1795,7 +1795,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if(isset($upcomingSession[0])) {
             $upcomingSession[0]['ref_id'] = $this->object->getRefId();
             $sess = $upcomingSession[0];
-            $participants = json_decode($upcomingSession[0]['participants'], 1);
+            if (!is_null($upcomingSession[0]['participants'])) {
+                $participants = json_decode($upcomingSession[0]['participants'], 1);
+            }
         }
 
         $userId = $this->dic->user()->getId();
@@ -2413,7 +2415,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @throws ilTemplateException
      * @throws Exception
      */
-    private function getJoinContent(ilApiBBB|ilApiOM|ilApiWebex|ilApiTeams $vcObj): string
+    private function getJoinContent(ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams $vcObj): string
     {
         $sessAuthUserIsValid = true;
 

@@ -47,3 +47,8 @@
 9.5
 - lobbyBypassScope for MS Teams configurable
 - Support for eMail-alias of Microsoft Entra
+9.6
+- fix issues for edudip
+- fix 'overview uses' for deleted meeting types
+- fix BBB guestlink: Show message for objects which are deleted or offline
+- objects in trash can not be restored if meeting type was deleted

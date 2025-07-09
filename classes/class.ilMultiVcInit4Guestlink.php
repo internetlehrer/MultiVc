@@ -401,6 +401,16 @@ class JoinMeetingByGuestLink
             $this->httpExit(404);
         }
 
+        if ($this->dic->repositoryTree()->isDeleted($this->refId)) {
+            die (ilLanguage::_lookupEntry($this->userLang, 'common', 'error') . ': ' .
+                ilLanguage::_lookupEntry($this->userLang, 'common', 'msg_obj_already_deleted'));
+        }
+        if (!$this->pluginObject->getOnline()) {
+            die (ilLanguage::_lookupEntry($this->userLang, 'common', 'error') . ': ' .
+                ilLanguage::_lookupEntry($this->userLang, 'common', 'obj') . ' ' .
+                ilLanguage::_lookupEntry($this->userLang, 'common', 'offline'));
+        }
+
         $this->pluginConfig = ilMultiVcConfig::getInstance($this->pluginObject->getConnId());
 
         // exit if not valid
