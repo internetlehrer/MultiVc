@@ -1,0 +1,492 @@
+<!-- language file start -->
+add_presentation_url#:#Uvodna prezentacija
+add_token#:#Dodaj token
+add_token_user#:#Novi moderator / token
+add_welcome_text#:#Personalizirana poruka dobrodošlice
+adm_info_appointment#:#Kao administrator ili tutor, možete pokrenuti sobu. Sudionici, međutim, mogu otvoriti sobu samo tijekom sesije.
+assigned_roles_info#:#Stvaranje ove MultiVc konfiguracije može se ograničiti na korisnike koji pripadaju jednoj ili više odabranih uloga.
+assigned_roles#:#Dodijeljene uloge
+authorize#:#ovlastiti
+bbb_default_server#:#Standardni BBB poslužitelj
+bbb_guest_password_info#:#Dopušteni su alfanumerički i posebni znakovi, kao što su: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Lozinka za gosta
+bbb_secret_expiration_date#:#Datum isteka
+bbb_secret_expiration_date_info#:#Lozinka vrijedi do odabranog datuma, uključujući i taj datum.
+bbb_secret_expired_msg#:#Lozinka gosta je istekla.
+bbb_secret_expires_info#:#Odaberite ovu opciju ako lozinka treba imati ograničeno razdoblje važenja.
+bbb_secret_expires#:#Datum isteka
+big_blue_button#:#BigBlueButton WebRTC
+btn_chat#:#Chat se može prikazati/sakriti
+btn_chat_choose#:#Chat se može prikazati/sakriti: Mogućnost odabira
+btn_chat_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati mogućnost 'Prikaži/sakrij chat' u postavkama.
+btn_chat_default#:#Razgovor se može prikazati/sakriti: Zadana postavka
+btn_chat_default_info#:#Radi pojednostavljenja korištenja, korisno je ne aktivirati ovu opciju i uvijek prikazivati ​​chat.
+btn_chat_info#:#Omogućite ovu opciju ako želite da se gumb za prikaz/skrivanje chata prikazuje.
+btn_locationshare_choose_info#:#Ova opcija bi obično trebala biti onemogućena.
+btn_locationshare_choose#:#Mogućnost lokacije: Odabir
+btn_locationshare_default_info#:#Ovu opciju aktivirajte tek nakon konzultacija sa službenikom za zaštitu podataka.
+btn_locationshare_default#:#Lokacija opcije: Zadano
+btn_locationshare_info#:#Ova opcija omogućuje korisnicima dijeljenje svoje trenutne lokacije s drugima u chatu i da ih drugi pozovu na zaseban sastanak. Iz razloga privatnosti, ovu opciju treba omogućiti samo s oprezom.
+btn_locationshare#:#Lokacija opcije
+btn_settings_choose#:#Postavke sobe: Mogućnost odabira
+btn_settings_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima pisanja trebaju imati opciju 'Postavke u sobi' u postavkama.
+btn_settings_default#:#Postavke sobe: Zadano
+btn_settings_default_info#:#Zadana postavka općenito bi trebala biti da opcija i gumb za postavke nisu aktivni.
+btn_settings#:#Postavke sobe
+btn_settings_info#:#Omogućite ovu opciju ako želite da gumbi i opcije postavki budu vidljivi u sobi. To obično nije potrebno jer se ime i slika korisnika automatski nasljeđuju iz ILIAS-a.
+btntext_concurrent_users_check#:#Provjeri dostupnost
+btntext_guest_login_button#:#Prijavite se kao gost
+btntext_join_meeting#:#Pridruži se sastanku
+btntext_join_webinar#:#Pridružite se webinaru
+btntext_start_meeting#:#Započni sastanak
+btntext_start_webinar#:#Započni webinar
+cam_mic_only_for_moderator_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima pisanja trebaju imati odgovarajući odabir u postavkama. Ova opcija bi trebala biti omogućena u većini slučajeva.
+cam_mic_only_for_moderator_choose#:#Sudionici ne smiju aktivirati kameru i mikrofon: Opcija
+cam_mic_only_for_moderator_default_info#:#Organizatori mogu selektivno dopustiti sudionicima korištenje mikrofona i/ili kamere. Sudionici ne mogu dijeliti ili emitirati bez potvrde. Ova je opcija korisna za događaje s vrlo velikim brojem sudionika.
+cam_mic_only_for_moderator_default#:#Sudionici ne smiju aktivirati kameru i mikrofon: zadana postavka
+cam_mic_only_for_moderator_info#:#Organizatori će selektivno omogućiti sudionicima korištenje mikrofona i/ili kamere. Sudionici ne mogu dijeliti ili emitirati bez potvrde.
+cam_mic_only_for_moderator#:#Sudionici ne smiju aktivirati kameru i mikrofon.
+cam_only_for_moderator_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Kamera samo za moderatore' u postavkama. Ova opcija bi trebala biti omogućena u većini slučajeva.
+cam_only_for_moderator_choose#:#Kamera samo za moderatore: Mogućnost odabira
+cam_only_for_moderator_default_info#:#Ovu opciju treba onemogućiti u većini slučajeva, a omogućiti samo ako se očekuju problemi s performansama s velikim brojem sudionika. Moderatori uvijek mogu promijeniti ovu postavku tijekom sesije.
+cam_only_for_moderator_default#:#Kamera samo za moderatore: Zadana postavka
+cam_only_for_moderator_info#:#Preporučuje se za sastanke s vrlo velikim brojem ljudi.
+cam_only_for_moderator_zoom#:#Kamera samo za domaćine
+cam_only_for_moderator_zoom_info#:#Preporučuje se za sastanke s vrlo velikim brojem ljudi!
+cam_only_for_moderator#:#Kamera samo za moderatore
+cancel#:#otkazati
+cat_create_xmvc#:#Izradite virtualnu sobu za sastanke
+chat_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Dopusti chat' u Postavkama.
+chat_choose#:#Dopusti chat: Opcija
+chat_default_info#:#Ako je omogućeno, ljudi mogu međusobno razgovarati.
+chat_default#:#Dopusti chat: Zadana postavka
+chat_info#:#Ljudi mogu međusobno razgovarati.
+chat#:#Dopusti chat
+conf_availability_0#:#Nije dostupno
+conf_availability_1#:#Postojeće dopušteno
+conf_availability_2#:#Mogu se generirati novi
+conf_availability#:#Dostupnost
+config_help_begin#:#Objašnjenje u odjeljku Postavke glasi:
+configure_add#:#Izradi konfiguraciju
+configure#:#konfiguracija
+conf_meeting_layout_1#:#PRILAGOĐENI_RASPORED
+conf_meeting_layout_2#:#PAMETNI_RASPORED
+conf_meeting_layout_3#:#FOKUS_PREZENTACIJE
+conf_meeting_layout_4#:#VIDEO_FOCUS
+conf_meeting_layout#:#Raspored sastanka
+conf_title#:#titula
+conn_deleted#:#Vrsta sastanka je izbrisana.
+conn_id#:#Vrsta sastanka
+copy#:#Kopirati
+create_type#:#Definirajte novu vrstu sastanka
+cronjob_description#:#Kada se aktivira, vrijeme provedeno na stranici može se koristiti za izračun napretka u učenju.
+cronjob_title#:#MultiVc cron zadatak za određivanje napretka u učenju prilikom korištenja MS Teamsa ili Zooma
+crs_create_xmvc#:#Izradite virtualnu sobu za sastanke
+custom_style#:#Prilagođeni stil
+custom_style_info#:#Ovdje možete definirati CSS parametre stila ili CSS datoteku. Za datoteku mora biti naveden URL koji počinje s https://. Nadalje, parametar "displayBrandingArea" mora biti postavljen na true u datoteci settings.yml BBB instalacije.
+delete_conn#:#Izbrisati vrstu sastanka?
+delete#:#Izbrisati
+delete_sess_user_changed#:#Radnja prilikom promjene vlasništva
+delete_sess_user_changed_info#:#Kada korisnik promijeni korisnika, sve kreirane sesije se brišu.
+delete_token#:#Izbriši token
+delete_type#:#Izbriši vrstu sastanka
+disable_sip_info#:#Ova opcija vam omogućuje da onemogućite SIP dial-up. Telefonsko dial-up tada više neće biti moguće.
+disable_sip#:#Deaktivirajte telefonsku dial-up vezu
+display_name#:#Prikazano ime
+download#:#Preuzmi
+download_video#:#Preuzmi snimku
+duration#:#Duljina vremena
+edit#:#Uredi
+edit_properties#:#Uredi svojstva
+edudip_host_email#:#e-mail adresa edudipa
+edudip_host_email_hidden_info#:#Adresa e-pošte koja se koristi za autorizaciju vidljiva je samo vlasnicima i administratorima objekta.
+edudip_host_email_info#:#Vaša adresa e-pošte poznata edudipu mora odgovarati ovoj.
+edudip_meetings_list_downloaded#:#Webinari koji su već dostupni na edudip-u uspješno su integrirani.
+edudip_meetings_list_unavailabe#:#Pristup postojećim webinarima na edudipu trenutno nije moguć.
+end_time#:#Kraj
+endtime#:#Vremena završetka
+err_msg_displayname#:#Molimo unesite svoje ime
+err_msg_guest_password#:#Lozinka gosta je netočna.
+err_msg_guest_password_expired#:#Lozinka gosta je istekla.
+error_admin_no_access_token#:#Molimo vas da obavijestite svog administratora: Nedostaje token
+error_object_no_access_token#:#Molimo izvršite autorizaciju u svojstvima objekta.
+error_object_no_host_email#:#Molimo potvrdite adresu e-pošte za korisnika hosta u svojstvima objekta.
+error_start_meeting#:#Došlo je do pogreške prilikom pokretanja sastanka.
+error_start_webinar#:#Došlo je do pogreške prilikom pokretanja webinara.
+ext_provider_token_user#:#Korisnik / Pristupni token
+ext_provider_token_user_info#:#Unesite adresu e-pošte korisnika s moderatorskom licencom, a zatim njihov pristupni token.
+fa_expand_default_info#:#Ova opcija bi općenito trebala biti onemogućena. Također, u mnogim slučajevima prikaz određenih područja (npr. chata) ne može se povećati.
+fa_expand_default#:#Maksimiziranje prikaza područja: Zadana postavka
+fold_create_xmvc#:#Izradite virtualnu sobu za sastanke
+grp_create_xmvc#:#Izradite virtualnu sobu za sastanke
+guest_displayname_info#:#Napomena: Detaljni podaci o naslovu mogu dovesti do poteškoća s upotrebljivošću zbog ograničenog prostora dostupnog za naziv u BigBlueButtonu.
+guest_displayname_input#:#Titula Ime Prezime
+guest#:#Gost
+guestlink_choose#:#Mogućnost odabira poveznice za goste
+guestlink_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Dopusti vezu za goste' u Postavkama.
+guestlink_default#:#Zadana veza za goste
+guestlink_default_info#:#Ova opcija bi u većini slučajeva trebala biti onemogućena. Neovlaštena upotreba trebala bi biti u velikoj mjeri spriječena. Gosti se mogu pridružiti moderiranoj sobi samo kao sudionici. Moderator već mora biti prisutan. Gosti moraju pristati na uvjete korištenja, koji su pohranjeni kao ILIAS jezična varijabla. Za uređivanje idite na Administracija -> Jezici. Kliknite željeni jezik i unesite 'rep_robj_xmvc_terms_of_use' u polje 'Identifikator'. Zatim kliknite 'Primijeni filtar' i uredite tekst.
+guestlink#:#Veza za goste
+guestlink_info#:#Moderatori mogu pozvati goste putem poveznice.
+guest_link_pw_info#:#Gosti se moraju prijaviti s ovom lozinkom.
+guest_password_input_info#:#Molimo unesite lozinku za gostujuću poveznicu ovdje.
+guest_password_input#:#Lozinka za gosta
+headline_welcome_meeting#:#Dobrodošli u salu za sastanke!
+headline_welcome_webinar#:#Dobrodošli na webinar!
+hide_recs_until_date#:#Ne prikazuj snimke dok
+hide_recs_until_date_info#:#Snimke do datuma snimanja navedenog ovdje neće biti prikazane.
+hide_username_logs#:#Sakrij pregled korisnika
+hide_username_logs_info#:#Ako je odabrano, pregled korisnika vidljiv je samo u administraciji dodataka. U suprotnom, pregled korisnika prikazuje se i za objekt MultiVc.
+hint_availability_recs#:#Za pitanja i nedoumice u vezi s pristupom snimkama, obratite se administratorima ovih BigBlueButton sastanaka.
+hint#:#Tekst bilješke
+hint_pub_recs#:#Dijeljenje poveznica za snimke nije dopušteno.
+info_add_presentation_url#:#Učitajte vlastitu uvodnu prezentaciju putem URL-a. Struktura URL-a mora slijediti ovaj format: <i>https://vasa.domena/put_do/prezentacije.pdf</i>
+info_add_welcome_text#:#Ova personalizirana poruka dobrodošlice može se definirati putem ILIAS jezične varijable. Idite na Administracija -> Jezici. Kliknite na željeni jezik i unesite 'rep_robj_xmvc_welcome_text' u polje 'Identifikator'. Zatim kliknite 'Primijeni filtar' i uredite tekst.
+info_availability#:#Ovo kontrolira dostupnost vrste sastanka u časopisu. Starije vrste mogu se postaviti na "Postojeće dopušteno" umjesto da se izbrišu.
+info_bottom_headline#:#Važne upute za korištenje:
+info_bottom#:#<ul><li>Molimo vas da <b>koristite slušalice</b> kako biste izbjegli dosadne povratne informacije ili jeke!</li><li><b>Ako vam je internetska veza loša, trebali biste isključiti kameru (web kameru), a ako je veza još lošija, trebali biste koristiti konferencijski poziv za prijenos zvuka.</li></ul>
+info_concurrent_users_available#:#Broj slobodnih mjesta u virtualnoj učionici:
+info_concurrent_users_none#:#Trenutno nema više mjesta za registraciju. Molimo Vas da ponovno provjerite dostupnost za jednu minutu klikom na gumb "Pridruži se sastanku".
+info_delete_vc_sure#:#Jeste li sigurni? Sljedeća virtualna soba za sastanke bit će izbrisana:
+info_hint#:#Objašnjavajući tekst se pojavljuje istaknut u boji iznad sadržaja stranice objekta.
+info_max_duration#:#Sastanak će završiti nakon navedenog broja sati i minuta. Za neograničeno trajanje, unesite '0' za svaki.
+info_max_participants#:#Maksimalan broj sudionika po sastanku. Za neograničen broj sudionika unesite '0'.
+info_max_participants_webinar#:#Maksimalan broj sudionika po webinaru. Molimo pogledajte svoj edudip ugovor.
+info_meeting_layout#:#Kontrolira zadani raspored za sastanak.
+info_om_svr_public_url#:#Primjer: https://www.example.com/
+info_platform_chg_reset_data#:#Vaš odabir
+info_platform_chg_reset_data_o#:#Imajte na umu da će se prilikom promjene WebRTC platforme sve postavke vratiti na zadane vrijednosti, a svi pohranjeni podaci obrasca bit će izbrisani. Za promjenu WebRTC platforme prvo morate potvrditi novi odabir klikom na "Spremi". U sljedećem koraku, prethodna konfiguracija bit će prebrisana ponovnim spremanjem.
+info_requirements_bbb#:#BigBlueButton koristi otvoreni standard WebRTC, koji podržava sve veći broj preglednika. Trenutno se preporučuju Google Chrome, preglednik temeljen na Chromiumu, Microsoft Edge ili, uz ograničenja, Mozilla Firefox. Također možete koristiti Safari Mobile od iOS-a 12.2 i Chrome Mobile od Androida 6.0. Microsoft Internet Explorer i starije verzije Edgea nisu podržane. Vaš vatrozid ne smije blokirati sljedeće portove: TCP/IP portove 80/443 (za HTTP/HTTPS) i UDP portove u rasponu 16384 - 32768. Za dijeljenje zaslona (dijeljenje radne površine) trebali biste imati visokoučinkovitu internetsku vezu. Također preporučujemo da moderatori i prezenteri koriste žičanu mrežnu vezu (ne Wi-Fi).
+info_requirements_edudip#:#<ul><li>edudip koristi otvoreni standard WebRTC, koji podržava sve veći broj preglednika. Trenutno se preporučuju Google Chrome, preglednik temeljen na Chromiumu, Microsoft Edge ili, uz ograničenja, Mozilla Firefox. Microsoft Internet Explorer i starije verzije Edgea nisu podržane.</li><li>Za više informacija obratite se podršci za edudip.</li>
+info_requirements_headline#:#Tehnički zahtjevi:
+info_requirements_not_ok#:#<b>Virtualnu sobu za sastanke možete koristiti samo u vrlo ograničenoj mjeri s preglednikom koji trenutno koristite.</b><br/>Za najbolje rezultate koristite Google Chrome ili, uz ograničenja, Mozilla Firefox! Ako nemate prava za instaliranje preglednika, možete koristiti Google Chrome Portable.<br/>Ako nije moguće promijeniti preglednik, pokrenite virtualnu sobu za sastanke i u chatu napišite da trenutno nemate odgovarajući preglednik i da vas nitko ne treba čekati.
+info_requirements_om#:#<ul><li>Openmeetings koristi otvoreni standard WebRTC, koji podržava sve veći broj preglednika. Trenutno se preporučuju Google Chrome ili, uz ograničenja, Mozilla Firefox. Možete koristiti i najnoviju verziju Microsoft Edgea, kao i Safari Mobile (iOS 12.2 i noviji) i Chrome Mobile (Android 6.0 i noviji). Microsoft Internet Explorer i starije verzije Edgea nisu podržane.</li><li>Vaš vatrozid ne smije blokirati sljedeće portove: TCP/IP portove 8888/5443 (za HTTP/HTTPS), TCP/UDP 3478 i UDP portove u rasponu 49152–65535.</li><li>Za dijeljenje zaslona (dijeljenje radne površine) trebali biste koristiti Google Chrome i imati visokoučinkovitu internetsku vezu. Također preporučujemo da moderatori i prezenteri koriste žičanu mrežnu vezu (ne Wi-Fi).
+info_requirements_partly#:#Preporučujemo korištenje Google Chromea kao preglednika ili, uz ograničenja, Mozilla Firefoxa. Morat ćete sami utvrditi je li i u kojoj mjeri vaš trenutni preglednik prikladan za korištenje virtualne sobe za sastanke. Molimo vas da svoja iskustva prijavite dostupnoj tehničkoj podršci.
+info_requirements_teams#:#Moderatori moraju koristiti aplikaciju Teams. Sudionici mogu pokrenuti Teams putem svog preglednika. Za dijeljenje zaslona (dijeljenje radne površine) trebali biste imati visokoučinkovitu internetsku vezu. Također preporučujemo da moderatori i prezenteri koriste žičanu mrežu (ne Wi-Fi).
+info_requirements_webex#:#<ul><li>Preporučeni preglednici: Chrome, Edge, Firefox</li></ul>
+info_requirements_zoom#:#Molimo vas da se prijavite na Zoom koristeći adresu e-pošte koju ste registrirali kod ILIAS-a. To je:
+info_requirements_zoom_lp#:#Vaša prisutnost na ovom sastanku mora biti zabilježena kako bi se utvrdio vaš napredak u učenju. Pravo na bodove ostvarit ćete samo ako ste prisutni {%} predviđenog vremena između početka i kraja sastanka.
+info_set_owner#:#Vlasnik registriran
+info_svr_private_port#:#Primjer: 443
+info_svr_private_url#:#Uz iznimku Amazon EC2, ovo uvijek odgovara javnom URL-u.
+info_svr_public_port#:#Primjer: 443
+info_svr_public_url#:#Primjer: https://www.example.com/bigbluebutton/
+info_svr_salt_om#:#Primjer: dZ#ls2W!k6l
+info_svr_salt#:#ssh: bbb-conf --tajna
+info_svr_username#:#Primjer: om_admin
+info_title#:#Ovaj naslov se prikazuje prilikom odabira vrste sastanka za nove objekte.
+info_top_moderated_edudip#:#Imate prava moderiranja i možete započeti webinar.
+info_top_moderated_m_bbb#:#Ovo je moderirana soba i u sobu za sastanke možete ući samo kada je u sobi osoba s moderatorskim funkcijama.
+info_top_moderated_m_om#:#Ovo je moderirana soba i u sobu za sastanke možete ući samo kada je u sobi osoba s moderatorskim funkcijama.
+info_top_moderated_webex#:#Imate moderatorska prava i možete započeti sastanak. Za to vam je potreban račun kod Webexa ili web-mjesta koje hostira Webex. Sudionici se mogu pridružiti tek nakon što moderator započne sastanak.
+info_top_moderated_zoom#:#Ovo je webinar. Webinar možete započeti odmah.
+info_top_moderator_bbb#:#<b>Ovo je moderirana soba i vi imate ulogu moderatora u njoj.</b><br/>Osobe bez uloge moderatora mogu ući u sobu za sastanke samo kada je osoba s ulogom moderatora već u sobi.
+info_top_moderator_om#:#<b>Ovo je moderirana soba i vi imate ulogu moderatora u njoj.</b><br/>Osobe bez uloge moderatora mogu ući u sobu za sastanke samo kada je osoba s ulogom moderatora već u sobi.
+info_top_not_moderated_bbb#:#Ova soba za sastanke nije moderirana. Stoga imate i moderatorske privilegije i posljedično proširena prava. Možete ograničiti prava drugih sudionika i prekinuti sesiju. Molimo vas da ova proširena prava koristite odgovorno.
+info_top_not_moderated_om#:#Ova soba za sastanke nije moderirana. Stoga imate i moderatorske privilegije i posljedično proširena prava. Možete ograničiti prava drugih sudionika i prekinuti sesiju. Molimo vas da ova proširena prava koristite odgovorno.
+info_webex_client_id#:#ID klijenta možete pronaći u podacima za vašu Webex integraciju (npr. admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#Tajna klijenta prikazuje se jednom nakon stvaranja/ažuriranja Webex integracije.
+info_webex_redirect_uri#:#Dodajte ovu adresu kao URI za preusmjeravanje u postavkama integracije.
+info_webex_site_url#:#Naziv hostane stranice. Poddomena prije .webex.com, npr. Npr. <b>vaša-tvrtka</b>.webex.com ili <b>vaša-tvrtka</b>.moja.webex.com
+integration_admin_auth_method_info#:#Autorizaciju provodi administrator putem postavki dodatka MultiVc. Tijekom OAuth procesa traže se sljedeći opsezi:
+integration_admin_auth_scopes_info#:#(slijedi za administratore) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write meeting:admin_recordings_write
+integration_auth_method#:#Autorizacija integracije
+integration_auth_methods_info#:#Autorizaciju može izvršiti: - administrator putem postavki MultiVc dodatka - korisnik putem postavki MultiVc objekta. Tijekom odgovarajućeg OAuth procesa zatraženi su sljedeći opsezi:
+integration_user_auth_method_info#:#Autorizaciju provodi korisnik putem postavki MultiVc objekta. Tijekom OAuth procesa traže se sljedeći opsezi:
+integration_user_auth_scopes_info#:#spark:kms sastanak:rasporedi_čitanje sastanak:rasporedi_pisanje sastanak:čitanje_sudionika sastanak:pisanje_sudionika sastanak:čitanje_preferencija sastanak:čitanje_preferencija
+join_time#:#Sudjelovanje od
+leave_time#:#Sudjelovanje do
+list_token_user_info#:#Popis postojećih moderatora. Pohranjeni tokeni ne mogu se prebrisati. Ako je potrebno, prvo izbrišite unos klikom na X.
+list_token_user#:#Registrirani moderatori
+lock_disable_cam_choose_info#:#Definirajte je li postavka "Zaključaj kameru sudionika" dostupna za objekt.
+lock_disable_cam_choose#:#Mogućnost odabira zaključavanja kamere sudionika
+lock_disable_cam_default_info#:#Zadanu postavku postavite na "Zaključaj kameru sudionika".
+lock_disable_cam_default#:#Zaključaj kameru sudionika (zadana postavka)
+lock_disable_cam_info#:#Aktiviranjem ove opcije, kamera (web kamera) sudionika se blokira prema zadanim postavkama.
+lock_disable_cam#:#Zaključaj kameru sudionika
+locked_by#:#Blokirano od strane
+locked#:#Blokiran
+lock#:#Zaključaj
+logo_url_info#:#Ovdje unesite URL svog logotipa. URL mora započeti s https://.
+logo_url#:#URL logotipa
+lp_active#:#Aktivan
+lp_active_info#:#Status "U tijeku" postavlja se čim se pristupi sadržaju. Status "Obrađeno" određen je satima aktivnosti.
+lp_inactive#:#Neaktivno
+lp_inactive_info#:#Za ovaj objekt nije spremljen napredak učenja.
+lp_mode#:#način rada
+lp_time_info#:#Ova postotna vrijednost, temeljena na mogućim vremenima prisutnosti, mora biti prekoračena da bi se status postavio na "Obrađeno".
+lp_time#:#Prag za "Uređeno"
+max_duration#:#Maksimalno trajanje
+max_meetings#:#Maksimalan broj soba za sastanke
+max_participants#:#Maks. sudionika
+max_users#:#Maksimalan broj korisnika
+meeting_collision#:#Došlo je do pogreške. Sesija je već zakazana za traženo vrijeme.
+meeting#:#sastanak
+meeting_end#:#Kraj sastanka
+meeting_related_successful#:#Sastanak uspješno dodijeljen
+meeting_running#:#Virtualna soba za sastanke je pokrenuta.
+meeting_start#:#Početak sastanka
+member_btn_fileupload_choose#:#Dopusti svima prijenos datoteka: Opcija
+member_btn_fileupload_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima pisanja trebaju imati opciju 'Dopusti svima prijenos datoteka' u Postavkama.
+member_btn_fileupload#:#Dopusti prijenos datoteka za sve
+member_btn_fileupload_default#:#Dopusti svima prijenos datoteka: Zadana postavka
+member_btn_fileupload_default_info#:#Ova opcija bi obično trebala biti onemogućena.
+member_btn_fileupload_info#:#Ovu opciju aktivirajte samo ako, osim osoba s proširenim pravima (npr. administratora, eventualno tutora), i druge osobe trebaju moći prenositi datoteke.
+modal_delete_scheduled_meeting_accept#:#Izbriši sastanak
+modal_delete_scheduled_meeting_title#:#Jeste li sigurni da želite izbrisati ovaj sastanak?
+modal_delete_scheduled_webinar_accept#:#Izbriši webinar
+modal_delete_scheduled_webinar_title#:#Želite li zaista izbrisati ovaj webinar?
+modal_details_scheduled_meeting_title#:#Detalji sastanka (Webex odgovor)
+modal_details_scheduled_webinar_title#:#Detalji webinara (tijelo odgovora edudipa)
+moderated_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima pisanja trebaju imati mogućnost odabira 'moderirane sobe' u Postavkama.
+moderated_choose#:#moderirani prostor: opcija izbora
+moderated_default_info#:#Aktivirajte ovu opciju ako želite stvoriti nove sobe kao moderirane sobe.
+moderated_default_zoom_info#:#Aktivirajte ovu opciju ako će se nove sobe kreirati kao 'webinari'.
+moderated_default#:#moderirana soba: zadana postavka
+moderated_info#:#U moderiranom prostoru, moderatori imaju proširena prava. Ostali korisnici imaju samo ograničen pristup virtualnom prostoru. Moderatori uključuju sve koji mogu uređivati ​​svojstva objekta, kao i administratore grupa, administratore tečajeva i tutore tečajeva.
+moderated_teams_info#:#U moderiranom prostoru, kreator objekta, kao i administratori grupe, administratori tečaja i tutori tečaja, imaju više prava: Mogu dijeliti i prenositi sadržaj te odlučivati ​​smiju li se drugi ljudi pridružiti. U nemoderiranom prostoru, svatko se može pridružiti i dijeliti ili prenositi sadržaj bez potvrde.
+moderated_zoom_info#:#Virtualni prostor namijenjen je webinaru, a ne sastanku. Molimo provjerite ima li vaš Zoom račun dopuštenje za izradu webinara. Osnovni, pa čak ni besplatni, račun nema to dopuštenje.
+moderated#:#moderirani prostor
+moderated_webex#:#Savjet: U nemoderiranim sobama sudionici nisu pseudonimizirani. Stoga se mogu pridružiti samo osobe s odgovarajućim Webex računom.
+moderated_zoom#:#Webinar
+moderator#:#Moderator
+msg_obj_deleted#:#Snimka je izbrisana.
+notification_sending#:#Obavijesti se šalju...
+notification_sent#:#Obavijesti su uspješno poslane.
+obj_ids_special_info#:#Samo rijetko potrebno! Ovdje unesite, odvojene zarezima, ILIAS ID-ove objekata za učionice povezane s tečajevima (dakle, uvijek isti ID objekta) koji bi se trebali zasebno obrađivati ​​za svaki tečaj. ID objekta prikazuje se u postavkama objekta. Opcija 'Posebne učionice' korisna je ako je potrebno centralno upravljati postavkama mnogih učionica, na primjer, kako bi se postupno omogućile daljnje funkcije.
+obj_ids_special#:#Posebne sobe
+objs_xmvc_duplicate#:#Kopiraj virtualnu sobu za sastanke
+objs_xmvc#:#Virtualne sobe za sastanke
+obj_xmvc_download#:#Preuzmi
+obj_xmvc_duplicate#:#Kopirati
+obj_xmvc_select#:#Odaberite virtualnu sobu za sastanke
+obj_xmvc#:#Virtualna soba za sastanke
+offline#:#Izvan mreže
+of_owner_prefix#:#od strane vlasnika
+om_svr_public_port#:#Port OpenMeeting servera
+om_svr_public_url#:#URL OpenMeeting servera
+om_svr_username#:#SOAP korisničko ime
+om_svr_userpass#:#SOAP lozinka
+overview_uses#:#Pregled upotrebe
+owners_email_not_unique#:#Vlasnikova adresa e-pošte nije jedinstvena. Može se dodijeliti samo jednom korisniku ILIAS-a.
+playback#:#Reproduciraj snimku
+plugin_configuration#:#konfiguracija
+private_chat_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Dopusti privatni chat' u Postavkama.
+private_chat_choose#:#Dopusti privatni chat: Mogućnost odabira
+private_chat_default_info#:#Ako je omogućeno, korisnici bez moderatorskih privilegija također mogu međusobno razgovarati u privatnim razgovorima. Korisnici s moderatorskim privilegijama ne mogu vidjeti te razgovore. Budući da moderatori mogu prekinuti privatne razgovore u bilo kojem trenutku, ova opcija bi trebala biti omogućena u većini slučajeva.
+private_chat_default#:#Dopusti privatni chat: Zadana postavka
+private_chat_info#:#Čak i osobe bez moderatorskih privilegija mogu međusobno privatno razgovarati.
+private_chat#:#Dopusti privatni chat
+properties#:#Karakteristike
+protected#:#Zaštićeni prostori
+pub_recs#:#Odmah objavite snimke
+pub_recs_choose#:#Odmah objavite snimke: Mogućnost odabira
+pub_recs_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Odmah podijeli snimke' u Postavkama.
+pub_recs_default#:#Odmah objavi snimke: Zadana postavka
+pub_recs_default_for_object#:#Snimke su odmah dostupne sudionicima.
+pub_recs_default_info#:#Omogućite ovu opciju ako snimke uvijek treba odmah objaviti ili ako opcija 'Odmah objavi snimke' treba biti omogućena za nove objekte.
+pub_recs_info#:#Ako je odabrano, snimka sastanka bit će objavljena odmah nakon završetka sastanka. U pregledu na stranici sastanka imate mogućnost zaključavanja ili otključavanja snimki.
+rbac_create_xmvc#:#Izradite virtualnu sobu za sastanke
+rec_hidden#:#Ova snimka nije vidljiva sudionicima.
+recording#:#zapisi
+recording_autostart#:#Snimanje će se automatski pokrenuti od početka. Korisnici ILIAS-a bit će o tome obaviješteni.
+recording_choose#:#Dopusti snimanje: Mogućnost odabira
+recording_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Dopusti snimke' u postavkama. Budući da se URL snimke može podijeliti s neovlaštenim osobama ako postane poznat, ova opcija općenito ne bi trebala biti omogućena.
+recording_default#:#Dopusti snimanje: Zadana postavka
+recording_default_info#:#Ovu opciju treba u većini slučajeva onemogućiti kako bi se spriječilo korištenje funkcije snimanja u virtualnom prostoru.
+recording_info#:#Sesije se mogu snimati.
+recording_only_for_moderated_rooms#:#Snimanje samo u moderiranim sobama
+recording_only_for_moderated_rooms_default#:#Snimanje samo u moderiranim sobama
+recording_only_for_moderated_rooms_default_info#:#Ova opcija bi trebala biti omogućena u većini slučajeva. Primjenjuje se samo ako je snimanje općenito dopušteno.
+recording_only_for_moderated_rooms_info#:#Samo u moderiranim sobama osobe s moderatorskim funkcijama mogu započeti snimanje.
+recording_warning#:#Snimanje je omogućeno za ovaj sastanak! Aktivnim korištenjem sustava za chat, uključivanjem osobnog mikrofona/kamere i/ili dijeljenjem sadržaja zaslona, ​​pristajem na snimanje i pohranu ovih informacija za kasniju upotrebu.
+recs_locked#:#Snimka(e) blokirana(e)
+recs_published#:#Objavljene snimke
+recurrence_#:#-
+recurrence_daily#:#Dnevno
+recurrence_monthly#:#Mjesečno
+recurrence_weekly#:#Tjedno
+recurrence_yearly#:#Godišnje
+rec_visible#:#Ova snimka je vidljiva sudionicima.
+references#:#Linkovi
+related_meeting#:#Dodijeljeno
+related_webinar#:#Dodijeljeno
+relate_meeting#:#Dodijeliti
+relate_webinar#:#Dodijeliti
+report_log_max#:#Pregled upotrebe (BBB)
+require_schedule_new_meeting#:#Možete zakazati sastanke i započeti ih u planirane vremenske intervale.
+require_schedule_new_meeting_zoom#:#Možete kreirati sastanke.
+require_schedule_new_webinar#:#Možete kreirati webinare i pokrenuti ih u zakazanim vremenskim intervalima.
+reset_authorization#:#Poništi autorizaciju
+reseted_tokens#:#Tokeni su resetirani
+root_create_xmvc#:#Izradite virtualnu sobu za sastanke
+saving_invoked#:#Postavke spremljene
+scheduled_meeting_agenda#:#dnevni red
+scheduled_meeting_both_data_sources#:#sve
+scheduled_meeting_create_btn#:#Kreiraj sastanak
+scheduled_meeting_created#:#Zakazani sastanak je kreiran
+scheduled_meeting_create#:#Stvori zakazani sastanak
+scheduled_meeting_data_source#:#Sastanci
+scheduled_meeting_delete_btn#:#Izbriši sastanak
+scheduled_meeting_deleted#:#Sastanak izbrisan
+scheduled_meeting_duration#:#Razdoblje
+scheduled_meeting_local_data_sources#:#dodijeljen
+scheduled_meeting_not_deleted#:#Sastanak nije izbrisan
+scheduled_meeting_overview#:#Pregled planiranih sastanaka
+scheduled_meeting_recurrence#:#Ponavljanje
+scheduled_meetings#:#Planirani sastanci
+scheduled_meeting_state#:#status
+scheduled_meeting_time_ahead#:#Vrijeme pripreme za sastanak
+scheduled_meeting_update_btn#:#Ažuriranje sastanka
+scheduled_meeting_update#:#Ažuriraj zakazani sastanak
+scheduled_webinar_agenda#:#dnevni red
+scheduled_webinar_both_data_sources#:#sve
+scheduled_webinar_create_btn#:#Izradite webinar
+scheduled_webinar_created#:#Planirani webinar kreiran
+scheduled_webinar_create#:#Izradite webinar (molimo navedite jedinstveni naslov)
+scheduled_webinar_data_source#:#Webinari
+scheduled_webinar_delete_btn#:#Izbriši webinar
+scheduled_webinar_deleted#:#Webinar izbrisan
+scheduled_webinar_duration#:#Razdoblje
+scheduled_webinar_local_data_sources#:#dodijeljen
+scheduled_webinar_not_deleted#:#Webinar nije izbrisan
+scheduled_webinar_overview#:#Pregled planiranih webinara
+scheduled_webinar_recurrence#:#Ponavljanje
+scheduled_webinars#:#Planirani webinari
+scheduled_webinar_state#:#status
+scheduled_webinar_time_ahead#:#Vrijeme održavanja webinara
+scheduled_webinar_update_btn#:#Ažuriranje webinara
+scheduled_webinar_update#:#Ažuriranje planiranog webinara
+schedule_meeting_duration_less_time#:#Minimalno trajanje sastanka je 10 minuta. Molimo vas da prilagodite svoje unose u skladu s tim.
+schedule_meeting_error#:#Došlo je do pogreške. Molimo provjerite svoje unose.
+schedule_webinar_duration_less_time#:#Minimalno trajanje webinara je 10 minuta. Molimo vas da prilagodite svoje unose u skladu s tim.
+schedule_webinar_error#:#Došlo je do pogreške. Molimo provjerite svoje unose.
+select#:#Odaberite
+service_unavailable#:#Usluga nije dostupna
+sess_owner_changed#:#Autentifikacija je promijenjena.
+showcontent#:#WebRTC platforma
+show_hint_pub_recs_info#:#Upozorenje o zabrani dijeljenja poveznica za snimanje prikazuje se korisnicima na stranici sastanka. Omogućite ovu opciju ako ne želite da se ovo upozorenje prikazuje.
+show_hint_pub_recs#:#Dopusti dijeljenje poveznica za snimke
+start_time#:#start
+starttime#:#Vrijeme početka
+start_window#:#Započnite virtualnu sobu za sastanke u novom prozoru
+state_active#:#Aktivan
+state_inprogress#:#Trčanje
+state_ready#:#Spreman
+status#:#status
+subject_crs#:#{MEETING_TITLE} u predmetu {PARENT_TITLE}
+subject_fld#:#{MEETING_TITLE} u mapi {PARENT_TITLE}
+subject_grp#:#{MEETING_TITLE} u grupi {PARENT_TITLE}
+svr_private_port#:#Privatni port BBB servera
+svr_private_url#:#Privatni URL BBB poslužitelja
+svr_public_port#:#Javni port BBB servera
+svr_public_url#:#Javni URL BBB poslužitelja
+svr_salt#:#Lozinka BBB servera (tajna)
+sysadmin_perm_choose_all#:#Kao administrator, možete uređivati ​​sva svojstva ovog objekta.
+tab_close#:#Molim vas, zatvorite ovaj prozor ili karticu sada.
+teams_client_id#:#ID klijenta
+teams_client_id_info#:#Ovdje unesite ID aplikacije / ID klijenta.
+teams_client_secret#:#Tajna klijenta
+teams_client_secret_info#:#Odmah nakon što ste u Entri kreirali tajni ključ za aplikaciju kreiranu za MultiVc, možete kopirati vrijednost ključa i unijeti je ovdje.
+teams_join_links#:#Možete se pridružiti izravno ovdje: {br}{JOIN_URL}{br}&nbsp;{br}ili možete kliknuti na: {PERMANENT_LINK}
+teams_lobbybypass#:#Zaobiđite područje čekanja
+teams_lobbybypass_choose#:#Zaobilaženje čekaonice: Mogućnost odabira
+teams_lobbybypass_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima pisanja trebaju imati mogućnost 'Zaobiđi čekaonicu' u postavkama. Ovo kontrolira tko se nalazi u čekaonici/predvorju za sastanke.
+teams_lobbybypass_default#:#Zaobiđi područje čekanja: Zadana postavka
+teams_lobbybypass_everyone#:#Svima će biti dopušten pristup sastanku. Nitko neće biti smješten u čekaonicu.
+teams_lobbybypass_invited#:#Samo će pozvane osobe biti primljene na sastanak i zaobilazit će čekaonicu.
+teams_lobbybypass_organizer#:#Sudionici će sjediti u čekaonici. Administratori i pomoćno osoblje će zaobići čekaonicu.
+teams_meetings_list_downloaded#:#Uspješno integrirani postojeći online sastanci u Teams.
+teams_tenant_id_info#:#Ovdje unesite ID zakupnika. Alternativni nazivi su: ID direktorija (klijent).
+teams_tenant_id#:#ID najmoprimca
+terms_of_use#:#<b>Prava intelektualnog vlasništva</b>{br}Informacije i materijali sadržani u BigBlueButton konferencijama, poput tekstova ili slika, općenito su zaštićeni autorskim pravima, pravima žiga ili patentima.{br}Propisi o zaštiti podataka moraju se poštivati. To se posebno odnosi na snimanje BigBlueButton konferencija. Tajno snimanje video ili audio konferencija je kazneno djelo.{br}{br}<b>Kodeks ponašanja</b>{br}Ne smijete objavljivati ​​​​nikakav sadržaj koji krši zakonske odredbe, koji je pornografski, opscen, klevetnički, uvredljiv, prijeteći, potiče mržnju ili je rasistički. Objavljivanje oglasa bez ovlaštenja i prenošenje informacija koje sadrže viruse, manipulacije ili slične štetne elemente također je zabranjeno. Obrađeni podaci Prilikom korištenja BigBlueButtona prikupljaju se sljedeći podaci: Podaci o vezi (npr. IP adresa, vrsta preglednika, datum i vrijeme pristupa) Podaci o pristupu (ako je primjenjivo): korisničko ime, lozinka u šifriranom obliku Podaci o sadržaju (npr. prenesene datoteke, doprinosi u chatu, ankete) Privremeno pohranjivanje podataka o vezi, posebno IP adrese, od strane sustava potrebno je kako bi se omogućila isporuka BigBlueButtona na korisničko računalo. U tu svrhu, IP adresa korisnika mora biti pohranjena tijekom trajanja sesije. Pravna osnova za privremeno pohranjivanje podataka je članak 6(1)(f) GDPR-a. Podaci o vezi također se općenito pohranjuju u log datotekama. Vrijeme brisanja određuje operater BigBlueButton poslužitelja.
+title#:#titula
+token_deleted#:#Token izbrisan
+token_not_deleted#:#Token nije izbrisan
+token_not_stored#:#Token nije spremljen
+token_stored#:#Token pohranjen
+unlocked_by#:#Objavio/la
+unlock#:#Izdanje
+untrashed_usages#:#Broj upotreba
+url_info#:#Ovdje možete unijeti i relativne putanje (npr. /webconference). Molimo vas da ne uključite završnu oznaku '/'.
+url#:#URL
+usage#:#Popunjenost
+user_end#:#posljednji odlazak
+user_invite_info#:#Goste možete pozvati na sastanak putem sljedeće poveznice:
+user_log#:#Pregled korisnika
+user_log_bbb#:#Pregled korisnika (BBB/Teams/Zoom)
+user_log_duration#:#Razdoblje snimanja
+user_percent#:#postotak
+user_results#:#Vrijeme prisutnosti
+user_results_desc#:#Vremena se prikazuju samo za sastanke koji su već završili. Sastanci također moraju biti dosegli svoje zakazano vrijeme završetka.
+user_start#:#prvi početak
+user_time#:#vrijeme prisutnosti
+wait_join_meeting#:#<b>Trenutno nitko s moderatorskim privilegijama nije prisutan u virtualnoj sobi za sastanke.<br/>Molimo pričekajte i provjerite ponovno za jednu minutu.</b>
+wait_join_meeting_edudip#:#Trenutno se ne možete pridružiti nijednom webinaru.
+wait_join_meeting_guest#:#<b>Trenutno nitko s moderatorskim privilegijama nije prisutan u virtualnoj sobi za sastanke.<br/>Pričekajte i ponovno kliknite gumb 'Pridruži se sastanku' za jednu minutu.</b>
+wait_join_meeting_teams#:#Trenutno se ne možete pridružiti sastanku. Ako se pojavi zakazani sastanak, osvježite ovu stranicu do 15 minuta prije zakazanog sastanka da biste se pridružili.
+wait_join_meeting_webex#:#Trenutno se ne možete pridružiti sastanku. Sastanak možda još nije započeo ili je već završio. Osvježite ovu stranicu kako biste provjerili status sastanka.
+wait_join_meeting_zoom#:#Trenutno se ne možete pridružiti sastanku. Ako se pojavi zakazani sastanak, osvježite ovu stranicu do 15 minuta prije zakazanog sastanka da biste se pridružili.
+wait_join_webinar#:#<b>Nitko još nije započeo webinar.<br/>Molimo pričekajte i provjerite ponovno za jednu minutu.</b>
+webex_client_id#:#ID klijenta za integraciju s Webexom
+webex_client_secret#:#Tajni klijent za integraciju s Webexom
+webex_host_email_hidden_info#:#Adresa e-pošte koja se koristi za autorizaciju vidljiva je samo vlasnicima i administratorima objekta.
+webex_host_email_info#:#Adresa e-pošte poznata Webexu ili web-mjestu koje se hostira
+webex_host_email#:#Adresa e-pošte Webex hosta
+webex_integration_auth_info#:#Možete autorizirati pristup svom Webex računu. To je potrebno za stvaranje, dohvaćanje i pokretanje Webex sastanaka pomoću dodatka MultiVC.
+webex_logout_user_choose#:#Dopusti odjave iz Webexa: Opcija
+webex_logout_user_choose_info#:#Korisnici koji su već prijavljeni u Webex trebaju se odjaviti s Webexa prije pridruživanja sastanku.
+webex_logout_user_default#:#Odjava iz Webexa: Zadana postavka
+webex_logout_user_default_info#:#Korisnici koji su već prijavljeni u Webex uvijek se moraju odjaviti s Webexa prije pridruživanja sastanku.
+webex_meetings_list_downloaded#:#Uspješno preuzeti postojeći Webex sastanci.
+webex_redirect_uri#:#URI za preusmjeravanje
+webex_site_url#:#URL web-mjesta Webex
+webex_user_choose_logout#:#Korisnik odlučuje
+webex_user_do_logout#:#Odjava
+webex_user_do_not_logout#:#Ne odjavljaj se
+webex_user_logout#:#Odjava iz Webexa
+webinar_collision#:#Došlo je do pogreške. Webinar je već zakazan za traženo vrijeme.
+webinar_event_created#:#Webinar je kreiran
+webinar_event_deleted#:#Webinar izbrisan
+webinar_notification_body#:#Pozdrav {NAME},{NL}{NL} kreiran je sljedeći {DOGAĐAJ}:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}S poštovanjem,{NL}{NL}{FROM}
+webinar_notification_from#:#ILIJADA
+webinar_notification_subject#:#{DOGAĐAJ}: {PREDMET}
+webinar_related_successful#:#Webinar uspješno dodijeljen
+webinar_running#:#Webinar je započeo.
+webinar#:#Webinar
+welcome_text#:#Dobrodošli {br}u virtualnu sobu za sastanke{br}<b>{MEETING_TITLE</b>{br}{br}Ako na sredini zaslona ispod vidite ikonu zvučnika s linijom, drugi vas neće moći čuti, a ni vi nećete moći ništa čuti. Kliknite ikonu zvučnika s linijom da biste pokrenuli audio vezu.{br}Koristite slušalice kako biste izbjegli pozadinsku buku i povratne informacije.
+window_closed#:#Virtualna soba za sastanke je završila.
+window_close#:#Zatvori prozor
+window_started#:#Virtualna soba za sastanke pokrenuta je u novom prozoru.
+with_chat_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima za pisanje trebaju imati opciju 'Počni s chatom' u Postavkama.
+with_chat_choose#:#Započni s chatom: Mogućnost odabira
+with_chat_default_info#:#Ovo bi općenito trebalo biti aktivirano - posebno u moderiranim sobama.
+with_chat_default#:#Započni s chatom: Zadana postavka
+with_chat_info#:#Ova opcija bi trebala biti omogućena, posebno u moderiranim sobama. Chat tada postaje 'čekaonica'.
+with_chat#:#Započnite s chatom
+xmvc_add#:#Dodaj virtualnu sobu za sastanke
+xmvc_copy#:#Kopiraj virtualnu sobu za sastanke
+xmvc_delete#:#Izbriši virtualnu sobu za sastanke
+xmvc_edit_learning_progress#:#Uredi postavke napretka u učenju
+xmvc_edit_permission#:#Promjena dozvola
+xmvc_new#:#Dodajte novu virtualnu sobu za sastanke
+xmvc_read#:#Pristup za čitanje: Sudjelovanje u virtualnoj sobi za sastanke je moguće
+xmvc_read_learning_progress#:#Pogledajte napredak učenja drugih korisnika
+xmvc_visible#:#Prikaz: Virtualna soba za sastanke je vidljiva
+xmvc_write#:#Uredi postavke
+zoom_account_id#:#ID Zoom računa
+zoom_account_info#:#ID Zoom računa, ID klijenta i tajni klijent možete dobiti na https://developers.zoom.us/docs/internal-apps/create/. Morate stvoriti OAuth aplikaciju za komunikaciju između poslužitelja.
+zoom_client_id#:#ID klijenta Zooma
+zoom_client_secret#:#Tajni klijent Zooma
+zoom_err_scopes_webinar#:#Nemate dopuštenje za izradu webinara. Sastanci su mogući. Nedostaju sljedeća dopuštenja:
+zoom_exist_meetings#:#Datumi za ovaj sastanak su već određeni.
+zoom_exist_webinars#:#Datumi za ovaj webinar su već određeni.
+zoom_lobby#:#Čekaonica za sastanke
+zoom_lobby_choose#:#Čekaonica: Izbor opcija
+zoom_lobby_choose_info#:#Omogućite ovu opciju ako korisnici s dopuštenjima pisanja žele imati opciju 'Čekaonica' u postavkama. Ovo kontrolira tko se nalazi u čekaonici.
+zoom_lobby_default#:#Čekaonica: Zadana postavka
+zoom_lobby_0#:#Nitko ne mora čekati u čekaonici. Čekaonica je deaktivirana. Sudionici mogu ući 15 minuta prije početka sastanka.
+zoom_lobby_1#:#Svi moraju u čekaonicu.
+zoom_lobby_2#:#Korisnici izvan vašeg računa moraju ući u čekaonicu.
+zoom_lobby_3#:#Korisnici izvan vašeg računa ili oni koji nisu na odobrenim domenama moraju ući u čekaonicu.
+zoom_lobby_4#:#Korisnici koji nisu na tečaju ili u grupi moraju otići u čekaonicu.

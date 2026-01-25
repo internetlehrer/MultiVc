@@ -1,0 +1,492 @@
+<!-- language file start -->
+add_presentation_url#:#Nyitó prezentáció
+add_token#:#Token hozzáadása
+add_token_user#:#Új moderátor / token
+add_welcome_text#:#Személyre szabott üdvözlő üzenet
+adm_info_appointment#:#Adminisztrátorként vagy oktatóként elindíthatod a szobát. A résztvevők azonban csak a foglalkozás ideje alatt nyithatják meg a szobát.
+assigned_roles_info#:#Ennek a MultiVc-konfigurációnak a létrehozása korlátozható azokra a felhasználókra, akik egy vagy több kiválasztott szerepkörhöz tartoznak.
+assigned_roles#:#Hozzárendelt szerepkörök
+authorize#:#engedélyez
+bbb_default_server#:#Standard BBB szerver
+bbb_guest_password_info#:#Alfanumerikus és speciális karakterek engedélyezettek, például: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Vendég jelszó
+bbb_secret_expiration_date#:#Lejárati dátum
+bbb_secret_expiration_date_info#:#A jelszó a kiválasztott dátumig érvényes, azt a dátumot is beleértve.
+bbb_secret_expired_msg#:#A vendégjelszó lejárt.
+bbb_secret_expires_info#:#Válassza ezt a lehetőséget, ha a jelszó érvényességi ideje korlátozott.
+bbb_secret_expires#:#Lejárati dátum
+big_blue_button#:#BigBlueButton WebRTC
+btn_chat#:#A csevegés megjeleníthető/elrejthető
+btn_chat_choose#:#A csevegés megjeleníthető/elrejthető: Kiválasztási lehetőség
+btn_chat_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak lehetőségük van a „Csevegés megjelenítése/elrejtése” lehetőségre a beállításokban.
+btn_chat_default#:#Csevegés megjelenítése/elrejtése: Alapértelmezett beállítás
+btn_chat_default_info#:#A használat egyszerűsítése érdekében hasznos lehet, ha nem aktiváljuk ezt az opciót, és mindig megjelenítjük a csevegést.
+btn_chat_info#:#Engedélyezd ezt az opciót, ha azt szeretnéd, hogy a csevegés megjelenítésére/elrejtésére szolgáló gomb megjelenjen.
+btn_locationshare_choose_info#:#Ennek az opciónak általában le kell lennie tiltva.
+btn_locationshare_choose#:#Helyszín opció: Kiválasztás
+btn_locationshare_default_info#:#Ezt a lehetőséget csak az adatvédelmi tisztviselővel folytatott konzultációt követően aktiválja.
+btn_locationshare_default#:#Opció helye: Alapértelmezett
+btn_locationshare_info#:#Ez a beállítás lehetővé teszi a felhasználók számára, hogy megosszák aktuális tartózkodási helyüket másokkal a csevegésben, és hogy mások meghívják őket egy külön megbeszélésre. Adatvédelmi okokból ezt a beállítást csak körültekintően szabad engedélyezni.
+btn_locationshare#:#Opció helye
+btn_settings_choose#:#Szobabeállítások: Kiválasztási lehetőség
+btn_settings_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak rendelkezniük kell a „Beállítások a szobában” opcióval a Beállítások alatt.
+btn_settings_default#:#Szobabeállítások: Alapértelmezett
+btn_settings_default_info#:#Az alapértelmezett beállítás általában az, hogy a beállításokhoz tartozó opció és gomb inaktív.
+btn_settings#:#Szobabeállítások
+btn_settings_info#:#Engedélyezze ezt az opciót, ha azt szeretné, hogy a gombok és a beállítási lehetőségek láthatóak legyenek a szobában. Ez általában nem szükséges, mivel a név és a felhasználói kép automatikusan öröklődik az ILIAS-ból.
+btntext_concurrent_users_check#:#Elérhetőség ellenőrzése
+btntext_guest_login_button#:#Bejelentkezés vendégként
+btntext_join_meeting#:#Csatlakozás a megbeszéléshez
+btntext_join_webinar#:#Csatlakozz a webináriumhoz
+btntext_start_meeting#:#Megbeszélés indítása
+btntext_start_webinar#:#Webinárium indítása
+cam_mic_only_for_moderator_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak rendelkezniük kell a megfelelő kiválasztási lehetőséggel a beállításokban. A legtöbb esetben ezt a beállítást engedélyezni kell.
+cam_mic_only_for_moderator_choose#:#A résztvevők nem aktiválhatják a kamerájukat és a mikrofonjukat: Opció
+cam_mic_only_for_moderator_default_info#:#A szervezők szelektíven engedélyezhetik a résztvevőknek a mikrofon és/vagy kamera használatát. A résztvevők nem oszthatnak meg vagy nem közvetíthetnek tartalmakat megerősítés nélkül. Ez a beállítás nagyon sok résztvevős események esetén hasznos.
+cam_mic_only_for_moderator_default#:#A résztvevőknek nem szabad bekapcsolniuk a kamerájukat és a mikrofonjukat: alapértelmezett beállítás
+cam_mic_only_for_moderator_info#:#A szervezők szelektíven engedélyezik a résztvevőknek a mikrofon és/vagy kamera használatát. A résztvevők megerősítés nélkül nem oszthatnak meg vagy nem közvetíthetnek tartalmakat.
+cam_mic_only_for_moderator#:#A résztvevőknek nem szabad bekapcsolniuk a kamerájukat és a mikrofonjukat.
+cam_only_for_moderator_choose_info#:#Engedélyezze ezt az opciót, ha az írási jogosultsággal rendelkező felhasználóknak a beállításokban elérhetővé kell tenniük a „Kamera csak moderátoroknak” opciót. A legtöbb esetben ezt az opciót engedélyezni kell.
+cam_only_for_moderator_choose#:#Kamera csak moderátoroknak: Kiválasztási lehetőség
+cam_only_for_moderator_default_info#:#Ezt a beállítást a legtöbb esetben le kell tiltani, és csak akkor engedélyezni, ha nagyszámú résztvevő esetén teljesítményproblémák várhatók. A moderátorok ezt a beállítást bármikor módosíthatják egy munkamenet során.
+cam_only_for_moderator_default#:#Kamera csak moderátoroknak: Alapértelmezett beállítás
+cam_only_for_moderator_info#:#Nagyon sok fős megbeszélésekhez ajánlott.
+cam_only_for_moderator_zoom#:#Kamera csak a házigazdáknak
+cam_only_for_moderator_zoom_info#:#Nagy létszámú találkozókhoz ajánlott!
+cam_only_for_moderator#:#Kamera csak moderátoroknak
+cancel#:#mégsem
+cat_create_xmvc#:#Virtuális tárgyaló létrehozása
+chat_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak rendelkezniük kell a „Csevegés engedélyezése” opcióval a Beállítások alatt.
+chat_choose#:#Csevegés engedélyezése: Opció
+chat_default_info#:#Ha engedélyezve van, az emberek cseveghetnek egymással.
+chat_default#:#Csevegés engedélyezése: Alapértelmezett beállítás
+chat_info#:#Az emberek cseveghetnek egymással.
+chat#:#Csevegés engedélyezése
+conf_availability_0#:#Nem elérhető
+conf_availability_1#:#Meglévő engedélyezett
+conf_availability_2#:#Újak generálhatók
+conf_availability#:#Elérhetőség
+config_help_begin#:#A Beállítások alatti magyarázat a következő:
+configure_add#:#Konfiguráció létrehozása
+configure#:#konfiguráció
+conf_meeting_layout_1#:#EGYEDI_ELRENDEZÉS
+conf_meeting_layout_2#:#OKOS_ELRENDEZÉS
+conf_meeting_layout_3#:#PREZENTÁCIÓ_FÓKUSZ
+conf_meeting_layout_4#:#VIDEÓ_FÓKUSZ
+conf_meeting_layout#:#Megbeszélés elrendezése
+conf_title#:#cím
+conn_deleted#:#A találkozó típusa törölve lett.
+conn_id#:#Találkozó típusa
+copy#:#Másolat
+create_type#:#Új értekezlettípus definiálása
+cronjob_description#:#Aktiváláskor az oldalon töltött idő felhasználható a tanulási folyamat kiszámításához.
+cronjob_title#:#MultiVc cron feladat a tanulási folyamat meghatározásához MS Teams vagy Zoom használatakor
+crs_create_xmvc#:#Virtuális tárgyaló létrehozása
+custom_style#:#Egyedi stílus
+custom_style_info#:#Itt definiálhatsz CSS stílusparamétereket vagy egy CSS fájlt. Fájl esetén https:// kezdetű URL-t kell megadni. Továbbá a "displayBrandingArea" paramétert igaz értékre kell állítani a BBB telepítés settings.yml fájljában.
+delete_conn#:#Törli a találkozó típusát?
+delete#:#Töröl
+delete_sess_user_changed#:#Intézkedések tulajdonosváltás esetén
+delete_sess_user_changed_info#:#Amikor egy felhasználó felhasználót vált, az összes létrehozott munkamenet törlődik.
+delete_token#:#Token törlése
+delete_type#:#Értekezlettípus törlése
+disable_sip_info#:#Ez az opció lehetővé teszi a SIP betárcsázós kapcsolat letiltását. A telefonos betárcsázós kapcsolat ezután nem lesz lehetséges.
+disable_sip#:#Telefonos betárcsázós kapcsolat kikapcsolása
+display_name#:#Megjelenített név
+download#:#Letöltés
+download_video#:#Felvétel letöltése
+duration#:#Időtartam
+edit#:#Szerkesztés
+edit_properties#:#Tulajdonságok szerkesztése
+edudip_host_email#:#edudip e-mail cím
+edudip_host_email_hidden_info#:#Az engedélyezéshez használt e-mail cím csak az objektum tulajdonosai és rendszergazdái számára látható.
+edudip_host_email_info#:#Az edudip által ismert e-mail címednek meg kell egyeznie ezzel.
+edudip_meetings_list_downloaded#:#Az edudip oldalon már elérhető webináriumokat sikeresen integráltuk.
+edudip_meetings_list_unavailabe#:#Az edudip-en jelenleg nem lehet hozzáférni a meglévő webináriumokhoz.
+end_time#:#Vége
+endtime#:#Végidők
+err_msg_displayname#:#Kérjük, adja meg a nevét
+err_msg_guest_password#:#A vendég jelszó helytelen.
+err_msg_guest_password_expired#:#A vendégjelszó lejárt.
+error_admin_no_access_token#:#Kérjük, tájékoztassa a rendszergazdát: Hiányzó token
+error_object_no_access_token#:#Kérjük, végezze el az engedélyezést az objektum tulajdonságainál.
+error_object_no_host_email#:#Kérjük, erősítse meg a gazdafelhasználó e-mail címét az objektum tulajdonságainál.
+error_start_meeting#:#Hiba történt a megbeszélés megkezdése közben.
+error_start_webinar#:#Hiba történt a webinárium indításakor.
+ext_provider_token_user#:#Felhasználó / Hozzáférési token
+ext_provider_token_user_info#:#Add meg a moderátori licenccel rendelkező felhasználók e-mail címét, majd a hozzáférési tokenjüket.
+fa_expand_default_info#:#Ezt az opciót általában le kell tiltani. Ezenkívül sok esetben bizonyos területek (pl. chat) megjelenítése nem nagyítható.
+fa_expand_default#:#Területek megjelenítésének maximalizálása: Alapértelmezett beállítás
+fold_create_xmvc#:#Virtuális tárgyaló létrehozása
+grp_create_xmvc#:#Virtuális tárgyaló létrehozása
+guest_displayname_info#:#Megjegyzés: A részletes címinformációk használhatósági nehézségeket okozhatnak a BigBlueButtonban a név számára rendelkezésre álló korlátozott hely miatt.
+guest_displayname_input#:#Titulus Keresztnév Vezetéknév
+guest#:#Vendég
+guestlink_choose#:#Vendéglink kiválasztási lehetőség
+guestlink_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak rendelkezniük kell a „Vendéglink engedélyezése” opcióval a Beállítások alatt.
+guestlink_default#:#Vendéglink alapértelmezett
+guestlink_default_info#:#Ezt a beállítást a legtöbb esetben le kell tiltani. A jogosulatlan használatot nagyrészt meg kell akadályozni. A vendégek csak résztvevőként csatlakozhatnak moderált szobához. Egy moderátornak már jelen kell lennie. A vendégeknek el kell fogadniuk a felhasználási feltételeket, amelyek az ILIAS nyelvi változójaként vannak tárolva. Ennek szerkesztéséhez lépjen az Adminisztráció -> Nyelvek menüpontra. Kattintson a kívánt nyelvre, és írja be a 'rep_robj_xmvc_terms_of_use' szöveget az 'Azonosító' mezőbe. Ezután kattintson az 'Szűrő alkalmazása' gombra, és szerkessze a szöveget.
+guestlink#:#Vendéglink
+guestlink_info#:#A moderátorok linken keresztül hívhatnak meg vendégeket.
+guest_link_pw_info#:#A vendégeknek ezzel a jelszóval kell bejelentkezniük.
+guest_password_input_info#:#Kérlek, add meg ide a vendéglink jelszavát.
+guest_password_input#:#Vendég jelszó
+headline_welcome_meeting#:#Üdvözlünk a tárgyalóteremben!
+headline_welcome_webinar#:#Üdvözlünk a webináriumon!
+hide_recs_until_date#:#Ne jelenítse meg a felvételeket, amíg
+hide_recs_until_date_info#:#Az itt megadott felvételi dátumig készült felvételek nem jelennek meg.
+hide_username_logs#:#Felhasználói áttekintés elrejtése
+hide_username_logs_info#:#Ha be van jelölve, a felhasználói áttekintés csak a bővítmény adminisztrációjában látható. Egyébként a MultiVc objektumhoz is megjelenik egy felhasználói áttekintés.
+hint_availability_recs#:#A felvételekhez való hozzáféréssel kapcsolatos kérdésekkel és aggályokkal forduljon a BigBlueButton-megbeszélések adminisztrátoraihoz.
+hint#:#Jegyzet szövege
+hint_pub_recs#:#A felvételek linkjeinek megosztása tilos.
+info_add_presentation_url#:#Töltsd be a saját bevezető prezentációdat URL-címen keresztül. Az URL-struktúrának a következő formátumot kell követnie: <i>https://saját.domain/el_uta/prezentacio.pdf</i>
+info_add_welcome_text#:#Ez a személyre szabott üdvözlő üzenet egy ILIAS nyelvi változón keresztül definiálható. Lépjen az Adminisztráció -> Nyelvek menüpontra. Kattintson a kívánt nyelvre, és írja be a 'rep_robj_xmvc_welcome_text' szöveget az 'Azonosító' mezőbe. Ezután kattintson az 'Szűrő alkalmazása' gombra, és szerkessze a szöveget.
+info_availability#:#Ez szabályozza a találkozótípus elérhetőségét a magazinban. A régebbi típusokat a törlés helyett „Meglévő engedélyezett” értékre lehet állítani.
+info_bottom_headline#:#Fontos használati utasítások:
+info_bottom#:#<ul><li>Kérjük, <b>használjon fejhallgatót</b> a zavaró gerjedés vagy visszhang elkerülése érdekében!</li><li><b>Ha gyenge az internetkapcsolata, kapcsolja ki a kamerát (webkamerát), és ha a kapcsolat még rosszabb, használjon konferenciahívást a hangátvitelhez.</li></ul>
+info_concurrent_users_available#:#Ingyenes helyek száma a virtuális tanteremben:
+info_concurrent_users_none#:#Jelenleg nincs több szabad hely regisztrációra. Kérjük, ellenőrizze újra a szabad helyeket egy perc múlva a „Csatlakozás a találkozóhoz” gombra kattintva.
+info_delete_vc_sure#:#Biztos benne? A következő virtuális tárgyaló törlődik:
+info_hint#:#A magyarázó szöveg színes kiemeléssel jelenik meg az objektumoldal tartalma felett.
+info_max_duration#:#A megbeszélés a megadott számú óra és perc után véget ér. Korlátlan időtartamhoz kérjük, mindegyikhez adjon meg '0'-t.
+info_max_participants#:#Maximális résztvevői szám megbeszélésenként. Korlátlan résztvevői szám esetén kérjük, adjon meg '0'-t.
+info_max_participants_webinar#:#Webináriumonkénti résztvevők maximális száma. Kérjük, tekintse meg az edudip-szerződését.
+info_meeting_layout#:#A megbeszélés alapértelmezett elrendezését szabályozza.
+info_om_svr_public_url#:#Példa: https://www.example.com/
+info_platform_chg_reset_data#:#Az Ön választása
+info_platform_chg_reset_data_o#:#Felhívjuk figyelmét, hogy WebRTC platformváltáskor minden beállítás visszaáll az alapértelmezett értékre, és a tárolt űrlapadatok törlődnek. A WebRTC platformváltáshoz először meg kell erősítenie az új kiválasztást a "Mentés" gombra kattintva. A következő lépésben az előző konfiguráció felülíródik az újbóli mentéssel.
+info_requirements_bbb#:#A BigBlueButton a nyílt WebRTC szabványt használja, amelyet egyre több böngésző támogat. Jelenleg a Google Chrome, a Chromium alapú Microsoft Edge, vagy – korlátozásokkal – a Mozilla Firefox ajánlott. Használhatod a Safari Mobile-t iOS 12.2-től és a Chrome Mobile-t Android 6.0-tól. A Microsoft Internet Explorer és a régebbi Edge verziók nem támogatottak. A tűzfalad nem blokkolhatja a következő portokat: TCP/IP portok 80/443 (HTTP/HTTPS esetén) és UDP portok a 16384 - 32768 tartományban. A képernyő megosztásához (asztalmegosztás) nagy teljesítményű internetkapcsolattal kell rendelkezned. Azt is javasoljuk, hogy a moderátorok és az előadók vezetékes hálózati kapcsolatot használjanak (ne Wi-Fi-t).
+info_requirements_edudip#:#<ul><li>Az edudip a nyílt szabványú WebRTC-t használja, amelyet egyre több böngésző támogat. Jelenleg a Google Chrome, a Chromium alapú Microsoft Edge, vagy – korlátozásokkal – a Mozilla Firefox ajánlott. A Microsoft Internet Explorer és az Edge régebbi verziói nem támogatottak.</li><li>További információkért kérjük, vegye fel a kapcsolatot az edudip ügyfélszolgálatával.</li>
+info_requirements_headline#:#Műszaki követelmények:
+info_requirements_not_ok#:#<b>A jelenleg használt böngészővel a virtuális tárgyalót csak nagyon korlátozott mértékben használhatod.</b><br/>A legjobb eredmény elérése érdekében használd a Google Chrome-ot vagy – bizonyos korlátozásokkal – a Mozilla Firefoxot! Ha nincs jogosultságod böngésző telepítésére, használhatod a Google Chrome Portable-t.<br/>Ha nem lehetséges a böngészőváltás, indítsd el a virtuális tárgyalót, és írd be a csevegésbe, hogy jelenleg nincs megfelelő böngésződ, és senki ne várjon rád.
+info_requirements_om#:#<ul><li>Az Openmeetings a nyílt szabványú WebRTC-t használja, amelyet egyre több böngésző támogat. Jelenleg a Google Chrome vagy – korlátozásokkal – a Mozilla Firefox ajánlott. Használhatod a Microsoft Edge legújabb verzióját, valamint a Safari Mobile-t (iOS 12.2 és újabb) és a Chrome Mobile-t (Android 6.0 és újabb). A Microsoft Internet Explorer és a régebbi Edge verziók nem támogatottak.</li><li>A tűzfalad nem blokkolhatja a következő portokat: TCP/IP portok: 8888/5443 (HTTP/HTTPS-hez), TCP/UDP 3478, valamint UDP portok a 49152–65535 tartományban.</li><li>A képernyő megosztásához (asztalmegosztás) a Google Chrome-ot kell használnod, és nagy teljesítményű internetkapcsolattal kell rendelkezned. Azt is javasoljuk, hogy a moderátorok és az előadók vezetékes hálózati kapcsolatot használjanak (ne Wi-Fi-t).
+info_requirements_partly#:#Javasoljuk a Google Chrome, vagy – bizonyos korlátozásokkal – a Mozilla Firefox böngésző használatát. Önnek kell eldöntenie, hogy jelenlegi böngészője alkalmas-e a virtuális tárgyaló használatára, és ha igen, milyen mértékben. Kérjük, tájékoztassa a rendelkezésre álló technikai támogatási szolgálatot.
+info_requirements_teams#:#A moderátoroknak a Teams alkalmazást kell használniuk. A résztvevők a böngészőjükön keresztül indíthatják el a Teamst. A képernyő megosztásához (asztali megosztás) nagy teljesítményű internetkapcsolattal kell rendelkeznie. Azt is javasoljuk, hogy a moderátorok és az előadók vezetékes hálózatot használjanak (ne Wi-Fi-t).
+info_requirements_webex#:#<ul><li>Ajánlott böngészők: Chrome, Edge, Firefox </li></ul>
+info_requirements_zoom#:#Kérjük, jelentkezzen be a Zoomba azzal az e-mail címmel, amellyel az ILIAS-nál regisztrált. Ez a cím:
+info_requirements_zoom_lp#:#A tanulmányi előrehaladásod megállapításához rögzíteni kell a részvételedet ezen a megbeszélésen. Csak akkor leszel jogosult kreditre, ha a megbeszélés kezdete és vége között a tervezett idő {%} részében jelen vagy.
+info_set_owner#:#Tulajdonos regisztrálva
+info_svr_private_port#:#Példa: 443
+info_svr_private_url#:#Az Amazon EC2 kivételével ez mindig a nyilvános URL-címnek felel meg.
+info_svr_public_port#:#Példa: 443
+info_svr_public_url#:#Példa: https://www.example.com/bigbluebutton/
+info_svr_salt_om#:#Példa: dZ#ls2W!k6l
+info_svr_salt#:#ssh: bbb-conf --secret
+info_svr_username#:#Példa: om_admin
+info_title#:#Ez a cím jelenik meg az új objektumok találkozótípusának kiválasztásakor.
+info_top_moderated_edudip#:#Moderálási jogaid vannak, és elkezdheted a webináriumot.
+info_top_moderated_m_bbb#:#Ez egy moderált szoba, és csak akkor léphet be a tárgyalóba, ha moderátori funkciókkal rendelkező személy tartózkodik a szobában.
+info_top_moderated_m_om#:#Ez egy moderált szoba, és csak akkor léphet be a tárgyalóba, ha moderátori funkciókkal rendelkező személy tartózkodik a szobában.
+info_top_moderated_webex#:#Moderátori jogosultságokkal rendelkezel, és elindíthatod a megbeszélést. Ehhez Webex-fiókra vagy egy Webex által üzemeltetett webhelyre van szükséged. A résztvevők csak akkor csatlakozhatnak, ha a moderátor elindította a megbeszélést.
+info_top_moderated_zoom#:#Ez egy webinárium. Most elkezdheted a webináriumot.
+info_top_moderator_bbb#:#<b>Ez egy moderált szoba, és Önnek moderátori szerepköre van ebben a szobában.</b><br/>A moderátori szerepkör nélküli személyek csak akkor léphetnek be a tárgyalóba, ha egy moderátori szerepkörrel rendelkező személy már tartózkodik a szobában.
+info_top_moderator_om#:#<b>Ez egy moderált szoba, és Önnek moderátori szerepköre van ebben a szobában.</b><br/>A moderátori szerepkör nélküli személyek csak akkor léphetnek be a tárgyalóba, ha egy moderátori szerepkörrel rendelkező személy már tartózkodik a szobában.
+info_top_not_moderated_bbb#:#Ez a tárgyaló moderálatlan. Ezért moderátori jogosultságokkal és következésképpen kiterjesztett jogokkal is rendelkezik. Korlátozhatja a többi résztvevő jogait, és akár le is mondhatja a munkamenetet. Kérjük, felelősségteljesen használja ezeket a kiterjesztett jogokat.
+info_top_not_moderated_om#:#Ez a tárgyaló moderálatlan. Ezért moderátori jogosultságokkal és következésképpen kiterjesztett jogokkal is rendelkezik. Korlátozhatja a többi résztvevő jogait, és akár le is mondhatja a munkamenetet. Kérjük, felelősségteljesen használja ezeket a kiterjesztett jogokat.
+info_webex_client_id#:#A kliens-azonosítót a Webex-integráció adataiban találja (pl. admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#Az ügyfél titkos kódja egyszer jelenik meg a Webex-integráció létrehozása/frissítése után.
+info_webex_redirect_uri#:#Adja hozzá ezt a címet átirányítási URI-ként az integrációs beállításokban.
+info_webex_site_url#:#A tárhelyen lévő webhely neve. Az aldomain a .webex.com előtt, pl. <b>az-a-céged</b>.webex.com vagy <b>az-a-céged</b>.my.webex.com
+integration_admin_auth_method_info#:#Az engedélyezést az adminisztrátor végzi a MultiVc bővítmény beállításain keresztül. Az OAuth folyamat során a következő hatókörökre van szükség:
+integration_admin_auth_scopes_info#:#(adminisztrátoroknak szóló rész) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
+integration_auth_method#:#Az integráció engedélyezése
+integration_auth_methods_info#:#Az engedélyezést a következők végezhetik el: - az adminisztrátor a MultiVc bővítmény beállításain keresztül - a felhasználó a MultiVc objektum beállításain keresztül. A következő hatókörökre van szükség az adott OAuth folyamat során:
+integration_user_auth_method_info#:#Az engedélyezést a felhasználó végzi a MultiVc objektum beállításain keresztül. Az OAuth folyamat során a következő hatókörökre van szükség:
+integration_user_auth_scopes_info#:#spark:kms megbeszélés:ütemtervek_olvasása megbeszélés:ütemtervek_írása megbeszélés:participants_olvasása megbeszélés:participants_írása megbeszélés:preferences_olvasása megbeszélés:preferences_írása
+join_time#:#Részvétel innen:
+leave_time#:#Részvétel eddig
+list_token_user_info#:#Meglévő moderátorok listája. A tárolt tokenek nem írhatók felül. Szükség esetén először törölje a bejegyzést az X-re kattintva.
+list_token_user#:#Regisztrált moderátorok
+lock_disable_cam_choose_info#:#Adja meg, hogy a „Résztvevő kamera zárolása” beállítás elérhető-e az objektumhoz.
+lock_disable_cam_choose#:#Résztvevői kamerazár választható
+lock_disable_cam_default_info#:#Állítsa az alapértelmezett beállítást a „Résztvevő kamera zárolása” értékre.
+lock_disable_cam_default#:#Résztvevő kamerájának zárolása (alapértelmezett beállítás)
+lock_disable_cam_info#:#Ennek az opciónak az aktiválásával a résztvevők kamerája (webkamera) alapértelmezés szerint blokkolva van.
+lock_disable_cam#:#Résztvevő kamerájának zárolása
+locked_by#:#Blokkolva
+locked#:#Zárolt
+lock#:#Kizár
+logo_url_info#:#Add meg a logód URL-címét. Az URL-címnek https:// előtaggal kell kezdődnie.
+logo_url#:#A logó URL-címe
+lp_active#:#Aktív
+lp_active_info#:#A „Folyamatban” állapot akkor jelenik meg, amikor a tartalomhoz hozzáférnek. A „Feldolgozva” állapotot az aktivitás órái határozzák meg.
+lp_inactive#:#Inaktív
+lp_inactive_info#:#Nincs mentett tanulási folyamat ehhez az objektumhoz.
+lp_mode#:#mód
+lp_time_info#:#Ezt a százalékos értéket, amely a lehetséges jelenléti időkön alapul, túl kell lépni ahhoz, hogy az állapot „Feldolgozva” legyen beállítva.
+lp_time#:#„Szerkesztett” küszöbérték
+max_duration#:#Maximális időtartam
+max_meetings#:#Maximális tárgyalótermek száma
+max_participants#:#Max. résztvevők
+max_users#:#Felhasználók maximális száma
+meeting_collision#:#Hiba történt. A kért időpontra már van ütemezve egy munkamenet.
+meeting#:#találkozó
+meeting_end#:#A találkozó vége
+meeting_related_successful#:#Megbeszélés sikeresen kiosztva
+meeting_running#:#Elindult a virtuális tárgyalóterem.
+meeting_start#:#Megbeszélés kezdete
+member_btn_fileupload_choose#:#Mindenki feltölthet fájlokat: Opció
+member_btn_fileupload_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak a Beállítások alatt látniuk kell a „Fájlok feltöltésének engedélyezése mindenki számára” opciót.
+member_btn_fileupload#:#Fájlfeltöltések engedélyezése mindenkinek
+member_btn_fileupload_default#:#Mindenki feltölthet fájlokat: Alapértelmezett beállítás
+member_btn_fileupload_default_info#:#Ennek az opciónak általában le kell lennie tiltva.
+member_btn_fileupload_info#:#Csak akkor aktiválja ezt az opciót, ha a kiterjesztett jogokkal rendelkező személyeken (pl. adminisztrátorok, esetleg oktatók) kívül másoknak is képesnek kell lenniük fájlok feltöltésére.
+modal_delete_scheduled_meeting_accept#:#Megbeszélés törlése
+modal_delete_scheduled_meeting_title#:#Biztosan törölni szeretné ezt a találkozót?
+modal_delete_scheduled_webinar_accept#:#Webinárium törlése
+modal_delete_scheduled_webinar_title#:#Biztosan törölni szeretné ezt a webináriumot?
+modal_details_scheduled_meeting_title#:#Értekezlet részletei (Webex válasz törzse)
+modal_details_scheduled_webinar_title#:#Webinárium részletei (edudip válasz szövege)
+moderated_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak lehetőségük kell legyen a „moderált szoba” kiválasztására a Beállítások alatt.
+moderated_choose#:#moderált tér: választási lehetőség
+moderated_default_info#:#Aktiválja ezt az opciót, ha új szobákat szeretne moderált szobákként létrehozni.
+moderated_default_zoom_info#:#Aktiválja ezt az opciót, ha új termeket szeretne létrehozni „webináriumok” formájában.
+moderated_default#:#moderált szoba: alapértelmezett beállítás
+moderated_info#:#Egy moderált térben a moderátorok kiterjesztett jogokkal rendelkeznek. A többi felhasználó csak korlátozott hozzáféréssel rendelkezik a virtuális térhez. A moderátorok közé tartozik bárki, aki szerkesztheti az objektum tulajdonságait, valamint a csoport adminisztrátorai, a kurzus adminisztrátorai és a kurzus oktatói.
+moderated_teams_info#:#Egy moderált térben az objektum létrehozója, valamint a csoport adminisztrátorai, a kurzus adminisztrátorai és a kurzus oktatói több joggal rendelkeznek: Megoszthatnak és átvihetnek tartalmat, és eldönthetik, hogy mások csatlakozhatnak-e. Egy nem moderált térben bárki csatlakozhat, és megoszthat vagy átvihet tartalmat megerősítés nélkül.
+moderated_zoom_info#:#A virtuális tér webináriumokhoz, nem pedig találkozókhoz készült. Kérjük, győződjön meg arról, hogy a Zoom-fiókja rendelkezik engedéllyel webináriumok létrehozására. Egy alap, vagy akár ingyenes fiók nem rendelkezik ezzel az engedéllyel.
+moderated#:#moderált tér
+moderated_webex#:#Tipp: A moderálatlan szobákban a résztvevők nincsenek álnevesítve. Ezért csak a megfelelő Webex-fiókkal rendelkező személyek csatlakozhatnak.
+moderated_zoom#:#Webinárium
+moderator#:#Moderátor
+msg_obj_deleted#:#A felvételt törölték.
+notification_sending#:#Értesítések küldése folyamatban...
+notification_sent#:#Az értesítések sikeresen elküldve.
+obj_ids_special_info#:#Csak ritkán szükséges! Ide vesszővel elválasztva kell megadni a kurzusokhoz kapcsolt termek ILIAS objektumazonosítóit (tehát mindig ugyanazt az objektumazonosítót), amelyeket minden kurzusnál külön kell kezelni. Az objektumazonosító az objektumbeállításokban jelenik meg. A „Speciális termek” opció akkor hasznos, ha sok terem beállításait központilag kell kezelni, például további funkciók fokozatos engedélyezéséhez.
+obj_ids_special#:#Különleges szobák
+objs_xmvc_duplicate#:#Virtuális tárgyaló másolása
+objs_xmvc#:#Virtuális tárgyalók
+obj_xmvc_download#:#Letöltés
+obj_xmvc_duplicate#:#Másolat
+obj_xmvc_select#:#Válasszon virtuális tárgyalót
+obj_xmvc#:#Virtuális tárgyalóterem
+offline#:#Offline
+of_owner_prefix#:#tulajdonos által
+om_svr_public_port#:#OpenMeeting szerver port
+om_svr_public_url#:#Az OpenMeeting szerver URL-címe
+om_svr_username#:#SOAP felhasználónév
+om_svr_userpass#:#SOAP jelszó
+overview_uses#:#Felhasználási áttekintés
+owners_email_not_unique#:#A tulajdonos e-mail címe nem egyedi. Csak egyszer rendelhető hozzá egy ILIAS felhasználóhoz.
+playback#:#Felvétel lejátszása
+plugin_configuration#:#konfiguráció
+private_chat_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak látniuk kell a „Privát csevegés engedélyezése” opciót a Beállítások alatt.
+private_chat_choose#:#Privát csevegés engedélyezése: Kiválasztási lehetőség
+private_chat_default_info#:#Ha engedélyezve van, a moderátori jogosultságokkal nem rendelkező felhasználók is folytathatnak privát csevegéseket egymással. A moderátori jogosultságokkal rendelkező felhasználók nem láthatják ezeket a csevegéseket. Mivel a moderátorok bármikor leállíthatják a privát csevegéseket, ezt a beállítást a legtöbb esetben engedélyezni kell.
+private_chat_default#:#Privát csevegés engedélyezése: Alapértelmezett beállítás
+private_chat_info#:#Még a moderátori jogosultságokkal nem rendelkező emberek is folytathatnak privát csevegést egymással.
+private_chat#:#Privát csevegés engedélyezése
+properties#:#Jellemzők
+protected#:#Védett terek
+pub_recs#:#Azonnal közzéteszi a felvételeket
+pub_recs_choose#:#Felvételek azonnali kiadása: Kiválasztási lehetőség
+pub_recs_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak a Beállítások alatt látniuk kell a „Felvételek azonnali megosztása” opciót.
+pub_recs_default#:#Felvételek azonnali kiadása: Alapértelmezett beállítás
+pub_recs_default_for_object#:#A felvételek azonnal elérhetővé válnak a résztvevők számára.
+pub_recs_default_info#:#Engedélyezze ezt az opciót, ha a felvételeket mindig azonnal fel kell szabadítani, vagy ha az „A felvételek azonnali felszabadítása” opciót engedélyezni kell az új objektumokhoz.
+pub_recs_info#:#Ha ezt a lehetőséget választja, a megbeszélés felvétele a megbeszélés befejezése után azonnal közzétételre kerül. A megbeszélés oldalán található áttekintésben lehetősége van a felvételek zárolására vagy feloldására.
+rbac_create_xmvc#:#Virtuális tárgyaló létrehozása
+rec_hidden#:#Ez a felvétel nem látható a résztvevők számára.
+recording#:#feljegyzések
+recording_autostart#:#A felvételek automatikusan a legelején indulnak. Az ILIAS felhasználókat erről értesítjük.
+recording_choose#:#Felvétel engedélyezése: Kiválasztási lehetőség
+recording_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak lehetőségük van a „Felvételek engedélyezése” lehetőségre a beállításokban. Mivel a felvétel URL-címe jogosulatlan személyekkel megosztható, ha ismertté válik, ezt a beállítást általában nem szabad engedélyezni.
+recording_default#:#Felvétel engedélyezése: Alapértelmezett beállítás
+recording_default_info#:#Ezt az opciót a legtöbb esetben le kell tiltani, hogy megakadályozzuk a felvételi funkció használatát a virtuális térben.
+recording_info#:#A foglalkozások rögzíthetők.
+recording_only_for_moderated_rooms#:#Felvétel csak moderált szobákban
+recording_only_for_moderated_rooms_default#:#Felvétel csak moderált szobákban
+recording_only_for_moderated_rooms_default_info#:#Ezt az opciót a legtöbb esetben engedélyezni kell. Csak akkor érvényes, ha a felvétel általánosan engedélyezett.
+recording_only_for_moderated_rooms_info#:#Csak moderált szobákban indíthatnak felvételeket moderátori funkciókkal rendelkező személyek.
+recording_warning#:#A felvétel engedélyezve van ehhez a megbeszéléshez! A csevegőrendszer aktív használatával, a személyes mikrofonom/kamerám bekapcsolásával és/vagy a képernyőtartalom megosztásával hozzájárulok ahhoz, hogy ezeket az információkat rögzítsék és későbbi felhasználás céljából tárolják.
+recs_locked#:#Felvétel(ek) blokkolva
+recs_published#:#Felvétel(ek) megjelentek
+recurrence_#:#-
+recurrence_daily#:#Napi
+recurrence_monthly#:#Havi
+recurrence_weekly#:#Heti
+recurrence_yearly#:#Évi
+rec_visible#:#Ez a felvétel látható a résztvevők számára.
+references#:#Linkek
+related_meeting#:#Kijelölt
+related_webinar#:#Kijelölt
+relate_meeting#:#Hozzárendelés
+relate_webinar#:#Hozzárendelés
+report_log_max#:#Használati áttekintés (BBB)
+require_schedule_new_meeting#:#Beütemezheti a megbeszéléseket, és a tervezett időpontokban elkezdheti azokat.
+require_schedule_new_meeting_zoom#:#Találkozókat hozhatsz létre.
+require_schedule_new_webinar#:#Webináriumokat hozhatsz létre, és elindíthatod őket az ütemezett időpontokban.
+reset_authorization#:#Engedély visszavonása
+reseted_tokens#:#Tokenek visszaállítása
+root_create_xmvc#:#Virtuális tárgyaló létrehozása
+saving_invoked#:#Beállítások mentve
+scheduled_meeting_agenda#:#napirend
+scheduled_meeting_both_data_sources#:#minden
+scheduled_meeting_create_btn#:#Találkozó létrehozása
+scheduled_meeting_created#:#Ütemezett megbeszélés létrehozva
+scheduled_meeting_create#:#Ütemezett megbeszélés létrehozása
+scheduled_meeting_data_source#:#Találkozók
+scheduled_meeting_delete_btn#:#Megbeszélés törlése
+scheduled_meeting_deleted#:#Megbeszélés törölve
+scheduled_meeting_duration#:#Időszak
+scheduled_meeting_local_data_sources#:#kijelölt
+scheduled_meeting_not_deleted#:#A találkozó nem törölve
+scheduled_meeting_overview#:#A tervezett találkozók áttekintése
+scheduled_meeting_recurrence#:#Ismétlés
+scheduled_meetings#:#Tervezett találkozók
+scheduled_meeting_state#:#állapot
+scheduled_meeting_time_ahead#:#Megbeszélés átfutási ideje
+scheduled_meeting_update_btn#:#Értekezlet frissítése
+scheduled_meeting_update#:#Ütemezett megbeszélés frissítése
+scheduled_webinar_agenda#:#napirend
+scheduled_webinar_both_data_sources#:#minden
+scheduled_webinar_create_btn#:#Webinárium létrehozása
+scheduled_webinar_created#:#Tervezett webinárium létrehozva
+scheduled_webinar_create#:#Webinárium létrehozása (kérjük, adjon meg egyedi címet)
+scheduled_webinar_data_source#:#Webináriumok
+scheduled_webinar_delete_btn#:#Webinárium törlése
+scheduled_webinar_deleted#:#Webinárium törölve
+scheduled_webinar_duration#:#Időszak
+scheduled_webinar_local_data_sources#:#kijelölt
+scheduled_webinar_not_deleted#:#A webinárium nem törölve
+scheduled_webinar_overview#:#A tervezett webináriumok áttekintése
+scheduled_webinar_recurrence#:#Ismétlés
+scheduled_webinars#:#Tervezett webináriumok
+scheduled_webinar_state#:#állapot
+scheduled_webinar_time_ahead#:#Webinárium átfutási ideje
+scheduled_webinar_update_btn#:#Frissítési webinárium
+scheduled_webinar_update#:#Tervezett webinárium frissítése
+schedule_meeting_duration_less_time#:#A megbeszélés minimális időtartama 10 perc. Kérjük, ennek megfelelően módosítsa a bejegyzéseit.
+schedule_meeting_error#:#Hiba történt. Kérjük, ellenőrizze a bejegyzéseit.
+schedule_webinar_duration_less_time#:#Egy webinárium minimális időtartama 10 perc. Kérjük, ennek megfelelően igazítsa a nevezését.
+schedule_webinar_error#:#Hiba történt. Kérjük, ellenőrizze a bejegyzéseit.
+select#:#Válasszon
+service_unavailable#:#A szolgáltatás nem elérhető
+sess_owner_changed#:#A hitelesítés megváltozott.
+showcontent#:#WebRTC platform
+show_hint_pub_recs_info#:#A felvétel linkjeinek megosztásának tilalmára vonatkozó figyelmeztetés jelenik meg a felhasználók számára a megbeszélés oldalán. Engedélyezze ezt a beállítást, ha nem szeretné, hogy ez a figyelmeztetés megjelenjen.
+show_hint_pub_recs#:#Felvétellinkek megosztásának engedélyezése
+start_time#:#indul
+starttime#:#Kezdési idő
+start_window#:#Virtuális tárgyaló indítása új ablakban
+state_active#:#Aktív
+state_inprogress#:#Futás
+state_ready#:#Kész
+status#:#állapot
+subject_crs#:#{MEETING_TITLE} a(z) {PARENT_TITLE} kurzusban
+subject_fld#:#{MEETING_TITLE} a {PARENT_TITLE} mappában
+subject_grp#:#{MEETING_TITLE} a(z) {PARENT_TITLE} csoportban
+svr_private_port#:#A BBB szerver privát portja
+svr_private_url#:#A BBB szerver privát URL-címe
+svr_public_port#:#A BBB szerver nyilvános portja
+svr_public_url#:#A BBB szerver nyilvános URL-címe
+svr_salt#:#BBB szerver jelszó (titkos)
+sysadmin_perm_choose_all#:#Rendszergazdaként szerkesztheti az objektum összes tulajdonságát.
+tab_close#:#Kérjük, most zárja be ezt az ablakot vagy fület.
+teams_client_id#:#Ügyfél-azonosító
+teams_client_id_info#:#Adja meg itt az alkalmazás azonosítóját / kliens azonosítóját.
+teams_client_secret#:#Ügyféltitkos kód
+teams_client_secret_info#:#Közvetlenül azután, hogy létrehoztál egy titkos kulcsot az Entrában a MultiVc-hez létrehozott alkalmazáshoz, kimásolhatod a kulcs értékét, és beírhatod ide.
+teams_join_links#:#Közvetlenül itt csatlakozhatsz: {br}{JOIN_URL}{br}&nbsp;{br}vagy kattints ide: {PERMANENT_LINK}
+teams_lobbybypass#:#Várakozóterület megkerülése
+teams_lobbybypass_choose#:#Várakozóterület megkerülése: Választható opció
+teams_lobbybypass_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak lehetőségük kell legyen a „Váróterem megkerülésére” a beállításokban. Ez szabályozza, hogy ki kerüljön a váróterembe/értekezlet előszobájába.
+teams_lobbybypass_default#:#Várakozóterület megkerülése: Alapértelmezett beállítás
+teams_lobbybypass_everyone#:#Mindenkit beengednek a megbeszélésre. Senkit sem helyeznek el a váróteremben.
+teams_lobbybypass_invited#:#Csak a meghívott személyek vehetnek részt a megbeszélésen, és ők nem kell várakozniuk.
+teams_lobbybypass_organizer#:#A résztvevők a váróteremben foglalnak helyet. Az adminisztrátorok és a kisegítő személyzet kihagyja a váróteret.
+teams_meetings_list_downloaded#:#Sikeresen integráltuk a meglévő online megbeszéléseket a Teamsbe.
+teams_tenant_id_info#:#Adja meg itt a bérlő azonosítóját. Alternatív nevek: Könyvtár azonosítója (kliens).
+teams_tenant_id#:#Bérlői azonosító
+terms_of_use#:#<b>Szellemi tulajdonjogok</b>{br}A BigBlueButton konferenciákon található információk és anyagok, például szövegek vagy képek általában szerzői jogi, védjegy- vagy szabadalmi védelem alatt állnak.{br}Be kell tartani az adatvédelmi előírásokat. Ez különösen vonatkozik a BigBlueButton konferenciák rögzítésére. A video- vagy hangkonferenciák titkos rögzítése bűncselekmény.{br}{br}<b>Magatartási kódex</b>{br}Nem tehet közzé olyan tartalmat, amely sérti a jogszabályokat, pornográf, obszcén, rágalmazó, becsületsértő, sértő, fenyegető, gyűlöletkeltő vagy rasszista. Tilos továbbá engedély nélküli hirdetések közzététele, valamint vírusokat, manipulációkat vagy hasonló káros elemeket tartalmazó információk továbbítása. Adatfeldolgozás A BigBlueButton használata során a következő adatokat gyűjtjük: Kapcsolati adatok (pl. IP-cím, böngésző típusa, a hozzáférés dátuma és időpontja) Hozzáférési adatok (ha van): felhasználónév, jelszó titkosított formában Tartalomadatok (pl. feltöltött fájlok, chat-hozzájárulások, felmérések) A kapcsolati adatok, különösen az IP-cím, ideiglenes tárolása a rendszer által szükséges ahhoz, hogy a BigBlueButton a felhasználó számítógépére kézbesíthető legyen. Erre a célra a felhasználó IP-címét a munkamenet időtartama alatt kell tárolni. Az adatok ideiglenes tárolásának jogalapja a GDPR 6. cikk (1) bekezdés f) pontja. A kapcsolati adatokat általában naplófájlokban is tároljuk. A törlési időt a BigBlueButton szerver üzemeltetője határozza meg.
+title#:#cím
+token_deleted#:#Token törölve
+token_not_deleted#:#A token nem törölve
+token_not_stored#:#A token nincs mentve
+token_stored#:#Token tárolva
+unlocked_by#:#Kiadta:
+unlock#:#Kiadás
+untrashed_usages#:#Használatok száma
+url_info#:#Itt relatív elérési utakat is megadhat (pl. /webkonferencia). Kérjük, ne tegyen bele '/' karaktert a cím végén.
+url#:#URL-cím
+usage#:#Kihasználtság
+user_end#:#utolsó indulás
+user_invite_info#:#A következő link segítségével hívhat meg vendégeket a találkozóra:
+user_log#:#Felhasználói áttekintés
+user_log_bbb#:#Felhasználói áttekintés (BBB/Csapatok/Zoom)
+user_log_duration#:#Felvételi időszak
+user_percent#:#százalékos
+user_results#:#Jelenléti idők
+user_results_desc#:#Az időpontok csak a már befejeződött megbeszéléseknél jelennek meg. A megbeszéléseknek el kell érniük a tervezett befejezési időpontjukat.
+user_start#:#első indítás
+user_time#:#jelenléti idő
+wait_join_meeting#:#<b>Jelenleg senki sincs moderátori jogosultsággal a virtuális tárgyalóban.<br/>Kérjük, várjon, és nézzen vissza egy perc múlva.</b>
+wait_join_meeting_edudip#:#Jelenleg nem csatlakozhatsz webináriumokhoz.
+wait_join_meeting_guest#:#<b>Jelenleg senki sem rendelkezik moderátori jogosultságokkal a virtuális tárgyalóban.<br/>Kérjük, várjon, és kattintson újra a „Csatlakozás a megbeszéléshez” gombra egy perc múlva.</b>
+wait_join_meeting_teams#:#Jelenleg nem csatlakozhat megbeszéléshez. Ha megjelenik egy ütemezett megbeszélés, frissítse ezt az oldalt legfeljebb 15 perccel a megbeszélés előtt a csatlakozáshoz.
+wait_join_meeting_webex#:#Jelenleg nem csatlakozhat megbeszéléshez. Lehet, hogy a megbeszélés még nem kezdődött el, vagy már véget ért. Kérjük, frissítse az oldalt a megbeszélés állapotának ellenőrzéséhez.
+wait_join_meeting_zoom#:#Jelenleg nem csatlakozhat megbeszéléshez. Ha megjelenik egy ütemezett megbeszélés, frissítse ezt az oldalt legfeljebb 15 perccel a megbeszélés előtt a csatlakozáshoz.
+wait_join_webinar#:#<b>Még senki sem kezdte el a webináriumot.<br/>Kérjük, várjon, és nézzen vissza egy perc múlva.</b>
+webex_client_id#:#Webex integrációs ügyfél-azonosító
+webex_client_secret#:#Webex integrációs ügyfél titkos kódja
+webex_host_email_hidden_info#:#Az engedélyezéshez használt e-mail cím csak az objektum tulajdonosai és rendszergazdái számára látható.
+webex_host_email_info#:#A Webex vagy a tárhelyszolgáltató által ismert e-mail cím
+webex_host_email#:#Webex tárhelyszolgáltató e-mail címe
+webex_integration_auth_info#:#Engedélyezheti a Webex-fiókjához való hozzáférést. Ez szükséges a Webex-értekezletek létrehozásához, lekéréséhez és elindításához a MultiVC bővítmény használatával.
+webex_logout_user_choose#:#Kijelentkezések engedélyezése a Webexből: Opció
+webex_logout_user_choose_info#:#A Webexbe már bejelentkezett felhasználóknak ki kell jelentkezniük a Webexből, mielőtt csatlakoznának a megbeszéléshez.
+webex_logout_user_default#:#Kijelentkezés a Webexből: Alapértelmezett beállítás
+webex_logout_user_default_info#:#A Webexbe már bejelentkezett felhasználóknak mindig ki kell jelentkezniük a Webexből, mielőtt csatlakoznának a megbeszéléshez.
+webex_meetings_list_downloaded#:#A meglévő Webex-megbeszélések letöltése sikeresen megtörtént.
+webex_redirect_uri#:#Átirányítási URI
+webex_site_url#:#Webex webhely URL-címe
+webex_user_choose_logout#:#A felhasználó dönt
+webex_user_do_logout#:#Kijelentkezés
+webex_user_do_not_logout#:#Ne jelentkezzen ki
+webex_user_logout#:#Kijelentkezés a Webexből
+webinar_collision#:#Hiba történt. A kért időpontra már be van ütemezve egy webinárium.
+webinar_event_created#:#Webinárium létrehozva
+webinar_event_deleted#:#Webinárium törölve
+webinar_notification_body#:#Üdvözlöm {NAME},{NL}{NL}! A következő {EVENT} esemény létrejött:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Tisztelettel,{NL}{NL}{FROM}
+webinar_notification_from#:#ILIÁD
+webinar_notification_subject#:#{ESEMÉNY}: {TÁRGY}
+webinar_related_successful#:#Webinárium sikeresen kiosztva
+webinar_running#:#A webinárium elkezdődött.
+webinar#:#Webinárium
+welcome_text#:#Üdvözöljük a {br}virtuális tárgyalóban{br}<b>{MEETING_TITLE}, {br}{br}Ha az alábbi képernyő közepén egy áthúzott hangszóró ikont lát, akkor mások nem fogják hallani Önt, és Ön sem fog semmit hallani. Kattintson az áthúzott hangszóró ikonra a hangkapcsolat elindításához.{br}Használjon fejhallgatót a háttérzaj és a gerjedés elkerülése érdekében.
+window_closed#:#A virtuális tárgyalóterem véget ért.
+window_close#:#Ablak bezárása
+window_started#:#A virtuális tárgyaló új ablakban indult.
+with_chat_choose_info#:#Engedélyezze ezt a beállítást, ha az írási jogosultsággal rendelkező felhasználóknak rendelkezniük kell a „Csevegéssel kezdés” opcióval a Beállítások alatt.
+with_chat_choose#:#Csevegéssel kezdés: Kiválasztási lehetőség
+with_chat_default_info#:#Ennek általában aktiválva kell lennie - különösen a moderált helyiségekben.
+with_chat_default#:#Csevegéssel kezdés: Alapértelmezett beállítás
+with_chat_info#:#Ezt az opciót engedélyezni kell, különösen moderált szobákban. A chat ezután „váróteremmé” válik.
+with_chat#:#Kezdés csevegéssel
+xmvc_add#:#Virtuális tárgyaló hozzáadása
+xmvc_copy#:#Virtuális tárgyaló másolása
+xmvc_delete#:#Virtuális tárgyaló törlése
+xmvc_edit_learning_progress#:#Tanulási folyamat beállításainak szerkesztése
+xmvc_edit_permission#:#Engedélyek módosítása
+xmvc_new#:#Új virtuális tárgyaló hozzáadása
+xmvc_read#:#Olvasási hozzáférés: A virtuális tárgyalóban való részvétel lehetséges.
+xmvc_read_learning_progress#:#Más felhasználók tanulási folyamatának megtekintése
+xmvc_visible#:#Kijelző: A virtuális tárgyaló látható
+xmvc_write#:#Beállítások szerkesztése
+zoom_account_id#:#Zoom-fiók azonosítója
+zoom_account_info#:#A Zoom fiókazonosítót, az ügyfél-azonosítót és az ügyfél titkos kódját a https://developers.zoom.us/docs/internal-apps/create/ címen szerezheted be. Létre kell hoznod egy szerver-szerver OAuth alkalmazást.
+zoom_client_id#:#Zoom ügyfél-azonosító
+zoom_client_secret#:#Zoom ügyfél titkos kódja
+zoom_err_scopes_webinar#:#Nincs engedélye webinárium létrehozására. Találkozók lehetségesek. A következő engedélyek hiányoznak:
+zoom_exist_meetings#:#Ennek a találkozónak az időpontjait már kitűzték.
+zoom_exist_webinars#:#A webinárium időpontjait már kitűzték.
+zoom_lobby#:#Váróterem a megbeszélésekre
+zoom_lobby_choose#:#Váróterem: Választható lehetőségek
+zoom_lobby_choose_info#:#Engedélyezze ezt az opciót, ha az írási jogosultsággal rendelkező felhasználóknak rendelkezniük kell a „Várószoba” opcióval a beállításokban. Ez szabályozza, hogy ki kerüljön a váróterembe.
+zoom_lobby_default#:#Váróterem: Alapértelmezett beállítás
+zoom_lobby_0#:#Senkinek sem kell a váróteremben várakoznia. A váróterem inaktív. A résztvevők 15 perccel a megbeszélés kezdete előtt jöhetnek be.
+zoom_lobby_1#:#Mindenkinek be kell mennie a váróterembe.
+zoom_lobby_2#:#A fiókodon kívüli felhasználóknak be kell menniük a váróterembe.
+zoom_lobby_3#:#A fiókodon kívüli vagy a jóváhagyott domaineken nem szereplő felhasználóknak be kell menniük a váróterembe.
+zoom_lobby_4#:#Azoknak a felhasználóknak, akik nem a kurzuson vagy csoportban vannak, a váróterembe kell menniük.

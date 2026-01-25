@@ -1,0 +1,492 @@
+<!-- language file start -->
+add_presentation_url#:#Açılış sunumu
+add_token#:#Jeton ekle
+add_token_user#:#Yeni moderatör / belirteç
+add_welcome_text#:#Kişiselleştirilmiş karşılama mesajı
+adm_info_appointment#:#Yönetici veya eğitmen olarak odayı başlatabilirsiniz. Ancak katılımcılar odayı yalnızca ders süresi boyunca açabilirler.
+assigned_roles_info#:#Bu MultiVc yapılandırmasının oluşturulması, seçilen rollerden birine veya daha fazlasına ait kullanıcılarla sınırlandırılabilir.
+assigned_roles#:#Atanan roller
+authorize#:#yetkilendirmek
+bbb_default_server#:#Standart BBB sunucusu
+bbb_guest_password_info#:#Alfanümerik ve özel karakterlere izin verilir, örneğin: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Misafir şifresi
+bbb_secret_expiration_date#:#Son kullanma tarihi
+bbb_secret_expiration_date_info#:#Şifre, seçilen tarihe kadar ve bu tarih dahil olmak üzere geçerlidir.
+bbb_secret_expired_msg#:#Misafir şifresinin süresi doldu.
+bbb_secret_expires_info#:#Parolanın sınırlı bir geçerlilik süresine sahip olmasını istiyorsanız bu seçeneği belirleyin.
+bbb_secret_expires#:#Son kullanma tarihi
+big_blue_button#:#BigBlueButton WebRTC
+btn_chat#:#Sohbet gösterilebilir/gizlenebilir.
+btn_chat_choose#:#Sohbet gösterilebilir/gizlenebilir: Seçim seçeneği
+btn_chat_choose_info#:#Yazma izni olan kullanıcıların ayarlarda 'Sohbeti göster/gizle' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+btn_chat_default#:#Sohbet gösterilebilir/gizlenebilir: Varsayılan ayar
+btn_chat_default_info#:#Kullanımı kolaylaştırmak için bu seçeneği etkinleştirmemek ve sohbeti her zaman görüntülemek faydalı olabilir.
+btn_chat_info#:#Bu butonun sohbeti gösterip gizlemesini istiyorsanız bu seçeneği etkinleştirin.
+btn_locationshare_choose_info#:#Bu seçenek genellikle devre dışı bırakılmalıdır.
+btn_locationshare_choose#:#Konum seçeneği: Seçim
+btn_locationshare_default_info#:#Bu seçeneği yalnızca veri koruma görevlisiyle görüştükten sonra etkinleştirin.
+btn_locationshare_default#:#Seçenek Konumu: Varsayılan
+btn_locationshare_info#:#Bu seçenek, kullanıcıların mevcut konumlarını sohbetteki diğer kişilerle paylaşmalarına ve başkaları tarafından ayrı bir toplantıya davet edilmelerine olanak tanır. Gizlilik nedenleriyle, bu seçenek yalnızca dikkatli bir şekilde etkinleştirilmelidir.
+btn_locationshare#:#Seçenek Konumu
+btn_settings_choose#:#Oda ayarları: Seçim seçeneği
+btn_settings_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'Odadaki Ayarlar' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+btn_settings_default#:#Oda ayarları: Varsayılan
+btn_settings_default_info#:#Varsayılan ayar genellikle ayarlar seçeneğinin ve düğmesinin etkin olmaması olmalıdır.
+btn_settings#:#Oda ayarları
+btn_settings_info#:#Butonların ve ayar seçeneklerinin odada görünmesini istiyorsanız bu seçeneği etkinleştirin. Ancak, ad ve kullanıcı resmi ILIAS'tan otomatik olarak devralındığı için bu genellikle gerekli değildir.
+btntext_concurrent_users_check#:#Müsaitlik durumunu kontrol edin
+btntext_guest_login_button#:#Misafir olarak giriş yap
+btntext_join_meeting#:#Toplantıya katıl
+btntext_join_webinar#:#Webinara katılın
+btntext_start_meeting#:#Toplantıyı başlat
+btntext_start_webinar#:#Webinarı başlat
+cam_mic_only_for_moderator_choose_info#:#Yazma izni olan kullanıcıların ayarlarda ilgili seçeneğe sahip olması gerekiyorsa bu seçeneği etkinleştirin. Bu seçenek çoğu durumda etkinleştirilmelidir.
+cam_mic_only_for_moderator_choose#:#Katılımcılar kameralarını ve mikrofonlarını etkinleştirmemelidir: Seçenek
+cam_mic_only_for_moderator_default_info#:#Organizasyon komitesi, katılımcıların mikrofonlarını ve/veya kameralarını kullanmalarına seçici olarak izin verebilir. Katılımcılar, onay almadan paylaşım yapamaz veya yayın yapamazlar. Bu seçenek, çok sayıda katılımcının olduğu etkinlikler için kullanışlıdır.
+cam_mic_only_for_moderator_default#:#Katılımcılar kameralarını ve mikrofonlarını etkinleştirmemelidir: varsayılan ayar.
+cam_mic_only_for_moderator_info#:#Organizasyon komitesi, katılımcıların mikrofonlarını ve/veya kameralarını kullanmalarına seçici olarak izin verecektir. Katılımcılar, onay almadan paylaşım yapamaz veya yayın yapamazlar.
+cam_mic_only_for_moderator#:#Katılımcılar kameralarını ve mikrofonlarını açmamalıdır.
+cam_only_for_moderator_choose_info#:#Yazma izni olan kullanıcıların ayarlarda 'Sadece moderatörler için kamera' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin. Bu seçenek çoğu durumda etkinleştirilmelidir.
+cam_only_for_moderator_choose#:#Sadece moderatörler için kamera: Seçim seçeneği
+cam_only_for_moderator_default_info#:#Bu seçenek çoğu durumda devre dışı bırakılmalı ve yalnızca çok sayıda katılımcı olması durumunda performans sorunları bekleniyorsa etkinleştirilmelidir. Moderatörler bu ayarı oturum sırasında her zaman değiştirebilirler.
+cam_only_for_moderator_default#:#Sadece moderatörler için kamera: Varsayılan ayar
+cam_only_for_moderator_info#:#Çok sayıda kişinin katıldığı toplantılar için önerilir.
+cam_only_for_moderator_zoom#:#Kamera sadece sunucular içindir.
+cam_only_for_moderator_zoom_info#:#Çok sayıda kişinin katıldığı toplantılar için tavsiye edilir!
+cam_only_for_moderator#:#Kamera yalnızca moderatörler içindir.
+cancel#:#iptal etmek
+cat_create_xmvc#:#Sanal toplantı odası oluşturun
+chat_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'Sohbete izin ver' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+chat_choose#:#Sohbete izin ver: Seçenek
+chat_default_info#:#Etkinleştirilirse, kişiler birbirleriyle sohbet edebilirler.
+chat_default#:#Sohbete izin ver: Varsayılan ayar
+chat_info#:#İnsanlar birbirleriyle sohbet edebilirler.
+chat#:#Sohbete izin ver
+conf_availability_0#:#Müsait değil
+conf_availability_1#:#Mevcut izin verildi
+conf_availability_2#:#Yenileri oluşturulabilir.
+conf_availability#:#Müsaitlik
+config_help_begin#:#Ayarlar başlığı altındaki açıklama şu şekildedir:
+configure_add#:#Yapılandırma oluştur
+configure#:#yapılandırma
+conf_meeting_layout_1#:#ÖZEL_DÜZEN
+conf_meeting_layout_2#:#AKILLI_DÜZEN
+conf_meeting_layout_3#:#SUNUM ODAĞI
+conf_meeting_layout_4#:#VİDEO_ODAĞI
+conf_meeting_layout#:#Toplantı Düzeni
+conf_title#:#başlık
+conn_deleted#:#Toplantı türü silindi.
+conn_id#:#Toplantı türü
+copy#:#Kopyala
+create_type#:#Yeni bir toplantı türü tanımlayın.
+cronjob_description#:#Etkinleştirildiğinde, sayfada geçirilen süre öğrenme ilerlemesini hesaplamak için kullanılabilir.
+cronjob_title#:#MS Teams veya Zoom kullanılırken öğrenme ilerlemesini belirlemek için MultiVc cron görevi.
+crs_create_xmvc#:#Sanal toplantı odası oluşturun
+custom_style#:#Özel Stil
+custom_style_info#:#Burada CSS stil parametrelerini veya bir CSS dosyasını tanımlayabilirsiniz. Dosya için, https:// ile başlayan bir URL belirtilmelidir. Ayrıca, BBB kurulumunun settings.yml dosyasında "displayBrandingArea" parametresi true olarak ayarlanmalıdır.
+delete_conn#:#Toplantı türünü sil?
+delete#:#Silmek
+delete_sess_user_changed#:#Mülkiyet değişikliği durumunda alınacak önlemler
+delete_sess_user_changed_info#:#Kullanıcı başka bir kullanıcıya geçtiğinde, oluşturulan tüm oturumlar silinir.
+delete_token#:#Tokeni sil
+delete_type#:#Toplantı türünü sil
+disable_sip_info#:#Bu seçenek, SIP çevirmeli bağlantıyı devre dışı bırakmanıza olanak tanır. Bu durumda telefonla çevirmeli bağlantı artık mümkün olmayacaktır.
+disable_sip#:#Telefon çevirmeli bağlantısını devre dışı bırakın
+display_name#:#Görüntülenen ad
+download#:#İndirmek
+download_video#:#Kaydı indir
+duration#:#Süre
+edit#:#Düzenlemek
+edit_properties#:#Özellikleri düzenle
+edudip_host_email#:#edudip e-posta adresi
+edudip_host_email_hidden_info#:#Yetkilendirme için kullanılan e-posta adresi yalnızca nesnenin sahipleri ve yöneticileri tarafından görülebilir.
+edudip_host_email_info#:#Edudip'in kayıtlarında yer alan e-posta adresinizin bu adresle aynı olması gerekiyor.
+edudip_meetings_list_downloaded#:#Edudip'te halihazırda mevcut olan web seminerleri başarıyla entegre edildi.
+edudip_meetings_list_unavailabe#:#Edudip'te mevcut web seminerlerine erişim şu anda mümkün değil.
+end_time#:#Son
+endtime#:#Kıyamet zamanları
+err_msg_displayname#:#Lütfen adınızı girin.
+err_msg_guest_password#:#Misafir şifresi yanlış.
+err_msg_guest_password_expired#:#Misafir şifresinin süresi doldu.
+error_admin_no_access_token#:#Lütfen yöneticinizi bilgilendirin: Jeton eksik.
+error_object_no_access_token#:#Lütfen yetkilendirme işlemini nesne özelliklerinde gerçekleştirin.
+error_object_no_host_email#:#Lütfen nesne özelliklerinde sunucu kullanıcısının e-posta adresini onaylayın.
+error_start_meeting#:#Toplantı başlatılırken bir hata oluştu.
+error_start_webinar#:#Webinar başlatılırken bir hata oluştu.
+ext_provider_token_user#:#Kullanıcı / Erişim Belirteci
+ext_provider_token_user_info#:#Moderatör lisansına sahip kullanıcıların e-posta adreslerini ve ardından erişim belirteçlerini girin.
+fa_expand_default_info#:#Bu seçenek genellikle devre dışı bırakılmalıdır. Ayrıca, birçok durumda belirli alanların (örneğin, sohbet) görüntü boyutu büyütülemez.
+fa_expand_default#:#Alanların görüntülenmesini en üst düzeye çıkarma: Varsayılan ayar
+fold_create_xmvc#:#Sanal toplantı odası oluşturun
+grp_create_xmvc#:#Sanal toplantı odası oluşturun
+guest_displayname_info#:#Lütfen dikkat: BigBlueButton'da isim için ayrılan alanın sınırlı olması nedeniyle, ayrıntılı başlık bilgileri kullanımda zorluklara yol açabilir.
+guest_displayname_input#:#Ünvan Adı Soyadı
+guest#:#Misafir
+guestlink_choose#:#Misafir bağlantısı seçme seçeneği
+guestlink_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'Misafir bağlantısına izin ver' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+guestlink_default#:#Misafir bağlantısı varsayılan
+guestlink_default_info#:#Bu seçenek çoğu durumda devre dışı bırakılmalıdır. Yetkisiz kullanım büyük ölçüde önlenmelidir. Konuklar yalnızca katılımcı olarak denetlenen bir odaya katılabilirler. Bir moderatörün zaten mevcut olması gerekir. Konuklar, ILIAS dil değişkeni olarak saklanan kullanım koşullarını kabul etmelidir. Bunu düzenlemek için Yönetim -> Diller bölümüne gidin. İstediğiniz dile tıklayın ve 'Tanımlayıcı' alanına 'rep_robj_xmvc_terms_of_use' yazın. Ardından 'Filtreyi Uygula'ya tıklayın ve metni düzenleyin.
+guestlink#:#Konuk bağlantısı
+guestlink_info#:#Moderatörler, konukları bir bağlantı aracılığıyla davet edebilirler.
+guest_link_pw_info#:#Misafirler bu şifreyle giriş yapmalıdır.
+guest_password_input_info#:#Lütfen misafir bağlantısı için şifreyi buraya girin.
+guest_password_input#:#Misafir şifresi
+headline_welcome_meeting#:#Toplantı odasına hoş geldiniz!
+headline_welcome_webinar#:#Webinara hoş geldiniz!
+hide_recs_until_date#:#Kayıtları, yayınlayana kadar göstermeyin.
+hide_recs_until_date_info#:#Burada belirtilen kayıt tarihine kadar olan kayıtlar görüntülenmeyecektir.
+hide_username_logs#:#Kullanıcı özetini gizle
+hide_username_logs_info#:#Seçilirse, kullanıcı genel görünümü yalnızca eklenti yönetiminde görünür. Aksi takdirde, MultiVc nesnesi için de bir kullanıcı genel görünümü görüntülenir.
+hint_availability_recs#:#Kayıtlara erişimle ilgili sorular ve endişeleriniz için lütfen bu BigBlueButton toplantılarının yöneticileriyle iletişime geçin.
+hint#:#Not metni
+hint_pub_recs#:#Kayıt bağlantılarının paylaşılmasına izin verilmemektedir.
+info_add_presentation_url#:#Kendi tanıtım sunumunuzu URL üzerinden yükleyin. URL yapısı şu formatta olmalıdır: <i>https://your.domain/path_to/presentation.pdf</i>
+info_add_welcome_text#:#Bu kişiselleştirilmiş karşılama mesajı, bir ILIAS dil değişkeni aracılığıyla tanımlanabilir. Yönetim -> Diller bölümüne gidin. İstediğiniz dile tıklayın ve 'Tanımlayıcı' alanına 'rep_robj_xmvc_welcome_text' yazın. Ardından 'Filtreyi Uygula'ya tıklayın ve metni düzenleyin.
+info_availability#:#Bu ayar, toplantı türünün dergide kullanılabilirliğini kontrol eder. Daha eski türler silinmek yerine "Mevcut olanlara izin verilir" olarak ayarlanabilir.
+info_bottom_headline#:#Önemli kullanım talimatları:
+info_bottom#:#<ul><li>Rahatsız edici geri bildirim veya yankıları önlemek için lütfen <b>kulaklık</b> kullanın!</li><li><b>İnternet bağlantınız zayıfsa kameranızı (web kameranızı) kapatmalısınız ve bağlantı daha da kötüyse ses iletimi için konferans görüşmesi kullanmalısınız.</li></ul>
+info_concurrent_users_available#:#Sanal sınıfta boş yer sayısı:
+info_concurrent_users_none#:#Şu anda kayıt için boş yer kalmamıştır. Lütfen bir dakika sonra "Toplantıya Katıl" düğmesine tıklayarak müsaitlik durumunu tekrar kontrol edin.
+info_delete_vc_sure#:#Emin misiniz? Aşağıdaki sanal toplantı odası silinecektir:
+info_hint#:#Açıklayıcı metin, nesne sayfasının içeriğinin üzerinde renkli olarak vurgulanmış şekilde görünür.
+info_max_duration#:#Toplantı, belirtilen saat ve dakika sayısından sonra sona erecektir. Süresiz toplantı için lütfen her birine '0' girin.
+info_max_participants#:#Toplantı başına maksimum katılımcı sayısı. Katılımcı sayısı sınırsız ise lütfen '0' girin.
+info_max_participants_webinar#:#Webinar başına maksimum katılımcı sayısı. Lütfen edudip sözleşmenize bakın.
+info_meeting_layout#:#Toplantı için varsayılan düzeni kontrol eder.
+info_om_svr_public_url#:#Örnek: https://www.example.com/
+info_platform_chg_reset_data#:#Seçiminiz
+info_platform_chg_reset_data_o#:#Lütfen WebRTC platformları arasında geçiş yaparken tüm ayarların varsayılan değerlerine sıfırlanacağını ve kaydedilmiş tüm form verilerinin silineceğini unutmayın. WebRTC platformları arasında geçiş yapmak için öncelikle "Kaydet" düğmesine tıklayarak yeni seçiminizi onaylamanız gerekir. Sonraki adımda, tekrar kaydederek önceki yapılandırmanın üzerine yazılacaktır.
+info_requirements_bbb#:#BigBlueButton, giderek artan sayıda tarayıcı tarafından desteklenen açık standart WebRTC'yi kullanır. Şu anda Google Chrome, Chromium tabanlı tarayıcı Microsoft Edge veya sınırlamalarla Mozilla Firefox önerilir. Ayrıca iOS 12.2'den itibaren Safari Mobile ve Android 6.0'dan itibaren Chrome Mobile'ı da kullanabilirsiniz. Microsoft Internet Explorer ve eski Edge sürümleri desteklenmemektedir. Güvenlik duvarınız şu portları engellememelidir: TCP/IP portları 80/443 (HTTP/HTTPS için) ve UDP portları 16384 - 32768 aralığında. Ekran paylaşımı (masaüstü paylaşımı) için yüksek performanslı bir internet bağlantısına sahip olmalısınız. Ayrıca moderatörlerin ve sunucuların kablolu ağ bağlantısı (Wi-Fi değil) kullanmalarını öneririz.
+info_requirements_edudip#:#edudip, giderek artan sayıda tarayıcı tarafından desteklenen açık standart WebRTC'yi kullanmaktadır. Şu anda Google Chrome, Chromium tabanlı tarayıcı Microsoft Edge veya sınırlamalarla Mozilla Firefox önerilmektedir. Microsoft Internet Explorer ve Edge'in eski sürümleri desteklenmemektedir. Daha fazla bilgi için lütfen edudip destek ekibiyle iletişime geçin.
+info_requirements_headline#:#Teknik gereksinimler:
+info_requirements_not_ok#:#<b>Sanal toplantı odasını yalnızca şu anda kullandığınız tarayıcıyla çok sınırlı bir şekilde kullanabilirsiniz.</b><br/>En iyi sonuçlar için Google Chrome veya sınırlı olarak Mozilla Firefox kullanın! Tarayıcı yükleme hakkınız yoksa Google Chrome Portable'ı kullanabilirsiniz.<br/>Tarayıcınızı değiştirmek mümkün değilse, sanal toplantı odasını başlatın ve sohbete şu anda uygun bir tarayıcınız olmadığını ve kimsenin sizi beklememesi gerektiğini yazın.
+info_requirements_om#:#<ul><li>Openmeetings, giderek artan sayıda tarayıcı tarafından desteklenen açık standart WebRTC'yi kullanmaktadır. Şu anda Google Chrome veya sınırlamalarla Mozilla Firefox önerilmektedir. Ayrıca Microsoft Edge'in en son sürümünü, Safari Mobile'ı (iOS 12.2 ve üzeri) ve Chrome Mobile'ı (Android 6.0 ve üzeri) da kullanabilirsiniz. Microsoft Internet Explorer ve eski Edge sürümleri desteklenmemektedir.</li><li>Güvenlik duvarınız şu portları engellememelidir: TCP/IP portları 8888/5443 (HTTP/HTTPS için), TCP/UDP 3478 ve 49152–65535 aralığındaki UDP portları.</li><li>Ekranınızı paylaşmak (masaüstü paylaşımı) için Google Chrome kullanmalı ve yüksek performanslı bir internet bağlantınız olmalıdır. Ayrıca moderatörlerin ve sunucuların kablolu ağ bağlantısı (Wi-Fi değil) kullanmalarını öneririz.
+info_requirements_partly#:#Tarayıcı olarak Google Chrome'u veya sınırlamalarla birlikte Mozilla Firefox'u kullanmanızı öneririz. Mevcut tarayıcınızın sanal toplantı odasını kullanmak için uygun olup olmadığını ve ne ölçüde uygun olduğunu kendiniz belirlemeniz gerekecektir. Lütfen deneyimlerinizi mevcut teknik destek ekibine bildirin.
+info_requirements_teams#:#Moderatörler Teams uygulamasını kullanmalıdır. Katılımcılar Teams'i tarayıcıları üzerinden başlatabilirler. Ekran paylaşımı (masaüstü paylaşımı) için yüksek performanslı bir internet bağlantısına sahip olmanız gerekir. Ayrıca moderatörlerin ve sunucuların kablolu ağ (Wi-Fi değil) kullanmalarını öneririz.
+info_requirements_webex#:#<ul><li>Önerilen tarayıcılar: Chrome, Edge, Firefox</li></ul>
+info_requirements_zoom#:#Lütfen ILIAS'a kayıtlı olduğunuz e-posta adresinizi kullanarak Zoom'a giriş yapın. E-posta adresiniz şudur:
+info_requirements_zoom_lp#:#Öğrenme ilerlemenizi belirlemek için bu toplantıya katılımınız kaydedilmelidir. Toplantının başlangıcı ve bitişi arasındaki planlanan sürenin %'si kadar süre boyunca hazır bulunmanız durumunda kredi almaya hak kazanacaksınız.
+info_set_owner#:#Sahibi kayıtlı
+info_svr_private_port#:#Örnek: 443
+info_svr_private_url#:#Amazon EC2 hariç, bu her zaman herkese açık URL'ye karşılık gelir.
+info_svr_public_port#:#Örnek: 443
+info_svr_public_url#:#Örnek: https://www.example.com/bigbluebutton/
+info_svr_salt_om#:#Örnek: dZ#ls2W!k6l
+info_svr_salt#:#ssh: bbb-conf --secret
+info_svr_username#:#Örnek: om_admin
+info_title#:#Bu başlık, yeni nesneler için toplantı türü seçildiğinde görüntülenir.
+info_top_moderated_edudip#:#Webinar'ı yönetme yetkiniz var ve başlatabilirsiniz.
+info_top_moderated_m_bbb#:#Bu, moderatörlü bir odadır ve toplantı odasına yalnızca moderatör yetkisine sahip bir kişi odada bulunduğunda girebilirsiniz.
+info_top_moderated_m_om#:#Bu, moderatörlü bir odadır ve toplantı odasına yalnızca moderatör yetkisine sahip bir kişi odada bulunduğunda girebilirsiniz.
+info_top_moderated_webex#:#Moderatör yetkiniz var ve toplantıyı başlatabilirsiniz. Bunu yapmak için Webex hesabınızın veya Webex tarafından barındırılan bir sitenin olması gerekir. Katılımcılar ancak toplantı moderatör tarafından başlatıldıktan sonra katılabilirler.
+info_top_moderated_zoom#:#Bu bir web semineri. Web seminerine şimdi başlayabilirsiniz.
+info_top_moderator_bbb#:#<b>Bu, moderatörlü bir odadır ve bu odada moderatör rolüne sahipsiniz.</b><br/>Moderatör rolüne sahip olmayan kişiler, ancak moderatör rolüne sahip bir kişi odada bulunduğunda toplantı odasına girebilirler.</b><br/>
+info_top_moderator_om#:#<b>Bu, moderatörlü bir odadır ve bu odada moderatör rolüne sahipsiniz.</b><br/>Moderatör rolüne sahip olmayan kişiler, ancak moderatör rolüne sahip bir kişi odada bulunduğunda toplantı odasına girebilirler.</b><br/>
+info_top_not_moderated_bbb#:#Bu toplantı odası denetimsizdir. Bu nedenle, siz de moderatör yetkilerine ve dolayısıyla genişletilmiş haklara sahipsiniz. Diğer katılımcıların haklarını kısıtlayabilir ve oturumu sonlandırabilirsiniz. Lütfen bu genişletilmiş hakları sorumluluk bilinciyle kullanın.
+info_top_not_moderated_om#:#Bu toplantı odası denetimsizdir. Bu nedenle, siz de moderatör yetkilerine ve dolayısıyla genişletilmiş haklara sahipsiniz. Diğer katılımcıların haklarını kısıtlayabilir ve oturumu sonlandırabilirsiniz. Lütfen bu genişletilmiş hakları sorumluluk bilinciyle kullanın.
+info_webex_client_id#:#İstemci kimliğini Webex entegrasyonunuzun verilerinde bulabilirsiniz (örneğin, admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#İstemci gizli anahtarı, Webex entegrasyonu oluşturulduktan/güncellendikten sonra yalnızca bir kez görüntülenir.
+info_webex_redirect_uri#:#Bu adresi entegrasyon ayarlarında yönlendirme URI'si olarak ekleyin.
+info_webex_site_url#:#Barındırılan sitenin adı. .webex.com'dan önceki alt alan adı, örneğin <b>şirketiniz</b>.webex.com veya <b>şirketiniz</b>.my.webex.com
+integration_admin_auth_method_info#:#Yetkilendirme, yönetici tarafından MultiVc eklentisi ayarları aracılığıyla gerçekleştirilir. OAuth işlemi sırasında aşağıdaki kapsamlar talep edilir:
+integration_admin_auth_scopes_info#:#(Yöneticiler için aşağıdakiler) toplantı:controls_read toplantı:controls_write toplantı:admin_participants_read toplantı:admin_schedule_read toplantı:admin_schedule_write toplantı:admin_recordings_read toplantı:admin_recordings_write
+integration_auth_method#:#Entegrasyonun yetkilendirilmesi
+integration_auth_methods_info#:#Yetkilendirme şu şekilde gerçekleştirilebilir: - Yönetici tarafından MultiVc eklenti ayarları aracılığıyla - Kullanıcı tarafından MultiVc nesne ayarları aracılığıyla. İlgili OAuth işlemi sırasında aşağıdaki kapsamlar talep edilir:
+integration_user_auth_method_info#:#Yetkilendirme, kullanıcı tarafından MultiVc nesnesinin ayarları aracılığıyla gerçekleştirilir. OAuth işlemi sırasında aşağıdaki kapsamlar talep edilir:
+integration_user_auth_scopes_info#:#spark:kms toplantı:programları_oku toplantı:programları_yaz toplantı:katılımcılar_oku toplantı:katılımcılar_yaz toplantı:tercihler_oku toplantı:tercihler_yaz
+join_time#:#Katılım
+leave_time#:#Katılıma kadar
+list_token_user_info#:#Mevcut moderatörlerin listesi. Kaydedilen belirteçler üzerine yazılamaz. Gerekirse, lütfen önce X'e tıklayarak girişi silin.
+list_token_user#:#Kayıtlı moderatörler
+lock_disable_cam_choose_info#:#Nesne için "Katılımcı kamerasını kilitle" ayarının kullanılabilir olup olmadığını tanımlayın.
+lock_disable_cam_choose#:#Katılımcı kamera kilidi seçilebilir.
+lock_disable_cam_default_info#:#Varsayılan ayarı "Katılımcı kamerasını kilitle" olarak ayarlayın.
+lock_disable_cam_default#:#Katılımcının kamerasını kilitle (varsayılan ayar)
+lock_disable_cam_info#:#Bu seçeneği etkinleştirerek, katılımcıların kameraları (web kameraları) varsayılan olarak engellenir.
+lock_disable_cam#:#Katılımcı kamerasını kilitle
+locked_by#:#Engellendi
+locked#:#Engellendi
+lock#:#Kilitleme
+logo_url_info#:#Logonuzun URL adresini buraya girin. URL, https:// ile başlamalıdır.
+logo_url#:#logonun URL'si
+lp_active#:#Aktif
+lp_active_info#:#İçeriğe erişildiği anda "İşlem Devam Ediyor" durumu ayarlanır. "İşlem Tamamlandı" durumu ise işlem saatlerine göre belirlenir.
+lp_inactive#:#Aktif değil
+lp_inactive_info#:#Bu nesne için hiçbir öğrenme ilerlemesi kaydedilmez.
+lp_mode#:#mod
+lp_time_info#:#Olası katılım sürelerine dayalı olarak hesaplanan bu yüzde değerinin aşılması durumunda, durum "İşlem Tamamlandı" olarak ayarlanacaktır.
+lp_time#:#"Düzenlenmiş" için eşik
+max_duration#:#Maksimum süre
+max_meetings#:#Toplantı odası sayısının azami sayısı
+max_participants#:#Maksimum katılımcı sayısı
+max_users#:#Maksimum kullanıcı sayısı
+meeting_collision#:#Bir hata oluştu. Talep edilen saat için zaten bir oturum planlanmış durumda.
+meeting#:#toplantı
+meeting_end#:#Toplantının sonu
+meeting_related_successful#:#Toplantı başarıyla atandı.
+meeting_running#:#Sanal toplantı odası kullanıma açıldı.
+meeting_start#:#Toplantı başlangıcı
+member_btn_fileupload_choose#:#Herkese dosya yükleme olanağı tanı: Seçenek
+member_btn_fileupload_choose_info#:#Eğer yazma izni olan kullanıcıların Ayarlar altında 'Herkesin dosya yüklemesine izin ver' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+member_btn_fileupload#:#Herkese dosya yükleme olanağı tanıyın.
+member_btn_fileupload_default#:#Herkese dosya yükleme izni ver: Varsayılan ayar
+member_btn_fileupload_default_info#:#Bu seçenek genellikle devre dışı bırakılmalıdır.
+member_btn_fileupload_info#:#Bu seçeneği yalnızca, genişletilmiş yetkilere sahip kişilere (örneğin yöneticiler, eğitmenler) ek olarak diğer kişilerin de dosya yükleyebilmesi gerekiyorsa etkinleştirin.
+modal_delete_scheduled_meeting_accept#:#Toplantıyı sil
+modal_delete_scheduled_meeting_title#:#Bu toplantıyı silmek istediğinizden emin misiniz?
+modal_delete_scheduled_webinar_accept#:#Webinarı sil
+modal_delete_scheduled_webinar_title#:#Bu web seminerini gerçekten silmek istiyor musunuz?
+modal_details_scheduled_meeting_title#:#Toplantı Ayrıntıları (Webex Yanıt Metni)
+modal_details_scheduled_webinar_title#:#Webinar Ayrıntıları (edudip yanıt gövdesi)
+moderated_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'denetimli oda' seçeneğini seçebilmesini istiyorsanız bu seçeneği etkinleştirin.
+moderated_choose#:#denetlenen alan: seçenek
+moderated_default_info#:#Yeni odaları denetimli odalar olarak oluşturmak istiyorsanız bu seçeneği etkinleştirin.
+moderated_default_zoom_info#:#Yeni odaların 'webinar' olarak oluşturulmasını istiyorsanız bu seçeneği etkinleştirin.
+moderated_default#:#Denetimli oda: varsayılan ayar
+moderated_info#:#Denetimli bir alanda, moderatörlerin genişletilmiş hakları vardır. Diğer kullanıcıların sanal alana erişimi sınırlıdır. Moderatörler arasında nesnenin özelliklerini düzenleyebilen herkesin yanı sıra grup yöneticileri, ders yöneticileri ve ders eğitmenleri de bulunur.
+moderated_teams_info#:#Denetimli bir ortamda, nesnenin yaratıcısı, grup yöneticileri, kurs yöneticileri ve kurs eğitmenleri daha fazla yetkiye sahiptir: İçerik paylaşabilir ve aktarabilir, ayrıca diğer kişilerin katılmasına izin verilip verilmeyeceğine karar verebilirler. Denetimsiz bir ortamda ise herkes katılabilir ve onay almadan içerik paylaşabilir veya aktarabilir.
+moderated_zoom_info#:#Bu sanal alan, toplantı için değil, web semineri için tasarlanmıştır. Lütfen Zoom hesabınızın web semineri oluşturma iznine sahip olduğundan emin olun. Temel veya hatta ücretsiz bir hesap bu izne sahip değildir.
+moderated#:#denetlenen alan
+moderated_webex#:#İpucu: Denetimsiz odalarda katılımcıların takma adları kullanılmaz. Bu nedenle, yalnızca uygun bir Webex hesabına sahip kişilerin katılmasına izin verilir.
+moderated_zoom#:#Webinar
+moderator#:#Moderatör
+msg_obj_deleted#:#Kayıt silindi.
+notification_sending#:#Bildirimler gönderiliyor...
+notification_sent#:#Bildirimler başarıyla gönderildi.
+obj_ids_special_info#:#Çok nadiren gerekli! Buraya, her ders için ayrı ayrı ele alınması gereken derslere bağlı odaların ILIAS nesne kimliklerini (dolayısıyla her zaman aynı nesne kimliği) virgülle ayırarak girin. Nesne kimliği, nesne ayarlarında görüntülenir. 'Özel Odalar' seçeneği, örneğin kademeli olarak daha fazla işlevi etkinleştirmek için birçok odanın ayarlarının merkezi olarak yönetilmesi gerektiğinde faydalıdır.
+obj_ids_special#:#Özel odalar
+objs_xmvc_duplicate#:#Sanal toplantı odasını kopyala
+objs_xmvc#:#Sanal toplantı odaları
+obj_xmvc_download#:#İndirmek
+obj_xmvc_duplicate#:#Kopyala
+obj_xmvc_select#:#Sanal toplantı odası seçin
+obj_xmvc#:#Sanal toplantı odası
+offline#:#Çevrimdışı
+of_owner_prefix#:#sahibi tarafından
+om_svr_public_port#:#OpenMeeting sunucu bağlantı noktası
+om_svr_public_url#:#OpenMeeting sunucusunun URL'si
+om_svr_username#:#SOAP Kullanıcı Adı
+om_svr_userpass#:#SOAP şifresi
+overview_uses#:#Kullanım alanlarına genel bakış
+owners_email_not_unique#:#Sahibin e-posta adresi benzersiz değildir. Bir ILIAS kullanıcısına yalnızca bir kez atanabilir.
+playback#:#Kaydı oynat
+plugin_configuration#:#yapılandırma
+private_chat_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'Özel sohbete izin ver' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+private_chat_choose#:#Özel sohbete izin ver: Seçenek
+private_chat_default_info#:#Etkinleştirilirse, moderatör yetkisi olmayan kullanıcılar da birbirleriyle özel sohbetler yapabilir. Moderatör yetkisi olan kullanıcılar bu sohbetleri göremez. Moderatörler özel sohbetleri istedikleri zaman sonlandırabilecekleri için, bu seçenek çoğu durumda etkinleştirilmelidir.
+private_chat_default#:#Özel sohbete izin ver: Varsayılan ayar
+private_chat_info#:#Moderatör yetkisi olmayan kişiler bile birbirleriyle özel sohbet edebilirler.
+private_chat#:#Özel sohbete izin ver
+properties#:#Özellikler
+protected#:#Koruma altındaki alanlar
+pub_recs#:#Kayıtları derhal yayınlayın.
+pub_recs_choose#:#Kayıtları hemen yayınla: Seçenek
+pub_recs_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'Kayıtları hemen paylaş' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+pub_recs_default#:#Kayıtları hemen yayınla: Varsayılan ayar
+pub_recs_default_for_object#:#Kayıtlar katılımcılara anında sunulmaktadır.
+pub_recs_default_info#:#Kayıtların her zaman hemen yayınlanması gerekiyorsa veya 'Kayıtları hemen yayınla' seçeneği yeni nesneler için etkinleştirilmeli ise bu seçeneği etkinleştirin.
+pub_recs_info#:#Seçilirse, toplantının kaydı toplantı bittikten hemen sonra yayınlanacaktır. Toplantı sayfasındaki genel bakışta, kayıtları kilitleme veya kilidini açma seçeneğiniz bulunmaktadır.
+rbac_create_xmvc#:#Sanal toplantı odası oluşturun
+rec_hidden#:#Bu kayıt katılımcılar tarafından görülemez.
+recording#:#kayıtlar
+recording_autostart#:#Kayıtlar başlangıçta otomatik olarak başlayacaktır. ILIAS kullanıcıları buna göre bilgilendirilecektir.
+recording_choose#:#Kayıt işlemine izin ver: Seçenek
+recording_choose_info#:#Yazma izni olan kullanıcıların ayarlarda 'Kayıtlara izin ver' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin. Kayıt URL'si bilinirse yetkisiz kişilerle paylaşılabileceğinden, bu seçenek genellikle etkinleştirilmemelidir.
+recording_default#:#Kayıt işlemine izin ver: Varsayılan ayar
+recording_default_info#:#Çoğu durumda, insanların sanal ortamda kayıt işlevini kullanmasını önlemek için bu seçenek devre dışı bırakılmalıdır.
+recording_info#:#Oturumlar kaydedilebilir.
+recording_only_for_moderated_rooms#:#Kayıtlar yalnızca denetimli odalarda yapılmaktadır.
+recording_only_for_moderated_rooms_default#:#Kayıtlar yalnızca denetimli odalarda yapılmaktadır.
+recording_only_for_moderated_rooms_default_info#:#Bu seçenek çoğu durumda etkinleştirilmelidir. Yalnızca kayıt işleminin genel olarak izin verildiği durumlarda geçerlidir.
+recording_only_for_moderated_rooms_info#:#Sadece denetimli odalarda, moderatör yetkisine sahip kişiler kayıt başlatabilir.
+recording_warning#:#Bu toplantı için kayıt etkinleştirildi! Sohbet sistemini aktif olarak kullanarak, kişisel mikrofonumu/kameramı açarak ve/veya ekran içeriğimi paylaşarak, bu bilgilerin kaydedilmesine ve daha sonra kullanılmak üzere saklanmasına izin veriyorum.
+recs_locked#:#Kayıt(lar) engellendi
+recs_published#:#Kayıt(lar) yayınlandı
+recurrence_#:#-
+recurrence_daily#:#Günlük
+recurrence_monthly#:#Aylık
+recurrence_weekly#:#Haftalık
+recurrence_yearly#:#Yıllık
+rec_visible#:#Bu kayıt katılımcılar tarafından görülebilir.
+references#:#Bağlantılar
+related_meeting#:#Atandı
+related_webinar#:#Atandı
+relate_meeting#:#Atamak
+relate_webinar#:#Atamak
+report_log_max#:#Kullanım Genel Bakışı (BBB)
+require_schedule_new_meeting#:#Toplantıları planlayabilir ve planlanan zaman dilimlerinde başlatabilirsiniz.
+require_schedule_new_meeting_zoom#:#Toplantılar oluşturabilirsiniz.
+require_schedule_new_webinar#:#Web seminerleri oluşturabilir ve bunları planlanan zaman dilimlerinde başlatabilirsiniz.
+reset_authorization#:#Yetkiyi iptal et
+reseted_tokens#:#Jetonlar sıfırlandı
+root_create_xmvc#:#Sanal toplantı odası oluşturun
+saving_invoked#:#Ayarlar kaydedildi.
+scheduled_meeting_agenda#:#gündem
+scheduled_meeting_both_data_sources#:#Tümü
+scheduled_meeting_create_btn#:#Toplantı oluştur
+scheduled_meeting_created#:#Planlanmış toplantı oluşturuldu
+scheduled_meeting_create#:#Planlı bir toplantı oluşturun
+scheduled_meeting_data_source#:#Toplantılar
+scheduled_meeting_delete_btn#:#Toplantıyı sil
+scheduled_meeting_deleted#:#Toplantı silindi
+scheduled_meeting_duration#:#Dönem
+scheduled_meeting_local_data_sources#:#atanmış
+scheduled_meeting_not_deleted#:#Toplantı silinmedi.
+scheduled_meeting_overview#:#Planlanan toplantılara genel bakış
+scheduled_meeting_recurrence#:#Tekrarlama
+scheduled_meetings#:#Planlı toplantılar
+scheduled_meeting_state#:#durum
+scheduled_meeting_time_ahead#:#Toplantı hazırlık süresi
+scheduled_meeting_update_btn#:#Güncelleme toplantısı
+scheduled_meeting_update#:#Planlanan toplantıyı güncelleyin
+scheduled_webinar_agenda#:#gündem
+scheduled_webinar_both_data_sources#:#Tümü
+scheduled_webinar_create_btn#:#Bir web semineri oluşturun
+scheduled_webinar_created#:#Planlanan web semineri oluşturuldu.
+scheduled_webinar_create#:#Bir web semineri oluşturun (lütfen özgün bir başlık verin)
+scheduled_webinar_data_source#:#Webinarlar
+scheduled_webinar_delete_btn#:#Webinarı sil
+scheduled_webinar_deleted#:#Webinar silindi
+scheduled_webinar_duration#:#Dönem
+scheduled_webinar_local_data_sources#:#atanmış
+scheduled_webinar_not_deleted#:#Webinar silinmedi
+scheduled_webinar_overview#:#Planlanan web seminerlerine genel bakış
+scheduled_webinar_recurrence#:#Tekrarlama
+scheduled_webinars#:#Planlanan web seminerleri
+scheduled_webinar_state#:#durum
+scheduled_webinar_time_ahead#:#Webinar hazırlık süresi
+scheduled_webinar_update_btn#:#Webinar Güncellemesi
+scheduled_webinar_update#:#Planlanan web seminerini güncelleyin
+schedule_meeting_duration_less_time#:#Toplantı süresinin minimum süresi 10 dakikadır. Lütfen girişlerinizi buna göre ayarlayın.
+schedule_meeting_error#:#Bir hata oluştu. Lütfen girişlerinizi kontrol edin.
+schedule_webinar_duration_less_time#:#Webinarların minimum süresi 10 dakikadır. Lütfen başvurularınızı buna göre ayarlayın.
+schedule_webinar_error#:#Bir hata oluştu. Lütfen girişlerinizi kontrol edin.
+select#:#Seçme
+service_unavailable#:#Hizmet kullanılamıyor
+sess_owner_changed#:#Kimlik doğrulama yöntemi değiştirildi.
+showcontent#:#WebRTC platformu
+show_hint_pub_recs_info#:#Toplantı sayfasında kullanıcılara kayıt bağlantılarının paylaşılmasının yasak olduğuna dair bir uyarı gösterilir. Bu uyarının görüntülenmesini istemiyorsanız bu seçeneği etkinleştirin.
+show_hint_pub_recs#:#Kayıt bağlantılarının paylaşılmasına izin verin.
+start_time#:#başlangıç
+starttime#:#Başlangıç ​​saati
+start_window#:#Yeni bir pencerede sanal toplantı odası başlatın.
+state_active#:#Aktif
+state_inprogress#:#Koşma
+state_ready#:#Hazır
+status#:#durum
+subject_crs#:#{PARENT_TITLE} dersinde {MEETING_TITLE}.
+subject_fld#:#{PARENT_TITLE} klasöründeki {MEETING_TITLE}
+subject_grp#:#{PARENT_TITLE} grubundaki {MEETING_TITLE}
+svr_private_port#:#BBB sunucusunun özel portu
+svr_private_url#:#BBB sunucusunun özel URL'si
+svr_public_port#:#BBB sunucusunun halka açık bağlantı noktası
+svr_public_url#:#BBB sunucusunun herkese açık URL'si
+svr_salt#:#BBB sunucu şifresi (gizli)
+sysadmin_perm_choose_all#:#Yönetici olarak, bu nesnenin tüm özelliklerini düzenleyebilirsiniz.
+tab_close#:#Lütfen bu pencereyi veya sekmeyi şimdi kapatın.
+teams_client_id#:#Müşteri Kimliği
+teams_client_id_info#:#Lütfen buraya uygulama kimliğini / istemci kimliğini girin.
+teams_client_secret#:#Müşteri Sırrı
+teams_client_secret_info#:#Entra'da MultiVc için oluşturduğunuz uygulama için gizli bir anahtar oluşturduktan hemen sonra, anahtarın değerini kopyalayıp buraya girebilirsiniz.
+teams_join_links#:#Buradan doğrudan katılabilirsiniz: {br}{KATIL_URL}{br}&nbsp;{br}veya şu bağlantıya tıklayabilirsiniz: {KALICI_BAĞLANTI}
+teams_lobbybypass#:#Bypass bekleme alanı
+teams_lobbybypass_choose#:#Bypass bekleme alanı: Seçme seçeneği
+teams_lobbybypass_choose_info#:#Yazma izni olan kullanıcıların ayarlarda 'Bekleme odasını atla' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin. Bu, bekleme odasına/toplantı lobisine kimlerin yerleştirileceğini kontrol eder.
+teams_lobbybypass_default#:#Bekleme alanını atlama: Varsayılan ayar
+teams_lobbybypass_everyone#:#Toplantıya herkes alınacaktır. Bekleme salonuna kimse alınmayacaktır.
+teams_lobbybypass_invited#:#Toplantıya sadece davet edilenler girebilecek ve bekleme alanını atlayacaklardır.
+teams_lobbybypass_organizer#:#Katılımcılar bekleme alanında oturacaklar. Yöneticiler ve destek personeli bekleme alanını atlayacaklardır.
+teams_meetings_list_downloaded#:#Mevcut çevrimiçi toplantıları Teams'e başarıyla entegre ettik.
+teams_tenant_id_info#:#Kiracı kimliğini buraya girin. Alternatif adlar şunlardır: Dizin Kimliği (istemci).
+teams_tenant_id#:#Kiracı Kimliği
+terms_of_use#:#<b>Fikri Mülkiyet Hakları</b>{br}BigBlueButton konferanslarında yer alan metinler veya resimler gibi bilgiler ve materyaller genellikle telif hakkı, marka veya patent hakları ile korunmaktadır.{br}Veri koruma düzenlemelerine uyulmalıdır. Bu, özellikle BigBlueButton konferanslarının kaydedilmesi için geçerlidir. Konferansların video veya ses kayıtlarını gizlice kaydetmek suçtur.{br}{br}<b>Davranış Kuralları</b>{br}Yasal hükümlere aykırı, pornografik, müstehcen, iftira niteliğinde, hakaret içeren, tehdit edici, nefreti körükleyen veya ırkçı herhangi bir içerik yayınlayamazsınız. Yetkisiz reklam yayınlamak ve virüs, manipülasyon veya benzeri zararlı unsurlar içeren bilgileri iletmek de yasaktır. BigBlueButton kullanılırken aşağıdaki veriler toplanır: Bağlantı verileri (örneğin, IP adresi, tarayıcı türü, erişim tarihi ve saati) Erişim verileri (varsa): şifrelenmiş kullanıcı adı, parola İçerik verileri (örneğin, yüklenen dosyalar, sohbet katkıları, anketler) Özellikle IP adresi olmak üzere bağlantı verilerinin sistem tarafından geçici olarak saklanması, BigBlueButton'ın kullanıcının bilgisayarına iletilmesini sağlamak için gereklidir. Bu amaçla, kullanıcının IP adresi oturum süresi boyunca saklanmalıdır. Verilerin geçici olarak saklanmasının yasal dayanağı GDPR Madde 6(1)(f)'dir. Bağlantı verileri ayrıca genel olarak günlük dosyalarında da saklanır. Silme zamanı, BigBlueButton sunucusunun operatörü tarafından belirlenir.
+title#:#başlık
+token_deleted#:#Token silindi
+token_not_deleted#:#Token silinmedi
+token_not_stored#:#Jeton kaydedilmedi.
+token_stored#:#Token saklandı.
+unlocked_by#:#Yayınlayan:
+unlock#:#Serbest bırakmak
+untrashed_usages#:#Kullanım sayısı
+url_info#:#Buraya ayrıca göreceli yollar da girebilirsiniz (örneğin, /webconference). Lütfen yolun sonuna '/' işareti eklemeyin.
+url#:#URL
+usage#:#Doluluk oranı
+user_end#:#son ayrılış
+user_invite_info#:#Aşağıdaki bağlantıyı kullanarak toplantıya misafir davet edebilirsiniz:
+user_log#:#Kullanıcıya genel bakış
+user_log_bbb#:#Kullanıcıya genel bakış (BBB/Teams/Zoom)
+user_log_duration#:#Kayıt dönemi
+user_percent#:#yüzde
+user_results#:#Katılım süreleri
+user_results_desc#:#Bu ekran yalnızca sona ermiş toplantılar için geçerlidir. Toplantıların planlanan bitiş saatine de ulaşmış olması gerekmektedir.
+user_start#:#ilk başlangıç
+user_time#:#katılım zamanı
+wait_join_meeting#:#Şu anda sanal toplantı odasında moderatör yetkisine sahip kimse bulunmamaktadır.<br/>Lütfen bekleyin ve bir dakika sonra tekrar kontrol edin.</b>
+wait_join_meeting_edudip#:#Şu anda hiçbir web seminerine katılamazsınız.
+wait_join_meeting_guest#:#Şu anda sanal toplantı odasında moderatör yetkisine sahip kimse bulunmamaktadır. Lütfen bekleyin ve bir dakika sonra 'Toplantıya Katıl' düğmesine tekrar tıklayın.
+wait_join_meeting_teams#:#Şu anda bir toplantıya katılamazsınız. Planlanmış bir toplantı görünürse, katılmak için planlanan toplantıdan 15 dakika öncesine kadar bu sayfayı yenileyin.
+wait_join_meeting_webex#:#Şu anda bir toplantıya katılamazsınız. Toplantı henüz başlamamış veya zaten sona ermiş olabilir. Toplantı durumunu kontrol etmek için lütfen bu sayfayı yenileyin.
+wait_join_meeting_zoom#:#Şu anda bir toplantıya katılamazsınız. Planlanmış bir toplantı görünürse, katılmak için planlanan toplantıdan 15 dakika öncesine kadar bu sayfayı yenileyin.
+wait_join_webinar#:#<b>Web semineri henüz başlatılmadı.<br/>Lütfen bekleyin ve bir dakika sonra tekrar kontrol edin.</b>
+webex_client_id#:#Webex entegrasyonu istemci kimliği
+webex_client_secret#:#Webex entegrasyon istemci gizli anahtarı
+webex_host_email_hidden_info#:#Yetkilendirme için kullanılan e-posta adresi yalnızca nesnenin sahipleri ve yöneticileri tarafından görülebilir.
+webex_host_email_info#:#Webex veya barındırılan site tarafından bilinen e-posta adresi
+webex_host_email#:#Webex Sunucusunun e-posta adresi
+webex_integration_auth_info#:#Webex hesabınıza erişim izni verebilirsiniz. Bu, MultiVC eklentisini kullanarak Webex toplantıları oluşturmak, almak ve başlatmak için gereklidir.
+webex_logout_user_choose#:#Webex'ten çıkış yapılmasına izin ver: Seçenek
+webex_logout_user_choose_info#:#Webex'e zaten giriş yapmış olan kullanıcılar, toplantıya katılmadan önce Webex'ten çıkış yapmalıdır.
+webex_logout_user_default#:#Webex'ten çıkış yap: Varsayılan ayar
+webex_logout_user_default_info#:#Webex'e zaten giriş yapmış olan kullanıcılar, toplantıya katılmadan önce mutlaka Webex'ten çıkış yapmalıdır.
+webex_meetings_list_downloaded#:#Mevcut Webex toplantıları başarıyla indirildi.
+webex_redirect_uri#:#Yönlendirme URI'si
+webex_site_url#:#Webex Sitesi URL'si
+webex_user_choose_logout#:#Kullanıcı karar verir.
+webex_user_do_logout#:#Çıkış yap
+webex_user_do_not_logout#:#Çıkış yapmayın
+webex_user_logout#:#Webex'ten çıkış yap
+webinar_collision#:#Bir hata oluştu. Talep edilen saat için zaten bir web semineri planlanmış durumda.
+webinar_event_created#:#Webinar oluşturuldu
+webinar_event_deleted#:#Webinar silindi
+webinar_notification_body#:#Merhaba {NAME},{NL}{NL} aşağıdaki {EVENT} oluşturuldu:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Saygılarımla,{NL}{NL}{FROM}
+webinar_notification_from#:#İLYAD
+webinar_notification_subject#:#{ETKİNLİK}: {KONU}
+webinar_related_successful#:#Webinar başarıyla atandı.
+webinar_running#:#Webinar başladı.
+webinar#:#Webinar
+welcome_text#:#Sanal Toplantı Odasına Hoş Geldiniz {br}{br}<b>{TOPLANTI_BAŞLIĞI}</b>{br}{br}Ekranın ortasında, üzerinde çizgi olan bir hoparlör simgesi görürseniz, diğerleri sizi duyamayacak ve siz de hiçbir şey duyamayacaksınız. Ses bağlantısını başlatmak için üzerinde çizgi olan hoparlör simgesine tıklayın.{br}Arka plan gürültüsünü ve geri bildirimi önlemek için kulaklık kullanın.
+window_closed#:#Sanal toplantı sona erdi.
+window_close#:#Pencereyi kapat
+window_started#:#Sanal toplantı odası yeni bir pencerede açıldı.
+with_chat_choose_info#:#Yazma izni olan kullanıcıların Ayarlar altında 'Sohbetle Başlat' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin.
+with_chat_choose#:#Sohbetle başlayın: Seçim seçeneği
+with_chat_default_info#:#Bu özellik genellikle, özellikle moderatörlü odalarda, etkinleştirilmelidir.
+with_chat_default#:#Sohbetle başla: Varsayılan ayar
+with_chat_info#:#Bu seçenek, özellikle denetimli odalarda etkinleştirilmelidir. Böylece sohbet bir 'bekleme odası' haline gelir.
+with_chat#:#Sohbetle başlayın
+xmvc_add#:#Sanal toplantı odası ekle
+xmvc_copy#:#Sanal toplantı odasını kopyala
+xmvc_delete#:#Sanal toplantı odasını sil
+xmvc_edit_learning_progress#:#Öğrenme ilerleme ayarlarını düzenle
+xmvc_edit_permission#:#İzinleri değiştir
+xmvc_new#:#Yeni sanal toplantı odası ekle
+xmvc_read#:#Okuma erişimi: Sanal toplantı odasına katılım mümkündür.
+xmvc_read_learning_progress#:#Diğer kullanıcıların öğrenme ilerlemesini görüntüleyin.
+xmvc_visible#:#Ekran: Sanal toplantı odası görünür.
+xmvc_write#:#Ayarları düzenle
+zoom_account_id#:#Zoom Hesap Kimliği
+zoom_account_info#:#Zoom Hesap Kimliği, İstemci Kimliği ve İstemci Gizli Anahtarını https://developers.zoom.us/docs/internal-apps/create/ adresinden edinebilirsiniz. Sunucudan sunucuya bir OAuth uygulaması oluşturmanız gerekmektedir.
+zoom_client_id#:#Zoom İstemci Kimliği
+zoom_client_secret#:#Zoom İstemcisi Gizli Bilgileri
+zoom_err_scopes_webinar#:#Webinar oluşturma izniniz yok. Toplantılar mümkün. Aşağıdaki izinler eksik:
+zoom_exist_meetings#:#Bu toplantı için tarihler zaten belirlendi.
+zoom_exist_webinars#:#Bu web semineri için tarihler zaten belirlendi.
+zoom_lobby#:#Toplantılar için bekleme odası
+zoom_lobby_choose#:#Bekleme odası: Seçenekler arasından seçim yapın
+zoom_lobby_choose_info#:#Yazma izni olan kullanıcıların ayarlarda 'Bekleme Odası' seçeneğine sahip olmasını istiyorsanız bu seçeneği etkinleştirin. Bu, bekleme odasına kimlerin yerleştirileceğini kontrol eder.
+zoom_lobby_default#:#Bekleme odası: Varsayılan ayar
+zoom_lobby_0#:#Bekleme odasında kimsenin beklemesine gerek yok. Bekleme odası devre dışı bırakıldı. Katılımcılar toplantı başlamadan 15 dakika önce girebilirler.
+zoom_lobby_1#:#Herkes bekleme odasına gitmek zorunda.
+zoom_lobby_2#:#Hesabınıza ait olmayan kullanıcılar bekleme odasına girmelidir.
+zoom_lobby_3#:#Hesabınız dışındaki kullanıcılar veya onaylanmış alan adlarında olmayan kullanıcılar bekleme odasına girmelidir.
+zoom_lobby_4#:#Kursa veya gruba kayıtlı olmayan kullanıcılar bekleme odasına gitmelidir.

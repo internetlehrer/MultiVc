@@ -367,7 +367,7 @@ class ilApiTeams implements ilApiInterface
         return $retAr;
     }
 
-    public static function changeParticipant(string $a_event, ilObjMultiVc $multiVcObj, ilMultiVcConfig $multiVcConn, array $upcomingMeeting, int $parentObjId, int $userId, int $role): void
+    public static function changeParticipant(string $a_event, ilObjMultiVc $multiVcObj, ilMultiVcConfig $multiVcConn, array $upcomingMeeting, int $parentObjId, int $userId): void
     {
         global $DIC;
         $logger = $DIC->logger()->root();

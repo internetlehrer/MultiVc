@@ -1,6 +1,3 @@
-// 
-// German Language File for MultiVc Plugin
-//
 <!-- language file start -->
 add_presentation_url#:#Startpräsentation
 add_token#:#Token hinzufügen
@@ -51,9 +48,11 @@ cam_mic_only_for_moderator_info#:#Organisatoren ermöglichen Teilnehmenden gezie
 cam_mic_only_for_moderator#:#Teilnehmende dürfen Kamera und Mikrofon nicht aktivieren
 cam_only_for_moderator_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Kamera nur für Moderatoren' haben sollen. Diese Option sollte in den meisten Fällen aktiviert sein.
 cam_only_for_moderator_choose#:#Kamera nur für Moderatoren: Auswahlmöglichkeit
-cam_only_for_moderator_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein und nur aktiviert werden, wenn bei hohen Teilnehmerzahlen Performanzprobleme zu erwarten sind. Moderatoren haben stets die Möglichkeit, während einer Sitzung in BigBlueButton die Einstellung zu ändern.
+cam_only_for_moderator_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein und nur aktiviert werden, wenn bei hohen Teilnehmerzahlen Performanzprobleme zu erwarten sind. Moderatoren haben stets die Möglichkeit, während einer Sitzung die Einstellung zu ändern.
 cam_only_for_moderator_default#:#Kamera nur für Moderatoren: Voreinstellung
 cam_only_for_moderator_info#:#Für Sitzungen mit sehr vielen Personen empfohlen.
+cam_only_for_moderator_zoom#:#Kamera nur für Hosts
+cam_only_for_moderator_zoom_info#:#Für Meetings mit sehr vielen Personen empfohlen!
 cam_only_for_moderator#:#Kamera nur für Moderatoren
 cancel#:#abbrechen
 cat_create_xmvc#:#virtuellen Meetingraum erstellen
@@ -81,7 +80,7 @@ conn_id#:#Meeting-Typ
 copy#:#Kopieren
 create_type#:#Neuen Meeting-Typ definieren
 cronjob_description#:#Wenn aktiviert, kann die Verweildauer für die Berechnung des Lernfortschritts herangezogen werden.
-cronjob_title#:#MultiVc-Cronjob zur Ermittlung des Lernfortschritts bei Nutzung von MS Teams
+cronjob_title#:#MultiVc-Cronjob zur Ermittlung des Lernfortschritts bei Nutzung von MS Teams oder Zoom
 crs_create_xmvc#:#virtuellen Meetingraum erstellen
 custom_style#:#Custom Style
 custom_style_info#:#Hier können Sie CSS-Style-Parameter oder eine CSS-Datei definieren. Für eine Datei, muss eine URL, beginnend mit https://, angegeben werden. Des Weiteren muss in der settings.yml der BBB-Installation der Parameter "displayBrandingArea" auf true gesetzt sein.
@@ -165,6 +164,8 @@ info_requirements_om#:#<ul><li>Openmeetings nutzt den offenen Standard WebRTC, d
 info_requirements_partly#:#Wir empfehlen als Browser Google Chrome oder mit Einschränkungen Mozilla Firefox. Ob und inwieweit der aktuell von Ihnen genutzte Browser geeignet ist, den virtuellen Meetingraum zu nutzen, müssen Sie selbst herausfinden. Bitte berichten Sie dem gegebenenfalls vorhandenen technischen Support Ihre Erfahrungen.
 info_requirements_teams#:#<ul><li>Moderierende müssen die Teams App benutzen.</li><li>Teilnehmende können Teams über ihren Browser starten.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
 info_requirements_webex#:#<ul><li>Empfohlene Browser: Chrome, Edge, Firefox</li></ul>
+info_requirements_zoom#:#Melden Sie sich bitte mit Ihrer in ILIAS hinterlegten E-Mail-Adresse bei Zoom an. Diese lautet:
+info_requirements_zoom_lp#:#In diesem Meeting müssen Ihre Anwesenheitszeiten zur Bestimmung des Lernfortschritts erfasst werden können. Nur wenn Sie {%} der vorgesehenen Zeit zwischen Meetingbeginn und Meetingende anwesend sind, erfüllen Sie die Voraussetzungen zur Anerkennung.
 info_set_owner#:#Eigentümer eingetragen
 info_svr_private_port#:#Beispiel: 443
 info_svr_private_url#:#Entspricht mit Ausnahme von Amazon EC2 stets der öffentlichen URL
@@ -178,6 +179,7 @@ info_top_moderated_edudip#:#Sie haben Moderationsrechte und können das Webinar 
 info_top_moderated_m_bbb#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
 info_top_moderated_m_om#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
 info_top_moderated_webex#:#Sie haben Moderationsrechte und können das Meeting starten. Dazu benötigen Sie einen Account bei Webex oder bei einer Webex-Hostet-Site. Teilnehmende können erst dann beitreten, wenn das Meeting von einem Moderator gestartet wurde.
+info_top_moderated_zoom#:#Dies ist ein Webinar. Sie können das Webinar starten.
 info_top_moderator_bbb#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
 info_top_moderator_om#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
 info_top_not_moderated_bbb#:#Dieser Meetingraum ist nicht moderiert. Auch Sie haben deshalb eine Moderatorfunktion und folglich erweiterte Rechte. Sie können die Rechte anderer Personen einschränken und auch die Sitzung beenden. Bitte nutzen Sie die erweiterten Rechte verantwortungsbewusst.
@@ -208,11 +210,11 @@ lock#:#Sperren
 logo_url_info#:#Geben Sie hier die URL zu Ihrem Logo ein. Die URL muss mit https:// beginnen.
 logo_url#:#URL des Logos
 lp_active#:#Aktiv
-lp_active_info#:#Der Status "In Bearbeitung" wird gesetzt, sobald der Inhalt aufgerufen wird. Der Status "Bearbeitet" oder "Nicht bestanden" wird durch die Anwesenheitszeiten bestimmt.
+lp_active_info#:#Der Status "In Bearbeitung" wird gesetzt, sobald der Inhalt aufgerufen wird. Der Status "Bearbeitet" wird durch die Anwesenheitszeiten bestimmt.
 lp_inactive#:#Inaktiv
 lp_inactive_info#:#Für dieses Objekt wird kein Lernfortschritt gespeichert.
 lp_mode#:#Modus
-lp_time_info#:#Dieser Prozentwert bezogen auf die möglichen Anwesenheitszeiten muss überschritten werden, damit der Status auf "Bearbeitet" gesetzt wird. Andernfalls wird er auf "Nicht bestanden" gesetzt.
+lp_time_info#:#Dieser Prozentwert bezogen auf die möglichen Anwesenheitszeiten muss überschritten werden, damit der Status auf "Bearbeitet" gesetzt wird.
 lp_time#:#Schwellwert für "Bearbeitet"
 max_duration#:#Maximale Dauer
 max_meetings#:#Maximale Anzahl Meetingräume
@@ -239,11 +241,14 @@ modal_details_scheduled_webinar_title#:#Webinar Details (edudip response body)
 moderated_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'moderierter Raum' haben sollen.
 moderated_choose#:#moderierter Raum: Auswahlmöglichkeit
 moderated_default_info#:#Aktivieren Sie diese Option wenn neue Räume als moderierte Räume angelegt werden sollen.
+moderated_default_zoom_info#:#Aktivieren Sie diese Option wenn neue Räume als 'Webinar' angelegt werden sollen.
 moderated_default#:#moderierter Raum: Voreinstellung
 moderated_info#:#In einem moderierten Raum haben Personen mit Moderatorfunktion erweiterte Rechte. Andere Personen haben zudem nur eingeschränkte Zugangsrechte zum virtuellen Raum. Personen mit Moderatorfunktion sind alle, die die Eigenschaften des Objekts bearbeiten können sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren.
 moderated_teams_info#:#In einem moderierten Raum haben Ersteller des Objekts sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren mehr Rechte: Sie können teilen bzw. übertragen und entscheiden, ob andere Personen beitreten dürfen. In einem unmoderierten Raum können alle ohne Bestätigung beitreten und teilen bzw. übertragen.
+moderated_zoom_info#:#Der virtuelle Raum soll kein Meeting, sondern ein Webinar sein. Bitte achten Sie darauf, dass Ihr Zoom Account das Recht hat, Webinare anzulegen. Ein einfacher, gar kostenfreier Account hat nicht das Recht, Webinare anzulegen.
 moderated#:#moderierter Raum
 moderated_webex#:#<b>Tipp:</b> In unmoderierten Räumen werden Beitretende nicht pseudonymisiert. Ein Beitritt ist daher nur Personen mit geeignetem Webex-Account gestattet.
+moderated_zoom#:#Webinar
 moderator#:#Moderator
 msg_obj_deleted#:#Die Aufzeichnung wurde gelöscht.
 notification_sending#:#Benachrichtigungen werden gesendet ...
@@ -263,7 +268,7 @@ om_svr_public_url#:#URL des Openmeeting-Servers
 om_svr_username#:#SOAP Benutzername
 om_svr_userpass#:#SOAP Passwort
 overview_uses#:#Übersicht Verwendungen
-owners_email_not_uniqeu#:#Die E-Mailadresse des Eigentümers ist nicht unique. Diese darf nur einmal an einen ILIAS-Benutzer vergeben sein.
+owners_email_not_unique#:#Die E-Mailadresse des Eigentümers ist nicht unique. Diese darf nur einmal an einen ILIAS-Benutzer vergeben sein.
 playback#:#Aufzeichnung abspielen
 plugin_configuration#:#Konfiguration
 private_chat_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Privaten Chat erlauben' haben sollen.
@@ -310,6 +315,7 @@ relate_meeting#:#Zuordnen
 relate_webinar#:#Zuordnen
 report_log_max#:#Nutzungsübersicht (BBB)
 require_schedule_new_meeting#:#Sie können Meetings anlegen und während der geplanten Zeitfenster starten.
+require_schedule_new_meeting_zoom#:#Sie können Meetings anlegen.
 require_schedule_new_webinar#:#Sie können Webinare anlegen und während der geplanten Zeitfenster starten.
 reset_authorization#:#Authorisierung aufheben
 reseted_tokens#:#Tokens zurückgesetzt
@@ -408,7 +414,7 @@ usage#:#Auslastung
 user_end#:#letztes Verlassen
 user_invite_info#:#Mit dem folgenden Link k&ouml;nnen Sie G&auml;ste zum Meeting einladen:
 user_log#:#Benutzerübersicht
-user_log_bbb#:#Benutzerübersicht (BBB/Teams)
+user_log_bbb#:#Benutzerübersicht (BBB/Teams/Zoom)
 user_log_duration#:#Erfassungszeitraum
 user_percent#:#Prozent
 user_results#:#Anwesenheitszeiten
@@ -418,8 +424,9 @@ user_time#:#Anwesenheitszeit
 wait_join_meeting#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
 wait_join_meeting_edudip#:#Aktuell können Sie keinem Webinar beitreten.
 wait_join_meeting_guest#:#<b>Aktuell ist noch keine Person mit Moderatorfunktion im virtuellen Meetingraum anwesend.<br/>Bitte warten Sie und klicken Sie in einer Minute erneut auf die Schaltfläche 'Meeting beitreten'.</b>
-wait_join_meeting_teams#:#Aktuell können Sie keinem Meeting beitreten. Möglicherweise wurde das Meeting noch nicht gestartet oder bereits beendet.{br}Aktualisieren Sie gegebenenfalls diese Seite, um den Status des Meetings zu prüfen.
+wait_join_meeting_teams#:#Aktuell können Sie keinem Meeting beitreten.{br}Wenn ein geplantes Meeting angezeigt wird, aktualisieren Sie zum Beitritt diese Seite bis zu 15 Minuten vor dem geplanten Meeting.
 wait_join_meeting_webex#:#Aktuell können Sie keinem Meeting beitreten. Möglicherweise wurde das Meeting noch nicht gestartet oder bereits beendet.{br}Aktualisieren Sie gegebenenfalls diese Seite, um den Status des Meetings zu prüfen.
+wait_join_meeting_zoom#:#Aktuell können Sie keinem Meeting beitreten.{br}Wenn ein geplantes Meeting angezeigt wird, aktualisieren Sie zum Beitritt diese Seite bis zu 15 Minuten vor dem geplanten Meeting.
 wait_join_webinar#:#<b>Aktuell hat noch niemand das Webinar gestartet.<br/>Bitte warten Sie und rufen Sie diese Seite in einer Minute erneut auf.</b>
 webex_client_id#:#Client-ID der Webex Integration
 webex_client_secret#:#Client-Secret der Webex Integration
@@ -467,3 +474,19 @@ xmvc_read#:#Lesezugriff: Teilnahme im virtuellen Meetingraum ist möglich
 xmvc_read_learning_progress#:#Lernfortschritt anderer Benutzer einsehen
 xmvc_visible#:#Anzeigen: Virtueller Meetingraum ist sichtbar
 xmvc_write#:#Einstellungen bearbeiten
+zoom_account_id#:#Zoom Account ID
+zoom_account_info#:#Die Zoom Account ID, die Client ID und den Client Secret erhalten Sie über https://developers.zoom.us/docs/internal-apps/create/ . Sie müssen eine Server-to-server OAuth app erzeugen.
+zoom_client_id#:#Zoom Client ID
+zoom_client_secret#:#Zoom Client Secret
+zoom_err_scopes_webinar#:#Sie haben keine Berechtigung, ein Webinar zu erstellen. Meetings sind möglich. Folgende Rechte fehlen:
+zoom_exist_meetings#:#Für dieses Meeting existieren bereits Termine.
+zoom_exist_webinars#:#Für dieses Webinar existieren bereits Termine.
+zoom_lobby#:#Warteraum für Meetings
+zoom_lobby_choose#:#Warteraum: Auswahlmöglichkeit
+zoom_lobby_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Warteraum' haben sollen. Damit wird geregelt, wer im Warteraum platziert wird.
+zoom_lobby_default#:#Warteraum: Voreinstellung
+zoom_lobby_0#:#Niemand muss in den Warteraum. Der Warteraum ist deaktiviert. Teilnehmende können 15 Minuten vor Meetingbeginn eintreten.
+zoom_lobby_1#:#In den Warteraum müssen alle.
+zoom_lobby_2#:#In den Warteraum müssen Benutzer außerhalb Ihres Kontos.
+zoom_lobby_3#:#In den Warteraum müssen Benutzer außerhalb Ihres Kontos oder solche, die nicht bei den zugelassenen Domainen sind.
+zoom_lobby_4#:#In den Warteraum müssen Benutzer, die nicht im Kurs bzw. in der Gruppe sind.

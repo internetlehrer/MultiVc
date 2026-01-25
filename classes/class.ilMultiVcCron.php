@@ -76,28 +76,42 @@ class ilMultiVcCron extends ilCronJob
     {
         $ilDB = $this->dic->database();
         $this->dic->logger()->root()->debug("multivc cron exec");
-        $teamsObjects = [];
+        $vcObjects = [];
         //teams = UTC
         date_default_timezone_set('UTC');
-        $query = "SELECT rep_robj_xmvc_session.obj_id, rep_robj_xmvc_data.lp_time,"
+        $query = "SELECT rep_robj_xmvc_conn.showcontent, rep_robj_xmvc_session.obj_id, rep_robj_xmvc_data.lp_time,"
             . " rep_robj_xmvc_conn.svrusername as client, rep_robj_xmvc_conn.svrsalt as secret, rep_robj_xmvc_conn.svrpublicurl as tenant"
             . " FROM rep_robj_xmvc_session, rep_robj_xmvc_data, rep_robj_xmvc_conn"
             . " WHERE rep_robj_xmvc_data.id = rep_robj_xmvc_session.obj_id AND rep_robj_xmvc_conn.id = rep_robj_xmvc_data.conn_id"
-            . " AND rep_robj_xmvc_data.lp_mode>0 AND rep_robj_xmvc_conn.showcontent='teams'"
+            . " AND rep_robj_xmvc_data.lp_mode>0 AND (rep_robj_xmvc_conn.showcontent='teams' OR rep_robj_xmvc_conn.showcontent='zoom')"
             . " AND ISNULL(rep_robj_xmvc_session.cron) AND rep_robj_xmvc_session.end < " . $ilDB->quote(date('Y-m-d H:i:s'), 'timestamp')
             . " GROUP BY rep_robj_xmvc_session.obj_id"
         ;
         $this->dic->logger()->root()->debug($query);
         $res = $ilDB->query($query);
         while ($row = $ilDB->fetchAssoc($res)) {
-            $teamsObjects[] = $row;
+            $vcObjects[] = $row;
         }
 
-        foreach ($teamsObjects as $teamsObject) {
-            $refIds = ilObject::_getAllReferences($teamsObject['obj_id']);
+        //less Tokens for zoom
+        $zoomToken = "";
+        $zoomTokenUse = [];
+
+        foreach ($vcObjects as $vcObject) {
+            $refIds = ilObject::_getAllReferences($vcObject['obj_id']);
             foreach ($refIds as $refId) {
                 //ilObjMultiVc::LP_ACTIVE
-                $meetingIds = ilApiTeams::getAttendanceReport((int) $teamsObject['obj_id'], $refId, 1, (int) $teamsObject['lp_time'], $teamsObject['client'], $teamsObject['secret'], $teamsObject['tenant']);
+                if ($vcObject['showcontent'] == 'teams') {
+                    $meetingIds = ilApiTeams::getAttendanceReport((int) $vcObject['obj_id'], $refId, 1,
+                        (int) $vcObject['lp_time'], $vcObject['client'], $vcObject['secret'], $vcObject['tenant']);
+                } else {
+                    if ($zoomTokenUse != [$vcObject['client'], $vcObject['secret'], $vcObject['tenant']]) {
+                        $zoomTokenUse = [$vcObject['client'], $vcObject['secret'], $vcObject['tenant']];
+                        $zoomToken = ilApiZoom::getAccessTokenDirect($vcObject['client'], $vcObject['secret'], $vcObject['tenant']);
+                    }
+                    $meetingIds = ilApiZoom::getAttendanceReport($zoomToken, (int) $vcObject['obj_id'], $refId, 1,
+                        (int) $vcObject['lp_time']);
+                }
                 if (isset($meetingIds)) {
                     $query = 'UPDATE rep_robj_xmvc_session SET cron=1 WHERE ' . $ilDB->in('rel_id', $meetingIds, false, 'string');
                     $this->dic->logger()->root()->debug($query);

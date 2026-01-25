@@ -450,7 +450,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     {
         return $this->moderated;
     }
-    public function set_moderated($a_moderated)
+    public function set_moderated(bool $a_moderated)
     {
         $this->moderated = $a_moderated;
     }
@@ -1048,7 +1048,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     /**
      * string from/to e. g. date('Y-m-d H:i:s')
      */
-    public function getScheduledMeetingsByDateRange(string $from, string $to, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
+    public function getScheduledMeetingsByDateRange(string $from, string $to, int $refId): ?array
     {
         $data = null;
         $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
@@ -1057,7 +1057,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
             " FROM rep_robj_xmvc_schedule" .
             " WHERE start >= " . $this->db->quote($from, 'string') .
             " AND end <= " . $this->db->quote($to, 'string') .
-            ((bool) $objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
+            " AND obj_id = " . $this->db->quote($objId, 'integer') .
             #(!is_null($refId) && (bool)$objId ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
             " ORDER BY start ASC";
 
@@ -1102,21 +1102,42 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         return $data;
     }
 
-    public function getScheduledMeetingsByDateFrom(string $from, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
+    public function getScheduledMeetingsByDateForLaunch(int $objId, ?string $timezone = 'UTC'): ?array
+    {
+        $date = new DateTime("now", new DateTimeZone($timezone));
+        $now = $date->format('Y-m-d H:i:s');
+        $startFrom = $date->modify("-15 minutes")->format('Y-m-d H:i:s');
+        $startUntil = $date->modify("+30 minutes")->format('Y-m-d H:i:s');
+
+        $data = null;
+
+        $sql = "SELECT *" .
+            " FROM rep_robj_xmvc_schedule" .
+            " WHERE (start > ". $this->db->quote($startFrom, 'datetime') . ' AND start < ' . $this->db->quote($startUntil, 'datetime') . ')' .
+            " OR (start < " . $this->db->quote($now, 'datetime') . ' AND end > ' . $this->db->quote($now, 'datetime'). ')' .
+            " AND obj_id = " . $this->db->quote($objId, 'integer') .
+            " ORDER BY start ASC";
+        $result = $this->db->query($sql);
+        while ($row = $this->db->fetchAssoc($result)) {
+            $data[] = $row;
+        }
+//        die($sql.var_dump($data));
+        return $data;
+    }
+    public function getScheduledMeetingsByDateFrom(string $from, int $refId, ?string $timezone = null): ?array
     {
         if ($timezone == 'UTC') {
             $timeMod = new ilDateTime($from, IL_CAL_DATETIME, '');
             $from = $timeMod->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', $timezone);
         }
-        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
+        $objId = ilObject::_lookupObjId($refId);
 
         $data = null;
 
         $sql = "SELECT *" .
             " FROM rep_robj_xmvc_schedule" .
             " WHERE end > " . $this->db->quote($from, 'datetime') .
-            ((bool) $objId ? " AND obj_id = " . $this->db->quote($objId, 'integer') : '') .
-            #(!is_null($refId) ? " AND ref_id = " . $this->db->quote($refId, 'integer') : '') .
+            " AND obj_id = " . $this->db->quote($objId, 'integer') .
             " ORDER BY start ASC";
 
         $result = $this->db->query($sql);
@@ -1156,7 +1177,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         return $data;
     }
 
-    public function deleteScheduledSession(int $refId, string $start, string $end, string $timeZone = 'Europe/Berlin'): bool
+    public function deleteScheduledSession(int $refId, string $start, string $end, string $timeZone = 'UTC'): bool
     {
         $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
 
@@ -1179,6 +1200,19 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         );
         return true;
     }
+
+    public function hasScheduledMeetings(int $refId): bool
+    {
+        $meetings = false;
+        $objId = ilObject::_lookupObjId($refId);
+        $query = "SELECT COUNT(*) AS counter FROM rep_robj_xmvc_schedule WHERE obj_id = " . $this->db->quote($objId, 'integer');
+        $entry = $this->db->fetchAssoc($this->db->query($query));
+        if (isset($entry['counter']) && $entry['counter'] != "0") {
+            $meetings = true;
+        }
+        return $meetings;
+    }
+
 
     public function hasScheduledMeetingsCollision(int $refId, string $from, string $to): ?array
     {
@@ -1270,7 +1304,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     #### HOST SESSIONS
     ####################################################################################################################
 
-    public function getStoredHostSessionsByDateRange(string $from, string $to, ?int $refId = null, ?string $timezone = 'Europe/Berlin'): ?array
+    public function getStoredHostSessionsByDateRange(string $from, string $to, ?int $refId = null, ?string $timezone = 'UTC'): ?array
     {
         $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
 
@@ -1428,19 +1462,19 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         return null;
     }
 
-    public function deleteWebexMeeting(int $refId, string $start, string $end, string $timeZone = 'Europe/Berlin'): bool
-    {
-        $objId = is_null($refId) ? null : ilObject::_lookupObjId($refId);
-
-        return (bool) $this->db->manipulate(
-            'DELETE FROM rep_robj_xmvc_schedule WHERE' .
-            ' obj_id=' . $this->db->quote($objId, 'integer') .
-            #' ref_id=' . $db->quote($refId, 'integer') .
-            ' AND start=' . $this->db->quote($start, 'text') .
-            ' AND end=' . $this->db->quote($end, 'text') .
-            ' AND timezone=' . $this->db->quote($timeZone, 'text')
-        );
-    }
+//    public function deleteWebexMeeting(int $refId, string $start, string $end, string $timeZone = 'Europe/Berlin'): bool
+//    {
+//        $objId = ilObject::_lookupObjId($refId);
+//
+//        return (bool) $this->db->manipulate(
+//            'DELETE FROM rep_robj_xmvc_schedule WHERE' .
+//            ' obj_id=' . $this->db->quote($objId, 'integer') .
+//            #' ref_id=' . $db->quote($refId, 'integer') .
+//            ' AND start=' . $this->db->quote($start, 'text') .
+//            ' AND end=' . $this->db->quote($end, 'text') .
+//            ' AND timezone=' . $this->db->quote($timeZone, 'text')
+//        );
+//    }
 
     public function saveWebexSessionModerator(int $refId, string $relId, int $userId, string $data, bool $returnEntry = false, ?int $lookupUserId = null): array|bool|null
     {
@@ -1510,23 +1544,11 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
 
 
 
-    public function saveTeamsSessionData(int $refId, array $data, bool $returnEntry = false, bool $addHostSessEntry = false): ?array
+    public function saveSessionData(string $vcType, int $refId, array $data, bool $returnEntry = false, bool $addHostSessEntry = false): ?array
     {
+        $host = strtolower($vcType);
+
         $objId = ilObject::_lookupObjId($refId);
-
-        // die(var_dump($data));
-        // $dataObj = json_decode($data, false);
-        // $dataArr = json_decode($data, true);
-        // $dataObj->ilCreateDate = date('Y-m-d H:i:s');
-        // $webinar = $dataArr['webinar'];
-        // $dataObj->id = $webinar['id'];
-        // $date = $webinar['dates'][0];
-        // $dataObj->start = $date['date'];
-        // $dataObj->end = $date['date_end'];
-        // $dataObj->timezone = $this->dic->user()->getTimeZone();
-        // $dataObj->title = $webinar['title'];
-
-
 
         $userId = $this->dic->user()->getId();
         $authUser = $this->getAuthUser();
@@ -1555,7 +1577,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
                 'start' => ['string', $data['start']],//todo Datetime
                 'end' => ['string', $data['end']],
                 'timezone' => ['string', $data['timezone']],
-                'host' => ['string', 'teams'],
+                'host' => ['string', $host],
                 'type' => ['string', 'meeting'],
                 'rel_id' => ['string', $data['rel_id']],
                 'rel_data' => ['string', $data['rel_data']]

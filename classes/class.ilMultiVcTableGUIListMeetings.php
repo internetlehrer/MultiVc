@@ -16,26 +16,9 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
 
     protected ?int $refId;
 
-    private ?ilDateTime $dateStart = null;
-
-    private ?ilDateTime $dateEnd = null;
-
-    private bool $keepFilterValues = false;
-
-    private ilDateDurationInputGUI $filterItemDateDuration;
-
-
-
-    /**
-     * ilMultiVcReportLogMaxTableGUI constructor.
-     * @throws Exception
-     */
     public function __construct(object $a_parent_obj, string $a_parent_cmd = '', string $a_template_context = '')
     {
         global $DIC;
-        \iljQueryUtil::initjQuery();
-        #\ilYuiUtil::initPanel();
-        #\ilYuiUtil::initOverlay();
 
         $this->dic = $DIC;
 
@@ -49,25 +32,17 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
         #$this->setFormName('user_log');
         parent::__construct($a_parent_obj, $a_parent_cmd, $a_template_context);
         $this->initColumns();
-        #$this->setFormAction($this->dic->ctrl()->getFormAction($this->parent_obj));
         $this->setEnableHeader(true);
 
         $this->setExternalSorting(false);
         $this->setExternalSegmentation(false);
         $this->setShowRowsSelector(false);
 
-        $this->setDefaultOrderField('start_time'); # display_name join_time
+        $this->setDefaultOrderField('start_time');
         $this->setDefaultOrderDirection('asc');
         //$this->disable('sort');
 
         $this->setRowTemplate('tpl.list_meetings_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
-        /*
-        $this->initFilterDateDuration();
-        $this->setFilterCommand('applyFilterScheduledMeetings');
-        $this->setResetCommand('resetFilterScheduledMeetings');
-        $this->setDefaultFilterVisiblity(false);
-        $this->setDisableFilterHiding(true);
-        */
         $this->setEnableNumInfo(false);
         $this->getDataFromDb();
     }
@@ -90,12 +65,12 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
     private function getDataFromDb(): void
     {
         $data = [];
-        $ScheduledMeeting = $this->parent_obj->object->getScheduledMeetingsByDateFrom( #
-            date('Y-m-d H:i:s'),
-            $this->refId
-        ) ?? [];
-        #var_dump($ScheduledMeeting);
-        #exit;
+        if ($this->parent_obj->isTeams || $this->parent_obj->isZoom) {
+            $ScheduledMeeting = $this->parent_obj->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->refId, 'UTC') ?? [];
+        } else {
+            $ScheduledMeeting = $this->parent_obj->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->refId) ?? [];
+        }
+        #var_dump($ScheduledMeeting);exit;
 
         foreach ($ScheduledMeeting as $a_set) {
             $json = json_decode($a_set['rel_data']);
@@ -114,11 +89,10 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
                 'START_TIME' => $meetingStart,
                 'END_TIME' => $meetingEnd,
             ];
-        } // EOF foreach ($ScheduledMeeting as $key => $row)
+        }
 
         #$data = ilUtil::sortArray($data, 3, 'asc');
         $this->setData($data);
-        //        return $this->data = $data;
     }
 
     /**

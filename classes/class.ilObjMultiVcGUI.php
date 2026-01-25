@@ -26,7 +26,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         'EDUDIP' => 'start',
         'BBB' => 'start',
         'OM' => 'start',
-        'TEAMS' => 'start'
+        'TEAMS' => 'start',
+        'ZOOM' => 'start'
     ];
 
     public ?ilObject $object = null;
@@ -42,7 +43,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
     public bool $isTeams = false;
 
-    /** @var null|ilApiBBB|ilApiWebex|ilApiEdudip|ilApiOM $vcObj  */
+    public bool $isZoom = false;
+
+    /** @var null|ilApiBBB|ilApiWebex|ilApiEdudip|ilApiOM|ilApiTeams|ilApiZoom $vcObj  */
     public $vcObj = null;
 
     public ?string $platform = null;
@@ -108,6 +111,11 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $checkAuthUser =
                 $initVc = $isXmvcObj;
                 break;
+            case 'zoom':
+                $this->isZoom = true;
+                $checkAuthUser =
+                $initVc = $isXmvcObj;
+                break;
             default:
                 break;
         }
@@ -138,6 +146,11 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if($this->isBBB) {
                 $this->object->runBBBRecTask('delete', $this->vcObj);
             }
+
+            if($this->isZoom) {
+                $this->vcObj->getAccessToken();
+            }
+
             // Edudip users gets their token from plugin settings
             #$cmd = $this->dic->ctrl()->getCmd();
             $settings = ilMultiVcConfig::getInstance($this->object->getConnId());
@@ -153,7 +166,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
     }
 
-    public function getVcObj(): ilApiBBB|ilApiEdudip|ilApiOM|ilApiWebex|ilApiTeams
+    public function getVcObj(): ilApiBBB|ilApiEdudip|ilApiOM|ilApiWebex|ilApiTeams|ilApiZoom
     {
         $class = ilMultiVcConfig::AVAILABLE_XMVC_API[$this->platform];
         return $this->vcObj ?? $this->vcObj = new $class($this);
@@ -295,7 +308,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
         // SCHEDULED MEETINGS
         if ($this->object->isUserOwner() && $ilAccess->checkAccess("write", "", $this->object->getRefId())) {
-            if(($this->isWebex || $this->isEdudip || $this->isTeams)) {
+            if(($this->isWebex || $this->isEdudip || $this->isTeams || $this->isZoom)) {
                 $ilTabs->addTab("scheduledMeetings", $this->txt('scheduled_' . $this->sessType . 's'), $this->dic->ctrl()->getLinkTargetByClass(array('ilObjMultiVcGUI'), 'scheduledMeetings'));
             }
         }
@@ -324,7 +337,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
 
 
-        if ($this->isTeams && ilObjUserTracking::_enabledLearningProgress()) {
+        if (($this->isTeams || $this->isZoom) && ilObjUserTracking::_enabledLearningProgress()) {
             if ($this->checkPermissionBool("edit_learning_progress") || $this->checkPermissionBool("read_learning_progress")) {
 
                 if ($this->object->getLPMode() == ilObjMultiVc::LP_ACTIVE && $this->checkPermissionBool("read_learning_progress")) {
@@ -423,6 +436,12 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if ($this->isTeams) {
             $tSettings = ilMultiVcConfig::getInstance($this->object->getConnId());
             $meetingIds = ilApiTeams::getAttendanceReport($this->object->getId(), $this->object->getRefId(), $this->object->getLPMode(), $this->object->getLpTime(), $tSettings->getSvrUsername(), $tSettings->getSvrSalt(), $tSettings->getSvrPublicUrl());
+        }
+        if ($this->isZoom) {
+
+            $tSettings = ilMultiVcConfig::getInstance($this->object->getConnId());
+            $token = $this->vcObj->getAccessToken();
+            $meetingIds = ilApiZoom::getAttendanceReport($token, $this->object->getId(), $this->object->getRefId(), $this->object->getLPMode(), $this->object->getLpTime());
         }
         $this->initTabContent();
 
@@ -615,7 +634,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         // CMD Create Meeting
         if($cmd === 'meeting_create') {
             $meetingDuration = $this->dic->http()->wrapper()->post()->retrieve('meeting_duration', $this->dic->refinery()->kindlyTo()->listOf($this->dic->refinery()->kindlyTo()->string()));
-            //            $start = new DateTime($_POST['meeting_duration']['start']);
             $start = new DateTime($meetingDuration[0]);//['start']);
             $dateTimeStart = $start->format('Y-m-d H:i:s');
             //            $end = new DateTime($_POST['meeting_duration']['end']);
@@ -666,7 +684,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $utcEnd = new ilDateTime($dateTimeEnd, IL_CAL_DATETIME, $this->dic->user()->getTimeZone());
                 $creationResult = $this->vcObj->sessionCreateTeams($meetingTitle, $utcStart, $utcEnd);
                 #die(var_dump($creationResult));
-                if (!is_null($data = $this->object->saveTeamsSessionData($this->object->getRefId(), $creationResult, true, true))) {
+                if (!is_null($data = $this->object->saveSessionData('teams', $this->object->getRefId(), $creationResult, true, true))) {
                     $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_scheduled_meeting_created'), true);
                     $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
                 }
@@ -706,6 +724,20 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                     $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
                 }
             } // EOF isEdudip
+
+            if($this->isZoom) {
+                //make UTC
+                $meetingTitle = $this->dic->http()->wrapper()->post()->retrieve('meeting_title', $this->dic->refinery()->kindlyTo()->string());
+                $utcStart = new ilDateTime($dateTimeStart, IL_CAL_DATETIME, $this->dic->user()->getTimeZone());
+                $utcEnd = new ilDateTime($dateTimeEnd, IL_CAL_DATETIME, $this->dic->user()->getTimeZone());
+                $creationResult = $this->vcObj->sessionCreateZoom($meetingTitle, $utcStart, $utcEnd);
+                #die(var_dump($creationResult));
+                if (!is_null($data = $this->object->saveSessionData('zoom', $this->object->getRefId(), $creationResult, true, true))) {
+                    $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_scheduled_meeting_created'), true);
+                    $this->dic->ctrl()->redirect($this, 'applyFilterScheduledMeetings');
+                }
+            }
+
         } // EOF $cmd = create_meeting
 
         // CMD relate meeting
@@ -995,6 +1027,15 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $info = $text . '_teams_info';
             }
         }
+        elseif($this->isZoom) {
+            if ($item == 'moderated') {
+                $text = $text . '_zoom';
+                $info = $text . '_info';
+            } elseif ($item == 'cam_only_for_moderator') {
+                $text = "rep_robj_xmvc_cam_only_for_moderator_zoom";
+                $info = $text . "_info";
+            }
+        }
         if ($this->hasChoosePermission($item)) {
             $cb = new ilCheckboxInputGUI($this->lng->txt($text), "cb_" . $item);
             $cb->setInfo($this->lng->txt($info));
@@ -1046,9 +1087,18 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $cb = new ilCheckboxInputGUI($this->lng->txt("online"), "online");
         $this->form->addItem($cb);
 
-
-        $cbModr = $this->formItem("moderated");
-        $this->form->addItem($cbModr);
+        if ($this->isZoom && $this->object->hasScheduledMeetings($this->ref_id)) {
+            $info = new ilNonEditableValueGUI($this->lng->txt("hint"));
+            if ($this->object->get_moderated()) {
+                $info->setValue($this->txt("zoom_exist_webinars"));
+            } else {
+                $info->setValue($this->txt("zoom_exist_meetings"));
+            }
+            $this->form->addItem($info);
+        } else {
+            $cbModr = $this->formItem("moderated");
+            $this->form->addItem($cbModr);
+        }
 
         if($this->isBBB && ($this->xmvcConfig->isRecordChoose() || $this->xmvcConfig->isRecordDefault()) && $this->xmvcConfig->isRecordOnlyForModeratedRoomsDefault() && $cbModr->getType() !== 'hidden') {
             $info = new ilNonEditableValueGUI($this->lng->txt("hint"));
@@ -1106,19 +1156,21 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $cbSecretExpires->addSubItem($inputSecretExpirationDate);
         }
 
-        $cbRecordings = $this->formItem("recording");
-        if($this->isBBB && $this->xmvcConfig->isRecordOnlyForModeratedRoomsDefault()) {
-            if($cbModr->getType() === 'hidden') {
-                if ($this->object->get_moderated()) {
-                    $this->form->addItem($cbRecordings);
+        if (!$this->isZoom) {
+            $cbRecordings = $this->formItem("recording");
+            if ($this->isBBB && $this->xmvcConfig->isRecordOnlyForModeratedRoomsDefault()) {
+                if ($cbModr->getType() === 'hidden') {
+                    if ($this->object->get_moderated()) {
+                        $this->form->addItem($cbRecordings);
+                    }
+                } else {
+                    if ($cbRecordings->getType() !== 'hidden') {//  $cbRecordings->getType() !== 'hidden'|| $this->xmvcConfig->isRecordDefault()
+                        $cbModr->addSubItem($cbRecordings);
+                    }
                 }
             } else {
-                if($cbRecordings->getType() !== 'hidden') {//  $cbRecordings->getType() !== 'hidden'|| $this->xmvcConfig->isRecordDefault()
-                    $cbModr->addSubItem($cbRecordings);
-                }
+                $this->form->addItem($cbRecordings);
             }
-        } else {
-            $this->form->addItem($cbRecordings);
         }
 
         // if ($this->isBBB && $this->object->isRecordingAllowed() ) {
@@ -1158,7 +1210,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $this->form->addItem($this->formItem("lock_disable_cam"));
 
         // If it's Webex add specific form elements
-        if (('webex' !== $this->xmvcConfig->getShowContent() && !$this->isTeams) || !$this->hasChoosePermission('extra_cmd')) {
+        if (('webex' !== $this->xmvcConfig->getShowContent() && !$this->isTeams && !$this->isZoom) || !$this->hasChoosePermission('extra_cmd')) {
             $extra = new ilHiddenInputGUI("cb_extra_cmd");
             if ($this->isTeams) {
                 $info = new ilNonEditableValueGUI($this->txt("teams_lobbybypass"));
@@ -1182,6 +1234,15 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                     0 => $this->txt("teams_lobbybypass_everyone"),
                     1 => $this->txt("teams_lobbybypass_invited"),
                     2 => $this->txt("teams_lobbybypass_organizer")
+                ]);
+            } elseif ($this->isZoom) {
+                $extra = new ilSelectInputGUI($this->txt("zoom_lobby"), "cb_extra_cmd");
+                $extra->setOptions([
+                    0 => $this->txt("zoom_lobby_0"),
+                    1 => $this->txt("zoom_lobby_1"),
+                    2 => $this->txt("zoom_lobby_2"),
+                    3 => $this->txt("zoom_lobby_3"),
+                    4 => $this->txt("zoom_lobby_4")
                 ]);
             } else {
                 $extra = new ilSelectInputGUI($this->lng->txt("rep_robj_xmvc_webex_user_logout"), "cb_extra_cmd");
@@ -1555,6 +1616,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             case 'teams':
                 $this->showContentTeams();
                 break;
+            case 'zoom':
+                $this->showContentZoom();
+                break;
         }
     }
 
@@ -1581,10 +1645,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
 
         if (is_null($relId)) {
-            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(
-                date('Y-m-d H:i:s'),
-                $this->object->getRefId()
-            );
+            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId());
         } else {
             $upcomingSession = $this->object->getScheduledMeetingByRelId($relId);
         }
@@ -1636,10 +1697,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if($moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $this->dic->user()->getEmail())) {
                 $this->object->saveWebexSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
                 $upcomingSession = !$relId
-                    ? $this->object->getScheduledMeetingsByDateFrom(
-                        date('Y-m-d H:i:s'),
-                        $this->object->getRefId()
-                    )
+                    ? $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId())
                     : $this->object->getScheduledMeetingByRelId($relId);
 
                 if(isset($upcomingSession[0])) {
@@ -1705,10 +1763,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $data['rel_data'] = json_decode($data['rel_data']);
         }
         */
-        $data = $this->object->getScheduledMeetingsByDateFrom(
-            date('Y-m-d H:i:s'),
-            $this->object->getRefId()
-        );
+        $data = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId());
         try {
             $data = $data[0];
             #$data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null); # $upcomingSession[0]; #
@@ -1783,10 +1838,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
 
         if (is_null($relId)) {
-            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(
-                date('Y-m-d H:i:s'),
-                $this->object->getRefId()
-            );
+            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId());
         } else {
             $upcomingSession = $this->object->getScheduledMeetingByRelId($relId);
         }
@@ -1832,10 +1884,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 // ability to create sessions by nonOwner Modr&Admins
                 $this->object->saveEdudipSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
                 $upcomingSession = !$relId
-                    ? $this->object->getScheduledMeetingsByDateFrom(
-                        date('Y-m-d H:i:s'),
-                        $this->object->getRefId()
-                    )
+                    ? $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId())
                     : $this->object->getScheduledMeetingByRelId($relId);
 
                 if(isset($upcomingSession[0])) {
@@ -1924,11 +1973,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
 
         if (is_null($relId)) {
-            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(
-                date('Y-m-d H:i:s'),
-                $this->object->getRefId(),
-                'UTC'
-            );
+            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId(),'UTC');
         } else {
             $upcomingSession = $this->object->getScheduledMeetingByRelId($relId);
         }
@@ -1982,10 +2027,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if($moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $this->dic->user()->getEmail())) {
                 $this->object->saveWebexSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
                 $upcomingSession = !$relId
-                    ? $this->object->getScheduledMeetingsByDateFrom(
-                        date('Y-m-d H:i:s'),
-                        $this->object->getRefId()
-                    )
+                    ? $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId())
                     : $this->object->getScheduledMeetingByRelId($relId);
 
                 if(isset($upcomingSession[0])) {
@@ -2051,11 +2093,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $data['rel_data'] = json_decode($data['rel_data']);
         }
         */
-        $data = $this->object->getScheduledMeetingsByDateFrom(
-            date('Y-m-d H:i:s'),
-            $this->object->getRefId(),
-            "UTC"
-        );
+        $data = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId(), "UTC");
         try {
             $data = $data[0];
             #$data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null); # $upcomingSession[0]; #
@@ -2101,6 +2139,255 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $this->showContentDefault($teams);
                 break;
         }
+    }
+
+    /**
+     * @throws ilTemplateException
+     * @throws Exception
+     */
+    private function showContentZoom()
+    {
+        try {
+            $this->vcObj = $zoom = new ilApiZoom($this);
+        } catch (Exception $e) {
+            $zoom = new StdClass();
+        }
+        $isZoom = $this->isZoom = $zoom instanceof ilApiZoom;
+
+//        $isAdminOrModerator = $isZoom && ($zoom->isUserModerator() || $zoom->isUserAdmin());
+        $isMeetingStartable = false;
+        $redirectUrl = "";
+
+        $relId = null;
+        if ($this->dic->http()->wrapper()->query()->has('rel_id')) {
+            $relId = $this->dic->http()->wrapper()->query()->retrieve('rel_id', $this->dic->refinery()->kindlyTo()->string());
+        }
+
+        if (is_null($relId)) {
+            $upcomingSession = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId(), 'UTC');
+        } else {
+            $upcomingSession = $this->object->getScheduledMeetingByRelId($relId);
+        }
+
+        if(isset($upcomingSession[0])) {
+            $isMeetingStartable = true;
+//            $upcomingSession[0]['ref_id'] = $this->object->getRefId();
+            $sess = json_decode($upcomingSession[0]['rel_data']);
+            if ($this->object->isUserOwner()) {
+                $redirectUrl = $sess->startLink;
+            } else {
+                $redirectUrl = $sess->joinUrl;
+            }
+//            if (!is_null($upcomingSession[0]['participants'])) {
+//                $participants = json_decode($upcomingSession[0]['participants'], 1);
+//            }
+//            $relData = json_decode($sess['rel_data'], true);
+//            $this->vcObj->setWebLink($relData["joinUrl"]);
+//            $this->vcObj->setWebLink($relData["registrationUrl"]);
+        }
+//        $this->redirectToPlatformByUrl($this->vcObj->getWebLink(), null);
+
+
+
+//        $userId = $this->dic->user()->getId();
+//        $userIsInvitedModerator = isset($participants['moderator'][$userId]);
+//        $userIsInvitedAttendee = isset($participants['attendee'][$userId]);
+//        $isNewUser = !$userIsInvitedModerator && !$userIsInvitedAttendee;
+//        #die(var_dump($this->vcObj->isMeetingStartable()));
+//        if($startSession = $this->vcObj->isMeetingStartable()) {
+//            switch (true) {
+//                case $this->dic->http()->wrapper()->query()->has('startZOOM') && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 1:
+//                    $startSession = true;
+//                    break;
+//                default:
+//                    $startSession = false;
+//                    break;
+//            }
+//        }
+//        // ADD MODERATOR TO SESSION
+//        if(!is_null($sess) && $isNewUser && $isAdminOrModerator && $startSession) {
+//            if($moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $this->dic->user()->getEmail())) {
+//                $this->object->saveWebexSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
+//                $upcomingSession = !$relId
+//                    ? $this->object->getScheduledMeetingsByDateFrom(
+//                        date('Y-m-d H:i:s'),
+//                        $this->object->getRefId()
+//                    )
+//                    : $this->object->getScheduledMeetingByRelId($relId);
+//
+//                if(isset($upcomingSession[0])) {
+//                    $sess = $upcomingSession[0];
+//                    $participants = json_decode($upcomingSession[0]['participants'], 1);
+//                    $userIsInvitedModerator = true;
+//                }
+//            }
+//        }
+//
+//        // ADD ATTENDEE (tutor as coHost)
+//        elseif(!$userIsInvitedAttendee && !$userIsInvitedModerator && !is_null($sess) && $startSession) {
+//            $email = !$isAdminOrModerator
+//                ? date('YmdHis') . '.' . uniqid() . '@example.com'
+//                : $this->dic->user()->getEmail();
+//
+//            $httpResponse = $this->vcObj->sessionParticipantAdd(
+//                $upcomingSession[0]['rel_id'],
+//                $this->dic->user()->getFirstname(),
+//                $this->dic->user()->getLastname(),
+//                $email,
+//                $isAdminOrModerator
+//            );
+//            $userResult = json_decode($httpResponse, 1);
+//
+//            if(isset($userResult['success']) && (bool) $userResult['success']) {
+//                $entry = $this->object->saveTeamsSessionParticipant(
+//                    $upcomingSession[0]['ref_id'],
+//                    $upcomingSession[0]['rel_id'],
+//                    $upcomingSession[0]['user_id'],
+//                    $httpResponse
+//                );
+//                $userIsInvitedAttendee = true;
+//                $userIsCoHost = $userResult['coHost'];
+//                #echo '<pre>'; var_dump( [$userIsCoHost, $userResult]); exit();
+//            }
+//        }
+
+//        $data = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->object->getRefId(), "UTC");
+//        try {
+//            $data = $data[0];
+//            #$data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null); # $upcomingSession[0]; #
+//            $data['rel_data'] = json_decode($data['rel_data']);
+//        } catch (Exception $e) {
+//        }
+        #echo '<pre>'; var_dump($data); exit;
+
+        // INFORM TO SCHEDULE A SESSION IF NONE EXISTING
+        if( $this->object->isUserOwner() && !$isMeetingStartable) {
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage('question',
+                $this->dic->language()->txt("rep_robj_xmvc_require_schedule_new_meeting_zoom") ,
+                true
+            );
+        }
+
+
+        // JOIN USER / WELCOME BACK USER
+        switch(true) {
+            case !($zoom instanceof ilApiZoom) || !ilObjMultiVcAccess::checkConnAvailability($this->obj_id):
+                $this->showContentUnavailable();
+                break;
+//            case $this->dic->http()->wrapper()->query()->has('startZOOM') && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 10:
+//            case $this->dic->http()->wrapper()->query()->has('startZOOM') && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 1 && !$zoom->isMeetingStartable():
+//                $this->showContentWindowClose();
+//                break;
+
+            case $this->dic->http()->wrapper()->query()->has('startZOOM') && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 1 && $isMeetingStartable:
+                $this->dic->ui()->mainTemplate()->addOnLoadCode('$("body", document).hide();');
+                $this->redirectToPlatformByUrl($redirectUrl, $zoom);
+                break;
+
+            default:
+                $this->showContentDefault($zoom);
+                break;
+        }
+
+
+//        $startSession = $this->vcObj->isMeetingStartable()
+//            && $this->dic->http()->wrapper()->query()->has('startZOOM')
+//            && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 1;
+        #$isAdminOrModerator = $isAdminOrModerator && isset($participants['moderator']) ? false : true;
+//
+//
+//
+//        if($startSession) {
+//            $hostSessData = $this->vcObj->sessionGet($sess['rel_id']);
+//            $success = json_decode($hostSessData, 1)['success'];
+//            if(!$success) {
+//                $referer = $this->dic->http()->request()->getServerParams()['HTTP_REFERER'];
+//                $query = parse_url($referer, PHP_URL_QUERY);
+//                parse_str($query, $cmd);
+//                $cmd = $cmd['cmd'] ?? 'showContent';
+//                $cmd = $cmd !== 'showContent' ? 'scheduledMeetings' : $cmd;
+//                #$this->dic->ui()->mainTemplate()->setMessage('failure', $this->getPlugin()->txt('error_start_webinar'), true);
+//                $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->getPlugin()->txt('error_start_webinar'), true);
+//                $this->dic->ctrl()->redirect($this, $cmd);
+//            }
+//        }
+//
+//        // ADD MODERATOR TO NEXT SESSION
+//        // && $this->object->isUserOwner() prevents adding coModerators, then nonOwner Modr&Admins will be attendees
+//        if(!is_null($sess) && $isAdminOrModerator && $isNewUser && $startSession
+//        ) {
+//            if($moderatorResult = $this->vcObj->sessionModeratorAdd($sess['rel_id'], $this->dic->user()->getFirstname(), $this->dic->user()->getLastname(), $this->dic->user()->getEmail())) {
+//                // ability to create sessions by nonOwner Modr&Admins
+//                $this->object->saveEdudipSessionModerator($sess['ref_id'], $sess['rel_id'], $userId, $moderatorResult, false, $sess['user_id']);
+//                $upcomingSession = !$relId
+//                    ? $this->object->getScheduledMeetingsByDateFrom(
+//                        date('Y-m-d H:i:s'),
+//                        $this->object->getRefId()
+//                    )
+//                    : $this->object->getScheduledMeetingByRelId($relId);
+//
+//                if(isset($upcomingSession[0])) {
+//                    $upcomingSession[0]['ref_id'] = $this->object->getRefId();
+//                    $sess = $upcomingSession[0];
+//                    $participants = json_decode($upcomingSession[0]['participants'], 1);
+//                }
+//            }
+//        }
+//
+//        if($isAdminOrModerator && !is_null($participants) && isset($participants['moderator'][$userId])) {
+//            $this->vcObj->setWebLink($participants['moderator'][$userId]['webLink']);
+//        } elseif(isset($participants['attendee'][$userId])) {
+//            $this->vcObj->setWebLink($participants['attendee'][$userId]['webLink']);
+//        } elseif($startSession && !is_null($sess) && !isset($participants['attendee'][$userId])) {
+//            $httpResponse = $this->vcObj->sessionParticipantAdd(
+//                $upcomingSession[0]['rel_id'],
+//                $upcomingSession[0]['start'],
+//                $this->dic->user()->getFirstname(),
+//                $this->dic->user()->getLastname()
+//            );
+//            $userResult = json_decode($httpResponse, 1);
+//
+//            if(isset($userResult['success']) && (bool) $userResult['success']) {
+//                $entry = $this->object->saveEdudipSessionParticipant(
+//                    $upcomingSession[0]['ref_id'],
+//                    $upcomingSession[0]['rel_id'],
+//                    $upcomingSession[0]['user_id'],
+//                    $httpResponse,
+//                    true
+//                );
+//
+//                $participants = json_decode($entry['participants'], 1);
+//                $attendee = $participants['attendee'][$userId];
+//                $this->vcObj->setWebLink($attendee['webLink']);
+//            }
+//        }
+
+//        $data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null);
+        #$data = $this->object->getScheduledSessionByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
+
+//        switch(true) {
+//            case !ilObjMultiVcAccess::checkConnAvailability($this->obj_id):
+//                $this->showContentUnavailable();
+//                break;
+//
+////            case $this->dic->http()->wrapper()->query()->has('startZOOM')
+////                && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 10:
+////            case $this->dic->http()->wrapper()->query()->has('startZOOM')
+////                && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 1
+////                && !$this->vcObj->isMeetingStartable():
+////                $this->showContentWindowClose();
+////                break;
+//
+//            case $this->dic->http()->wrapper()->query()->has('startZOOM')
+//                && $this->dic->http()->wrapper()->query()->retrieve('startZOOM', $this->dic->refinery()->kindlyTo()->int()) === 1 && $this->vcObj->isMeetingStartable():
+//                $this->redirectToPlatformByUrl($this->vcObj->getWebLink(), null);
+//                break;
+//
+//            default:
+////                $this->showContentUnavailable();
+//                $this->showContentDefault($zoom);
+//                break;
+//        }
     }
 
     /**
@@ -2174,7 +2461,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @throws ilTemplateException
      * @throws Exception
      */
-    private function showContentDefault(ilApiBBB|ilApiEdudip|ilApiOM|ilApiWebex|ilApiTeams|StdClass $vcObj, bool $withConcurrent = false)
+    private function showContentDefault(ilApiBBB|ilApiEdudip|ilApiOM|ilApiWebex|ilApiTeams|ilApiZoom|StdClass $vcObj, bool $withConcurrent = false)
     {
         $tpl = $this->dic->ui()->mainTemplate();//['tpl'];
         $tpl->addCss("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.css");
@@ -2200,9 +2487,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             }
         }
 
-        $my_tpl->setVariable('MEETING_RUNNUNG', $this->txt($this->sessType . '_running'));
-
-        if($this->object->get_moderated() && $this->object->isRecordingAllowed() && ($vcObj->isMeetingRunning() || $vcObj->isUserModerator())) {
+        if($this->isBBB && ($this->object->get_moderated() && $this->object->isRecordingAllowed() && ($vcObj->isMeetingRunning() || $vcObj->isUserModerator()))) {
             $recWarning = $this->txt('recording_warning');
             $publishRecs = $this->object->getPubRecs() || $this->xmvcConfig->getPubRecsDefault();
             if($publishRecs) {
@@ -2211,11 +2496,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             if(!$this->xmvcConfig->getShowHintPubRecs()) {
                 $recWarning .= ' ' . $this->txt('hint_pub_recs');
             }
-            /*
-            if( $publishRecs ) {
-                $recWarning .= ' ' . $this->txt('hint_availability_recs');
-            }
-            */
 
             $my_tpl->setVariable(
                 "RECORDING_WARNING",
@@ -2251,7 +2531,14 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $my_tpl->setVariable("HEADLINE_INFO_BOTTOM", $this->txt('info_bottom_headline'));
         $my_tpl->setVariable("INFOBOTTOM", $this->txt('info_bottom'));
         $my_tpl->setVariable("HEADLINE_INFO_REQUIREMENTS", $this->txt('info_requirements_headline'));
-        $my_tpl->setVariable("INFO_REQUIREMENTS", $this->txt('info_requirements_' . $apiPostFix));
+        $info_requirements = $this->txt('info_requirements_' . $apiPostFix);
+        if ($apiPostFix == 'zoom') {
+            if ($this->object->getLPMode() == ilObjMultiVc::LP_ACTIVE) {
+                $info_requirements = str_replace('{%}', $this->object->getLpTime() . '%', $this->txt('info_requirements_zoom_lp')) . ' ' . $info_requirements;
+            }
+            $info_requirements .= ' ' . $this->user->getEmail();
+        }
+        $my_tpl->setVariable("INFO_REQUIREMENTS", $info_requirements);
 
         // GUEST LINK
         $vcAllowedGuestLink = $vcObj instanceof ilApiBBB || $vcObj instanceof ilApiWebex;
@@ -2297,41 +2584,30 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
 
         // RECORDINGS
-        if($this->isTeams == false && ($this->object->isRecordingAllowed() && $this->isBBB || $this->object->isRecordingAllowed() && $vcObj->isUserModerator())) {
+        if($this->isBBB && $this->object->isRecordingAllowed()) { //&& $vcObj->isUserModerator()) {
             $my_tpl->setVariable("UNHIDE_RECORDINGS", 'un');
             $my_tpl->setVariable("HEADLINE_RECORDING", $this->txt('recording'));
             $my_tpl->setVariable("RECORDINGS", $this->getShowRecordings($vcObj));
         }
 
-        // TABLE LIST MEETINGS (Webex & Edudip)
-        if(false !== ($showListMeetings = array_search(get_class($vcObj), ['ilApiWebex', 'ilApiEdudip']))) {
-            /*
-            if( !$this->isEdudip ) {
-                $currMeeting = $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, ilObjMultiVc::MEETING_TIME_AHEAD);
-            } else {
-                $currMeeting = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id);
-            }
-            */
+        // TABLE LIST MEETINGS
+        $currMeeting = null;
+        if(array_search(get_class($vcObj), ['ilApiWebex', 'ilApiEdudip'])) {
             $currMeeting = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id);
-            #echo '<pre>'; var_dump($currMeeting); exit;
-            #if( $showListMeetings = is_null($currMeeting) ) {
-            #if( !is_null($currMeeting) && $this->object->checkAndSetMultiVcObjUserAsAuthUser($currMeeting['user_id'], $currMeeting['auth_user'] ) ) {
-            if(!is_null($currMeeting)) {
-                if($this->object->get_moderated() && $vcObj->isUserModerator()) {
-                    $my_tpl->setVariable("INFOTOP", $this->txt('info_top_moderated_' . $this->platform));
-                }
-                $tblListMeetings = new ilMultiVcTableGUIListMeetings($this, 'showContent');
-                $my_tpl->setVariable("UNHIDE_LIST_MEETINGS", 'un');
-                $my_tpl->setVariable("HEADLINE_LIST_MEETINGS", $this->txt('scheduled_' . $this->sessType . 's'));
-                $my_tpl->setVariable("LIST_MEETINGS", $tblListMeetings->getHTML());
+        }
+        if (array_search(get_class($vcObj), ['ilApiTeams', 'ilApiZoom'])) {
+            $currMeeting = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id, 'UTC');
+        }
+        if(!is_null($currMeeting)) {
+//            echo '<pre>'; var_dump($currMeeting); exit;
+            if($this->object->get_moderated() && $vcObj->isUserModerator()) {
+                $my_tpl->setVariable("INFOTOP", $this->txt('info_top_moderated_' . $this->platform));
             }
+            $tblListMeetings = new ilMultiVcTableGUIListMeetings($this, 'showContent');
+            $my_tpl->setVariable("UNHIDE_LIST_MEETINGS", 'un');
+            $my_tpl->setVariable("HEADLINE_LIST_MEETINGS", $this->txt('scheduled_' . $this->sessType . 's'));
+            $my_tpl->setVariable("LIST_MEETINGS", $tblListMeetings->getHTML());
         }
-        /*
-        if( !$showListMeetings) {
-            $my_tpl->setVariable("LIST_MEETINGS", '');
-            $my_tpl->setVariable("HIDE_LIST_MEETINGS", 'hidden');
-        }
-        */
         $tpl->setContent($my_tpl->get());
     }
 
@@ -2401,7 +2677,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     /**
      * @throws Exception
      */
-    private function redirectToPlatformByUrl(string $url, ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams|null $vcObj = null): void
+    private function redirectToPlatformByUrl(string $url, ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom|null $vcObj = null): void
     {
         if(!is_null($vcObj) && $vcObj instanceof ilApiBBB) {
             $this->object->setUserLog('bbb', $vcObj);
@@ -2415,7 +2691,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @throws ilTemplateException
      * @throws Exception
      */
-    private function getJoinContent(ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams $vcObj): string
+    private function getJoinContent(ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom $vcObj): string
     {
         $sessAuthUserIsValid = true;
 
@@ -2426,11 +2702,11 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             ($this->object->get_moderated() && $vcObj->isMeetingRunning() && $vcObj->isModeratorPresent() /* && $vcObj->isValidAppointmentUser() */)
         );
 
-        // Only Webex & Edudip
         $isWebex = get_class($vcObj) === 'ilApiWebex';
         $isEdudip = get_class($vcObj) === 'ilApiEdudip';
         $isTeams = get_class($vcObj) === 'ilApiTeams';
-        $hasSessionProvider = false !== array_search(get_class($vcObj), ['ilApiWebex', 'ilApiEdudip', 'ilApiTeams']);
+        $isZoom = get_class($vcObj) === 'ilApiZoom';
+        $hasSessionProvider = false !== array_search(get_class($vcObj), ['ilApiWebex', 'ilApiEdudip', 'ilApiTeams', 'ilApiZoom']);
         $isModOrAdmin = $vcObj->isUserModerator() || $vcObj->isUserAdmin();
         #$webexData = $isWebex ? $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, !$isModOrAdmin ? 0 : ilObjMultiVc::MEETING_TIME_AHEAD) : null;
         /*
@@ -2442,15 +2718,23 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                     #: $this->object->getScheduledMeetingsByDateRange(date('Y-m-d H:i:s'), date('Y-m-d H:i:s') + 60*60*24, $this->ref_id)
                 : null;
         */
-        $timezone = 'Europe/Berlin';
-        if ($isTeams) {
-            $timezone = 'UTC';
+//        $timezone = 'Europe/Berlin';
+//        if ($isTeams || $isZoom) {
+//            $timezone = 'UTC';
+//        }
+        $sessData = null;
+        if ($hasSessionProvider) {
+            if ($isTeams || $isZoom) {
+                $sessData = $this->object->getScheduledMeetingsByDateForLaunch($this->obj_id, 'UTC');
+            }
+            else {
+                $sessData = $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id);
+            }
         }
-        $sessData = $hasSessionProvider ? $this->object->getScheduledMeetingsByDateFrom(date('Y-m-d H:i:s'), $this->ref_id, $timezone) : null;
-        #echo '<pre>'; var_dump($sessData); exit;
+//        echo '<pre>'; var_dump($sessData); exit;
         #$showBtn = $isWebex ? null !== $webexData : $showBtn;
         $showBtn = $hasSessionProvider ? !is_null($sessData) : $showBtn;
-        $showBtn = $hasSessionProvider && $showBtn && (!$isModOrAdmin && !$isEdudip && !$isTeams) ? $this->object->hasScheduledSessionModerator($this->ref_id, $sessData[0]['rel_id'], $sessData[0]['user_id']) : $showBtn;
+        $showBtn = $hasSessionProvider && $showBtn && (!$isModOrAdmin && !$isEdudip && !$isTeams && !$isZoom) ? $this->object->hasScheduledSessionModerator($this->ref_id, $sessData[0]['rel_id'], $sessData[0]['user_id']) : $showBtn;
         #echo '<pre>'; var_dump($showBtn); exit;
         $showJsIsMeetingRunning = false;
         if(!is_null($sessData) && $this->isWebex && !$isModOrAdmin
@@ -2492,6 +2776,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
                 $tpl->setVariable("WAITMSG", $this->lng->txt('rep_robj_xmvc_wait_join_meeting_edudip'));
             } elseif ($isTeams) {
                 $tpl->setVariable("WAITMSG", str_replace('{br}', '<br />', $this->lng->txt('rep_robj_xmvc_wait_join_meeting_teams')));
+            } elseif ($isZoom) {
+                $tpl->setVariable("WAITMSG", str_replace('{br}', '<br />', $this->lng->txt('rep_robj_xmvc_wait_join_meeting_zoom')));
             } else {
                 $tpl->setVariable("WAITMSG", $this->lng->txt('rep_robj_xmvc_wait_join_meeting'));
             }

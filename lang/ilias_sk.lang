@@ -1,0 +1,492 @@
+<!-- language file start -->
+add_presentation_url#:#Úvodná prezentácia
+add_token#:#Pridať token
+add_token_user#:#Nový moderátor / token
+add_welcome_text#:#Personalizovaná uvítacia správa
+adm_info_appointment#:#Ako administrátor alebo tútor môžete miestnosť spustiť. Účastníci ju však môžu otvoriť iba počas trvania stretnutia.
+assigned_roles_info#:#Vytvorenie tejto konfigurácie MultiVc je možné obmedziť na používateľov, ktorí patria do jednej alebo viacerých vybraných rolí.
+assigned_roles#:#Pridelené úlohy
+authorize#:#autorizovať
+bbb_default_server#:#Štandardný BBB server
+bbb_guest_password_info#:#Povolené sú alfanumerické a špeciálne znaky, ako napríklad: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Heslo hosťa
+bbb_secret_expiration_date#:#Dátum expirácie
+bbb_secret_expiration_date_info#:#Heslo je platné do zvoleného dátumu vrátane.
+bbb_secret_expired_msg#:#Platnosť hesla hosťa vypršala.
+bbb_secret_expires_info#:#Túto možnosť vyberte, ak má mať heslo obmedzenú dobu platnosti.
+bbb_secret_expires#:#Dátum expirácie
+big_blue_button#:#BigBlueButton WebRTC
+btn_chat#:#Chat je možné zobraziť/skryť
+btn_chat_choose#:#Chat je možné zobraziť/skryť: Možnosť výberu
+btn_chat_choose_info#:#Povoľte túto možnosť, ak majú mať používatelia s oprávneniami na zápis v nastaveniach možnosť „Zobraziť/skryť chat“.
+btn_chat_default#:#Chat je možné zobraziť/skryť: Predvolené nastavenie
+btn_chat_default_info#:#Pre zjednodušenie používania môže byť užitočné túto možnosť neaktivovať a chat zobrazovať vždy.
+btn_chat_info#:#Povoľte túto možnosť, ak chcete, aby sa tlačidlo zobrazovalo/skrylo v chate.
+btn_locationshare_choose_info#:#Táto možnosť by mala byť zvyčajne vypnutá.
+btn_locationshare_choose#:#Možnosť umiestnenia: Výber
+btn_locationshare_default_info#:#Túto možnosť aktivujte až po konzultácii s zodpovednou osobou.
+btn_locationshare_default#:#Umiestnenie možnosti: Predvolené
+btn_locationshare_info#:#Táto možnosť umožňuje používateľom zdieľať svoju aktuálnu polohu s ostatnými v chate a byť pozvaní na samostatné stretnutie od ostatných. Z dôvodov ochrany súkromia by sa táto možnosť mala povoľovať len s opatrnosťou.
+btn_locationshare#:#Umiestnenie možnosti
+btn_settings_choose#:#Nastavenia miestnosti: Možnosť výberu
+btn_settings_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Nastavenia v miestnosti“.
+btn_settings_default#:#Nastavenia miestnosti: Predvolené
+btn_settings_default_info#:#Predvolené nastavenie by vo všeobecnosti malo byť také, že možnosť a tlačidlo pre nastavenia nie sú aktívne.
+btn_settings#:#Nastavenia miestnosti
+btn_settings_info#:#Túto možnosť povoľte, ak chcete, aby boli tlačidlá a možnosti nastavení viditeľné v miestnosti. Zvyčajne to nie je potrebné, pretože meno a obrázok používateľa sa automaticky dedia z ILIAS.
+btntext_concurrent_users_check#:#Skontrolovať dostupnosť
+btntext_guest_login_button#:#Prihlásiť sa ako hosť
+btntext_join_meeting#:#Pripojiť sa k stretnutiu
+btntext_join_webinar#:#Pripojte sa k webináru
+btntext_start_meeting#:#Začať stretnutie
+btntext_start_webinar#:#Spustiť webinár
+cam_mic_only_for_moderator_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis zodpovedajúcu možnosť v nastaveniach. Táto možnosť by mala byť vo väčšine prípadov povolená.
+cam_mic_only_for_moderator_choose#:#Účastníci nesmú aktivovať kameru a mikrofón: Možnosť
+cam_mic_only_for_moderator_default_info#:#Organizátori môžu účastníkom selektívne povoliť používanie mikrofónu a/alebo kamery. Účastníci nemôžu zdieľať ani vysielať bez potvrdenia. Táto možnosť je užitočná pre udalosti s veľmi veľkým počtom účastníkov.
+cam_mic_only_for_moderator_default#:#Účastníci nesmú aktivovať kameru a mikrofón: predvolené nastavenie
+cam_mic_only_for_moderator_info#:#Organizátori selektívne umožnia účastníkom používať mikrofón a/alebo kameru. Účastníci nemôžu zdieľať ani vysielať bez potvrdenia.
+cam_mic_only_for_moderator#:#Účastníci nesmú aktivovať svoju kameru a mikrofón.
+cam_only_for_moderator_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v nastaveniach možnosť „Kamera iba pre moderátorov“. Táto možnosť by mala byť vo väčšine prípadov povolená.
+cam_only_for_moderator_choose#:#Kamera len pre moderátorov: Možnosť výberu
+cam_only_for_moderator_default_info#:#Táto možnosť by mala byť vo väčšine prípadov vypnutá a povolená iba v prípade, že sa pri vysokom počte účastníkov očakávajú problémy s výkonom. Moderátori môžu toto nastavenie počas relácie kedykoľvek zmeniť.
+cam_only_for_moderator_default#:#Kamera len pre moderátorov: Predvolené nastavenie
+cam_only_for_moderator_info#:#Odporúča sa pre stretnutia s veľmi veľkým počtom ľudí.
+cam_only_for_moderator_zoom#:#Kamera len pre hostiteľov
+cam_only_for_moderator_zoom_info#:#Odporúčané pre stretnutia s veľmi veľkým počtom ľudí!
+cam_only_for_moderator#:#Kamera len pre moderátorov
+cancel#:#zrušiť
+cat_create_xmvc#:#Vytvorte si virtuálnu zasadaciu miestnosť
+chat_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Povoliť chat“.
+chat_choose#:#Povoliť chat: Možnosť
+chat_default_info#:#Ak je táto možnosť povolená, ľudia sa môžu medzi sebou rozprávať.
+chat_default#:#Povoliť chat: Predvolené nastavenie
+chat_info#:#Ľudia sa môžu medzi sebou rozprávať.
+chat#:#Povoliť chat
+conf_availability_0#:#Nie je k dispozícii
+conf_availability_1#:#Existujúce povolené
+conf_availability_2#:#Môžu sa vygenerovať nové
+conf_availability#:#Dostupnosť
+config_help_begin#:#Vysvetlenie v časti Nastavenia znie:
+configure_add#:#Vytvoriť konfiguráciu
+configure#:#konfigurácia
+conf_meeting_layout_1#:#VLASTNÉ_ROZLOŽENIE
+conf_meeting_layout_2#:#INTELIGENTNÉ_ROZLOŽENIE
+conf_meeting_layout_3#:#ZAMERANIE_NA_PREZENTÁCIU
+conf_meeting_layout_4#:#ZAMERANIE NA VIDEO
+conf_meeting_layout#:#Rozloženie stretnutia
+conf_title#:#titul
+conn_deleted#:#Typ stretnutia bol odstránený.
+conn_id#:#Typ stretnutia
+copy#:#Kopírovať
+create_type#:#Definovanie nového typu stretnutia
+cronjob_description#:#Po aktivácii je možné čas strávený na stránke použiť na výpočet pokroku v učení.
+cronjob_title#:#Úloha cron v MultiVc na určenie pokroku v učení pri používaní MS Teams alebo Zoom
+crs_create_xmvc#:#Vytvorte si virtuálnu zasadaciu miestnosť
+custom_style#:#Vlastný štýl
+custom_style_info#:#Tu môžete definovať parametre štýlu CSS alebo súbor CSS. Pre súbor musí byť zadaná URL adresa začínajúca na https://. Okrem toho musí byť parameter „displayBrandingArea“ nastavený na hodnotu true v súbore settings.yml inštalácie BBB.
+delete_conn#:#Odstrániť typ stretnutia?
+delete#:#Odstrániť
+delete_sess_user_changed#:#Opatrenia pri zmene vlastníctva
+delete_sess_user_changed_info#:#Keď používateľ zmení používateľa, všetky vytvorené relácie sa vymažú.
+delete_token#:#Odstrániť token
+delete_type#:#Odstrániť typ stretnutia
+disable_sip_info#:#Táto možnosť vám umožňuje deaktivovať SIP dial-up. Telefonické dial-up potom už nebude možné.
+disable_sip#:#Deaktivácia telefonického vytáčaného pripojenia
+display_name#:#Zobrazované meno
+download#:#Stiahnuť
+download_video#:#Stiahnuť nahrávku
+duration#:#Dĺžka času
+edit#:#Upraviť
+edit_properties#:#Upraviť vlastnosti
+edudip_host_email#:#e-mailová adresa edudip
+edudip_host_email_hidden_info#:#E-mailová adresa použitá na autorizáciu je viditeľná iba pre vlastníkov a administrátorov objektu.
+edudip_host_email_info#:#Vaša e-mailová adresa známa edudipu sa musí zhodovať s touto.
+edudip_meetings_list_downloaded#:#Webináre, ktoré sú už dostupné na edudip, boli úspešne integrované.
+edudip_meetings_list_unavailabe#:#Prístup k existujúcim webinárom na platforme edudip momentálne nie je možný.
+end_time#:#Koniec
+endtime#:#Časy ukončenia
+err_msg_displayname#:#Zadajte svoje meno
+err_msg_guest_password#:#Heslo hosťa je nesprávne.
+err_msg_guest_password_expired#:#Platnosť hesla hosťa vypršala.
+error_admin_no_access_token#:#Informujte, prosím, svojho administrátora: Chýba token.
+error_object_no_access_token#:#Vykonajte autorizáciu vo vlastnostiach objektu.
+error_object_no_host_email#:#Potvrďte e-mailovú adresu hostiteľského používateľa vo vlastnostiach objektu.
+error_start_meeting#:#Pri začatí stretnutia sa vyskytla chyba.
+error_start_webinar#:#Pri spustení webinára sa vyskytla chyba.
+ext_provider_token_user#:#Používateľ / Prístupový token
+ext_provider_token_user_info#:#Zadajte e-mailovú adresu používateľov s licenciou moderátora a za ňou ich prístupový token.
+fa_expand_default_info#:#Táto možnosť by mala byť vo všeobecnosti vypnutá. V mnohých prípadoch tiež nie je možné zväčšiť zobrazenie určitých oblastí (napr. chatu).
+fa_expand_default#:#Maximalizácia zobrazenia oblastí: Predvolené nastavenie
+fold_create_xmvc#:#Vytvorte si virtuálnu zasadaciu miestnosť
+grp_create_xmvc#:#Vytvorte si virtuálnu zasadaciu miestnosť
+guest_displayname_info#:#Upozornenie: Podrobné informácie o názve môžu viesť k ťažkostiam s použiteľnosťou kvôli obmedzenému priestoru dostupnému pre názov v BigBlueButton.
+guest_displayname_input#:#Titul Meno Priezvisko
+guest#:#Hosť
+guestlink_choose#:#Možnosť výberu hosťovského odkazu
+guestlink_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Povoliť hosťovský odkaz“.
+guestlink_default#:#Predvolený odkaz pre hostí
+guestlink_default_info#:#Táto možnosť by mala byť vo väčšine prípadov vypnutá. Neoprávnenému použitiu by sa malo do značnej miery zabrániť. Hostia sa môžu pripojiť k moderovanej miestnosti iba ako účastníci. Moderátor už musí byť prítomný. Hostia musia súhlasiť s podmienkami používania, ktoré sú uložené ako jazyková premenná ILIAS. Ak ich chcete upraviť, prejdite do časti Administrácia -> Jazyky. Kliknite na požadovaný jazyk a do poľa „Identifikátor“ zadajte „rep_robj_xmvc_terms_of_use“. Potom kliknite na „Použiť filter“ a upravte text.
+guestlink#:#Hosťovský odkaz
+guestlink_info#:#Moderátori môžu pozývať hostí prostredníctvom odkazu.
+guest_link_pw_info#:#Hostia sa musia prihlásiť pomocou tohto hesla.
+guest_password_input_info#:#Sem zadajte heslo pre hosťovský odkaz.
+guest_password_input#:#Heslo hosťa
+headline_welcome_meeting#:#Vitajte v zasadacej miestnosti!
+headline_welcome_webinar#:#Vitajte na webinári!
+hide_recs_until_date#:#Nezobrazovať nahrávky, kým
+hide_recs_until_date_info#:#Nahrávky do dátumu nahrávania uvedeného tu sa nezobrazia.
+hide_username_logs#:#Skryť prehľad používateľov
+hide_username_logs_info#:#Ak je táto možnosť vybratá, prehľad používateľov je viditeľný iba v administrácii pluginu. V opačnom prípade sa prehľad používateľov zobrazí aj pre objekt MultiVc.
+hint_availability_recs#:#V prípade otázok a obáv týkajúcich sa prístupu k nahrávkam kontaktujte administrátorov týchto stretnutí BigBlueButton.
+hint#:#Text poznámky
+hint_pub_recs#:#Zdieľanie odkazov na nahrávky nie je povolené.
+info_add_presentation_url#:#Načítajte si vlastnú úvodnú prezentáciu prostredníctvom URL adresy. Štruktúra URL adresy musí mať tento formát: <i>https://vasa.domena/cesta_k/prezentacii.pdf</i>
+info_add_welcome_text#:#Túto personalizovanú uvítaciu správu je možné definovať pomocou jazykovej premennej ILIAS. Prejdite do sekcie Administrácia -> Jazyky. Kliknite na požadovaný jazyk a do poľa „Identifikátor“ zadajte „rep_robj_xmvc_welcome_text“. Potom kliknite na „Použiť filter“ a upravte text.
+info_availability#:#Toto ovláda dostupnosť typu stretnutia v časopise. Staršie typy je možné nastaviť na možnosť „Existujúce povolené“ namiesto ich odstránenia.
+info_bottom_headline#:#Dôležité pokyny na použitie:
+info_bottom#:#<ul><li>Prosím, <b>používajte slúchadlá</b>, aby ste sa vyhli nepríjemnej spätnej väzbe alebo ozvenám!</li><li><b>Ak je vaše internetové pripojenie slabé, mali by ste vypnúť kameru (webkameru) a ak je pripojenie ešte horšie, mali by ste na prenos zvuku použiť konferenčný hovor.</li></ul>
+info_concurrent_users_available#:#Počet voľných miest vo virtuálnej učebni:
+info_concurrent_users_none#:#Momentálne nie sú k dispozícii žiadne ďalšie miesta na registráciu. Skontrolujte si dostupnosť o minútu kliknutím na tlačidlo „Pripojiť sa k stretnutiu“.
+info_delete_vc_sure#:#Ste si istý/á? Nasledujúca virtuálna zasadacia miestnosť bude odstránená:
+info_hint#:#Vysvetľujúci text sa zobrazí farebne zvýraznený nad obsahom stránky objektu.
+info_max_duration#:#Stretnutie sa skončí po uplynutí zadaného počtu hodín a minút. Pre neobmedzené trvanie zadajte pre každé „0“.
+info_max_participants#:#Maximálny počet účastníkov na stretnutie. Pre neobmedzený počet účastníkov zadajte „0“.
+info_max_participants_webinar#:#Maximálny počet účastníkov na webinár. Prečítajte si, prosím, svoju zmluvu s edudip.
+info_meeting_layout#:#Ovláda predvolené rozloženie pre schôdzu.
+info_om_svr_public_url#:#Príklad: https://www.example.com/
+info_platform_chg_reset_data#:#Váš výber
+info_platform_chg_reset_data_o#:#Upozorňujeme, že pri prepnutí platforiem WebRTC sa všetky nastavenia obnovia na predvolené hodnoty a všetky uložené údaje formulárov sa vymažú. Ak chcete prepnúť platformy WebRTC, musíte najprv potvrdiť nový výber kliknutím na tlačidlo „Uložiť“. V ďalšom kroku sa predchádzajúca konfigurácia prepíše opätovným uložením.
+info_requirements_bbb#:#BigBlueButton používa otvorený štandard WebRTC, ktorý podporuje čoraz viac prehliadačov. V súčasnosti sa odporúča Google Chrome, prehliadač založený na prehliadači Chromium, Microsoft Edge alebo s obmedzeniami Mozilla Firefox. Môžete tiež použiť Safari Mobile od iOS 12.2 a Chrome Mobile od Androidu 6.0. Microsoft Internet Explorer a staršie verzie Edge nie sú podporované. Váš firewall nesmie blokovať nasledujúce porty: porty TCP/IP 80/443 (pre HTTP/HTTPS) a porty UDP v rozsahu 16384 – 32768. Na zdieľanie obrazovky (zdieľanie pracovnej plochy) by ste mali mať vysokovýkonné internetové pripojenie. Odporúčame tiež, aby moderátori a prezentujúci používali káblové sieťové pripojenie (nie Wi-Fi).
+info_requirements_edudip#:#<ul><li>edudip používa otvorený štandard WebRTC, ktorý podporuje stále viac prehliadačov. V súčasnosti sa odporúča Google Chrome, prehliadač založený na prehliadači Chromium, Microsoft Edge alebo s obmedzeniami Mozilla Firefox. Microsoft Internet Explorer a staršie verzie Edge nie sú podporované.</li><li>Ďalšie informácie vám poskytne podpora edudip.</li>
+info_requirements_headline#:#Technické požiadavky:
+info_requirements_not_ok#:#<b>Virtuálnu zasadaciu miestnosť môžete s prehliadačom, ktorý práve používate, používať iba vo veľmi obmedzenej miere.</b><br/>Pre dosiahnutie najlepších výsledkov použite Google Chrome alebo s určitými obmedzeniami Mozilla Firefox! Ak nemáte práva na inštaláciu prehliadača, môžete použiť Google Chrome Portable.<br/>Ak nie je možné zmeniť prehliadač, spustite virtuálnu zasadaciu miestnosť a do chatu napíšte, že momentálne nemáte vhodný prehliadač a že na vás nikto nemá čakať.
+info_requirements_om#:#<ul><li>Openmeetings používa otvorený štandard WebRTC, ktorý podporuje čoraz viac prehliadačov. V súčasnosti sa odporúča Google Chrome alebo s obmedzeniami Mozilla Firefox. Môžete tiež použiť najnovšiu verziu prehliadača Microsoft Edge, ako aj Safari Mobile (iOS 12.2 a novší) a Chrome Mobile (Android 6.0 a novší). Microsoft Internet Explorer a staršie verzie Edge nie sú podporované.</li><li>Váš firewall nesmie blokovať nasledujúce porty: porty TCP/IP 8888/5443 (pre HTTP/HTTPS), TCP/UDP 3478 a porty UDP v rozsahu 49152–65535.</li><li>Na zdieľanie obrazovky (zdieľanie pracovnej plochy) by ste mali používať Google Chrome a mať vysokovýkonné internetové pripojenie. Odporúčame tiež, aby moderátori a prezentujúci používali káblové sieťové pripojenie (nie Wi-Fi).
+info_requirements_partly#:#Odporúčame používať prehliadač Google Chrome alebo, s určitými obmedzeniami, Mozilla Firefox. Sami si budete musieť určiť, či a do akej miery je váš aktuálny prehliadač vhodný na používanie virtuálnej zasadacej miestnosti. Svoje skúsenosti, prosím, nahláste akejkoľvek dostupnej technickej podpore.
+info_requirements_teams#:#Moderátori musia používať aplikáciu Teams. Účastníci môžu spustiť Teams prostredníctvom prehliadača. Na zdieľanie obrazovky (zdieľanie plochy) by ste mali mať vysokovýkonné internetové pripojenie. Odporúčame tiež, aby moderátori a prezentujúci používali káblovú sieť (nie Wi-Fi).
+info_requirements_webex#:#<ul><li>Odporúčané prehliadače: Chrome, Edge, Firefox</li></ul>
+info_requirements_zoom#:#Prihláste sa do Zoomu pomocou e-mailovej adresy, ktorú ste zaregistrovali v ILIAS. Táto adresa je:
+info_requirements_zoom_lp#:#Vaša účasť na tomto stretnutí musí byť zaznamenaná, aby sa zistil váš študijný pokrok. Nárok na kredit získate iba v prípade, že ste prítomní {%} plánovaného času medzi začiatkom a koncom stretnutia.
+info_set_owner#:#Registrovaný majiteľ
+info_svr_private_port#:#Príklad: 443
+info_svr_private_url#:#S výnimkou Amazon EC2 to vždy zodpovedá verejnej URL adrese.
+info_svr_public_port#:#Príklad: 443
+info_svr_public_url#:#Príklad: https://www.example.com/bigbluebutton/
+info_svr_salt_om#:#Príklad: dZ#ls2W!k6l
+info_svr_salt#:#ssh: bbb-conf --secret
+info_svr_username#:#Príklad: om_admin
+info_title#:#Tento názov sa zobrazí pri výbere typu stretnutia pre nové objekty.
+info_top_moderated_edudip#:#Máte práva moderovať a môžete spustiť webinár.
+info_top_moderated_m_bbb#:#Toto je moderovaná miestnosť a do zasadacej miestnosti môžete vstúpiť iba vtedy, keď je v miestnosti osoba s moderátorskými funkciami.
+info_top_moderated_m_om#:#Toto je moderovaná miestnosť a do zasadacej miestnosti môžete vstúpiť iba vtedy, keď je v miestnosti osoba s moderátorskými funkciami.
+info_top_moderated_webex#:#Máte moderátorské práva a môžete začať schôdzku. Na to potrebujete účet vo Webexe alebo na stránke hostovanej spoločnosťou Webex. Účastníci sa môžu pripojiť až po tom, ako schôdzku začne moderátor.
+info_top_moderated_zoom#:#Toto je webinár. Webinár môžete spustiť teraz.
+info_top_moderator_bbb#:#<b>Toto je moderovaná miestnosť a vy v nej máte rolu moderátora.</b><br/>Ľudia bez roly moderátora môžu vstúpiť do zasadacej miestnosti iba vtedy, keď sa v miestnosti už nachádza osoba s rolou moderátora.
+info_top_moderator_om#:#<b>Toto je moderovaná miestnosť a vy v nej máte rolu moderátora.</b><br/>Ľudia bez roly moderátora môžu vstúpiť do zasadacej miestnosti iba vtedy, keď sa v miestnosti už nachádza osoba s rolou moderátora.
+info_top_not_moderated_bbb#:#Táto zasadacia miestnosť nie je moderovaná. Preto máte aj moderátorské oprávnenia a následne aj rozšírené práva. Môžete obmedziť práva ostatných účastníkov a tiež ukončiť reláciu. Tieto rozšírené práva používajte zodpovedne.
+info_top_not_moderated_om#:#Táto zasadacia miestnosť nie je moderovaná. Preto máte aj moderátorské oprávnenia a následne aj rozšírené práva. Môžete obmedziť práva ostatných účastníkov a tiež ukončiť reláciu. Tieto rozšírené práva používajte zodpovedne.
+info_webex_client_id#:#ID klienta nájdete v údajoch pre vašu integráciu Webex (napr. admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#Tajomstvo klienta sa zobrazí raz po vytvorení/aktualizácii integrácie Webex.
+info_webex_redirect_uri#:#Pridajte túto adresu ako URI presmerovania v nastaveniach integrácie.
+info_webex_site_url#:#Názov hosťovanej stránky. Subdoména pred .webex.com, napr. Napr. <b>vasa-spolocnost</b>.webex.com alebo <b>vasa-spolocnost</b>.moja.webex.com
+integration_admin_auth_method_info#:#Autorizáciu vykonáva administrátor prostredníctvom nastavení pluginu MultiVc. Počas procesu OAuth sa vyžadujú nasledujúce rozsahy:
+integration_admin_auth_scopes_info#:#(nasleduje pre administrátorov) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
+integration_auth_method#:#Autorizácia integrácie
+integration_auth_methods_info#:#Autorizáciu môže vykonať: - administrátor prostredníctvom nastavení pluginu MultiVc - používateľ prostredníctvom nastavení objektu MultiVc. Počas príslušného procesu OAuth sa vyžadujú nasledujúce rozsahy:
+integration_user_auth_method_info#:#Autorizáciu vykonáva používateľ prostredníctvom nastavení objektu MultiVc. Počas procesu OAuth sa vyžadujú nasledujúce rozsahy:
+integration_user_auth_scopes_info#:#spark:kms meeting:schedules_read meeting:schedules_write meeting:participants_read meeting:participants_write meeting:preferences_read meeting:preferences_write
+join_time#:#Účasť od
+leave_time#:#Účasť do
+list_token_user_info#:#Zoznam existujúcich moderátorov. Uložené tokeny nie je možné prepísať. V prípade potreby najskôr vymažte položku kliknutím na X.
+list_token_user#:#Registrovaní moderátori
+lock_disable_cam_choose_info#:#Definujte, či je pre objekt k dispozícii nastavenie „Uzamknúť kameru účastníka“.
+lock_disable_cam_choose#:#Voliteľné uzamknutie kamery účastníka
+lock_disable_cam_default_info#:#Predvolené nastavenie nastavte na „Uzamknúť kameru účastníka“.
+lock_disable_cam_default#:#Uzamknutie kamery účastníka (predvolené nastavenie)
+lock_disable_cam_info#:#Aktiváciou tejto možnosti sa kamera (webkamera) účastníkov predvolene zablokuje.
+lock_disable_cam#:#Uzamknutie kamery účastníka
+locked_by#:#Zablokované používateľom
+locked#:#Zablokované
+lock#:#Zamknúť
+logo_url_info#:#Sem zadajte URL adresu vášho loga. URL adresa musí začínať reťazcom https://.
+logo_url#:#URL adresa loga
+lp_active#:#Aktívne
+lp_active_info#:#Stav „Spracované“ sa nastaví hneď po zobrazení obsahu. Stav „Spracované“ je určený hodinami aktivity.
+lp_inactive#:#Neaktívne
+lp_inactive_info#:#Pre tento objekt sa neukladá žiadny priebeh učenia.
+lp_mode#:#režim
+lp_time_info#:#Táto percentuálna hodnota, založená na možných časoch dochádzky, musí byť prekročená, aby sa stav nastavil na „Spracované“.
+lp_time#:#Prahová hodnota pre „Upravené“
+max_duration#:#Maximálne trvanie
+max_meetings#:#Maximálny počet zasadacích miestností
+max_participants#:#Max. počet účastníkov
+max_users#:#Maximálny počet používateľov
+meeting_collision#:#Vyskytla sa chyba. Na požadovaný čas je už naplánovaná relácia.
+meeting#:#stretnutie
+meeting_end#:#Koniec stretnutia
+meeting_related_successful#:#Stretnutie bolo úspešne pridelené
+meeting_running#:#Virtuálna zasadacia miestnosť bola spustená.
+meeting_start#:#Začiatok stretnutia
+member_btn_fileupload_choose#:#Povoliť nahrávanie súborov každému: Možnosť
+member_btn_fileupload_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Povoliť nahrávanie súborov každému“.
+member_btn_fileupload#:#Povoliť nahrávanie súborov pre všetkých
+member_btn_fileupload_default#:#Povoliť nahrávanie súborov každému: Predvolené nastavenie
+member_btn_fileupload_default_info#:#Táto možnosť by mala byť zvyčajne vypnutá.
+member_btn_fileupload_info#:#Túto možnosť aktivujte iba v prípade, ak okrem osôb s rozšírenými právami (napr. administrátori, prípadne tútori) majú mať možnosť nahrávať súbory aj iné osoby.
+modal_delete_scheduled_meeting_accept#:#Odstrániť stretnutie
+modal_delete_scheduled_meeting_title#:#Naozaj chcete túto schôdzku vymazať?
+modal_delete_scheduled_webinar_accept#:#Odstrániť webinár
+modal_delete_scheduled_webinar_title#:#Naozaj chcete tento webinár odstrániť?
+modal_details_scheduled_meeting_title#:#Podrobnosti o stretnutí (telo odpovede Webex)
+modal_details_scheduled_webinar_title#:#Podrobnosti webinára (telo odpovede edudip)
+moderated_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis možnosť vybrať si v Nastaveniach možnosť „moderovaná miestnosť“.
+moderated_choose#:#moderovaný priestor: možnosť výberu
+moderated_default_info#:#Aktivujte túto možnosť, ak chcete vytvoriť nové miestnosti ako moderované miestnosti.
+moderated_default_zoom_info#:#Aktivujte túto možnosť, ak sa majú nové miestnosti vytvoriť ako „webináre“.
+moderated_default#:#moderovaná miestnosť: predvolené nastavenie
+moderated_info#:#V moderovanom priestore majú moderátori rozšírené práva. Ostatní používatelia majú iba obmedzený prístup k virtuálnemu priestoru. Medzi moderátorov patria všetci, ktorí môžu upravovať vlastnosti objektu, ako aj správcovia skupín, správcovia kurzov a lektori kurzov.
+moderated_teams_info#:#V moderovanom priestore má tvorca objektu, ako aj administrátori skupiny, administrátori kurzu a lektori kurzu, viac práv: Môžu zdieľať a prenášať obsah a rozhodovať o tom, či sa môžu pripojiť aj iní ľudia. V nemoderovanom priestore sa môže pripojiť ktokoľvek a zdieľať alebo prenášať obsah bez potvrdenia.
+moderated_zoom_info#:#Virtuálny priestor je určený na webinár, nie na stretnutie. Uistite sa, že váš účet Zoom má povolenie na vytváranie webinárov. Základný alebo dokonca bezplatný účet toto povolenie nemá.
+moderated#:#moderovaný priestor
+moderated_webex#:#Tip: V nemoderovaných miestnostiach nie sú účastníci pseudonymizovaní. Preto sa môžu pripojiť iba osoby s vhodným účtom Webex.
+moderated_zoom#:#Webinár
+moderator#:#Moderátor
+msg_obj_deleted#:#Nahrávka bola vymazaná.
+notification_sending#:#Oznámenia sa odosielajú...
+notification_sent#:#Upozornenia boli úspešne odoslané.
+obj_ids_special_info#:#Len zriedka potrebné! Sem zadajte, oddelené čiarkami, ID objektov ILIAS pre miestnosti prepojené s kurzami (teda vždy rovnaké ID objektu), ktoré by sa mali spracovávať samostatne pre každý kurz. ID objektu sa zobrazuje v nastaveniach objektu. Možnosť „Špeciálne miestnosti“ je užitočná, ak je potrebné centrálne spravovať nastavenia viacerých miestností, napríklad na postupné povoľovanie ďalších funkcií.
+obj_ids_special#:#Špeciálne izby
+objs_xmvc_duplicate#:#Kopírovať virtuálnu zasadaciu miestnosť
+objs_xmvc#:#Virtuálne zasadacie miestnosti
+obj_xmvc_download#:#Stiahnuť
+obj_xmvc_duplicate#:#Kopírovať
+obj_xmvc_select#:#Vyberte virtuálnu zasadaciu miestnosť
+obj_xmvc#:#Virtuálna zasadacia miestnosť
+offline#:#Offline
+of_owner_prefix#:#od vlastníka
+om_svr_public_port#:#Port servera OpenMeeting
+om_svr_public_url#:#URL adresa servera OpenMeeting
+om_svr_username#:#Používateľské meno SOAP
+om_svr_userpass#:#Heslo SOAP
+overview_uses#:#Prehľad použití
+owners_email_not_unique#:#E-mailová adresa vlastníka nie je jedinečná. Používateľovi ILIAS ju možno priradiť iba raz.
+playback#:#Prehrať nahrávku
+plugin_configuration#:#konfigurácia
+private_chat_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Povoliť súkromný chat“.
+private_chat_choose#:#Povoliť súkromný chat: Možnosť výberu
+private_chat_default_info#:#Ak je táto možnosť povolená, používatelia bez moderátorských oprávnení môžu viesť súkromné ​​chaty. Používatelia s moderátorskými oprávneniami tieto chaty nevidia. Keďže moderátori môžu súkromné ​​chaty kedykoľvek ukončiť, táto možnosť by mala byť vo väčšine prípadov povolená.
+private_chat_default#:#Povoliť súkromný chat: Predvolené nastavenie
+private_chat_info#:#Aj ľudia bez moderátorských oprávnení môžu mať medzi sebou súkromný chat.
+private_chat#:#Povoliť súkromný chat
+properties#:#Charakteristiky
+protected#:#Chránené priestory
+pub_recs#:#Okamžite zverejnite nahrávky
+pub_recs_choose#:#Okamžité uvoľnenie nahrávok: Možnosť výberu
+pub_recs_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Zdieľať nahrávky okamžite“.
+pub_recs_default#:#Okamžité uvoľnenie nahrávok: Predvolené nastavenie
+pub_recs_default_for_object#:#Nahrávky sú účastníkom okamžite k dispozícii.
+pub_recs_default_info#:#Túto možnosť povoľte, ak sa majú nahrávky vždy okamžite uvoľniť alebo ak sa má pre nové objekty povoliť možnosť „Okamžite uvoľniť nahrávky“.
+pub_recs_info#:#Ak je táto možnosť vybraná, záznam stretnutia sa zverejní ihneď po jeho skončení. V prehľade na stránke stretnutia máte možnosť uzamknúť alebo odomknúť nahrávky.
+rbac_create_xmvc#:#Vytvorte si virtuálnu zasadaciu miestnosť
+rec_hidden#:#Táto nahrávka nie je viditeľná pre účastníkov.
+recording#:#záznamy
+recording_autostart#:#Nahrávanie sa automaticky spustí od začiatku. Používatelia ILIAS budú o tom informovaní.
+recording_choose#:#Povoliť nahrávanie: Možnosť výberu
+recording_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v nastaveniach možnosť „Povoliť nahrávanie“. Keďže URL adresa nahrávania by sa mohla zdieľať s neoprávnenými osobami, ak by sa stala známou, táto možnosť by vo všeobecnosti nemala byť povolená.
+recording_default#:#Povoliť nahrávanie: Predvolené nastavenie
+recording_default_info#:#Táto možnosť by mala byť vo väčšine prípadov vypnutá, aby sa zabránilo ľuďom používať funkciu nahrávania vo virtuálnom priestore.
+recording_info#:#Relácie je možné nahrávať.
+recording_only_for_moderated_rooms#:#Nahrávanie iba v moderovaných miestnostiach
+recording_only_for_moderated_rooms_default#:#Nahrávanie iba v moderovaných miestnostiach
+recording_only_for_moderated_rooms_default_info#:#Táto možnosť by mala byť vo väčšine prípadov povolená. Platí iba v prípade, že je nahrávanie všeobecne povolené.
+recording_only_for_moderated_rooms_info#:#Nahrávanie môžu spustiť iba osoby s moderátorskými funkciami v moderovaných miestnostiach.
+recording_warning#:#Nahrávanie tejto schôdzky bolo povolené! Aktívnym používaním chatovacieho systému, zapnutím môjho osobného mikrofónu/kamery a/alebo zdieľaním obsahu obrazovky súhlasím so zaznamenaním a uložením týchto informácií na neskoršie použitie.
+recs_locked#:#Nahrávky boli zablokované
+recs_published#:#Vydané nahrávky
+recurrence_#:#-
+recurrence_daily#:#Denne
+recurrence_monthly#:#Mesačne
+recurrence_weekly#:#Týždenne
+recurrence_yearly#:#Ročne
+rec_visible#:#Táto nahrávka je viditeľná pre účastníkov.
+references#:#Odkazy
+related_meeting#:#Pridelené
+related_webinar#:#Pridelené
+relate_meeting#:#Priradiť
+relate_webinar#:#Priradiť
+report_log_max#:#Prehľad používania (BBB)
+require_schedule_new_meeting#:#Môžete si naplánovať stretnutia a začať ich v plánovaných časových úsekoch.
+require_schedule_new_meeting_zoom#:#Môžete vytvárať stretnutia.
+require_schedule_new_webinar#:#Webináre môžete vytvárať a spúšťať v naplánovaných časových úsekoch.
+reset_authorization#:#Zrušiť autorizáciu
+reseted_tokens#:#Tokeny boli resetované
+root_create_xmvc#:#Vytvorte si virtuálnu zasadaciu miestnosť
+saving_invoked#:#Nastavenia uložené
+scheduled_meeting_agenda#:#agenda
+scheduled_meeting_both_data_sources#:#všetky
+scheduled_meeting_create_btn#:#Vytvoriť stretnutie
+scheduled_meeting_created#:#Naplánované stretnutie bolo vytvorené
+scheduled_meeting_create#:#Vytvoriť naplánované stretnutie
+scheduled_meeting_data_source#:#Stretnutia
+scheduled_meeting_delete_btn#:#Odstrániť stretnutie
+scheduled_meeting_deleted#:#Stretnutie bolo odstránené
+scheduled_meeting_duration#:#Obdobie
+scheduled_meeting_local_data_sources#:#pridelené
+scheduled_meeting_not_deleted#:#Stretnutie nebolo odstránené
+scheduled_meeting_overview#:#Prehľad plánovaných stretnutí
+scheduled_meeting_recurrence#:#Opakovanie
+scheduled_meetings#:#Plánované stretnutia
+scheduled_meeting_state#:#stav
+scheduled_meeting_time_ahead#:#Čas potrebný na stretnutie
+scheduled_meeting_update_btn#:#Aktualizácia schôdze
+scheduled_meeting_update#:#Aktualizovať naplánované stretnutie
+scheduled_webinar_agenda#:#agenda
+scheduled_webinar_both_data_sources#:#všetky
+scheduled_webinar_create_btn#:#Vytvorte webinár
+scheduled_webinar_created#:#Plánovaný webinár vytvorený
+scheduled_webinar_create#:#Vytvorte webinár (uveďte, prosím, jedinečný názov)
+scheduled_webinar_data_source#:#Webináre
+scheduled_webinar_delete_btn#:#Odstrániť webinár
+scheduled_webinar_deleted#:#Webinár odstránený
+scheduled_webinar_duration#:#Obdobie
+scheduled_webinar_local_data_sources#:#pridelené
+scheduled_webinar_not_deleted#:#Webinár nebol odstránený
+scheduled_webinar_overview#:#Prehľad plánovaných webinárov
+scheduled_webinar_recurrence#:#Opakovanie
+scheduled_webinars#:#Plánované webináre
+scheduled_webinar_state#:#stav
+scheduled_webinar_time_ahead#:#Dodacia lehota webinára
+scheduled_webinar_update_btn#:#Aktualizácia webinára
+scheduled_webinar_update#:#Aktualizácia plánovaného webinára
+schedule_meeting_duration_less_time#:#Minimálna dĺžka stretnutia je 10 minút. Prosím, upravte svoje záznamy podľa toho.
+schedule_meeting_error#:#Vyskytla sa chyba. Skontrolujte si zadané údaje.
+schedule_webinar_duration_less_time#:#Minimálna dĺžka webinára je 10 minút. Prosím, upravte svoje príspevky podľa toho.
+schedule_webinar_error#:#Vyskytla sa chyba. Skontrolujte si zadané údaje.
+select#:#Vyberte
+service_unavailable#:#Služba nie je k dispozícii
+sess_owner_changed#:#Autentifikácia bola zmenená.
+showcontent#:#Platforma WebRTC
+show_hint_pub_recs_info#:#Používateľom sa na stránke stretnutia zobrazí upozornenie o zákaze zdieľania odkazov na nahrávky. Túto možnosť povoľte, ak nechcete, aby sa toto upozornenie zobrazovalo.
+show_hint_pub_recs#:#Povoliť zdieľanie odkazov na nahrávky
+start_time#:#začiatok
+starttime#:#Čas začiatku
+start_window#:#Spustiť virtuálnu zasadaciu miestnosť v novom okne
+state_active#:#Aktívne
+state_inprogress#:#Beh
+state_ready#:#Pripravený
+status#:#stav
+subject_crs#:#{MEETING_TITLE} v kurze {PARENT_TITLE}
+subject_fld#:#{MEETING_TITLE} v priečinku {PARENT_TITLE}
+subject_grp#:#{MEETING_TITLE} v skupine {PARENT_TITLE}
+svr_private_port#:#Súkromný port servera BBB
+svr_private_url#:#Súkromná URL adresa servera BBB
+svr_public_port#:#Verejný port servera BBB
+svr_public_url#:#Verejná URL adresa servera BBB
+svr_salt#:#Heslo k serveru BBB (tajné)
+sysadmin_perm_choose_all#:#Ako administrátor môžete upravovať všetky vlastnosti tohto objektu.
+tab_close#:#Prosím, zatvorte toto okno alebo kartu teraz.
+teams_client_id#:#ID klienta
+teams_client_id_info#:#Sem zadajte ID aplikácie / ID klienta.
+teams_client_secret#:#Tajomstvo klienta
+teams_client_secret_info#:#Ihneď po vytvorení tajného kľúča v aplikácii Entra pre aplikáciu vytvorenú pre MultiVc môžete skopírovať hodnotu kľúča a zadať ju sem.
+teams_join_links#:#Môžete sa pripojiť priamo tu: {br}{JOIN_URL}{br}&nbsp;{br}alebo môžete kliknúť na: {PERMANENT_LINK}
+teams_lobbybypass#:#Obísť čakaciu zónu
+teams_lobbybypass_choose#:#Obísť čakaciu zónu: Možnosť výberu
+teams_lobbybypass_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v nastaveniach možnosť „Obísť čakáreň“. Táto možnosť určuje, kto je umiestnený v čakárni/predsieni pre zasadnutia.
+teams_lobbybypass_default#:#Obísť čakaciu oblasť: Predvolené nastavenie
+teams_lobbybypass_everyone#:#Na stretnutie bude vpustený každý. Nikto nebude umiestnený v čakárni.
+teams_lobbybypass_invited#:#Na stretnutie budú vpustené iba pozvané osoby, ktoré obídu čakaciu zónu.
+teams_lobbybypass_organizer#:#Účastníci budú sedieť v čakárni. Administrátori a podporný personál čakáreň obídu.
+teams_meetings_list_downloaded#:#Existujúce online stretnutia boli úspešne integrované do služby Teams.
+teams_tenant_id_info#:#Sem zadajte ID nájomníka. Alternatívne názvy sú: ID adresára (klient).
+teams_tenant_id#:#ID nájomníka
+terms_of_use#:#<b>Práva duševného vlastníctva</b>{br}Informácie a materiály obsiahnuté v konferenciách BigBlueButton, ako sú texty alebo obrázky, sú vo všeobecnosti chránené autorským právom, ochrannými známkami alebo patentovými právami.{br}Je potrebné dodržiavať predpisy o ochrane údajov. Toto sa vzťahuje najmä na nahrávanie konferencií BigBlueButton. Tajné nahrávanie video alebo audio konferencií je trestným činom.{br}{br}<b>Kódex správania</b>{br}Nesmiete uverejňovať žiadny obsah, ktorý porušuje zákonné ustanovenia, je pornografický, obscénny, hanlivý, ohováračský, urážlivý, vyhrážajúci sa, podnecujúci k nenávisti alebo rasistický. Zakázané je aj uverejňovanie reklám bez povolenia a prenos informácií obsahujúcich vírusy, manipulácie alebo podobné škodlivé prvky. Spracované údaje Pri používaní BigBlueButton sa zhromažďujú nasledujúce údaje: Údaje o pripojení (napr. IP adresa, typ prehliadača, dátum a čas prístupu) Prístupové údaje (ak sú k dispozícii): používateľské meno, heslo v šifrovanej forme Údaje o obsahu (napr. nahrané súbory, príspevky do chatu, prieskumy) Dočasné uloženie údajov o pripojení, najmä IP adresy, systémom je nevyhnutné na umožnenie doručenia BigBlueButton do počítača používateľa. Na tento účel musí byť IP adresa používateľa uložená počas trvania relácie. Právnym základom pre dočasné uloženie údajov je článok 6(1)(f) GDPR. Údaje o pripojení sa vo všeobecnosti ukladajú aj do protokolových súborov. Čas vymazania určuje prevádzkovateľ servera BigBlueButton.
+title#:#titul
+token_deleted#:#Token odstránený
+token_not_deleted#:#Token nebol odstránený
+token_not_stored#:#Token nebol uložený
+token_stored#:#Token uložený
+unlocked_by#:#Vydané používateľom
+unlock#:#Uvoľnenie
+untrashed_usages#:#Počet použití
+url_info#:#Sem môžete zadať aj relatívne cesty (napr. /webconference). Nezadávajte koncovú znak '/'.
+url#:#URL
+usage#:#Obsadenosť
+user_end#:#posledný odchod
+user_invite_info#:#Hostí na stretnutie môžete pozvať pomocou nasledujúceho odkazu:
+user_log#:#Prehľad používateľa
+user_log_bbb#:#Prehľad používateľov (BBB/Teams/Zoom)
+user_log_duration#:#Obdobie záznamu
+user_percent#:#percento
+user_results#:#Časy dochádzky
+user_results_desc#:#Časy sa zobrazujú iba pre stretnutia, ktoré už skončili. Stretnutia musia tiež dosiahnuť svoj plánovaný čas ukončenia.
+user_start#:#prvý štart
+user_time#:#čas dochádzky
+wait_join_meeting#:#<b>Momentálne sa vo virtuálnej zasadacej miestnosti nenachádza nikto s oprávneniami moderátora.<br/>Počkajte a skontrolujte to znova o minútu.</b>
+wait_join_meeting_edudip#:#Momentálne sa nemôžete pripojiť k žiadnym webinárom.
+wait_join_meeting_guest#:#<b>Momentálne sa vo virtuálnej zasadacej miestnosti nenachádza nikto s oprávneniami moderátora.<br/>Počkajte a o minútu znova kliknite na tlačidlo „Pripojiť sa k schôdzi“.</b>
+wait_join_meeting_teams#:#Momentálne sa nemôžete pripojiť k schôdzi. Ak sa zobrazí naplánovaná schôdza, obnovte túto stránku maximálne 15 minút pred plánovanou schôdzou, aby ste sa mohli pripojiť.
+wait_join_meeting_webex#:#Momentálne sa nemôžete pripojiť k schôdzi. Schôdza sa možno ešte nezačala alebo už skončila. Obnovte túto stránku a skontrolujte stav schôdze.
+wait_join_meeting_zoom#:#Momentálne sa nemôžete pripojiť k schôdzi. Ak sa zobrazí naplánovaná schôdza, obnovte túto stránku maximálne 15 minút pred plánovanou schôdzou, aby ste sa mohli pripojiť.
+wait_join_webinar#:#<b>Webinár ešte nikto nespustil.<br/>Počkajte a skontrolujte to znova o minútu.</b>
+webex_client_id#:#ID klienta integrácie Webexu
+webex_client_secret#:#Tajný kód klienta integrácie Webexu
+webex_host_email_hidden_info#:#E-mailová adresa použitá na autorizáciu je viditeľná iba pre vlastníkov a administrátorov objektu.
+webex_host_email_info#:#E-mailová adresa známa spoločnosti Webex alebo hosťovanej stránke
+webex_host_email#:#E-mailová adresa hostiteľa Webex
+webex_integration_auth_info#:#Môžete autorizovať prístup k svojmu účtu Webex. Toto je potrebné na vytváranie, načítavanie a spúšťanie stretnutí Webex pomocou doplnku MultiVC.
+webex_logout_user_choose#:#Povoliť odhlásenia z Webexu: Možnosť
+webex_logout_user_choose_info#:#Používatelia, ktorí sú už prihlásení do Webexu, by sa mali pred pripojením k schôdzi z Webexu odhlásiť.
+webex_logout_user_default#:#Odhlásenie z Webexu: Predvolené nastavenie
+webex_logout_user_default_info#:#Používatelia, ktorí sú už prihlásení do Webexu, sa musia pred pripojením k schôdzi vždy odhlásiť z Webexu.
+webex_meetings_list_downloaded#:#Existujúce stretnutia Webex boli úspešne stiahnuté.
+webex_redirect_uri#:#URI presmerovania
+webex_site_url#:#URL adresa stránky Webex
+webex_user_choose_logout#:#Používateľ sa rozhodne
+webex_user_do_logout#:#Odhlásiť sa
+webex_user_do_not_logout#:#Neodhlasovať sa
+webex_user_logout#:#Odhlásenie z Webexu
+webinar_collision#:#Vyskytla sa chyba. Webinár je už naplánovaný na požadovaný čas.
+webinar_event_created#:#Webinár vytvorený
+webinar_event_deleted#:#Webinár odstránený
+webinar_notification_body#:#Dobrý deň, {NAME},{NL}{NL} bola vytvorená nasledujúca udalosť {EVENT}:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}S pozdravom,{NL}{NL}{FROM}
+webinar_notification_from#:#ILIADA
+webinar_notification_subject#:#{UDALOSŤ}: {PREDMET}
+webinar_related_successful#:#Webinár bol úspešne pridelený
+webinar_running#:#Webinár sa začal.
+webinar#:#Webinár
+welcome_text#:#Vitajte {br}vo virtuálnej zasadacej miestnosti{br}<b>{MEETING_TITLE</b>{br}{br}Ak sa v strede obrazovky nižšie zobrazí ikona reproduktora s čiarou, ostatní vás nebudú počuť a ​​ani vy nebudete počuť nič. Kliknite na ikonu reproduktora s čiarou a spustite zvukové pripojenie.{br}Použite slúchadlá, aby ste sa vyhli hluku v pozadí a spätnej väzbe.
+window_closed#:#Virtuálna zasadacia miestnosť sa skončila.
+window_close#:#Zatvoriť okno
+window_started#:#Virtuálna zasadacia miestnosť bola spustená v novom okne.
+with_chat_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v časti Nastavenia možnosť „Spustiť s chatom“.
+with_chat_choose#:#Začať s chatom: Možnosť výberu
+with_chat_default_info#:#Toto by malo byť vo všeobecnosti aktivované – najmä v moderovaných miestnostiach.
+with_chat_default#:#Začať s chatom: Predvolené nastavenie
+with_chat_info#:#Táto možnosť by mala byť povolená, najmä v moderovaných miestnostiach. Chat sa potom stane „čakárňou“.
+with_chat#:#Začnite s chatom
+xmvc_add#:#Pridať virtuálnu zasadaciu miestnosť
+xmvc_copy#:#Kopírovať virtuálnu zasadaciu miestnosť
+xmvc_delete#:#Odstrániť virtuálnu zasadaciu miestnosť
+xmvc_edit_learning_progress#:#Upraviť nastavenia priebehu učenia
+xmvc_edit_permission#:#Zmeniť povolenia
+xmvc_new#:#Pridať novú virtuálnu zasadaciu miestnosť
+xmvc_read#:#Prístup na čítanie: Účasť vo virtuálnej zasadacej miestnosti je možná
+xmvc_read_learning_progress#:#Zobraziť pokrok v učení ostatných používateľov
+xmvc_visible#:#Displej: Virtuálna zasadacia miestnosť je viditeľná
+xmvc_write#:#Upraviť nastavenia
+zoom_account_id#:#ID účtu Zoom
+zoom_account_info#:#ID účtu Zoom, ID klienta a tajný kľúč klienta môžete získať na stránke https://developers.zoom.us/docs/internal-apps/create/. Musíte vytvoriť aplikáciu OAuth typu server-to-server.
+zoom_client_id#:#ID klienta Zoomu
+zoom_client_secret#:#Tajný kód klienta Zoom
+zoom_err_scopes_webinar#:#Nemáte povolenie na vytvorenie webinára. Stretnutia sú možné. Chýbajú nasledujúce povolenia:
+zoom_exist_meetings#:#Termíny tohto stretnutia už boli stanovené.
+zoom_exist_webinars#:#Termíny tohto webinára už boli stanovené.
+zoom_lobby#:#Čakáreň na stretnutia
+zoom_lobby_choose#:#Čakáreň: Výber možností
+zoom_lobby_choose_info#:#Túto možnosť povoľte, ak majú mať používatelia s oprávneniami na zápis v nastaveniach možnosť „Čakáreň“. Táto možnosť určuje, kto bude umiestnený v čakárni.
+zoom_lobby_default#:#Čakáreň: Predvolené nastavenie
+zoom_lobby_0#:#Nikto nemusí čakať v čakárni. Čakáreň je deaktivovaná. Účastníci môžu vstúpiť 15 minút pred začiatkom stretnutia.
+zoom_lobby_1#:#Všetci musia ísť do čakárne.
+zoom_lobby_2#:#Používatelia mimo vášho účtu musia vstúpiť do čakárne.
+zoom_lobby_3#:#Používatelia mimo vášho účtu alebo tí, ktorí nie sú na schválených doménach, musia vstúpiť do čakárne.
+zoom_lobby_4#:#Používatelia, ktorí nie sú v kurze alebo skupine, musia ísť do čakárne.

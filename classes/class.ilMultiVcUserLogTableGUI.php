@@ -28,9 +28,6 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
     public function __construct(ilObjMultiVcGUI|ilMultiVcConfigGUI $a_parent_obj, string $a_parent_cmd = '', string $a_template_context = '')
     {
         global $DIC;
-        \iljQueryUtil::initjQuery();
-        \ilYuiUtil::initPanel();
-        \ilYuiUtil::initOverlay();
 
         $this->dic = $DIC;
         $this->parent_obj = $a_parent_obj;
@@ -102,29 +99,6 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
     }
 
     /**
-     *
-     */
-    private function initDtFilter()
-    {
-        // Columns
-        $wS = '10%';
-        $wM = '15%';
-        $wL = '30%';
-        $this->addColumn($this->dic->language()->txt('repository'), 'REF');
-        if($this->getParentCmd() === 'downloadUserLog') {
-            $this->addColumn('ILIAS-' . $this->dic->language()->txt('user'), 'USER');
-        }
-        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_display_name'), 'display_name', $wM);
-        $this->addColumn($this->dic->language()->txt('role'), 'IS_MODERATOR', $wS);
-        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_join_time'), 'JOIN_TIME', $wM);
-        $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_leave_time'), 'LEAVE_TIME', $wM);
-        if($this->parent_obj instanceof ilMultiVcConfigGUI) {
-            $this->addColumn($this->dic->language()->txt('rep_robj_xmvc_meeting') . ' ID', 'MEETING_ID', $wM);
-        }
-    }
-
-
-    /**
      * Get data and put it into an array
      */
     private function getDataFromDb(): void
@@ -147,11 +121,10 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
                     $tree[] = $item['title'];
                 }
             }
-
             $dtJoinTime = new ilDateTime($a_set['join_time'], IL_CAL_UNIX);
             $joinTime = $dtJoinTime->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
-            $dtMeetingStart = new ilDateTime($a_set['start_time'], IL_CAL_UNIX);
-            $meetingStart = $dtMeetingStart->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
+//            $dtMeetingStart = new ilDateTime($a_set['start_time'], IL_CAL_UNIX);
+//            $meetingStart = $dtMeetingStart->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
             $dtLeaveTime = new ilDateTime($a_set['leave_time'], IL_CAL_UNIX);
             $leaveTime = $dtLeaveTime->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
 
@@ -161,9 +134,9 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
                 'DISPLAY_NAME' => $a_set['display_name'],
                 'IS_MODERATOR' => !(bool) $a_set['is_moderator'] ? !(bool) $a_set['user_id'] ? $this->dic->language()->txt('rep_robj_xmvc_guest') : '' : $this->dic->language()->txt('rep_robj_xmvc_moderator'),
                 'JOIN_TIME' => $joinTime,
-                'START_TIME' => $meetingStart,
-                'MEETING_ID' => $a_set['meeting_id'],
-                'LEAVE_TIME' => $leaveTime
+                'LEAVE_TIME' => $leaveTime,
+                'MEETING_ID' => $a_set['meeting_id']
+//                'START_TIME' => $meetingStart,
             ];
         } // EOF foreach ($userLog as $key => $row)
 
@@ -178,19 +151,6 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
      */
     protected function fillRow($a_set): void
     {
-        /*
-        $tree = [];
-        foreach( $this->dic->repositoryTree()->getPathFull($a_set['ref_id']) as $key => $item) {
-            if( (bool)$key ) {
-                $tree[] = $item['title'];
-            }
-        }
-
-        $dtJoinTime = new ilDateTime($a_set['join_time'], IL_CAL_UNIX);
-        $joinTime = $dtJoinTime->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
-        $dtMeetingStart = new ilDateTime($a_set['start_time'], IL_CAL_UNIX);
-        $meetingStart = $dtMeetingStart->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
-        */
         $this->tpl->setVariable('REF', $a_set['REF']);
         $this->tpl->setVariable('USER', $a_set['USER']);
         $this->tpl->setVariable('DISPLAY_NAME', $a_set['DISPLAY_NAME']);
@@ -203,19 +163,6 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
             $this->tpl->setVariable('HIDE_MEETING_ID', ' style="display:none;"');
         }
 
-        /*
-        $this->tpl->setVariable('REF', implode(' / ', $tree));
-        $this->tpl->setVariable('USER', ilObjUser::_lookupFullname($a_set['user_id']));
-        $this->tpl->setVariable('DISPLAY_NAME', $a_set['display_name']);
-        $this->tpl->setVariable('IS_MODERATOR', (bool)$a_set['is_moderator'] ? $this->dic->language()->txt('rep_robj_xmvc_moderator') : '');
-        $this->tpl->setVariable('JOIN_TIME', $joinTime);
-        $this->tpl->setVariable('MEETING', $meetingStart);
-        if( $this->parent_obj instanceof ilMultiVcConfigGUI ) {
-            $this->tpl->setVariable('MEETING_ID', $a_set['meeting_id']);
-        } else {
-            $this->tpl->setVariable('HIDE_MEETING_ID', ' style="display:none;"');
-        }
-        */
     }
 
     /**

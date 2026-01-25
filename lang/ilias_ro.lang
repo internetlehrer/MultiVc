@@ -1,0 +1,492 @@
+<!-- language file start -->
+add_presentation_url#:#Prezentarea de deschidere
+add_token#:#Adăugați un token
+add_token_user#:#Moderator / token nou
+add_welcome_text#:#Mesaj de bun venit personalizat
+adm_info_appointment#:#Ca administrator sau tutore, poți deschide camera. Participanții, însă, pot deschide camera doar în timpul sesiunii.
+assigned_roles_info#:#Crearea acestei configurații MultiVc poate fi restricționată la utilizatorii care aparțin unuia sau mai multor roluri selectate.
+assigned_roles#:#Roluri atribuite
+authorize#:#autoriza
+bbb_default_server#:#Server BBB standard
+bbb_guest_password_info#:#Sunt permise caractere alfanumerice și speciale, cum ar fi: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Parolă de oaspete
+bbb_secret_expiration_date#:#Data de expirare
+bbb_secret_expiration_date_info#:#Parola este valabilă până la data selectată inclusiv.
+bbb_secret_expired_msg#:#Parola de oaspete a expirat.
+bbb_secret_expires_info#:#Selectați această opțiune dacă parola trebuie să aibă o perioadă de valabilitate limitată.
+bbb_secret_expires#:#Data de expirare
+big_blue_button#:#BigBlueButton WebRTC
+btn_chat#:#Chatul poate fi afișat/ascuns
+btn_chat_choose#:#Chatul poate fi afișat/ascuns: Opțiune de selectare
+btn_chat_choose_info#:#Activează această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Afișează/ascunde chatul” în setări.
+btn_chat_default#:#Chatul poate fi afișat/ascuns: Setare implicită
+btn_chat_default_info#:#Pentru a simplifica utilizarea, poate fi util să nu activați această opțiune și să afișați întotdeauna chatul.
+btn_chat_info#:#Activează această opțiune dacă dorești ca butonul să afișeze/ascundă chatul.
+btn_locationshare_choose_info#:#Această opțiune ar trebui de obicei dezactivată.
+btn_locationshare_choose#:#Opțiune de locație: Selecție
+btn_locationshare_default_info#:#Activați această opțiune numai după consultarea cu responsabilul cu protecția datelor.
+btn_locationshare_default#:#Locație opțiune: Implicită
+btn_locationshare_info#:#Această opțiune permite utilizatorilor să își partajeze locația curentă cu alte persoane din chat și să fie invitați la o întâlnire separată de către alte persoane. Din motive de confidențialitate, această opțiune ar trebui activată doar cu precauție.
+btn_locationshare#:#Locație opțiune
+btn_settings_choose#:#Setări cameră: Opțiune de selecție
+btn_settings_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Setări în cameră” din Setări.
+btn_settings_default#:#Setări cameră: Implicit
+btn_settings_default_info#:#Setarea implicită ar trebui să fie, în general, ca opțiunea și butonul pentru setări să nu fie active.
+btn_settings#:#Setările camerei
+btn_settings_info#:#Activați această opțiune dacă doriți ca butoanele și opțiunile de setări să fie vizibile în cameră. De obicei, acest lucru nu este necesar, deoarece numele și imaginea utilizatorului sunt moștenite automat de la ILIAS.
+btntext_concurrent_users_check#:#Verificați disponibilitatea
+btntext_guest_login_button#:#Conectați-vă ca invitat
+btntext_join_meeting#:#Alătură-te întâlnirii
+btntext_join_webinar#:#Alătură-te webinarului
+btntext_start_meeting#:#Începeți întâlnirea
+btntext_start_webinar#:#Începeți webinarul
+cam_mic_only_for_moderator_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă selecția corespunzătoare în setări. Această opțiune ar trebui să fie activată în majoritatea cazurilor.
+cam_mic_only_for_moderator_choose#:#Participanții nu trebuie să își activeze camera și microfonul: Opțiune
+cam_mic_only_for_moderator_default_info#:#Organizatorii pot permite în mod selectiv participanților să își folosească microfonul și/sau camera. Participanții nu pot partaja sau transmite fără confirmare. Această opțiune este utilă pentru evenimentele cu un număr foarte mare de participanți.
+cam_mic_only_for_moderator_default#:#Participanții nu trebuie să își activeze camera și microfonul: setare implicită
+cam_mic_only_for_moderator_info#:#Organizatorii vor permite participanților în mod selectiv să își folosească microfonul și/sau camera. Participanții nu pot partaja sau transmite fără confirmare.
+cam_mic_only_for_moderator#:#Participanții nu trebuie să își activeze camera și microfonul.
+cam_only_for_moderator_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Cameră doar pentru moderatori” în setări. Această opțiune ar trebui să fie activată în majoritatea cazurilor.
+cam_only_for_moderator_choose#:#Cameră doar pentru moderatori: Opțiune de selecție
+cam_only_for_moderator_default_info#:#Această opțiune ar trebui dezactivată în majoritatea cazurilor și activată doar dacă se așteaptă probleme de performanță cu un număr mare de participanți. Moderatorii pot oricând modifica această setare în timpul unei sesiuni.
+cam_only_for_moderator_default#:#Cameră doar pentru moderatori: Setare implicită
+cam_only_for_moderator_info#:#Recomandat pentru întâlniri cu un număr foarte mare de persoane.
+cam_only_for_moderator_zoom#:#Cameră doar pentru gazde
+cam_only_for_moderator_zoom_info#:#Recomandat pentru întâlniri cu un număr foarte mare de persoane!
+cam_only_for_moderator#:#Cameră doar pentru moderatori
+cancel#:#anula
+cat_create_xmvc#:#Creați o sală de ședințe virtuală
+chat_choose_info#:#Activează această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Permite chatul” din Setări.
+chat_choose#:#Permite chatul: Opțiune
+chat_default_info#:#Dacă este activată, persoanele pot discuta între ele.
+chat_default#:#Permite chatul: Setare implicită
+chat_info#:#Oamenii pot discuta între ei.
+chat#:#Permite chatul
+conf_availability_0#:#Nu este disponibil
+conf_availability_1#:#Permis existent
+conf_availability_2#:#Se pot genera altele noi
+conf_availability#:#Disponibilitate
+config_help_begin#:#Explicația de la Setări este următoarea:
+configure_add#:#Creați configurația
+configure#:#configurație
+conf_meeting_layout_1#:#CUSTOM_LAYOUT
+conf_meeting_layout_2#:#SMART_LAYOUT
+conf_meeting_layout_3#:#PREZENTARE_FOCUS
+conf_meeting_layout_4#:#VIDEO_FOCUS
+conf_meeting_layout#:#Aspectul întâlnirii
+conf_title#:#titlu
+conn_deleted#:#Tipul de întâlnire a fost șters.
+conn_id#:#Tipul întâlnirii
+copy#:#Copie
+create_type#:#Definiți un nou tip de întâlnire
+cronjob_description#:#Când este activată, timpul petrecut pe pagină poate fi folosit pentru a calcula progresul învățării.
+cronjob_title#:#Cron job MultiVc pentru a determina progresul învățării atunci când se utilizează MS Teams sau Zoom
+crs_create_xmvc#:#Creați o sală de ședințe virtuală
+custom_style#:#Stil personalizat
+custom_style_info#:#Aici puteți defini parametri de stil CSS sau un fișier CSS. Pentru un fișier, trebuie specificată o adresă URL care începe cu https://. În plus, parametrul „displayBrandingArea” trebuie setat la true în fișierul settings.yml al instalării BBB.
+delete_conn#:#Ștergeți tipul de întâlnire?
+delete#:#Şterge
+delete_sess_user_changed#:#Acțiune la schimbarea proprietarului
+delete_sess_user_changed_info#:#Când un utilizator schimbă utilizatorii, toate sesiunile create sunt șterse.
+delete_token#:#Ștergeți tokenul
+delete_type#:#Ștergeți tipul de întâlnire
+disable_sip_info#:#Această opțiune vă permite să dezactivați conexiunea SIP prin dial-up. Conexiunea telefonică prin dial-up nu va mai fi posibilă.
+disable_sip#:#Dezactivați apelarea telefonică prin dial-up
+display_name#:#Nume afișat
+download#:#Descărcare
+download_video#:#Descărcați înregistrarea
+duration#:#Durată de timp
+edit#:#Edita
+edit_properties#:#Editați proprietățile
+edudip_host_email#:#adresa de e-mail edudip
+edudip_host_email_hidden_info#:#Adresa de e-mail utilizată pentru autorizare este vizibilă doar proprietarilor și administratorilor obiectului.
+edudip_host_email_info#:#Adresa dumneavoastră de e-mail cunoscută de edudip trebuie să corespundă cu aceasta.
+edudip_meetings_list_downloaded#:#Webinariile deja disponibile la edudip au fost integrate cu succes.
+edudip_meetings_list_unavailabe#:#Accesul la webinariile existente pe edudip nu este posibil în prezent.
+end_time#:#Sfârşit
+endtime#:#Timpuri de sfârșit
+err_msg_displayname#:#Vă rugăm să introduceți numele dumneavoastră
+err_msg_guest_password#:#Parola de oaspete este incorectă.
+err_msg_guest_password_expired#:#Parola de oaspete a expirat.
+error_admin_no_access_token#:#Vă rugăm să informați administratorul: Lipsește tokenul.
+error_object_no_access_token#:#Vă rugăm să efectuați autorizarea în proprietățile obiectului.
+error_object_no_host_email#:#Vă rugăm să confirmați adresa de e-mail a utilizatorului gazdă în proprietățile obiectului.
+error_start_meeting#:#A apărut o eroare la începerea întâlnirii.
+error_start_webinar#:#A apărut o eroare la pornirea webinarului.
+ext_provider_token_user#:#Utilizator / Token de acces
+ext_provider_token_user_info#:#Introduceți adresa de e-mail a utilizatorilor cu licență de moderator, urmată de token-ul lor de acces.
+fa_expand_default_info#:#Această opțiune ar trebui, în general, să fie dezactivată. De asemenea, în multe cazuri, afișarea anumitor zone (de exemplu, chat) nu poate fi mărită.
+fa_expand_default#:#Maximizarea afișajului zonelor: Setare implicită
+fold_create_xmvc#:#Creați o sală de ședințe virtuală
+grp_create_xmvc#:#Creați o sală de ședințe virtuală
+guest_displayname_info#:#Atenție: Informațiile detaliate despre titlu pot duce la dificultăți de utilizare din cauza spațiului limitat disponibil pentru nume în BigBlueButton.
+guest_displayname_input#:#Titlu Prenume Nume
+guest#:#Oaspete
+guestlink_choose#:#Opțiune de selectare a linkului pentru oaspeți
+guestlink_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Permite linkul invitaților” în Setări.
+guestlink_default#:#Implicit link pentru invitați
+guestlink_default_info#:#Această opțiune ar trebui dezactivată în majoritatea cazurilor. Utilizarea neautorizată ar trebui împiedicată în mare măsură. Oaspeții se pot alătura unei camere moderate doar ca participanți. Un moderator trebuie să fie deja prezent. Oaspeții trebuie să fie de acord cu termenii de utilizare, care sunt stocați ca o variabilă de limbă ILIAS. Pentru a edita acest lucru, accesați Administrare -> Limbi. Faceți clic pe limba dorită și introduceți „rep_robj_xmvc_terms_of_use” în câmpul „Identificator”. Apoi faceți clic pe „Aplicați filtrul” și editați textul.
+guestlink#:#Link pentru invitați
+guestlink_info#:#Moderatorii pot invita oaspeți prin intermediul unui link.
+guest_link_pw_info#:#Oaspeții trebuie să se conecteze cu această parolă.
+guest_password_input_info#:#Vă rugăm să introduceți aici parola pentru linkul de invitat.
+guest_password_input#:#Parolă de oaspete
+headline_welcome_meeting#:#Bine ați venit în sala de ședințe!
+headline_welcome_webinar#:#Bun venit la webinar!
+hide_recs_until_date#:#Nu afișați înregistrările până când
+hide_recs_until_date_info#:#Înregistrările până la data de înregistrare specificată aici nu vor fi afișate.
+hide_username_logs#:#Ascundeți prezentarea generală a utilizatorului
+hide_username_logs_info#:#Dacă este selectată, prezentarea generală a utilizatorului este vizibilă doar în administrarea pluginului. În caz contrar, se afișează și o prezentare generală a utilizatorului pentru obiectul MultiVc.
+hint_availability_recs#:#Pentru întrebări și nelămuriri legate de accesul la înregistrări, vă rugăm să contactați administratorii acestor întâlniri BigBlueButton.
+hint#:#Textul notei
+hint_pub_recs#:#Partajarea linkurilor de înregistrare nu este permisă.
+info_add_presentation_url#:#Încărcați propria prezentare introductivă prin URL. Structura URL-ului trebuie să respecte acest format: <i>https://domeniul_dumneavoastră/calea_către/prezentare.pdf</i>
+info_add_welcome_text#:#Acest mesaj de bun venit personalizat poate fi definit prin intermediul unei variabile de limbă ILIAS. Accesați Administrare -> Limbi. Faceți clic pe limba dorită și introduceți „rep_robj_xmvc_welcome_text” în câmpul „Identificator”. Apoi faceți clic pe „Aplicare filtru” și editați textul.
+info_availability#:#Aceasta controlează disponibilitatea tipului de întâlnire în revistă. Tipurile mai vechi pot fi setate la „Permise existente” în loc să fie șterse.
+info_bottom_headline#:#Instrucțiuni importante de utilizare:
+info_bottom#:#<ul><li>Vă rugăm <b>să folosiți căști</b> pentru a evita feedback-ul sau ecourile deranjante!</li><li><b>Dacă conexiunea la internet este slabă, ar trebui să opriți camera (webcam-ul), iar dacă conexiunea este și mai slabă, ar trebui să utilizați o conferință telefonică pentru transmisia audio.</li></ul>
+info_concurrent_users_available#:#Numărul de locuri libere în sala de clasă virtuală:
+info_concurrent_users_none#:#În prezent, nu mai sunt locuri disponibile pentru înscriere. Vă rugăm să verificați din nou disponibilitatea peste un minut făcând clic pe butonul „Alăturați-vă întâlnirii”.
+info_delete_vc_sure#:#Sigur? Următoarea sală de ședințe virtuală va fi ștearsă:
+info_hint#:#Textul explicativ apare evidențiat cu culoare deasupra conținutului paginii obiectului.
+info_max_duration#:#Întâlnirea se va încheia după numărul specificat de ore și minute. Pentru o durată nelimitată, vă rugăm să introduceți „0” pentru fiecare.
+info_max_participants#:#Număr maxim de participanți per întâlnire. Pentru un număr nelimitat de participanți, vă rugăm să introduceți „0”.
+info_max_participants_webinar#:#Număr maxim de participanți per webinar. Vă rugăm să consultați contractul dumneavoastră edudip.
+info_meeting_layout#:#Controlează aspectul implicit pentru întâlnire.
+info_om_svr_public_url#:#Exemplu: https://www.exemplu.com/
+info_platform_chg_reset_data#:#Selecția dumneavoastră
+info_platform_chg_reset_data_o#:#Rețineți că la schimbarea platformelor WebRTC, toate setările vor fi resetate la valorile implicite, iar toate datele stocate din formular vor fi șterse. Pentru a schimba platformele WebRTC, trebuie mai întâi să confirmați noua selecție făcând clic pe „Salvare”. În pasul următor, configurația anterioară va fi suprascrisă prin salvarea din nou.
+info_requirements_bbb#:#BigBlueButton utilizează standardul deschis WebRTC, care este acceptat de un număr tot mai mare de browsere. În prezent, se recomandă Google Chrome, browserul bazat pe Chromium, Microsoft Edge, sau, cu limitări, Mozilla Firefox. De asemenea, puteți utiliza Safari Mobile de pe iOS 12.2 și Chrome Mobile de pe Android 6.0. Microsoft Internet Explorer și versiunile mai vechi de Edge nu sunt acceptate. Firewall-ul dvs. nu trebuie să blocheze următoarele porturi: porturile TCP/IP 80/443 (pentru HTTP/HTTPS) și porturile UDP în intervalul 16384 - 32768. Pentru a partaja ecranul (partajare desktop), trebuie să aveți o conexiune la internet de înaltă performanță. De asemenea, recomandăm ca moderatorii și prezentatorii să utilizeze o conexiune de rețea prin cablu (nu Wi-Fi).
+info_requirements_edudip#:#<ul><li>edudip utilizează standardul deschis WebRTC, care este acceptat de un număr tot mai mare de browsere. În prezent, se recomandă Google Chrome, browserul bazat pe Chromium, Microsoft Edge, sau, cu limitări, Mozilla Firefox. Microsoft Internet Explorer și versiunile mai vechi de Edge nu sunt acceptate.</li><li>Vă rugăm să contactați asistența edudip pentru informații suplimentare.</li>
+info_requirements_headline#:#Cerințe tehnice:
+info_requirements_not_ok#:#<b>Puteți utiliza sala de ședințe virtuală doar într-o măsură foarte limitată cu browserul pe care îl utilizați în prezent.</b><br/>Pentru cele mai bune rezultate, utilizați Google Chrome sau, cu limitări, Mozilla Firefox! Dacă nu aveți drepturile de a instala un browser, puteți utiliza Google Chrome Portable.<br/>Dacă nu este posibil să schimbați browserul, porniți sala de ședințe virtuală și scrieți în chat că în prezent nu aveți un browser potrivit și că nimeni nu ar trebui să vă aștepte.
+info_requirements_om#:#<ul><li>Openmeetings utilizează standardul deschis WebRTC, care este acceptat de un număr tot mai mare de browsere. În prezent, se recomandă Google Chrome sau, cu limitări, Mozilla Firefox. De asemenea, puteți utiliza cea mai recentă versiune de Microsoft Edge, precum și Safari Mobile (iOS 12.2 și versiuni ulterioare) și Chrome Mobile (Android 6.0 și versiuni ulterioare). Microsoft Internet Explorer și versiunile mai vechi de Edge nu sunt acceptate.</li><li>Firewall-ul dvs. nu trebuie să blocheze următoarele porturi: porturile TCP/IP 8888/5443 (pentru HTTP/HTTPS), TCP/UDP 3478 și porturile UDP în intervalul 49152–65535.</li><li>Pentru a partaja ecranul (partajare desktop), trebuie să utilizați Google Chrome și să aveți o conexiune la internet de înaltă performanță. De asemenea, recomandăm ca moderatorii și prezentatorii să utilizeze o conexiune de rețea prin cablu (nu Wi-Fi).
+info_requirements_partly#:#Vă recomandăm să utilizați Google Chrome ca browser sau, cu limitări, Mozilla Firefox. Va trebui să stabiliți singur dacă și în ce măsură browserul dvs. actual este potrivit pentru utilizarea sălii de ședințe virtuale. Vă rugăm să raportați experiențele dvs. oricărui serviciu de asistență tehnică disponibil.
+info_requirements_teams#:#Moderatorii trebuie să utilizeze aplicația Teams. Participanții pot lansa Teams prin intermediul browserului lor. Pentru a partaja ecranul (partajare desktop), trebuie să aveți o conexiune la internet de înaltă performanță. De asemenea, recomandăm ca moderatorii și prezentatorii să utilizeze o rețea cu fir (nu Wi-Fi).
+info_requirements_webex#:#<ul><li>Browser-e recomandate: Chrome, Edge, Firefox </li></ul>
+info_requirements_zoom#:#Vă rugăm să vă conectați la Zoom folosind adresa de e-mail pe care ați înregistrat-o la ILIAS. Aceasta este:
+info_requirements_zoom_lp#:#Prezența dumneavoastră la această întâlnire trebuie înregistrată pentru a determina progresul dumneavoastră în învățare. Veți fi eligibil pentru credite doar dacă sunteți prezent timp de {%} din timpul programat între începutul și sfârșitul întâlnirii.
+info_set_owner#:#Proprietar înregistrat
+info_svr_private_port#:#Exemplu: 443
+info_svr_private_url#:#Cu excepția Amazon EC2, aceasta corespunde întotdeauna adresei URL publice.
+info_svr_public_port#:#Exemplu: 443
+info_svr_public_url#:#Exemplu: https://www.example.com/bigbluebutton/
+info_svr_salt_om#:#Exemplu: dZ#ls2W!k6l
+info_svr_salt#:#ssh: bbb-conf --secret
+info_svr_username#:#Exemplu: om_admin
+info_title#:#Acest titlu este afișat la selectarea tipului de întâlnire pentru obiecte noi.
+info_top_moderated_edudip#:#Aveți drepturi de moderare și puteți începe webinarul.
+info_top_moderated_m_bbb#:#Aceasta este o sală moderată și puteți intra în sala de ședințe doar atunci când se află în sală o persoană cu funcții de moderator.
+info_top_moderated_m_om#:#Aceasta este o sală moderată și puteți intra în sala de ședințe doar atunci când se află în sală o persoană cu funcții de moderator.
+info_top_moderated_webex#:#Aveți drepturi de moderator și puteți începe întâlnirea. Pentru a face acest lucru, aveți nevoie de un cont Webex sau de un site găzduit de Webex. Participanții se pot alătura numai după ce întâlnirea a fost începută de un moderator.
+info_top_moderated_zoom#:#Acesta este un webinar. Puteți începe webinarul acum.
+info_top_moderator_bbb#:#<b>Aceasta este o cameră moderată și aveți rolul de moderator în această cameră.</b><br/>Persoanele fără rol de moderator pot intra în sala de ședințe doar atunci când o persoană cu rol de moderator se află deja în cameră.
+info_top_moderator_om#:#<b>Aceasta este o cameră moderată și aveți rolul de moderator în această cameră.</b><br/>Persoanele fără rol de moderator pot intra în sala de ședințe doar atunci când o persoană cu rol de moderator se află deja în cameră.
+info_top_not_moderated_bbb#:#Această sală de ședințe nu este moderată. Prin urmare, aveți și privilegii de moderator și, în consecință, drepturi extinse. Puteți restricționa drepturile altor participanți și, de asemenea, puteți încheia sesiunea. Vă rugăm să utilizați aceste drepturi extinse în mod responsabil.
+info_top_not_moderated_om#:#Această sală de ședințe nu este moderată. Prin urmare, aveți și privilegii de moderator și, în consecință, drepturi extinse. Puteți restricționa drepturile altor participanți și, de asemenea, puteți încheia sesiunea. Vă rugăm să utilizați aceste drepturi extinse în mod responsabil.
+info_webex_client_id#:#Puteți găsi ID-ul clientului în datele pentru integrarea Webex (de exemplu, admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#Secretul clientului este afișat o singură dată după crearea/actualizarea unei integrări Webex.
+info_webex_redirect_uri#:#Adăugați această adresă ca URI de redirecționare în setările de integrare.
+info_webex_site_url#:#Numele site-ului găzduit. Subdomeniul dinaintea lui .webex.com, de exemplu, De exemplu, <b>compania-ta</b>.webex.com sau <b>compania-ta</b>.webex.meu.
+integration_admin_auth_method_info#:#Autorizarea este efectuată de către administrator prin intermediul setărilor pluginului MultiVc. Următoarele domenii de aplicare sunt solicitate în timpul procesului OAuth:
+integration_admin_auth_scopes_info#:#(urmează pentru administratori) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
+integration_auth_method#:#Autorizarea integrării
+integration_auth_methods_info#:#Autorizarea poate fi efectuată de: - administrator prin intermediul setărilor pluginului MultiVc - utilizator prin intermediul setărilor obiectului MultiVc. Următoarele domenii de aplicare sunt solicitate în timpul procesului OAuth respectiv:
+integration_user_auth_method_info#:#Autorizarea este efectuată de către utilizator prin intermediul setărilor obiectului MultiVc. Următoarele domenii de aplicare sunt solicitate în timpul procesului OAuth:
+integration_user_auth_scopes_info#:#spark:kms întâlnire:schedules_read întâlnire:schedules_write întâlnire:participanți_citire întâlnire:participanți_write întâlnire:preferences_read întâlnire:preferences_write
+join_time#:#Participarea din partea
+leave_time#:#Participare până la
+list_token_user_info#:#Lista moderatorilor existenți. Jetoanele stocate nu pot fi suprascrise. Dacă este necesar, vă rugăm să ștergeți mai întâi intrarea făcând clic pe X.
+list_token_user#:#Moderatori înregistrați
+lock_disable_cam_choose_info#:#Definiți dacă setarea „Blocați camera participantului” este disponibilă pentru obiect.
+lock_disable_cam_choose#:#Blocarea camerei participantului selectabilă
+lock_disable_cam_default_info#:#Setați setarea implicită la „Blocați camera participantului”.
+lock_disable_cam_default#:#Blocarea camerei participanților (setare implicită)
+lock_disable_cam_info#:#Prin activarea acestei opțiuni, camera (webcam-ul) participanților este blocat în mod implicit.
+lock_disable_cam#:#Blocați camera participantului
+locked_by#:#Blocat de
+locked#:#Blocat
+lock#:#Blocare
+logo_url_info#:#Introduceți aici adresa URL a siglei dvs. Adresa URL trebuie să înceapă cu https://.
+logo_url#:#URL-ul logo-ului
+lp_active#:#Activ
+lp_active_info#:#Starea „În curs” este setată imediat ce se accesează conținutul. Starea „Procesat” este determinată de orele de activitate.
+lp_inactive#:#Inactiv
+lp_inactive_info#:#Nu se salvează progresul învățării pentru acest obiect.
+lp_mode#:#mod
+lp_time_info#:#Această valoare procentuală, bazată pe timpii de prezență posibili, trebuie depășită pentru ca statusul să fie setat la „Procesat”.
+lp_time#:#Prag pentru „Editat”
+max_duration#:#Durată maximă
+max_meetings#:#Numărul maxim de săli de ședințe
+max_participants#:#Număr maxim de participanți
+max_users#:#Număr maxim de utilizatori
+meeting_collision#:#A apărut o eroare. O sesiune este deja programată pentru ora solicitată.
+meeting#:#întâlnire
+meeting_end#:#Sfârșitul întâlnirii
+meeting_related_successful#:#Întâlnirea a fost atribuită cu succes
+meeting_running#:#Sala de ședințe virtuală a fost lansată.
+meeting_start#:#Începutul întâlnirii
+member_btn_fileupload_choose#:#Permiteți tuturor să încarce fișiere: Opțiune
+member_btn_fileupload_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Permiteți tuturor să încarce fișiere” în Setări.
+member_btn_fileupload#:#Permiteți încărcarea fișierelor pentru toată lumea
+member_btn_fileupload_default#:#Permiteți tuturor să încarce fișiere: Setare implicită
+member_btn_fileupload_default_info#:#Această opțiune ar trebui de obicei dezactivată.
+member_btn_fileupload_info#:#Activați această opțiune numai dacă, pe lângă persoanele cu drepturi extinse (de exemplu, administratori, eventual tutori), ar trebui să existe și alte persoane care să poată încărca fișiere.
+modal_delete_scheduled_meeting_accept#:#Ștergeți întâlnirea
+modal_delete_scheduled_meeting_title#:#Sigur vrei să ștergi această întâlnire?
+modal_delete_scheduled_webinar_accept#:#Ștergeți webinarul
+modal_delete_scheduled_webinar_title#:#Sigur doriți să ștergeți acest webinar?
+modal_details_scheduled_meeting_title#:#Detalii întâlnire (corp răspuns Webex)
+modal_details_scheduled_webinar_title#:#Detalii webinar (corpul răspunsului edudip)
+moderated_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea de a selecta „cameră moderată” în Setări.
+moderated_choose#:#spațiu moderat: opțiune de alegere
+moderated_default_info#:#Activează această opțiune dacă dorești să creezi camere noi ca camere moderate.
+moderated_default_zoom_info#:#Activați această opțiune dacă se vor crea noi săli ca „webinarii”.
+moderated_default#:#cameră moderată: setare implicită
+moderated_info#:#Într-un spațiu moderat, moderatorii au drepturi extinse. Ceilalți utilizatori au doar acces limitat la spațiul virtual. Moderatorii includ pe oricine poate edita proprietățile obiectului, precum și administratorii de grup, administratorii de curs și tutorii de curs.
+moderated_teams_info#:#Într-un spațiu moderat, creatorul obiectului, precum și administratorii grupului, administratorii cursului și tutorii cursului au mai multe drepturi: pot partaja și transfera conținut și pot decide dacă alte persoane au voie să se alăture. Într-un spațiu nemoderat, oricine se poate alătura și partaja sau transfera conținut fără confirmare.
+moderated_zoom_info#:#Spațiul virtual este destinat unui webinar, nu unei întâlniri. Vă rugăm să vă asigurați că aveți permisiunea de a crea webinarii în contul dvs. Zoom. Un cont de bază sau chiar gratuit nu are această permisiune.
+moderated#:#spațiu moderat
+moderated_webex#:#Sfat: În camerele nemoderate, participanții nu sunt pseudonimizați. Prin urmare, numai persoanele cu un cont Webex adecvat au permisiunea de a se alătura.
+moderated_zoom#:#Webinar
+moderator#:#Moderator
+msg_obj_deleted#:#Înregistrarea a fost ștearsă.
+notification_sending#:#Notificările sunt trimise...
+notification_sent#:#Notificările au fost trimise cu succes.
+obj_ids_special_info#:#Doar rareori este necesar! Introduceți aici, separate prin virgule, ID-urile obiectelor ILIAS pentru sălile legate de cursuri (prin urmare, întotdeauna același ID de obiect) care ar trebui gestionate separat pentru fiecare curs. ID-ul obiectului este afișat în setările obiectului. Opțiunea „Săli speciale” este utilă dacă setările mai multor săli trebuie gestionate centralizat, de exemplu, pentru a activa treptat funcții suplimentare.
+obj_ids_special#:#Camere speciale
+objs_xmvc_duplicate#:#Copiază sala de ședințe virtuală
+objs_xmvc#:#Săli de ședințe virtuale
+obj_xmvc_download#:#Descărcare
+obj_xmvc_duplicate#:#Copie
+obj_xmvc_select#:#Selectați o sală de ședințe virtuală
+obj_xmvc#:#Sală de ședințe virtuală
+offline#:#Offline
+of_owner_prefix#:#de către proprietar
+om_svr_public_port#:#Portul serverului OpenMeeting
+om_svr_public_url#:#URL-ul serverului OpenMeeting
+om_svr_username#:#Nume de utilizator SOAP
+om_svr_userpass#:#Parolă SOAP
+overview_uses#:#Prezentare generală a utilizărilor
+owners_email_not_unique#:#Adresa de e-mail a proprietarului nu este unică. Poate fi atribuită o singură dată unui utilizator ILIAS.
+playback#:#Redă înregistrarea
+plugin_configuration#:#configurație
+private_chat_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Permite chat privat” în Setări.
+private_chat_choose#:#Permite chat privat: Opțiune de selecție
+private_chat_default_info#:#Dacă este activată, utilizatorii fără privilegii de moderator pot avea și chat-uri private între ei. Utilizatorii cu privilegii de moderator nu pot vedea aceste chat-uri. Deoarece moderatorii pot încheia chat-urile private în orice moment, această opțiune ar trebui activată în majoritatea cazurilor.
+private_chat_default#:#Permite chat privat: Setare implicită
+private_chat_info#:#Chiar și persoanele fără privilegii de moderator pot avea o discuție privată între ele.
+private_chat#:#Permite chat privat
+properties#:#Caracteristici
+protected#:#Spații protejate
+pub_recs#:#Lansează imediat înregistrările
+pub_recs_choose#:#Lansare imediată a înregistrărilor: Opțiune de selecție
+pub_recs_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Partajați înregistrările imediat” în Setări.
+pub_recs_default#:#Lansare imediată a înregistrărilor: Setare implicită
+pub_recs_default_for_object#:#Înregistrările sunt puse imediat la dispoziția participanților.
+pub_recs_default_info#:#Activați această opțiune dacă înregistrările trebuie lansate întotdeauna imediat sau dacă opțiunea „Emiteți înregistrările imediat” trebuie activată pentru obiectele noi.
+pub_recs_info#:#Dacă este selectată, înregistrarea unei întâlniri va fi lansată imediat după încheierea întâlnirii. În prezentarea generală de pe pagina întâlnirii, aveți opțiunea de a bloca sau debloca înregistrările.
+rbac_create_xmvc#:#Creați o sală de ședințe virtuală
+rec_hidden#:#Această înregistrare nu este vizibilă pentru participanți.
+recording#:#înregistrări
+recording_autostart#:#Înregistrările vor începe automat la început. Utilizatorii ILIAS vor fi notificați în consecință.
+recording_choose#:#Permite înregistrarea: Opțiune de selecție
+recording_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Permite înregistrări” în setări. Deoarece adresa URL a înregistrării ar putea fi partajată cu persoane neautorizate dacă devine cunoscută, această opțiune nu ar trebui, în general, să fie activată.
+recording_default#:#Permite înregistrarea: Setare implicită
+recording_default_info#:#Această opțiune ar trebui dezactivată în majoritatea cazurilor pentru a împiedica utilizarea funcției de înregistrare în spațiul virtual.
+recording_info#:#Sesiunile pot fi înregistrate.
+recording_only_for_moderated_rooms#:#Înregistrare doar în camere moderate
+recording_only_for_moderated_rooms_default#:#Înregistrare doar în camere moderate
+recording_only_for_moderated_rooms_default_info#:#Această opțiune ar trebui activată în majoritatea cazurilor. Se aplică numai dacă înregistrarea este permisă în general.
+recording_only_for_moderated_rooms_info#:#Doar în camerele moderate pot începe înregistrări persoanele cu funcții de moderator.
+recording_warning#:#Înregistrarea a fost activată pentru această întâlnire! Prin utilizarea activă a sistemului de chat, activarea microfonului/camerei personale și/sau partajarea conținutului de pe ecran, sunt de acord ca aceste informații să fie înregistrate și stocate pentru utilizare ulterioară.
+recs_locked#:#Înregistrare(i) blocată(e)
+recs_published#:#Înregistrare(i) lansată(e)
+recurrence_#:#-
+recurrence_daily#:#Zilnic
+recurrence_monthly#:#Lunar
+recurrence_weekly#:#Săptămânal
+recurrence_yearly#:#Anual
+rec_visible#:#Această înregistrare este vizibilă pentru participanți.
+references#:#Linkuri
+related_meeting#:#Atribuit
+related_webinar#:#Atribuit
+relate_meeting#:#Atribui
+relate_webinar#:#Atribui
+report_log_max#:#Prezentare generală a utilizării (BBB)
+require_schedule_new_meeting#:#Puteți programa întâlniri și le puteți începe în intervalele orare planificate.
+require_schedule_new_meeting_zoom#:#Poți crea întâlniri.
+require_schedule_new_webinar#:#Puteți crea webinarii și le puteți începe în intervalele orare programate.
+reset_authorization#:#Revocați autorizația
+reseted_tokens#:#Resetarea jetoanelor
+root_create_xmvc#:#Creați o sală de ședințe virtuală
+saving_invoked#:#Setările au fost salvate
+scheduled_meeting_agenda#:#ordinea de zi
+scheduled_meeting_both_data_sources#:#toate
+scheduled_meeting_create_btn#:#Creați o întâlnire
+scheduled_meeting_created#:#Întâlnire programată creată
+scheduled_meeting_create#:#Creați o întâlnire programată
+scheduled_meeting_data_source#:#Întâlniri
+scheduled_meeting_delete_btn#:#Ștergeți întâlnirea
+scheduled_meeting_deleted#:#Întâlnirea a fost ștearsă
+scheduled_meeting_duration#:#Perioadă
+scheduled_meeting_local_data_sources#:#atribuit
+scheduled_meeting_not_deleted#:#Întâlnirea nu a fost ștearsă
+scheduled_meeting_overview#:#Prezentare generală a întâlnirilor planificate
+scheduled_meeting_recurrence#:#Repetiţie
+scheduled_meetings#:#Întâlniri planificate
+scheduled_meeting_state#:#stare
+scheduled_meeting_time_ahead#:#Timpul de pregătire al întâlnirii
+scheduled_meeting_update_btn#:#Actualizare întâlnire
+scheduled_meeting_update#:#Actualizați întâlnirea programată
+scheduled_webinar_agenda#:#ordinea de zi
+scheduled_webinar_both_data_sources#:#toate
+scheduled_webinar_create_btn#:#Creați un webinar
+scheduled_webinar_created#:#Webinar planificat creat
+scheduled_webinar_create#:#Creați un webinar (vă rugăm să furnizați un titlu unic)
+scheduled_webinar_data_source#:#Webinarii
+scheduled_webinar_delete_btn#:#Ștergeți webinarul
+scheduled_webinar_deleted#:#Webinar șters
+scheduled_webinar_duration#:#Perioadă
+scheduled_webinar_local_data_sources#:#atribuit
+scheduled_webinar_not_deleted#:#Webinarul nu a fost șters
+scheduled_webinar_overview#:#Prezentare generală a webinarelor planificate
+scheduled_webinar_recurrence#:#Repetiţie
+scheduled_webinars#:#Webinarii planificate
+scheduled_webinar_state#:#stare
+scheduled_webinar_time_ahead#:#Timpul de pregătire al webinarului
+scheduled_webinar_update_btn#:#Actualizare webinar
+scheduled_webinar_update#:#Actualizare webinarul planificat
+schedule_meeting_duration_less_time#:#Durata minimă a întâlnirii este de 10 minute. Vă rugăm să ajustați intrările în consecință.
+schedule_meeting_error#:#A apărut o eroare. Vă rugăm să verificați intrările.
+schedule_webinar_duration_less_time#:#Durata minimă a unui webinar este de 10 minute. Vă rugăm să vă ajustați intrările în consecință.
+schedule_webinar_error#:#A apărut o eroare. Vă rugăm să verificați intrările.
+select#:#Selecta
+service_unavailable#:#Serviciu indisponibil
+sess_owner_changed#:#Autentificarea a fost modificată.
+showcontent#:#Platforma WebRTC
+show_hint_pub_recs_info#:#Pe pagina întâlnirii este afișat utilizatorilor un avertisment privind interzicerea partajării linkurilor către înregistrări. Activați această opțiune dacă nu doriți ca acest avertisment să fie afișat.
+show_hint_pub_recs#:#Permiteți partajarea linkurilor de înregistrare
+start_time#:#început
+starttime#:#Ora de începere
+start_window#:#Porniți o sală de ședințe virtuală într-o fereastră nouă
+state_active#:#Activ
+state_inprogress#:#Funcţionare
+state_ready#:#Gata
+status#:#stare
+subject_crs#:#{MEETING_TITLE} în cadrul cursului {PARENT_TITLE}
+subject_fld#:#{MEETING_TITLE} în folderul {PARENT_TITLE}
+subject_grp#:#{MEETING_TITLE} din grupul {PARENT_TITLE}
+svr_private_port#:#Port privat al serverului BBB
+svr_private_url#:#URL privat al serverului BBB
+svr_public_port#:#Portul public al serverului BBB
+svr_public_url#:#URL-ul public al serverului BBB
+svr_salt#:#Parola serverului BBB (secret)
+sysadmin_perm_choose_all#:#Ca administrator, puteți edita toate proprietățile acestui obiect.
+tab_close#:#Vă rugăm să închideți această fereastră sau filă acum.
+teams_client_id#:#ID client
+teams_client_id_info#:#Introduceți aici ID-ul aplicației / ID-ul clientului.
+teams_client_secret#:#Secretul clientului
+teams_client_secret_info#:#Imediat după ce ați creat o cheie secretă în Entra pentru aplicația creată pentru MultiVc, puteți copia valoarea cheii și o puteți introduce aici.
+teams_join_links#:#Te poți înscrie direct aici: {br}{JOIN_URL}{br}&nbsp;{br}sau poți da clic pe: {PERMANENT_LINK}
+teams_lobbybypass#:#Ocoliți zona de așteptare
+teams_lobbybypass_choose#:#Zona de așteptare ocolitoare: Opțiune de alegere
+teams_lobbybypass_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea de a „Ocoli sala de așteptare” în setări. Aceasta controlează cine este plasat în sala de așteptare/holul ședinței.
+teams_lobbybypass_default#:#Ocolire zonă de așteptare: Setare implicită
+teams_lobbybypass_everyone#:#Toată lumea va fi admisă la întâlnire. Nimeni nu va fi plasat în sala de așteptare.
+teams_lobbybypass_invited#:#Doar persoanele invitate vor fi admise la întâlnire și vor ocoli zona de așteptare.
+teams_lobbybypass_organizer#:#Participanții vor fi așezați în zona de așteptare. Administratorii și personalul de asistență vor ocoli zona de așteptare.
+teams_meetings_list_downloaded#:#Am integrat cu succes întâlnirile online existente în Teams.
+teams_tenant_id_info#:#Introduceți aici ID-ul chiriașului. Numele alternative sunt: ​​ID director (client).
+teams_tenant_id#:#ID-ul chiriașului
+terms_of_use#:#<b>Drepturi de proprietate intelectuală</b>{br}Informațiile și materialele conținute în conferințele BigBlueButton, cum ar fi textele sau imaginile, sunt în general protejate de drepturi de autor, mărci comerciale sau drepturi de brevet.{br}Reglementările privind protecția datelor trebuie respectate. Acest lucru se aplică în special înregistrării conferințelor BigBlueButton. Înregistrarea secretă a conferințelor video sau audio constituie infracțiune.{br}{br}<b>Cod de conduită</b>{br}Nu aveți dreptul să postați niciun conținut care încalcă prevederile legale, este pornografic, obscen, defăimător, calomnios, insultător, amenințător, incitând la ură sau rasist. De asemenea, sunt interzise postarea de reclame fără autorizație și transmiterea de informații care conțin viruși, manipulări sau elemente dăunătoare similare. Date prelucrate Atunci când se utilizează BigBlueButton, se colectează următoarele date: Date de conexiune (de exemplu, adresa IP, tipul de browser, data și ora accesării) Date de acces (dacă este cazul): nume de utilizator, parolă în formă criptată Date de conținut (de exemplu, fișiere încărcate, contribuții la chat, sondaje) Stocarea temporară a datelor de conexiune, în special a adresei IP, de către sistem este necesară pentru a permite livrarea BigBlueButton către computerul utilizatorului. În acest scop, adresa IP a utilizatorului trebuie stocată pe durata sesiunii. Temeiul juridic pentru stocarea temporară a datelor este articolul 6 alineatul (1) litera (f) din GDPR. Datele de conexiune sunt, de asemenea, stocate în general în fișiere jurnal. Momentul ștergerii este determinat de operatorul serverului BigBlueButton.
+title#:#titlu
+token_deleted#:#Jetonul a fost șters
+token_not_deleted#:#Jetonul nu a fost șters
+token_not_stored#:#Jetonul nu a fost salvat
+token_stored#:#Jeton stocat
+unlocked_by#:#Lansat de
+unlock#:#Eliberare
+untrashed_usages#:#Număr de utilizări
+url_info#:#Aici puteți introduce și căi relative (de exemplu, /webconference). Vă rugăm să nu includeți un „/” la final.
+url#:#URL-ul
+usage#:#Ocupare
+user_end#:#ultima plecare
+user_invite_info#:#Puteți invita oaspeți la întâlnire folosind următorul link:
+user_log#:#Prezentare generală a utilizatorului
+user_log_bbb#:#Prezentare generală utilizator (BBB/Teams/Zoom)
+user_log_duration#:#Perioada de înregistrare
+user_percent#:#la sută
+user_results#:#Ore de prezență
+user_results_desc#:#Orele sunt afișate doar pentru întâlnirile care s-au încheiat deja. Întâlnirile trebuie să fi ajuns și la ora de încheiere programată.
+user_start#:#primul început
+user_time#:#timpul de prezență
+wait_join_meeting#:#<b>În prezent, în sala de ședințe virtuală nu este prezentă nicio persoană cu privilegii de moderator.<br/>Vă rugăm să așteptați și să reveniți peste un minut.</b>
+wait_join_meeting_edudip#:#În prezent, nu puteți participa la niciun webinar.
+wait_join_meeting_guest#:#<b>În prezent, în sala de ședințe virtuală nu este prezentă nicio persoană cu privilegii de moderator.<br/>Vă rugăm să așteptați și să faceți clic din nou pe butonul „Alăturați-vă întâlnirii” peste un minut.</b>
+wait_join_meeting_teams#:#Nu vă puteți alătura unei întâlniri în acest moment. Dacă apare o întâlnire programată, actualizați această pagină cu până la 15 minute înainte de întâlnirea programată pentru a vă alătura.
+wait_join_meeting_webex#:#Nu te poți alătura unei întâlniri în acest moment. Este posibil ca întâlnirea să nu fi început încă sau să se fi încheiat deja. Te rugăm să actualizezi această pagină pentru a verifica starea întâlnirii.
+wait_join_meeting_zoom#:#Nu vă puteți alătura unei întâlniri în acest moment. Dacă apare o întâlnire programată, actualizați această pagină cu până la 15 minute înainte de întâlnirea programată pentru a vă alătura.
+wait_join_webinar#:#<b>Nimeni nu a început încă webinarul.<br/>Vă rugăm să așteptați și să reveniți peste un minut.</b>
+webex_client_id#:#ID client integrare Webex
+webex_client_secret#:#Secretul clientului de integrare Webex
+webex_host_email_hidden_info#:#Adresa de e-mail utilizată pentru autorizare este vizibilă doar proprietarilor și administratorilor obiectului.
+webex_host_email_info#:#Adresă de e-mail cunoscută de Webex sau de site-ul găzduit
+webex_host_email#:#Adresa de e-mail a gazdei Webex
+webex_integration_auth_info#:#Puteți autoriza accesul la contul dvs. Webex. Acest lucru este necesar pentru a crea, prelua și iniția întâlniri Webex utilizând pluginul MultiVC.
+webex_logout_user_choose#:#Permiteți deconectarea de la Webex: Opțiune
+webex_logout_user_choose_info#:#Utilizatorii deja conectați la Webex trebuie să se deconecteze de la Webex înainte de a se alătura întâlnirii.
+webex_logout_user_default#:#Deconectare de la Webex: Setare implicită
+webex_logout_user_default_info#:#Utilizatorii deja conectați la Webex trebuie să se deconecteze întotdeauna de la Webex înainte de a se alătura întâlnirii.
+webex_meetings_list_downloaded#:#Întâlnirile Webex existente au fost descărcate cu succes.
+webex_redirect_uri#:#URI de redirecționare
+webex_site_url#:#Adresa URL a site-ului Webex
+webex_user_choose_logout#:#Utilizatorul decide
+webex_user_do_logout#:#Deconectare
+webex_user_do_not_logout#:#Nu vă deconectați
+webex_user_logout#:#Deconectare de la Webex
+webinar_collision#:#A apărut o eroare. Un webinar este deja programat pentru ora solicitată.
+webinar_event_created#:#Webinar creat
+webinar_event_deleted#:#Webinar șters
+webinar_notification_body#:#Bună ziua {NAME},{NL}{NL} a fost creat următorul {EVENT}:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Cu sinceritate,{NL}{NL}{FROM}
+webinar_notification_from#:#ILIADA
+webinar_notification_subject#:#{EVENIMENT}: {SUBIECT}
+webinar_related_successful#:#Webinar atribuit cu succes
+webinar_running#:#Webinarul a început.
+webinar#:#Webinar
+welcome_text#:#Bun venit {br}în Sala de ședințe virtuală{br<b>{MEETING_TITLE}</b>{br}{br}Dacă vedeți o pictogramă de difuzor traversată de o linie în mijlocul ecranului de mai jos, ceilalți nu vă vor putea auzi și nici dumneavoastră nu veți putea auzi nimic. Faceți clic pe pictograma difuzorului traversată de o linie pentru a iniția conexiunea audio.{br}Folosiți căști pentru a evita zgomotul de fundal și feedback-ul.
+window_closed#:#Sala de ședințe virtuală s-a încheiat.
+window_close#:#Închide fereastra
+window_started#:#Sala de ședințe virtuală a fost lansată într-o fereastră nouă.
+with_chat_choose_info#:#Activează această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Începe cu chatul” în Setări.
+with_chat_choose#:#Începeți cu chatul: Opțiune de selecție
+with_chat_default_info#:#În general, acest lucru ar trebui activat - în special în camerele moderate.
+with_chat_default#:#Începeți cu chatul: Setare implicită
+with_chat_info#:#Această opțiune ar trebui activată, în special în camerele moderate. Chatul devine apoi o „sală de așteptare”.
+with_chat#:#Începeți cu chatul
+xmvc_add#:#Adăugați o sală de ședințe virtuală
+xmvc_copy#:#Copiază sala de ședințe virtuală
+xmvc_delete#:#Ștergeți sala de ședințe virtuală
+xmvc_edit_learning_progress#:#Editați setările de progres al învățării
+xmvc_edit_permission#:#Modificați permisiunile
+xmvc_new#:#Adăugați o nouă sală de ședințe virtuală
+xmvc_read#:#Acces pentru citire: Participarea la sala de ședințe virtuală este posibilă
+xmvc_read_learning_progress#:#Vizualizați progresul învățării altor utilizatori
+xmvc_visible#:#Afișaj: Sala de ședințe virtuală este vizibilă
+xmvc_write#:#Editați setările
+zoom_account_id#:#ID-ul contului Zoom
+zoom_account_info#:#Puteți obține ID-ul contului Zoom, ID-ul clientului și secretul clientului de la https://developers.zoom.us/docs/internal-apps/create/. Trebuie să creați o aplicație OAuth server-to-server.
+zoom_client_id#:#ID-ul clientului Zoom
+zoom_client_secret#:#Secretul clientului Zoom
+zoom_err_scopes_webinar#:#Nu aveți permisiunea de a crea un webinar. Întâlnirile sunt posibile. Următoarele permisiuni lipsesc:
+zoom_exist_meetings#:#Datele au fost deja stabilite pentru această întâlnire.
+zoom_exist_webinars#:#Datele au fost deja stabilite pentru acest webinar.
+zoom_lobby#:#Sală de așteptare pentru întâlniri
+zoom_lobby_choose#:#Sală de așteptare: Alegerea opțiunilor
+zoom_lobby_choose_info#:#Activați această opțiune dacă utilizatorii cu permisiuni de scriere ar trebui să aibă opțiunea „Sală de așteptare” în setări. Aceasta controlează cine este plasat în sala de așteptare.
+zoom_lobby_default#:#Sală de așteptare: Setare implicită
+zoom_lobby_0#:#Nimeni nu trebuie să aștepte în sala de așteptare. Sala de așteptare este dezactivată. Participanții pot intra cu 15 minute înainte de începerea întâlnirii.
+zoom_lobby_1#:#Toată lumea trebuie să meargă în sala de așteptare.
+zoom_lobby_2#:#Utilizatorii din afara contului dvs. trebuie să intre în sala de așteptare.
+zoom_lobby_3#:#Utilizatorii din afara contului dvs. sau cei care nu se află pe domeniile aprobate trebuie să intre în sala de așteptare.
+zoom_lobby_4#:#Utilizatorii care nu sunt înscriși la curs sau grup trebuie să meargă în sala de așteptare.

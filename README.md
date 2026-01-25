@@ -296,12 +296,71 @@ Teilnehmende werden auch dann benachrichtigt, wenn Meetings bereits vor ihrem Ku
 ### Sprache der Benachrichtigung
 Grundsätzlich werden die Standard-Teams-Benachrichtigungen unter Berücksichtigung der Benutzersprache und der gewählten Zeitzone genutzt. Da die Teilnehmenden außer dem Direktlink zu Teams auch den Link im ILIAS-Objekt nutzen können und ggfs. ein Hinweis zu anstehenden Aufzeichnungen übermittelt werden soll, gilt Folgendes: Möchten Sie als Organisator die ergänzenden Texte z.B. in Englisch anzeigen lassen, so wechseln Sie in ILIAS zur englischen Sprache und legen Sie dann ein Meeting an. Auch alle Folge-Benachrichtigungen etwa beim Kursbeitritt nutzen dann die zum Zeitpunkt des Anlegens eines Meetings genutzte Sprache.   
 
+## Zoom
 
+### Integration
+
+Das Plugin erfordert erweiterte Zoo,-Rechte und wurde getestet mit Business Zoom accounts.
+
+Grundlegende Informationen zum Erstellen der erforderlichen Server-OAuth-App finden sich hier:
+https://developers.zoom.us/docs/internal-apps/create/
+
+Konkret werden folgende Scopes benötigt:
+s. https://developers.zoom.us/docs/integrations/oauth-scopes-granular/
+
+Rate Limit Label: LIGHT:
+
+meeting:read:meeting:admin
+meeting:read:invitation:admin
+meeting:delete:meeting:admin
+meeting:update:meeting:admin
+meeting:write:meeting:admin
+user:read:user:admin
+webinar:read:webinar:admin
+webinar:delete:webinar:admin
+webinar:update:webinar:admin
+webinar:write:webinar:admin
+meeting:read:past_meeting:admin
+webinar:read:list_past_instances:admin
+
+Rate Limit Label: MEDIUM:
+
+user:read:list_schedulers:admin
+user:read:settings:admin
+meeting:read:list_past_participants:admin
+webinar:read:list_past_participants:admin
+
+### Lernfortschritt
+Mit dem erstmaligen Einrichten von Zoom im MultiVc-Plugin werden die Rechte 'Lernfortschrittseinstellungen bearbeiten' und 'Lernfortschritt anderer Benutzer einsehen' hinzugefügt. Passen Sie ggfs. Objekte und insbesondere die Rollenvorlagen an. 
+
+Für den Fall, dass Sie den Lernfortschritt nutzen möchten, wird empfohlen, dass in der Konfiguration 'Benutzerübersicht verstecken' deaktiviert ist.
+Somit können Sie für abgelaufene Meetings durch Klick auf 'Anwesenheitszeiten' unter 'Meeting' den Lernfortschritt aktualisieren. Ansonsten wird der Lernfortschritt durch den täglich laufenden Cronjob 'MultiVc-Cronjob zur Ermittlung des Lernfortschritts' berechnet.
+Beachten Sie, dass der Lernfortschritt nur für diejenigen berechnet werden kann, die sich über die Zoom-App angemeldet haben. Ansonsten kann eine eindeutige Nutzerzuordnung nicht erfolgen und die Teilnehmenden werden mit der Rolle 'Gast' angezeigt. Für Gäste wird kein Lernfortschritt ermittelt.
+
+Grundlage für die Ermittlung des Lernfortschritts ist die Anwesenheitszeit. In der 'Benutzerübersicht' sehen Sie die einzelne Teilnahmezeiten, gekennzeichnet mit 'Teilnahme ab' und 'Teilnahme bis'. 
+Unter dem Link 'Anwesenheitszeiten' sehen Sie die kumulierten Anwesenheitszeiten je Meeting und einen Prozentwert. 
+Dieser Prozentwert berücksichtigt die Dauer des Meetings ohne Überziehungen. Wurde beispielsweise ein Meeting von 13:00 bis 14:00 angesetzt, so werden Zeiten nach 14:00 nicht berücksichtigt. 
+Wurde das Meeting von einem (co-) Organisator vorzeitig beendet, so wird die verbleibende Zeit bis zum ursprünglich vorgesehenen Ende nicht für die Berechnung des Prozentwerts herangezogen.
+
+Anwesenheitszeiten bei vor der vorgesehener Startzeit beendeten Sitzungen werden ebenso wenig berücksichtigt, wie Anwesenheitszeiten für Sitzungen, die erst nach dem vorgesehenen Ende gestartet wurden.
+Innerhalb der vorgesehenen Startzeit und Endzeit darf nur eine Sitzung vorhanden sein. 
+Sollte zwischendurch das Meeting beendet und neu gestartet werden, so wird nur die erste Sitzung innerhalb eines Meetings berücksichtigt. 
+
+Über den Reiter 'Lernfortschritt' und den Link 'Einstellungen' können Sie bei grundsätzlich aktiviertem Lernfortschritt einen Schwellwert für den Status 'Bearbeitet' bestimmen. Die Default-Einstellung ist 70. Das bedeutet, dass mindestens 70% der möglichen Anwesenheitszeit erreicht werden muss, um den Status 'Bearbeitet' (grün) zu erhalten.
+
+Hinweis: Der CronJob sollte aus Performanzgründen in jedem Fall aktiviert sein. 
+
+### Webinare
+Webinare sind dadurch gekennzeichnet, dass Teilnehmende nicht eigenständig in Meetings gelangen, sondern durch (Co-)Organisatoren hineingelassen werden müssen. Außerdem kann in Webinaren nicht jeder eigenständig Präsentator-Rechte wahrnehmen. 
+
+### Co-Organisatoren (Mitorganisatoren)
+Damit Kurs- bzw. Gruppenadministratoren bzw. Kurstutoren erweiterte Rechte als Co-Organisatoren haben, müssen sie _vor_ einem angesetzten Meeting mit ihrer Rolle im Kurs bzw. in der Gruppe eingetragen sein. Danach sind sie einfache Teilnehmende. 
+
+### Sprache der Benachrichtigung
+Grundsätzlich werden die Standard-Zoom-Benachrichtigungen unter Berücksichtigung der Benutzersprache und der gewählten Zeitzone genutzt. Da die Teilnehmenden außer dem Direktlink zu Zoom auch den Link im ILIAS-Objekt nutzen können und ggfs. ein Hinweis zu anstehenden Aufzeichnungen übermittelt werden soll, gilt Folgendes: Möchten Sie als Organisator die ergänzenden Texte z.B. in Englisch anzeigen lassen, so wechseln Sie in ILIAS zur englischen Sprache und legen Sie dann ein Meeting an. Auch alle Folge-Benachrichtigungen etwa beim Kursbeitritt nutzen dann die zum Zeitpunkt des Anlegens eines Meetings genutzte Sprache.   
 
 
 # Verwendung
-
-
 
 ## Virtuellen Meetingraum anlegen
 
@@ -347,7 +406,7 @@ Diese kann den einzuladenden Gästen mitgeteilt werden.
 
 Der Gastlink steht grundsätzlich nur in moderierten Räumen zur Verfügung. Gäste erhalten immer die Rolle "Teilnehmer".
 
-### Kurze Gastlink-Url
+### Kurze Gastlink-Url für BigBlueButton
 
 Die zunächst sehr lange Url kann auf folgendes Schema verkürzt werden:
 https://domain/m/client/id
