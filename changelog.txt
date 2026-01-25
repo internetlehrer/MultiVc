@@ -52,3 +52,5 @@
 - fix 'overview uses' for deleted meeting types
 - fix BBB guestlink: Show message for objects which are deleted or offline
 - objects in trash can not be restored if meeting type was deleted
+9.7
+- don't include members of containers without predefind roles

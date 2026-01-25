@@ -1824,6 +1824,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         $selector = '*';
         $where = [
             'obj_id = ' . $this->db->quote($objId, 'integer'),
+            '(member = 1 or tutor = 1 or admin = 1)'
         ];
 
         $res = $this->db->query("SELECT * FROM obj_members WHERE " . implode(' AND ', $where));
