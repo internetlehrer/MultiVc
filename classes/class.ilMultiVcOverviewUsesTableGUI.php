@@ -37,6 +37,14 @@ class ilMultiVcOverviewUsesTableGUI extends ilTable2GUI
         $this->setEnableHeader(true);
         $this->disable('sort');
         $this->setEnableNumInfo(false);
+
+        $this->tpl->addBlockFile(
+            "TBL_CONTENT",
+            "tbl_content",
+            'tpl.uses_row.html',
+            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
+        );
+
         $this->setRowTemplate('tpl.uses_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
     }
 

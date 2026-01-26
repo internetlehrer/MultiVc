@@ -6,16 +6,20 @@ use BigBlueButton\Responses\GetMeetingsResponse;
 use BigBlueButton\Responses\GetRecordingsResponse;
 use BigBlueButton\Parameters\DeleteRecordingsParameters;
 
+
 $absDirPrefix = str_replace(
-    substr(__DIR__, strpos(__DIR__, 'Customizing/')),
+    substr(__DIR__, strpos(__DIR__, 'public/Customizing/')),
     '',
     __DIR__
 );
 chdir($absDirPrefix);
+require_once 'vendor/composer/vendor/autoload.php';
+#die (__DIR__);
 
-require_once($absDirPrefix . '/Services/Context/classes/class.ilContext.php');
-require_once($absDirPrefix . "/Services/Init/classes/class.ilInitialisation.php");
-require_once($absDirPrefix . '/Services/Language/classes/class.ilLanguage.php');
+#die($absDirPrefix . 'components/ILIAS/Context/classes/class.ilContext.php');
+require_once($absDirPrefix . 'components/ILIAS/Context/classes/class.ilContext.php');
+require_once($absDirPrefix . "components/ILIAS/Init/classes/class.ilInitialisation.php");
+require_once($absDirPrefix . 'components/ILIAS/Language/classes/class.ilLanguage.php');
 require_once __DIR__ . '/class.ilApiBBB.php';
 
 /**
@@ -202,10 +206,9 @@ class JoinMeetingByGuestLink
     {
         $http_base = ILIAS_HTTP_PATH;
         if (strpos($http_base, '/m/')) {
-            $http_base = strstr($http_base, '/m/', true) . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
+            $http_base = strstr($http_base, '/m/', true) . '/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
         }
-
-        $this->htmlTpl = new ilTemplate(dirname(__DIR__) . '/' . 'templates/guestlink/tpl.html5doc.html', true, true);
+        $this->htmlTpl = new ilTemplate( 'tpl.html5doc.html', true, true, 'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc', '', true);
         $this->htmlTpl->setVariable('USER_LANG', $this->isoLangCode[$this->userLang]);
         $this->htmlTpl->setVariable('HTTP_BASE', $http_base);
         $this->htmlTpl->setVariable('MEETING_TITLE', $this->getMeetingTitle() . ' - ' . $this->getLangVar('big_blue_button'));

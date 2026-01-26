@@ -9,15 +9,15 @@
 
 class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
 {
-    public const LP_INACTIVE = 0;
-    public const LP_ACTIVE = 1;
-    public const TABLE_XMVC_OBJECT = 'rep_robj_xmvc_data';
+    public const int LP_INACTIVE = 0;
+    public const int LP_ACTIVE = 1;
+    public const string TABLE_XMVC_OBJECT = 'rep_robj_xmvc_data';
 
-    public const TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
+    public const string TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
 
-    public const TABLE_USER_LOG = 'rep_robj_xmvc_user_log';
+    public const string TABLE_USER_LOG = 'rep_robj_xmvc_user_log';
 
-    public const MEETING_TIME_AHEAD = 60 * 5;
+    public const int MEETING_TIME_AHEAD = 60 * 5;
 
     private ILIAS\DI\Container $dic;
     protected ilDBInterface $db;
@@ -100,14 +100,14 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     * Create object
     */
 
-    public function doCreate(bool $clone_mode = false): void
+    protected function doCreate(bool $clone_mode = false): void
     {
     }
 
     public function createRoom(int $online, int $conn_id)
     {
         $ilDB = $this->db;
-        $this->setOnline($this->ilIntToBool((int) $online));
+        $this->setOnline($this->ilIntToBool($online));
         $this->setConnId($conn_id);
         $settings = $this->setDefaultsByPluginConfig($conn_id, true);
         //var_dump($settings) ; exit;
@@ -128,9 +128,9 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
             'recording' => array('integer', (int) $this->isRecord()),
             'cam_only_for_moderator' => array('integer', (int) $this->isCamOnlyForModerator()),
             'lock_disable_cam' => array('integer', (int) $this->getLockDisableCam()),
-            'conn_id' => array('integer', (int) $conn_id),
+            'conn_id' => array('integer', $conn_id),
             'guestlink' => array('integer', (int) $settings->isGuestlinkDefault()),
-            'extra_cmd' => array('integer', (int) $this->getExtraCmd()),
+            'extra_cmd' => array('integer', $this->getExtraCmd()),
             'secret_expiration' => array('string', $this->getSecretExpiration()),
             #"auth_user" => ['string', $this->getAuthUser()],
         );
@@ -148,7 +148,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     /**
     * Read data from db
     */
-    public function doRead(): void
+    protected function doRead(): void
     {
         $ilDB = $this->db;
 
@@ -241,7 +241,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
             'secret_expiration' => ['string', $this->getSecretExpiration()],
             'auth_user' => ['string', $this->getAuthUser()],
             'guestlink' => ['integer', (int) $this->isGuestlink()],
-            'extra_cmd' => ['integer', (int) $this->getExtraCmd()],
+            'extra_cmd' => ['integer', $this->getExtraCmd()],
             'lp_mode' => ['integer', $this->getLPMode()],
             'lp_time' => ['integer', $this->getLpTime()]
         );
@@ -309,7 +309,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     /**
     * Delete data from db
     */
-    public function doDelete(): void
+    protected function doDelete(): void
     {
         $ilDB = $this->db;
 
@@ -349,7 +349,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
             'lock_disable_cam' => ['integer', (int) $this->getLockDisableCam()],
             'conn_id' => ['integer', (int) $this->getConnId()],
             'guestlink' => ['integer', (int) $this->isGuestlink()],
-            'extra_cmd' => ['integer', (int) $this->getExtraCmd()],
+            'extra_cmd' => ['integer', $this->getExtraCmd()],
             'lp_mode' => ['integer', $this->getLPMode()],
             'lp_time' => ['integer', $this->getLpTime()]
 
@@ -952,7 +952,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
 
     public function isUserOwner(): bool
     {
-        return (int) $this->getOwner() === (int) $this->dic->user()->getId();
+        return $this->getOwner() === $this->dic->user()->getId();
     }
 
     public function getUserForEmail(string $email, int $index = 0): ?int
@@ -1485,7 +1485,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
             #if( null === $currEntry = $this->getScheduledMeetingByRelId($relId, $refId, $userId) ) {
             return false;
         }
-        $currValues = json_decode('' . $currEntry[0]['participants'], 1);
+        $currValues = json_decode(strval($currEntry[0]['participants']), 1);
         $currValues['moderator'][$this->dic->user()->getId()] = $dataArr;
 
         $values = [ 'participants' => ['string', json_encode($currValues)]];

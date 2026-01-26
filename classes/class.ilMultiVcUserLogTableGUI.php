@@ -55,6 +55,14 @@ class ilMultiVcUserLogTableGUI extends ilTable2GUI
         $this->setDefaultOrderField('ref_id'); # display_name join_time
         $this->setDefaultOrderDirection('asc');
         //$this->disable('sort');
+
+        $this->tpl->addBlockFile(
+            "TBL_CONTENT",
+            "tbl_content",
+            'tpl.user_log_row.html',
+            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
+        );
+
         $this->setRowTemplate('tpl.user_log_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->initFilterDateDuration();
         $this->setFilterCommand('applyFilterUserLog');

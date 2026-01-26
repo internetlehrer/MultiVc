@@ -54,5 +54,5 @@
 - objects in trash can not be restored if meeting type was deleted
 9.7
 - don't include members of containers without predefind roles
-9.8
+10.8
 - support Zoom

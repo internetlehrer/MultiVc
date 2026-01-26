@@ -46,7 +46,7 @@ $pi->setInfo($pl->txt("info_webex_client_secret"));
 $pi->setRetype(false);
 $combo->addSubItem($pi);
 
-$redirectUri = ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/server.php';
+$redirectUri = ILIAS_HTTP_PATH . '/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/server.php';
 $ti = new ilNonEditableValueGUI($pl->txt("webex_redirect_uri"), "webex_redirect_uri");
 $ti->setValue($redirectUri);
 $ti->setInfo($pl->txt("info_webex_redirect_uri"));

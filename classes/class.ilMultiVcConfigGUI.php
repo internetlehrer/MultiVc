@@ -186,7 +186,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $table_gui->init($this);
         $html = $table_gui->getHTML();
         if($table_gui->isWebex()) {
-            $tpl->addJavaScript('./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/js/modal.integration.js');
+            $tpl->addJavaScript('./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/js/modal.integration.js');
             $html .= file_get_contents(dirname(__FILE__) . '/../templates/webex/html/modal.integration.html');
             #var_dump($modal); exit;
         }
@@ -430,7 +430,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         }
 
         if($platform === 'edudip' && !$this->dic->http()->wrapper()->query()->has('configureNewMultiVcConn')) {
-            $this->dic->ui()->mainTemplate()->addJavaScript(ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/js/modal.config.edudip.js');
+            $this->dic->ui()->mainTemplate()->addJavaScript(ILIAS_HTTP_PATH . '/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/js/modal.config.edudip.js');
         }
 
         $ti = new ilTextInputGUI($pl->txt("title"), "title");
@@ -953,7 +953,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $values["hide_username_logs"] = 1;
         $values["api"] = '';
         $values["integration_auth_method"] = '';
-        $values["access_token"] = $this->object->getAccessToken();
+        $values["access_token"] = (string) $this->object->getAccessToken();
         $values["refresh_token"] = $this->object->getRefreshToken();
         $values["token_user"] = $this->object->getAccessToken();
         $values["style"] = $this->object->getStyle();

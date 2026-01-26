@@ -48,7 +48,12 @@ class ilMultiVcConnTableGUI extends ilTable2GUI
         $this->addCommandButton('createMulitVcConn', $this->dic->language()->txt('rep_robj_xmvc_create_type'));
         // ToDo: check
         // $this->addCommandButton('viewLogs', $lng->txt('rep_robj_xxcf_view_logs'));
-
+        $this->tpl->addBlockFile(
+            "TBL_CONTENT",
+            "tbl_content",
+            'tpl.types_row.html',
+            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
+        );
         $this->setRowTemplate('tpl.types_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->getMyDataFromDb();
     }
@@ -75,7 +80,6 @@ class ilMultiVcConnTableGUI extends ilTable2GUI
         $ilCtrl = $this->dic->ctrl();
 
         $ilCtrl->setParameter($this->parent_obj, 'conn_id', $a_set['conn_id']);
-
         $this->tpl->setVariable('TXT_ID', $a_set['conn_id']);
         $this->tpl->setVariable('TXT_TITLE', $a_set['title']);
         $this->tpl->setVariable('TXT_AVAILABILITY', $this->dic->language()->txt('rep_robj_xmvc_conf_availability_' . $a_set['availability']));

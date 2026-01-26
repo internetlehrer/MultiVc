@@ -90,6 +90,13 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
         $this->setDefaultOrderDirection('asc');
         //$this->disable('sort');
 
+        $this->tpl->addBlockFile(
+            "TBL_CONTENT",
+            "tbl_content",
+            'tpl.scheduled_meeting_row.html',
+            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
+        );
+
         $this->setRowTemplate('tpl.scheduled_meeting_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->initFilterDateDurationAndDataSource();
         #$this->initFilterDataSource();

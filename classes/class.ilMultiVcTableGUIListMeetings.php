@@ -42,6 +42,13 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
         $this->setDefaultOrderDirection('asc');
         //$this->disable('sort');
 
+        $this->tpl->addBlockFile(
+            "TBL_CONTENT",
+            "tbl_content",
+            'tpl.list_meetings_row.html',
+            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
+        );
+
         $this->setRowTemplate('tpl.list_meetings_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->setEnableNumInfo(false);
         $this->getDataFromDb();

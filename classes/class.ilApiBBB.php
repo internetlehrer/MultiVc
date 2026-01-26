@@ -10,7 +10,7 @@ use BigBlueButton\Util\UrlBuilder;
 class ilApiBBB implements ilApiInterface
 {
     public const INI_FILENAME = 'plugin';
-    public const PLUGIN_PATH = './Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
+    public const PLUGIN_PATH = './public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
     public const PLAYBACKURL_SPLIT = '2.0/playback.html?meetingId=';
 
     private \BigBlueButton\BigBlueButton $bbb;

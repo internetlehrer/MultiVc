@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\NoReturn;
+
 /**
  * User  class for MultiVc repository object.
  *
@@ -21,7 +23,7 @@
  */
 class ilObjMultiVcGUI extends ilObjectPluginGUI
 {
-    public const START_TYPE = [
+    public const array START_TYPE = [
         'WEBEX' => 'window', #'start', #'window', #
         'EDUDIP' => 'start',
         'BBB' => 'start',
@@ -45,7 +47,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
     public bool $isZoom = false;
 
-    /** @var null|ilApiBBB|ilApiWebex|ilApiEdudip|ilApiOM|ilApiTeams|ilApiZoom $vcObj  */
+    /** @var null|ilApiBBB|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom $vcObj  */
     public $vcObj = null;
 
     public ?string $platform = null;
@@ -166,7 +168,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         }
     }
 
-    public function getVcObj(): ilApiBBB|ilApiEdudip|ilApiOM|ilApiWebex|ilApiTeams|ilApiZoom
+    public function getVcObj(): ilApiBBB|ilApiEdudip|ilApiWebex|ilApiTeams|ilApiZoom
     {
         $class = ilMultiVcConfig::AVAILABLE_XMVC_API[$this->platform];
         return $this->vcObj ?? $this->vcObj = new $class($this);
@@ -774,7 +776,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         // Construct TableGui
         #$this->addSubTab('content', 'scheduledMeetings');
         $this->tabs->activateTab('scheduledMeetings');
-        $this->dic->ui()->mainTemplate()->addJavaScript(ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/js/xmvcModal.js');
+        $this->dic->ui()->mainTemplate()->addJavaScript('Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/xmvcModal.js');
         $this->dic->ui()->mainTemplate()->setContent($tableGuiScheduledMeeting->getHtmlMeetingPropertiesAndOverview($keepForm));
         if($this->isEdudip && !empty(ilSession::get('checkNotificationMail'))) {
             $this->dic->ui()->mainTemplate()->addOnLoadCode($this->getJsNotificationMail());
@@ -908,38 +910,36 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     /**
      * init create form
      */
-    protected function initCreateForm(string $new_type): ilPropertyFormGUI
+    protected function initCreateForm(string $new_type): \ILIAS\UI\Component\Input\Container\Form\Standard//ilPropertyFormGUI
     {
+        $f = $this->dic->ui()->factory();
+//        $lng = $this->lng;
         $form = parent::initCreateForm($new_type);
+        $inputs = $form->getInputs();
 
-        // MultiVcConn selection
-        $combo = new ilSelectInputGUI($this->txt("conn_id"), 'conn_id');
-        $combo->setRequired(true);
-        $combo->setOptions(ilMultiVcConfig::_getAvailableMultiVcConn(true));
-        //$combo->setInfo($pl->txt('info_platform_chg_reset_data'));
-        $form->addItem($combo);
+        $inputs["conn_id"] = $f->input()->field()->select($this->txt("conn_id"),ilMultiVcConfig::_getAvailableMultiVcConn(true))->withRequired(true);
+        $inputs["online"] = $f->input()->field()->checkbox($this->lng->txt("online"));
 
-        // online
-        $cb = new ilCheckboxInputGUI($this->lng->txt("online"), "online");
-        $form->addItem($cb);
-
-        return $form;
+        return $this->ui_factory->input()->container()->form()->standard(
+            $this->ctrl->getFormAction($this, 'save'),
+            $inputs
+        )->withSubmitLabel($this->txt($new_type . '_add'));
     }
 
     protected function afterSave(ilObject $new_object): void
     {
-        global $DIC;
-
         $form = $this->initCreateForm('xmvc');
-        $form->checkInput();
 
-        $new_object->setAuthUser($DIC->user()->getEmail());
-        $new_object->createRoom((int) $form->getInput("online"), $form->getInput("conn_id"));
-        $new_object->fillEmptyPasswordsBBBVCR();
-        //var_dump($newObj); exit;
-        ilSession::set('createNewObj', true);
-        ilSession::set('doNotShowResetedTokens', true);
-        parent::afterSave($new_object);
+        if ($this->dic->http()->request()->getMethod() == "POST") {
+            $form = $form->withRequest($this->dic->http()->request());
+            $result = $form->getData();
+            $new_object->setAuthUser($this->dic->user()->getEmail());
+            $new_object->createRoom((int) $result["online"], $result["conn_id"]);
+            $new_object->fillEmptyPasswordsBBBVCR();
+            ilSession::set('createNewObj', true);
+            ilSession::set('doNotShowResetedTokens', true);
+            parent::afterSave($new_object);
+        }
     }
 
     /**
@@ -1342,7 +1342,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             : $this->lng->txt('rep_robj_xmvc_of_owner_prefix') . ' ' . $this->object->getOwnersName();
         #$values["auth_user"] = $this->object->getAuthUser() ?? $this->object->getOwnersEmail();
         if($this->isBBB && $this->object->isGuestlink()) {
-            $values["access_token"] = rawurldecode($this->object->getAccessToken());
+            $values["access_token"] = rawurldecode((string) $this->object->getAccessToken());
             $secretExpiration = $this->object->getSecretExpiration();
             $values["secret_expires"] = (bool) $secretExpiration && (bool) $values["access_token"];
             $values["secret_expiration_date"] = (string) $secretExpiration;
@@ -1434,9 +1434,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $vc = ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent();
             if($vc === 'bbb') {
                 $this->object->fillEmptyPasswordsBBBVCR();
-            } elseif($vc === 'om') {
-                $om = new ilApiOM($this);
-                $this->prepareRoomOM($om);
             }
 
             $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt("msg_obj_modified"), true);
@@ -1556,7 +1553,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
     public function confirmedDelete(): void
     {
-        $this->object->doDelete();
+        //check ToDo
+//        $this->object->doDelete();
     }
 
     public function getBuddyPicture(): string
@@ -1604,9 +1602,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             case 'bbb':
                 $this->showContentBBB();
                 break;
-            case 'om':
-                $this->showContentOM();
-                break;
             case 'webex':
                 $this->showContentWebex();
                 break;
@@ -1653,7 +1648,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if(isset($upcomingSession[0])) {
             $upcomingSession[0]['ref_id'] = $this->object->getRefId();
             $sess = $upcomingSession[0];
-            $participants = json_decode('' . $upcomingSession[0]['participants'], 1);
+            $participants = json_decode($upcomingSession[0]['participants'], 1);
         }
 
         $userId = $this->dic->user()->getId();
@@ -1981,7 +1976,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if(isset($upcomingSession[0])) {
             $upcomingSession[0]['ref_id'] = $this->object->getRefId();
             $sess = $upcomingSession[0];
-            $participants = json_decode('' . $upcomingSession[0]['participants'], 1);
+            $participants = json_decode(strval($upcomingSession[0]['participants']), 1);
         }
 
         $userId = $this->dic->user()->getId();
@@ -2390,33 +2385,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 //        }
     }
 
-    /**
-     * @throws ilTemplateException
-     */
-    private function showContentOM()
-    {
-        global $DIC;
-
-        $om = new ilApiOM($this);
-        $this->prepareRoomOM($om);
-
-        switch (true) {
-            case !($om instanceof ilApiOM) || !ilObjMultiVcAccess::checkConnAvailability($this->obj_id):
-                $this->showContentUnavailable();
-                break;
-            case $this->dic->http()->wrapper()->query()->has('startOM') && $this->dic->http()->wrapper()->query()->retrieve('startOM', $this->dic->refinery()->kindlyTo()->int()) === 10:
-            case $this->dic->http()->wrapper()->query()->has('startOM') && $this->dic->http()->wrapper()->query()->retrieve('startOM', $this->dic->refinery()->kindlyTo()->int()) === 1 && !$om->isMeetingStartable():
-                $this->showContentWindowClose();
-                break;
-            case $this->dic->http()->wrapper()->query()->has('startOM') && $this->dic->http()->wrapper()->query()->retrieve('startOM', $this->dic->refinery()->kindlyTo()->int()) === 1 && $om->isMeetingStartable():
-                $this->redirectToPlatformByUrl($om->getOmRoomUrl());
-                break;
-            case null !== $om->getPluginIniSet('max_concurrent_users'):
-            default:
-                $this->showContentDefault($om);
-                break;
-        }
-    }
 
     private function showContentBBB()
     {
@@ -2461,21 +2429,21 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @throws ilTemplateException
      * @throws Exception
      */
-    private function showContentDefault(ilApiBBB|ilApiEdudip|ilApiOM|ilApiWebex|ilApiTeams|ilApiZoom|StdClass $vcObj, bool $withConcurrent = false)
+    private function showContentDefault(ilApiBBB|ilApiEdudip|ilApiWebex|ilApiTeams|ilApiZoom|StdClass $vcObj, bool $withConcurrent = false)
     {
         $tpl = $this->dic->ui()->mainTemplate();//['tpl'];
-        $tpl->addCss("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.css");
+//        $tpl->addCss("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.css");
+//
+//        $tpl->addJavaScript("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.js", true, 3);
 
-        $tpl->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.js", true, 3);
-
-        $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.html", true, true);
+        $my_tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.show_content_default.html", true, true);
 
 
         $apiPostFix = strtolower(str_replace('ilApi', '', get_class($vcObj)));
 
         $my_tpl->setVariable('HEADLINE_WELCOME', $this->txt('headline_welcome_' . $this->sessType));
 
-        if($this->isBBB || $vcObj instanceof ilApiOM) {
+        if($this->isBBB) {
             if ($this->object->get_moderated()) {
                 if ($vcObj->isUserModerator()) {
                     $my_tpl->setVariable("INFOTOP", $this->txt('info_top_moderator_' . $this->platform));
@@ -2508,7 +2476,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         } else {
             $my_tpl->setVariable("UNHIDE_MSG_REC_ALLOWED", '');
         }
-
 
         if(!$withConcurrent) {
             $my_tpl->setVariable('CLASS_INFO_CONCURRENT', 'hidden');
@@ -2565,7 +2532,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $my_tpl->setVariable("userInviteInfo", $this->txt('user_invite_info'));
             $my_tpl->setVariable("userInviteUrl", $guestLinkUrl);
             // if isset guestLinkPw
-            if($this->isBBB && (bool) strlen($guestPw = trim($this->object->getAccessToken()))) {
+            if($this->isBBB && (bool) strlen($guestPw = trim(strval($this->object->getAccessToken())))) {
                 $pwExpired = $this->object->isSecretExpired();
                 $my_tpl->setVariable("guestLinkPwInfo", $this->txt('guest_link_pw_info'));
                 $my_tpl->setVariable("guestLinkPw", rawurldecode($guestPw));
@@ -2614,8 +2581,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     private function showContentWindowClose()
     {
         $tpl = $this->dic->ui()->mainTemplate();
-        $tpl->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_close.js", true, 3);
-        $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_close.html", true, true);
+        $tpl->addJavaScript("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_close.js", true, 3);
+        $my_tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_close.html", true, true);
         $my_tpl->setVariable('LINK_CLOSE', $this->lng->txt('rep_robj_xmvc_tab_close'));
         $tpl->setContent($my_tpl->get());
     }
@@ -2637,8 +2604,8 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         //        $backUrl = ILIAS_HTTP_PATH . '/' . substr($rqUri, strpos($rqUri, 'ilias.php')) . '&startWEBEX=10';
 
         $email = $attendee['email'];
-        $tpl->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/tpl.window_join.js", true, 3);
-        $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/tpl.window_join.html", true, true);
+        $tpl->addJavaScript("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/tpl.window_join.js", true, 3);
+        $my_tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/webex/tpl.window_join.html", true, true);
         $my_tpl->setVariable("SITEURL", $url);
         $my_tpl->setVariable("MEETINGKEY", $relData->meetingNumber);
         $my_tpl->setVariable("MEETINGPASSWORD", $relData->password);
@@ -2654,9 +2621,9 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $tpl = $this->dic->ui()->mainTemplate();
 
         $redirectUrl = str_replace('windowBBB', 'startBBB', $this->dic->http()->request()->getUri());
-        // $tpl->addCss('./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/css/three-dots.css');
-        $tpl->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_redirect.js", true, 3);
-        $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_redirect.html", true, true);
+        // $tpl->addCss('./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/css/three-dots.css');
+        $tpl->addJavaScript("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_redirect.js", true, 3);
+        $my_tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.window_redirect.html", true, true);
         $my_tpl->setVariable("REDIRECTMSG", $this->lng->txt('rep_robj_xmvc_redirect_msg'));
         $my_tpl->setVariable("REDIRECTURL", $redirectUrl);
         $tpl->setContent($my_tpl->get());
@@ -2666,7 +2633,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     {
         $tpl = $this->dic->ui()->mainTemplate();
 
-        $my_tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.unavailable.html", true, true);
+        $my_tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.unavailable.html", true, true);
 
         $my_tpl->setVariable("UNAVAILABLE", $this->lng->txt('rep_robj_xmvc_service_unavailable'));
 
@@ -2677,9 +2644,10 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     /**
      * @throws Exception
      */
-    private function redirectToPlatformByUrl(string $url, ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom|null $vcObj = null): void
+    #[NoReturn]
+    private function redirectToPlatformByUrl(string $url, ilApiBBB|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom|null $vcObj = null): void
     {
-        if(!is_null($vcObj) && $vcObj instanceof ilApiBBB) {
+        if($vcObj instanceof ilApiBBB) {
             $this->object->setUserLog('bbb', $vcObj);
         }
         header('Status: 303 See Other', false, 303);
@@ -2691,7 +2659,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
      * @throws ilTemplateException
      * @throws Exception
      */
-    private function getJoinContent(ilApiBBB|ilApiOM|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom $vcObj): string
+    private function getJoinContent(ilApiBBB|ilApiWebex|ilApiEdudip|ilApiTeams|ilApiZoom $vcObj): string
     {
         $sessAuthUserIsValid = true;
 
@@ -2750,7 +2718,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             && ($vcObj->isUserModerator() || $vcObj->isUserAdmin() || !$this->object->get_moderated())
                 ? 'start'
                 : 'join';
-            $tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.join_btn.html", true, true);
+            $tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.join_btn.html", true, true);
             $joinBtnText = $this->lng->txt('rep_robj_xmvc_btntext_' . $btnEvent . '_' . $this->sessType);
             $vcType = strtoupper(ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent());
             $startType = self::START_TYPE[$vcType];
@@ -2765,11 +2733,11 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
             $tpl->setVariable("JOINBTNURL", $joinBtnUrl);
             $tpl->setVariable("JOINBTNTEXT", $joinBtnText);
         } else {
-            $tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.wait_msg.html", true, true);
+            $tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.wait_msg.html", true, true);
             if($isWebex) {
                 if($showJsIsMeetingRunning) {
-                    //                    $tpl->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.xhrIsMeetingRunning.js",true, 2);
-                    //$this->dic->ui()->mainTemplate()->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.xhrIsMeetingRunning.js", true, 2);
+                    //                    $tpl->addJavaScript("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.xhrIsMeetingRunning.js",true, 2);
+                    //$this->dic->ui()->mainTemplate()->addJavaScript("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.xhrIsMeetingRunning.js", true, 2);
                 }
                 $tpl->setVariable("WAITMSG", str_replace('{br}', '<br />', $this->lng->txt('rep_robj_xmvc_wait_join_meeting_webex')));
             } elseif ($isEdudip) {
@@ -2789,14 +2757,14 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         if($isWebex && !$isModOrAdmin && $showBtn) {
             //check
             $webexData = $isWebex ? $this->object->getWebexMeetingByRefIdAndDateTime($this->ref_id, null, !$isModOrAdmin ? 0 : ilObjMultiVc::MEETING_TIME_AHEAD) : null;
-            $tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.meeting_password.html", true, true);
+            $tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.meeting_password.html", true, true);
             $tpl->setVariable("MEETING_PASSWORD", $webexData['rel_data']->password);
             $content .= $tpl->get();
         }
 
         $showAdmInfoMeeting = $vcObj->hasSessionObject() && ($vcObj->isUserModerator() || $vcObj->isUserAdmin());
         if($showAdmInfoMeeting) {
-            $tpl = new ilTemplate("./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.adm_info_appointment.html", true, true);
+            $tpl = new ilTemplate("./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/templates/default/tpl.adm_info_appointment.html", true, true);
             $tpl->setVariable("ADM_INFO", $this->lng->txt('rep_robj_xmvc_adm_info_appointment'));
             $content .= $tpl->get();
         }
@@ -2808,7 +2776,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
     /**
      * @throws ilPluginException
      */
-    private function getShowRecordings(ilApiBBB|ilApiOM $vcObj, array $getRecId = [], bool $returnRawData = false): array|string
+    private function getShowRecordings(ilApiBBB $vcObj, array $getRecId = [], bool $returnRawData = false): array|string
     {
         global $DIC;
 
@@ -2855,7 +2823,7 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         $c_gui->setConfirm($this->lng->txt("confirm"), "deleteRecords");
 
         // add items to delete
-        $vcObj = ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent() === 'bbb' ? new ilApiBBB($this) : new ilApiOM($this);
+        $vcObj = new ilApiBBB($this);
         $recIds = $this->dic->http()->wrapper()->post()->retrieve('rec_id', $this->dic->refinery()->kindlyTo()->listOf($this->dic->refinery()->kindlyTo()->string()));
         $records = $this->getShowRecordings($vcObj, $recIds, true);
         foreach ($recIds as $recId) {
@@ -2909,13 +2877,13 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
 
 
         try {
-            $vcObj = ilMultiVcConfig::getInstance($this->object->getConnId())->getShowContent() === 'bbb' ? new ilApiBBB($this) : new ilApiOM($this);
+            $vcObj = new ilApiBBB($this);
             //$bbb = new ilApiBBB($this);
         } catch (Exception $e) {
             $vcObj = new StdClass();
         }
 
-        if(!($vcObj instanceof ilApiBBB) && !($vcObj instanceof ilApiOM)) {
+        if(!($vcObj instanceof ilApiBBB)) {
             return $success;
         }
 
@@ -2952,22 +2920,6 @@ class ilObjMultiVcGUI extends ilObjectPluginGUI
         return $content;
     }
 
-    private function prepareRoomOM(ilApiOM $om)
-    {
-        $roomId = $this->object->getRoomId();
-        if(!is_int($roomId) || $roomId === 0) {
-            $roomId = $om->createRoom();
-            $this->object->updateRoomId($roomId);
-        } else {
-            // only proc if debug is true in plugin.ini
-            #if( !!(bool)$om->getPluginIniSet('debug') ) {
-            $rVal = $om->updateRoom($roomId);
-            if($rVal !== $roomId) {
-                $this->object->updateRoomId($rVal);
-            }
-            #}
-        }
-    }
 
     #################################################################################################
     #### Webex

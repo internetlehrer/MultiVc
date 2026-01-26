@@ -6,7 +6,7 @@
 
 Dieses [ILIAS](https://www.ilias.de) Plugin ermöglicht die Verwendung verschiedener WebRTC-basierter Plattformen für virtuelle Klassenzimmer und Konferenzsysteme.
 
-Für die ILIAS-Version 6 und 7 nutzen Sie bitte den branch 'release7'. S. https://github.com/internetlehrer/MultiVc/tree/release7
+Für die ILIAS-Version 10 nutzen Sie bitte den branch 'release10'. S. https://github.com/internetlehrer/MultiVc/tree/release10
 
 ## Features
 
@@ -25,10 +25,10 @@ Viele weitere Plattformabhängige Features stehen zur Verfügung, wie beispielsw
 
 # Voraussetzungen
 
-Wir empfehlen die Nutzung des MultiVc-Plugin mit ILIAS Release 8. Die Mindestvoraussetzungen, mit denen das Plugin getestet wurde, finden Sie hier im Überblick:
+Wir empfehlen die Nutzung des MultiVc-Plugin mit ILIAS Release 10. Die Mindestvoraussetzungen, mit denen das Plugin getestet wurde, finden Sie hier im Überblick:
 
-- ILIAS 9.x
-- PHP 8.2
+- ILIAS 10.x
+- PHP 8.2, 8.3
 
 Des Weiteren benötigen Sie eine funktionsfähige Installation der gewünschten WebRTC Plattform bzw. ein Kundenkonto beim WebRTC Provider.
 
@@ -36,12 +36,15 @@ Des Weiteren benötigen Sie eine funktionsfähige Installation der gewünschten 
 
 # Installation
 
-- Kopieren Sie den Inhalt dieses Ordners oder Klonen Sie das Git Repository in folgendes Verzeichnis auf Ihrem Webserver: `<ILIAS_directory>/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc`
+- Kopieren Sie den Inhalt dieses Ordners oder Klonen Sie das Git Repository in folgendes Verzeichnis auf Ihrem Webserver: `<ILIAS_directory>/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc`
   - Wechseln Sie auf dem Filesystem Ihres Webservers ins ILIAS-Verzeichnis, dann
-  - `mkdir -p Customizing/global/plugins/Services/Repository/RepositoryObject`
-  - `cd Customizing/global/plugins/Services/Repository/RepositoryObject`
-  - `git clone -b release9 --single-branch https://github.com/internetlehrer/MultiVc MultiVc`
+  - `mkdir -p public/Customizing/global/plugins/Services/Repository/RepositoryObject`
+  - `cd public/Customizing/global/plugins/Services/Repository/RepositoryObject`
+  - `git clone -b release10 --single-branch https://github.com/internetlehrer/MultiVc MultiVc`
 
+- Wechseln Sie in das ILIAS-Verzeichnis und geben Sie ein: `composer install` ggfs. ergänzt um weitere Optionen wie z.B. ` --no-dev`
+
+- Geben Sie nun ein: `php cli/setup.php update`
 
 - Melden Sie sich auf Ihrer ILIAS-Installation als Administrator an und wählen Sie im Menü `Administration / Plugins`. In der Plugin-Übersicht finden Sie den Eintrag MultiVc. Führen Sie über dessen Dropdown-Menü folgende Aktionen aus:
   - Installieren
@@ -57,6 +60,7 @@ Aktuell werden folgende WebRTC-Platformen unterstützt:
 - edudip (Webinar)
 - Webex
 - Teams
+- Zoom
 
 
 
@@ -80,7 +84,7 @@ Aufzeichnungen von Meetings werden nach Beenden eines Meetings tabellarisch unte
 Sie können die Anzahl maximal gleichzeitiger Nutzer definieren und die Nutzung in einer tabellarischen Übersicht nach Datum und Uhrzeit auswerten. Damit Sie dieses Feature nutzen können, gehen Sie wie folgt vor:
 
 - Wechseln Sie auf dem Filesystem Ihres Webservers ins ILIAS-Plugin-Verzeichnis
-  `cd [*documentroot*]/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc`
+  `cd [*documentroot*]/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc`
 - öffnen Sie mit Schreibrechten die Datei "plugin.ini"
   `sudo nano ./plugin.ini`
 - entfernen Sie das Zeichen "#" in der Zeile, beginnend mit "max_concurrent_users"
@@ -300,7 +304,7 @@ Grundsätzlich werden die Standard-Teams-Benachrichtigungen unter Berücksichtig
 
 ### Integration
 
-Das Plugin erfordert erweiterte Zoo,-Rechte und wurde getestet mit Business Zoom accounts.
+Das Plugin erfordert erweiterte Zoom-Rechte und wurde getestet mit Business Zoom accounts.
 
 Grundlegende Informationen zum Erstellen der erforderlichen Server-OAuth-App finden sich hier:
 https://developers.zoom.us/docs/internal-apps/create/
@@ -331,36 +335,38 @@ meeting:read:list_past_participants:admin
 webinar:read:list_past_participants:admin
 
 ### Lernfortschritt
-Mit dem erstmaligen Einrichten von Zoom im MultiVc-Plugin werden die Rechte 'Lernfortschrittseinstellungen bearbeiten' und 'Lernfortschritt anderer Benutzer einsehen' hinzugefügt. Passen Sie ggfs. Objekte und insbesondere die Rollenvorlagen an. 
+Mit dem erstmaligen Einrichten von Zoom im MultiVc-Plugin werden die Rechte 'Lernfortschrittseinstellungen bearbeiten' und 'Lernfortschritt anderer Benutzer einsehen' hinzugefügt. Passen Sie ggfs. Objekte und insbesondere die Rollenvorlagen an.
 
 Für den Fall, dass Sie den Lernfortschritt nutzen möchten, wird empfohlen, dass in der Konfiguration 'Benutzerübersicht verstecken' deaktiviert ist.
 Somit können Sie für abgelaufene Meetings durch Klick auf 'Anwesenheitszeiten' unter 'Meeting' den Lernfortschritt aktualisieren. Ansonsten wird der Lernfortschritt durch den täglich laufenden Cronjob 'MultiVc-Cronjob zur Ermittlung des Lernfortschritts' berechnet.
 Beachten Sie, dass der Lernfortschritt nur für diejenigen berechnet werden kann, die sich über die Zoom-App angemeldet haben. Ansonsten kann eine eindeutige Nutzerzuordnung nicht erfolgen und die Teilnehmenden werden mit der Rolle 'Gast' angezeigt. Für Gäste wird kein Lernfortschritt ermittelt.
 
-Grundlage für die Ermittlung des Lernfortschritts ist die Anwesenheitszeit. In der 'Benutzerübersicht' sehen Sie die einzelne Teilnahmezeiten, gekennzeichnet mit 'Teilnahme ab' und 'Teilnahme bis'. 
-Unter dem Link 'Anwesenheitszeiten' sehen Sie die kumulierten Anwesenheitszeiten je Meeting und einen Prozentwert. 
-Dieser Prozentwert berücksichtigt die Dauer des Meetings ohne Überziehungen. Wurde beispielsweise ein Meeting von 13:00 bis 14:00 angesetzt, so werden Zeiten nach 14:00 nicht berücksichtigt. 
+Grundlage für die Ermittlung des Lernfortschritts ist die Anwesenheitszeit. In der 'Benutzerübersicht' sehen Sie die einzelne Teilnahmezeiten, gekennzeichnet mit 'Teilnahme ab' und 'Teilnahme bis'.
+Unter dem Link 'Anwesenheitszeiten' sehen Sie die kumulierten Anwesenheitszeiten je Meeting und einen Prozentwert.
+Dieser Prozentwert berücksichtigt die Dauer des Meetings ohne Überziehungen. Wurde beispielsweise ein Meeting von 13:00 bis 14:00 angesetzt, so werden Zeiten nach 14:00 nicht berücksichtigt.
 Wurde das Meeting von einem (co-) Organisator vorzeitig beendet, so wird die verbleibende Zeit bis zum ursprünglich vorgesehenen Ende nicht für die Berechnung des Prozentwerts herangezogen.
 
 Anwesenheitszeiten bei vor der vorgesehener Startzeit beendeten Sitzungen werden ebenso wenig berücksichtigt, wie Anwesenheitszeiten für Sitzungen, die erst nach dem vorgesehenen Ende gestartet wurden.
-Innerhalb der vorgesehenen Startzeit und Endzeit darf nur eine Sitzung vorhanden sein. 
-Sollte zwischendurch das Meeting beendet und neu gestartet werden, so wird nur die erste Sitzung innerhalb eines Meetings berücksichtigt. 
+Innerhalb der vorgesehenen Startzeit und Endzeit darf nur eine Sitzung vorhanden sein.
+Sollte zwischendurch das Meeting beendet und neu gestartet werden, so wird nur die erste Sitzung innerhalb eines Meetings berücksichtigt.
 
 Über den Reiter 'Lernfortschritt' und den Link 'Einstellungen' können Sie bei grundsätzlich aktiviertem Lernfortschritt einen Schwellwert für den Status 'Bearbeitet' bestimmen. Die Default-Einstellung ist 70. Das bedeutet, dass mindestens 70% der möglichen Anwesenheitszeit erreicht werden muss, um den Status 'Bearbeitet' (grün) zu erhalten.
 
-Hinweis: Der CronJob sollte aus Performanzgründen in jedem Fall aktiviert sein. 
+Hinweis: Der CronJob sollte aus Performanzgründen in jedem Fall aktiviert sein.
 
 ### Webinare
-Webinare sind dadurch gekennzeichnet, dass Teilnehmende nicht eigenständig in Meetings gelangen, sondern durch (Co-)Organisatoren hineingelassen werden müssen. Außerdem kann in Webinaren nicht jeder eigenständig Präsentator-Rechte wahrnehmen. 
+Webinare sind dadurch gekennzeichnet, dass Teilnehmende nicht eigenständig in Meetings gelangen, sondern durch (Co-)Organisatoren hineingelassen werden müssen. Außerdem kann in Webinaren nicht jeder eigenständig Präsentator-Rechte wahrnehmen.
 
 ### Co-Organisatoren (Mitorganisatoren)
-Damit Kurs- bzw. Gruppenadministratoren bzw. Kurstutoren erweiterte Rechte als Co-Organisatoren haben, müssen sie _vor_ einem angesetzten Meeting mit ihrer Rolle im Kurs bzw. in der Gruppe eingetragen sein. Danach sind sie einfache Teilnehmende. 
+Damit Kurs- bzw. Gruppenadministratoren bzw. Kurstutoren erweiterte Rechte als Co-Organisatoren haben, müssen sie _vor_ einem angesetzten Meeting mit ihrer Rolle im Kurs bzw. in der Gruppe eingetragen sein. Danach sind sie einfache Teilnehmende.
 
 ### Sprache der Benachrichtigung
-Grundsätzlich werden die Standard-Zoom-Benachrichtigungen unter Berücksichtigung der Benutzersprache und der gewählten Zeitzone genutzt. Da die Teilnehmenden außer dem Direktlink zu Zoom auch den Link im ILIAS-Objekt nutzen können und ggfs. ein Hinweis zu anstehenden Aufzeichnungen übermittelt werden soll, gilt Folgendes: Möchten Sie als Organisator die ergänzenden Texte z.B. in Englisch anzeigen lassen, so wechseln Sie in ILIAS zur englischen Sprache und legen Sie dann ein Meeting an. Auch alle Folge-Benachrichtigungen etwa beim Kursbeitritt nutzen dann die zum Zeitpunkt des Anlegens eines Meetings genutzte Sprache.   
+Grundsätzlich werden die Standard-Zoom-Benachrichtigungen unter Berücksichtigung der Benutzersprache und der gewählten Zeitzone genutzt. Da die Teilnehmenden außer dem Direktlink zu Zoom auch den Link im ILIAS-Objekt nutzen können und ggfs. ein Hinweis zu anstehenden Aufzeichnungen übermittelt werden soll, gilt Folgendes: Möchten Sie als Organisator die ergänzenden Texte z.B. in Englisch anzeigen lassen, so wechseln Sie in ILIAS zur englischen Sprache und legen Sie dann ein Meeting an. Auch alle Folge-Benachrichtigungen etwa beim Kursbeitritt nutzen dann die zum Zeitpunkt des Anlegens eines Meetings genutzte Sprache.
 
 
 # Verwendung
+
+
 
 ## Virtuellen Meetingraum anlegen
 
@@ -416,10 +422,10 @@ Zum Kürzen der Url gehen Sie so vor:
 - fügen Sie Ihrer Webserver-Konfiguration eine Rewrite-Rule hinzu
 
   - Bsp. für Apache .htaccess:
-    `RewriteRule ^m/([A-Za-z0-9]+)/([0-9]+)$ ./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/index.php?ref_id=$2&client_id=$1 [L]`
+    `RewriteRule ^m/([A-Za-z0-9]+)/([0-9]+)$ ./public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/index.php?ref_id=$2&client_id=$1 [L]`
   - Bsp. für nginx .conf:
     `location /m/  {
-            rewrite ^/m/([A-Za-z0-9]+)/([0-9]+)$ /Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/index.php?ref_id=$2&client_id=$1 last;
+            rewrite ^/m/([A-Za-z0-9]+)/([0-9]+)$ /public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/index.php?ref_id=$2&client_id=$1 last;
             return 403;
     }`
 - in der plugin.ini setzen Sie den Wert "guest_link_shortener = 1"

@@ -89,7 +89,7 @@ class ilApiWebexIntegration
             $scopes .= implode(' ', $scopeArr);
         }
 
-        $redirectUri = ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/server.php';
+        $redirectUri = ILIAS_HTTP_PATH . '/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/server.php';
         #$gotoAfterReturn = filter_var( ilSession::get('referer'), FILTER_SANITIZE_ENCODED );
         $gotoAfterReturn = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_ENCODED);
         if($this->isConfigGui && $this->dic->http()->wrapper()->query()->has('connId')) {
@@ -123,7 +123,7 @@ class ilApiWebexIntegration
      */
     private function webexAccess(string $code): void
     {
-        $redirectUri = ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/server.php';
+        $redirectUri = ILIAS_HTTP_PATH . '/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/server.php';
         $post = [
             'grant_type' => 'authorization_code',
             'client_id' => $this->pluginConfig->getSvrUsername(),

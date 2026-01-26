@@ -1,13 +1,13 @@
-<div id="xmvc">
-    <div class="ilCLI ilObjListRow row">
+<div id="xmvc"><!--ilContentContainer-->
+    <div class="row"><!--ilCLI ilObjListRow -->
         <div id="infotop" class="col-sm-12">
-            <h2 class="ilHeader">{HEADLINE_WELCOME}</h2>
+            <h3>{HEADLINE_WELCOME}</h3>
             {INFOTOP}
         </div>
         <div id="info_concurrent" class="{CLASS_INFO_CONCURRENT}">
             {INFO_CONCURRENT}
         </div>
-        <div id="join_btn" class="col-sm-12">
+        <div id="join_btn" class="col-sm-12" style="zoom: 1.5;padding: 25px 15px;">
             {JOINCONTENT}
         </div>
         <div id="msg_running" class="col-sm-12 hidden">
@@ -20,16 +20,16 @@
             {RECORDING_WARNING}
         </div>
     </div>
-    <div class="ilCLI ilObjListRow row {UNHIDE_LIST_MEETINGS}hidden">
+    <div class="row {UNHIDE_LIST_MEETINGS}hidden">
         <div id="listMeetings" class="col-sm-12">
-            <h2 class="ilHeader">{HEADLINE_LIST_MEETINGS}&nbsp;</h2>
+            <h3>{HEADLINE_LIST_MEETINGS}&nbsp;</h3>
             {LIST_MEETINGS}
         </div>
     </div>
 
-    <div class="ilCLI ilObjListRow row {UNHIDE_GUESTLINK}hidden">
+    <div class="row {UNHIDE_GUESTLINK}hidden">
         <div class="col-sm-12">
-            <h2 class="ilHeader">{HEADLINE_GUESTLINK}</h2>
+            <h3>{HEADLINE_GUESTLINK}</h3>
             <div class="ilInfoScreenSec form-horizontal" id="infoscreen_section_2">
             <div class="form-group">
                 <div class="il_InfoScreenProperty control-label col-xs-3">{userInviteInfo}</div>
@@ -73,31 +73,51 @@
     </div>
 
 
-    <div class="ilCLI ilObjListRow row {UNHIDE_RECORDINGS}hidden">
+    <div class="row {UNHIDE_RECORDINGS}hidden">
         <div id="recordings" class="col-sm-12">
-            <h2 class="ilHeader">{HEADLINE_RECORDING}</h2>
+            <h3>{HEADLINE_RECORDING}</h3>
             {RECORDINGS}
         </div>
     </div>
 
 
-    <div class="ilCLI ilObjListRow row">
+    <div class="row">
         <div id="info_bottom" class="col-sm-12">
-            <h2 class="ilHeader">{HEADLINE_INFO_BOTTOM}</h2>
+            <h3>{HEADLINE_INFO_BOTTOM}</h3>
             {INFOBOTTOM}
         </div>
     </div>
 
 
-    <div class="ilCLI ilObjListRow row">
+    <div class="row">
         <div id="info_requirements" class="col-sm-12">
-            <h2 class="ilHeader">{HEADLINE_INFO_REQUIREMENTS}</h2>
+            <h3>{HEADLINE_INFO_REQUIREMENTS}</h3>
             {INFO_REQUIREMENTS}
         </div>
     </div>
 
 
 </div>
+<script type="text/javascript">
+  document.querySelector('#join_btn .btn.btn-default').addEventListener('click', function (e) {
+    document.querySelector('#join_btn').classList.add('hidden');
+    document.querySelector('#msg_running').classList.remove('hidden');
+  });
+
+  document.querySelector('#copyUserInviteUrl').addEventListener('click', function (e) {
+    let copyText = document.querySelector('#userInviteUrl');
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand('copy');
+  });
+
+  document.querySelector('#copyGuestLinkPw').addEventListener('click', function (e) {
+    let copyText = document.querySelector('#guestLinkPw');
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand('copy');
+  });
+</script>
 
 
 

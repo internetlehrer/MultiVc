@@ -1,7 +1,0 @@
-#xmvc h2.ilHeader { display: block; }
-#xmvc #infotop > .ilHeader {  margin-bottom: 25px; }
-#xmvc h2 + .form-group { margin: 0.8em 0; }
-#xmvc #join_btn .btn.btn-default { zoom: 1.5; }
-#xmvc .ilCLI.ilObjListRow.row { padding: 25px 15px; margin-left: 0; margin-right: 0; }
-#xmvc .ilCLI.ilObjListRow.row + .ilCLI.ilObjListRow.row { margin-top: 2.5em; }
-#xmvc > .ilCLI.ilObjListRow.row > .col-sm-12 { padding-bottom: 1.5em; }
