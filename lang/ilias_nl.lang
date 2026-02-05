@@ -1,259 +1,251 @@
 <!-- language file start -->
-add_presentation_url#:#Openingspresentatie
+add_presentation_url#:#Start presentatie
 add_token#:#Token toevoegen
 add_token_user#:#Nieuwe moderator / token
-add_welcome_text#:#Persoonlijk welkomstbericht
+add_welcome_text#:#Voeg welkomsttekst toe
 adm_info_appointment#:#Als beheerder of docent kunt u de virtuele ruimte starten. Deelnemers kunnen de ruimte echter alleen openen tijdens de sessie.
-assigned_roles_info#:#Het aanmaken van deze MultiVc-configuratie kan worden beperkt tot gebruikers die tot een of meer van de geselecteerde rollen behoren.
 assigned_roles#:#Toegewezen rollen
-authorize#:#autoriseren
+assigned_roles_info#:#Het aanmaken van deze MultiVc-configuratie kan worden beperkt tot gebruikers die tot een of meer van de geselecteerde rollen behoren.
+authorize#:#Autoriseren
 bbb_default_server#:#Standaard BBB-server
-bbb_guest_password_info#:#Alfanumerieke tekens en speciale tekens zijn toegestaan, zoals: <code>a-Z_09,.#@!?</code>
-bbb_guest_password#:#Gastwachtwoord
+bbb_guest_password_info#:#Alfanumerieke tekens en speciale tekens zijn toegestaan, zoals: <code>a-Z_09,.
+bbb_guest_password#:#Wachtwoord voor gasten
 bbb_secret_expiration_date#:#Vervaldatum
 bbb_secret_expiration_date_info#:#Het wachtwoord is geldig tot en met de geselecteerde datum.
 bbb_secret_expired_msg#:#Het gastwachtwoord is verlopen.
-bbb_secret_expires_info#:#Selecteer deze optie als het wachtwoord een beperkte geldigheidsduur moet hebben.
-bbb_secret_expires#:#Vervaldatum
+bbb_secret_expires_info#:#Selecteer deze optie als u een tijdelijk wachtwoord wilt.
+bbb_secret_expires#:#Met vervaldatum.
 big_blue_button#:#BigBlueButton WebRTC
 btn_chat#:#De chat kan worden weergegeven/verborgen.
 btn_chat_choose#:#Chat kan worden weergegeven/verborgen: selectieoptie
-btn_chat_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de mogelijkheid moeten hebben om de chat in de instellingen weer te geven/verbergen.
+btn_chat_choose_info#:#Activeer deze optie als u wilt dat gebruikers met schrijftoegang de optie 'Chat weergeven/verbergen' onder Instellingen kunnen gebruiken.
 btn_chat_default#:#Chat kan worden weergegeven/verborgen: Standaardinstelling
 btn_chat_default_info#:#Om het gebruik te vereenvoudigen, kan het handig zijn om deze optie niet te activeren en de chat altijd weer te geven.
-btn_chat_info#:#Schakel deze optie in als u wilt dat de knop om de chat te tonen/verbergen wordt weergegeven.
-btn_locationshare_choose_info#:#Deze optie moet normaal gesproken uitgeschakeld zijn.
-btn_locationshare_choose#:#Locatieoptie: Selectie
-btn_locationshare_default_info#:#Activeer deze optie alleen na overleg met de functionaris voor gegevensbescherming.
+btn_chat_info#:#Activeer deze optie als u wilt dat de knop de chat verbergt en weer zichtbaar maakt.
+btn_locationshare_choose_info#:#In de meeste gevallen moet deze optie worden uitgeschakeld.
+btn_locationshare_choose#:#Locatieoptie: Keuze
+btn_locationshare_default_info#:#Activeer deze optie alleen na overleg met de functionarissen voor gegevensbescherming.
 btn_locationshare_default#:#Optielocatie: Standaard
-btn_locationshare_info#:#Met deze optie kunnen gebruikers hun huidige locatie delen met anderen in de chat en door anderen worden uitgenodigd voor een aparte vergadering. Om privacyredenen dient deze optie met de nodige voorzichtigheid te worden ingeschakeld.
+btn_locationshare_info#:#Met deze optie kunnen gebruikers hun huidige locatie in de chat delen en door anderen worden uitgenodigd voor een aparte vergadering. Om privacyredenen dient deze optie met de nodige voorzichtigheid te worden gebruikt.
 btn_locationshare#:#Optie Locatie
-btn_settings_choose#:#Kamerinstellingen: Selectieoptie
-btn_settings_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Instellingen in de ruimte' onder Instellingen moeten kunnen zien.
-btn_settings_default#:#Kamerinstellingen: Standaard
-btn_settings_default_info#:#De standaardinstelling zou over het algemeen moeten zijn dat de optie en de knop voor instellingen niet actief zijn.
-btn_settings#:#Kamerinstellingen
-btn_settings_info#:#Schakel deze optie in als u wilt dat de knoppen en instellingen in de ruimte zichtbaar zijn. Dit is meestal niet nodig, omdat de naam en gebruikersafbeelding automatisch worden overgenomen van ILIAS.
+btn_settings_choose_info#:#Activeer deze optie als u wilt dat gebruikers met schrijfrechten 'Instellingen in de ruimte' kunnen selecteren onder Instellingen.
+btn_settings_choose#:#Instellingen in de kamer: Selectieoptie
+btn_settings_default_info#:#De standaardinstelling zou normaal gesproken moeten zijn dat de optie en de knop voor instellingen niet actief zijn.
+btn_settings_default#:#Instellingen in de kamer: Standaardinstelling
+btn_settings_info#:#Activeer deze optie als u wilt dat de knop en de instellingen in de ruimte zichtbaar zijn. Meestal is dit niet nodig, aangezien de naam en de gebruikersafbeelding door ILIAS worden overgenomen.
+btn_settings#:#Inrichting van de kamer
 btntext_concurrent_users_check#:#Controleer de beschikbaarheid
 btntext_guest_login_button#:#Log in als gast
 btntext_join_meeting#:#Deelnemen aan de vergadering
 btntext_join_webinar#:#Neem deel aan het webinar
-btntext_start_meeting#:#Begin de vergadering
+btntext_start_meeting#:#Start de vergadering
 btntext_start_webinar#:#Start webinar
-cam_mic_only_for_moderator_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de bijbehorende selectie in de instellingen moeten hebben. Deze optie moet in de meeste gevallen ingeschakeld zijn.
+cam_mic_only_for_moderator_choose_info#:#Activeer deze optie als gebruikers met schrijfrechten de bijbehorende selectie onder Instellingen moeten hebben. Deze optie moet in de meeste gevallen geactiveerd zijn.
 cam_mic_only_for_moderator_choose#:#Deelnemers mogen hun camera en microfoon niet inschakelen: Optie
-cam_mic_only_for_moderator_default_info#:#Organisatoren kunnen deelnemers selectief toestaan ​​hun microfoon en/of camera te gebruiken. Deelnemers kunnen zonder toestemming niets delen of uitzenden. Deze optie is handig voor evenementen met een zeer groot aantal deelnemers.
-cam_mic_only_for_moderator_default#:#Deelnemers mogen hun camera en microfoon niet inschakelen: standaardinstelling
-cam_mic_only_for_moderator_info#:#De organisatoren zullen deelnemers selectief toestaan ​​hun microfoon en/of camera te gebruiken. Deelnemers mogen zonder toestemming niets delen of uitzenden.
-cam_mic_only_for_moderator#:#Deelnemers mogen hun camera en microfoon niet inschakelen.
-cam_only_for_moderator_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Camera alleen voor moderators' in de instellingen moeten hebben. Deze optie moet in de meeste gevallen ingeschakeld zijn.
-cam_only_for_moderator_choose#:#Camera alleen voor moderators: selectieoptie
-cam_only_for_moderator_default_info#:#Deze optie moet in de meeste gevallen uitgeschakeld zijn en alleen ingeschakeld worden als er prestatieproblemen worden verwacht bij een groot aantal deelnemers. Moderators kunnen deze instelling altijd tijdens een sessie wijzigen.
-cam_only_for_moderator_default#:#Camera alleen voor moderators: Standaardinstelling
-cam_only_for_moderator_info#:#Aanbevolen voor vergaderingen met een zeer groot aantal mensen.
-cam_only_for_moderator_zoom#:#Camera alleen voor presentatoren
-cam_only_for_moderator_zoom_info#:#Aanbevolen voor vergaderingen met een zeer groot aantal mensen!
+cam_mic_only_for_moderator_default_info#:#Organisatoren staan deelnemers specifiek toe om een microfoon en/of camera te gebruiken. Deelnemers kunnen deze niet delen zonder toestemming. Deze optie is handig voor evenementen met een groot aantal deelnemers.
+cam_mic_only_for_moderator_default#:#Deelnemers mogen hun camera en microfoon niet inschakelen: Standaardinstelling
+cam_mic_only_for_moderator_info#:#De organisatoren staan deelnemers uitdrukkelijk toe om een microfoon en/of camera te gebruiken. Deelnemers mogen deze informatie niet delen zonder toestemming.
+cam_mic_only_for_moderator#:#Het is deelnemers niet toegestaan om hun camera en microfoon aan te zetten.
 cam_only_for_moderator#:#Camera alleen voor moderators
-cancel#:#annuleren
-cat_create_xmvc#:#Maak een virtuele vergaderruimte aan.
-chat_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Chat toestaan' onder Instellingen moeten hebben.
-chat_choose#:#Chat toestaan: Optie
-chat_default_info#:#Indien ingeschakeld, kunnen mensen met elkaar chatten.
-chat_default#:#Chat toestaan: Standaardinstelling
-chat_info#:#Mensen kunnen met elkaar chatten.
+cam_only_for_moderator_choose#:#Camera alleen voor moderators: optie
+cam_only_for_moderator_choose_info#:#Activeer deze optie als u wilt dat gebruikers met schrijftoegang 'Camera alleen voor moderators' kunnen selecteren onder Instellingen. Deze optie moet in de meeste gevallen geactiveerd zijn.
+cam_only_for_moderator_default#:#Camera alleen voor moderators: Standaardinstelling
+cam_only_for_moderator_default_info#:#Deze optie moet in de meeste gevallen worden uitgeschakeld en alleen worden ingeschakeld als er prestatieproblemen te verwachten zijn bij een groot aantal deelnemers. Moderators hebben altijd de mogelijkheid om de instelling in BigBlueButton tijdens een sessie te wijzigen.
+cam_only_for_moderator_info#:#Aanbevolen voor sessies met een groot aantal mensen.
+cancel#:#Annuleren
+cat_create_xmvc#:#een virtuele vergaderruimte creëren
 chat#:#Chat toestaan
+chat_choose#:#Chat toestaan: Selectieoptie
+chat_choose_info#:#Schakel deze optie in als u wilt dat gebruikers met schrijfrechten de optie 'Privéchat toestaan' geselecteerd zien onder Instellingen.
+chat_default#:#Chat toestaan: Standaardinstelling
+chat_default_info#:#Indien geactiveerd, kunnen mensen met elkaar chatten.
+chat_info#:#Mensen kunnen met elkaar praten.
 conf_availability_0#:#Niet beschikbaar
 conf_availability_1#:#Bestaande toegestaan
-conf_availability_2#:#Er kunnen nieuwe worden gegenereerd
+conf_availability_2#:#Er kunnen nieuwe worden gemaakt.
 conf_availability#:#Beschikbaarheid
-config_help_begin#:#De uitleg onder Instellingen luidt als volgt:
+config_help_begin#:#De uitleg onder Instellingen is als volgt:
 configure_add#:#Configuratie maken
-configure#:#configuratie
+configure#:#Configuratie
 conf_meeting_layout_1#:#AANGEPASTE LAYOUT
 conf_meeting_layout_2#:#SMART_LAYOUT
 conf_meeting_layout_3#:#PRESENTATIE_FOCUS
 conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Plattegrond van de vergadering
-conf_title#:#titel
+conf_title#:#Titel
 conn_deleted#:#Het vergadertype is verwijderd.
 conn_id#:#Type vergadering
 copy#:#Kopiëren
 create_type#:#Definieer een nieuw vergadertype
-cronjob_description#:#Wanneer de pagina is geactiveerd, kan de tijd die op de pagina wordt doorgebracht worden gebruikt om de leerprogressie te berekenen.
-cronjob_title#:#MultiVc cronjob om de leerprogressie te meten bij gebruik van MS Teams of Zoom.
-crs_create_xmvc#:#Maak een virtuele vergaderruimte aan.
+cronjob_description#:#Indien geactiveerd, kan de bestede tijd worden gebruikt om de leerprogressie te berekenen.
+cronjob_title#:#MultiVc cronjob om de leerprogressie bij het gebruik van MS Teams te bepalen.
+crs_create_xmvc#:#een virtuele vergaderruimte creëren
 custom_style#:#Aangepaste stijl
-custom_style_info#:#Hier kunt u CSS-stijlparameters of een CSS-bestand definiëren. Voor een bestand moet een URL worden opgegeven die begint met https://. Bovendien moet de parameter "displayBrandingArea" op true worden ingesteld in het settings.yml-bestand van de BBB-installatie.
+custom_style_info#:#Hier kunt u CSS-stijlparameters of een CSS-bestand definiëren. Voor een bestand moet een URL met https:// worden opgegeven. Bovendien moet in het settings.yml-bestand van de BBB-installatie de parameter "displayBrandingArea" op true worden ingesteld.
 delete_conn#:#Vergaderingstype verwijderen?
-delete#:#Verwijderen
+delete#:#verwijderen
 delete_sess_user_changed#:#Actie bij eigendomsoverdracht
-delete_sess_user_changed_info#:#Wanneer een gebruiker van account wisselt, worden alle aangemaakte sessies verwijderd.
+delete_sess_user_changed_info#:#Verwijder alle aangemaakte sessies bij een gebruikerswijziging.
 delete_token#:#Token verwijderen
 delete_type#:#Verwijder het vergadertype
-disable_sip_info#:#Met deze optie kunt u SIP-inbellen uitschakelen. Telefooninbellen is dan niet meer mogelijk.
-disable_sip#:#Deactiveer inbelverbinding
-display_name#:#Weergegeven naam
+disable_sip#:#Schakel inbellen via de telefoon uit.
+disable_sip_info#:#Met deze optie kunt u SIP-inbellen uitschakelen. Telefonisch inbellen is dan niet meer mogelijk voor de vergaderingen.
+display_name#:#Weergavenaam
 download#:#Download
-download_video#:#Opname downloaden
-duration#:#Tijdsduur
+download_video#:#Video downloaden
+duration#:#Duur
 edit#:#Bewerking
 edit_properties#:#Eigenschappen bewerken
 edudip_host_email#:#edudip e-mailadres
-edudip_host_email_hidden_info#:#Het e-mailadres dat voor autorisatie wordt gebruikt, is alleen zichtbaar voor de eigenaren en beheerders van het object.
+edudip_host_e-mail_hidden_info#:#Het e-mailadres dat voor autorisatie wordt gebruikt, is alleen zichtbaar voor de eigenaren van het object en beheerders.
 edudip_host_email_info#:#Het e-mailadres dat bij edudip bekend is, moet overeenkomen met dit adres.
-edudip_meetings_list_downloaded#:#De webinars die al beschikbaar waren op edudip zijn succesvol geïntegreerd.
-edudip_meetings_list_unavailabe#:#Toegang tot bestaande webinars op edudip is momenteel niet mogelijk.
+edudip_meetings_list_downloaded#:#Webinars die beschikbaar zijn op Edudip zijn succesvol geïntegreerd.
+edudip_meetings_list_unavailabe#:#Het ophalen van bestaande webinars van Edudip is momenteel niet mogelijk.
 end_time#:#Einde
 endtime#:#Eindtijd
-err_msg_displayname#:#Vul uw naam in.
-err_msg_guest_password#:#Het gastwachtwoord is onjuist.
+err_msg_displayname#:#Voer uw naam in
 err_msg_guest_password_expired#:#Het gastwachtwoord is verlopen.
-error_admin_no_access_token#:#Informeer uw beheerder: Token ontbreekt
+err_msg_guest_password#:#Het gastwachtwoord is onjuist.
+error_admin_no_access_token#:#Meld dit aan uw beheerder: Token ontbreekt
 error_object_no_access_token#:#Voer de autorisatie uit in de objecteigenschappen.
-error_object_no_host_email#:#Bevestig het e-mailadres van de hostgebruiker in de objecteigenschappen.
-error_start_meeting#:#Er is een fout opgetreden tijdens het starten van de vergadering.
-error_start_webinar#:#Er is een fout opgetreden tijdens het starten van het webinar.
-ext_provider_token_user#:#Gebruiker / Toegangstoken
-ext_provider_token_user_info#:#Voer het e-mailadres in van gebruikers met een moderatorlicentie, gevolgd door hun toegangstoken.
-fa_expand_default_info#:#Deze optie moet over het algemeen uitgeschakeld zijn. Bovendien kan in veel gevallen de weergave van bepaalde gebieden (bijvoorbeeld de chat) niet worden vergroot.
-fa_expand_default#:#Het weergavegebied maximaliseren: Standaardinstelling
-fold_create_xmvc#:#Maak een virtuele vergaderruimte aan.
-grp_create_xmvc#:#Maak een virtuele vergaderruimte aan.
-guest_displayname_info#:#Let op: Gedetailleerde titelinformatie kan de gebruiksvriendelijkheid belemmeren vanwege de beperkte ruimte voor de naam in BigBlueButton.
+error_object_no_host_e-mail#:#Controleer het e-mailadres van de hostgebruiker in de objecteigenschappen.
+error_start_meeting#:#Er is een fout opgetreden bij het opstarten van de vergadering.
+error_start_webinar#:#Er is een fout opgetreden bij het opstarten van het webinar.
+ext_provider_token_user_info#:#Voer het e-mailadres in van gebruikers met een moderatorlicentie en vervolgens hun toegangstoken.
+ext_provider_token_user#:#Gebruiker / toegangstoken
+fa_expand_default_info#:#Deze optie moet normaal gesproken uitgeschakeld zijn. Bovendien kunnen in veel gevallen de weergavegebieden (bijvoorbeeld de chat) niet worden vergroot.
+fa_expand_default#:#Maximaliseer de weergave van bereiken: Standaardinstelling
+fold_create_xmvc#:#een virtuele vergaderruimte creëren
+grp_create_xmvc#:#een virtuele vergaderruimte creëren
+guest_displayname_info#:#Let op: Gedetailleerde titelinformatie kan tot gebruiksproblemen leiden vanwege de beperkte ruimte die beschikbaar is voor de naam in BigBlueButton.
 guest_displayname_input#:#Titel Voornaam Achternaam
-guest#:#Gast
-guestlink_choose#:#Selectieoptie voor gastlink
-guestlink_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Gastlink toestaan' onder Instellingen moeten hebben.
-guestlink_default#:#Gastlink standaard
-guestlink_default_info#:#Deze optie moet in de meeste gevallen uitgeschakeld zijn. Ongeautoriseerd gebruik moet zoveel mogelijk worden voorkomen. Gasten kunnen alleen deelnemen aan een gemodereerde ruimte als deelnemer. Er moet al een moderator aanwezig zijn. Gasten moeten akkoord gaan met de gebruiksvoorwaarden, die zijn opgeslagen als een ILIAS-taalvariabele. Om deze te bewerken, ga naar Beheer -> Talen. Klik op de gewenste taal en voer 'rep_robj_xmvc_terms_of_use' in het veld 'Identificatie' in. Klik vervolgens op 'Filter toepassen' en bewerk de tekst.
+guest#:#gast
+guestlink_choose#:#Gastlink selectieoptie
+guestlink_choose_info#:#Schakel deze optie in als u wilt dat gebruikers met schrijfrechten de optie 'Gastlink toestaan' geselecteerd zien onder Instellingen.
+guestlink_default#:#Gastlink Standaard
+guestlink_default_info#:#Deze optie moet in de meeste gevallen uitgeschakeld zijn. Gebruik door onbevoegden moet zoveel mogelijk worden voorkomen. Gasten betreden een gemodereerde ruimte altijd alleen als leden. Er moet al een moderator aanwezig zijn. Gasten moeten akkoord gaan met de gebruiksvoorwaarden die zijn opgeslagen als ILIAS-taalvariabele. Om de taalvariabele te bewerken, ga naar Beheer -> Talen. Klik op de gewenste 'taal' en typ 'rep_robj_xmvc_terms_of_use' in bij 'Identificatie'. Klik vervolgens op 'Filter toepassen' en bewerk de tekst.
 guestlink#:#Gastlink
 guestlink_info#:#Moderators kunnen gasten uitnodigen via een link.
 guest_link_pw_info#:#Gasten moeten inloggen met dit wachtwoord.
 guest_password_input_info#:#Voer hier het wachtwoord voor de gastlink in.
-guest_password_input#:#Gastwachtwoord
+guest_password_input#:#Wachtwoord voor gasten
 headline_welcome_meeting#:#Welkom in de vergaderruimte!
 headline_welcome_webinar#:#Welkom bij het webinar!
 hide_recs_until_date#:#Toon geen opnames totdat
 hide_recs_until_date_info#:#Opnames tot de hier vermelde opnamedatum worden niet weergegeven.
-hide_username_logs#:#Gebruikersoverzicht verbergen
-hide_username_logs_info#:#Indien geselecteerd, is het gebruikersoverzicht alleen zichtbaar in het pluginbeheer. Anders wordt er ook een gebruikersoverzicht weergegeven voor het MultiVc-object.
-hint_availability_recs#:#Voor vragen en opmerkingen over de toegang tot opnames kunt u contact opnemen met de beheerders van deze BigBlueButton-vergaderingen.
-hint#:#Opmerkingtekst
+hide_username_logs#:#Gebruikersnaam verbergen
+hide_username_logs_info#:#Indien geselecteerd, is het gebruikersoverzicht alleen zichtbaar in het pluginbeheer, anders ook bij het MultiVc-object.
+hint_availability_recs#:#Voor vragen en opmerkingen over het toegankelijk maken van opnames kunt u contact opnemen met de personen die verantwoordelijk zijn voor deze BigBlueButton-vergaderingen.
+hint#:#Hinttekst
 hint_pub_recs#:#Het delen van links naar opnames is niet toegestaan.
-info_add_presentation_url#:#Upload uw eigen introductiepresentatie via een URL. De URL moet de volgende structuur hebben: <i>https://uwdomein/pad_naar/presentatie.pdf</i>
-info_add_welcome_text#:#Dit gepersonaliseerde welkomstbericht kan worden gedefinieerd via een ILIAS-taalvariabele. Ga naar Beheer -> Talen. Klik op de gewenste taal en voer 'rep_robj_xmvc_welcome_text' in het veld 'Identificatie' in. Klik vervolgens op 'Filter toepassen' en bewerk de tekst.
-info_availability#:#Hiermee wordt de beschikbaarheid van het vergadertype in het tijdschrift bepaald. Oudere typen kunnen worden ingesteld op "Bestaand toegestaan" in plaats van te worden verwijderd.
-info_bottom_headline#:#Belangrijke gebruiksaanwijzingen:
-info_bottom#:#<ul><li>Gebruik een headset om storende feedback of echo's te voorkomen!</li><li><b>Als uw internetverbinding slecht is, schakel dan uw camera (webcam) uit. Is de verbinding nog slechter, gebruik dan een conference call voor audiooverdracht.</li></ul>
+info_add_presentation_url#:#Laad uw eigen startpresentatie via een URL. De URL-structuur moet aan de volgende indeling voldoen: <i>https://uwdomein/pad_naar/presentatie.pdf</i>
+info_add_welcome_text#:#Een individuele welkomsttekst kan worden gedefinieerd met een ILIAS-taalvariabele. Ga naar Beheer -> Talen. Klik op de gewenste 'Taal' en typ 'rep_robj_xmvc_welcome_text' in het veld 'Identificatie'. Klik vervolgens op 'Filter toepassen' en bewerk de tekst.
+info_availability#:#Dit bepaalt de beschikbaarheid van het vergadertype in de repository. Oude typen kunnen worden ingesteld op "Bestaand toegestaan" in plaats van verwijderd.
+info_bottom_headline#:#Belangrijke opmerkingen:
+info_bottom#:#<ul><li>Gebruik een headset om storende feedback of echo's te voorkomen!</li><li><b>Als uw internetverbinding slecht is, schakel dan uw camera (webcam) uit. Is de verbinding nog slechter, gebruik dan een telefonische conferentie voor de geluidsoverdracht.</li></ul>
 info_concurrent_users_available#:#Aantal vrije plaatsen in het virtuele klaslokaal:
-info_concurrent_users_none#:#Er zijn momenteel geen plaatsen meer beschikbaar voor inschrijving. Controleer over een minuut opnieuw de beschikbaarheid door op de knop "Deelnemen aan vergadering" te klikken.
-info_delete_vc_sure#:#Weet je het zeker? De volgende virtuele vergaderruimte wordt verwijderd:
-info_hint#:#De toelichtende tekst wordt in kleur gemarkeerd boven de inhoud van de objectpagina.
-info_max_duration#:#De vergadering eindigt na het opgegeven aantal uren en minuten. Voor een onbeperkte duur kunt u voor beide '0' invoeren.
-info_max_participants#:#Maximum aantal deelnemers per vergadering. Voor een onbeperkt aantal deelnemers, voer '0' in.
-info_max_participants_webinar#:#Maximaal aantal deelnemers per webinar. Raadpleeg uw edudip-contract.
+info_concurrent_users_none#:#Er zijn momenteel geen plaatsen meer beschikbaar om in te loggen. Controleer over een minuut opnieuw de beschikbaarheid door met de linkermuisknop op de knop "Deelnemen aan vergadering" te klikken.
+info_delete_vc_sure#:#Weet je het zeker? Deze virtuele vergaderruimte wordt verwijderd.
+info_hint#:#De hinttekst wordt boven de inhoud van de objectpagina gemarkeerd weergegeven.
+info_max_duration#:#De vergadering eindigt na de opgegeven uren en minuten. Als de duur onbeperkt is, vul dan '0' in voor beide waarden.
+info_max_participants#:#Maximum aantal deelnemers per vergadering. Voor een onbeperkt aantal deelnemers kunt u '0' invoeren.
+info_max_participants_webinar#:#Maximaal aantal deelnemers per webinar.
 info_meeting_layout#:#Hiermee worden de standaardindelingen voor de vergadering ingesteld.
 info_om_svr_public_url#:#Voorbeeld: https://www.example.com/
-info_platform_chg_reset_data#:#Uw selectie
-info_platform_chg_reset_data_o#:#Houd er rekening mee dat bij het wisselen van WebRTC-platforms alle instellingen worden teruggezet naar de standaardwaarden en alle opgeslagen formuliergegevens worden verwijderd. Om van WebRTC-platform te wisselen, moet u eerst uw nieuwe selectie bevestigen door op 'Opslaan' te klikken. In de volgende stap wordt de vorige configuratie overschreven wanneer u opnieuw opslaat.
-info_requirements_bbb#:#BigBlueButton maakt gebruik van de open standaard WebRTC, die door steeds meer browsers wordt ondersteund. Momenteel worden Google Chrome, de op Chromium gebaseerde browser Microsoft Edge of, met beperkingen, Mozilla Firefox aanbevolen. U kunt ook Safari Mobile vanaf iOS 12.2 en Chrome Mobile vanaf Android 6.0 gebruiken. Microsoft Internet Explorer en oudere Edge-versies worden niet ondersteund. Uw firewall mag de volgende poorten niet blokkeren: TCP/IP-poorten 80/443 (voor HTTP/HTTPS) en UDP-poorten in het bereik 16384 - 32768. Om uw scherm te delen (desktop sharing), heeft u een snelle internetverbinding nodig. We raden moderators en presentatoren ook aan om een ​​bekabelde netwerkverbinding te gebruiken (geen wifi).
-info_requirements_edudip#:#<ul><li>edudip maakt gebruik van de open standaard WebRTC, die door een groeiend aantal browsers wordt ondersteund. Momenteel worden Google Chrome, de op Chromium gebaseerde browser Microsoft Edge of, met beperkingen, Mozilla Firefox aanbevolen. Microsoft Internet Explorer en oudere versies van Edge worden niet ondersteund.</li><li>Neem voor meer informatie contact op met de ondersteuning van edudip.</li>
+info_platform_chg_reset_data#:#Jouw keuze
+info_platform_chg_reset_data_o#:#Houd er rekening mee dat bij het wijzigen van het WebRTC-platform alle instellingen worden teruggezet naar de standaardwaarden en alle opgeslagen formuliergegevens worden verwijderd. Om het WebRTC-platform te wijzigen, moet u eerst de nieuwe selectie bevestigen door op 'Opslaan' te klikken. In de volgende stap wordt de vorige configuratie overschreven wanneer u opnieuw opslaat.
+info_requirements_bbb#:#<ul><li>BigBlueButton maakt gebruik van de open standaard WebRTC, die door steeds meer browsers wordt ondersteund. Momenteel worden Google Chrome, de op Chromium gebaseerde browser Microsoft Edge of, met beperkingen, Mozilla Firefox aanbevolen. U kunt ook Safari Mobile vanaf iOS 12.2 en Chrome Mobile vanaf Android 6.0 gebruiken. Microsoft Internet Explorer en oudere Edge-versies worden niet ondersteund.</li><li>De firewall die u gebruikt, mag de volgende poorten niet blokkeren: TCP/IP-poorten 80/443 (voor HTTP/HTTPS) en UDP-poorten in het bereik 16384 - 32768.</li><li>Om uw scherm te delen (desktop sharing), heeft u een snelle internetverbinding nodig. We raden moderators en presentatoren ook aan om een bekabeld netwerk te gebruiken (geen wifi).
+info_requirements_edudip#:#<ul><li>edudip maakt gebruik van de open standaard WebRTC, die door steeds meer browsers wordt ondersteund. Momenteel worden Google Chrome, de op Chromium gebaseerde browser Microsoft Edge of, met beperkingen, Mozilla Firefox aanbevolen. Microsoft Internet Explorer en oudere versies van Edge worden niet ondersteund.</li><li>Neem contact op met de ondersteuning van edudip voor meer informatie.</li>
 info_requirements_headline#:#Technische vereisten:
-info_requirements_not_ok#:#<b>U kunt de virtuele vergaderruimte slechts in zeer beperkte mate gebruiken met de browser die u momenteel gebruikt.</b><br/>Gebruik voor het beste resultaat Google Chrome of, met beperkingen, Mozilla Firefox! Als u geen rechten hebt om een ​​browser te installeren, kunt u Google Chrome Portable gebruiken.<br/>Als het niet mogelijk is om uw browser te wijzigen, start dan de virtuele vergaderruimte en schrijf in de chat dat u momenteel geen geschikte browser hebt en dat niemand op u hoeft te wachten.
-info_requirements_om#:#<ul><li>Openmeetings maakt gebruik van de open standaard WebRTC, die door steeds meer browsers wordt ondersteund. Momenteel worden Google Chrome of, met beperkingen, Mozilla Firefox aanbevolen. U kunt ook de nieuwste versie van Microsoft Edge gebruiken, evenals Safari Mobile (iOS 12.2 en hoger) en Chrome Mobile (Android 6.0 en hoger). Microsoft Internet Explorer en oudere Edge-versies worden niet ondersteund.</li><li>Uw firewall mag de volgende poorten niet blokkeren: TCP/IP-poorten 8888/5443 (voor HTTP/HTTPS), TCP/UDP 3478 en UDP-poorten in het bereik 49152–65535.</li><li>Om uw scherm te delen (desktop delen), dient u Google Chrome te gebruiken en een snelle internetverbinding te hebben. We raden moderators en presentatoren ook aan om een ​​bekabelde netwerkverbinding te gebruiken (geen wifi).
-info_requirements_partly#:#We raden aan Google Chrome als browser te gebruiken, of, met beperkingen, Mozilla Firefox. U dient zelf te bepalen of en in hoeverre uw huidige browser geschikt is voor het gebruik van de virtuele vergaderruimte. Meld uw ervaringen aan de beschikbare technische ondersteuning.
-info_requirements_teams#:#Moderators moeten de Teams-app gebruiken. Deelnemers kunnen Teams via hun browser starten. Om je scherm te delen (desktop delen), heb je een snelle internetverbinding nodig. We raden moderators en presentatoren ook aan om een ​​bekabelde netwerkverbinding te gebruiken (geen wifi).
+info_requirements_not_ok#:#<b>Met de browser die u momenteel gebruikt, kunt u de virtuele vergaderruimte slechts in zeer beperkte mate gebruiken.</b><br/> Het is het beste om Google Chrome of, met beperkingen, Mozilla Firefox als browser te gebruiken! Als u geen rechten hebt om een browser te installeren, kunt u mogelijk Google Chrome Portable gebruiken.<br/>Als het niet mogelijk is om van browser te wisselen, start dan de virtuele vergaderruimte en schrijf in de chat dat u momenteel geen geschikte browser hebt en dat niemand op u hoeft te wachten.
+info_requirements_om#:#<ul><li>Openmeetings maakt gebruik van de open standaard WebRTC, die door steeds meer browsers wordt ondersteund. Momenteel wordt Google Chrome of, met beperkingen, Mozilla Firefox aanbevolen. U kunt ook de nieuwste versie van Microsoft Edge gebruiken, evenals Safari Mobile vanaf iOS 12.2 en Chrome Mobile vanaf Android 6.0. Microsoft Internet Explorer en oudere Edge-versies worden niet ondersteund.</li><li>De firewall die u gebruikt, mag de volgende poorten niet blokkeren: TCP/IP-poorten 8888/5443 (voor HTTP/HTTPS), TCP/UDP 3478 en UDP-poorten in het bereik 49152 - 65535.</li><li>Om uw scherm te delen (desktop sharing), dient u Google Chrome te gebruiken en te beschikken over een snelle internetverbinding. We raden moderators en presentatoren ook aan om een bekabeld netwerk te gebruiken (geen wifi).
+info_requirements_partly#:#We raden Google Chrome aan als browser, of met beperkingen Mozilla Firefox. Of en in hoeverre de browser die u momenteel gebruikt geschikt is voor de virtuele vergaderruimte, dient u zelf te onderzoeken. Meld uw ervaringen indien mogelijk aan de technische ondersteuning.
+info_requirements_teams#:#<ul><li>Maak meer gebruik van de Teams-app.</li><li>Deelnemers kunnen Teams via de browser starten.</li><li>Om je scherm te kunnen delen (desktop sharing), heb je een stabiele internetverbinding nodig. Maak gebruik van moderatoren en presentatoren die een kabelgebundeld netwerk (geen WLAN) gebruiken.
 info_requirements_webex#:#<ul><li>Aanbevolen browsers: Chrome, Edge, Firefox</li></ul>
-info_requirements_zoom#:#Log in bij Zoom met het e-mailadres waarmee u zich bij ILIAS heeft geregistreerd. Dit is:
-info_requirements_zoom_lp#:#Uw aanwezigheid bij deze bijeenkomst moet worden geregistreerd om uw leerprogressie te kunnen vaststellen. U komt alleen in aanmerking voor studiepunten als u gedurende {%} van de geplande tijd tussen het begin en het einde van de bijeenkomst aanwezig bent.
-info_set_owner#:#Eigenaar geregistreerd
+info_set_owner#:#eigenaar ingevoerd
 info_svr_private_port#:#Voorbeeld: 443
-info_svr_private_url#:#Met uitzondering van Amazon EC2 komt dit altijd overeen met de openbare URL.
+info_svr_private_url#:#Komt altijd overeen met de openbare URL, met uitzondering van Amazon EC2.
 info_svr_public_port#:#Voorbeeld: 443
 info_svr_public_url#:#Voorbeeld: https://www.example.com/bigbluebutton/
-info_svr_salt_om#:#Voorbeeld: dZ#ls2W!k6l
+info_svr_salt_om#:#Voorbeeld: dZ
 info_svr_salt#:#ssh: bbb-conf --secret
 info_svr_username#:#Voorbeeld: om_admin
 info_title#:#Deze titel wordt weergegeven bij het selecteren van het vergaderingstype voor nieuwe objecten.
-info_top_moderated_edudip#:#Je hebt moderatierechten en kunt het webinar starten.
-info_top_moderated_m_bbb#:#Dit is een gemodereerde ruimte en u kunt de vergaderruimte alleen betreden wanneer er een persoon met moderatorbevoegdheden aanwezig is.
-info_top_moderated_m_om#:#Dit is een gemodereerde ruimte en u kunt de vergaderruimte alleen betreden wanneer er een persoon met moderatorbevoegdheden aanwezig is.
-info_top_moderated_webex#:#U beschikt over moderatorrechten en kunt de vergadering starten. Hiervoor heeft u een Webex-account of een Webex-website nodig. Deelnemers kunnen pas deelnemen nadat de vergadering door een moderator is gestart.
-info_top_moderated_zoom#:#Dit is een webinar. U kunt het webinar nu starten.
-info_top_moderator_bbb#:#<b>Dit is een gemodereerde ruimte en jij hebt de rol van moderator in deze ruimte.</b><br/>Personen zonder moderatorrol kunnen de vergaderruimte alleen betreden als er al een persoon met moderatorrol in de ruimte aanwezig is.</b><br/>
-info_top_moderator_om#:#<b>Dit is een gemodereerde ruimte en jij hebt de rol van moderator in deze ruimte.</b><br/>Personen zonder moderatorrol kunnen de vergaderruimte alleen betreden als er al een persoon met moderatorrol in de ruimte aanwezig is.</b><br/>
-info_top_not_moderated_bbb#:#Deze vergaderruimte is niet gemodereerd. U beschikt daarom ook over moderatorrechten en daarmee over uitgebreide bevoegdheden. U kunt de rechten van andere deelnemers beperken en de sessie beëindigen. Gebruik deze uitgebreide bevoegdheden verantwoordelijk.
-info_top_not_moderated_om#:#Deze vergaderruimte is niet gemodereerd. U beschikt daarom ook over moderatorrechten en daarmee over uitgebreide bevoegdheden. U kunt de rechten van andere deelnemers beperken en de sessie beëindigen. Gebruik deze uitgebreide bevoegdheden verantwoordelijk.
-info_webex_client_id#:#Je vindt de client-ID in de gegevens van je Webex-integratie (bijvoorbeeld admin.webex.com, developer.webex.com).
+info_top_moderated_edudip#:#U beschikt over moderatorrechten en kunt de vergadering starten.
+info_top_moderated_m_bbb#:#Dit is een gemodereerde ruimte en u kunt de vergaderruimte alleen betreden als er een moderator aanwezig is.
+info_top_moderated_m_om#:#Dit is een gemodereerde ruimte en u kunt de vergaderruimte alleen betreden als er een moderator aanwezig is.
+info_top_moderated_webex#:#U beschikt over moderatorrechten en kunt de vergadering starten. Hiervoor heeft u een account nodig bij Webex of een Webex-website. Deelnemers kunnen pas deelnemen nadat de vergadering door een moderator is gestart.
+info_top_moderator_bbb#:#<b>Dit is een gemodereerde ruimte en u beschikt over de moderatorfunctie in deze ruimte.</b><br/>Personen zonder moderatorfunctie kunnen de vergaderruimte alleen betreden wanneer er een persoon met moderatorfunctie in de ruimte aanwezig is.</b><br/>
+info_top_moderator_om#:#<b>Dit is een gemodereerde ruimte en u beschikt over de moderatorfunctie in deze ruimte.</b><br/>Personen zonder moderatorfunctie kunnen de vergaderruimte alleen betreden wanneer er een persoon met moderatorfunctie in de ruimte aanwezig is.</b><br/>
+info_top_not_moderated_bbb#:#Deze vergaderruimte wordt niet gemodereerd. U beschikt dus ook over een moderatorfunctie en daarmee over uitgebreidere rechten. U kunt de rechten van andere deelnemers beperken en de sessie beëindigen. Gebruik deze uitgebreidere rechten verantwoordelijk.
+info_top_not_moderated_om#:#Deze vergaderruimte wordt niet gemodereerd. U beschikt dus ook over een moderatorfunctie en daarmee over uitgebreidere rechten. U kunt de rechten van andere deelnemers beperken en de sessie beëindigen. Gebruik deze uitgebreidere rechten verantwoordelijk.
+info_webex_client_id#:#De client-ID vindt u in de gegevens van uw Webex-integratie (bijv. admin.webex.com, developer.webex.com).
 info_webex_client_secret#:#Het clientgeheim wordt eenmalig weergegeven na het aanmaken/bijwerken van een Webex-integratie.
 info_webex_redirect_uri#:#Voeg dit adres toe als omleidings-URI in de integratie-instellingen.
 info_webex_site_url#:#Naam van de gehoste site. Het subdomein vóór .webex.com, bijvoorbeeld <b>uw-bedrijf</b>.webex.com of <b>uw-bedrijf</b>.my.webex.com
 integration_admin_auth_method_info#:#De autorisatie wordt uitgevoerd door de beheerder via de instellingen van de MultiVc-plugin. De volgende scopes worden tijdens het OAuth-proces opgevraagd:
 integration_admin_auth_scopes_info#:#(Dit geldt voor beheerders) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
 integration_auth_method#:#Autorisatie van de integratie
-integration_auth_methods_info#:#Autorisatie kan worden uitgevoerd door: - de beheerder via de instellingen van de MultiVc-plugin - de gebruiker via de instellingen van het MultiVc-object. De volgende scopes worden tijdens het betreffende OAuth-proces opgevraagd:
+integration_auth_methods_info#:#Autorisatie kan worden uitgevoerd door: {br}- de beheerder via de instellingen van de MultiVc-plugin {br}- de gebruiker via de instellingen van het MultiVc-object. {br}De volgende scopes worden tijdens het betreffende OAuth-proces opgevraagd: {br}
 integration_user_auth_method_info#:#De autorisatie wordt door de gebruiker uitgevoerd via de instellingen van het MultiVc-object. De volgende scopes worden tijdens het OAuth-proces opgevraagd:
 integration_user_auth_scopes_info#:#spark:kms meeting:schedules_read meeting:schedules_write meeting:participants_read meeting:participants_write meeting:preferences_read meeting:preferences_write
 join_time#:#Deelname van
 leave_time#:#Deelname tot
-list_token_user_info#:#Lijst met bestaande moderators. De opgeslagen tokens kunnen niet worden overschreven. Verwijder indien nodig eerst de vermelding door op de X te klikken.
+list_token_user_info#:#Lijst met reeds aangemaakte moderators. De opgeslagen tokens kunnen niet worden overschreven. Verwijder indien nodig eerst de vermelding door op de X te klikken.
 list_token_user#:#Geregistreerde moderators
 lock_disable_cam_choose_info#:#Definieer of de instelling "Deelnemerscamera vergrendelen" beschikbaar is voor het object.
-lock_disable_cam_choose#:#Deelnemerscameravergrendeling selecteerbaar
-lock_disable_cam_default_info#:#Stel de standaardinstelling in op "Camera van deelnemer vergrendelen".
-lock_disable_cam_default#:#Camera van deelnemer vergrendelen (standaardinstelling)
+lock_disable_cam_choose#:#Vergrendel de camera van de deelnemer (selecteerbaar)
+lock_disable_cam_default_info#:#Stel de standaardwaarde in voor "Deelnemerscamera vergrendelen".
+lock_disable_cam_default#:#Camera van deelnemer vergrendelen Standaardinstelling
 lock_disable_cam_info#:#Door deze optie te activeren, wordt de camera (webcam) van de deelnemers standaard geblokkeerd.
 lock_disable_cam#:#Vergrendel de camera van de deelnemer
-locked_by#:#Geblokkeerd door
-locked#:#Geblokkeerd
-lock#:#Uitsluiting
-logo_url_info#:#Voer hier de URL van uw logo in. De URL moet beginnen met https://.
-logo_url#:#URL van het logo
+locked_by#:#Vergrendeld door
+locked#:#Vergrendeld
+lock#:#Slot
+logo_url_info#:#Voer hier de URL van uw logo in. De URL moet beginnen met https://
+logo_url#:#Logo-URL
 lp_active#:#Actief
-lp_active_info#:#De status "In behandeling" wordt ingesteld zodra de inhoud wordt geopend. De status "Verwerkt" wordt bepaald door het aantal uren activiteit.
+lp_active_info#:#De status "In behandeling" wordt ingesteld zodra de inhoud wordt geopend. De status "Voltooid" of "Mislukt" wordt bepaald door de tijdstippen waarop de inhoud is geraadpleegd.
 lp_inactive#:#Inactief
-lp_inactive_info#:#Er wordt geen leervoortgang voor dit object opgeslagen.
-lp_mode#:#modus
-lp_time_info#:#Deze percentagewaarde, gebaseerd op de mogelijke aanwezigheidstijden, moet worden overschreden voordat de status op "Verwerkt" wordt gezet.
-lp_time#:#Drempelwaarde voor "Bewerkt"
+lp_inactive_info#:#Er wordt geen leerprogressie opgeslagen voor dit object.
+lp_mode#:#Modus
+lp_time_info#:#Deze percentagewaarde ten opzichte van de mogelijke aanwezigheidstijden moet worden overschreden om de status op "Voltooid" te zetten. Anders wordt deze op "Mislukt" gezet.
+lp_time#:#Drempelwaarde voor "Voltooid"
 max_duration#:#Maximale duur
 max_meetings#:#Maximaal aantal vergaderruimtes
 max_participants#:#Max. deelnemers
 max_users#:#Maximaal aantal gebruikers
-meeting_collision#:#Er is een fout opgetreden. Er is al een sessie gepland voor het gevraagde tijdstip.
-meeting#:#ontmoeting
+meeting_collision#:#Er is een fout opgetreden. Er is al een vergadering gepland voor het gevraagde tijdstip.
+meeting#:#Ontmoeting
 meeting_end#:#Einde van de vergadering
-meeting_related_successful#:#De vergadering is succesvol toegewezen.
-meeting_running#:#De virtuele vergaderruimte is gelanceerd.
+meeting_related_successful#:#succesvolle bijeenkomst gerelateerd
+meeting_running#:#De virtuele vergaderruimte is geopend.
 meeting_start#:#Aanvang van de vergadering
-member_btn_fileupload_choose#:#Iedereen toestaan ​​bestanden te uploaden: Optie
-member_btn_fileupload_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Iedereen toestaan ​​bestanden te uploaden' onder Instellingen moeten hebben.
-member_btn_fileupload#:#Bestandsuploads voor iedereen toestaan
-member_btn_fileupload_default#:#Iedereen toestaan ​​bestanden te uploaden: Standaardinstelling
+member_btn_fileupload#:#Bestanden uploaden toestaan voor iedereen
+member_btn_fileupload_choose#:#Bestanden uploaden toestaan voor iedereen: Selectieoptie
+member_btn_fileupload_choose_info#:#Schakel deze optie in als u wilt dat gebruikers met schrijfrechten de optie 'Bestanden uploaden door iedereen toestaan' onder Instellingen kunnen gebruiken.
+member_btn_fileupload_default#:#Bestanden uploaden toestaan voor iedereen: Standaardinstelling
 member_btn_fileupload_default_info#:#Deze optie moet normaal gesproken uitgeschakeld zijn.
-member_btn_fileupload_info#:#Activeer deze optie alleen als, naast personen met uitgebreide rechten (bijv. beheerders, eventueel docenten), ook andere personen bestanden moeten kunnen uploaden.
+member_btn_fileupload_info#:#Activeer deze optie alleen als, naast personen met uitgebreide rechten (bijv. beheerders, docenten), ook andere personen bestanden moeten kunnen uploaden.
 modal_delete_scheduled_meeting_accept#:#Vergadering verwijderen
-modal_delete_scheduled_meeting_title#:#Weet je zeker dat je deze vergadering wilt verwijderen?
-modal_delete_scheduled_webinar_accept#:#Webinar verwijderen
-modal_delete_scheduled_webinar_title#:#Wil je dit webinar echt verwijderen?
+modal_delete_scheduled_meeting_title#:#Wil je deze vergadering echt verwijderen?
+modal_delete_scheduled_webinar_accept#:#webinar verwijderen
+modal_delete_scheduled_webinar_title#:#Weet je zeker dat je dit webinar wilt verwijderen?
 modal_details_scheduled_meeting_title#:#Details van de vergadering (Webex-antwoord)
 modal_details_scheduled_webinar_title#:#Webinardetails (antwoordtekst van edudip)
-moderated_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de mogelijkheid moeten hebben om 'gemodereerde ruimte' te selecteren onder Instellingen.
-moderated_choose#:#gematigde ruimte: keuzeoptie
-moderated_default_info#:#Activeer deze optie als u nieuwe kamers wilt aanmaken als gemodereerde kamers.
-moderated_default_zoom_info#:#Activeer deze optie als er nieuwe ruimtes als 'webinars' moeten worden aangemaakt.
-moderated_default#:#gemodereerde ruimte: standaardinstelling
-moderated_info#:#In een gemodereerde omgeving hebben moderators uitgebreidere rechten. Andere gebruikers hebben slechts beperkte toegang tot de virtuele ruimte. Moderators zijn onder andere iedereen die de eigenschappen van een object kan bewerken, evenals groepsbeheerders, cursusbeheerders en cursusbegeleiders.
-moderated_teams_info#:#In een gemodereerde omgeving hebben de maker van het object, evenals groepsbeheerders, cursusbeheerders en cursusbegeleiders, meer rechten: zij kunnen inhoud delen en overdragen en bepalen of anderen mogen deelnemen. In een ongemodereerde omgeving kan iedereen deelnemen en inhoud delen of overdragen zonder bevestiging.
-moderated_zoom_info#:#De virtuele ruimte is bedoeld voor een webinar, niet voor een vergadering. Zorg ervoor dat uw Zoom-account toestemming heeft om webinars te organiseren. Een basisaccount, of zelfs een gratis account, heeft deze toestemming niet.
-moderated#:#gematigde ruimte
-moderated_webex#:#Tip: In niet-gemodereerde ruimtes worden deelnemers niet gepseudonimiseerd. Daarom kunnen alleen personen met een geschikt Webex-account deelnemen.
-moderated_zoom#:#Webinar
+moderated_choose_info#:#Activeer deze optie als u wilt dat gebruikers met schrijftoegang 'gemodereerde ruimte' kunnen selecteren onder Instellingen.
+moderated_choose#:#gemodereerde ruimte: selectieoptie
+moderated_default_info#:#Activeer deze optie als er nieuwe kamers moeten worden aangemaakt die gemodereerd worden.
+moderated_default#:#Gemodereerde ruimte: Standaardinstelling
+moderated_info#:#In een gemodereerde ruimte hebben personen met moderatorrechten uitgebreidere rechten. Andere personen hebben beperkte toegangsrechten tot de virtuele ruimte. Personen met moderatorrechten zijn iedereen die de eigenschappen van een object kan bewerken, evenals groepsbeheerders, cursusbeheerders en cursusbegeleiders.
+moderated_teams_info#:#In een gemodereerde ruimte hebben de maker van het object, evenals groepsbeheerders, cursusbeheerders en cursusbegeleiders, meer rechten: zij kunnen objecten delen en bepalen of anderen kunnen deelnemen. In een ongemodereerde ruimte kan iedereen objecten delen en deelnemen zonder bevestiging.
+moderated#:#Gemodereerde kamer
+moderated_webex#:#<b>Tip:</b> In niet-gemodereerde ruimtes worden deelnemers niet gepseudonimiseerd. Deelname is daarom alleen toegestaan voor personen met een geschikt Webex-account.
 moderator#:#Moderator
 msg_obj_deleted#:#De opname is verwijderd.
-notification_sending#:#Er worden meldingen verzonden...
+notification_sending#:#meldingen worden verzonden ...
 notification_sent#:#Meldingen succesvol verzonden.
-obj_ids_special_info#:#Slechts zelden nodig! Voer hier, gescheiden door komma's, de ILIAS-object-ID's in voor ruimtes die aan cursussen zijn gekoppeld (dus altijd dezelfde object-ID) en die voor elke cursus afzonderlijk moeten worden beheerd. De object-ID wordt weergegeven in de objectinstellingen. De optie 'Speciale ruimtes' is handig als de instellingen van veel ruimtes centraal moeten worden beheerd, bijvoorbeeld om geleidelijk meer functies in te schakelen.
+obj_ids_special_info#:#Alleen in zeldzame gevallen nodig! Voer de ILIAS-object-ID's in voor ruimtes die aan cursussen zijn gekoppeld (dus altijd dezelfde object-ID), gescheiden door komma's. De object-ID wordt weergegeven in de objectinstellingen. De optie 'speciale ruimtes' is handig als de instellingen van veel ruimtes centraal moeten worden beheerd om verdere functies stapsgewijs vrij te geven.
 obj_ids_special#:#Speciale kamers
 objs_xmvc_duplicate#:#Kopieer virtuele vergaderruimte
 objs_xmvc#:#Virtuele vergaderruimtes
@@ -262,231 +254,213 @@ obj_xmvc_duplicate#:#Kopiëren
 obj_xmvc_select#:#Selecteer een virtuele vergaderruimte
 obj_xmvc#:#Virtuele vergaderruimte
 offline#:#Offline
-of_owner_prefix#:#door eigenaar
-om_svr_public_port#:#OpenMeeting-serverpoort
-om_svr_public_url#:#URL van de OpenMeeting-server
+of_owner_prefix#:#van eigenaar
+om_svr_public_port#:#Poort van de Openmeeting-server
+om_svr_public_url#:#URL van de Openmeeting-server
 om_svr_username#:#SOAP-gebruikersnaam
 om_svr_userpass#:#SOAP-wachtwoord
-overview_uses#:#Overzicht van toepassingen
-owners_email_not_unique#:#Het e-mailadres van de eigenaar is niet uniek. Het kan slechts één keer aan een ILIAS-gebruiker worden toegewezen.
-playback#:#Speel opname af
-plugin_configuration#:#configuratie
-private_chat_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Privéchat toestaan' onder Instellingen moeten hebben.
-private_chat_choose#:#Privéchat toestaan: selectieoptie
-private_chat_default_info#:#Indien ingeschakeld, kunnen gebruikers zonder moderatorrechten ook privéchats met elkaar voeren. Gebruikers met moderatorrechten kunnen deze chats niet zien. Omdat moderators privéchats op elk moment kunnen beëindigen, is het in de meeste gevallen raadzaam deze optie in te schakelen.
-private_chat_default#:#Privéchat toestaan: Standaardinstelling
-private_chat_info#:#Zelfs mensen zonder moderatorrechten kunnen privé met elkaar chatten.
+overview_uses#:#Overzicht gebruikt
+owners_email_not_uniqeu#:#Het e-mailadres van de eigenaar is niet uniek. Dit kan slechts eenmaal aan een ILIAS-gebruiker worden toegewezen.
+playback#:#Video afspelen
+plugin_configuration#:#Configuratie
 private_chat#:#Privéchat toestaan
-properties#:#Kenmerken
-protected#:#Beschermde ruimtes
+private_chat_choose#:#Privéchat toestaan: selectieoptie
+private_chat_choose_info#:#Schakel deze optie in als u wilt dat gebruikers met schrijfrechten de optie 'Privéchat toestaan' geselecteerd zien onder Instellingen.
+private_chat_default#:#Privéchat toestaan: Standaardinstelling
+private_chat_default_info#:#Indien geactiveerd, kunnen zelfs mensen zonder moderatorfunctie privéchats met elkaar voeren. Personen met moderatorfunctie zien deze chats niet. Omdat personen met moderatorfunctie privéchats op elk moment kunnen blokkeren, is het in de meeste gevallen raadzaam deze optie te activeren.
+private_chat_info#:#Zelfs mensen zonder moderatorfunctie kunnen privé met elkaar chatten.
+properties#:#Instellingen
+protected#:#Beveiligde kamers
+pub_recs_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Opnames direct publiceren' in de instellingen moeten kunnen selecteren.
+pub_recs_choose#:#Opnames direct publiceren: Selectieoptie
+pub_recs_default_for_object#:#De opnames worden direct aan de deelnemers vrijgegeven.
+pub_recs_default_info#:#Schakel deze optie in als opnames altijd direct gepubliceerd moeten worden, of als de optie 'Opnames direct publiceren' voor nieuwe objecten ingeschakeld moet zijn.
+pub_recs_default#:#Opnames direct publiceren: Standaardinstelling
+pub_recs_info#:#Indien geselecteerd, wordt de opname van een vergadering direct na afloop gepubliceerd. In het overzicht op de vergaderingspagina kunt u opnames vergrendelen of ontgrendelen.
 pub_recs#:#Publiceer de opnames onmiddellijk.
-pub_recs_choose#:#Opnames direct vrijgeven: Selectieoptie
-pub_recs_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Opnames direct delen' onder Instellingen moeten kunnen zien.
-pub_recs_default#:#Opnames direct vrijgeven: Standaardinstelling
-pub_recs_default_for_object#:#De opnames worden direct beschikbaar gesteld aan de deelnemers.
-pub_recs_default_info#:#Schakel deze optie in als opnames altijd direct moeten worden vrijgegeven, of als de optie 'Opnames direct vrijgeven' moet worden ingeschakeld voor nieuwe objecten.
-pub_recs_info#:#Indien geselecteerd, wordt de opname van een vergadering direct na afloop van de vergadering vrijgegeven. In het overzicht op de vergaderingspagina kunt u opnames vergrendelen of ontgrendelen.
-rbac_create_xmvc#:#Maak een virtuele vergaderruimte aan.
+rbac_create_xmvc#:#een virtuele vergaderruimte creëren
 rec_hidden#:#Deze opname is niet zichtbaar voor deelnemers.
-recording#:#records
-recording_autostart#:#De opnames starten automatisch aan het begin. ILIAS-gebruikers worden hiervan op de hoogte gesteld.
-recording_choose#:#Opname toestaan: Selectieoptie
-recording_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de mogelijkheid moeten hebben om 'Opnames toestaan' in de instellingen aan te vinken. Omdat de URL van de opname met onbevoegden kan worden gedeeld als deze bekend wordt, moet deze optie over het algemeen niet worden ingeschakeld.
-recording_default#:#Opname toestaan: Standaardinstelling
-recording_default_info#:#Deze optie moet in de meeste gevallen worden uitgeschakeld om te voorkomen dat mensen de opnamefunctie in de virtuele ruimte gebruiken.
+recording#:#Opnames
+recording_autostart#:#Opnames worden automatisch gestart aan het begin. ILIAS-gebruikers worden hierover geïnformeerd.
+recording_choose#:#Opnames toestaan: Selectieoptie
+recording_choose_info#:#Activeer deze optie als u wilt dat gebruikers met schrijfrechten 'Opname toestaan' kunnen selecteren onder Instellingen. Aangezien de URL van de opname naar verluidt aan onbedoelde personen wordt verspreid, moet deze optie in de meeste gevallen niet worden geactiveerd.
+recording_default#:#Opnames toestaan: Standaardinstelling
+recording_default_info#:#Deze optie moet in de meeste gevallen worden uitgeschakeld, zodat mensen de opnamefunctie in de virtuele ruimte niet kunnen gebruiken.
 recording_info#:#Sessies kunnen worden opgenomen.
-recording_only_for_moderated_rooms#:#Opnames zijn alleen toegestaan ​​in ruimtes met moderatie.
-recording_only_for_moderated_rooms_default#:#Opnames zijn alleen toegestaan ​​in ruimtes met moderatie.
-recording_only_for_moderated_rooms_default_info#:#Deze optie moet in de meeste gevallen ingeschakeld zijn. Dit is alleen van toepassing als opnemen in het algemeen is toegestaan.
-recording_only_for_moderated_rooms_info#:#Alleen in gemodereerde ruimtes kunnen mensen met moderatorrechten opnames starten.
-recording_warning#:#De opnamefunctie is ingeschakeld voor deze vergadering! Door actief gebruik te maken van het chatsysteem, mijn persoonlijke microfoon/camera in te schakelen en/of scherminhoud te delen, geef ik toestemming dat deze informatie wordt opgenomen en opgeslagen voor later gebruik.
-recs_locked#:#Opname(s) geblokkeerd
-recs_published#:#Uitgebrachte opname(s)
+recording_only_for_moderated_rooms_default_info#:#Deze optie moet in de meeste gevallen geactiveerd zijn. De optie wordt alleen gebruikt als opnames in het algemeen zijn toegestaan.
+recording_only_for_moderated_rooms_default#:#Opnames zijn alleen toegestaan in ruimtes met moderatie.
+recording_only_for_moderated_rooms_info#:#Alleen in gemodereerde ruimtes kunnen personen met moderatorrechten opnames starten.
+recording_only_for_moderated_rooms#:#Neem alleen op in beheerde ruimtes.
+recording_warning#:#De opnamefunctie is geactiveerd voor deze vergadering! Door actief gebruik te maken van het chatsysteem, mijn persoonlijke microfoon/camera in te schakelen en/of scherminhoud te delen, ga ik ermee akkoord dat deze informatie tijdens de opname wordt vastgelegd en opgeslagen voor later gebruik.
+recs_locked#:#Opnames vergrendeld
+recs_published#:#Opnames vrijgegeven
 recurrence_#:#-
 recurrence_daily#:#Dagelijks
 recurrence_monthly#:#Maandelijks
 recurrence_weekly#:#Wekelijks
 recurrence_yearly#:#Jaarlijks
 rec_visible#:#Deze opname is zichtbaar voor de deelnemers.
-references#:#Links
-related_meeting#:#Toegewezen
+references#:#Referenties
+related_meeting#:#verwant
 related_webinar#:#Toegewezen
-relate_meeting#:#Toewijzen
+relate_meeting#:#verwant
 relate_webinar#:#Toewijzen
-report_log_max#:#Gebruiksoverzicht (BBB)
-require_schedule_new_meeting#:#Je kunt vergaderingen inplannen en ze starten op de geplande tijdstippen.
-require_schedule_new_meeting_zoom#:#Je kunt vergaderingen aanmaken.
+report_log_max#:#Overzicht van gebruik (BBB)
+require_schedule_new_meeting#:#Je kunt vergaderingen aanmaken en starten tijdens de geplande tijdvakken.
 require_schedule_new_webinar#:#Je kunt webinars aanmaken en ze starten tijdens de geplande tijdvakken.
-reset_authorization#:#Autorisatie intrekken
+reset_authorization#:#Autorisatie annuleren
 reseted_tokens#:#Tokens gereset
-root_create_xmvc#:#Maak een virtuele vergaderruimte aan.
+root_create_xmvc#:#een virtuele vergaderruimte creëren
 saving_invoked#:#Instellingen opgeslagen
-scheduled_meeting_agenda#:#agenda
-scheduled_meeting_both_data_sources#:#alle
-scheduled_meeting_create_btn#:#Een vergadering plannen
-scheduled_meeting_created#:#Geplande vergadering aangemaakt
+scheduled_meeting_agenda#:#Agenda
+scheduled_meeting_both_data_sources#:#toegewezen en aangemaakt via Webex
+scheduled_meeting_create_btn#:#Maak een vergadering aan
 scheduled_meeting_create#:#Plan een vergadering in
-scheduled_meeting_data_source#:#Vergaderingen
+scheduled_meeting_created#:#Geplande vergadering aangemaakt
+scheduled_meeting_data_source#:#vergaderingen
 scheduled_meeting_delete_btn#:#Vergadering verwijderen
-scheduled_meeting_deleted#:#Vergadering verwijderd
-scheduled_meeting_duration#:#Periode
-scheduled_meeting_local_data_sources#:#toegewezen
-scheduled_meeting_not_deleted#:#Vergadering niet verwijderd
+scheduled_meeting_deleted#:#vergadering verwijderd
+scheduled_meeting_duration#:#tijdsperiode
+scheduled_meeting_local_data_sources#:#toegewezen sessies
+scheduled_meeting_not_deleted#:#vergadering niet verwijderd
 scheduled_meeting_overview#:#Overzicht van geplande vergaderingen
 scheduled_meeting_recurrence#:#Herhaling
 scheduled_meetings#:#Geplande vergaderingen
-scheduled_meeting_state#:#status
-scheduled_meeting_time_ahead#:#Doorlooptijd van de vergadering
+scheduled_meeting_state#:#Staat
+scheduled_meeting_time_ahead#:#Aanlooptijd van de vergadering
 scheduled_meeting_update_btn#:#Updatevergadering
 scheduled_meeting_update#:#Update geplande vergadering
-scheduled_webinar_agenda#:#agenda
+scheduled_webinar_agenda#:#Agenda
 scheduled_webinar_both_data_sources#:#alle
-scheduled_webinar_create_btn#:#Maak een webinar aan
+scheduled_webinar_create_btn#:#Plan een webinar in
+scheduled_webinar_create#:#Webinar aanmaken (geef een unieke titel op)
 scheduled_webinar_created#:#Geplande webinar aangemaakt
-scheduled_webinar_create#:#Maak een webinar aan (geef een unieke titel op).
 scheduled_webinar_data_source#:#Webinars
 scheduled_webinar_delete_btn#:#Webinar verwijderen
 scheduled_webinar_deleted#:#Webinar geannuleerd
-scheduled_webinar_duration#:#Periode
+scheduled_webinar_duration#:#Tijdsperiode
 scheduled_webinar_local_data_sources#:#toegewezen
 scheduled_webinar_not_deleted#:#Webinar niet verwijderd
 scheduled_webinar_overview#:#Overzicht van geplande webinars
 scheduled_webinar_recurrence#:#Herhaling
 scheduled_webinars#:#Geplande webinars
-scheduled_webinar_state#:#status
+scheduled_webinar_state#:#Status
 scheduled_webinar_time_ahead#:#Aanlooptijd webinar
 scheduled_webinar_update_btn#:#Update webinar
 scheduled_webinar_update#:#Update over het geplande webinar
-schedule_meeting_duration_less_time#:#De minimale vergaderduur is 10 minuten. Pas uw gegevens hierop aan.
+schedule_meeting_duration_less_time#:#De minimale duur van een vergadering is 10 minuten. Pas uw invoer hierop aan.
 schedule_meeting_error#:#Er is een fout opgetreden. Controleer uw invoer.
-schedule_webinar_duration_less_time#:#De minimale duur van een webinar is 10 minuten. Houd hier rekening mee bij het invullen van uw gegevens.
+schedule_webinar_duration_less_time#:#De minimale duur van een webinar is 10 minuten. Pas uw invoer hierop aan.
 schedule_webinar_error#:#Er is een fout opgetreden. Controleer uw invoer.
 select#:#Select
 service_unavailable#:#Service niet beschikbaar
-sess_owner_changed#:#De authenticatieprocedure is gewijzigd.
+sess_owner_changed#:#De authenticatie is gewijzigd.
 showcontent#:#WebRTC-platform
-show_hint_pub_recs_info#:#Op de vergaderpagina wordt een waarschuwing weergegeven over het verbod op het delen van links naar opnames. Schakel deze optie in als u deze waarschuwing niet wilt zien.
 show_hint_pub_recs#:#Deel links naar opnames toestaan
-start_time#:#begin
+show_hint_pub_recs_info#:#Op de vergaderpagina wordt een melding weergegeven die het delen van links naar opnames verbiedt. Schakel deze optie in als deze melding <u>niet</u> moet worden weergegeven.
 starttime#:#Starttijd
+start_time#:#Aanvangstijd van de vergadering
 start_window#:#Open een virtuele vergaderruimte in een nieuw venster.
 state_active#:#Actief
 state_inprogress#:#Rennen
 state_ready#:#Klaar
-status#:#status
-subject_crs#:#{VERGADERINGSTITEL} in de cursus {OUDERTITEL}
-subject_fld#:#{VERGADERINGS_TITEL} in de {OUDER_TITEL} map
-subject_grp#:#{VERGADERINGSTITEL} in de groep {OUDERTITEL}
+status#:#Status
+subject_crs#:#{MEETING_TITLE} in de cursus {PARENT_TITLE}
+subject_fld#:#{MEETING_TITLE} in de map {PARENT_TITLE}
+subject_grp#:#{MEETING_TITLE} in de groep {PARENT_TITLE}
 svr_private_port#:#Privépoort van de BBB-server
 svr_private_url#:#Privé-URL van de BBB-server
 svr_public_port#:#Openbare poort van de BBB-server
 svr_public_url#:#Openbare URL van de BBB-server
-svr_salt#:#BBB-serverwachtwoord (geheim)
+svr_salt#:#Wachtwoord (geheim) van de BBB-server
 sysadmin_perm_choose_all#:#Als beheerder kunt u alle eigenschappen van dit object bewerken.
-tab_close#:#Sluit dit venster of tabblad nu.
+tab_close#:#Sluit dit venster of tabblad.
 teams_client_id#:#Klant-ID
-teams_client_id_info#:#Voer hier de applicatie-ID / client-ID in.
+teams_client_id_info#:#Voeg hier de klant-ID toe.
 teams_client_secret#:#Klantgeheim
-teams_client_secret_info#:#Zodra u in Entra een geheime sleutel hebt aangemaakt voor de app die is gemaakt voor MultiVc, kunt u de waarde van de sleutel kopiëren en hier invoeren.
-teams_join_links#:#Je kunt je hier direct aanmelden: {br}{JOIN_URL}{br}&nbsp;{br}of je kunt klikken op: {PERMANENT_LINK}
-teams_lobbybypass#:#Wachtzone voor omzeilen
-teams_lobbybypass_choose#:#Wachtruimte overslaan: Mogelijkheid om te kiezen
-teams_lobbybypass_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de mogelijkheid moeten hebben om de wachtkamer over te slaan in de instellingen. Hiermee bepaalt u wie in de wachtkamer/vergaderlobby terechtkomt.
-teams_lobbybypass_default#:#Wachtruimte overslaan: Standaardinstelling
-teams_lobbybypass_everyone#:#Iedereen wordt toegelaten tot de vergadering. Niemand hoeft in de wachtruimte te wachten.
-teams_lobbybypass_invited#:#Alleen genodigden krijgen toegang tot de vergadering en hoeven niet in de wachtruimte te wachten.
-teams_lobbybypass_organizer#:#Deelnemers nemen plaats in de wachtruimte. Beheerders en ondersteunend personeel hoeven de wachtruimte niet te gebruiken.
-teams_meetings_list_downloaded#:#Online vergaderingen zijn succesvol geïntegreerd in Teams.
-teams_tenant_id_info#:#Voer hier de tenant-ID in. Alternatieve namen zijn: Directory-ID (client).
+teams_client_secret_info#:#Voeg hier het clientgeheim toe.
+teams_join_links#:#Je kunt je hier direct aanmelden: {br}{JOIN_URL}{br}&nbsp;{br}of je klikt op: {PERMANENT_LINK}
+teams_lobbybypass#:#Sla de vergaderlobby over.
+teams_lobbybypass_choose#:#De vergaderruimte overslaan: Selecteer optie
+teams_lobbybypass_choose_info#:#Activeer deze optie als gebruikers met schrijftoegang de optie 'De vergaderlobby overslaan' moeten kunnen selecteren onder Instellingen.
+teams_lobbybypass_default#:#De vergaderlobby overslaan: Standaardinstelling
+teams_lobbybypass_everyone#:#Iedereen heeft toegang tot de vergadering. Er worden geen deelnemers in de wachtruimte geplaatst.
+teams_lobbybypass_invited#:#Alleen uitgenodigden hebben toegang tot de vergadering. Alle andere deelnemers worden in de vergaderruimte geplaatst.
+teams_lobbybypass_organizer#:#Deelnemers worden in de vergaderruimte geplaatst. Beheerders en begeleiders hoeven de vergaderruimte niet te betreden.
+teams_meetings_list_downloaded#:#Vergaderingen zijn succesvol gedownload vanuit Teams.
+teams_tenant_id_info#:#Voeg hier het huurders-ID toe.
 teams_tenant_id#:#Huurders-ID
-terms_of_use#:#<b>Intellectuele eigendomsrechten</b>{br}De informatie en materialen die in BigBlueButton-conferenties worden gepresenteerd, zoals teksten of afbeeldingen, zijn over het algemeen beschermd door auteursrecht, merkenrecht of octrooirecht.{br}De privacywetgeving moet worden nageleefd. Dit geldt met name voor het opnemen van BigBlueButton-conferenties. Het heimelijk opnemen van video- of audioconferenties is een strafbaar feit.{br}{br}<b>Gedragscode</b>{br}Het is niet toegestaan ​​om content te plaatsen die in strijd is met de wet, pornografisch, obsceen, lasterlijk, beledigend, bedreigend, aanzettend tot haat of racistisch is. Het plaatsen van advertenties zonder toestemming en het verzenden van informatie die virussen, manipulaties of soortgelijke schadelijke elementen bevat, is eveneens verboden. Verwerkte gegevens Bij gebruik van BigBlueButton worden de volgende gegevens verzameld: Verbindingsgegevens (bijv. IP-adres, browsertype, datum en tijd van toegang) Toegangsgegevens (indien van toepassing): gebruikersnaam, wachtwoord in versleutelde vorm Inhoudsgegevens (bijv. geüploade bestanden, chatbijdragen, enquêtes) De tijdelijke opslag van verbindingsgegevens, met name het IP-adres, door het systeem is noodzakelijk om BigBlueButton aan de computer van de gebruiker te kunnen leveren. Hiervoor moet het IP-adres van de gebruiker gedurende de sessie worden opgeslagen. De wettelijke basis voor de tijdelijke opslag van de gegevens is artikel 6, lid 1, sub f van de AVG. De verbindingsgegevens worden over het algemeen ook opgeslagen in logbestanden. Het tijdstip van verwijdering wordt bepaald door de beheerder van de BigBlueButton-server.
-title#:#titel
+terms_of_use#:#<b>Eigendomsrechten</b>{br}De informatie en materialen die in BigBlueButton-conferenties worden gepresenteerd, zoals tekst of afbeeldingen, zijn over het algemeen beschermd door auteursrecht, merkenrecht of octrooirecht. Dit geldt in het bijzonder voor de opnames van BigBlueButton-conferenties. Het heimelijk opnemen van video- of audioconferenties is een strafbaar feit.{br}{br}<b>Gedragsregels</b>{br}Het is niet toegestaan om inhoud te plaatsen die in strijd is met wettelijke voorschriften, pornografische, obscene, lasterlijke, beledigende, bedreigende, opruiende of racistische inhoud bevat. Het is ook verboden om zonder toestemming reclame te plaatsen en informatie te verzenden die een virus, manipulatie of soortgelijke schadelijke elementen bevat.{br}{br}<b>Verwerkte gegevens</b><br}Bij gebruik van BigBlueButton worden de volgende gegevens verzameld:<ul><li>Verbindingsgegevens (bijv. IP-adres, browsertype, datum en tijd van toegang)</li><li>Indien van toepassing, toegangsgegevens: gebruikersnaam, wachtwoord in versleutelde vorm</li><li>Inhoudsgegevens (bijv. geüploade bestanden, chatberichten, enquêtes)</li></ul>De tijdelijke opslag van verbindingsgegevens, met name het IP-adres, door het systeem is noodzakelijk om BigBlueButton op de computer van de gebruiker te kunnen leveren. Hiervoor moet het IP-adres van de gebruiker gedurende de sessie worden opgeslagen. De wettelijke basis voor de tijdelijke opslag van de gegevens is artikel 6 lid 1 sub f van de AVG.{br}De verbindingsgegevens worden doorgaans ook opgeslagen in logbestanden. Het tijdstip van verwijdering wordt bepaald door de beheerder van de BigBlueButton-server.
+title#:#Titel
 token_deleted#:#Token verwijderd
 token_not_deleted#:#Token niet verwijderd
 token_not_stored#:#Token niet opgeslagen
 token_stored#:#Token opgeslagen
-unlocked_by#:#Uitgebracht door
-unlock#:#Uitgave
+unlocked_by#:#Ontgrendeld door
+unlock#:#Ontgrendelen
 untrashed_usages#:#Aantal keren dat het gebruikt wordt
-url_info#:#Hier kunt u ook relatieve paden invoeren (bijv. /webconference). Voeg geen '/' toe aan het einde.
+url_info#:#Hier kunt u ook relatieve paden invoeren (bijv.: /webconference). Voer geen '/' in aan het einde.
 url#:#URL
-usage#:#Bezettingsgraad
-user_end#:#laatste vertrek
-user_invite_info#:#Je kunt gasten uitnodigen voor de vergadering via de volgende link:
+usage#:#Gebruik
+user_end#:#laatst vertrekkende
+user_invite_info#:#Via de volgende link kunt u gasten uitnodigen voor de vergadering:
 user_log#:#Gebruikersoverzicht
-user_log_bbb#:#Gebruikersoverzicht (BBB/Teams/Zoom)
+user_log_bbb#:#Gebruikersoverzicht (BBB/Teams)
 user_log_duration#:#Opnameperiode
-user_percent#:#procent
+user_percent#:#Percent
 user_results#:#Aanwezigheidstijden
-user_results_desc#:#De tijden worden alleen weergegeven voor vergaderingen die al zijn afgelopen. Vergaderingen moeten ook hun geplande eindtijd hebben bereikt.
+user_results_desc#:#De tijd wordt alleen weergegeven voor vergaderingen die al zijn afgelopen. Vergaderingen moeten ook het geplande eindtijdstip hebben bereikt.
 user_start#:#eerste start
-user_time#:#aanwezigheidstijd
-wait_join_meeting#:#Momenteel is er niemand met moderatorrechten aanwezig in de virtuele vergaderruimte. Wacht even en probeer het over een minuut opnieuw.
-wait_join_meeting_edudip#:#Je kunt momenteel niet deelnemen aan webinars.
-wait_join_meeting_guest#:#Er is momenteel niemand met moderatorrechten aanwezig in de virtuele vergaderruimte. Wacht even en klik over een minuut opnieuw op de knop 'Deelnemen aan vergadering'.
-wait_join_meeting_teams#:#Je kunt op dit moment niet deelnemen aan een vergadering. Als er een geplande vergadering verschijnt, vernieuw dan deze pagina tot 15 minuten voor aanvang van de vergadering om deel te nemen.
-wait_join_meeting_webex#:#Je kunt momenteel niet deelnemen aan een vergadering. De vergadering is mogelijk nog niet begonnen of is al afgelopen. Vernieuw deze pagina om de status van de vergadering te controleren.
-wait_join_meeting_zoom#:#Je kunt op dit moment niet deelnemen aan een vergadering. Als er een geplande vergadering verschijnt, vernieuw dan deze pagina tot 15 minuten voor aanvang van de vergadering om deel te nemen.
-wait_join_webinar#:#De webinar is nog niet gestart. Wacht even en kom over een minuut terug.
-webex_client_id#:#Webex-integratie client-ID
-webex_client_secret#:#Webex-integratie clientgeheim
-webex_host_email_hidden_info#:#Het e-mailadres dat voor autorisatie wordt gebruikt, is alleen zichtbaar voor de eigenaren en beheerders van het object.
-webex_host_email_info#:#E-mailadres bekend bij Webex of de hostwebsite
-webex_host_email#:#Webex Host e-mailadres
-webex_integration_auth_info#:#U kunt toegang tot uw Webex-account autoriseren. Dit is vereist om Webex-vergaderingen te maken, op te halen en te starten met behulp van de MultiVC-plug-in.
-webex_logout_user_choose#:#Uitloggen bij Webex toestaan: Optie
-webex_logout_user_choose_info#:#Gebruikers die al zijn ingelogd bij Webex, moeten zich afmelden voordat ze aan de vergadering deelnemen.
+user_time#:#Aanwezigheidstijd
+wait_join_meeting#:#Er is momenteel geen moderator aanwezig in de virtuele vergaderruimte. Wacht even en kom over een minuut terug naar deze pagina.
+wait_join_meeting_edudip#:#Momenteel kunt u niet deelnemen aan webinars.
+wait_join_meeting_guest#:#Er is momenteel geen moderator aanwezig in de virtuele vergaderruimte. Wacht even en klik over een minuut opnieuw op 'Deelnemen aan vergadering'.
+wait_join_meeting_teams#:#Momenteel kunt u niet deelnemen aan een vergadering. De vergadering is mogelijk nog niet begonnen of is al afgelopen. Vernieuw deze pagina indien nodig om de status van de vergadering te controleren.
+wait_join_meeting_webex#:#Momenteel kunt u niet deelnemen aan een vergadering. De vergadering is mogelijk nog niet begonnen of is al afgelopen. Vernieuw deze pagina indien nodig om de status van de vergadering te controleren.
+wait_join_webinar#:#Op dit moment is er nog niemand begonnen met het webinar. Wacht even en kom over een minuut terug naar deze pagina.
+webex_client_id#:#Client-ID van de Webex-integratie
+webex_client_secret#:#Clientgeheim van de Webex-integratie.
+webex_host_email_hidden_info#:#Het e-mailadres dat voor autorisatie wordt gebruikt, is alleen zichtbaar voor de eigenaren van het object en beheerders.
+webex_host_email_info#:#Webex of gehoste site bekend e-mailadres
+webex_host_e-mail#:#E-mailadres van de Webex-host
+webex_integration_auth_info#:#Webex-gebruikers kunnen toegang tot hun account verlenen door middel van autorisatie.
+webex_logout_user_choose#:#Toestaan om uit te loggen bij Webex: selectieoptie
+webex_logout_user_choose_info#:#Sta gebruikers die al zijn ingelogd bij Webex toe om uit te loggen voordat ze deelnemen aan de vergadering.
+webex_logout_user_default_info#:#Meld gebruikers die al zijn ingelogd bij Webex altijd uit voordat u deelneemt aan de vergadering.
 webex_logout_user_default#:#Uitloggen bij Webex: Standaardinstelling
-webex_logout_user_default_info#:#Gebruikers die al zijn ingelogd bij Webex, moeten zich altijd afmelden bij Webex voordat ze aan de vergadering deelnemen.
-webex_meetings_list_downloaded#:#Bestaande Webex-vergaderingen zijn succesvol gedownload.
+webex_meetings_list_downloaded#:#De vergaderingen zijn succesvol gedownload van Webex.
 webex_redirect_uri#:#Omleidings-URI
 webex_site_url#:#Webex-site-URL
-webex_user_choose_logout#:#De gebruiker beslist
+webex_user_choose_logout#:#gebruiker kiest
 webex_user_do_logout#:#Uitloggen
 webex_user_do_not_logout#:#Niet uitloggen
 webex_user_logout#:#Uitloggen bij Webex
-webinar_collision#:#Er is een fout opgetreden. Er is al een webinar gepland voor het aangevraagde tijdstip.
-webinar_event_created#:#Webinar gemaakt
-webinar_event_deleted#:#Webinar geannuleerd
-webinar_notification_body#:#Hallo {NAME},{NL}{NL}, het volgende {EVENT} is aangemaakt:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Met vriendelijke groet,{NL}{NL}{FROM}
+webinar_collision#:#Er is een fout opgetreden. Er is al een webinar gepland voor de gevraagde periode.
+webinar_event_created#:#webinar gemaakt
+webinar_event_deleted#:#webinar verwijderd
+webinar_notification_body#:#Hallo {NAAM},{NL}{NL}het volgende {GEBEURTENIS}:{NL}{NL}{ONDERWERP}{NL}{DATUM}{NL}{LINK}{NL}{NL}Met vriendelijke groeten{NL}{NL}{VAN}
 webinar_notification_from#:#ILIAS
 webinar_notification_subject#:#{GEBEURTENIS}: {ONDERWERP}
 webinar_related_successful#:#Webinar succesvol toegewezen
 webinar_running#:#Het webinar is begonnen.
 webinar#:#Webinar
-welcome_text#:#Welkom in de virtuele vergaderruimte {br}<b>< ...
-window_closed#:#De virtuele vergaderruimte is beëindigd.
+welcome_text#:#Welkom in de virtuele vergaderruimte. Om deel te nemen aan de audioverbinding klikt u op de luidsprekerknop. Gebruik een headset om achtergrondgeluiden voor anderen te voorkomen.
 window_close#:#Venster sluiten
+window_closed#:#De virtuele vergaderruimte is gesloten.
 window_started#:#De virtuele vergaderruimte is in een nieuw venster geopend.
-with_chat_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Starten met chat' onder Instellingen moeten kunnen zien.
-with_chat_choose#:#Beginnen met chatten: Selectieoptie
-with_chat_default_info#:#Dit moet over het algemeen geactiveerd worden, vooral in gemodereerde ruimtes.
+with_chat_choose_info#:#Activeer deze optie als u wilt dat gebruikers met schrijftoegang 'Starten met chat' kunnen selecteren onder Instellingen.
+with_chat_choose#:#Beginnen met chatten: Optie
+with_chat_default_info#:#Moet doorgaans geactiveerd worden, vooral in gemodereerde ruimtes.
 with_chat_default#:#Beginnen met chat: Standaardinstelling
-with_chat_info#:#Deze optie moet ingeschakeld zijn, vooral in gemodereerde chatruimtes. De chat wordt dan een 'wachtkamer'.
+with_chat_info#:#Vooral in gemodereerde chatrooms is het aan te raden deze optie te activeren. De chat wordt dan een 'wachtkamer'.
 with_chat#:#Begin met chatten
 xmvc_add#:#Voeg een virtuele vergaderruimte toe
 xmvc_copy#:#Kopieer virtuele vergaderruimte
 xmvc_delete#:#Virtuele vergaderruimte verwijderen
-xmvc_edit_learning_progress#:#Instellingen voor leervoortgang bewerken
 xmvc_edit_permission#:#Machtigingen wijzigen
+xmvc_edit_learning_progress#:#Instellingen voor het bewerken van leervoortgang
 xmvc_new#:#Voeg een nieuwe virtuele vergaderruimte toe
-xmvc_read#:#Toegang tot de virtuele vergaderruimte: Deelname is mogelijk.
+xmvc_read#:#Lees: Deelname aan de virtuele vergaderruimte is mogelijk.
 xmvc_read_learning_progress#:#Bekijk de leerprogressie van andere gebruikers
-xmvc_visible#:#Weergave: De virtuele vergaderruimte is zichtbaar
+xmvc_visible#:#Zichtbaar: De virtuele vergaderruimte is zichtbaar
 xmvc_write#:#Instellingen bewerken
-zoom_account_id#:#Zoom-account-ID
-zoom_account_info#:#Je kunt de Zoom-account-ID, client-ID en clientgeheim verkrijgen via https://developers.zoom.us/docs/internal-apps/create/. Je moet een server-naar-server OAuth-app aanmaken.
-zoom_client_id#:#Zoom-client-ID
-zoom_client_secret#:#Zoom-clientgeheim
-zoom_err_scopes_webinar#:#Je hebt geen toestemming om een ​​webinar te maken. Vergaderingen zijn wel mogelijk. De volgende machtigingen ontbreken:
-zoom_exist_meetings#:#De datum voor deze bijeenkomst is al vastgesteld.
-zoom_exist_webinars#:#De data voor dit webinar zijn al vastgesteld.
-zoom_lobby#:#Wachtruimte voor vergaderingen
-zoom_lobby_choose#:#Wachtkamer: Keuze uit verschillende opties
-zoom_lobby_choose_info#:#Schakel deze optie in als gebruikers met schrijfrechten de optie 'Wachtkamer' in de instellingen moeten kunnen gebruiken. Hiermee bepaalt u wie in de wachtkamer wordt geplaatst.
-zoom_lobby_default#:#Wachtkamer: Standaardinstelling
-zoom_lobby_0#:#Niemand hoeft in de wachtkamer te wachten. De wachtkamer is gedeactiveerd. Deelnemers kunnen 15 minuten voor aanvang van de vergadering deelnemen.
-zoom_lobby_1#:#Iedereen moet naar de wachtkamer.
-zoom_lobby_2#:#Gebruikers die niet tot uw account behoren, moeten de wachtkamer betreden.
-zoom_lobby_3#:#Gebruikers buiten uw account of gebruikers die zich niet op de goedgekeurde domeinen bevinden, moeten in de wachtkamer plaatsnemen.
-zoom_lobby_4#:#Gebruikers die niet aan de cursus of groep deelnemen, moeten naar de wachtkamer gaan.
