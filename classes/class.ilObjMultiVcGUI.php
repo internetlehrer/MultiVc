@@ -23,7 +23,7 @@ use JetBrains\PhpStorm\NoReturn;
  */
 class ilObjMultiVcGUI extends ilObjectPluginGUI
 {
-    public const array START_TYPE = [
+    public const  START_TYPE = [
         'WEBEX' => 'window', #'start', #'window', #
         'EDUDIP' => 'start',
         'BBB' => 'start',

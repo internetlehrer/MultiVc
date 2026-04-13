@@ -56,3 +56,5 @@
 - don't include members of containers without predefind roles
 10.8
 - support Zoom
+10.9
+- fix issues with PHP 8.2

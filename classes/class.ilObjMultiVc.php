@@ -9,15 +9,15 @@
 
 class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
 {
-    public const int LP_INACTIVE = 0;
-    public const int LP_ACTIVE = 1;
-    public const string TABLE_XMVC_OBJECT = 'rep_robj_xmvc_data';
+    public const LP_INACTIVE = 0;
+    public const LP_ACTIVE = 1;
+    public const TABLE_XMVC_OBJECT = 'rep_robj_xmvc_data';
 
-    public const string TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
+    public const TABLE_LOG_MAX_CONCURRENT = 'rep_robj_xmvc_log_max';
 
-    public const string TABLE_USER_LOG = 'rep_robj_xmvc_user_log';
+    public const TABLE_USER_LOG = 'rep_robj_xmvc_user_log';
 
-    public const int MEETING_TIME_AHEAD = 60 * 5;
+    public const MEETING_TIME_AHEAD = 60 * 5;
 
     private ILIAS\DI\Container $dic;
     protected ilDBInterface $db;
@@ -779,7 +779,7 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     /**
      * @throws Exception
      */
-    public function setUserLog(string $vcType, ilApiBBB|ilApiOM $vcObj): void
+    public function setUserLog(string $vcType, ilApiBBB $vcObj): void
     {
         $dateTime = new DateTime('now', new DateTimeZone('UTC'));
         $values = [

@@ -4,7 +4,7 @@
 $id = "xmvc";
 
 // code version; must be changed for all code changes
-$version = "10.8";
+$version = "10.9";
  
 // ilias min and max version; must always reflect the versions that should
 // run with the plugin

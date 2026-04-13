@@ -9,7 +9,7 @@
 */
 class ilMultiVcPlugin extends ilRepositoryObjectPlugin
 {
-    public const string ID = 'xmvc';
+    public const ID = 'xmvc';
 
     /** @var array<int, int[]> */
     protected static array $ref_ids = [];
