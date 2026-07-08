@@ -297,9 +297,29 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $this->dic->ui()->mainTemplate()->setContent($this->form->getHTML());
     }
 
-    private function deleteMultiVcConn()
+    private function getConnIdFromRequest(): int
     {
-        $this->object = ilMultiVcConfig::getInstance($this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int()));
+        return $this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int());
+    }
+
+    private function redirectOnDeleteWithUsages(int $connId): void
+    {
+        if (ilMultiVcConfig::_countAllUsages($connId) > 0) {
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage(
+                ilGlobalTemplateInterface::MESSAGE_TYPE_FAILURE,
+                $this->dic->language()->txt('rep_robj_xmvc_conn_delete_blocked'),
+                true
+            );
+            $this->dic->ctrl()->redirect($this, 'configure');
+        }
+    }
+
+    private function deleteMultiVcConn(): void
+    {
+        $connId = $this->getConnIdFromRequest();
+        $this->redirectOnDeleteWithUsages($connId);
+
+        $this->object = ilMultiVcConfig::getInstance($connId);
 
         $gui = new ilConfirmationGUI();
         $gui->setFormAction($this->dic->ctrl()->getFormAction($this));
@@ -311,11 +331,12 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $this->dic->ui()->mainTemplate()->setContent($gui->getHTML());
     }
 
-    private function deleteMultiVcConnConfirmed()
+    private function deleteMultiVcConnConfirmed(): void
     {
-        $this->object = ilMultiVcConfig::getInstance($this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int()));
+        $connId = $this->getConnIdFromRequest();
+        $this->redirectOnDeleteWithUsages($connId);
 
-        ilMultiVcConfig::_deleteMultiVcConn($this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int()));
+        ilMultiVcConfig::_deleteMultiVcConn($connId);
         $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_conn_deleted'), true);
         $this->dic->ctrl()->redirect($this, 'configure');
     }

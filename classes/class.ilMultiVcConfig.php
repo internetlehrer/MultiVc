@@ -1252,7 +1252,9 @@ class ilMultiVcConfig
         $data = array();
         while ($row = $ilDB->fetchAssoc($res)) {
             if ($a_extended) {
-                $row['usages'] = self::_countUntrashedUsages($row['id']);
+                $row['untrashed_usages'] = self::_countUntrashedUsages($row['id']);
+                $row['trashed_usages'] = self::_countTrashedUsages($row['id']);
+                $row['usages'] = self::_countAllUsages($row['id']);
             }
             $row['conn_id'] = $row['id'];
             unset($row['id']);
@@ -1277,6 +1279,43 @@ class ilMultiVcConfig
         $res = $ilDB->query($query);
         $row = $ilDB->fetchObject($res);
         return $row->untrashed;
+    }
+
+    /**
+     * Count the number of trashed usages of a type
+     */
+    public static function _countTrashedUsages(int $a_type_id): int
+    {
+        global $DIC;
+        $ilDB = $DIC->database();
+
+        $query = "SELECT COUNT(*) trashed FROM rep_robj_xmvc_data s"
+            . " INNER JOIN object_reference r ON s.id = r.obj_id"
+            . " WHERE r.deleted IS NOT NULL "
+            . " AND s.conn_id = " . $ilDB->quote($a_type_id, 'integer');
+
+        $res = $ilDB->query($query);
+        $row = $ilDB->fetchObject($res);
+        return $row->trashed;
+    }
+
+    /**
+     * Count all usages of a type (active and trashed)
+     */
+    public static function _countAllUsages(int $a_type_id): int
+    {
+        return self::_countUntrashedUsages($a_type_id) + self::_countTrashedUsages($a_type_id);
+    }
+
+    public static function connectionExists(int $connId): bool
+    {
+        global $DIC;
+        $ilDB = $DIC->database();
+
+        $set = $ilDB->query(
+            "SELECT id FROM rep_robj_xmvc_conn WHERE id = " . $ilDB->quote($connId, 'integer')
+        );
+        return (bool) $ilDB->fetchAssoc($set);
     }
 
     public static function _getMultiVcConnUsesReferences(int $connId): array
