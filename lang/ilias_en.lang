@@ -76,6 +76,7 @@ conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Meeting layout
 conf_title#:#Title
 conn_deleted#:#The meeting type has been deleted.
+conn_delete_blocked#:#This meeting type cannot be deleted because objects still use it (including objects in trash).
 conn_id#:#Meeting type
 copy#:#Copy
 create_type#:#Define new meeting type
@@ -408,6 +409,7 @@ token_stored#:#Token stored
 unlocked_by#:#Unlocked by
 unlock#:#Unlock
 untrashed_usages#:#Number of uses
+usages_with_trash#:#%s (%s in trash)
 url_info#:#Here you can also enter relative paths (e.g.: /webconference). Please do not enter a '/' at the end.
 url#:#URL
 usage#:#Usage
