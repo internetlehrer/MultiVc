@@ -155,15 +155,12 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
         $result = $ilDB->query("SELECT * FROM rep_robj_xmvc_data WHERE id = " . $ilDB->quote($this->getId(), "integer"));
         while ($record = $ilDB->fetchAssoc($result)) {
             $settings = new ilMultiVcConfig($record["conn_id"]);
-            if(!isset($settings->option)) {
-                //Meeting Type for a Virtual Meeting Object does not exist anymore
-                $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('error') . ': Meeting Type for a MultiVc Object does not exist anymore', true);
-                $this->dic->ctrl()->redirectToURL(ILIAS_HTTP_PATH);
+            if (isset($settings->option)) {
+                $this->option = $settings->option;
+                $this->setPrivateChat($settings->isPrivateChatDefault());
+                $this->setRecord($settings->isRecordDefault());
+                $this->setCamOnlyForModerator($settings->isCamOnlyForModeratorDefault());
             }
-            $this->option = $settings->option;
-            $this->setPrivateChat($settings->isPrivateChatDefault());
-            $this->setRecord($settings->isRecordDefault());
-            $this->setCamOnlyForModerator($settings->isCamOnlyForModeratorDefault());
             $this->setOnline($this->ilIntToBool($record["is_online"]));
             $this->set_token($record["token"]);
             $this->set_moderated($this->ilIntToBool($record["moderated"]));

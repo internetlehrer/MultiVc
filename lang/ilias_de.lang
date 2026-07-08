@@ -76,6 +76,7 @@ conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Meeting Layout
 conf_title#:#Titel
 conn_deleted#:#Der Meeting-Typ wurde gelöscht.
+conn_delete_blocked#:#Dieser Meeting-Typ kann nicht gelöscht werden, da noch Objekte ihn verwenden (einschließlich Objekte im Papierkorb).
 conn_id#:#Meeting-Typ
 copy#:#Kopieren
 create_type#:#Neuen Meeting-Typ definieren
@@ -408,6 +409,7 @@ token_stored#:#Token gespeichert
 unlocked_by#:#Freigegeben von
 unlock#:#Freigeben
 untrashed_usages#:#Anzahl Verwendungen
+usages_with_trash#:#%s (%s im Papierkorb)
 url_info#:#Hier können Sie auch relative Pfadangaben eintragen (z.B.: /webconference). Bitte am Ende kein '/' angeben.
 url#:#URL
 usage#:#Auslastung

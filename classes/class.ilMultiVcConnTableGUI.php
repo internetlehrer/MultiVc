@@ -79,7 +79,16 @@ class ilMultiVcConnTableGUI extends ilTable2GUI
         $this->tpl->setVariable('TXT_ID', $a_set['conn_id']);
         $this->tpl->setVariable('TXT_TITLE', $a_set['title']);
         $this->tpl->setVariable('TXT_AVAILABILITY', $this->dic->language()->txt('rep_robj_xmvc_conf_availability_' . $a_set['availability']));
-        $this->tpl->setVariable('TXT_USAGES', (int) $a_set['usages']);
+        $usages = (int) ($a_set['usages'] ?? 0);
+        $trashedUsages = (int) ($a_set['trashed_usages'] ?? 0);
+        $usagesText = $trashedUsages > 0 ?
+            sprintf(
+                $this->dic->language()->txt('rep_robj_xmvc_usages_with_trash'),
+                $usages,
+                $trashedUsages
+            )
+            : (string) $usages;
+        $this->tpl->setVariable('TXT_USAGES', $usagesText);
 
         if($a_set['showcontent'] === 'webex' && $a_set['auth_method'] === 'admin') {
             $this->setWebex(true);
