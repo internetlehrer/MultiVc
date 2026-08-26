@@ -1367,7 +1367,15 @@ class ilMultiVcConfig
         return trim($value);
     }
 
+    public static function hasConnectionType(string $showcontent): bool
+    {
+        global $DIC;
+        $ilDB = $DIC->database();
 
+        $result = $ilDB->query("SELECT showcontent FROM rep_robj_xmvc_conn where showcontent =  " . $ilDB->quote($showcontent, 'text'));
+        $row = $ilDB->fetchAssoc($result);
+        return !(null === $row);
+    }
 
 
 

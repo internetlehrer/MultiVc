@@ -68,7 +68,10 @@ class ilMultiVcPlugin extends ilRepositoryObjectPlugin
     {
         global $DIC;
 
+        if (!ilMultiVcConfig::hasConnectionType('teams')) { return ; }
+
         $logger = $DIC->logger()->root();
+        $tree = $DIC->repositoryTree();
 
         switch ($a_component) {
             case "Modules/Course":
@@ -78,6 +81,8 @@ class ilMultiVcPlugin extends ilRepositoryObjectPlugin
 
                     foreach ($ref_ids as $ref_id) {
                         $logger->debug('MultiVc: ' . $a_event . ' for RefId = ' . $ref_id . ' and UserId = ' . $a_parameter['usr_id']);
+                        if ($tree->isDeleted($ref_id)) { continue; }
+
                         //todo cache?
                         $xmvc_ref_ids = $DIC->repositoryTree()->getSubTree(
                             $DIC->repositoryTree()->getNodeData($ref_id),
