@@ -1,259 +1,268 @@
 <!-- language file start -->
-add_presentation_url#:#Åbningspræsentation
+add_presentation_url#:#Start præsentation
 add_token#:#Tilføj token
 add_token_user#:#Ny moderator / token
-add_welcome_text#:#Personlig velkomstbesked
-adm_info_appointment#:#Som administrator eller underviser kan du åbne rummet. Deltagerne kan dog kun åbne rummet i løbet af sessionen.
-assigned_roles_info#:#Oprettelse af denne MultiVc-konfiguration kan begrænses til brugere, der tilhører en eller flere af de valgte roller.
+add_welcome_text#:#Tilføj velkomsttekst
+adm_info_appointment#:#Som administrator eller underviser kan du starte rummet. Deltagerne kan dog kun åbne rummet under sessionen.
+assigned_roles_info#:#Oprettelsen af ​​denne MultiVc-konfiguration kan begrænses for brugere, der tilhører en eller flere af de valgte roller.
 assigned_roles#:#Tildelte roller
-authorize#:#bemyndige
+authorize#:#Bemyndige
 bbb_default_server#:#Standard BBB-server
-bbb_guest_password_info#:#Alfanumeriske og specialtegn er tilladt, såsom: <code>a-Z_09,.#@!?</code>
-bbb_guest_password#:#Gæsteadgangskode
+bbb_guest_password_info#:#Alfanumeriske tegn og specialtegn er tilladt, såsom: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Adgangskode til gæster
 bbb_secret_expiration_date#:#Udløbsdato
 bbb_secret_expiration_date_info#:#Adgangskoden er gyldig til og med den valgte dato.
-bbb_secret_expired_msg#:#Gæstedadgangskoden er udløbet.
-bbb_secret_expires_info#:#Vælg denne indstilling, hvis adgangskoden skal have en begrænset gyldighedsperiode.
-bbb_secret_expires#:#Udløbsdato
+bbb_secret_expired_msg#:#Gæstedoskoden er udløbet
+bbb_secret_expires_info#:#Vælg denne indstilling, hvis du ønsker, at adgangskoden skal være midlertidig.
+bbb_secret_expires#:#Med udløbsdato.
 big_blue_button#:#BigBlueButton WebRTC
 btn_chat#:#Chatten kan vises/skjules
 btn_chat_choose#:#Chat kan vises/skjules: Valgmulighed
-btn_chat_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden for at 'Vis/skjul chat' i indstillingerne.
+btn_chat_choose_info#:#Aktivér denne indstilling, hvis du ønsker, at brugere med skriveadgang skal have muligheden 'Vis/skjul chat' under Indstillinger.
 btn_chat_default#:#Chat kan vises/skjules: Standardindstilling
 btn_chat_default_info#:#For at forenkle brugen kan det være nyttigt ikke at aktivere denne mulighed og altid vise chatten.
-btn_chat_info#:#Aktiver denne indstilling, hvis du vil have knappen til at vise/skjule chatten.
-btn_locationshare_choose_info#:#Denne indstilling bør normalt være deaktiveret.
-btn_locationshare_choose#:#Placeringsmulighed: Valg
-btn_locationshare_default_info#:#Aktivér kun denne mulighed efter samråd med databeskyttelsesansvarlig.
+btn_chat_info#:#Aktivér denne indstilling, hvis du vil have knappen til at skjule og vise chatten.
+btn_locationshare_choose_info#:#I de fleste tilfælde bør denne mulighed deaktiveres
+btn_locationshare_choose#:#Placeringsmulighed: Valgfri
+btn_locationshare_default_info#:#Aktivér kun denne mulighed efter samråd med databeskyttelsesansvarlige.
 btn_locationshare_default#:#Valgmulighed Placering: Standard
-btn_locationshare_info#:#Denne mulighed giver brugerne mulighed for at dele deres aktuelle placering med andre i chatten og blive inviteret til et separat møde af andre. Af hensyn til privatlivets fred bør denne mulighed kun aktiveres med forsigtighed.
+btn_locationshare_info#:#Denne mulighed giver brugerne mulighed for at dele deres nuværende opholdssted i chatten og blive inviteret til et separat møde af andre. Af hensyn til privatlivets fred bør denne mulighed bruges med forsigtighed.
 btn_locationshare#:#Valgfri placering
-btn_settings_choose#:#Rumindstillinger: Valgmulighed
-btn_settings_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Indstillinger i rummet' under Indstillinger.
-btn_settings_default#:#Rumindstillinger: Standard
-btn_settings_default_info#:#Standardindstillingen bør generelt være, at valgmuligheden og knappen til indstillinger ikke er aktive.
-btn_settings#:#Rumindstillinger
-btn_settings_info#:#Aktiver denne indstilling, hvis du ønsker, at knapperne og indstillingsmulighederne skal være synlige i rummet. Dette er normalt ikke nødvendigt, da navn og brugerbillede automatisk nedarves fra ILIAS.
+btn_settings_choose#:#Indstillinger i rummet: Valgmulighed
+btn_settings_choose_info#:#Aktivér denne indstilling, hvis du vil have brugere med skrivetilladelser til at vælge 'Indstillinger i rummet' under Indstillinger.
+btn_settings_default#:#Indstillinger i rummet: Standardindstilling
+btn_settings_default_info#:#Standardindstillingen bør normalt være, at valgmuligheden og knappen til indstillinger ikke er aktive.
+btn_settings#:#Indstillinger i rummet
+btn_settings_info#:#Aktiver denne indstilling, hvis du ønsker, at knappen og indstillingsmulighederne skal være synlige i rummet. Dette er normalt ikke nødvendigt, da navn og brugerbillede vil blive overtaget af ILIAS.
 btntext_concurrent_users_check#:#Tjek tilgængelighed
 btntext_guest_login_button#:#Log ind som gæst
 btntext_join_meeting#:#Deltag i mødet
 btntext_join_webinar#:#Deltag i webinaret
 btntext_start_meeting#:#Start møde
-btntext_start_webinar#:#Start webinaret
-cam_mic_only_for_moderator_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have det tilsvarende valg i indstillingerne. Denne indstilling bør være aktiveret i de fleste tilfælde.
-cam_mic_only_for_moderator_choose#:#Deltagerne må ikke aktivere deres kamera og mikrofon: Valgmulighed
-cam_mic_only_for_moderator_default_info#:#Arrangører kan selektivt tillade deltagere at bruge deres mikrofon og/eller kamera. Deltagerne kan ikke dele eller udsende uden bekræftelse. Denne mulighed er nyttig til begivenheder med et meget stort antal deltagere.
-cam_mic_only_for_moderator_default#:#Deltagerne må ikke aktivere deres kamera og mikrofon: standardindstilling
-cam_mic_only_for_moderator_info#:#Arrangørerne vil selektivt give deltagerne mulighed for at bruge deres mikrofon og/eller kamera. Deltagerne kan ikke dele eller udsende uden bekræftelse.
-cam_mic_only_for_moderator#:#Deltagerne må ikke aktivere deres kamera og mikrofon.
-cam_only_for_moderator_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Kamera kun for moderatorer' i indstillingerne. Denne indstilling bør være aktiveret i de fleste tilfælde.
-cam_only_for_moderator_choose#:#Kamera kun for moderatorer: Valgmulighed
-cam_only_for_moderator_default_info#:#Denne indstilling bør deaktiveres i de fleste tilfælde og kun aktiveres, hvis der forventes problemer med ydeevnen med et stort antal deltagere. Moderatorer kan altid ændre denne indstilling under en session.
+btntext_start_webinar#:#Start webinar
+cam_mic_only_for_moderator_choose_info#:#Aktiver denne indstilling, hvis brugere med skrivetilladelser skal have det tilsvarende valg under Indstillinger. Denne indstilling bør være aktiveret i de fleste tilfælde.
+cam_mic_only_for_moderator_choose#:#Deltagere må ikke aktivere kamera og mikrofon: Valgmulighed
+cam_mic_only_for_moderator_default_info#:#Arrangørerne tillader specifikt deltagerne at bruge mikrofon og/eller kamera. Deltagerne kan ikke dele uden bekræftelse. Denne mulighed er nyttig til begivenheder med et stort antal deltagere.
+cam_mic_only_for_moderator_default#:#Deltagere må ikke aktivere kamera og mikrofon: Standardindstilling
+cam_mic_only_for_moderator_info#:#Arrangørerne tillader specifikt deltagerne at bruge mikrofon og/eller kamera. Deltagerne kan ikke dele uden bekræftelse.
+cam_mic_only_for_moderator#:#Deltagere må ikke aktivere kamera og mikrofon
+cam_only_for_moderator_choose_info#:#Aktivér denne indstilling, hvis du vil have brugere med skriveadgang til at vælge 'Kamera kun for moderatorer' under Indstillinger. Denne indstilling bør være aktiveret i de fleste tilfælde.
+cam_only_for_moderator_choose#:#Kamera kun for moderatorer: Valgfri
+cam_only_for_moderator_default_info#:#Denne indstilling bør deaktiveres i de fleste tilfælde og bør kun aktiveres, hvis der kan forventes problemer med ydeevnen ved et stort antal deltagere. Moderatorer har altid mulighed for at ændre indstillingen i BigBlueButton under en session.
 cam_only_for_moderator_default#:#Kamera kun for moderatorer: Standardindstilling
-cam_only_for_moderator_info#:#Anbefales til møder med et meget stort antal mennesker.
+cam_only_for_moderator_info#:#Anbefales til sessioner med et stort antal mennesker.
 cam_only_for_moderator_zoom#:#Kamera kun for værter
 cam_only_for_moderator_zoom_info#:#Anbefales til møder med et meget stort antal mennesker!
 cam_only_for_moderator#:#Kamera kun for moderatorer
-cancel#:#ophæve
-cat_create_xmvc#:#Opret et virtuelt mødelokale
-chat_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Tillad chat' under Indstillinger.
+cancel#:#Ophæve
+cat_create_xmvc#:#opret virtuelt mødelokale
+chat_choose_info#:#Aktivér denne indstilling, hvis du vil have, at brugere med skrivetilladelser skal have 'Tillad privat chat' valgt under Indstillinger.
 chat_choose#:#Tillad chat: Valgmulighed
-chat_default_info#:#Hvis det er aktiveret, kan folk chatte med hinanden.
+chat_default_info#:#Hvis aktiveret, kan folk chatte med hinanden.
 chat_default#:#Tillad chat: Standardindstilling
-chat_info#:#Folk kan chatte med hinanden.
+chat_info#:#Folk kan snakke med hinanden.
 chat#:#Tillad chat
 conf_availability_0#:#Ikke tilgængelig
 conf_availability_1#:#Eksisterende tilladt
-conf_availability_2#:#Nye kan genereres
+conf_availability_2#:#Nye kan oprettes
 conf_availability#:#Tilgængelighed
-config_help_begin#:#Forklaringen under Indstillinger lyder:
+config_help_begin#:#Forklaringen under Indstillinger er som følger:
 configure_add#:#Opret konfiguration
-configure#:#konfiguration
+configure#:#Konfiguration
 conf_meeting_layout_1#:#BRUGERDEFINERET_LAYOUT
 conf_meeting_layout_2#:#SMART_LAYOUT
 conf_meeting_layout_3#:#PRÆSENTATIONSFOKUS
 conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Mødelayout
-conf_title#:#titel
+conf_title#:#Titel
 conn_deleted#:#Mødetypen er blevet slettet.
 conn_id#:#Mødetype
 copy#:#Kopi
-create_type#:#Definer en ny mødetype
-cronjob_description#:#Når den er aktiveret, kan den tid, der bruges på siden, bruges til at beregne læringsfremskridt.
-cronjob_title#:#MultiVc cron-job til at bestemme læringsfremskridt ved brug af MS Teams eller Zoom
-crs_create_xmvc#:#Opret et virtuelt mødelokale
+create_type#:#Definer ny mødetype
+cronjob_description#:#Hvis aktiveret, kan den brugte tid bruges til at beregne læringsfremskridtet.
+cronjob_title#:#MultiVc cronjob til at bestemme læringsfremskridt ved brug af MS Teams
+crs_create_xmvc#:#opret virtuelt mødelokale
 custom_style#:#Brugerdefineret stil
-custom_style_info#:#Her kan du definere CSS-stilparametre eller en CSS-fil. For en fil skal der angives en URL, der starter med https://. Desuden skal parameteren "displayBrandingArea" være indstillet til sand i settings.yml-filen i BBB-installationen.
+custom_style_info#:#Her kan du definere CSS-stilparametre eller en CSS-fil. For en fil skal der angives en URL, der starter med https://. Desuden skal parameteren "displayBrandingArea" være indstillet til sand i settings.yml i BBB-installationen.
 delete_conn#:#Slet mødetype?
-delete#:#Slet
+delete#:#slet
 delete_sess_user_changed#:#Handling ved ejerskifte
-delete_sess_user_changed_info#:#Når en bruger skifter bruger, slettes alle oprettede sessioner.
+delete_sess_user_changed_info#:#Slet alle oprettede sessioner ved brugerændring
 delete_token#:#Slet token
 delete_type#:#Slet mødetype
-disable_sip_info#:#Denne indstilling giver dig mulighed for at deaktivere SIP-opkald. Telefonopkald vil derefter ikke længere være muligt.
+disable_sip_info#:#Denne indstilling giver dig mulighed for at deaktivere SIP-opkald. Telefonisk opkald er ikke muligt til møderne.
 disable_sip#:#Deaktiver telefonopkald
 display_name#:#Vist navn
 download#:#Download
-download_video#:#Download optagelse
-duration#:#Tidslængde
+download_video#:#Download video
+duration#:#Varighed
 edit#:#Redigere
 edit_properties#:#Rediger egenskaber
 edudip_host_email#:#edudip e-mailadresse
-edudip_host_email_hidden_info#:#Den e-mailadresse, der bruges til godkendelse, er kun synlig for objektets ejere og administratorer.
+edudip_host_email_hidden_info#:#Den e-mailadresse, der bruges til godkendelse, vises kun til objektets ejere og administratorer.
 edudip_host_email_info#:#Din e-mailadresse, som edudip kender, skal matche denne.
-edudip_meetings_list_downloaded#:#Webinarer, der allerede er tilgængelige på edudip, er blevet integreret med succes.
-edudip_meetings_list_unavailabe#:#Adgang til eksisterende webinarer på edudip er i øjeblikket ikke mulig.
+edudip_meetings_list_downloaded#:#Webinarer tilgængelige på edudip er integreret med succes
+edudip_meetings_list_unavailabe#:#Hentning af eksisterende webinarer fra edudip er i øjeblikket ikke mulig
 end_time#:#Ende
-endtime#:#Sluttider
+endtime#:#Sluttidspunkt
 err_msg_displayname#:#Indtast venligst dit navn
 err_msg_guest_password#:#Gæstedoskoden er forkert.
 err_msg_guest_password_expired#:#Gæstedadgangskoden er udløbet.
-error_admin_no_access_token#:#Informer venligst din administrator: Token mangler
-error_object_no_access_token#:#Udfør venligst godkendelsen i objektegenskaberne.
+error_admin_no_access_token#:#Fortæl venligst din administrator: Token mangler
+error_object_no_access_token#:#Udfør venligst godkendelse i objektegenskaberne.
 error_object_no_host_email#:#Bekræft venligst e-mailadressen for værtsbrugeren i objektegenskaberne.
-error_start_meeting#:#Der opstod en fejl under opstart af mødet.
+error_start_meeting#:#Der opstod en fejl under opstart af mødet
 error_start_webinar#:#Der opstod en fejl under opstart af webinaret.
 ext_provider_token_user#:#Bruger-/adgangstoken
-ext_provider_token_user_info#:#Indtast e-mailadressen på brugere med en moderatorlicens, efterfulgt af deres adgangstoken.
-fa_expand_default_info#:#Denne indstilling bør generelt være deaktiveret. I mange tilfælde kan visningen af ​​bestemte områder (f.eks. chat) heller ikke forstørres.
-fa_expand_default#:#Maksimering af visningen af ​​områder: Standardindstilling
-fold_create_xmvc#:#Opret et virtuelt mødelokale
-grp_create_xmvc#:#Opret et virtuelt mødelokale
-guest_displayname_info#:#Bemærk: Detaljerede titeloplysninger kan føre til brugervenlighedsvanskeligheder på grund af den begrænsede plads, der er tilgængelig til navnet i BigBlueButton.
+ext_provider_token_user_info#:#Indtast e-mailadressen på brugere med moderatorlicens og derefter deres adgangstoken.
+fa_expand_default_info#:#Denne indstilling bør normalt være deaktiveret. I mange tilfælde kan visningen af ​​områder (f.eks. chat) heller ikke forstørres.
+fa_expand_default#:#Maksimer visningen af ​​intervaller: Standardindstilling
+fold_create_xmvc#:#opret virtuelt mødelokale
+grp_create_xmvc#:#opret virtuelt mødelokale
+guest_displayname_info#:#Bemærk: Detaljerede titeloplysninger kan føre til brugervenlighedsproblemer på grund af den begrænsede plads, der er tilgængelig for navnet i BigBlueButton.
 guest_displayname_input#:#Titel Fornavn Efternavn
-guest#:#Gæst
-guestlink_choose#:#Mulighed for at vælge gæstelink
-guestlink_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Tillad gæstelink' under Indstillinger.
+guest#:#gæst
+guestlink_choose#:#Valgmulighed for gæstelink
+guestlink_choose_info#:#Aktivér denne indstilling, hvis du vil have, at brugere med skrivetilladelser skal have 'Tillad gæstelink' valgt under Indstillinger.
 guestlink_default#:#Standard gæstelink
-guestlink_default_info#:#Denne indstilling bør deaktiveres i de fleste tilfælde. Uautoriseret brug bør i vid udstrækning forhindres. Gæster kan kun deltage i et modereret rum som deltagere. En moderator skal allerede være til stede. Gæster skal acceptere brugsbetingelserne, som er gemt som en ILIAS-sprogvariabel. For at redigere dette skal du gå til Administration -> Sprog. Klik på det ønskede sprog, og indtast 'rep_robj_xmvc_terms_of_use' i feltet 'Identifikator'. Klik derefter på 'Anvend filter', og rediger teksten.
+guestlink_default_info#:#Denne mulighed bør deaktiveres i de fleste tilfælde. Brug af uautoriserede personer bør i vid udstrækning forhindres. Gæster går altid ind i et modereret rum kun som medlemmer. En moderator skal allerede være til stede der. Gæster skal acceptere brugsbetingelserne, der er gemt som ILIAS-sprogvariablen. For at redigere sprogvariablen skal du gå til Administration -> Sprog. Klik på det ønskede 'sprog' og skriv 'rep_robj_xmvc_terms_of_use' for 'Identifikator'. Klik derefter på 'Anvend filter' og rediger teksten.
 guestlink#:#Gæstelink
-guestlink_info#:#Moderatorer kan invitere gæster via et link.
-guest_link_pw_info#:#Gæster skal logge ind med denne adgangskode.
+guestlink_info#:#Moderatorer kan invitere gæster via et link
+guest_link_pw_info#:#Gæster skal logge ind med denne adgangskode
 guest_password_input_info#:#Indtast venligst adgangskoden til gæstelinket her.
-guest_password_input#:#Gæsteadgangskode
+guest_password_input#:#Adgangskode til gæster
 headline_welcome_meeting#:#Velkommen til mødelokalet!
 headline_welcome_webinar#:#Velkommen til webinaret!
 hide_recs_until_date#:#Vis ikke optagelser før
 hide_recs_until_date_info#:#Optagelser frem til den her angivne optagelsesdato vises ikke.
-hide_username_logs#:#Skjul brugeroversigt
-hide_username_logs_info#:#Hvis valgt, er brugeroversigten kun synlig i plugin-administrationen. Ellers vises der også en brugeroversigt for MultiVc-objektet.
-hint_availability_recs#:#Ved spørgsmål eller bekymringer vedrørende adgang til optagelser, bedes du kontakte administratorerne af disse BigBlueButton-møder.
-hint#:#Notetekst
-hint_pub_recs#:#Det er ikke tilladt at dele links til optagelser.
-info_add_presentation_url#:#Indlæs din egen introduktionspræsentation via URL. URL-strukturen skal følge dette format: <i>https://dit.domæne/sti_til/præsentation.pdf</i>
-info_add_welcome_text#:#Denne personlige velkomstbesked kan defineres via en ILIAS-sprogvariabel. Gå til Administration -> Sprog. Klik på det ønskede sprog, og indtast 'rep_robj_xmvc_welcome_text' i feltet 'Identifikator'. Klik derefter på 'Anvend filter', og rediger teksten.
-info_availability#:#Dette styrer tilgængeligheden af ​​mødetypen i magasinet. Ældre typer kan indstilles til "Eksisterende tilladt" i stedet for at blive slettet.
-info_bottom_headline#:#Vigtige brugsanvisninger:
-info_bottom#:#<ul><li>Brug venligst <b>headset</b> for at undgå irriterende feedback eller ekko!</li><li><b>Hvis din internetforbindelse er dårlig, bør du slukke dit kamera (webcam), og hvis forbindelsen er endnu værre, bør du bruge et telefonmøde til lydtransmission.</li></ul>
+hide_username_logs#:#Skjul brugernavn
+hide_username_logs_info#:#Hvis valgt, er brugeroversigten kun synlig i plugin-administrationen, ellers også på MultiVc-objektet.
+hint_availability_recs#:#Ved spørgsmål eller bekymringer vedrørende tilgængeliggørelse af optagelser, bedes du kontakte de ansvarlige for disse BigBlueButton-møder.
+hint#:#Hinttekst
+hint_pub_recs#:#Deling af optagelseslinks er ikke tilladt.
+info_add_presentation_url#:#Indlæs din egen startpræsentation via URL. URL-strukturen skal opfylde følgende format: <i>https://dit.domæne/sti_til/præsentation.pdf</i>
+info_add_welcome_text#:#Individuel velkomsttekst kan defineres med en ILIAS-sprogvariabel. Skift til Administration -> Sprog. Klik på det ønskede 'Sprog' og skriv 'rep_robj_xmvc_welcome_text' i feltet 'Identifikator'. Klik derefter på 'Anvend filter' og rediger teksten.
+info_availability#:#Dette styrer tilgængeligheden af ​​mødetypen i arkivet. Gamle typer kan indstilles til "Eksisterende tilladt" i stedet for at blive slettet.
+info_bottom_headline#:#Vigtige noter:
+info_bottom#:#<ul><li>Brug venligst <b>headset</b> for at undgå irriterende feedback eller ekko!</li><li><b>Hvis din internetforbindelse er dårlig</b>, bør du slukke dit kamera (webcam), og hvis forbindelsen er endnu dårligere, bør du bruge en telefonkonference til at transmittere lyden.</li></ul>
 info_concurrent_users_available#:#Antal ledige pladser i det virtuelle klasseværelse:
-info_concurrent_users_none#:#Der er i øjeblikket ikke flere pladser til tilmelding. Tjek venligst tilgængeligheden igen om et minut ved at klikke på knappen "Tilmeld dig møde".
-info_delete_vc_sure#:#Er du sikker? Følgende virtuelle mødelokale vil blive slettet:
-info_hint#:#Den forklarende tekst vises fremhævet med farve over indholdet af objektsiden.
-info_max_duration#:#Mødet slutter efter det angivne antal timer og minutter. For ubegrænset varighed, indtast venligst '0' for hver.
-info_max_participants#:#Maksimalt antal deltagere pr. møde. For ubegrænset antal deltagere, indtast venligst '0'.
-info_max_participants_webinar#:#Maksimalt antal deltagere pr. webinar. Se venligst din edudip-kontrakt.
+info_concurrent_users_none#:#Der er i øjeblikket ikke flere ledige pladser til login. Tjek venligst tilgængeligheden igen om et minut med et <b>venstreklik</b> på knappen <b>"Deltag i møde"</b>.
+info_delete_vc_sure#:#Er du sikker? Dette virtuelle mødelokale vil blive slettet:
+info_hint#:#Hintteksten vises fremhævet over indholdet af objektsiden.
+info_max_duration#:#Mødet slutter efter de angivne værdier for timer og minutter. Hvis varigheden er ubegrænset, bedes du angive '0' for hver.
+info_max_participants#:#Maksimalt antal deltagere pr. møde. For ubegrænset antal, indtast venligst '0'.
+info_max_participants_webinar#:#Maksimalt antal deltagere pr. webinar.
 info_meeting_layout#:#Styrer standardlayoutet for mødet.
 info_om_svr_public_url#:#Eksempel: https://www.example.com/
 info_platform_chg_reset_data#:#Dit valg
-info_platform_chg_reset_data_o#:#Bemærk venligst, at når du skifter WebRTC-platform, nulstilles alle indstillinger til standardværdierne, og alle gemte formulardata slettes. For at skifte WebRTC-platform skal du først bekræfte dit nye valg ved at klikke på "Gem". I næste trin overskrives den tidligere konfiguration ved at gemme igen.
-info_requirements_bbb#:#BigBlueButton bruger den åbne standard WebRTC, som understøttes af et stigende antal browsere. I øjeblikket anbefales Google Chrome, den Chromium-baserede browser Microsoft Edge eller, med begrænsninger, Mozilla Firefox. Du kan også bruge Safari Mobile fra iOS 12.2 og Chrome Mobile fra Android 6.0. Microsoft Internet Explorer og ældre Edge-versioner understøttes ikke. Din firewall må ikke blokere følgende porte: TCP/IP-porte 80/443 (til HTTP/HTTPS) og UDP-porte i området 16384 - 32768. For at dele din skærm (desktopdeling) skal du have en højtydende internetforbindelse. Vi anbefaler også, at moderatorer og oplægsholdere bruger en kablet netværksforbindelse (ikke Wi-Fi).
-info_requirements_edudip#:#<ul><li>edudip bruger den åbne standard WebRTC, som understøttes af et stigende antal browsere. I øjeblikket anbefales Google Chrome, den Chromium-baserede browser Microsoft Edge eller, med begrænsninger, Mozilla Firefox. Microsoft Internet Explorer og ældre versioner af Edge understøttes ikke.</li><li>Kontakt venligst edudip support for yderligere information.</li>
+info_platform_chg_reset_data_o#:#Bemærk venligst, at når du ændrer WebRTC-platformen, nulstilles alle indstillinger til standardværdierne, og eventuelle gemte formulardata slettes. For at ændre WebRTC-platformen skal du først bekræfte det nye valg ved at klikke på "Gem". I næste trin overskrives den tidligere konfiguration ved at gemme igen.
+info_requirements_bbb#:#<ul><li>BigBlueButton bruger den åbne standard WebRTC, som understøttes af flere og flere browsere. I øjeblikket anbefales Google Chrome, den Chromium-baserede browser Microsoft Edge eller, med begrænsninger, Mozilla Firefox. Du kan også bruge Safari Mobile fra iOS 12.2 og Chrome Mobile fra Android 6.0. Microsoft Internet Explorer og ældre Edge-versioner understøttes ikke.</li><li>Den firewall, du bruger, må ikke blokere følgende porte: TCP/IP-porte 80/443 (til HTTP/HTTPS) og UDP-porte i området 16384 - 32768.</li><li>For at overføre din skærm (desktopdeling) skal du have en højtydende internetforbindelse. Vi anbefaler også, at moderatorer og præsentanter bruger et kabelbaseret netværk (intet WLAN).
+info_requirements_edudip#:#<ul><li>edudip bruger den åbne standard WebRTC, som understøttes af flere og flere browsere. I øjeblikket anbefales Google Chrome, den Chromium-baserede browser Microsoft Edge eller, med begrænsninger, Mozilla Firefox. Microsoft Internet Explorer og ældre Edge-versioner understøttes ikke.</li><li>Kontakt venligst edudip support for at få mere information.</li>
 info_requirements_headline#:#Tekniske krav:
-info_requirements_not_ok#:#<b>Du kan kun bruge det virtuelle møderum i meget begrænset omfang med den browser, du bruger i øjeblikket.</b><br/>For at opnå de bedste resultater skal du bruge Google Chrome eller, med begrænsninger, Mozilla Firefox! Hvis du ikke har rettigheder til at installere en browser, kan du bruge Google Chrome Portable.<br/>Hvis det ikke er muligt at ændre din browser, skal du starte det virtuelle møderum og skrive i chatten, at du i øjeblikket ikke har en passende browser, og at ingen skal vente på dig.
-info_requirements_om#:#<ul><li>Openmeetings bruger den åbne standard WebRTC, som understøttes af et stigende antal browsere. I øjeblikket anbefales Google Chrome eller, med begrænsninger, Mozilla Firefox. Du kan også bruge den nyeste version af Microsoft Edge, samt Safari Mobile (iOS 12.2 og nyere) og Chrome Mobile (Android 6.0 og nyere). Microsoft Internet Explorer og ældre Edge-versioner understøttes ikke.</li><li>Din firewall må ikke blokere følgende porte: TCP/IP-porte 8888/5443 (til HTTP/HTTPS), TCP/UDP 3478 og UDP-porte i området 49152-65535.</li><li>For at dele din skærm (desktopdeling) skal du bruge Google Chrome og have en højtydende internetforbindelse. Vi anbefaler også, at moderatorer og oplægsholdere bruger en kabelbaseret netværksforbindelse (ikke Wi-Fi).
-info_requirements_partly#:#Vi anbefaler at bruge Google Chrome som din browser, eller, med begrænsninger, Mozilla Firefox. Du skal selv afgøre, om og i hvilken grad din nuværende browser er egnet til at bruge det virtuelle mødelokale. Rapporter venligst dine oplevelser til den tilgængelige tekniske support.
-info_requirements_teams#:#Moderatorer skal bruge Teams-appen. Deltagerne kan starte Teams via deres browser. For at dele din skærm (desktopdeling) skal du have en højtydende internetforbindelse. Vi anbefaler også, at moderatorer og oplægsholdere bruger et kabelbaseret netværk (ikke Wi-Fi).
+info_requirements_not_ok#:#<b> Med den browser, du bruger i øjeblikket, kan du kun bruge det virtuelle møderum i meget begrænset omfang.</b><br/> Det er bedst at bruge Google Chrome eller, med begrænsninger, Mozilla Firefox som din browser! Hvis du ikke har rettigheder til at installere en browser, kan du muligvis bruge Google Chrome Portable.<br/>Hvis det ikke er muligt at skifte browser, skal du starte det virtuelle møderum og skrive i chatten, at du i øjeblikket ikke har en passende browser, og at ingen skal vente på dig.
+info_requirements_om#:#<ul><li>Openmeetings bruger den åbne standard WebRTC, som understøttes af flere og flere browsere. I øjeblikket anbefales Google Chrome eller, med begrænsninger, Mozilla Firefox. Du kan også bruge den nyeste version af Microsoft Edge samt Safari Mobile fra iOS 12.2 og Chrome Mobile fra Android 6.0. Microsoft Internet Explorer og ældre Edge-versioner understøttes ikke.</li><li>Den firewall, du bruger, må ikke blokere følgende porte: TCP/IP-porte 8888/5443 (til HTTP/HTTPS), TCP/UDP 3478 og UDP-porte i området 49152 - 65535.</li><li>For at overføre din skærm (desktopdeling) skal du bruge Google Chrome og have en højtydende internetforbindelse. Vi anbefaler også, at moderatorer og oplægsholdere bruger et kabelbaseret netværk (intet WLAN).
+info_requirements_partly#:#Vi anbefaler Google Chrome som browser eller med begrænsninger Mozilla Firefox. Om og i hvilken grad den browser, du bruger i øjeblikket, er egnet til at bruge det virtuelle mødelokale, skal du selv finde ud af. Rapporter venligst dine oplevelser til den tekniske support, hvis den er tilgængelig.
+info_requirements_teams#:#<ul><li>Moderatorer skal bruge Teams-appen.</li><li>Deltagerne kan starte Teams i deres browser.</li><li>For at dele din skærm (desktopdeling) skal du have en højtydende internetforbindelse. Vi anbefaler også, at moderatorer og oplægsholdere bruger et kabelbaseret netværk (ikke Wi-Fi).
 info_requirements_webex#:#<ul><li>Anbefalede browsere: Chrome, Edge, Firefox</li></ul>
 info_requirements_zoom#:#Log venligst ind på Zoom med den e-mailadresse, du har registreret hos ILIAS. Dette er:
 info_requirements_zoom_lp#:#Din deltagelse i dette møde skal registreres for at fastslå dine læringsfremskridt. Du er kun berettiget til merit, hvis du er til stede i {%} af den planlagte tid mellem mødets start og slut.
-info_set_owner#:#Ejer registreret
+info_set_owner#:#ejeren indtastede
 info_svr_private_port#:#Eksempel: 443
-info_svr_private_url#:#Med undtagelse af Amazon EC2 svarer dette altid til den offentlige URL.
+info_svr_private_url#:#Svarer altid til den offentlige URL, med undtagelse af Amazon EC2
 info_svr_public_port#:#Eksempel: 443
 info_svr_public_url#:#Eksempel: https://www.example.com/bigbluebutton/
 info_svr_salt_om#:#Eksempel: dZ#ls2W!k6l
 info_svr_salt#:#ssh: bbb-conf --secret
 info_svr_username#:#Eksempel: om_admin
-info_title#:#Denne titel vises, når du vælger mødetypen for nye objekter.
-info_top_moderated_edudip#:#Du har moderatorrettigheder og kan starte webinaret.
-info_top_moderated_m_bbb#:#Dette er et modereret rum, og du kan kun komme ind i mødelokalet, når en person med moderatorfunktioner er i rummet.
-info_top_moderated_m_om#:#Dette er et modereret rum, og du kan kun komme ind i mødelokalet, når en person med moderatorfunktioner er i rummet.
-info_top_moderated_webex#:#Du har moderatorrettigheder og kan starte mødet. For at gøre dette skal du have en konto hos Webex eller et Webex-hostet websted. Deltagerne kan først deltage, når mødet er startet af en moderator.
+info_title#:#Denne titel vises for at vælge mødetype for nye objekter.
+info_top_moderated_edudip#:#Du har moderatorrettigheder og kan starte mødet.
+info_top_moderated_m_bbb#:#Dette er et modereret rum, og du kan altid kun komme ind i mødelokalet, når en person med moderatorfunktion er i rummet.
+info_top_moderated_m_om#:#Dette er et modereret rum, og du kan altid kun komme ind i mødelokalet, når en person med moderatorfunktion er i rummet.
+info_top_moderated_webex#:#Du har moderatorrettigheder og kan starte mødet. For at gøre dette skal du have en konto hos Webex eller på et Webex-hostet websted. Deltagerne kan ikke deltage, før mødet er startet af en moderator.
 info_top_moderated_zoom#:#Dette er et webinar. Du kan starte webinaret nu.
-info_top_moderator_bbb#:#<b>Dette er et modereret rum, og du har moderatorrollen i dette rum.</b><br/>Personer uden moderatorrolle kan kun komme ind i møderummet, når en person med moderatorrolle allerede er i rummet.
-info_top_moderator_om#:#<b>Dette er et modereret rum, og du har moderatorrollen i dette rum.</b><br/>Personer uden moderatorrolle kan kun komme ind i møderummet, når en person med moderatorrolle allerede er i rummet.
-info_top_not_moderated_bbb#:#Dette møderum er ikke modereret. Derfor har du også moderatorrettigheder og dermed udvidede rettigheder. Du kan begrænse andre deltageres rettigheder og afslutte sessionen. Brug venligst disse udvidede rettigheder ansvarligt.
-info_top_not_moderated_om#:#Dette møderum er ikke modereret. Derfor har du også moderatorrettigheder og dermed udvidede rettigheder. Du kan begrænse andre deltageres rettigheder og afslutte sessionen. Brug venligst disse udvidede rettigheder ansvarligt.
-info_webex_client_id#:#Du kan finde klient-ID'et i dataene for din Webex-integration (f.eks. admin.webex.com, developer.webex.com).
+info_top_moderator_bbb#:#<b>Dette er et modereret rum, og du har moderatorfunktionen i dette rum.</b><br/>Personer uden en moderatorfunktion kan kun komme ind i mødelokalet, når en person med en moderatorfunktion er i rummet.
+info_top_moderator_om#:#<b>Dette er et modereret rum, og du har moderatorfunktionen i dette rum.</b><br/>Personer uden en moderatorfunktion kan kun komme ind i mødelokalet, når en person med en moderatorfunktion er i rummet.
+info_top_not_moderated_bbb#:#Dette møderum er ikke modereret. Derfor har du også en moderatorfunktion og dermed udvidede rettigheder. Du kan begrænse andre personers rettigheder og afslutte sessionen. Brug venligst de udvidede rettigheder ansvarligt.
+info_top_not_moderated_om#:#Dette møderum er ikke modereret. Derfor har du også en moderatorfunktion og dermed udvidede rettigheder. Du kan begrænse andre personers rettigheder og afslutte sessionen. Brug venligst de udvidede rettigheder ansvarligt.
+info_webex_client_id#:#Klient-ID'et kan findes i dataene for din Webex-integration (f.eks. admin.webex.com, developer.webex.com).
 info_webex_client_secret#:#Klienthemmeligheden vises én gang efter oprettelse/opdatering af en Webex-integration.
-info_webex_redirect_uri#:#Tilføj denne adresse som en omdirigerings-URI i integrationsindstillingerne.
-info_webex_site_url#:#Navn på det hostede websted. Underdomænet før .webex.com, f.eks. <b>din-virksomhed</b>.webex.com eller <b>din-virksomhed</b>.mit.webex.com
-integration_admin_auth_method_info#:#Autorisation udføres af administratoren via MultiVc-plugin-indstillingerne. Følgende scopes anmodes om under OAuth-processen:
+info_webex_redirect_uri#:#Tilføj denne adresse som omdirigerings-URI i integrationsindstillingerne.
+info_webex_site_url#:#Navn på det hostede websted. Underdomænet før .webex.com, f.eks. <b>din-virksomhed</b>.webex.com eller <b>din-virksomhed</b>.my.webex.com
+integration_admin_auth_method_info#:#Autorisation foretages af administratoren via indstillingerne for MultiVc-pluginet. Følgende scopes anmodes om under OAuth-processen:
 integration_admin_auth_scopes_info#:#(følger for administratorer) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
 integration_auth_method#:#Godkendelse af integrationen
-integration_auth_methods_info#:#Autorisation kan udføres af: - administratoren via MultiVc-plugin-indstillingerne - brugeren via MultiVc-objektindstillingerne. Følgende scopes anmodes om under den respektive OAuth-proces:
-integration_user_auth_method_info#:#Autorisation udføres af brugeren via indstillingerne for MultiVc-objektet. Følgende scopes anmodes om under OAuth-processen:
+integration_auth_methods_info#:#Autorisation kan udføres af:{br}- administratoren via indstillingerne for MultiVc-pluginet{br}- brugeren via indstillingerne for MultiVc-objektet.{br}Følgende scopes anmodes om under den respektive OAuth-proces:{br}
+integration_user_auth_method_info#:#Autorisation foretages af brugeren via indstillingerne for MultiVc-objektet. Følgende scopes anmodes om under OAuth-processen:
 integration_user_auth_scopes_info#:#spark:kms meeting:schedules_read meeting:schedules_write meeting:participants_read meeting:participants_write meeting:preferences_read meeting:preferences_write
 join_time#:#Deltagelse fra
 leave_time#:#Deltagelse indtil
-list_token_user_info#:#Liste over eksisterende moderatorer. De gemte tokens kan ikke overskrives. Slet venligst først posten ved at klikke på X'et, hvis det er nødvendigt.
+list_token_user_info#:#Liste over allerede oprettede moderatorer. De gemte tokens kan ikke overskrives. Slet venligst først posten ved at klikke på X, hvis det er nødvendigt.
 list_token_user#:#Registrerede moderatorer
-lock_disable_cam_choose_info#:#Definer om indstillingen "Lås deltagerkamera" er tilgængelig for objektet.
-lock_disable_cam_choose#:#Deltagerkameralås kan vælges
-lock_disable_cam_default_info#:#Indstil standardindstillingen til "Lås deltagerkamera".
-lock_disable_cam_default#:#Lås deltagerkamera (standardindstilling)
+lock_disable_cam_choose_info#:#Definer om indstillingen "Lås deltagerkamera" er tilgængelig på objektet.
+lock_disable_cam_choose#:#Lås deltagerkamera kan vælges
+lock_disable_cam_default_info#:#Indstil standardindstillingen for "Lås deltagerkamera".
+lock_disable_cam_default#:#Lås deltagerkamera Standard
 lock_disable_cam_info#:#Ved at aktivere denne indstilling blokeres deltagernes kamera (webcam) som standard.
 lock_disable_cam#:#Lås deltagerkamera
-locked_by#:#Blokeret af
-locked#:#Blokeret
-lock#:#Lås ud
-logo_url_info#:#Indtast URL'en til dit logo her. URL'en skal starte med https://.
-logo_url#:#URL til logoet
+locked_by#:#Låst af
+locked#:#Låst
+lock#:#Låse
+logo_url_info#:#Indtast URL'en til dit logo her. URL'en skal starte med https://
+logo_url#:#Logo-URL
 lp_active#:#Aktiv
-lp_active_info#:#Status "Igangværende" angives, så snart indholdet tilgås. Status "Behandlet" bestemmes af aktivitetstimerne.
+lp_active_info#:#Status "Igangværende" angives, så snart indholdet tilgås. Status "Afsluttet" eller "Mislykket" bestemmes af fremmødetiderne.
 lp_inactive#:#Inaktiv
 lp_inactive_info#:#Der gemmes ingen læringsfremskridt for dette objekt.
-lp_mode#:#mode
-lp_time_info#:#Denne procentværdi, baseret på de mulige fremmødetider, skal overskrides for at status kan indstilles til "Behandlet".
-lp_time#:#Grænseværdi for "Redigeret"
+lp_mode#:#Mode
+lp_time_info#:#Denne procentværdi i forhold til de mulige fremmødetider skal overskrides for at status kan sættes til "Afsluttet". Ellers sættes den til "Mislykket".
+lp_time#:#Tærskelværdi for "Afsluttet"
+manual_mods_choose_info#:#Vælg denne indstilling, hvis du vil have brugere med skrivetilladelser til at have muligheden for at "Manuelt vælge medmoderatorer eller medværter" i Indstillinger.
+manual_mods_choose#:#Manuelt valg af medmoderatorer: Valgmulighed
+manual_mods_default_info#:#Deaktiver denne indstilling, hvis du ønsker, at kursus- og gruppeadministratorer samt kursusvejledere automatisk skal blive "medmoderatorer" eller "medværter". Hvis den er aktiveret, kan "medmoderatorer" eller "medværter" manuelt tildeles via en fane, der vises på MultiVc-objektet.
+manual_mods_default#:#Manuelt valg af medmoderatorer: Standardindstilling
+manual_mods_info_zoom#:#Deaktiver denne indstilling, hvis du ønsker, at kursus- og gruppeadministratorer samt kursusvejledere automatisk skal blive medværter. Hvis den er aktiveret, kan du manuelt udpege medværter ved hjælp af en fane, der derefter vises.
+manual_mods_zoom#:#Manuelt valg af medværter
 max_duration#:#Maksimal varighed
 max_meetings#:#Maksimalt antal mødelokaler
 max_participants#:#Maks. deltagere
 max_users#:#Maksimalt antal brugere
-meeting_collision#:#Der er opstået en fejl. En session er allerede planlagt til det ønskede tidspunkt.
-meeting#:#møde
-meeting_end#:#Slut på mødet
-meeting_related_successful#:#Mødet er blevet tildelt
-meeting_running#:#Det virtuelle mødelokale er blevet lanceret.
+meeting_collision#:#Der er opstået en fejl. Der er allerede planlagt et møde i den ønskede periode.
+meeting#:#Møde
+meeting_end#:#Mødeslut
+meeting_related_successful#:#mødet blev relateret med succes
+meeting_running#:#Det virtuelle mødelokale er startet.
 meeting_start#:#Mødestart
-member_btn_fileupload_choose#:#Tillad alle at uploade filer: Valgmulighed
-member_btn_fileupload_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Tillad alle at uploade filer' under Indstillinger.
-member_btn_fileupload#:#Tillad filuploads for alle
-member_btn_fileupload_default#:#Tillad alle at uploade filer: Standardindstilling
+meetings_list_downloaded#:#Eksisterende møder og webinarer blev integreret med succes
+member_btn_fileupload_choose#:#Tillad filupload til alle: Valgmulighed
+member_btn_fileupload_choose_info#:#Aktivér denne indstilling, hvis du vil have, at brugere med skrivetilladelser skal have muligheden 'Tillad filupload af alle' under Indstillinger.
+member_btn_fileupload#:#Tillad filupload til alle
+member_btn_fileupload_default#:#Tillad filupload til alle: Standardindstilling
 member_btn_fileupload_default_info#:#Denne indstilling bør normalt være deaktiveret.
-member_btn_fileupload_info#:#Aktiver kun denne indstilling, hvis andre personer udover personer med udvidede rettigheder (f.eks. administratorer, muligvis undervisere) også skal kunne uploade filer.
+member_btn_fileupload_info#:#Aktiver kun denne indstilling, hvis andre personer udover personer med udvidede rettigheder (f.eks. administratorer, vejledere) også skal kunne uploade filer.
 modal_delete_scheduled_meeting_accept#:#Slet møde
-modal_delete_scheduled_meeting_title#:#Er du sikker på, at du vil slette dette møde?
-modal_delete_scheduled_webinar_accept#:#Slet webinar
-modal_delete_scheduled_webinar_title#:#Vil du virkelig slette dette webinar?
+modal_delete_scheduled_meeting_title#:#Vil du virkelig slette dette møde?
+modal_delete_scheduled_webinar_accept#:#slet webinar
+modal_delete_scheduled_webinar_title#:#Er du sikker på, at du vil slette dette webinar?
 modal_details_scheduled_meeting_title#:#Mødedetaljer (Webex-svartekst)
 modal_details_scheduled_webinar_title#:#Webinardetaljer (edudip-svartekst)
-moderated_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have mulighed for at vælge 'modereret rum' under Indstillinger.
-moderated_choose#:#modereret plads: valgmulighed
-moderated_default_info#:#Aktivér denne indstilling, hvis du vil oprette nye rum som modererede rum.
+moderated_choose_info#:#Aktivér denne indstilling, hvis du vil have brugere med skriveadgang til at vælge 'modereret rum' under Indstillinger.
+moderated_choose#:#modereret rum: valgmulighed
+moderated_default_info#:#Aktiver denne indstilling, hvis nye rum skal oprettes som modererede rum.
 moderated_default_zoom_info#:#Aktivér denne mulighed, hvis nye rum skal oprettes som 'webinarer'.
-moderated_default#:#modereret rum: standardindstilling
-moderated_info#:#I et modereret område har moderatorer udvidede rettigheder. Andre brugere har kun begrænset adgang til det virtuelle område. Moderatorer omfatter alle, der kan redigere objektets egenskaber, samt gruppeadministratorer, kursusadministratorer og kursusvejledere.
-moderated_teams_info#:#I et modereret rum har objektets skaber, såvel som gruppeadministratorer, kursusadministratorer og kursusvejledere, flere rettigheder: De kan dele og overføre indhold og beslutte, om andre personer har tilladelse til at deltage. I et umodereret rum kan alle deltage og dele eller overføre indhold uden bekræftelse.
+moderated_default#:#modereret rum: Standardindstilling
+moderated_info#:#I et modereret rum har personer med moderatorfunktion udvidede rettigheder. Andre personer har også begrænsede adgangsrettigheder til det virtuelle rum. Personer med moderatorfunktion er alle dem, der kan redigere objektets egenskaber, samt gruppeadministratorer, kursusadministratorer og kursusvejledere.
+moderated_teams_info#:#I et modereret rum har objektets opretter samt gruppeadministratorer, kursusadministratorer og kursusvejledere flere rettigheder: de kan dele og beslutte, om andre kan deltage. I et umodereret rum kan alle dele og deltage uden bekræftelse.
 moderated_zoom_info#:#Det virtuelle rum er beregnet til et webinar, ikke et møde. Sørg for, at din Zoom-konto har tilladelse til at oprette webinarer. En basiskonto, eller endda gratis konto, har ikke denne tilladelse.
-moderated#:#modereret plads
-moderated_webex#:#Tip: I umodererede rum er deltagerne ikke pseudonymiserede. Derfor er det kun personer med en passende Webex-konto, der har tilladelse til at deltage.
+moderated#:#Modereret rum
+moderated_webex#:#<b>Tip:</b> I umodererede rum er deltagere ikke pseudonymiserede. Derfor er det kun tilladt for personer med en passende Webex-konto at deltage.
 moderated_zoom#:#Webinar
 moderator#:#Moderator
-msg_obj_deleted#:#Optagelsen er blevet slettet.
-notification_sending#:#Der sendes beskeder...
+moderators_info_zoom#:#Sørg for, at de valgte deltagere har de nødvendige tilladelser i Zoom.
+moderators_zoom#:#Medværter
+msg_obj_deleted#:#Optagelsen blev slettet.
+notification_sending#:#beskeder sendes ...
 notification_sent#:#Notifikationer sendt.
-obj_ids_special_info#:#Kun sjældent nødvendigt! Indtast her, adskilt af kommaer, ILIAS-objekt-ID'erne for rum, der er knyttet til kurser (derfor altid det samme objekt-ID), som skal håndteres separat for hvert kursus. Objekt-ID'et vises i objektindstillingerne. Indstillingen 'Specialrum' er nyttig, hvis indstillingerne for mange rum skal administreres centralt, for eksempel for gradvist at aktivere yderligere funktioner.
+obj_ids_special_info#:#Kun nødvendigt i sjældne tilfælde! Indtast ILIAS-objekt-ID'erne for rum, der er knyttet til kurser (derfor altid det samme objekt-ID), adskilt af kommaer. Objekt-ID'et vises i objektindstillingerne. Indstillingen 'specialrum' er nyttig, hvis indstillingerne for mange rum skal foretages centralt for at frigive yderligere funktioner successivt.
 obj_ids_special#:#Særlige værelser
 objs_xmvc_duplicate#:#Kopiér virtuelt mødelokale
 objs_xmvc#:#Virtuelle mødelokaler
@@ -262,118 +271,121 @@ obj_xmvc_duplicate#:#Kopi
 obj_xmvc_select#:#Vælg virtuelt mødelokale
 obj_xmvc#:#Virtuelt mødelokale
 offline#:#Offline
-of_owner_prefix#:#af ejeren
-om_svr_public_port#:#OpenMeeting-serverport
-om_svr_public_url#:#URL til OpenMeeting-serveren
+of_owner_prefix#:#af ejer
+om_svr_public_port#:#Port til Openmeeting-serveren
+om_svr_public_url#:#URL til Openmeeting-serveren
 om_svr_username#:#SOAP-brugernavn
 om_svr_userpass#:#SOAP-adgangskode
 overview_uses#:#Oversigt over anvendelser
-owners_email_not_unique#:#Ejerens e-mailadresse er ikke unik. Den må kun tildeles én gang til en ILIAS-bruger.
-playback#:#Afspil optagelse
-plugin_configuration#:#konfiguration
-private_chat_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Tillad privat chat' under Indstillinger.
+owners_email_not_unique#:#Ejerens e-mailadresse er ikke unik. Denne må kun tildeles én gang til en ILIAS-bruger.
+playback#:#Afspil video
+plugin_configuration#:#Konfiguration
+private_chat_choose_info#:#Aktivér denne indstilling, hvis du vil have, at brugere med skrivetilladelser skal have 'Tillad privat chat' valgt under Indstillinger.
 private_chat_choose#:#Tillad privat chat: Valgmulighed
-private_chat_default_info#:#Hvis aktiveret, kan brugere uden moderatorrettigheder også have private chats med hinanden. Brugere med moderatorrettigheder kan ikke se disse chats. Da moderatorer kan afslutte private chats når som helst, bør denne mulighed være aktiveret i de fleste tilfælde.
+private_chat_default_info#:#Hvis aktiveret, kan selv personer uden moderatorfunktion have en privat chat med hinanden. Personer med moderatorfunktion ser ikke disse chats. Da personer med moderatorfunktion kan forhindre private chats når som helst, bør denne mulighed være aktiveret i de fleste tilfælde.
 private_chat_default#:#Tillad privat chat: Standardindstilling
-private_chat_info#:#Selv personer uden moderatorrettigheder kan have en privat chat med hinanden.
+private_chat_info#:#Selv personer uden moderatorfunktion kan have en privat chat med hinanden.
 private_chat#:#Tillad privat chat
-properties#:#Karakteristika
+properties#:#Indstillinger
 protected#:#Beskyttede rum
-pub_recs#:#Udgiv optagelser med det samme
-pub_recs_choose#:#Frigiv optagelser med det samme: Valgmulighed
-pub_recs_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Del optagelser med det samme' under Indstillinger.
-pub_recs_default#:#Frigiv optagelser med det samme: Standardindstilling
-pub_recs_default_for_object#:#Optagelserne stilles straks til rådighed for deltagerne.
-pub_recs_default_info#:#Aktiver denne indstilling, hvis optagelser altid skal frigives med det samme, eller hvis indstillingen 'Frigiv optagelser med det samme' skal aktiveres for nye objekter.
-pub_recs_info#:#Hvis dette er valgt, vil optagelsen af ​​et møde blive frigivet umiddelbart efter mødets afslutning. I oversigten på mødesiden har du mulighed for at låse eller låse optagelserne op.
-rbac_create_xmvc#:#Opret et virtuelt mødelokale
+pub_recs#:#Udgiv optagelser med det samme.
+pub_recs_choose#:#Udgiv optagelser med det samme: Valgmulighed
+pub_recs_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have valget 'Udgiv optagelser med det samme' under indstillinger.
+pub_recs_default#:#Udgiv optagelser med det samme: Standardindstilling
+pub_recs_default_for_object#:#Optagelserne frigives straks til deltagerne.
+pub_recs_default_info#:#Aktiver denne indstilling, hvis optagelser altid skal udgives med det samme, eller hvis indstillingen 'Udgiv optagelser med det samme' skal aktiveres for nye objekter.
+pub_recs_info#:#Hvis dette er valgt, vil optagelsen af ​​et møde blive offentliggjort umiddelbart efter det er afsluttet. I oversigten på mødesiden har du mulighed for at låse eller låse optagelserne op.
+rbac_create_xmvc#:#opret virtuelt mødelokale
 rec_hidden#:#Denne optagelse er ikke synlig for deltagerne.
-recording#:#optegnelser
-recording_autostart#:#Optagelserne starter automatisk fra starten. ILIAS-brugere vil blive underrettet i overensstemmelse hermed.
-recording_choose#:#Tillad optagelse: Valgmulighed
-recording_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden for at 'Tillad optagelser' i indstillingerne. Da optagelses-URL'en kan deles med uautoriserede personer, hvis den bliver kendt, bør denne indstilling generelt ikke aktiveres.
-recording_default#:#Tillad optagelse: Standardindstilling
-recording_default_info#:#Denne indstilling bør deaktiveres i de fleste tilfælde for at forhindre folk i at bruge optagefunktionen i det virtuelle rum.
+recording#:#Optagelser
+recording_autostart#:#Optagelser startes automatisk i starten. ILIAS-brugere vil blive informeret om dette.
+recording_choose#:#Tillad optagelser: Valgmulighed
+recording_choose_info#:#Aktivér denne indstilling, hvis du vil have brugere med skrivetilladelser til at vælge 'Tillad optagelse' under Indstillinger. Da URL'en til optagelsen vides at blive distribueret til utilsigtede personer, bør denne indstilling i de fleste tilfælde ikke aktiveres.
+recording_choose_info_bbb#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Tillad optagelser' under Indstillinger. Da offentliggørelse af optagelses-URL'en kan gøre optagelsen tilgængelig for utilsigtede personer, bør denne indstilling i de fleste tilfælde ikke aktiveres.
+recording_default#:#Tillad optagelser: Standardindstilling
+recording_default_info#:#Denne mulighed bør i de fleste tilfælde deaktiveres, så folk ikke kan bruge optagefunktionen i det virtuelle rum.
 recording_info#:#Sessioner kan optages.
-recording_only_for_moderated_rooms#:#Optagelse kun i modererede rum
+recording_only_for_moderated_rooms#:#Optag kun i modererede rum
 recording_only_for_moderated_rooms_default#:#Optagelse kun i modererede rum
-recording_only_for_moderated_rooms_default_info#:#Denne indstilling bør være aktiveret i de fleste tilfælde. Den gælder kun, hvis optagelse generelt er tilladt.
-recording_only_for_moderated_rooms_info#:#Kun i modererede rum kan personer med moderatorfunktioner starte optagelser.
-recording_warning#:#Optagelse er aktiveret for dette møde! Ved aktivt at bruge chatsystemet, tænde min personlige mikrofon/kamera og/eller dele skærmindhold, giver jeg samtykke til, at disse oplysninger optages og gemmes til senere brug.
-recs_locked#:#Optagelse(r) blokeret
-recs_published#:#Udgivet optagelse(r)
+recording_only_for_moderated_rooms_default_info#:#Denne mulighed bør aktiveres i de fleste tilfælde. Muligheden bruges kun, hvis optagelser generelt er tilladt.
+recording_only_for_moderated_rooms_info#:#Kun i modererede rum kan personer med moderatorfunktion starte optagelser.
+recording_warning#:#Optagelsesmuligheden er aktiveret for dette møde! Ved aktivt at bruge chatsystemet, tænde min personlige mikrofon/kamera og/eller dele skærmindhold accepterer jeg, at disse oplysninger vil blive optaget under optagelsen og gemt til senere brug.
+recs_locked#:#Optagelser låst
+recs_published#:#Udgivne optagelser
 recurrence_#:#-
 recurrence_daily#:#Daglig
 recurrence_monthly#:#Månedlig
 recurrence_weekly#:#Ugentlig
 recurrence_yearly#:#Årligt
 rec_visible#:#Denne optagelse er synlig for deltagerne.
-references#:#Links
-related_meeting#:#Tildelt
+references#:#Referencer
+related_meeting#:#relateret
 related_webinar#:#Tildelt
-relate_meeting#:#Tildel
+relate_meeting#:#relateret
 relate_webinar#:#Tildel
-report_log_max#:#Brugsoversigt (BBB)
-require_schedule_new_meeting#:#Du kan planlægge møder og starte dem i de planlagte tidsrum.
+report_log_max#:#Oversigt over brug (BBB)
+require_schedule_new_meeting#:#Du kan oprette møder og starte dem i de planlagte tidsrum.
 require_schedule_new_meeting_zoom#:#Du kan oprette møder.
 require_schedule_new_webinar#:#Du kan oprette webinarer og starte dem i de planlagte tidsrum.
-reset_authorization#:#Tilbagekald godkendelse
+require_schedule_new_webinar_zoom#:#Du kan oprette webinarer
+reset_authorization#:#Annuller godkendelse
 reseted_tokens#:#Tokens nulstillet
-root_create_xmvc#:#Opret et virtuelt mødelokale
+root_create_xmvc#:#opret virtuelt mødelokale
 saving_invoked#:#Indstillinger gemt
-scheduled_meeting_agenda#:#dagsorden
-scheduled_meeting_both_data_sources#:#alle
-scheduled_meeting_create_btn#:#Opret et møde
+scheduled_meeting_agenda#:#Dagsorden
+scheduled_meeting_both_data_sources#:#tildelt og oprettet via Webex
+scheduled_meeting_create_btn#:#Opret møde
 scheduled_meeting_created#:#Planlagt møde oprettet
-scheduled_meeting_create#:#Opret et planlagt møde
-scheduled_meeting_data_source#:#Møder
+scheduled_meeting_create#:#Opret planlagt møde
+scheduled_meeting_data_source#:#møder
 scheduled_meeting_delete_btn#:#Slet møde
-scheduled_meeting_deleted#:#Mødet er slettet
-scheduled_meeting_duration#:#Periode
-scheduled_meeting_local_data_sources#:#tildelt
-scheduled_meeting_not_deleted#:#Mødet blev ikke slettet
+scheduled_meeting_deleted#:#slettet møde
+scheduled_meeting_duration#:#Tidsperiode
+scheduled_meeting_local_data_sources#:#tildelte sessioner
+scheduled_meeting_not_deleted#:#mødet blev ikke slettet
 scheduled_meeting_overview#:#Oversigt over planlagte møder
-scheduled_meeting_recurrence#:#Gentagelse
+scheduled_meeting_recurrence#:#Tilbagevenden
 scheduled_meetings#:#Planlagte møder
-scheduled_meeting_state#:#status
-scheduled_meeting_time_ahead#:#Mødeleveringstid
+scheduled_meeting_state#:#Tilstand
+scheduled_meeting_time_ahead#:#Mødets gennemløbstid
 scheduled_meeting_update_btn#:#Opdater møde
 scheduled_meeting_update#:#Opdater planlagt møde
-scheduled_webinar_agenda#:#dagsorden
+scheduled_meeting_updated#:#Planlagt møde opdateret
+scheduled_webinar_agenda#:#Dagsorden
 scheduled_webinar_both_data_sources#:#alle
-scheduled_webinar_create_btn#:#Opret et webinar
+scheduled_webinar_create_btn#:#Opret planlagt webinar
 scheduled_webinar_created#:#Planlagt webinar oprettet
-scheduled_webinar_create#:#Opret et webinar (angiv venligst en unik titel)
+scheduled_webinar_create#:#Opret webinar (angiv venligst en unik titel)
 scheduled_webinar_data_source#:#Webinarer
 scheduled_webinar_delete_btn#:#Slet webinar
 scheduled_webinar_deleted#:#Webinar slettet
-scheduled_webinar_duration#:#Periode
+scheduled_webinar_duration#:#Tidsperiode
 scheduled_webinar_local_data_sources#:#tildelt
 scheduled_webinar_not_deleted#:#Webinaret blev ikke slettet
 scheduled_webinar_overview#:#Oversigt over planlagte webinarer
 scheduled_webinar_recurrence#:#Gentagelse
 scheduled_webinars#:#Planlagte webinarer
-scheduled_webinar_state#:#status
+scheduled_webinar_state#:#Status
 scheduled_webinar_time_ahead#:#Webinar leveringstid
-scheduled_webinar_update_btn#:#Opdater webinar
-scheduled_webinar_update#:#Opdatering af planlagt webinar
-schedule_meeting_duration_less_time#:#Minimumsvarigheden for mødet er 10 minutter. Justér venligst dine indlæg i overensstemmelse hermed.
+scheduled_webinar_update_btn#:#Opdater webinaret
+scheduled_webinar_update#:#Opdater planlagt webinar
+schedule_meeting_duration_less_time#:#Minimumsvarigheden for et møde er 10 minutter. Ret venligst dine indtastninger i overensstemmelse hermed.
 schedule_meeting_error#:#Der er opstået en fejl. Kontroller venligst dine indtastninger.
-schedule_webinar_duration_less_time#:#Minimumsvarigheden for et webinar er 10 minutter. Justér venligst dine bidrag i overensstemmelse hermed.
+schedule_webinar_duration_less_time#:#Minimumsvarigheden for et webinar er 10 minutter. Ret venligst dine indtastninger i overensstemmelse hermed.
 schedule_webinar_error#:#Der er opstået en fejl. Kontroller venligst dine indtastninger.
 select#:#Vælge
 service_unavailable#:#Tjenesten er ikke tilgængelig
-sess_owner_changed#:#Godkendelsen er blevet ændret.
+sess_owner_changed#:#Godkendelsen er blevet ændret
 showcontent#:#WebRTC-platform
-show_hint_pub_recs_info#:#En advarsel om forbuddet mod deling af optagelseslinks vises til brugerne på mødesiden. Aktiver denne indstilling, hvis du ikke ønsker, at denne advarsel skal vises.
+show_hint_pub_recs_info#:#Et hint, der forhindrer deling af optagelseslinks, vises til brugerne på mødesiden. Markér denne indstilling, hvis dette hint <u>ikke</u> skal vises.
 show_hint_pub_recs#:#Tillad deling af optagelseslinks
-start_time#:#starte
+start_time#:#Mødets starttidspunkt
 starttime#:#Starttidspunkt
-start_window#:#Start et virtuelt mødelokale i et nyt vindue
+start_window#:#Start virtuelt møderum i et nyt vindue
 state_active#:#Aktiv
 state_inprogress#:#Løb
 state_ready#:#Parat
-status#:#status
+status#:#Status
 subject_crs#:#{MEETING_TITLE} i kurset {PARENT_TITLE}
 subject_fld#:#{MEETING_TITLE} i mappen {PARENT_TITLE}
 subject_grp#:#{MEETING_TITLE} i gruppen {PARENT_TITLE}
@@ -381,112 +393,127 @@ svr_private_port#:#Privat port på BBB-serveren
 svr_private_url#:#Privat URL til BBB-serveren
 svr_public_port#:#Offentlig port af BBB-serveren
 svr_public_url#:#Offentlig URL til BBB-serveren
-svr_salt#:#BBB-serveradgangskode (hemmelig)
+svr_salt#:#Adgangskode (hemmelig) til BBB-serveren
 sysadmin_perm_choose_all#:#Som administrator kan du redigere alle egenskaber for dette objekt.
-tab_close#:#Luk venligst dette vindue eller denne fane nu.
+tab_close#:#Luk venligst dette vindue eller denne fane.
 teams_client_id#:#Klient-ID
-teams_client_id_info#:#Indtast applikations-ID'et/klient-ID'et her.
+teams_client_id_info#:#Tilføj klient-ID'et her.
 teams_client_secret#:#Klienthemmelighed
-teams_client_secret_info#:#Umiddelbart efter du har oprettet en hemmelig nøgle i Entra til den app, der er oprettet til MultiVc, kan du kopiere nøglens værdi og indtaste den her.
-teams_join_links#:#Du kan tilmelde dig direkte her: {br}{JOIN_URL}{br} eller du kan klikke på: {PERMANENT_LINK}
-teams_lobbybypass#:#Bypass-venteområde
-teams_lobbybypass_choose#:#Bypass-venteområde: Mulighed for at vælge
-teams_lobbybypass_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden for at 'Omgå venteværelse' i indstillingerne. Dette styrer, hvem der placeres i venteværelset/mødelobbyen.
-teams_lobbybypass_default#:#Bypass-venteområde: Standardindstilling
-teams_lobbybypass_everyone#:#Alle vil blive lukket ind i mødet. Ingen vil blive placeret i venteområdet.
-teams_lobbybypass_invited#:#Kun inviterede personer får adgang til mødet og vil gå uden om venteområdet.
-teams_lobbybypass_organizer#:#Deltagerne vil blive placeret i venteområdet. Administratorer og supportpersonale vil gå uden om venteområdet.
-teams_meetings_list_downloaded#:#Integreret eksisterende onlinemøder i Teams med succes.
-teams_tenant_id_info#:#Indtast lejer-ID'et her. Alternative navne er: Katalog-ID (klient).
+teams_client_secret_info#:#Tilføj klienthemmeligheden her.
+teams_join_links#:#Du kan tilmelde dig direkte her:{br}{JOIN_URL}{br}&nbsp;{br}eller du klikker på: {PERMANENT_LINK}
+teams_lobbybypass#:#Omgå mødelobbyen
+teams_lobbybypass_choose#:#Omgå mødelobbyen: Valgmulighed
+teams_lobbybypass_choose_info#:#Aktiver denne indstilling, hvis brugere med skriveadgang skal have valget 'Omgå mødelobbyen' under Indstillinger.
+teams_lobbybypass_default#:#Omgå mødelobbyen: Standardindstilling
+teams_lobbybypass_everyone#:#Alle får adgang til mødet. Ingen deltagere placeres i mødelobbyen.
+teams_lobbybypass_invited#:#Kun inviterede personer får adgang til mødet. Alle andre deltagere placeres i mødelobbyen.
+teams_lobbybypass_organizer#:#Deltagerne placeres i mødelobbyen. Administratorer og undervisere går uden om mødelobbyen.
+teams_meetings_list_downloaded#:#Møderne er blevet downloadet fra Teams.
+teams_tenant_id_info#:#Tilføj lejer-ID'et her.
 teams_tenant_id#:#Lejer-ID
-terms_of_use#:#<b>Intellektuelle ejendomsrettigheder</b>{br}Oplysningerne og materialerne i BigBlueButton-konferencer, såsom tekster eller billeder, er generelt beskyttet af ophavsret, varemærker eller patentrettigheder.{br}Databeskyttelsesregler skal overholdes. Dette gælder især for optagelse af BigBlueButton-konferencer. Hemmelig optagelse af video- eller lydkonferencer er en strafbar handling.{br}{br><b>Adfærdskodeks</b>{br}Du må ikke poste indhold, der overtræder lovbestemmelser, er pornografisk, uanstændigt, ærekrænkende, injurierende, fornærmende, truende, opildnende til had eller racistisk. Det er også forbudt at poste annoncer uden tilladelse og overføre oplysninger, der indeholder virus, manipulationer eller lignende skadelige elementer. Data behandlet Ved brug af BigBlueButton indsamles følgende data: Forbindelsesdata (f.eks. IP-adresse, browsertype, dato og tidspunkt for adgang) Adgangsdata (hvis relevant): brugernavn, adgangskode i krypteret form Indholdsdata (f.eks. uploadede filer, chatbidrag, undersøgelser) Systemets midlertidige lagring af forbindelsesdata, især IP-adressen, er nødvendig for at muliggøre levering af BigBlueButton til brugerens computer. Til dette formål skal brugerens IP-adresse gemmes i hele sessionen. Retsgrundlaget for den midlertidige lagring af dataene er artikel 6(1)(f) i GDPR. Forbindelsesdataene gemmes generelt også i logfiler. Sletningstidspunktet bestemmes af operatøren af ​​BigBlueButton-serveren.
-title#:#titel
+terms_of_use#:#<b>Intellektuelle ejendomsrettigheder</b>{br}Oplysningerne og materialerne i BigBlueButton-konferencer, såsom tekster eller billeder, er generelt beskyttet af ophavsret, varemærker eller patentrettigheder.{br}Databeskyttelseslovgivningen skal overholdes. Dette gælder især for optagelser af BigBlueButton-konferencer. Hemmelig optagelse af video- eller lydkonferencer er en strafbar handling.{br}{br><b>Adfærdsregler</b>{br}Du må ikke poste indhold, der overtræder lovbestemmelser, eller indhold, der er pornografisk, uanstændigt, ærekrænkende, injurierende, fornærmende, truende, opildner til had eller er racistisk. Det er også forbudt at offentliggøre annoncer uden tilladelse og overføre oplysninger, der indeholder virus, manipulation eller lignende skadelige elementer.{br}{br><b>Behandlede data</b>{br}Ved brug af BigBlueButton indsamles følgende data:<ul><li>Forbindelsesdata (f.eks. IP-adresse, browsertype, dato og tidspunkt for adgang)</li><li>Hvor det er relevant, adgangsdata: brugernavn og adgangskode i krypteret form</li><li>Indholdsdata (f.eks. uploadede filer, chatbeskeder og undersøgelser)</li></ul>Systemets midlertidige lagring af forbindelsesdata, især IP-adressen, er nødvendig for at levere BigBlueButton til brugerens computer. Brugerens IP-adresse skal derfor forblive gemt i hele sessionens varighed. Retsgrundlaget for den midlertidige lagring af disse data er artikel 6(1)(f) i GDPR.{br}Forbindelsesdata gemmes generelt også i logfiler. Sletningstidspunktet bestemmes af operatøren af ​​BigBlueButton-serveren.
+title#:#Titel
 token_deleted#:#Token slettet
 token_not_deleted#:#Token ikke slettet
 token_not_stored#:#Token ikke gemt
 token_stored#:#Token gemt
-unlocked_by#:#Udgivet af
-unlock#:#Frigøre
+unlocked_by#:#Låst op af
+unlock#:#Lås op
 untrashed_usages#:#Antal anvendelser
-url_info#:#Her kan du også indtaste relative stier (f.eks. /webkonference). Undlad venligst at inkludere et efterfølgende '/'.
+url_info#:#Her kan du også indtaste relative stier (f.eks.: /webkonference). Undlad venligst at indtaste et '/' til sidst.
 url#:#URL
-usage#:#Belægning
+usage#:#Brug
 user_end#:#sidste afgang
-user_invite_info#:#Du kan invitere gæster til mødet via følgende link:
+user_invite_info#:#Med følgende link kan du invitere gæster til mødet:
 user_log#:#Brugeroversigt
-user_log_bbb#:#Brugeroversigt (BBB/Teams/Zoom)
+user_log_bbb#:#Brugeroversigt (BBB/Teams)
 user_log_duration#:#Optagelsesperiode
-user_percent#:#procent
+user_percent#:#Procent
+user_rel_span#:#Relevant tidspunkt
 user_results#:#Fremmødetider
-user_results_desc#:#Tidspunkter vises kun for møder, der allerede er afsluttet. Møderne skal også have nået deres planlagte sluttidspunkt.
+user_results_desc#:#Tidspunktet vises kun for møder, der allerede er afsluttet. Møderne skal også have nået den planlagte afslutning.
 user_start#:#første start
-user_time#:#fremmødetid
-wait_join_meeting#:#<b>Der er i øjeblikket ingen med moderatorrettigheder til stede i det virtuelle mødelokale.<br/>Vent venligst og vend tilbage om et minut.</b>
+user_time#:#Fremmødetid
+wait_join_meeting#:#<b>I øjeblikket er der ingen personer med moderatorfunktion til stede i det virtuelle mødelokale.<br/>Vent venligst, og ring til denne side igen om et minut.</b>
 wait_join_meeting_edudip#:#Du kan i øjeblikket ikke deltage i webinarer.
-wait_join_meeting_guest#:#<b>Der er i øjeblikket ingen med moderatorrettigheder til stede i det virtuelle møderum.<br/>Vent venligst, og klik på knappen 'Deltag i møde' igen om et minut.</b>
-wait_join_meeting_teams#:#Du kan ikke deltage i et møde på nuværende tidspunkt. Hvis et planlagt møde vises, skal du opdatere denne side op til 15 minutter før det planlagte møde for at deltage.
-wait_join_meeting_webex#:#Du kan ikke deltage i et møde på nuværende tidspunkt. Mødet er muligvis ikke startet endnu eller er muligvis allerede afsluttet. Opdater venligst denne side for at kontrollere mødets status.
-wait_join_meeting_zoom#:#Du kan ikke deltage i et møde på nuværende tidspunkt. Hvis et planlagt møde vises, skal du opdatere denne side op til 15 minutter før det planlagte møde for at deltage.
-wait_join_webinar#:#<b>Ingen har startet webinaret endnu.<br/>Vent venligst og tjek igen om et minut.</b>
-webex_client_id#:#Webex-integrationsklient-ID
-webex_client_secret#:#Webex-integrationsklientens hemmelighed
-webex_host_email_hidden_info#:#Den e-mailadresse, der bruges til godkendelse, er kun synlig for objektets ejere og administratorer.
-webex_host_email_info#:#E-mailadresse kendt af Webex eller det hostede websted
+wait_join_meeting_guest#:#<b>I øjeblikket er der ingen personer med moderatorfunktion til stede i det virtuelle møderum.<br/>Vent venligst, og klik på 'Deltag i møde' igen om et minut.</b>
+wait_join_meeting_teams#:#Du kan i øjeblikket ikke deltage i noget møde. Mødet er muligvis ikke startet endnu eller er muligvis allerede afsluttet. {br}Opdater om nødvendigt denne side for at kontrollere mødets status.
+wait_join_meeting_webex#:#Du kan i øjeblikket ikke deltage i noget møde. Mødet er muligvis ikke startet endnu eller er muligvis allerede afsluttet. {br}Opdater om nødvendigt denne side for at kontrollere mødets status.
+wait_join_meeting_zoom#:#Du kan ikke deltage i et møde i øjeblikket.{br}Hvis et planlagt møde vises, skal du opdatere denne side for at deltage i det op til 15 minutter før det planlagte møde.
+wait_join_webinar#:#<b>I øjeblikket er der ingen, der har startet webinaret endnu.<br/>Vent venligst, og gå til denne side igen om et minut.</b>
+webex_client_id#:#Klient-ID for Webex-integrationen
+webex_client_secret#:#Klienthemmeligheden for Webex-integrationen.
+webex_host_email_hidden_info#:#Den e-mailadresse, der bruges til godkendelse, vises kun til objektets ejere og administratorer.
+webex_host_email_info#:#Webex eller kendt e-mailadresse på hostet websted
 webex_host_email#:#Webex-værts e-mailadresse
-webex_integration_auth_info#:#Du kan autorisere adgang til din Webex-konto. Dette er nødvendigt for at oprette, hente og starte Webex-møder ved hjælp af MultiVC-plugin'et.
-webex_logout_user_choose#:#Tillad logouts fra Webex: Valgmulighed
-webex_logout_user_choose_info#:#Brugere, der allerede er logget ind på Webex, skal logge ud af Webex, før de deltager i mødet.
-webex_logout_user_default#:#Log ud af Webex: Standardindstilling
-webex_logout_user_default_info#:#Brugere, der allerede er logget ind på Webex, skal altid logge ud af Webex, før de deltager i mødet.
-webex_meetings_list_downloaded#:#Eksisterende Webex-møder er blevet downloadet.
+webex_integration_auth_info#:#Webex-brugere kan give adgang til deres konto ved autorisation.
+webex_logout_user_choose#:#Tillad at logge ud fra Webex: valgmulighed
+webex_logout_user_choose_info#:#Tillad brugere, der allerede er logget ind på Webex, at logge ud, før de deltager i mødet.
+webex_logout_user_default#:#Log ud fra Webex: Standard
+webex_logout_user_default_info#:#Log altid brugere ud, der allerede er logget ind på Webex, før de deltager i mødet.
+webex_meetings_list_downloaded#:#Møder er blevet downloadet fra Webex.
 webex_redirect_uri#:#Omdirigerings-URI
 webex_site_url#:#Webex-websteds-URL
-webex_user_choose_logout#:#Brugeren bestemmer
+webex_user_choose_logout#:#brugerens valg
 webex_user_do_logout#:#Log ud
-webex_user_do_not_logout#:#Log ikke ud
-webex_user_logout#:#Log ud af Webex
-webinar_collision#:#Der er opstået en fejl. Der er allerede planlagt et webinar til det ønskede tidspunkt.
-webinar_event_created#:#Webinar oprettet
-webinar_event_deleted#:#Webinar slettet
-webinar_notification_body#:#Hej {NAME},{NL}{NL} Følgende {EVENT} blev oprettet:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Med venlig hilsen,{NL}{NL}{FRA}
-webinar_notification_from#:#ILIADEN
+webex_user_do_not_logout#:#Ikke logget ud
+webex_user_logout#:#Log ud fra Webex
+webinar_collision#:#Der er opstået en fejl. Der er allerede planlagt et webinar i den ønskede periode.
+webinar_event_created#:#webinar oprettet
+webinar_event_deleted#:#webinaret slettet
+webinar_notification_body#:#Hej {NAME},{NL}{NL}følgende {EVENT}:{NL}{NL}{SUBJECT}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Med venlig hilsen{NL}{NL}{FRA}
+webinar_notification_from#:#ILIAS
 webinar_notification_subject#:#{BEGIVENHED}: {EMNE}
 webinar_related_successful#:#Webinar tildelt
 webinar_running#:#Webinaret er startet.
 webinar#:#Webinar
-welcome_text#:#Velkommen {br}til det virtuelle mødelokale{br><b>{MEETING_TITLE}</b>{br}{br}Hvis du ser et højttalerikon med en streg midt på skærmen nedenfor, vil andre ikke kunne høre dig, og du vil heller ikke kunne høre noget. Klik på højttalerikonet med stregen igennem for at starte lydforbindelsen.{br}Brug et headset for at undgå baggrundsstøj og feedback.
-window_closed#:#Det virtuelle mødelokale er afsluttet.
+welcome_text#:#Velkommen{br}til det virtuelle mødelokale{br><b>{MEETING_TITLE}</b>{br}{br}For at deltage i lydbroen, klik på højttalerknappen.{br}Brug et headset for at undgå at forårsage baggrundsstøj for andre.
+window_closed#:#Det virtuelle mødelokale er blevet lukket.
 window_close#:#Luk vindue
-window_started#:#Det virtuelle mødelokale er blevet lanceret i et nyt vindue.
-with_chat_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Start med chat' under Indstillinger.
+window_started#:#Det virtuelle møderum blev startet i et nyt vindue.
+with_chat_choose_info#:#Aktivér denne indstilling, hvis du vil have brugere med skriveadgang til at vælge 'Start med chat' under Indstillinger.
 with_chat_choose#:#Start med chat: Valgmulighed
-with_chat_default_info#:#Dette bør generelt aktiveres - især i modererede rum.
+with_chat_default_info#:#Bør normalt aktiveres - især i modererede rum.
 with_chat_default#:#Start med chat: Standardindstilling
-with_chat_info#:#Denne mulighed bør aktiveres, især i modererede rum. Chatten bliver så til et 'venteværelse'.
-with_chat#:#Start med chatten
+with_chat_info#:#Især i modererede rum bør denne mulighed aktiveres. Chatten bliver et 'venteværelse'.
+with_chat#:#Start med chat
 xmvc_add#:#Tilføj virtuelt mødelokale
 xmvc_copy#:#Kopiér virtuelt mødelokale
 xmvc_delete#:#Slet virtuelt mødelokale
 xmvc_edit_learning_progress#:#Rediger indstillinger for læringsfremskridt
-xmvc_edit_permission#:#Skift tilladelser
+xmvc_edit_permission#:#Ændre tilladelser
 xmvc_new#:#Tilføj nyt virtuelt mødelokale
-xmvc_read#:#Læseadgang: Deltagelse i det virtuelle mødelokale er mulig
+xmvc_read#:#Læs: Deltagelse i det virtuelle mødelokale er mulig
 xmvc_read_learning_progress#:#Se andre brugeres læringsfremskridt
-xmvc_visible#:#Visning: Virtuelt mødelokale er synligt
+xmvc_visible#:#Synlig: Virtuelt mødelokale er synligt
 xmvc_write#:#Rediger indstillinger
 zoom_account_id#:#Zoom-konto-ID
 zoom_account_info#:#Du kan hente Zoom-konto-ID'et, klient-ID'et og klienthemmeligheden fra https://developers.zoom.us/docs/internal-apps/create/. Du skal oprette en server-til-server OAuth-app.
+zoom_approval_choose#:#Registrering / godkendelse: Valgmulighed
+zoom_approval_choose_info#:#Registrering med et personligt adgangslink bruges ofte ikke.
+zoom_approval_default#:#Registrering/godkendelse: Standardindstilling
+zoom_approval_type#:#Registrering / godkendelse
+zoom_approval_0#:#Automatisk godkendelse: Adgangslinket sendes via e-mail.
+zoom_approval_1#:#Manuel godkendelse: Værter gennemgår og godkender deltagere, før de modtager adgangslinket.
+zoom_approval_2#:#Ingen registrering er nødvendig. Der oprettes ikke et personligt adgangslink.
+zoom_approval_3#:#Ingen registrering, men godkendelse er påkrævet. En Zoom-konto er altid påkrævet.
 zoom_client_id#:#Zoom-klient-ID
 zoom_client_secret#:#Zoom-klientens hemmelighed
+zoom_err_scopes#:#Følgende tilladelser mangler for at oprette et møde:
 zoom_err_scopes_webinar#:#Du har ikke tilladelse til at oprette et webinar. Møder er mulige. Følgende tilladelser mangler:
 zoom_exist_meetings#:#Datoerne for dette møde er allerede fastsat.
 zoom_exist_webinars#:#Datoerne for dette webinar er allerede fastsat.
+zoom_host_email_hidden_info#:#Den e-mailadresse, der bruges til godkendelse, er kun synlig for objektets ejere og administratorer.
+zoom_host_email_info#:#E-mailadresse tilknyttet Zoom
+zoom_host_email#:#Zoom-værts e-mailadresse
 zoom_lobby#:#Venteværelse til møder
-zoom_lobby_choose#:#Venteværelse: Valg af muligheder
+zoom_lobby_choose#:#Venteværelse til møder: Valgmulighed
 zoom_lobby_choose_info#:#Aktivér denne indstilling, hvis brugere med skrivetilladelser skal have muligheden 'Venteværelse' i indstillingerne. Dette styrer, hvem der placeres i venteværelset.
-zoom_lobby_default#:#Venteværelse: Standardindstilling
+zoom_lobby_default#:#Venteværelse til møder: Standardindstilling
 zoom_lobby_0#:#Ingen behøver at vente i venteværelset. Venteværelset er deaktiveret. Deltagerne kan komme ind 15 minutter før mødet starter.
 zoom_lobby_1#:#Alle skal gå i venteværelset.
 zoom_lobby_2#:#Brugere uden for din konto skal gå ind i venteværelset.
 zoom_lobby_3#:#Brugere uden for din konto eller dem, der ikke er på de godkendte domæner, skal gå ind i venteværelset.
 zoom_lobby_4#:#Brugere, der ikke er i kurset eller gruppen, skal gå til venteværelset.
+zoom_rec_only_for_webinars_default#:#Kun optagelse i webinarer.
+zoom_rec_only_for_webinars_default_info#:#Hvis denne indstilling er aktiveret, er automatisk optagelse ikke tilgængelig i møder. Denne indstilling bør være aktiveret i de fleste tilfælde. Den træder kun i kraft, hvis optagelser generelt er tilladt.

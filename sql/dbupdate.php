@@ -1433,3 +1433,142 @@ if (!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'mail_lang')) {
     ));
 }
 ?>
+<#45>
+<?php
+if($ilDB->tableExists('rep_robj_xmvc_schedule'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_schedule', 'title') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_schedule', 'title', array(
+                'type' => 'text',
+                'length' => 256,
+                'notnull' => false
+        ));
+    }
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_schedule', 'agenda') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_schedule', 'agenda', array(
+                'type' => 'text',
+                'length' => 1024,
+                'notnull' => false
+        ));
+    }
+}
+?>
+<#46>
+<?php
+
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'manual_mods_choose') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'manual_mods_choose', array(
+                'type' => 'integer',
+                'length' => 1,
+                'notnull' => true,
+                'default' => 0
+        ));
+    }
+
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'manual_mods_default') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'manual_mods_default', array(
+                'type' => 'integer',
+                'length' => 1,
+                'notnull' => true,
+                'default' => 0
+        ));
+    }
+}
+
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'manual_mods') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'manual_mods', array(
+                'type' => 'integer',
+                'length' => 1,
+                'notnull' => true,
+                'default' => 0
+        ));
+    }
+}
+
+$fields_conn = array(
+        'id' => array(
+                'type' => 'integer',
+                'length' => 8,
+                'notnull' => true
+        ),
+        'user_id' => array(
+                'type' => 'integer',
+                'length' => 4,
+                'notnull' => true
+        )
+);
+if(!$ilDB->tableExists("rep_robj_xmvc_mods")) {
+    $ilDB->createTable("rep_robj_xmvc_mods", $fields_conn);
+    $ilDB->addPrimaryKey("rep_robj_xmvc_mods", array("id","user_id"));
+}
+
+?>
+<#47>
+<?php
+
+if($ilDB->tableExists('rep_robj_xmvc_conn'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'approval_type_choose') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'approval_type_choose', array(
+                'type' => 'integer',
+                'length' => 1,
+                'notnull' => true,
+                'default' => 0
+        ));
+    }
+
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_conn', 'approval_type_default') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_conn', 'approval_type_default', array(
+                'type' => 'integer',
+                'length' => 1,
+                'notnull' => true,
+                'default' => 0
+        ));
+    }
+}
+
+if($ilDB->tableExists('rep_robj_xmvc_data'))
+{
+    if(!$ilDB->tableColumnExists('rep_robj_xmvc_data', 'approval_type') )
+    {
+        $ilDB->addTableColumn('rep_robj_xmvc_data', 'approval_type', array(
+                'type' => 'integer',
+                'length' => 1,
+                'notnull' => true,
+                'default' => 0
+        ));
+    }
+    $ilDB->update(
+            'rep_robj_xmvc_data',
+            [
+                    "approval_type"     => [
+                            "integer", 2
+                    ]
+            ],
+            [
+                    "lp_mode" => [
+                            "integer", 0
+                    ]
+            ]
+    );
+}
+?>
+<#48>
+<?php
+// deleted
+?>
+<#49>
+<?php
+// deleted
+?>

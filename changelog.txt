@@ -56,3 +56,12 @@
 - don't include members of containers without predefind roles
 9.8
 - support Zoom
+9.9
+- improvements for Zoom, e.g. update meetings
+9.13
+- support new edudip-API
+- improve support for learning progress when using zoom
+- features for zoom webinars
+- improve performance for event handler regarding add or remove participants
+- Bugfix for deleting old MultiVC objects from trash
+- Bugfix for 'Block meeting type deletion when objects still reference it'

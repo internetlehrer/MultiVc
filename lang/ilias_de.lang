@@ -76,6 +76,7 @@ conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Meeting Layout
 conf_title#:#Titel
 conn_deleted#:#Der Meeting-Typ wurde gelöscht.
+conn_delete_blocked#:#Dieser Meeting-Typ kann nicht gelöscht werden, da Objekte ihn noch verwenden (einschließlich Objekte im Papierkorb).
 conn_id#:#Meeting-Typ
 copy#:#Kopieren
 create_type#:#Neuen Meeting-Typ definieren
@@ -178,6 +179,7 @@ info_title#:#Dieser Titel wird zur Auswahl des Meeting-Typs bei neuen Objekten a
 info_top_moderated_edudip#:#Sie haben Moderationsrechte und können das Webinar starten.
 info_top_moderated_m_bbb#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
 info_top_moderated_m_om#:#Dies ist ein moderierter Raum und Sie können stets erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
+info_top_moderated_teams#:#Dies ist ein moderierter Meeting-Raum.
 info_top_moderated_webex#:#Sie haben Moderationsrechte und können das Meeting starten. Dazu benötigen Sie einen Account bei Webex oder bei einer Webex-Hostet-Site. Teilnehmende können erst dann beitreten, wenn das Meeting von einem Moderator gestartet wurde.
 info_top_moderated_zoom#:#Dies ist ein Webinar. Sie können das Webinar starten.
 info_top_moderator_bbb#:#<b>Dies ist ein moderierter Raum und Sie haben in diesem Raum die Moderatorfunktion.</b><br/>Personen ohne Moderatorfunktion können erst dann in den Meetingraum gelangen, wenn eine Person mit Moderatorfunktion im Raum ist.
@@ -216,6 +218,12 @@ lp_inactive_info#:#Für dieses Objekt wird kein Lernfortschritt gespeichert.
 lp_mode#:#Modus
 lp_time_info#:#Dieser Prozentwert bezogen auf die möglichen Anwesenheitszeiten muss überschritten werden, damit der Status auf "Bearbeitet" gesetzt wird.
 lp_time#:#Schwellwert für "Bearbeitet"
+manual_mods_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Manuelle Bestimmung der Co-Moderatoren bzw. Co-Hosts' haben sollen.
+manual_mods_choose#:#Manuelle Bestimmung der Co-Moderatoren: Auswahlmöglichkeit
+manual_mods_default_info#:#Deaktivieren Sie diese Option, wenn die Kurs- und Gruppenadministration sowie die Kursbetreuung automatisch 'Co-Moderatoren' bzw. 'Co-Hosts' werden sollen. Bei Aktivierung können 'Co-Moderatoren' bzw. 'Co-Hosts' über einen dann beim MultiVc-Objekt eingeblendeten Reiter manuell festgelegt werden.
+manual_mods_default#:#Manuelle Bestimmung der Co-Moderatoren: Voreinstellung
+manual_mods_info_zoom#:#Deaktivieren Sie diese Option, wenn die Kurs- und Gruppenadministration sowie die Kursbetreuung automatisch Co-Hosts werden sollen. Bei Aktivierung können Sie die Co-Hosts über einen dann eingeblendeten Reiter manuell festlegen.
+manual_mods_zoom#:#Manuelle Bestimmung der Co-Hosts
 max_duration#:#Maximale Dauer
 max_meetings#:#Maximale Anzahl Meetingräume
 max_participants#:#Max. Teilnehmer
@@ -226,6 +234,7 @@ meeting_end#:#Meeting-Ende
 meeting_related_successful#:#Meeting erfolgreich zugeordnet
 meeting_running#:#Der virtuelle Meetingraum wurde gestartet.
 meeting_start#:#Meeting-Start
+meetings_list_downloaded#:#Vorhandene Meetings bzw. Webinare erfolgreich eingebunden
 member_btn_fileupload_choose#:#Datei-Upload jedem erlauben: Auswahlmöglichkeit
 member_btn_fileupload_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Datei-Upload jedem erlauben' haben sollen.
 member_btn_fileupload#:#Datei-Upload jedem erlauben
@@ -245,11 +254,13 @@ moderated_default_zoom_info#:#Aktivieren Sie diese Option wenn neue Räume als '
 moderated_default#:#moderierter Raum: Voreinstellung
 moderated_info#:#In einem moderierten Raum haben Personen mit Moderatorfunktion erweiterte Rechte. Andere Personen haben zudem nur eingeschränkte Zugangsrechte zum virtuellen Raum. Personen mit Moderatorfunktion sind alle, die die Eigenschaften des Objekts bearbeiten können sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren.
 moderated_teams_info#:#In einem moderierten Raum haben Ersteller des Objekts sowie Gruppenadministratoren, Kursadministratoren und Kurstutoren mehr Rechte: Sie können teilen bzw. übertragen und entscheiden, ob andere Personen beitreten dürfen. In einem unmoderierten Raum können alle ohne Bestätigung beitreten und teilen bzw. übertragen.
-moderated_zoom_info#:#Der virtuelle Raum soll kein Meeting, sondern ein Webinar sein. Bitte achten Sie darauf, dass Ihr Zoom Account das Recht hat, Webinare anzulegen. Ein einfacher, gar kostenfreier Account hat nicht das Recht, Webinare anzulegen.
+moderated_zoom_info#:#Der virtuelle Raum soll kein Meeting, sondern ein Webinar sein. Bitte achten Sie darauf, dass Ihr Zoom Account das Recht hat, Webinare anzulegen. Ein einfacher, gar kostenfreier Account hat nicht das Recht, Webinare anzulegen. Bei bestehenden Sitzungen kann nicht mehr zwischen Meeting und Webinar gewechselt werden.
 moderated#:#moderierter Raum
 moderated_webex#:#<b>Tipp:</b> In unmoderierten Räumen werden Beitretende nicht pseudonymisiert. Ein Beitritt ist daher nur Personen mit geeignetem Webex-Account gestattet.
 moderated_zoom#:#Webinar
 moderator#:#Moderator
+moderators_info_zoom#:#Achten Sie auf die erforderlichen Rechte für die auszuwählenden Personen in Zoom.
+moderators_zoom#:#Co-Hosts
 msg_obj_deleted#:#Die Aufzeichnung wurde gelöscht.
 notification_sending#:#Benachrichtigungen werden gesendet ...
 notification_sent#:#Benachrichtigungen erfolgreich gesendet.
@@ -291,7 +302,8 @@ rec_hidden#:#Diese Aufzeichnung ist für Teilnehmende nicht sichtbar.
 recording#:#Aufzeichnungen
 recording_autostart#:#Aufzeichnungen werden zu Beginn automatisch gestartet. ILIAS-Nutzende werden hierzu informiert.
 recording_choose#:#Aufzeichnungen erlauben: Auswahlmöglichkeit
-recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufzeichnung eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
+recording_choose_info#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen erlauben' haben sollen.
+recording_choose_info_bbb#:#Aktivieren Sie diese Option, wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Aufzeichnungen erlauben' haben sollen. Da bei Bekanntwerden der URL zur Aufzeichnung eine Verbreitung an nicht vorgesehene Personen gegeben ist, sollte diese Option in den meisten Fällen nicht aktiviert sein.
 recording_default#:#Aufzeichnungen erlauben: Voreinstellung
 recording_default_info#:#Diese Option sollte in den meisten Fällen deaktiviert sein, damit Personen nicht die Aufzeichnungfunktion im virtuellen Raum nutzen können.
 recording_info#:#Sitzungen können aufgenommen werden.
@@ -317,6 +329,7 @@ report_log_max#:#Nutzungsübersicht (BBB)
 require_schedule_new_meeting#:#Sie können Meetings anlegen und während der geplanten Zeitfenster starten.
 require_schedule_new_meeting_zoom#:#Sie können Meetings anlegen.
 require_schedule_new_webinar#:#Sie können Webinare anlegen und während der geplanten Zeitfenster starten.
+require_schedule_new_webinar_zoom#:#Sie können Webinare anlegen.
 reset_authorization#:#Authorisierung aufheben
 reseted_tokens#:#Tokens zurückgesetzt
 root_create_xmvc#:#virtuellen Meetingraum erstellen
@@ -339,6 +352,7 @@ scheduled_meeting_state#:#Status
 scheduled_meeting_time_ahead#:#Vorlaufzeit des Meetings
 scheduled_meeting_update_btn#:#Meeting aktualisieren
 scheduled_meeting_update#:#Geplantes Meeting aktualisieren
+scheduled_meeting_updated#:#Geplantes Meeting aktualisiert
 scheduled_webinar_agenda#:#Agenda
 scheduled_webinar_both_data_sources#:#alle
 scheduled_webinar_create_btn#:#Webinar anlegen
@@ -408,6 +422,7 @@ token_stored#:#Token gespeichert
 unlocked_by#:#Freigegeben von
 unlock#:#Freigeben
 untrashed_usages#:#Anzahl Verwendungen
+usages_with_trash#:#%s (%s im Papierkorb)
 url_info#:#Hier können Sie auch relative Pfadangaben eintragen (z.B.: /webconference). Bitte am Ende kein '/' angeben.
 url#:#URL
 usage#:#Auslastung
@@ -417,6 +432,7 @@ user_log#:#Benutzerübersicht
 user_log_bbb#:#Benutzerübersicht (BBB/Teams/Zoom)
 user_log_duration#:#Erfassungszeitraum
 user_percent#:#Prozent
+user_rel_span#:#relevante Zeit
 user_results#:#Anwesenheitszeiten
 user_results_desc#:#Zeiten werden nur für bereits beendete Meetings angezeigt. Meetings müssen zudem das vorgesehene Ende erreicht haben.
 user_start#:#erster Start
@@ -476,17 +492,33 @@ xmvc_visible#:#Anzeigen: Virtueller Meetingraum ist sichtbar
 xmvc_write#:#Einstellungen bearbeiten
 zoom_account_id#:#Zoom Account ID
 zoom_account_info#:#Die Zoom Account ID, die Client ID und den Client Secret erhalten Sie über https://developers.zoom.us/docs/internal-apps/create/ . Sie müssen eine Server-to-server OAuth app erzeugen.
+zoom_approval_choose#:#Registrierung / Authentifizierung: Auswahlmöglichkeit
+zoom_approval_choose_info#:#Häufig wird eine Registrierung mit personenbezogenem Zugangslink nicht genutzt.
+zoom_approval_default#:#Registrierung / Authentifizierung (Voreinstellung)
+zoom_approval_type#:#Registrierung / Authentifizierung
+zoom_approval_0#:#Automatische Genehmigung: Zugangslink wird per E-Mail versandt.
+zoom_approval_1#:#Manuelle Genehmigung: Hosts prüfen und bestätigen bevor Teilnehmende den Zugangslink erhalten.
+zoom_approval_2#:#Keine Registrierung ist erforderlich. Ein personenbezogener Zugangslink wird nicht erstellt.
+zoom_approval_3#:#Keine Registrierung, jedoch eine Authentifizierung ist erforderlich. Ein Zoom-Account wird stets benötigt.
+zoom_approval_4#:#Keine Registrierung. In Webinaren müssen sich nur Diskussionsteilnehmer mit Zoom-Account ausweisen.
+zoom_approval_5#:#Keine Registrierung. In Webinaren müssen sich nur Zuschauer mit Zoom-Account ausweisen.
 zoom_client_id#:#Zoom Client ID
 zoom_client_secret#:#Zoom Client Secret
+zoom_err_scopes#:#Folgende Rechte fehlen um ein Meeting anlegen zu können:
 zoom_err_scopes_webinar#:#Sie haben keine Berechtigung, ein Webinar zu erstellen. Meetings sind möglich. Folgende Rechte fehlen:
 zoom_exist_meetings#:#Für dieses Meeting existieren bereits Termine.
 zoom_exist_webinars#:#Für dieses Webinar existieren bereits Termine.
+zoom_host_email_hidden_info#:#Die für die Authorisierung genutzte E-Mail-Adresse wird nur den Besitzern des Objekts und Administratoren angezeigt.
+zoom_host_email_info#:#Bei Zoom zugeordnete E-Mail-Adresse
+zoom_host_email#:#Zoom Host E-Mail-Adresse
 zoom_lobby#:#Warteraum für Meetings
-zoom_lobby_choose#:#Warteraum: Auswahlmöglichkeit
+zoom_lobby_choose#:#Warteraum für Meetings: Auswahlmöglichkeit
 zoom_lobby_choose_info#:#Aktivieren Sie diese Option wenn Benutzer mit Schreibrechten unter Einstellungen die Auswahl 'Warteraum' haben sollen. Damit wird geregelt, wer im Warteraum platziert wird.
-zoom_lobby_default#:#Warteraum: Voreinstellung
+zoom_lobby_default#:#Warteraum für Meetings: Voreinstellung
 zoom_lobby_0#:#Niemand muss in den Warteraum. Der Warteraum ist deaktiviert. Teilnehmende können 15 Minuten vor Meetingbeginn eintreten.
 zoom_lobby_1#:#In den Warteraum müssen alle.
 zoom_lobby_2#:#In den Warteraum müssen Benutzer außerhalb Ihres Kontos.
 zoom_lobby_3#:#In den Warteraum müssen Benutzer außerhalb Ihres Kontos oder solche, die nicht bei den zugelassenen Domainen sind.
 zoom_lobby_4#:#In den Warteraum müssen Benutzer, die nicht im Kurs bzw. in der Gruppe sind.
+zoom_rec_only_for_webinars_default#:#Aufzeichnung nur in Webinaren
+zoom_rec_only_for_webinars_default_info#:#Wenn diese Option aktiviert ist, kann in Meetings nicht automatisch aufgezeichnet werden. Diese Option sollte in den meisten Fällen aktiviert sein. Die Option kommt nur dann zum Tragen, wenn Aufzeichnungen grundsätzlich erlaubt sind.

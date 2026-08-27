@@ -144,6 +144,10 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
      */
     private function getDataFromDb(string $a_parent_cmd): void
     {
+        $allSessionsCreatedAsOwner = false;
+        if ($this->parent_obj->isZoom) {
+            $allSessionsCreatedAsOwner = true;
+        }
         $start = date('Y-m-d H:i:s', $this->dateStart->getUnixTime());
         $end = date('Y-m-d H:i:s', $this->dateEnd->getUnixTime());
         $storedHostSessions = null;
@@ -166,8 +170,10 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                 );
             } elseif ($this->parent_obj->isTeams) {
                 $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_teams_meetings_list_downloaded'), true);
-            } else {
+            } elseif ($this->parent_obj->isEdudip) {
                 $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_edudip_meetings_list_downloaded'), true);
+            } else {
+                $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_meetings_list_downloaded'), true);
             }
             //            $this->dic->ctrl()->redirect($this->parent_obj, 'applyFilterScheduledMeetings');
         } elseif($getWebexMeetingsList && $a_parent_cmd == 'applyFilterScheduledMeetings') {
@@ -217,19 +223,19 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
 
             // CHECK IF ILIAS USER EQUALS SESS USER
             $ilUserId = $this->dic->user()->getId();
-            $ilUserEmail = $ownerMail = ilObjUser::_lookupEmail($this->parent_obj->object->getOwner()); #$this->dic->user()->getEmail();
+            $ilUserEmail = $this->dic->user()->getEmail();
+            if ($allSessionsCreatedAsOwner) {
+                $ilUserEmail = ilObjUser::_lookupEmail($this->parent_obj->object->getOwner());
+            }
 
             $continue = false;
             if(isset($a_set['user_id']) && isset($a_set['auth_user'])) {
                 // locally assigned sessions check to show it
-                switch(true) {
-                    case (int) $ilUserId !== (int) $a_set['user_id']:
-                        // Uncomment to hide/unset for non-owner
-                    case $ilUserEmail !== $a_set['auth_user']:
-                        $continue = true;
-                        break;
-                    default:
-                        break;
+                if ((int) $a_set['user_id'] !== $ilUserId && !$allSessionsCreatedAsOwner) {
+                    $continue = true;
+                }
+                if ($a_set['auth_user'] !== $ilUserEmail) {
+                    $continue = true;
                 }
             } elseif($ilUserEmail !== $json->email) {
                 // don't show hosted sessions for non-owner
@@ -263,10 +269,16 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                 } else {
                     if (isset($json->startLink)) {
                         $joinUrl = $json->startLink;
-                    } else {
-                        die($json->onlineMeeting->joinUrl);
+//                    } else {
+//                        die($json->onlineMeeting->joinUrl);
                     }
-
+                }
+            }
+            if ($allSessionsCreatedAsOwner && date('Y-m-d H:i:s') < $meetingEnd) {
+                if ($this->parent_obj->object->getOwner() == $ilUserId) {
+                    $joinUrl = $json->startLink;
+                } else {
+                    $joinUrl = $json->joinUrl;
                 }
             }
 
@@ -291,18 +303,35 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                     $rowCss = '';
                 }
             }
+            $changeTxt = "";
+            $changeUrl = "";
+            $changeHide = "hidden";
+            if ($this->parent_obj->isZoom && date('Y-m-d H:i:s') < $meetingStart) {
+                $changeTxt = $this->dic->language()->txt('change');
+                $changeUrl = $this->ctrl->getLinkTarget($this->parent_obj, "updateScheduledMeeting&rel_id=" . $a_set['rel_id']);
+                $changeHide = !(bool) $json->wbxmvcRelatedMeeting ? 'hidden' : '';
+            }
+
+            $isRelated = $this->dic->language()->txt((bool) $json->wbxmvcRelatedMeeting ? 'yes' : 'no');
+            if ($allSessionsCreatedAsOwner) {
+                $isRelated = ilObjUser::_lookupFullname((int) $a_set['user_id']);
+            }
 
             $data[$key] = [
 #                'ROW_CSS'       => $deleteLocalOnly ? 'danger' : '',
                 'ROW_CSS' => $rowCss,
-                'TITLE' => $json->title,
+                'TITLE' => $a_set['title'] . ' (ID: ' . $a_set['rel_id'] . ')',
                 'START_TIME' => $meetingStart,
                 'END_TIME' => $meetingEnd,
                 'RECURRENCE' => $this->dic->language()->txt('rep_robj_xmvc_recurrence_' . strtolower($a_set['recurrence'])),
                 'STATE' => $this->dic->language()->txt('rep_robj_xmvc_state_' . $setState),
-                'IS_RELATED' => $this->dic->language()->txt((bool) $json->wbxmvcRelatedMeeting ? 'yes' : 'no'),
+                'IS_RELATED' => $isRelated,
                 'JOIN_URL' => $joinUrl,
                 'JOINBTN_HIDE' => !(bool) $json->wbxmvcRelatedMeeting || $deleteLocalOnly || $joinUrl == "" ? 'visibility: hidden' : '',
+                //  CHANGE_MEETING_DATA
+                'CHANGE_TXT' => $changeTxt,
+                'CHANGE_URL' => $changeUrl,
+                'CHANGE_HIDE' => $changeHide,
                 //  RELATE_MEETING_DATA
                 'RELATE_MEETING_HIDE' => (bool) $json->wbxmvcRelatedMeeting ? 'hidden' : '',
                 'RELATE_MEETING_TXT' => $this->dic->language()->txt('rep_robj_xmvc_relate_' . $this->parent_obj->sessType),
@@ -327,7 +356,7 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                         'id' => 'deleteMeeting_' . $a_set['rel_id'] . '_', //ref_id
                         'title' => $this->dic->language()->txt('rep_robj_xmvc_modal_delete_scheduled_' . $this->parent_obj->sessType . '_title'),
                         'body' => implode(' ', [
-                            '<b>' . $json->title . '</b>',
+                            '<b>' . $a_set['title'] . '</b>',
                             $a_set['start'],
                             '-',
                             $a_set['end']
@@ -374,6 +403,11 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
         $this->tpl->setVariable('JOIN_URL', $a_set['JOIN_URL']);
         $this->tpl->setVariable('JOINBTNTEXT', $this->dic->language()->txt('rep_robj_xmvc_btntext_join_' . $this->parent_obj->sessType));
         $this->tpl->setVariable('JOINBTN_HIDE', $a_set['JOINBTN_HIDE']);
+
+        //CHANGE_MEETING
+        $this->tpl->setVariable('CHANGE_TXT', $a_set['CHANGE_TXT']);
+        $this->tpl->setVariable('CHANGE_URL', $a_set['CHANGE_URL']);
+        $this->tpl->setVariable('CHANGE_HIDE', $a_set['CHANGE_HIDE']);
 
         //RELATE_MEETING
         $this->tpl->setVariable('RELATE_MEETING_TXT', $a_set['RELATE_MEETING_TXT']);
@@ -502,64 +536,99 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
 
     public function getHtmlMeetingPropertiesAndOverview(bool $keepForm = false, ?string $cmd = 'create'): string
     {
+
         // prepare meeting properties form
         $this->initFormMeetingProperties();
-
         $this->meetingPropertiesForm->setFormAction($this->getFormAction());
 
-        $this->meetingPropertiesForm->setTitle($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_' . $cmd));
         $this->meetingPropertiesForm->setId('meeting_create');
+        $this->meetingPropertiesForm->setShowTopButtons(false);
 
-        switch ($cmd) {
-            case 'create':
-            case 'update':
-            default:
-                $this->meetingPropertiesForm->setValuesByArray(
-                    $this->getDefaultMeetingProperties()
-                );
+        if ($cmd == "updateScheduledMeeting") {
+            $this->meetingPropertiesForm->setTitle($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_update'));
+            $relId = $this->dic->http()->wrapper()->query()->retrieve('rel_id', $this->dic->refinery()->kindlyTo()->int());
+            $tmp = $this->parent_obj->object->getScheduledMeetingByRelId($relId, $this->refId, $this->dic->user()->getId());
+            $a_set = $tmp[0];
+            $json = json_decode($a_set['rel_data']);
+            // CHECK IF ILIAS USER EQUALS SESS USER
+            $ilUserId = $this->dic->user()->getId();
+            $ilUserEmail = $ownerMail = ilObjUser::_lookupEmail($this->parent_obj->object->getOwner()); #$this->dic->user()->getEmail();
+            if ($ilUserId !== (int) $a_set['user_id'] || $ilUserEmail !== $a_set['auth_user']) {
+                die("not allowed - user not correct");
+            }
+//            die(var_dump($tmp));
 
-                $scheduleMeetingRequestParam = ilSession::get('scheduleMeetingRequestParam');
-                if ($keepForm) {
-                    //                    $this->keepFilterValues = true;
-                    //todo
-                    //                    var_dump($scheduleMeetingRequestParam);exit;
-                    //                    $arReqParam = (array)$scheduleMeetingRequestParam;
-                    //                    if (is_array($arReqParam)) {
-                    //                        $this->meetingProperty['meeting_title'] = $scheduleMeetingRequestParam['meeting_title'];
-                    //                        var_dump($scheduleMeetingRequestParam['meeting_title']); exit;
-                    //                        if (is_array($arReqParam['meeting_duration'])) {
-                    //                            $this->meetingProperty['duration']->setStart($arReqParam['meeting_duration']['start']);
-                    //                        }
-                    //                    }
-                    $keepForm = false;
-                    $this->meetingPropertiesForm->setValuesByArray($scheduleMeetingRequestParam);
-
-                    //                die(var_dump($scheduleMeetingRequestParam));
-                    //                if(!empty($scheduleMeetingRequestParam)
-                    //                && isset($scheduleMeetingRequestParam->keepCreateMeetingForm)){
-                    //                && (bool)$scheduleMeetingRequestParam['keepCreateMeetingForm']) {
-                    #$this->meetingProperty['duration']->setStart();
-                    #$this->meetingProperty['duration']->setEnd();
-                    //                    $this->meetingPropertiesForm->setValuesByArray(
-                    //                        $scheduleMeetingRequestParam
-                    //                    );
-                    //                    $scheduleMeetingRequestParam['keepCreateMeetingForm'] = false;
-                    ilSession::set('scheduleMeetingRequestParam', $scheduleMeetingRequestParam);
-                } else {
-                    $this->meetingProperty['duration']->setStart(new ilDateTime((int) date('U') + ilObjMultiVc::MEETING_TIME_AHEAD, IL_CAL_UNIX));
-                    $this->meetingProperty['duration']->setEnd(new ilDateTime((int) date('U') + self::MEETING_DURATION + ilObjMultiVc::MEETING_TIME_AHEAD, IL_CAL_UNIX));
+            $this->meetingPropertiesForm->setValuesByArray([
+                'meeting_title' => $a_set['title'],
+                'meeting_agenda' => $a_set['agenda'],
+                'update_rel_id' => $relId
+            ]);
+            $dtMeetingStart = new ilDateTime($a_set['start'], IL_CAL_DATETIME, $a_set['timezone']);
+            $this->meetingProperty['duration']->setStart($dtMeetingStart);
+            $dtMeetingEnd = new ilDateTime($a_set['end'], IL_CAL_DATETIME, $a_set['timezone']);
+            $this->meetingProperty['duration']->setEnd($dtMeetingEnd);
+            $this->meetingPropertiesForm->addCommandButton('meeting_update',
+                $this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_update_btn'));
+        } else {
+            $this->meetingPropertiesForm->setTitle($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_create'));
+            $parentTitle = '';
+            $path = array_reverse($this->dic->repositoryTree()->getPathFull($this->parent_obj->getRefId()));
+            $keys = array_keys($path);
+            foreach($path as $key => $node) {
+                if(in_array($node['type'], ['crs', 'grp'])) {
+                    $parent = $node;
+                    break;
                 }
-                //var_dump($this->filterItemDateDuration->getStart());exit;
-                // Form Elem To Keep Filter Values
-                $this->meetingProperty['filter_date_duration_start']->setValue($this->filterItemDateDuration->getStart());
-                $this->meetingProperty['filter_date_duration_end']->setValue($this->filterItemDateDuration->getEnd());
-                $this->meetingProperty['filter_data_source']->setValue($this->filterItemDataSource->getValue());
+            }
+            if (isset($parent['ref_id'])) {
+                $parentTitle = ilObject::_lookupTitle(ilObject::_lookupObjectId($parent['ref_id']));
+            }
 
-                // Command Buttons
-                $this->meetingPropertiesForm->addCommandButton('meeting_' . $cmd, $this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_create_btn'));
-                $this->meetingPropertiesForm->setShowTopButtons(false);
-                break;
+            $this->meetingPropertiesForm->setValuesByArray([
+                'meeting_title' => $this->parent_obj->object->getTitle(),
+                'meeting_agenda' => $parentTitle
+            ]);
+            $this->meetingPropertiesForm->addCommandButton('meeting_create',
+                $this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_create_btn'));
+
+            $scheduleMeetingRequestParam = ilSession::get('scheduleMeetingRequestParam');
+            if ($keepForm) {
+                //                    $this->keepFilterValues = true;
+                //todo
+                //                    var_dump($scheduleMeetingRequestParam);exit;
+                //                    $arReqParam = (array)$scheduleMeetingRequestParam;
+                //                    if (is_array($arReqParam)) {
+                //                        $this->meetingProperty['meeting_title'] = $scheduleMeetingRequestParam['meeting_title'];
+                //                        var_dump($scheduleMeetingRequestParam['meeting_title']); exit;
+                //                        if (is_array($arReqParam['meeting_duration'])) {
+                //                            $this->meetingProperty['duration']->setStart($arReqParam['meeting_duration']['start']);
+                //                        }
+                //                    }
+                $keepForm = false;
+                $this->meetingPropertiesForm->setValuesByArray($scheduleMeetingRequestParam);
+
+                //                die(var_dump($scheduleMeetingRequestParam));
+                //                if(!empty($scheduleMeetingRequestParam)
+                //                && isset($scheduleMeetingRequestParam->keepCreateMeetingForm)){
+                //                && (bool)$scheduleMeetingRequestParam['keepCreateMeetingForm']) {
+                #$this->meetingProperty['duration']->setStart();
+                #$this->meetingProperty['duration']->setEnd();
+                //                    $this->meetingPropertiesForm->setValuesByArray(
+                //                        $scheduleMeetingRequestParam
+                //                    );
+                //                    $scheduleMeetingRequestParam['keepCreateMeetingForm'] = false;
+                ilSession::set('scheduleMeetingRequestParam', $scheduleMeetingRequestParam);
+            } else {
+                $this->meetingProperty['duration']->setStart(new ilDateTime((int) date('U') + ilObjMultiVc::MEETING_TIME_AHEAD,IL_CAL_UNIX));
+                $this->meetingProperty['duration']->setEnd(new ilDateTime((int) date('U') + self::MEETING_DURATION + ilObjMultiVc::MEETING_TIME_AHEAD,IL_CAL_UNIX));
+            }
         }
+        //var_dump($this->filterItemDateDuration->getStart());exit;
+        // Form Elem To Keep Filter Values
+        $this->meetingProperty['filter_date_duration_start']->setValue($this->filterItemDateDuration->getStart());
+        $this->meetingProperty['filter_date_duration_end']->setValue($this->filterItemDateDuration->getEnd());
+        $this->meetingProperty['filter_data_source']->setValue($this->filterItemDataSource->getValue());
+
 
         // keep open properties form and tableGui form
         #$this->meetingPropertiesForm->setCloseTag(false);
@@ -568,7 +637,8 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
         // return both together as html
         #return $this->getHTML() . $this->meetingPropertiesForm->getHTML();
         $returnHtml = '';
-        if((int) $this->dic->user()->getId() === (int) $this->parent_obj->object->getOwner()) {
+        if(((int) $this->dic->user()->getId() === (int) $this->parent_obj->object->getOwner()) ||
+            ($this->parent_obj->isZoom && $this->dic->access()->checkAccess("write", "", $this->parent_obj->getRefId()))) {
             $returnHtml .= $this->meetingPropertiesForm->getHTML();
         }
         $returnHtml .= $this->getHTML();
@@ -588,11 +658,13 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
     {
         $this->meetingProperty['title'] = new ilTextInputGUI($this->dic->language()->txt('rep_robj_xmvc_title'), 'meeting_title');
         $this->meetingProperty['title']->setRequired(true);
+        $this->meetingProperty['title']->setMaxLength(256);
 
         if($this->parent_obj->isEdudip) {
             $this->meetingProperty['agenda'] = new ilHiddenInputGUI('meeting_agenda');
         } else {
             $this->meetingProperty['agenda'] = new ilTextAreaInputGUI($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_agenda'), 'meeting_agenda');
+            $this->meetingProperty['agenda']->setMaxNumOfChars(1024);
         }
 
         $this->meetingProperty['duration'] = new ilDateDurationInputGUI($this->dic->language()->txt('rep_robj_xmvc_scheduled_' . $this->parent_obj->sessType . '_duration'), 'meeting_duration');
@@ -645,6 +717,9 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
         $this->meetingProperty['rwm_rel_data'] = new ilHiddenInputGUI('relate_meeting[rel_data]');
         $this->meetingProperty['rwm_cmd'] = new ilHiddenInputGUI('relate_meeting[cmd]');
 
+        // UPDATE MEETING HIDDEN FIELDS
+        $this->meetingProperty['update_rel_id'] = new ilHiddenInputGUI('update_rel_id');
+
 
         $this->meetingPropertiesForm = new ilPropertyFormGUI();
 
@@ -662,24 +737,24 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
         */
     }
 
-    private function getDefaultMeetingProperties(): array
-    {
-        return [
-            'meeting_title' => $this->parent_obj->object->getTitle(),
-            'meeting_agenda' => '',
-            #'meeting_recurrence'    => 0,
-            #'meeting_host_email'     => $this->dic->user()->getEmail()
-        ];
-        // todo
-        /*
-        return array_replace([
-            'meeting_title'     => $this->parent_obj->object->getTitle(),
-            'meeting_agenda'     => '',
-            #'meeting_recurrence'    => 0,
-            'meeting_host_email'     => $this->dic->user()->getEmail()
-        ], ilSession::get('scheduleMeetingRequestParam') ?? []);
-        */
-    }
+//    private function getDefaultMeetingProperties(): array
+//    {
+//        return [
+//            'meeting_title' => $this->parent_obj->object->getTitle(),
+//            'meeting_agenda' => '',
+//            #'meeting_recurrence'    => 0,
+//            #'meeting_host_email'     => $this->dic->user()->getEmail()
+//        ];
+//        // todo
+//        /*
+//        return array_replace([
+//            'meeting_title'     => $this->parent_obj->object->getTitle(),
+//            'meeting_agenda'     => '',
+//            #'meeting_recurrence'    => 0,
+//            'meeting_host_email'     => $this->dic->user()->getEmail()
+//        ], ilSession::get('scheduleMeetingRequestParam') ?? []);
+//        */
+//    }
 
     public function getMeetingRequestParam(): array
     {
@@ -804,21 +879,27 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
         );
         */
         if((bool) strlen($sessions = $edudip->sessionList())) {
-            #            echo '<pre>'; var_dump($sessions); echo '</pre>'; exit;
+//            echo '<pre>'; var_dump(json_decode($sessions)); echo '</pre>'; exit;
             $items = [];
             try {
                 foreach (json_decode($sessions, true)["webinars"] as $key => $session) {
-                    #echo '<pre>'; var_dump($session); exit;
-                    if ($session["moderators"][0]["email"] === $this->parent_obj->object->getAuthUser()) {
-                        $session["email"] = $session["moderators"][0]["email"];
-                        $session["start"] = $session['dates'][0]['date'];
-                        $session["end"] = $session['dates'][0]['date_end'];
+//                    if ($session["moderators"][0]["email"] === $this->parent_obj->object->getAuthUser()) {
+//                    $session["email"] = $session["moderators"][0]["email"];
+                    if ($session["owner"]["email"] === $this->parent_obj->object->getAuthUser()) {
+                        $session["email"] = $session["owner"]["email"];
+
+                        $dates = json_decode($edudip->sessionDates($session["id"]), true);
+                        $worktime = new DateTime($dates['webinarDates'][0]['date'], new DateTimeZone($this->dic->user()->getTimeZone()));
+                        $session["start"] = $worktime->format('Y-m-d H:i:s');
+                        $session["durationMinutes"] = $dates['webinarDates'][0]['durationMinutes'];
+                        $worktime->add(new DateInterval('PT' . $session["durationMinutes"] . 'M'));
+                        $session["end"] = $worktime->format('Y-m-d H:i:s');
+//                        echo '<pre>'.$session['start'].' '.$end.' '.$session['durationMinutes'].'</pre>';exit;
                         $session["timezone"] = $this->dic->user()->getTimeZone();
 
-
                         $items[] = [
-                            'start' => $session['dates'][0]['date'],
-                            'end' => $session['dates'][0]['date_end'],
+                            'start' => $session["start"],
+                            'end' => $session["end"],
                             'timezone' => $this->dic->user()->getTimeZone(),
                             'rel_data' => json_encode($session),
                             'host' => 'edudip',
@@ -828,21 +909,19 @@ class ilMultiVcTableGUIScheduledMeetings extends ilTable2GUI
                         ];
                     }
                 }
+//                echo '<pre>'.var_dump($items).'</pre>';exit;
 
                 $this->parent_obj->object->deleteStoredHostSessionById($this->refId);
                 if ((bool) sizeof($items)) {
                     if ($storeHostSession = $this->parent_obj->object->storeHostSession($this->refId, $items)) {
-                        //                    return (bool)$storeHostSession;
+//                    echo '<pre>'.var_dump($storeHostSession).'</pre>';exit;
                     }
                 }
                 $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_edudip_meetings_list_downloaded'), true);
             } catch (Exception $e) {
                 $this->dic->ui()->mainTemplate()->setOnScreenMessage('info', $this->dic->language()->txt('rep_robj_xmvc_edudip_meetings_list_unavailabe'), true);
             }
-
         }
-
-        # json_decode($sessions,1)["webinars"][0]["moderators"][0]["email"]
     }
 
 }

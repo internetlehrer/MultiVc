@@ -76,6 +76,7 @@ conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Meeting layout
 conf_title#:#Title
 conn_deleted#:#The meeting type has been deleted.
+conn_delete_blocked#:#This meeting type cannot be deleted because objects still use it (including objects in trash).
 conn_id#:#Meeting type
 copy#:#Copy
 create_type#:#Define new meeting type
@@ -111,8 +112,8 @@ err_msg_guest_password_expired#:#The guest password has expired.
 error_admin_no_access_token#:#Please tell your administrator: Token missing
 error_object_no_access_token#:#Please perform authorization in the object properties.
 error_object_no_host_email#:#Please confirm the e-mail address for the host user in the object properties.
-error_start_meeting#:#An error occured on meeting start up.
-error_start_webinar#:#An error occured on webinar start up.
+error_start_meeting#:#An error occurred while starting the meeting.
+error_start_webinar#:#An error occurred while starting the webinar.
 ext_provider_token_user#:#User / access token
 ext_provider_token_user_info#:#Enter the e-mail address of users with moderator license and then their Access Token.
 fa_expand_default_info#:#This option should normally be disabled. Also, in many cases the display of areas (e.g. chat) cannot be enlarged
@@ -162,7 +163,7 @@ info_requirements_headline#:#Technical requirements:
 info_requirements_not_ok#:#<b> With the browser you are currently using, you can only use the virtual meeting room to a very limited extent.</b><br/> It is best to use Google Chrome or, with restrictions, Mozilla Firefox as your browser! If you do not have the rights to install a browser, you may be able to use Google Chrome Portable.<br/>If it is not possible to change the browser, start the virtual meeting room and write in the chat that you do not currently have a suitable browser and that nobody should wait for you.
 info_requirements_om#:#<ul><li>Openmeetings uses the open standard WebRTC, which is supported by more and more browsers. Currently, Google Chrome or, with restrictions, Mozilla Firefox is recommended. You can also use the latest version of Microsoft Edge as well as Safari Mobile from iOS 12.2 and Chrome Mobile from Android 6.0. Microsoft Internet Explorer and older Edge versions are not supported.</li><li>The firewall you are using must not block the following ports: TCP/IP ports 8888/5443 (for HTTP/HTTPS), TCP/UDP 3478 and UDP ports in the range 49152 - 65535.</li><li>To transfer your screen (desktop sharing), you should use Google Chrome and have a high-performance Internet connection. We also recommend moderators and presenters to use a wired network (no WLAN).
 info_requirements_partly#:#We recommend Google Chrome as browser or with restrictions Mozilla Firefox. If and to what extent the browser you are currently using is suitable to use the virtual meeting room, you have to find out yourself. Please report your experiences to the technical support team, if available.
-info_requirements_teams#:#<ul><li>Moderierende müssen die Teams App benutzen.</li><li>Teilnehmende können Teams über ihren Browser starten.</li><li>Um Ihren Bildschirm übertragen zu können (Desktopsharing), sollten Sie über eine performante Internetverbindung verfügen. Wir empfehlen Moderatoren und Präsentatoren darüberhinaus, ein kabelgebundenes Netzwerk (kein WLAN) zu nutzen.
+info_requirements_teams#:#<ul><li>Moderators must use the Teams app.</li><li>Participants can start Teams in their browser.</li><li>To share your screen (desktop sharing), you should have a high-performance internet connection. We also recommend that moderators and presenters use a wired network (not Wi-Fi).
 info_requirements_webex#:#<ul><li>Recommended browsers: Chrome, Edge, Firefox</li></ul>
 info_requirements_zoom#:#Please log in to Zoom using the email address you have registered with ILIAS. This is:
 info_requirements_zoom_lp#:#Your attendance at this meeting must be recorded to determine your learning progress. You will only be eligible for credit if you are present for {%} of the scheduled time between the start and end of the meeting.
@@ -178,6 +179,7 @@ info_title#:#This title is displayed for selecting the meeting type for new obje
 info_top_moderated_edudip#:#You have moderator rights and can start the meeting.
 info_top_moderated_m_bbb#:#This is a moderated room and you can always enter the meeting room only when a person with moderator function is in the room.
 info_top_moderated_m_om#:#This is a moderated room and you can always enter the meeting room only when a person with moderator function is in the room.
+info_top_moderated_teams#:#This is a moderated meeting room.
 info_top_moderated_webex#:#You have moderator rights and can start the meeting. To do this, you need an account at Webex or at a Webex hosted site. Participants cannot join until the meeting is started by a moderator.
 info_top_moderated_zoom#:#This is a webinar. You can start the webinar now.
 info_top_moderator_bbb#:#<b>This is a moderated room and you have the moderator function in this room.</b><br/>People without a moderator function can only enter the meeting room when a person with a moderator function is in the room.
@@ -213,9 +215,15 @@ lp_active#:#Active
 lp_active_info#:#The status "In progress" is set as soon as the content is accessed. The "Completed" or "Failed" status is determined by the attendance times.
 lp_inactive#:#Inactive
 lp_inactive_info#:#No learning progress is stored for this object.
-lp_mode#:#Modus
+lp_mode#:#Mode
 lp_time_info#:#This percentage value in relation to the possible attendance times must be exceeded for the status to be set to "Completed". Otherwise it is set to "Failed".
 lp_time#:#Threshold value for "Completed"
+manual_mods_choose_info#:#Select this option if you want users with write permissions to have the option to "Manually select co-moderators or co-hosts" in Settings.
+manual_mods_choose#:#Manual selection of co-moderators: Selection option
+manual_mods_default_info#:#Disable this option if you want the course and group administrators, as well as the course tutors, to automatically become "co-moderators" or "co-hosts." If enabled, "co-moderators" or "co-hosts" can be manually assigned via a tab that appears on the MultiVc object.
+manual_mods_default#:#Manual selection of co-moderators: Default setting
+manual_mods_info_zoom#:#Disable this option if you want course and group administrators, as well as course tutors, to automatically become co-hosts. If enabled, you can manually designate co-hosts using a tab that will then appear.
+manual_mods_zoom#:#Manual selection of co-hosts
 max_duration#:#Maximum duration
 max_meetings#:#Maximum number of meeting rooms
 max_participants#:#Max. Participants
@@ -226,6 +234,7 @@ meeting_end#:#Meeting End
 meeting_related_successful#:#meeting successfully related
 meeting_running#:#The virtual meeting room has started.
 meeting_start#:#Meeting Start
+meetings_list_downloaded#:#Existing meetings and webinars were successfully integrated.
 member_btn_fileupload_choose#:#Allow file upload to anyone: Selection option
 member_btn_fileupload_choose_info#:#Enable this option if you want users with write permissions to have the option 'Allow file upload by anyone' under Settings.
 member_btn_fileupload#:#Allow file upload to anyone
@@ -250,6 +259,8 @@ moderated#:#Moderated Room
 moderated_webex#:#<b>Tip:</b> In unmoderated rooms, joiners are not pseudonymized. Therefore, joining is only allowed to people with suitable Webex account.
 moderated_zoom#:#Webinar
 moderator#:#Moderator
+moderators_info_zoom#:#Make sure the selected participants have the necessary permissions in Zoom.
+moderators_zoom#:#Co-Hosts
 msg_obj_deleted#:#The recording was deleted.
 notification_sending#:#notifications are sent ...
 notification_sent#:#notifications sent successfully.
@@ -292,6 +303,7 @@ recording#:#Recordings
 recording_autostart#:#Recordings are started automatically at the beginning. ILIAS users will be informed about this.
 recording_choose#:#Allow recordings: Selection option
 recording_choose_info#:#Activate this option if you want users with write permissions to select 'Allow capturing' under Settings. Since the URL for the recording is known to be distributed to unintended persons, this option should not be activated in most cases.
+recording_choose_info_bbb#:#Enable this option if users with write permissions should have the 'Allow recordings' option under Settings. Since disclosure of the recording URL could make the recording available to unintended persons, this option should not be enabled in most cases.
 recording_default#:#Allow recordings: Default setting
 recording_default_info#:#This option should be deactivated in most cases, so that people cannot use the recording function in the virtual room.
 recording_info#:#Sessions can be recorded.
@@ -317,12 +329,13 @@ report_log_max#:#Overview of use (BBB)
 require_schedule_new_meeting#:#You can create meetings and start them during the scheduled time slots.
 require_schedule_new_meeting_zoom#:#You can create meetings.
 require_schedule_new_webinar#:#You can create webinars and start them during the scheduled time slots.
+require_schedule_new_webinar_zoom#:#You can create webinars.
 reset_authorization#:#Cancel authorization
 reseted_tokens#:#Tokens reseted
 root_create_xmvc#:#create virtual meeting room
 saving_invoked#:#Settings saved
 scheduled_meeting_agenda#:#Agenda
-scheduled_meeting_both_data_sources#:#assigned and created via Webex
+scheduled_meeting_both_data_sources#:#all
 scheduled_meeting_create_btn#:#Create meeting
 scheduled_meeting_created#:#Scheduled meeting created
 scheduled_meeting_create#:#Create scheduled meeting
@@ -339,6 +352,7 @@ scheduled_meeting_state#:#State
 scheduled_meeting_time_ahead#:#Lead time of the meeting
 scheduled_meeting_update_btn#:#Update meeting
 scheduled_meeting_update#:#Update scheduled meeting
+scheduled_meeting_updated#:#Scheduled meeting updated
 scheduled_webinar_agenda#:#Agenda
 scheduled_webinar_both_data_sources#:#all
 scheduled_webinar_create_btn#:#Create scheduled webinar
@@ -399,7 +413,7 @@ teams_lobbybypass_organizer#:#Participants are placed in the meeting lobby. Admi
 teams_meetings_list_downloaded#:#Meetings successfully downloaded from Teams.
 teams_tenant_id_info#:#Add the Tenant ID here.
 teams_tenant_id#:#Tenant ID
-terms_of_use#:#<b>Property rights</b>{br}The information and materials contained in BigBlueButton conferences, such as text or images, are generally protected by copyright, trademark or patent laws. This applies in particular to the recording of BigBlueButton conferences. The secret recording of video or audio conferences is a criminal offence.{br}{br}<b>Rules of conduct</b>{br}You may not post any content that violates legal regulations, pornographic, obscene, defamatory, libellous, insulting, threatening, inciting or racist content. It is also forbidden to post advertising without permission and to transmit information that contains a virus, manipulation or similar damaging elements.{br}{br}<b>Processed data</b>{br}When using BigBlueButton, the following data is collected:<ul><li>Connection data (e.g. IP address, browser type, date and time of access)</li><li>If applicable, access data: User name, password in encrypted form</li><li>content data (e.g. uploaded files, chat posts, surveys)</li></ul>The temporary storage of connection data, in particular the IP address, by the system is necessary to enable BigBlueButton to be delivered to the User's computer. For this purpose, the user's IP address must remain stored for the duration of the session. The legal basis for the temporary storage of the data is Art. 6 para. 1 lit. f DSGVO.{br}The connection data is also usually stored in log files. The time of deletion is determined by the operator of the server for BigBlueButton.
+terms_of_use#:#<b>Intellectual property rights</b>{br}The information and materials contained in BigBlueButton conferences, such as texts or images, are generally protected by copyright, trademark or patent rights.{br}Data protection laws must be observed. This applies in particular to recordings of BigBlueButton conferences. Secretly recording video or audio conferences is a criminal offence.{br}{br}<b>Rules of conduct</b>{br}You may not post content that violates statutory provisions or content that is pornographic, obscene, defamatory, libellous, insulting, threatening, incites hatred or is racist. Posting advertisements without permission and transmitting information containing a virus, manipulation or similar harmful elements is also prohibited.{br}{br}<b>Processed data</b>{br}When using BigBlueButton, the following data is collected:<ul><li>Connection data (e.g. IP address, browser type, date and time of access)</li><li>Where applicable, access data: user name and password in encrypted form</li><li>Content data (e.g. uploaded files, chat messages and surveys)</li></ul>The temporary storage of connection data, particularly the IP address, by the system is necessary to deliver BigBlueButton to the user's computer. The user's IP address must therefore remain stored for the duration of the session. The legal basis for the temporary storage of this data is Art. 6(1)(f) GDPR.{br}Connection data is also generally stored in log files. The deletion time is determined by the operator of the BigBlueButton server.
 title#:#Title
 token_deleted#:#Token deleted
 token_not_deleted#:#Token not deleted
@@ -408,15 +422,17 @@ token_stored#:#Token stored
 unlocked_by#:#Unlocked by
 unlock#:#Unlock
 untrashed_usages#:#Number of uses
+usages_with_trash#:#%s (%s in trash)
 url_info#:#Here you can also enter relative paths (e.g.: /webconference). Please do not enter a '/' at the end.
 url#:#URL
 usage#:#Usage
 user_end#:#last leaving
 user_invite_info#:#With the following link you can invite guests to the meeting:
 user_log#:#User overview
-user_log_bbb#:#User overview (BBB/Teams)
+user_log_bbb#:#User overview (BBB/Teams/Zoom)
 user_log_duration#:#Capture period
 user_percent#:#Percent
+user_rel_span#:#Relevant time
 user_results#:#Attendance times
 user_results_desc#:#Time is only displayed for meetings that have already ended. Meetings must also have reached the scheduled end.
 user_start#:#first start
@@ -426,7 +442,7 @@ wait_join_meeting_edudip#:#Currently you cannot join any webinar.
 wait_join_meeting_guest#:#<b>Currently no person with moderator function is present in the virtual meeting room.<br/>Please wait and click on 'Join Meeting' again in one minute.</b>
 wait_join_meeting_teams#:#Currently you cannot join any meeting. The meeting may not have started yet or may have already ended.{br}If necessary, update this page to check the status of the meeting.
 wait_join_meeting_webex#:#Currently you cannot join any meeting. The meeting may not have started yet or may have already ended.{br}If necessary, update this page to check the status of the meeting.
-wait_join_meeting_zoom#:#You cannot join a meeting at this time. If a scheduled meeting appears, refresh this page up to 15 minutes before the scheduled meeting to join.
+wait_join_meeting_zoom#:#You cannot currently join a meeting.{br}If a scheduled meeting is displayed, refresh this page to join it up to 15 minutes before the scheduled meeting.
 wait_join_webinar#:#<b>Currently, no one has started the webinar yet.<br/>Please wait and access this page again in a minute.</b>
 webex_client_id#:#Client ID of the Webex integration
 webex_client_secret#:#Client secret of the Webex integration.
@@ -476,17 +492,33 @@ xmvc_visible#:#Visible: Virtual meeting room is visible
 xmvc_write#:#Edit settings
 zoom_account_id#:#Zoom Account ID
 zoom_account_info#:#You can obtain the Zoom Account ID, Client ID, and Client Secret from https://developers.zoom.us/docs/internal-apps/create/. You need to create a server-to-server OAuth app.
+zoom_approval_choose#:#Registration / authentication: Selection option
+zoom_approval_choose_info#:#Registration with a personalized access link is often not used.
+zoom_approval_default#:#Registration / authentication: Default setting
+zoom_approval_type#:#Registration / authentication
+zoom_approval_0#:#Automatic approval: The access link is sent by email.
+zoom_approval_1#:#Manual approval: Hosts review and approve participants before they receive the access link.
+zoom_approval_2#:#No registration is required. A personalized access link is not created.
+zoom_approval_3#:#No registration, but authentication is required. A Zoom account is always required.
+zoom_approval_4#:#No registration required. In webinars require panelists - not attendees - to authenticate to join.
+zoom_approval_5#:#No registration required. In webinars require attendees - not panelists - to authenticate to join.
 zoom_client_id#:#Zoom Client ID
 zoom_client_secret#:#Zoom Client Secret
+zoom_err_scopes#:#The following permissions are missing to create a meeting:
 zoom_err_scopes_webinar#:#You do not have permission to create a webinar. Meetings are possible. The following permissions are missing:
 zoom_exist_meetings#:#Dates have already been set for this meeting.
 zoom_exist_webinars#:#Dates have already been set for this webinar.
+zoom_host_email_hidden_info#:#The email address used for authorization is visible only to the owners of the object and administrators.
+zoom_host_email_info#:#Email address associated with Zoom
+zoom_host_email#:#Zoom Host Email Address
 zoom_lobby#:#Waiting room for meetings
-zoom_lobby_choose#:#Waiting room: Choice of options
+zoom_lobby_choose#:#Waiting room for meetings: Selection option
 zoom_lobby_choose_info#:#Enable this option if users with write permissions should have the 'Waiting Room' option in the settings. This controls who is placed in the waiting room.
-zoom_lobby_default#:#Waiting room: Default setting
+zoom_lobby_default#:#Waiting room for meetings: Default setting
 zoom_lobby_0#:#No one needs to wait in the waiting room. The waiting room is deactivated. Participants can enter 15 minutes before the meeting starts.
 zoom_lobby_1#:#Everyone has to go to the waiting room.
 zoom_lobby_2#:#Users outside your account must enter the waiting room.
 zoom_lobby_3#:#Users outside your account or those not on the approved domains must enter the waiting room.
 zoom_lobby_4#:#Users who are not in the course or group must go to the waiting room.
+zoom_rec_only_for_webinars_default#:#Recording Only in Webinars
+zoom_rec_only_for_webinars_default_info#:#If this option is enabled, automatic recording is not available in meetings. This option should be enabled in most cases. It only takes effect if recordings are generally permitted.

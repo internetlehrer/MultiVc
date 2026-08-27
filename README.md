@@ -310,25 +310,29 @@ s. https://developers.zoom.us/docs/integrations/oauth-scopes-granular/
 
 Rate Limit Label: LIGHT:
 
-meeting:read:meeting:admin
-meeting:read:invitation:admin
-meeting:delete:meeting:admin
-meeting:update:meeting:admin
-meeting:write:meeting:admin
-user:read:user:admin
-webinar:read:webinar:admin
-webinar:delete:webinar:admin
-webinar:update:webinar:admin
-webinar:write:webinar:admin
-meeting:read:past_meeting:admin
-webinar:read:list_past_instances:admin
+- user:read:user:admin
+- meeting:read:invitation:admin
+- meeting:read:meeting:admin
+- meeting:delete:meeting:admin
+- meeting:update:meeting:admin
+- meeting:write:meeting:admin
+- meeting:read:past_meeting:admin
+- webinar:read:webinar:admin
+- webinar:delete:webinar:admin
+- webinar:update:webinar:admin
+- webinar:write:webinar:admin
+- webinar:write:registrant:admin
 
 Rate Limit Label: MEDIUM:
 
-user:read:list_schedulers:admin
-user:read:settings:admin
-meeting:read:list_past_participants:admin
-webinar:read:list_past_participants:admin
+- user:read:list_schedulers:admin
+- user:read:settings:admin
+- meeting:read:list_past_participants:admin
+- webinar:read:list_past_participants:admin
+
+Rate Limit Label: HEAVY:
+
+- report:read:webinar:admin
 
 ### Lernfortschritt
 Mit dem erstmaligen Einrichten von Zoom im MultiVc-Plugin werden die Rechte 'Lernfortschrittseinstellungen bearbeiten' und 'Lernfortschritt anderer Benutzer einsehen' hinzugefügt. Passen Sie ggfs. Objekte und insbesondere die Rollenvorlagen an. 

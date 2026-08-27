@@ -530,14 +530,14 @@ class ilApiBBB implements ilApiInterface
             ->setAutoStartRecording(false)
             ->setWebcamsOnlyForModerator(
                 $this->settings->isCamOnlyForModeratorChoose()
-                ? (bool) $this->object->isCamOnlyForModerator()
-                : $this->settings->isCamOnlyForModeratorDefault()
+                    ? (bool) $this->object->isCamOnlyForModerator()
+                    : $this->settings->isCamOnlyForModeratorDefault()
             )
             ->setLogoutUrl($joinBtnUrl)
             ->setLockSettingsDisablePrivateChat(
                 $this->settings->isPrivateChatChoose()
-                ? !(bool) $this->object->isPrivateChat()
-                : !$this->settings->isPrivateChatDefault()
+                    ? !(bool) $this->object->isPrivateChat()
+                    : !$this->settings->isPrivateChatDefault()
             )
             ->setLogo(filter_var($this->settings->getLogo(), FILTER_SANITIZE_URL))
             ->setLockSettingsDisableCam(

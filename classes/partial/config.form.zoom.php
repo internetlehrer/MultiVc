@@ -102,24 +102,51 @@ $cb->setRequired(false);
 $cb->setInfo($pl->txt("cam_only_for_moderator_default_info"));
 $combo->addSubItem($cb);
 
-//// RECORDING
-//$cb = new ilCheckboxInputGUI($pl->txt("recording_choose"), "recording_choose");
-//$cb->setRequired(false);
-//$cb->setInfo($pl->txt("recording_choose_info"));
-//$combo->addSubItem($cb);
-//
-//$cb = new ilCheckboxInputGUI($pl->txt("recording_default"), "recording_default");
-//$cb->setRequired(false);
-//$cb->setInfo($pl->txt("recording_autostart"));
-//$combo->addSubItem($cb);
+// RECORDING
+$cb = new ilCheckboxInputGUI($pl->txt("zoom_rec_only_for_webinars_default"), "recording_only_for_moderated_rooms_default");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("zoom_rec_only_for_webinars_default_info"));
+$combo->addSubItem($cb);
 
-//later
-//$cb = new ilCheckboxInputGUI($pl->txt("recording_only_for_moderated_rooms_default"), "recording_only_for_moderated_rooms_default");
-//$cb->setRequired(false);
-//$cb->setInfo($pl->txt("recording_only_for_moderated_rooms_default_info"));
-//$combo->addSubItem($cb);
+$cb = new ilCheckboxInputGUI($pl->txt("recording_choose"), "recording_choose");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("recording_choose_info"));
+$combo->addSubItem($cb);
+
+$cb = new ilCheckboxInputGUI($pl->txt("recording_default"), "recording_default");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("recording_autostart"));
+$combo->addSubItem($cb);
+
+// APPROVAL TYPE
+$cb = new ilCheckboxInputGUI($pl->txt("zoom_approval_choose"), "approval_type_choose");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("zoom_approval_choose_info"));
+$combo->addSubItem($cb);
+
+$si = new ilSelectInputGUI($pl->txt("zoom_approval_default"), "approval_type_default");
+$si->setOptions([
+    0 => $pl->txt("zoom_approval_0"),
+    1 => $pl->txt("zoom_approval_1"),
+    2 => $pl->txt("zoom_approval_2"),
+    3 => $pl->txt("zoom_approval_3"),
+    4 => $pl->txt("zoom_approval_4"),
+    5 => $pl->txt("zoom_approval_5")
+]);
+$combo->addSubItem($si);
 
 $cb = new ilCheckboxInputGUI($pl->txt("hide_username_logs"), "hide_username_logs");
 $cb->setRequired(false);
 $cb->setInfo($pl->txt("hide_username_logs_info"));
 $combo->addSubItem($cb);
+
+$cb = new ilCheckboxInputGUI($pl->txt("manual_mods_choose"), "manual_mods_choose");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("manual_mods_choose_info"));
+$combo->addSubItem($cb);
+
+$cb = new ilCheckboxInputGUI($pl->txt("manual_mods_default"), "manual_mods_default");
+$cb->setRequired(false);
+$cb->setInfo($pl->txt("manual_mods_default_info"));
+$combo->addSubItem($cb);
+

@@ -61,13 +61,17 @@ class ilObjMultiVcAccess extends ilObjectPluginAccess
             " WHERE id = " . $ilDB->quote($obj_id, "integer")
         );
         $data = $ilDB->fetchObject($set);
-
+        if (!is_object($data)) {
+            return false;
+        }
         $set = $ilDB->query(
             "SELECT availability FROM rep_robj_xmvc_conn " .
             " WHERE id = " . $ilDB->quote($data->conn_id, "integer")
         );
         $conn = $ilDB->fetchObject($set);
-        //var_dump([(int)ilMultiVcConfig::AVAILABILITY_NONE !== (int)$conn->availability, (int)$conn->availability]); exit;
+        if (!is_object($conn)) {
+            return false;
+        }
         return (int) ilMultiVcConfig::AVAILABILITY_NONE !== (int) $conn->availability;
     }
 
