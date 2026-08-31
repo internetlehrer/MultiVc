@@ -171,7 +171,7 @@ class ilApiTeams implements ilApiInterface
      * @throws ilCurlConnectionException
      * @throws Exception
      */
-    public function sessionCreateTeams(string $meetingTitle, ilDateTime $utcStart, ilDateTime $utcEnd): array
+    public function sessionCreateTeams(string $meetingTitle, string $meetingAgenda, ilDateTime $utcStart, ilDateTime $utcEnd): array
     {
         $this->dic->language()->loadLanguageModule('rep_robj_xmvc');
         $timezone = 'UTC';
@@ -334,7 +334,7 @@ class ilApiTeams implements ilApiInterface
 
         $rel_data = [
             'id' => $ret->getId(),
-            'title' => $meetingTitle,
+//            'title' => $meetingTitle,
             'calId' => $retCal->getId(),
             //            'changeKey' => $ret->getChangeKey(),
             //iCalUId
@@ -355,6 +355,8 @@ class ilApiTeams implements ilApiInterface
         //        } catch (Exception $e) {die(var_dump($ret)); }
 
         $retAr = [
+            'title' => $meetingTitle,
+            'agenda' => $meetingAgenda,
             'start' => $utcStart->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC'),
             'end' => $utcEnd->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC'),
             'timezone' => 'UTC',
@@ -382,7 +384,6 @@ class ilApiTeams implements ilApiInterface
         foreach ($upcomingMeeting as $meeting) {
             $meetingRelData = json_decode($meeting['rel_data']);
             $logger->dump($meetingRelData);
-            //$title = $meetingRelData->title;
             if (isset($meetingRelData->calId)) {
                 $calId = $meetingRelData->calId;
                 $attendees = [];
@@ -425,7 +426,7 @@ class ilApiTeams implements ilApiInterface
                     $logger->debug('joinUrl: ' . $joinUrl);
 
                     $subject = $DIC->language()->txt('rep_robj_xmvc_subject_' . ilObject::_lookupType($parentObjId));
-                    $subject = str_replace('{MEETING_TITLE}', $meetingRelData->title, $subject);
+                    $subject = str_replace('{MEETING_TITLE}', $meeting['title'], $subject); //$meetingRelData->title
                     $subject = str_replace('{PARENT_TITLE}', ilObject::_lookupTitle($parentObjId), $subject);
 
                     $htmlContent = $DIC->language()->txt('rep_robj_xmvc_teams_join_links');

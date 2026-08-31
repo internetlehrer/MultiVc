@@ -1,492 +1,519 @@
 <!-- language file start -->
-add_presentation_url#:#Presentazione di apertura
-add_token#:#Aggiungi token
-add_token_user#:#Nuovo moderatore / token
-add_welcome_text#:#Messaggio di benvenuto personalizzato
-adm_info_appointment#:#In qualità di amministratore o tutor, puoi avviare la stanza. I partecipanti, tuttavia, possono aprirla solo durante la sessione.
-assigned_roles_info#:#La creazione di questa configurazione MultiVc può essere limitata agli utenti che appartengono a uno o più ruoli selezionati.
+add_presentation_url#:#Inizio presentazione
+add_token#:#Aggiungi il token
+add_token_user#:#Nuovo moderatore/token
+add_welcome_text#:#Aggiungi il testo di benvenuto
+adm_info_appointment#:#In qualità di amministratore o tutor, puoi avviare la stanza. I partecipanti, tuttavia, possono accedere alla stanza solo durante la sessione.
+assigned_roles_info#:#La creazione di questa configurazione MultiVc può essere limitata agli utenti appartenenti a uno o più dei ruoli selezionati.
 assigned_roles#:#Ruoli assegnati
-authorize#:#autorizzare
+authorize#:#Autorizzare
 bbb_default_server#:#Server BBB standard
-bbb_guest_password_info#:#Sono consentiti caratteri alfanumerici e speciali, come: <code>a-Z_09,.#@!?</code>
-bbb_guest_password#:#Password ospite
+bbb_guest_password_info#:#Sono ammessi caratteri alfanumerici e speciali, come ad esempio: <code>a-Z_09,.#@!?</code>
+bbb_guest_password#:#Password per gli ospiti
 bbb_secret_expiration_date#:#Data di scadenza
 bbb_secret_expiration_date_info#:#La password è valida fino alla data selezionata inclusa.
-bbb_secret_expired_msg#:#La password dell'ospite è scaduta.
-bbb_secret_expires_info#:#Selezionare questa opzione se la password deve avere un periodo di validità limitato.
-bbb_secret_expires#:#Data di scadenza
+bbb_secret_expired_msg#:#La password per gli ospiti è scaduta.
+bbb_secret_expires_info#:#Seleziona questa opzione se desideri che la password sia temporanea.
+bbb_secret_expires#:#Con data di scadenza.
 big_blue_button#:#BigBlueButton WebRTC
 btn_chat#:#La chat può essere mostrata/nascosta
-btn_chat_choose#:#La chat può essere mostrata/nascosta: opzione di selezione
-btn_chat_choose_info#:#Abilitare questa opzione se gli utenti con permessi di scrittura devono avere la possibilità di "Mostrare/nascondere la chat" nelle impostazioni.
-btn_chat_default#:#La chat può essere mostrata/nascosta: impostazione predefinita
-btn_chat_default_info#:#Per semplificare l'utilizzo, potrebbe essere utile non attivare questa opzione e visualizzare sempre la chat.
-btn_chat_info#:#Abilita questa opzione se vuoi che il pulsante mostri/nasconda la chat visualizzata.
-btn_locationshare_choose_info#:#Di solito questa opzione dovrebbe essere disattivata.
-btn_locationshare_choose#:#Opzione posizione: Selezione
-btn_locationshare_default_info#:#Attivare questa opzione solo dopo aver consultato il responsabile della protezione dei dati.
+btn_chat_choose#:#È possibile mostrare/nascondere la chat: opzione di selezione
+btn_chat_choose_info#:#Attiva questa opzione se desideri che gli utenti con accesso in scrittura abbiano la possibilità di visualizzare/nascondere la chat nelle Impostazioni.
+btn_chat_default#:#È possibile mostrare/nascondere la chat: impostazione predefinita
+btn_chat_default_info#:#Per semplificare l'utilizzo, può essere utile non attivare questa opzione e visualizzare sempre la chat.
+btn_chat_info#:#Attiva questa opzione se desideri che il pulsante nasconda e mostri la chat.
+btn_locationshare_choose_info#:#Nella maggior parte dei casi questa opzione dovrebbe essere disattivata.
+btn_locationshare_choose#:#Opzione posizione: Scelta
+btn_locationshare_default_info#:#Attivare questa opzione solo dopo aver consultato i responsabili della protezione dei dati.
 btn_locationshare_default#:#Posizione opzione: predefinita
-btn_locationshare_info#:#Questa opzione consente agli utenti di condividere la propria posizione attuale con altri utenti nella chat e di essere invitati a una riunione separata da altri. Per motivi di privacy, questa opzione dovrebbe essere abilitata solo con cautela.
+btn_locationshare_info#:#Questa opzione consente agli utenti di condividere la propria posizione attuale nella chat e di essere invitati a una riunione separata da altri. Per motivi di privacy, questa opzione deve essere utilizzata con cautela.
 btn_locationshare#:#Posizione dell'opzione
-btn_settings_choose#:#Impostazioni della stanza: Opzione di selezione
-btn_settings_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere l'opzione "Impostazioni nella stanza" in Impostazioni.
-btn_settings_default#:#Impostazioni della stanza: Predefinite
-btn_settings_default_info#:#L'impostazione predefinita dovrebbe generalmente essere che l'opzione e il pulsante per le impostazioni non siano attivi.
-btn_settings#:#Impostazioni della stanza
-btn_settings_info#:#Abilita questa opzione se desideri che i pulsanti e le opzioni di impostazione siano visibili nella stanza. Di solito non è necessario, poiché il nome e l'immagine utente vengono ereditati automaticamente da ILIAS.
+btn_settings_choose#:#Impostazioni nella stanza: opzione di selezione
+btn_settings_choose_info#:#Attiva questa opzione se desideri che gli utenti con permessi di scrittura possano selezionare "Impostazioni in camera" nella sezione Impostazioni.
+btn_settings_default#:#Impostazioni nella stanza: Impostazione predefinita
+btn_settings_default_info#:#Di norma, l'impostazione predefinita dovrebbe prevedere che l'opzione e il pulsante per le impostazioni non siano attivi.
+btn_settings#:#Impostazioni nella stanza
+btn_settings_info#:#Attiva questa opzione se desideri che il pulsante e le opzioni per le impostazioni siano visibili nella stanza. Di solito non è necessario, poiché il nome e l'immagine dell'utente verranno gestiti automaticamente da ILIAS.
 btntext_concurrent_users_check#:#Verifica la disponibilità
 btntext_guest_login_button#:#Accedi come ospite
 btntext_join_meeting#:#Partecipa alla riunione
 btntext_join_webinar#:#Partecipa al webinar
-btntext_start_meeting#:#Inizia la riunione
-btntext_start_webinar#:#Inizia il webinar
-cam_mic_only_for_moderator_choose_info#:#Abilitare questa opzione se gli utenti con permessi di scrittura devono avere la selezione corrispondente nelle impostazioni. Questa opzione dovrebbe essere abilitata nella maggior parte dei casi.
-cam_mic_only_for_moderator_choose#:#I partecipanti non devono attivare la telecamera e il microfono: Opzione
-cam_mic_only_for_moderator_default_info#:#Gli organizzatori possono consentire selettivamente ai partecipanti di utilizzare il proprio microfono e/o la propria videocamera. I partecipanti non possono condividere o trasmettere contenuti senza la loro conferma. Questa opzione è utile per eventi con un numero molto elevato di partecipanti.
-cam_mic_only_for_moderator_default#:#I partecipanti non devono attivare la telecamera e il microfono: impostazione predefinita
-cam_mic_only_for_moderator_info#:#Gli organizzatori consentiranno selettivamente ai partecipanti di utilizzare il proprio microfono e/o la propria videocamera. I partecipanti non possono condividere o trasmettere contenuti senza la loro conferma.
-cam_mic_only_for_moderator#:#I partecipanti non devono attivare la telecamera e il microfono.
-cam_only_for_moderator_choose_info#:#Abilita questa opzione se gli utenti con permessi di scrittura devono avere l'opzione "Fotocamera solo per moderatori" nelle impostazioni. Questa opzione dovrebbe essere abilitata nella maggior parte dei casi.
-cam_only_for_moderator_choose#:#Fotocamera solo per moderatori: opzione di selezione
-cam_only_for_moderator_default_info#:#Questa opzione dovrebbe essere disattivata nella maggior parte dei casi e attivata solo se si prevedono problemi di prestazioni con un numero elevato di partecipanti. I moderatori possono sempre modificare questa impostazione durante una sessione.
-cam_only_for_moderator_default#:#Fotocamera solo per moderatori: impostazione predefinita
-cam_only_for_moderator_info#:#Consigliato per riunioni con un numero molto elevato di persone.
-cam_only_for_moderator_zoom#:#Fotocamera solo per gli host
-cam_only_for_moderator_zoom_info#:#Consigliato per riunioni con un numero molto elevato di persone!
-cam_only_for_moderator#:#Fotocamera solo per moderatori
-cancel#:#cancellare
-cat_create_xmvc#:#Crea una sala riunioni virtuale
-chat_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere l'opzione "Consenti chat" nelle Impostazioni.
-chat_choose#:#Consenti chat: Opzione
-chat_default_info#:#Se abilitata, le persone possono chattare tra loro.
+btntext_start_meeting#:#Avvia riunione
+btntext_start_webinar#:#Avvia il webinar
+cam_mic_only_for_moderator_choose_info#:#Attiva questa opzione se desideri che gli utenti con permessi di scrittura abbiano la relativa selezione in Impostazioni. Nella maggior parte dei casi, questa opzione dovrebbe essere attivata.
+cam_mic_only_for_moderator_choose#:#Ai partecipanti non è consentito attivare la fotocamera e il microfono: Opzione
+cam_mic_only_for_moderator_default_info#:#Gli organizzatori consentono espressamente ai partecipanti di utilizzare microfono e/o videocamera. I partecipanti non possono condividere contenuti senza conferma. Questa opzione è utile per eventi con un elevato numero di partecipanti.
+cam_mic_only_for_moderator_default#:#Ai partecipanti non è consentito attivare la fotocamera e il microfono: impostazione predefinita
+cam_mic_only_for_moderator_info#:#Gli organizzatori consentono espressamente ai partecipanti di utilizzare microfono e/o videocamera. I partecipanti non possono condividere contenuti senza conferma.
+cam_mic_only_for_moderator#:#Ai partecipanti non è consentito attivare la telecamera e il microfono.
+cam_only_for_moderator_choose_info#:#Attiva questa opzione se desideri che gli utenti con accesso in scrittura selezionino "Fotocamera solo per i moderatori" nelle Impostazioni. Questa opzione dovrebbe essere attivata nella maggior parte dei casi.
+cam_only_for_moderator_choose#:#Telecamera solo per i moderatori: Opzione
+cam_only_for_moderator_default_info#:#Nella maggior parte dei casi, questa opzione dovrebbe essere disattivata e attivata solo se si prevedono problemi di prestazioni con un elevato numero di partecipanti. I moderatori hanno sempre la possibilità di modificare l'impostazione in BigBlueButton durante una sessione.
+cam_only_for_moderator_default#:#Fotocamera solo per i moderatori: impostazione predefinita
+cam_only_for_moderator_info#:#Consigliato per sessioni con un gran numero di partecipanti.
+cam_only_for_moderator_zoom#:#Telecamera solo per gli host
+cam_only_for_moderator_zoom_info#:#Consigliato per riunioni con un numero molto elevato di partecipanti!
+cam_only_for_moderator#:#Videocamera solo per i moderatori
+cancel#:#Cancellare
+cat_create_xmvc#:#creare una sala riunioni virtuale
+chat_choose_info#:#Attiva questa opzione se desideri che gli utenti con permessi di scrittura abbiano l'opzione "Consenti chat privata" selezionata nelle Impostazioni.
+chat_choose#:#Consenti chat: opzione di selezione
+chat_default_info#:#Se attivata, consente alle persone di chattare tra loro.
 chat_default#:#Consenti chat: impostazione predefinita
 chat_info#:#Le persone possono chattare tra loro.
-chat#:#Consenti chat
+chat#:#Consenti la chat
 conf_availability_0#:#Non disponibile
 conf_availability_1#:#Esistente consentito
-conf_availability_2#:#Se ne possono generare di nuovi
+conf_availability_2#:#È possibile crearne di nuovi
 conf_availability#:#Disponibilità
-config_help_begin#:#La spiegazione in Impostazioni recita:
+config_help_begin#:#La spiegazione nella sezione Impostazioni è la seguente:
 configure_add#:#Crea configurazione
-configure#:#configurazione
-conf_meeting_layout_1#:#LAYOUT_PERSONALIZZATO
-conf_meeting_layout_2#:#LAYOUT_INTELLIGENTE
-conf_meeting_layout_3#:#PRESENTAZIONE_FOCUS
+configure#:#Configurazione
+conf_meeting_layout_1#:#LAYOUT PERSONALIZZATO
+conf_meeting_layout_2#:#LAYOUT INTELLIGENTE
+conf_meeting_layout_3#:#FOCUS SULLA PRESENTAZIONE
 conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Disposizione della riunione
-conf_title#:#titolo
-conn_deleted#:#Il tipo di riunione è stato eliminato.
+conf_title#:#Titolo
+conn_deleted#:#La tipologia di riunione è stata eliminata.
 conn_id#:#Tipo di riunione
 copy#:#Copia
-create_type#:#Definisci un nuovo tipo di riunione
-cronjob_description#:#Una volta attivato, il tempo trascorso sulla pagina può essere utilizzato per calcolare i progressi di apprendimento.
-cronjob_title#:#Cron job MultiVc per determinare i progressi di apprendimento quando si utilizza MS Teams o Zoom
-crs_create_xmvc#:#Crea una sala riunioni virtuale
+create_type#:#Definire un nuovo tipo di riunione
+cronjob_description#:#Se attivata, la registrazione del tempo trascorso può essere utilizzata per calcolare i progressi di apprendimento.
+cronjob_title#:#Cronjob di MultiVc per monitorare i progressi di apprendimento durante l'utilizzo di MS Teams.
+crs_create_xmvc#:#creare una sala riunioni virtuale
 custom_style#:#Stile personalizzato
-custom_style_info#:#Qui è possibile definire parametri di stile CSS o un file CSS. Per un file, è necessario specificare un URL che inizi con https://. Inoltre, il parametro "displayBrandingArea" deve essere impostato su true nel file settings.yml dell'installazione BBB.
+custom_style_info#:#Qui è possibile definire i parametri di stile CSS o un file CSS. Per un file, è necessario specificare un URL che inizi con https://. Inoltre, nel file settings.yml dell'installazione di BBB, il parametro "displayBrandingArea" deve essere impostato su true.
 delete_conn#:#Eliminare il tipo di riunione?
-delete#:#Eliminare
-delete_sess_user_changed#:#Azione in caso di cambio di proprietà
-delete_sess_user_changed_info#:#Quando un utente cambia utente, tutte le sessioni create vengono eliminate.
-delete_token#:#Elimina token
-delete_type#:#Elimina tipo di riunione
-disable_sip_info#:#Questa opzione consente di disattivare la connessione SIP. In questo modo, la connessione telefonica non sarà più possibile.
-disable_sip#:#Disattivare la connessione telefonica
-display_name#:#Nome visualizzato
+delete#:#eliminare
+delete_sess_user_changed#:#Azione relativa al cambio di proprietà
+delete_sess_user_changed_info#:#Elimina tutte le sessioni create al cambio utente
+delete_token#:#Elimina il token
+delete_type#:#Elimina il tipo di riunione
+disable_sip_info#:#Questa opzione consente di disabilitare la connessione SIP. Non sarà possibile partecipare alle riunioni tramite chiamata telefonica.
+disable_sip#:#Disabilitare la chiamata telefonica
+display_name#:#Nome da visualizzare
 download#:#Scaricamento
-download_video#:#Scarica la registrazione
-duration#:#Durata del tempo
+download_video#:#Scarica il video
+duration#:#Durata
 edit#:#Modificare
 edit_properties#:#Modifica proprietà
-edudip_host_email#:#indirizzo email edudip
-edudip_host_email_hidden_info#:#L'indirizzo email utilizzato per l'autorizzazione è visibile solo ai proprietari e agli amministratori dell'oggetto.
-edudip_host_email_info#:#Il tuo indirizzo email noto a edudip deve corrispondere a questo.
-edudip_meetings_list_downloaded#:#I webinar già disponibili su edudip sono stati integrati con successo.
-edudip_meetings_list_unavailabe#:#Al momento non è possibile accedere ai webinar esistenti su edudip.
+edudip_host_email#:#indirizzo e-mail edudip
+edudip_host_email_hidden_info#:#L'indirizzo e-mail utilizzato per l'autorizzazione è visibile solo ai proprietari dell'oggetto e agli amministratori.
+edudip_host_email_info#:#Il tuo indirizzo e-mail noto a edudip deve corrispondere a questo
+edudip_meetings_list_downloaded#:#Webinar disponibili su edudip integrati con successo
+edudip_meetings_list_unavailabe#:#Al momento non è possibile recuperare i webinar esistenti da edudip.
 end_time#:#FINE
-endtime#:#Fine dei tempi
+endtime#:#Ora di fine
 err_msg_displayname#:#Inserisci il tuo nome
-err_msg_guest_password#:#La password dell'ospite non è corretta.
-err_msg_guest_password_expired#:#La password dell'ospite è scaduta.
+err_msg_guest_password#:#La password per gli ospiti non è corretta.
+err_msg_guest_password_expired#:#La password per gli ospiti è scaduta.
 error_admin_no_access_token#:#Si prega di informare l'amministratore: Token mancante
-error_object_no_access_token#:#Eseguire l'autorizzazione nelle proprietà dell'oggetto.
+error_object_no_access_token#:#Si prega di effettuare l'autorizzazione nelle proprietà dell'oggetto.
 error_object_no_host_email#:#Si prega di confermare l'indirizzo e-mail dell'utente host nelle proprietà dell'oggetto.
-error_start_meeting#:#Si è verificato un errore durante l'avvio della riunione.
+error_start_meeting#:#Si è verificato un errore durante l'avvio della riunione
 error_start_webinar#:#Si è verificato un errore durante l'avvio del webinar.
-ext_provider_token_user#:#Utente/Token di accesso
-ext_provider_token_user_info#:#Inserisci l'indirizzo email degli utenti con licenza di moderatore, seguito dal loro token di accesso.
-fa_expand_default_info#:#Questa opzione dovrebbe essere generalmente disattivata. Inoltre, in molti casi, la visualizzazione di alcune aree (ad esempio la chat) non può essere ingrandita.
-fa_expand_default#:#Massimizzazione della visualizzazione delle aree: impostazione predefinita
-fold_create_xmvc#:#Crea una sala riunioni virtuale
-grp_create_xmvc#:#Crea una sala riunioni virtuale
-guest_displayname_info#:#Nota: le informazioni dettagliate sul titolo potrebbero causare difficoltà di utilizzo a causa dello spazio limitato disponibile per il nome in BigBlueButton.
+ext_provider_token_user#:#Utente / token di accesso
+ext_provider_token_user_info#:#Inserisci l'indirizzo e-mail degli utenti con licenza di moderatore e successivamente il loro token di accesso.
+fa_expand_default_info#:#Normalmente questa opzione dovrebbe essere disabilitata. Inoltre, in molti casi non è possibile ingrandire la visualizzazione di determinate aree (ad esempio la chat).
+fa_expand_default#:#Massimizza la visualizzazione degli intervalli: impostazione predefinita
+fold_create_xmvc#:#creare una sala riunioni virtuale
+grp_create_xmvc#:#creare una sala riunioni virtuale
+guest_displayname_info#:#Nota bene: informazioni dettagliate sul titolo possono causare problemi di usabilità a causa dello spazio limitato disponibile per il nome in BigBlueButton.
 guest_displayname_input#:#Titolo Nome Cognome
-guest#:#Ospite
-guestlink_choose#:#Opzione di selezione del collegamento ospite
-guestlink_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere l'opzione "Consenti collegamento ospite" in Impostazioni.
-guestlink_default#:#Link ospite predefinito
-guestlink_default_info#:#Questa opzione dovrebbe essere disattivata nella maggior parte dei casi. L'uso non autorizzato dovrebbe essere ampiamente impedito. Gli ospiti possono accedere a una stanza moderata solo come partecipanti. Un moderatore deve essere già presente. Gli ospiti devono accettare i termini di utilizzo, che sono memorizzati come variabile di lingua ILIAS. Per modificarli, vai su Amministrazione -> Lingue. Fai clic sulla lingua desiderata e inserisci 'rep_robj_xmvc_terms_of_use' nel campo 'Identificatore'. Quindi fai clic su 'Applica filtro' e modifica il testo.
+guest#:#ospite
+guestlink_choose#:#opzione di selezione del collegamento ospite
+guestlink_choose_info#:#Attiva questa opzione se desideri che agli utenti con permessi di scrittura venga assegnata l'opzione "Consenti link ospite" selezionata nelle Impostazioni.
+guestlink_default#:#Guestlink predefinito
+guestlink_default_info#:#Nella maggior parte dei casi, questa opzione dovrebbe essere disabilitata. L'utilizzo da parte di persone non autorizzate dovrebbe essere ampiamente impedito. Gli ospiti accedono sempre a una stanza moderata esclusivamente come membri. Un moderatore deve essere già presente. Gli ospiti devono accettare i termini di utilizzo, memorizzati come variabile di lingua ILIAS. Per modificare la variabile di lingua, andare su Amministrazione -> Lingue. Fare clic sulla "lingua" desiderata e digitare "rep_robj_xmvc_terms_of_use" come "Identificativo". Quindi fare clic su "Applica filtro" e modificare il testo.
 guestlink#:#Link ospite
-guestlink_info#:#I moderatori possono invitare gli ospiti tramite un link.
-guest_link_pw_info#:#Gli ospiti devono effettuare l'accesso con questa password.
+guestlink_info#:#I moderatori possono invitare gli ospiti tramite un link
+guest_link_pw_info#:#Gli ospiti devono accedere con questa password
 guest_password_input_info#:#Inserisci qui la password per il link ospite.
-guest_password_input#:#Password ospite
+guest_password_input#:#Password per gli ospiti
 headline_welcome_meeting#:#Benvenuti nella sala riunioni!
 headline_welcome_webinar#:#Benvenuti al webinar!
-hide_recs_until_date#:#Non visualizzare le registrazioni finché
-hide_recs_until_date_info#:#Le registrazioni effettuate fino alla data di registrazione specificata qui non verranno visualizzate.
-hide_username_logs#:#Nascondi panoramica utente
-hide_username_logs_info#:#Se selezionata, la panoramica utente è visibile solo nell'amministrazione del plugin. In caso contrario, viene visualizzata anche una panoramica utente per l'oggetto MultiVc.
-hint_availability_recs#:#Per domande e dubbi riguardanti l'accesso alle registrazioni, contattare gli amministratori di queste riunioni BigBlueButton.
-hint#:#Nota il testo
-hint_pub_recs#:#Non è consentita la condivisione dei link delle registrazioni.
-info_add_presentation_url#:#Carica la tua presentazione introduttiva tramite URL. La struttura dell'URL deve seguire questo formato: <i>https://tuo.dominio/percorso_verso/presentazione.pdf</i>
-info_add_welcome_text#:#Questo messaggio di benvenuto personalizzato può essere definito tramite una variabile di lingua ILIAS. Vai su Amministrazione -> Lingue. Fai clic sulla lingua desiderata e inserisci 'rep_robj_xmvc_welcome_text' nel campo 'Identificatore'. Quindi fai clic su 'Applica filtro' e modifica il testo.
-info_availability#:#Questa opzione controlla la disponibilità del tipo di riunione nella rivista. I tipi precedenti possono essere impostati su "Esistenti consentiti" anziché essere eliminati.
-info_bottom_headline#:#Istruzioni importanti per l'uso:
-info_bottom#:#<ul><li>Si prega di <b>utilizzare un auricolare</b> per evitare fastidiosi feedback o echi!</li><li><b>Se la connessione Internet è scarsa, è consigliabile spegnere la webcam e, se la connessione è ancora peggiore, utilizzare una chiamata in conferenza per la trasmissione audio.</li></ul>
+hide_recs_until_date#:#Non visualizzare le registrazioni fino a quando
+hide_recs_until_date_info#:#Le registrazioni effettuate fino alla data specificata qui non verranno visualizzate.
+hide_username_logs#:#Nascondi nome utente
+hide_username_logs_info#:#Se selezionata, la panoramica utente è visibile solo nell'amministrazione del plugin, altrimenti anche nell'oggetto MultiVc.
+hint_availability_recs#:#Per domande e dubbi sulla possibilità di rendere accessibili le registrazioni, si prega di contattare i responsabili di questi incontri di BigBlueButton.
+hint#:#Testo del suggerimento
+hint_pub_recs#:#La condivisione dei link delle registrazioni non è consentita.
+info_add_presentation_url#:#Carica la tua presentazione iniziale tramite URL. La struttura dell'URL deve rispettare il seguente formato: <i>https://tuodominio/percorso_alla/presentazione.pdf</i>
+info_add_welcome_text#:#È possibile definire un testo di benvenuto personalizzato tramite una variabile di lingua ILIAS. Accedere a Amministrazione -> Lingue. Fare clic sulla "Lingua" desiderata e digitare "rep_robj_xmvc_welcome_text" nel campo "Identificatore". Quindi fare clic su "Applica filtro" e modificare il testo.
+info_availability#:#Questa opzione controlla la disponibilità del tipo di riunione nel repository. I tipi obsoleti possono essere impostati su "Esistenti consentiti" anziché essere eliminati.
+info_bottom_headline#:#Note importanti:
+info_bottom#:#<ul><li>Si prega di <b>utilizzare una cuffia</b> per evitare fastidiosi feedback o echi!</li><li><b>Se la connessione Internet è scarsa</b>, si consiglia di disattivare la videocamera (webcam) e, se la connessione è ancora peggiore, di utilizzare una teleconferenza per la trasmissione dell'audio.</li></ul>
 info_concurrent_users_available#:#Numero di posti liberi nell'aula virtuale:
-info_concurrent_users_none#:#Al momento non ci sono più posti disponibili per la registrazione. Si prega di verificare nuovamente la disponibilità tra un minuto cliccando sul pulsante "Partecipa alla riunione".
-info_delete_vc_sure#:#Sei sicuro? La seguente sala riunioni virtuale verrà eliminata:
-info_hint#:#Il testo esplicativo appare evidenziato a colori sopra il contenuto della pagina dell'oggetto.
-info_max_duration#:#La riunione terminerà dopo il numero di ore e minuti specificato. Per una durata illimitata, inserire "0" per ogni voce.
+info_concurrent_users_none#:#Al momento non ci sono più posti disponibili per l'accesso. Si prega di verificare nuovamente la disponibilità tra un minuto facendo clic con il pulsante <b>sinistro</b> sul pulsante <b>"Partecipa alla riunione"</b>.
+info_delete_vc_sure#:#Sei sicuro? Questa sala riunioni virtuale verrà eliminata:
+info_hint#:#Il testo del suggerimento appare evidenziato sopra il contenuto della pagina dell'oggetto.
+info_max_duration#:#La riunione terminerà dopo il numero di ore e minuti specificato. Se la durata è illimitata, si prega di inserire '0' per entrambi i valori.
 info_max_participants#:#Numero massimo di partecipanti per riunione. Per un numero illimitato di partecipanti, inserire '0'.
-info_max_participants_webinar#:#Numero massimo di partecipanti per webinar. Si prega di fare riferimento al contratto Edudip.
-info_meeting_layout#:#Controlla il layout predefinito per la riunione.
+info_max_participants_webinar#:#Numero massimo di partecipanti per webinar.
+info_meeting_layout#:#Consente di controllare il layout predefinito della riunione.
 info_om_svr_public_url#:#Esempio: https://www.example.com/
-info_platform_chg_reset_data#:#La tua selezione
-info_platform_chg_reset_data_o#:#Si prega di notare che cambiando piattaforma WebRTC, tutte le impostazioni verranno ripristinate ai valori predefiniti e tutti i dati del modulo memorizzati verranno eliminati. Per cambiare piattaforma WebRTC, è necessario prima confermare la nuova selezione cliccando su "Salva". Nel passaggio successivo, la configurazione precedente verrà sovrascritta salvando nuovamente.
-info_requirements_bbb#:#BigBlueButton utilizza lo standard aperto WebRTC, supportato da un numero crescente di browser. Attualmente, si consigliano Google Chrome, il browser basato su Chromium Microsoft Edge o, con limitazioni, Mozilla Firefox. È inoltre possibile utilizzare Safari Mobile da iOS 12.2 e Chrome Mobile da Android 6.0. Microsoft Internet Explorer e le versioni precedenti di Edge non sono supportati. Il firewall non deve bloccare le seguenti porte: porte TCP/IP 80/443 (per HTTP/HTTPS) e porte UDP nell'intervallo 16384 - 32768. Per condividere lo schermo (condivisione del desktop), è necessaria una connessione Internet ad alte prestazioni. Consigliamo inoltre a moderatori e relatori di utilizzare una connessione di rete cablata (non Wi-Fi).
-info_requirements_edudip#:#<ul><li>edudip utilizza lo standard aperto WebRTC, supportato da un numero crescente di browser. Attualmente, si consigliano Google Chrome, il browser basato su Chromium Microsoft Edge o, con limitazioni, Mozilla Firefox. Microsoft Internet Explorer e le versioni precedenti di Edge non sono supportati.</li><li>Per ulteriori informazioni, contattare l'assistenza di edudip.</li>
+info_platform_chg_reset_data#:#La tua scelta
+info_platform_chg_reset_data_o#:#Si prega di notare che, quando si cambia la piattaforma WebRTC, tutte le impostazioni vengono ripristinate ai valori predefiniti e tutti i dati del modulo memorizzati vengono eliminati. Per cambiare la piattaforma WebRTC, è necessario prima confermare la nuova selezione facendo clic su "Salva". Nel passaggio successivo, salvando nuovamente, la configurazione precedente verrà sovrascritta.
+info_requirements_bbb#:#<ul><li>BigBlueButton utilizza lo standard aperto WebRTC, supportato da un numero sempre maggiore di browser. Attualmente, si consigliano Google Chrome, Microsoft Edge (basato su Chromium) o, con alcune limitazioni, Mozilla Firefox. È possibile utilizzare anche Safari Mobile da iOS 12.2 e Chrome Mobile da Android 6.0. Microsoft Internet Explorer e le versioni precedenti di Edge non sono supportate.</li><li>Il firewall in uso non deve bloccare le seguenti porte: porte TCP/IP 80/443 (per HTTP/HTTPS) e porte UDP nell'intervallo 16384 - 32768.</li><li>Per condividere lo schermo (desktop sharing), è necessaria una connessione Internet ad alte prestazioni. Si consiglia inoltre ai moderatori e ai relatori di utilizzare una rete cablata (non WLAN).
+info_requirements_edudip#:#<ul><li>edudip utilizza lo standard aperto WebRTC, supportato da un numero sempre maggiore di browser. Attualmente, si consigliano Google Chrome, Microsoft Edge (basato su Chromium) o, con alcune limitazioni, Mozilla Firefox. Microsoft Internet Explorer e le versioni precedenti di Edge non sono supportate.</li><li>Per ulteriori informazioni, si prega di contattare l'assistenza di edudip.</li>
 info_requirements_headline#:#Requisiti tecnici:
-info_requirements_not_ok#:#<b>È possibile utilizzare la sala riunioni virtuale solo in misura molto limitata con il browser attualmente in uso.</b><br/>Per risultati ottimali, utilizzare Google Chrome o, con limitazioni, Mozilla Firefox! Se non si dispone dei diritti per installare un browser, è possibile utilizzare Google Chrome Portable.<br/>Se non è possibile cambiare browser, avviare la sala riunioni virtuale e scrivere nella chat che al momento non si dispone di un browser adatto e che nessuno deve aspettarti.
-info_requirements_om#:#<ul><li>Openmeetings utilizza lo standard aperto WebRTC, supportato da un numero crescente di browser. Attualmente, si consigliano Google Chrome o, con limitazioni, Mozilla Firefox. È inoltre possibile utilizzare l'ultima versione di Microsoft Edge, nonché Safari Mobile (iOS 12.2 e versioni successive) e Chrome Mobile (Android 6.0 e versioni successive). Microsoft Internet Explorer e le versioni precedenti di Edge non sono supportate.</li><li>Il firewall non deve bloccare le seguenti porte: porte TCP/IP 8888/5443 (per HTTP/HTTPS), TCP/UDP 3478 e porte UDP nell'intervallo 49152–65535.</li><li>Per condividere lo schermo (condivisione del desktop), è necessario utilizzare Google Chrome e disporre di una connessione Internet ad alte prestazioni. Consigliamo inoltre a moderatori e relatori di utilizzare una connessione di rete cablata (non Wi-Fi).
-info_requirements_partly#:#Ti consigliamo di utilizzare Google Chrome come browser o, con alcune limitazioni, Mozilla Firefox. Dovrai valutare autonomamente se e in che misura il tuo browser attuale è adatto all'utilizzo della sala riunioni virtuale. Ti preghiamo di segnalare le tue esperienze al supporto tecnico disponibile.
-info_requirements_teams#:#I moderatori devono utilizzare l'app Teams. I partecipanti possono avviare Teams tramite il browser. Per condividere lo schermo (condivisione del desktop), è necessaria una connessione Internet ad alte prestazioni. Consigliamo inoltre a moderatori e relatori di utilizzare una rete cablata (non Wi-Fi).
-info_requirements_webex#:#<ul><li>Browser consigliati: Chrome, Edge, Firefox </li></ul>
-info_requirements_zoom#:#Accedi a Zoom utilizzando l'indirizzo email che hai registrato su ILIAS. Questo è:
-info_requirements_zoom_lp#:#La tua presenza a questo incontro dovrà essere registrata per determinare i tuoi progressi di apprendimento. Avrai diritto al credito formativo solo se sarai presente per il {%} del tempo previsto tra l'inizio e la fine dell'incontro.
-info_set_owner#:#Proprietario registrato
+info_requirements_not_ok#:#<b>Con il browser che stai utilizzando attualmente, le funzionalità della sala riunioni virtuale sono molto limitate.</b><br/> È consigliabile utilizzare Google Chrome o, con alcune limitazioni, Mozilla Firefox come browser! Se non disponi dei diritti per installare un browser, potresti essere in grado di utilizzare Google Chrome Portable.<br/>Se non è possibile cambiare browser, avvia la sala riunioni virtuale e scrivi nella chat che al momento non disponi di un browser adatto e che nessuno deve attendere.
+info_requirements_om#:#<ul><li>Openmeetings utilizza lo standard aperto WebRTC, supportato da un numero sempre maggiore di browser. Attualmente, si consiglia di utilizzare Google Chrome o, con alcune limitazioni, Mozilla Firefox. È possibile utilizzare anche l'ultima versione di Microsoft Edge, Safari Mobile da iOS 12.2 e Chrome Mobile da Android 6.0. Microsoft Internet Explorer e le versioni precedenti di Edge non sono supportate.</li><li>Il firewall in uso non deve bloccare le seguenti porte: porte TCP/IP 8888/5443 (per HTTP/HTTPS), TCP/UDP 3478 e porte UDP nell'intervallo 49152 - 65535.</li><li>Per condividere lo schermo (desktop sharing), è necessario utilizzare Google Chrome e disporre di una connessione Internet ad alte prestazioni. Si consiglia inoltre ai moderatori e ai relatori di utilizzare una rete cablata (non WLAN).
+info_requirements_partly#:#Consigliamo Google Chrome come browser o, con alcune limitazioni, Mozilla Firefox. Dovrete verificare autonomamente se e in che misura il browser che state utilizzando è adatto all'utilizzo della sala riunioni virtuale. Vi preghiamo di segnalare eventuali problemi riscontrati al team di supporto tecnico, se disponibile.
+info_requirements_teams#:#<ul><li>I moderatori devono utilizzare l'app Teams.</li><li>I partecipanti possono avviare Teams nel proprio browser.</li><li>Per condividere lo schermo (condivisione desktop), è necessaria una connessione Internet ad alte prestazioni. Si consiglia inoltre ai moderatori e ai relatori di utilizzare una rete cablata (non Wi-Fi).
+info_requirements_webex#:#<ul><li>Browser consigliati: Chrome, Edge, Firefox</li></ul>
+info_requirements_zoom#:#Accedi a Zoom utilizzando l'indirizzo email con cui ti sei registrato presso ILIAS. Questo è:
+info_requirements_zoom_lp#:#La tua presenza a questa riunione deve essere registrata per valutare i tuoi progressi di apprendimento. Avrai diritto al credito formativo solo se sarai presente per il {%} del tempo previsto tra l'inizio e la fine della riunione.
+info_set_owner#:#proprietario entrato
 info_svr_private_port#:#Esempio: 443
-info_svr_private_url#:#Ad eccezione di Amazon EC2, questo corrisponde sempre all'URL pubblico.
+info_svr_private_url#:#Corrisponde sempre all'URL pubblico, ad eccezione di Amazon EC2.
 info_svr_public_port#:#Esempio: 443
 info_svr_public_url#:#Esempio: https://www.example.com/bigbluebutton/
 info_svr_salt_om#:#Esempio: dZ#ls2W!k6l
 info_svr_salt#:#ssh: bbb-conf --secret
 info_svr_username#:#Esempio: om_admin
-info_title#:#Questo titolo viene visualizzato quando si seleziona il tipo di riunione per i nuovi oggetti.
-info_top_moderated_edudip#:#Hai diritti di moderazione e puoi avviare il webinar.
-info_top_moderated_m_bbb#:#Questa è una stanza moderata e puoi accedervi solo se nella stanza è presente una persona con funzioni di moderatore.
-info_top_moderated_m_om#:#Questa è una stanza moderata e puoi accedervi solo se nella stanza è presente una persona con funzioni di moderatore.
-info_top_moderated_webex#:#Hai i diritti di moderatore e puoi avviare la riunione. Per farlo, hai bisogno di un account Webex o di un sito ospitato da Webex. I partecipanti possono unirsi solo dopo che la riunione è stata avviata da un moderatore.
+info_title#:#Questo titolo viene visualizzato per selezionare il tipo di riunione per i nuovi oggetti.
+info_top_moderated_edudip#:#Hai i diritti di moderatore e puoi avviare la riunione.
+info_top_moderated_m_bbb#:#Questa è una stanza moderata e puoi accedervi solo quando è presente una persona con funzioni di moderatore.
+info_top_moderated_m_om#:#Questa è una stanza moderata e puoi accedervi solo quando è presente una persona con funzioni di moderatore.
+info_top_moderated_webex#:#Hai i diritti di moderatore e puoi avviare la riunione. Per farlo, ti serve un account Webex o un sito Webex. I partecipanti non possono accedere alla riunione finché non viene avviata da un moderatore.
 info_top_moderated_zoom#:#Questo è un webinar. Puoi iniziare il webinar ora.
-info_top_moderator_bbb#:#<b>Questa è una stanza moderata e tu hai il ruolo di moderatore.</b><br/>Le persone senza ruolo di moderatore possono entrare nella sala riunioni solo quando una persona con ruolo di moderatore è già presente nella stanza.
-info_top_moderator_om#:#<b>Questa è una stanza moderata e tu hai il ruolo di moderatore.</b><br/>Le persone senza ruolo di moderatore possono entrare nella sala riunioni solo quando una persona con ruolo di moderatore è già presente nella stanza.
-info_top_not_moderated_bbb#:#Questa sala riunioni non è moderata. Pertanto, hai anche privilegi di moderatore e, di conseguenza, diritti estesi. Puoi limitare i diritti degli altri partecipanti e anche terminare la sessione. Ti preghiamo di utilizzare questi diritti estesi in modo responsabile.
-info_top_not_moderated_om#:#Questa sala riunioni non è moderata. Pertanto, hai anche privilegi di moderatore e, di conseguenza, diritti estesi. Puoi limitare i diritti degli altri partecipanti e anche terminare la sessione. Ti preghiamo di utilizzare questi diritti estesi in modo responsabile.
-info_webex_client_id#:#Puoi trovare l'ID client nei dati della tua integrazione Webex (ad esempio, admin.webex.com, developer.webex.com).
-info_webex_client_secret#:#Il segreto client viene visualizzato una volta dopo la creazione/l'aggiornamento di un'integrazione Webex.
+info_top_moderator_bbb#:#<b>Questa è una stanza moderata e tu hai la funzione di moderatore in questa stanza.</b><br/>Le persone senza la funzione di moderatore possono accedere alla stanza solo quando è presente una persona con la funzione di moderatore.</b><br/>
+info_top_moderator_om#:#<b>Questa è una stanza moderata e tu hai la funzione di moderatore in questa stanza.</b><br/>Le persone senza la funzione di moderatore possono accedere alla stanza solo quando è presente una persona con la funzione di moderatore.</b><br/>
+info_top_not_moderated_bbb#:#Questa sala riunioni non è moderata. Pertanto, disponi anche di una funzione di moderatore e di diritti estesi. Puoi limitare i diritti degli altri partecipanti e terminare la sessione. Ti preghiamo di utilizzare i diritti estesi in modo responsabile.
+info_top_not_moderated_om#:#Questa sala riunioni non è moderata. Pertanto, disponi anche di una funzione di moderatore e di diritti estesi. Puoi limitare i diritti degli altri partecipanti e terminare la sessione. Ti preghiamo di utilizzare i diritti estesi in modo responsabile.
+info_webex_client_id#:#L'ID client è reperibile nei dati relativi all'integrazione con Webex (ad esempio, admin.webex.com, developer.webex.com).
+info_webex_client_secret#:#Il segreto del client viene visualizzato una sola volta dopo la creazione o l'aggiornamento di un'integrazione Webex.
 info_webex_redirect_uri#:#Aggiungi questo indirizzo come URI di reindirizzamento nelle impostazioni di integrazione.
 info_webex_site_url#:#Nome del sito ospitato. Il sottodominio prima di .webex.com, ad esempio <b>tua-azienda</b>.webex.com o <b>tua-azienda</b>.my.webex.com
-integration_admin_auth_method_info#:#L'autorizzazione viene eseguita dall'amministratore tramite le impostazioni del plugin MultiVc. Durante il processo OAuth vengono richiesti i seguenti ambiti:
-integration_admin_auth_scopes_info#:#(segue per gli amministratori) riunione:controlli_leggi riunione:controlli_scrivi riunione:admin_participants_leggi riunione:admin_schedule_leggi riunione:admin_schedule_scrivi riunione:admin_recordings_leggi riunione:admin_recordings_scrivi
-integration_auth_method#:#Autorizzazione all'integrazione
-integration_auth_methods_info#:#L'autorizzazione può essere eseguita da: - l'amministratore tramite le impostazioni del plugin MultiVc - l'utente tramite le impostazioni dell'oggetto MultiVc. Durante il rispettivo processo OAuth vengono richiesti i seguenti ambiti:
-integration_user_auth_method_info#:#L'autorizzazione viene eseguita dall'utente tramite le impostazioni dell'oggetto MultiVc. Durante il processo OAuth vengono richiesti i seguenti ambiti:
+integration_admin_auth_method_info#:#L'autorizzazione viene effettuata dall'amministratore tramite le impostazioni del plugin MultiVc. Durante il processo OAuth vengono richiesti i seguenti ambiti:
+integration_admin_auth_scopes_info#:#(di seguito per gli amministratori) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write
+integration_auth_method#:#Autorizzazione dell'integrazione
+integration_auth_methods_info#:#L'autorizzazione può essere effettuata da:{br}- l'amministratore tramite le impostazioni del plugin MultiVc{br}- l'utente tramite le impostazioni dell'oggetto MultiVc.{br}Durante il rispettivo processo OAuth vengono richiesti i seguenti ambiti:{br}
+integration_user_auth_method_info#:#L'autorizzazione viene effettuata dall'utente tramite le impostazioni dell'oggetto MultiVc. Durante il processo OAuth vengono richiesti i seguenti ambiti:
 integration_user_auth_scopes_info#:#spark:kms meeting:schedules_read meeting:schedules_write meeting:participants_read meeting:participants_write meeting:preferences_read meeting:preferences_write
 join_time#:#Partecipazione da
-leave_time#:#Partecipazione fino al
-list_token_user_info#:#Elenco dei moderatori esistenti. I token salvati non possono essere sovrascritti. Se necessario, eliminare prima la voce cliccando sulla X.
+leave_time#:#Partecipazione fino a
+list_token_user_info#:#Elenco dei moderatori già creati. I token memorizzati non possono essere sovrascritti. Se necessario, eliminare prima la voce facendo clic sulla X.
 list_token_user#:#Moderatori registrati
-lock_disable_cam_choose_info#:#Definisci se l'impostazione "Blocca telecamera partecipante" è disponibile per l'oggetto.
-lock_disable_cam_choose#:#Blocco della telecamera del partecipante selezionabile
-lock_disable_cam_default_info#:#Imposta l'impostazione predefinita su "Blocca la telecamera del partecipante".
+lock_disable_cam_choose_info#:#Definisci se l'impostazione "Blocca la fotocamera del partecipante" è disponibile sull'oggetto.
+lock_disable_cam_choose#:#Blocca la fotocamera del partecipante selezionabile
+lock_disable_cam_default_info#:#Imposta l'opzione predefinita per "Blocca la telecamera del partecipante".
 lock_disable_cam_default#:#Blocca la telecamera del partecipante (impostazione predefinita)
 lock_disable_cam_info#:#Attivando questa opzione, la telecamera (webcam) dei partecipanti viene bloccata per impostazione predefinita.
-lock_disable_cam#:#Blocca la telecamera del partecipante
+lock_disable_cam#:#Blocca la telecamera dell'utente
 locked_by#:#Bloccato da
-locked#:#Bloccato
-lock#:#Bloccare
-logo_url_info#:#Inserisci qui l'URL del tuo logo. L'URL deve iniziare con https://.
+locked#:#Chiuso
+lock#:#Serratura
+logo_url_info#:#Inserisci qui l'URL del tuo logo. L'URL deve iniziare con https://
 logo_url#:#URL del logo
 lp_active#:#Attivo
-lp_active_info#:#Lo stato "In corso" viene impostato non appena si accede al contenuto. Lo stato "Elaborato" è determinato dalle ore di attività.
+lp_active_info#:#Lo stato "In corso" viene impostato non appena si accede al contenuto. Lo stato "Completato" o "Non riuscito" viene determinato in base agli orari di presenza.
 lp_inactive#:#Inattivo
-lp_inactive_info#:#Per questo oggetto non viene salvato alcun progresso di apprendimento.
-lp_mode#:#modalità
-lp_time_info#:#Questo valore percentuale, basato sui possibili orari di presenza, deve essere superato affinché lo stato venga impostato su "Elaborato".
-lp_time#:#Soglia per "Modificato"
+lp_inactive_info#:#Per questo oggetto non viene memorizzato alcun progresso di apprendimento.
+lp_mode#:#Modalità
+lp_time_info#:#Questa percentuale, in relazione al numero di ore di presenza consentite, deve essere superata affinché lo stato venga impostato su "Completato". In caso contrario, verrà impostato su "Non riuscito".
+lp_time#:#Valore di soglia per "Completato"
+manual_mods_choose_info#:#Seleziona questa opzione se desideri che gli utenti con permessi di scrittura abbiano la possibilità di "Selezionare manualmente i co-moderatori o i co-organizzatori" nelle Impostazioni.
+manual_mods_choose#:#Selezione manuale dei co-moderatori: opzione di selezione
+manual_mods_default_info#:#Disabilita questa opzione se desideri che gli amministratori del corso e del gruppo, così come i tutor del corso, diventino automaticamente "co-moderatori" o "co-organizzatori". Se abilitata, i ruoli di "co-moderatore" o "co-organizzatore" possono essere assegnati manualmente tramite una scheda che appare nell'oggetto MultiVc.
+manual_mods_default#:#Selezione manuale dei co-moderatori: impostazione predefinita
+manual_mods_info_zoom#:#Disattiva questa opzione se desideri che gli amministratori di corsi e gruppi, nonché i tutor, diventino automaticamente co-host. Se è attiva, potrai designare manualmente i co-host tramite una scheda che apparirà successivamente.
+manual_mods_zoom#:#Selezione manuale dei co-conduttori
 max_duration#:#Durata massima
 max_meetings#:#Numero massimo di sale riunioni
 max_participants#:#Numero massimo di partecipanti
 max_users#:#Numero massimo di utenti
-meeting_collision#:#Si è verificato un errore. Una sessione è già programmata per l'orario richiesto.
-meeting#:#incontro
+meeting_collision#:#Si è verificato un errore. È già stata programmata una riunione per la fascia oraria richiesta.
+meeting#:#Incontro
 meeting_end#:#Fine della riunione
-meeting_related_successful#:#Riunione assegnata con successo
-meeting_running#:#È stata lanciata la sala riunioni virtuale.
+meeting_related_successful#:#riunione correlata con successo
+meeting_running#:#La sala riunioni virtuale è stata avviata.
 meeting_start#:#Inizio della riunione
-member_btn_fileupload_choose#:#Consenti a tutti di caricare file: Opzione
-member_btn_fileupload_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere l'opzione "Consenti a tutti di caricare file" in Impostazioni.
-member_btn_fileupload#:#Consenti il ​​caricamento dei file per tutti
-member_btn_fileupload_default#:#Consenti a tutti di caricare file: impostazione predefinita
-member_btn_fileupload_default_info#:#Di solito questa opzione dovrebbe essere disattivata.
-member_btn_fileupload_info#:#Attivare questa opzione solo se, oltre alle persone con diritti estesi (ad esempio amministratori, eventualmente tutor), anche altre persone devono essere in grado di caricare file.
+meetings_list_downloaded#:#Le riunioni e i webinar esistenti sono stati integrati con successo
+member_btn_fileupload_choose#:#Consenti il ​​caricamento dei file a chiunque: opzione di selezione
+member_btn_fileupload_choose_info#:#Attiva questa opzione se desideri che gli utenti con permessi di scrittura abbiano la possibilità di selezionare "Consenti il ​​caricamento di file da parte di chiunque" nelle Impostazioni.
+member_btn_fileupload#:#Consenti il ​​caricamento dei file a chiunque
+member_btn_fileupload_default#:#Consenti il ​​caricamento dei file a chiunque: impostazione predefinita
+member_btn_fileupload_default_info#:#Normalmente questa opzione dovrebbe essere disabilitata.
+member_btn_fileupload_info#:#Attiva questa opzione solo se, oltre alle persone con diritti estesi (ad esempio amministratori, tutor), anche altre persone devono essere in grado di caricare file.
 modal_delete_scheduled_meeting_accept#:#Elimina riunione
-modal_delete_scheduled_meeting_title#:#Sei sicuro di voler eliminare questa riunione?
-modal_delete_scheduled_webinar_accept#:#Elimina webinar
-modal_delete_scheduled_webinar_title#:#Vuoi davvero eliminare questo webinar?
-modal_details_scheduled_meeting_title#:#Dettagli della riunione (corpo della risposta Webex)
+modal_delete_scheduled_meeting_title#:#Vuoi davvero eliminare questa riunione?
+modal_delete_scheduled_webinar_accept#:#eliminare il webinar
+modal_delete_scheduled_webinar_title#:#Sei sicuro di voler eliminare questo webinar?
+modal_details_scheduled_meeting_title#:#Dettagli della riunione (Corpo della risposta Webex)
 modal_details_scheduled_webinar_title#:#Dettagli del webinar (corpo della risposta edudip)
-moderated_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere la possibilità di selezionare "stanza moderata" in Impostazioni.
-moderated_choose#:#spazio moderato: opzione di scelta
-moderated_default_info#:#Attiva questa opzione se vuoi creare nuove stanze come stanze moderate.
-moderated_default_zoom_info#:#Attivare questa opzione se si desidera creare nuove stanze come "webinar".
-moderated_default#:#stanza moderata: impostazione predefinita
-moderated_info#:#In uno spazio moderato, i moderatori hanno diritti estesi. Gli altri utenti hanno solo un accesso limitato allo spazio virtuale. I moderatori includono chiunque possa modificare le proprietà dell'oggetto, così come gli amministratori di gruppo, gli amministratori dei corsi e i tutor dei corsi.
-moderated_teams_info#:#In uno spazio moderato, il creatore dell'oggetto, così come gli amministratori del gruppo, gli amministratori del corso e i tutor del corso, hanno più diritti: possono condividere e trasferire contenuti e decidere se altre persone possono partecipare. In uno spazio non moderato, chiunque può partecipare e condividere o trasferire contenuti senza necessità di conferma.
-moderated_zoom_info#:#Lo spazio virtuale è destinato a webinar, non a riunioni. Assicurati che il tuo account Zoom abbia l'autorizzazione per creare webinar. Un account base, o anche gratuito, non ha questa autorizzazione.
-moderated#:#spazio moderato
-moderated_webex#:#Suggerimento: nelle stanze non moderate, i partecipanti non sono pseudonimizzati. Pertanto, solo le persone con un account Webex idoneo possono partecipare.
+moderated_choose_info#:#Attiva questa opzione se desideri che gli utenti con accesso in scrittura possano selezionare "stanza moderata" nelle Impostazioni.
+moderated_choose#:#stanza moderata: opzione di selezione
+moderated_default_info#:#Attiva questa opzione se desideri creare nuove stanze con moderazione.
+moderated_default_zoom_info#:#Attiva questa opzione se desideri creare nuove stanze da utilizzare come "webinar".
+moderated_default#:#Stanza moderata: impostazione predefinita
+moderated_info#:#In una stanza moderata, le persone con funzione di moderatore hanno diritti estesi. Anche gli altri utenti hanno diritti di accesso limitati alla stanza virtuale. Le persone con funzione di moderatore sono tutti coloro che possono modificare le proprietà dell'oggetto, nonché gli amministratori di gruppo, gli amministratori del corso e i tutor del corso.
+moderated_teams_info#:#In una stanza moderata, il creatore dell'oggetto, così come gli amministratori del gruppo, gli amministratori del corso e i tutor del corso, hanno maggiori diritti: possono condividere e decidere se altri possono partecipare. In una stanza non moderata, chiunque può condividere e partecipare senza bisogno di conferma.
+moderated_zoom_info#:#Lo spazio virtuale è pensato per un webinar, non per una riunione. Assicurati che il tuo account Zoom disponga dell'autorizzazione per creare webinar. Un account base, o anche gratuito, non include questa autorizzazione.
+moderated#:#Camera moderata
+moderated_webex#:#<b>Suggerimento:</b> Nelle stanze non moderate, i partecipanti non vengono pseudonimizzati. Pertanto, l'accesso è consentito solo a chi possiede un account Webex valido.
 moderated_zoom#:#Seminario Web
 moderator#:#Moderatore
-msg_obj_deleted#:#La registrazione è stata eliminata.
+moderators_info_zoom#:#Assicurati che i partecipanti selezionati abbiano le autorizzazioni necessarie su Zoom.
+moderators_zoom#:#Co-conduttori
+msg_obj_deleted#:#La registrazione è stata cancellata.
 notification_sending#:#Le notifiche vengono inviate...
-notification_sent#:#Notifiche inviate con successo.
-obj_ids_special_info#:#Solo raramente necessario! Inserisci qui, separati da virgole, gli ID oggetto ILIAS per le aule collegate ai corsi (quindi, sempre lo stesso ID oggetto) che devono essere gestiti separatamente per ogni corso. L'ID oggetto viene visualizzato nelle impostazioni dell'oggetto. L'opzione "Aule speciali" è utile se le impostazioni di molte aule devono essere gestite centralmente, ad esempio per abilitare gradualmente ulteriori funzioni.
+notification_sent#:#Notifiche inviate correttamente.
+obj_ids_special_info#:#Necessario solo in rari casi! Inserire gli ID oggetto ILIAS per le aule collegate ai corsi (quindi sempre lo stesso ID oggetto), separati da virgole. L'ID oggetto viene visualizzato nelle impostazioni dell'oggetto. L'opzione "aule speciali" è utile se è necessario configurare centralmente molte aule per rilasciare successivamente ulteriori funzioni.
 obj_ids_special#:#Camere speciali
 objs_xmvc_duplicate#:#Copia la sala riunioni virtuale
 objs_xmvc#:#Sale riunioni virtuali
 obj_xmvc_download#:#Scaricamento
 obj_xmvc_duplicate#:#Copia
 obj_xmvc_select#:#Seleziona la sala riunioni virtuale
-obj_xmvc#:#Sala riunioni virtuale
-offline#:#Fuori linea
-of_owner_prefix#:#dal proprietario
+obj_xmvc#:#sala riunioni virtuale
+offline#:#Offline
+of_owner_prefix#:#del proprietario
 om_svr_public_port#:#Porta del server OpenMeeting
 om_svr_public_url#:#URL del server OpenMeeting
 om_svr_username#:#Nome utente SOAP
-om_svr_userpass#:#password SOAP
-overview_uses#:#Panoramica degli usi
+om_svr_userpass#:#Password SOAP
+overview_uses#:#Panoramica utilizza
 owners_email_not_unique#:#L'indirizzo email del proprietario non è univoco. Può essere assegnato una sola volta a un utente ILIAS.
-playback#:#Riproduci la registrazione
-plugin_configuration#:#configurazione
-private_chat_choose_info#:#Abilitare questa opzione se gli utenti con permessi di scrittura devono avere l'opzione "Consenti chat privata" nelle Impostazioni.
+playback#:#Guarda il video
+plugin_configuration#:#Configurazione
+private_chat_choose_info#:#Attiva questa opzione se desideri che gli utenti con permessi di scrittura abbiano l'opzione "Consenti chat privata" selezionata nelle Impostazioni.
 private_chat_choose#:#Consenti chat privata: opzione di selezione
-private_chat_default_info#:#Se abilitata, gli utenti senza privilegi di moderatore possono anche avere chat private tra loro. Gli utenti con privilegi di moderatore non possono vedere queste chat. Poiché i moderatori possono terminare le chat private in qualsiasi momento, questa opzione dovrebbe essere abilitata nella maggior parte dei casi.
+private_chat_default_info#:#Se attivata, anche gli utenti senza ruolo di moderatore possono chattare privatamente tra loro. Gli utenti con ruolo di moderatore non possono visualizzare queste chat. Poiché gli utenti con ruolo di moderatore possono bloccare le chat private in qualsiasi momento, questa opzione dovrebbe essere attivata nella maggior parte dei casi.
 private_chat_default#:#Consenti chat privata: impostazione predefinita
-private_chat_info#:#Anche le persone senza privilegi di moderatore possono chattare privatamente tra loro.
-private_chat#:#Consenti chat privata
-properties#:#Caratteristiche
-protected#:#Spazi protetti
-pub_recs#:#Pubblicare immediatamente le registrazioni
-pub_recs_choose#:#Rilascia immediatamente le registrazioni: opzione di selezione
-pub_recs_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere l'opzione "Condividi registrazioni immediatamente" in Impostazioni.
-pub_recs_default#:#Rilascia immediatamente le registrazioni: impostazione predefinita
-pub_recs_default_for_object#:#Le registrazioni vengono rese immediatamente disponibili ai partecipanti.
-pub_recs_default_info#:#Abilitare questa opzione se le registrazioni devono essere sempre rilasciate immediatamente oppure se l'opzione "Rilascia registrazioni immediatamente" deve essere abilitata per i nuovi oggetti.
-pub_recs_info#:#Se selezionata, la registrazione di una riunione verrà pubblicata immediatamente al termine della stessa. Nella panoramica della pagina della riunione, è possibile bloccare o sbloccare le registrazioni.
-rbac_create_xmvc#:#Crea una sala riunioni virtuale
+private_chat_info#:#Anche chi non ha la funzione di moderatore può chattare privatamente con altri utenti.
+private_chat#:#Consenti la chat privata
+properties#:#Impostazioni
+protected#:#Stanze protette
+pub_recs#:#Pubblicate immediatamente le registrazioni.
+pub_recs_choose#:#Pubblica le registrazioni immediatamente: opzione di selezione
+pub_recs_choose_info#:#Abilita questa opzione se desideri che agli utenti con permessi di scrittura venga visualizzata l'opzione "Pubblica le registrazioni immediatamente" nelle impostazioni.
+pub_recs_default#:#Pubblica le registrazioni immediatamente: impostazione predefinita
+pub_recs_default_for_object#:#Le registrazioni vengono rese disponibili ai partecipanti immediatamente.
+pub_recs_default_info#:#Attivare questa opzione se le registrazioni devono essere sempre pubblicate immediatamente o se l'opzione "Pubblica le registrazioni immediatamente" deve essere abilitata per i nuovi oggetti.
+pub_recs_info#:#Se selezionata, la registrazione di una riunione verrà pubblicata immediatamente dopo la sua conclusione. Nella panoramica della pagina della riunione, è possibile bloccare o sbloccare le registrazioni.
+rbac_create_xmvc#:#creare una sala riunioni virtuale
 rec_hidden#:#Questa registrazione non è visibile ai partecipanti.
-recording#:#registrazioni
-recording_autostart#:#Le registrazioni inizieranno automaticamente all'inizio. Gli utenti ILIAS saranno avvisati di conseguenza.
-recording_choose#:#Consenti registrazione: opzione di selezione
-recording_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere la possibilità di "Consentire le registrazioni" nelle impostazioni. Poiché l'URL della registrazione potrebbe essere condiviso con persone non autorizzate se venisse a conoscenza di ciò, questa opzione in genere non dovrebbe essere abilitata.
-recording_default#:#Consenti registrazione: impostazione predefinita
-recording_default_info#:#Nella maggior parte dei casi questa opzione dovrebbe essere disattivata per impedire alle persone di utilizzare la funzione di registrazione nello spazio virtuale.
+recording#:#Registrazioni
+recording_autostart#:#Le registrazioni vengono avviate automaticamente all'inizio. Gli utenti di ILAIS verranno informati di ciò.
+recording_choose#:#Consenti registrazioni: opzione di selezione
+recording_choose_info#:#Attiva questa opzione se desideri che gli utenti con permessi di scrittura possano selezionare "Consenti acquisizione" nelle Impostazioni. Poiché è noto che l'URL della registrazione viene diffuso a persone non autorizzate, questa opzione non dovrebbe essere attivata nella maggior parte dei casi.
+recording_choose_info_bbb#:#Abilitare questa opzione se gli utenti con permessi di scrittura devono avere l'opzione "Consenti registrazioni" nelle Impostazioni. Poiché la divulgazione dell'URL di registrazione potrebbe rendere la registrazione accessibile a persone non autorizzate, questa opzione non dovrebbe essere abilitata nella maggior parte dei casi.
+recording_default#:#Consenti registrazioni: impostazione predefinita
+recording_default_info#:#Nella maggior parte dei casi, questa opzione dovrebbe essere disattivata, in modo che gli utenti non possano utilizzare la funzione di registrazione nella stanza virtuale.
 recording_info#:#Le sessioni possono essere registrate.
-recording_only_for_moderated_rooms#:#Registrazione solo in stanze moderate
-recording_only_for_moderated_rooms_default#:#Registrazione solo in stanze moderate
-recording_only_for_moderated_rooms_default_info#:#Questa opzione dovrebbe essere abilitata nella maggior parte dei casi. Si applica solo se la registrazione è generalmente consentita.
+recording_only_for_moderated_rooms#:#Registra solo nelle stanze moderate
+recording_only_for_moderated_rooms_default#:#Registrazione consentita solo nelle stanze moderate.
+recording_only_for_moderated_rooms_default_info#:#Nella maggior parte dei casi questa opzione dovrebbe essere attivata. L'opzione viene utilizzata solo se le registrazioni sono generalmente consentite.
 recording_only_for_moderated_rooms_info#:#Solo nelle stanze moderate le persone con funzioni di moderatore possono avviare le registrazioni.
-recording_warning#:#La registrazione è abilitata per questa riunione! Utilizzando attivamente il sistema di chat, attivando il mio microfono/videocamera personale e/o condividendo il contenuto dello schermo, acconsento alla registrazione e all'archiviazione di queste informazioni per un utilizzo futuro.
-recs_locked#:#Registrazione/i bloccata/e
-recs_published#:#Registrazione/i rilasciata/e
+recording_warning#:#Per questa riunione è stata attivata la funzione di registrazione! Utilizzando attivamente il sistema di chat, attivando il mio microfono/videocamera personale e/o condividendo il contenuto dello schermo, acconsento che queste informazioni vengano registrate e conservate per un utilizzo successivo.
+recs_locked#:#Registrazioni bloccate
+recs_published#:#Registrazioni pubblicate
 recurrence_#:#-
 recurrence_daily#:#Quotidiano
 recurrence_monthly#:#Mensile
 recurrence_weekly#:#Settimanale
-recurrence_yearly#:#Annuale
+recurrence_yearly#:#Annualmente
 rec_visible#:#Questa registrazione è visibile ai partecipanti.
-references#:#Collegamenti
-related_meeting#:#Assegnato
+references#:#Riferimenti
+related_meeting#:#imparentato
 related_webinar#:#Assegnato
-relate_meeting#:#Assegnare
+relate_meeting#:#imparentato
 relate_webinar#:#Assegnare
 report_log_max#:#Panoramica sull'utilizzo (BBB)
-require_schedule_new_meeting#:#È possibile pianificare riunioni e avviarle negli intervalli di tempo previsti.
-require_schedule_new_meeting_zoom#:#Puoi creare riunioni.
-require_schedule_new_webinar#:#È possibile creare webinar e avviarli durante gli intervalli di tempo programmati.
-reset_authorization#:#Revoca l'autorizzazione
-reseted_tokens#:#I token vengono ripristinati
-root_create_xmvc#:#Crea una sala riunioni virtuale
+require_schedule_new_meeting#:#È possibile creare riunioni e avviarle negli orari programmati.
+require_schedule_new_meeting_zoom#:#È possibile creare riunioni.
+require_schedule_new_webinar#:#È possibile creare webinar e avviarli negli orari programmati.
+require_schedule_new_webinar_zoom#:#È possibile creare webinar
+reset_authorization#:#Annulla autorizzazione
+reseted_tokens#:#Token ripristinati
+root_create_xmvc#:#creare una sala riunioni virtuale
 saving_invoked#:#Impostazioni salvate
-scheduled_meeting_agenda#:#ordine del giorno
-scheduled_meeting_both_data_sources#:#Tutto
-scheduled_meeting_create_btn#:#Crea una riunione
-scheduled_meeting_created#:#Riunione pianificata creata
-scheduled_meeting_create#:#Crea una riunione programmata
-scheduled_meeting_data_source#:#Riunioni
+scheduled_meeting_agenda#:#Ordine del giorno
+scheduled_meeting_both_data_sources#:#assegnato e creato tramite Webex
+scheduled_meeting_create_btn#:#Crea riunione
+scheduled_meeting_created#:#Riunione programmata creata
+scheduled_meeting_create#:#Crea riunione programmata
+scheduled_meeting_data_source#:#direttori
 scheduled_meeting_delete_btn#:#Elimina riunione
-scheduled_meeting_deleted#:#Riunione cancellata
-scheduled_meeting_duration#:#Periodo
-scheduled_meeting_local_data_sources#:#assegnato
-scheduled_meeting_not_deleted#:#Riunione non eliminata
-scheduled_meeting_overview#:#Panoramica delle riunioni pianificate
-scheduled_meeting_recurrence#:#Ripetizione
-scheduled_meetings#:#Riunioni pianificate
-scheduled_meeting_state#:#stato
-scheduled_meeting_time_ahead#:#Tempo di attesa per la riunione
+scheduled_meeting_deleted#:#riunione cancellata
+scheduled_meeting_duration#:#Periodo di tempo
+scheduled_meeting_local_data_sources#:#sessioni assegnate
+scheduled_meeting_not_deleted#:#riunione non eliminata
+scheduled_meeting_overview#:#Panoramica delle riunioni programmate
+scheduled_meeting_recurrence#:#Ricorrenza
+scheduled_meetings#:#Riunioni programmate
+scheduled_meeting_state#:#Stato
+scheduled_meeting_time_ahead#:#Tempo di preavviso della riunione
 scheduled_meeting_update_btn#:#Riunione di aggiornamento
-scheduled_meeting_update#:#Aggiorna la riunione programmata
-scheduled_webinar_agenda#:#ordine del giorno
+scheduled_meeting_update#:#Aggiornamento della riunione programmata
+scheduled_meeting_updated#:#Riunione programmata aggiornata
+scheduled_webinar_agenda#:#Ordine del giorno
 scheduled_webinar_both_data_sources#:#Tutto
-scheduled_webinar_create_btn#:#Crea un webinar
-scheduled_webinar_created#:#Webinar pianificato creato
-scheduled_webinar_create#:#Crea un webinar (fornisci un titolo univoco)
+scheduled_webinar_create_btn#:#Crea un webinar programmato
+scheduled_webinar_created#:#Webinar programmato creato
+scheduled_webinar_create#:#Crea un webinar (specifica un titolo univoco)
 scheduled_webinar_data_source#:#Webinar
-scheduled_webinar_delete_btn#:#Elimina webinar
+scheduled_webinar_delete_btn#:#Elimina il webinar
 scheduled_webinar_deleted#:#Webinar eliminato
-scheduled_webinar_duration#:#Periodo
+scheduled_webinar_duration#:#Periodo di tempo
 scheduled_webinar_local_data_sources#:#assegnato
-scheduled_webinar_not_deleted#:#Webinar non eliminato
-scheduled_webinar_overview#:#Panoramica dei webinar pianificati
+scheduled_webinar_not_deleted#:#Il webinar non è stato eliminato.
+scheduled_webinar_overview#:#Panoramica dei webinar programmati
 scheduled_webinar_recurrence#:#Ripetizione
-scheduled_webinars#:#Webinar pianificati
-scheduled_webinar_state#:#stato
-scheduled_webinar_time_ahead#:#Tempi di consegna del webinar
+scheduled_webinars#:#Webinar programmati
+scheduled_webinar_state#:#Stato
+scheduled_webinar_time_ahead#:#Tempi di preavviso del webinar
 scheduled_webinar_update_btn#:#Webinar di aggiornamento
-scheduled_webinar_update#:#Aggiorna il webinar pianificato
-schedule_meeting_duration_less_time#:#La durata minima della riunione è di 10 minuti. Si prega di modificare le voci di conseguenza.
-schedule_meeting_error#:#Si è verificato un errore. Controlla i dati inseriti.
-schedule_webinar_duration_less_time#:#La durata minima di un webinar è di 10 minuti. Si prega di modificare le voci di conseguenza.
-schedule_webinar_error#:#Si è verificato un errore. Controlla i dati inseriti.
+scheduled_webinar_update#:#Aggiornamento sul webinar programmato
+schedule_meeting_duration_less_time#:#La durata minima di una riunione è di 10 minuti. Si prega di correggere le voci di conseguenza.
+schedule_meeting_error#:#Si è verificato un errore. Si prega di verificare i dati inseriti.
+schedule_webinar_duration_less_time#:#La durata minima di un webinar è di 10 minuti. Si prega di correggere le iscrizioni di conseguenza.
+schedule_webinar_error#:#Si è verificato un errore. Si prega di verificare i dati inseriti.
 select#:#Selezionare
 service_unavailable#:#Servizio non disponibile
-sess_owner_changed#:#L'autenticazione è stata modificata.
+sess_owner_changed#:#L'autenticazione è stata modificata
 showcontent#:#Piattaforma WebRTC
-show_hint_pub_recs_info#:#Nella pagina della riunione viene visualizzato un avviso relativo al divieto di condivisione dei link di registrazione. Abilitare questa opzione se non si desidera che questo avviso venga visualizzato.
+show_hint_pub_recs_info#:#Nella pagina della riunione viene visualizzato un avviso che vieta la condivisione dei link di registrazione. Seleziona questa opzione se desideri che questo avviso non venga visualizzato.
 show_hint_pub_recs#:#Consenti la condivisione dei link di registrazione
-start_time#:#inizio
+start_time#:#Ora di inizio della riunione
 starttime#:#Ora di inizio
-start_window#:#Avvia una sala riunioni virtuale in una nuova finestra
+start_window#:#Apri la sala riunioni virtuale in una nuova finestra
 state_active#:#Attivo
 state_inprogress#:#Corsa
 state_ready#:#Pronto
-status#:#stato
-subject_crs#:#{MEETING_TITLE} nel corso {PARENT_TITLE}
-subject_fld#:#{MEETING_TITLE} nella cartella {PARENT_TITLE}
-subject_grp#:#{MEETING_TITLE} nel gruppo {PARENT_TITLE}
+status#:#Stato
+subject_crs#:#{TITOLO_RIUNIONE} nel Corso {TITOLO_PARENTALE}
+subject_fld#:#{TITOLO_RIUNIONE} nella cartella {TITOLO_PARENTALE}
+subject_grp#:#{TITOLO_RIUNIONE} nel Gruppo {TITOLO_PARENTALE}
 svr_private_port#:#Porta privata del server BBB
 svr_private_url#:#URL privato del server BBB
 svr_public_port#:#Porta pubblica del server BBB
 svr_public_url#:#URL pubblico del server BBB
-svr_salt#:#Password del server BBB (segreta)
-sysadmin_perm_choose_all#:#Come amministratore, puoi modificare tutte le proprietà di questo oggetto.
-tab_close#:#Chiudi subito questa finestra o scheda.
+svr_salt#:#Password (segreta) del server BBB
+sysadmin_perm_choose_all#:#In qualità di amministratore, puoi modificare tutte le proprietà di questo oggetto.
+tab_close#:#Chiudi questa finestra o scheda.
 teams_client_id#:#ID cliente
-teams_client_id_info#:#Inserisci qui l'ID applicazione/ID client.
+teams_client_id_info#:#Inserisci qui l'ID del cliente.
 teams_client_secret#:#Segreto del cliente
-teams_client_secret_info#:#Subito dopo aver creato una chiave segreta in Entra per l'app creata per MultiVc, puoi copiare il valore della chiave e inserirlo qui.
-teams_join_links#:#Puoi unirti direttamente qui: {br}{JOIN_URL}{br}&nbsp;{br}oppure puoi cliccare su: {PERMANENT_LINK}
-teams_lobbybypass#:#Area di attesa bypass
-teams_lobbybypass_choose#:#Area di attesa bypass: possibilità di scelta
-teams_lobbybypass_choose_info#:#Abilita questa opzione se gli utenti con permessi di scrittura devono avere la possibilità di "Escludere la sala d'attesa" nelle impostazioni. Questa opzione controlla chi viene inserito nella sala d'attesa/atrio riunioni.
-teams_lobbybypass_default#:#Bypass area di attesa: impostazione predefinita
-teams_lobbybypass_everyone#:#Tutti saranno ammessi alla riunione. Nessuno sarà lasciato in sala d'attesa.
-teams_lobbybypass_invited#:#Saranno ammesse alla riunione solo le persone invitate, che potranno saltare la sala d'attesa.
-teams_lobbybypass_organizer#:#I partecipanti saranno accomodati nella sala d'attesa. Gli amministratori e il personale di supporto non potranno accedere alla sala d'attesa.
-teams_meetings_list_downloaded#:#Integrazione riuscita delle riunioni online esistenti in Teams.
-teams_tenant_id_info#:#Inserisci qui l'ID tenant. I nomi alternativi sono: ID directory (client).
+teams_client_secret_info#:#Inserisci qui il Client Secret.
+teams_join_links#:#Puoi iscriverti direttamente qui: {br}{JOIN_URL}{br}&nbsp;{br}oppure puoi cliccare su: {PERMANENT_LINK}
+teams_lobbybypass#:#Evitate la sala riunioni.
+teams_lobbybypass_choose#:#Ignora la sala d'attesa della riunione: opzione di selezione
+teams_lobbybypass_choose_info#:#Attiva questa opzione se gli utenti con accesso in scrittura devono avere la possibilità di selezionare "Ignora la sala d'attesa della riunione" nelle Impostazioni.
+teams_lobbybypass_default#:#Ignora la sala d'attesa della riunione: impostazione predefinita
+teams_lobbybypass_everyone#:#Tutti sono ammessi alla riunione. Nessun partecipante viene fatto accomodare nella sala d'attesa.
+teams_lobbybypass_invited#:#Solo le persone invitate sono ammesse alla riunione. Tutti gli altri partecipanti vengono fatti accomodare nella sala d'attesa.
+teams_lobbybypass_organizer#:#I partecipanti vengono fatti accomodare nella sala d'attesa. Gli amministratori e i tutor non possono accedere alla sala d'attesa.
+teams_meetings_list_downloaded#:#Riunioni scaricate correttamente da Teams.
+teams_tenant_id_info#:#Inserisci qui l'ID del tenant.
 teams_tenant_id#:#ID inquilino
-terms_of_use#:#<b>Diritti di proprietà intellettuale</b>{br}Le informazioni e i materiali contenuti nelle conferenze BigBlueButton, come testi o immagini, sono generalmente protetti da copyright, marchi o brevetti.{br}È necessario rispettare le norme sulla protezione dei dati. Ciò vale in particolare per la registrazione delle conferenze BigBlueButton. La registrazione segreta di video o audioconferenze è un reato.{br}{br}<b>Codice di condotta</b>{br}Non è consentito pubblicare contenuti che violino le disposizioni di legge, siano pornografici, osceni, diffamatori, calunniosi, offensivi, minacciosi, che incitino all'odio o al razzismo. È inoltre vietato pubblicare annunci pubblicitari senza autorizzazione e trasmettere informazioni contenenti virus, manipolazioni o simili elementi dannosi. Dati trattati Quando si utilizza BigBlueButton, vengono raccolti i seguenti dati: Dati di connessione (ad esempio, indirizzo IP, tipo di browser, data e ora di accesso) Dati di accesso (se applicabile): nome utente, password in forma crittografata Dati di contenuto (ad esempio, file caricati, contributi alla chat, sondaggi) La memorizzazione temporanea dei dati di connessione, in particolare l'indirizzo IP, da parte del sistema è necessaria per consentire la consegna di BigBlueButton al computer dell'utente. A tale scopo, l'indirizzo IP dell'utente deve essere memorizzato per la durata della sessione. La base giuridica per la memorizzazione temporanea dei dati è l'articolo 6(1)(f) GDPR. I dati di connessione vengono generalmente memorizzati anche in file di registro. Il momento della cancellazione è determinato dall'operatore del server BigBlueButton.
-title#:#titolo
+terms_of_use#:#<b>Diritti di proprietà intellettuale</b>{br}Le informazioni e i materiali contenuti nelle conferenze di BigBlueButton, come testi o immagini, sono generalmente protetti da copyright, marchi registrati o brevetti.{br}È necessario rispettare le leggi sulla protezione dei dati. Ciò vale in particolare per le registrazioni delle conferenze di BigBlueButton. Registrare di nascosto video o audioconferenze è un reato.{br}{br}<b>Regole di condotta</b>{br}Non è consentito pubblicare contenuti che violino disposizioni di legge o contenuti pornografici, osceni, diffamatori, calunniosi, offensivi, minacciosi, che incitino all'odio o siano razzisti. È inoltre vietato pubblicare annunci senza autorizzazione e trasmettere informazioni contenenti virus, manipolazioni o elementi dannosi simili.{br}{br}<b>Dati trattati</b>{br}Durante l'utilizzo di BigBlueButton, vengono raccolti i seguenti dati:<ul><li>Dati di connessione (ad es. indirizzo IP, tipo di browser, data e ora di accesso)</li><li>Ove applicabile, dati di accesso: nome utente e password in forma crittografata</li><li>Dati di contenuto (ad es. file caricati, messaggi di chat e sondaggi)</li></ul>La memorizzazione temporanea dei dati di connessione, in particolare dell'indirizzo IP, da parte del sistema è necessaria per fornire BigBlueButton al computer dell'utente. L'indirizzo IP dell'utente deve quindi rimanere memorizzato per tutta la durata della sessione. La base giuridica per la memorizzazione temporanea di questi dati è l'art. 6(1)(f) del GDPR.{br}I dati di connessione vengono generalmente memorizzati anche in file di registro. Il tempo di cancellazione è determinato dal gestore del server di BigBlueButton.
+title#:#Titolo
 token_deleted#:#Token eliminato
 token_not_deleted#:#Token non eliminato
-token_not_stored#:#Token non salvato
+token_not_stored#:#Token non memorizzato
 token_stored#:#Token memorizzato
-unlocked_by#:#Rilasciato da
-unlock#:#Pubblicazione
+unlocked_by#:#Sbloccato da
+unlock#:#Sbloccare
 untrashed_usages#:#Numero di utilizzi
-url_info#:#Qui puoi anche inserire percorsi relativi (ad esempio, /webconference). Non includere una '/' finale.
+url_info#:#Qui è possibile inserire anche percorsi relativi (ad esempio: /webconference). Si prega di non inserire una barra '/' alla fine.
 url#:#URL
-usage#:#Occupazione
+usage#:#Utilizzo
 user_end#:#ultima partenza
-user_invite_info#:#Puoi invitare ospiti alla riunione utilizzando il seguente link:
+user_invite_info#:#Tramite il seguente link è possibile invitare gli ospiti alla riunione:
 user_log#:#Panoramica utente
-user_log_bbb#:#Panoramica utente (BBB/Teams/Zoom)
-user_log_duration#:#Periodo di registrazione
-user_percent#:#per cento
+user_log_bbb#:#Panoramica utente (BBB/Teams)
+user_log_duration#:#Periodo di cattura
+user_percent#:#Percent
+user_rel_span#:#tempo
 user_results#:#Orari di presenza
-user_results_desc#:#Gli orari vengono visualizzati solo per le riunioni già terminate. Le riunioni devono inoltre aver raggiunto l'orario di fine previsto.
+user_results_desc#:#L'orario viene visualizzato solo per le riunioni già terminate. Le riunioni devono inoltre aver raggiunto l'orario di fine previsto.
 user_start#:#primo inizio
-user_time#:#tempo di presenza
-wait_join_meeting#:#<b>Al momento, nella sala riunioni virtuale non è presente nessuno con privilegi di moderatore.<br/>Attendi e ricontrolla tra un minuto.</b>
+user_time#:#Tempo di presenza
+wait_join_meeting#:#<b>Al momento non è presente alcun moderatore nella sala riunioni virtuale.<br/>Si prega di attendere e riprovare tra un minuto.</b>
 wait_join_meeting_edudip#:#Al momento non è possibile partecipare ad alcun webinar.
-wait_join_meeting_guest#:#<b>Al momento, nella sala riunioni virtuale non è presente nessuno con privilegi di moderatore.<br/>Attendi e clicca nuovamente sul pulsante "Partecipa alla riunione" tra un minuto.</b>
-wait_join_meeting_teams#:#Al momento non è possibile partecipare a una riunione. Se viene visualizzata una riunione pianificata, aggiornare questa pagina fino a 15 minuti prima della riunione pianificata per partecipare.
-wait_join_meeting_webex#:#Al momento non è possibile partecipare a una riunione. La riunione potrebbe non essere ancora iniziata o potrebbe essere già terminata. Aggiorna questa pagina per verificare lo stato della riunione.
-wait_join_meeting_zoom#:#Al momento non è possibile partecipare a una riunione. Se viene visualizzata una riunione pianificata, aggiornare questa pagina fino a 15 minuti prima della riunione pianificata per partecipare.
-wait_join_webinar#:#<b>Nessuno ha ancora iniziato il webinar.<br/>Attendi e ricontrolla tra un minuto.</b>
-webex_client_id#:#ID client di integrazione Webex
-webex_client_secret#:#Segreto del client di integrazione Webex
-webex_host_email_hidden_info#:#L'indirizzo email utilizzato per l'autorizzazione è visibile solo ai proprietari e agli amministratori dell'oggetto.
-webex_host_email_info#:#Indirizzo email noto a Webex o al sito ospitato
-webex_host_email#:#Indirizzo email dell'host Webex
-webex_integration_auth_info#:#Puoi autorizzare l'accesso al tuo account Webex. Questa operazione è necessaria per creare, recuperare e avviare riunioni Webex utilizzando il plug-in MultiVC.
-webex_logout_user_choose#:#Consenti disconnessioni da Webex: Opzione
-webex_logout_user_choose_info#:#Gli utenti già connessi a Webex devono disconnettersi da Webex prima di partecipare alla riunione.
-webex_logout_user_default#:#Disconnettersi da Webex: impostazione predefinita
-webex_logout_user_default_info#:#Gli utenti già connessi a Webex devono sempre disconnettersi da Webex prima di partecipare alla riunione.
-webex_meetings_list_downloaded#:#Scaricamento riuscito delle riunioni Webex esistenti.
+wait_join_meeting_guest#:#<b>Al momento non è presente alcun moderatore nella sala riunioni virtuale.<br/>Attendere e fare nuovamente clic su "Partecipa alla riunione" tra un minuto.</b>
+wait_join_meeting_teams#:#Al momento non è possibile partecipare ad alcuna riunione. La riunione potrebbe non essere ancora iniziata o potrebbe essere già terminata. Se necessario, aggiorna questa pagina per verificare lo stato della riunione.
+wait_join_meeting_webex#:#Al momento non è possibile partecipare ad alcuna riunione. La riunione potrebbe non essere ancora iniziata o potrebbe essere già terminata. Se necessario, aggiorna questa pagina per verificare lo stato della riunione.
+wait_join_meeting_zoom#:#Al momento non è possibile partecipare a una riunione. Se viene visualizzata una riunione programmata, aggiorna questa pagina per partecipare fino a 15 minuti prima dell'orario previsto.
+wait_join_webinar#:#Al momento, nessuno ha ancora avviato il webinar.<br/>Attendere e riprovare a visitare questa pagina tra un minuto.</b>
+webex_client_id#:#ID client dell'integrazione Webex
+webex_client_secret#:#Segreto del client per l'integrazione con Webex.
+webex_host_email_hidden_info#:#L'indirizzo e-mail utilizzato per l'autorizzazione è visibile solo ai proprietari dell'oggetto e agli amministratori.
+webex_host_email_info#:#Indirizzo e-mail noto del sito ospitato tramite Webex.
+webex_host_email#:#Indirizzo e-mail dell'host Webex
+webex_integration_auth_info#:#L'utente Webex può autorizzare l'accesso al proprio account.
+webex_logout_user_choose#:#Consenti la disconnessione da Webex: opzione di selezione
+webex_logout_user_choose_info#:#Consenti agli utenti già connessi a Webex di disconnettersi prima di partecipare alla riunione.
+webex_logout_user_default#:#Disconnessione da Webex: predefinita
+webex_logout_user_default_info#:#Disconnetti sempre gli utenti già connessi a Webex prima di partecipare alla riunione.
+webex_meetings_list_downloaded#:#Riunioni scaricate correttamente da Webex.
 webex_redirect_uri#:#URI di reindirizzamento
 webex_site_url#:#URL del sito Webex
-webex_user_choose_logout#:#L'utente decide
-webex_user_do_logout#:#Disconnettersi
-webex_user_do_not_logout#:#Non disconnettersi
-webex_user_logout#:#Disconnettersi da Webex
-webinar_collision#:#Si è verificato un errore. Un webinar è già programmato per l'orario richiesto.
-webinar_event_created#:#Webinar creato
-webinar_event_deleted#:#Webinar eliminato
-webinar_notification_body#:#Ciao {NOME},{NL}{NL} è stato creato il seguente {EVENTO}:{NL}{NL}{OGGETTO}{NL}{DATERANGE}{NL}{LINK}{NL}{NL}Cordiali saluti,{NL}{NL}{DA}
-webinar_notification_from#:#ILIADE
+webex_user_choose_logout#:#l'utente sceglie
+webex_user_do_logout#:#Disconnettiti
+webex_user_do_not_logout#:#Non ho effettuato il logout
+webex_user_logout#:#Disconnettiti da Webex.
+webinar_collision#:#Si è verificato un errore. Un webinar è già programmato per la fascia oraria richiesta.
+webinar_event_created#:#webinar creato
+webinar_event_deleted#:#webinar eliminato
+webinar_notification_body#:#Ciao {NOME},{NL}{NL}il seguente {EVENTO}:{NL}{NL}{OGGETTO}{NL}{INTERVALLO DI DATE}{NL}{LINK}{NL}{NL}Con i migliori saluti{NL}{NL}{DA}
+webinar_notification_from#:#ILIAS
 webinar_notification_subject#:#{EVENTO}: {OGGETTO}
 webinar_related_successful#:#Webinar assegnato con successo
 webinar_running#:#Il webinar è iniziato.
 webinar#:#Seminario Web
-welcome_text#:#Benvenuti {br}nella Sala Riunioni Virtuale{br}<b>{MEETING_TITLE}</b>{br}{br}Se vedete l'icona di un altoparlante barrata al centro dello schermo qui sotto, gli altri non potranno sentirvi e nemmeno voi sentirete nulla. Cliccate sull'icona dell'altoparlante barrata per avviare la connessione audio.{br}Utilizzate delle cuffie per evitare rumori di fondo e feedback.
-window_closed#:#La sala riunioni virtuale è terminata.
-window_close#:#Chiudi finestra
-window_started#:#La sala riunioni virtuale è stata lanciata in una nuova finestra.
-with_chat_choose_info#:#Abilitare questa opzione se gli utenti con autorizzazioni di scrittura devono avere l'opzione "Inizia con la chat" nelle Impostazioni.
-with_chat_choose#:#Inizia con la chat: opzione di selezione
-with_chat_default_info#:#Generalmente questa opzione dovrebbe essere attivata, soprattutto nelle stanze moderate.
+welcome_text#:#Benvenuti nella Sala Riunioni Virtuale. Per partecipare alla riunione, cliccate sul pulsante dell'altoparlante. Utilizzate una cuffia con microfono per evitare di disturbare gli altri con rumori di sottofondo.
+window_closed#:#La sala riunioni virtuale è stata chiusa.
+window_close#:#Chiudi la finestra
+window_started#:#La sala riunioni virtuale è stata aperta in una nuova finestra.
+with_chat_choose_info#:#Attiva questa opzione se desideri che gli utenti con accesso in scrittura selezionino "Avvia con la chat" nelle Impostazioni.
+with_chat_choose#:#Inizia con la chat: Opzione
+with_chat_default_info#:#Dovrebbe essere generalmente attivato, soprattutto nelle stanze moderate.
 with_chat_default#:#Inizia con la chat: impostazione predefinita
-with_chat_info#:#Questa opzione dovrebbe essere abilitata, soprattutto nelle stanze moderate. In questo caso, la chat diventa una "sala d'attesa".
+with_chat_info#:#Soprattutto nelle stanze moderate, questa opzione dovrebbe essere attivata. La chat diventa una "sala d'attesa".
 with_chat#:#Inizia con la chat
 xmvc_add#:#Aggiungi sala riunioni virtuale
 xmvc_copy#:#Copia la sala riunioni virtuale
 xmvc_delete#:#Elimina la sala riunioni virtuale
-xmvc_edit_learning_progress#:#Modifica le impostazioni di avanzamento dell'apprendimento
-xmvc_edit_permission#:#Cambia i permessi
+xmvc_edit_learning_progress#:#Modifica le impostazioni relative ai progressi di apprendimento
+xmvc_edit_permission#:#Modifica autorizzazioni
 xmvc_new#:#Aggiungi una nuova sala riunioni virtuale
-xmvc_read#:#Accesso in lettura: è possibile partecipare alla sala riunioni virtuale
+xmvc_read#:#Leggi: È possibile partecipare alla sala riunioni virtuale
 xmvc_read_learning_progress#:#Visualizza i progressi di apprendimento degli altri utenti
-xmvc_visible#:#Visualizzazione: la sala riunioni virtuale è visibile
+xmvc_visible#:#Visibile: la sala riunioni virtuale è visibile
 xmvc_write#:#Modifica impostazioni
 zoom_account_id#:#ID account Zoom
-zoom_account_info#:#Puoi ottenere l'ID account Zoom, l'ID client e il segreto client da https://developers.zoom.us/docs/internal-apps/create/. Devi creare un'app OAuth server-to-server.
-zoom_client_id#:#ID cliente Zoom
+zoom_account_info#:#È possibile ottenere l'ID account Zoom, l'ID client e il segreto client da https://developers.zoom.us/docs/internal-apps/create/. È necessario creare un'app OAuth server-to-server.
+zoom_approval_choose#:#Registrazione/autenticazione: opzione di selezione
+zoom_approval_choose_info#:#La registrazione con un link di accesso personalizzato non viene spesso utilizzata.
+zoom_approval_default#:#Registrazione/autenticazione: impostazione predefinita
+zoom_approval_type#:#Registrazione/autenticazione
+zoom_approval_0#:#Approvazione automatica: il link di accesso viene inviato tramite e-mail.
+zoom_approval_1#:#Approvazione manuale: gli organizzatori esaminano e approvano i partecipanti prima che ricevano il link di accesso.
+zoom_approval_2#:#Non è richiesta alcuna registrazione. Non verrà creato un link di accesso personalizzato.
+zoom_approval_3#:#Non è necessaria la registrazione, ma l'autenticazione è richiesta. È sempre necessario un account Zoom.
+zoom_client_id#:#ID client Zoom
 zoom_client_secret#:#Segreto del client Zoom
-zoom_err_scopes_webinar#:#Non hai l'autorizzazione per creare un webinar. È possibile organizzare riunioni. Mancano le seguenti autorizzazioni:
+zoom_err_scopes#:#Per creare una riunione non sono necessarie le seguenti autorizzazioni:
+zoom_err_scopes_webinar#:#Non si dispone dell'autorizzazione per creare un webinar. È possibile organizzare riunioni. Mancano le seguenti autorizzazioni:
 zoom_exist_meetings#:#Le date per questo incontro sono già state fissate.
 zoom_exist_webinars#:#Le date per questo webinar sono già state fissate.
-zoom_lobby#:#Sala d'attesa per riunioni
-zoom_lobby_choose#:#Sala d'attesa: scelta delle opzioni
-zoom_lobby_choose_info#:#Abilita questa opzione se gli utenti con permessi di scrittura devono avere l'opzione "Sala d'attesa" nelle impostazioni. Questa opzione controlla chi viene inserito nella sala d'attesa.
-zoom_lobby_default#:#Sala d'attesa: impostazione predefinita
-zoom_lobby_0#:#Nessuno deve attendere in sala d'attesa. La sala d'attesa è disattivata. I partecipanti possono entrare 15 minuti prima dell'inizio della riunione.
-zoom_lobby_1#:#Tutti devono andare in sala d'attesa.
-zoom_lobby_2#:#Gli utenti esterni al tuo account devono entrare nella sala d'attesa.
-zoom_lobby_3#:#Gli utenti esterni al tuo account o quelli non appartenenti ai domini approvati devono entrare nella sala d'attesa.
-zoom_lobby_4#:#Gli utenti che non fanno parte del corso o del gruppo devono recarsi nella sala d'attesa.
+zoom_host_email_hidden_info#:#L'indirizzo email utilizzato per l'autorizzazione è visibile solo ai proprietari dell'oggetto e agli amministratori.
+zoom_host_email_info#:#Indirizzo email associato a Zoom
+zoom_host_email#:#Indirizzo e-mail dell'organizzatore della riunione Zoom
+zoom_lobby#:#Sala d'attesa per le riunioni
+zoom_lobby_choose#:#Sala d'attesa per riunioni: opzione di selezione
+zoom_lobby_choose_info#:#Abilita questa opzione se desideri che gli utenti con permessi di scrittura abbiano accesso alla "Sala d'attesa" nelle impostazioni. Questa opzione controlla chi viene inserito nella sala d'attesa.
+zoom_lobby_default#:#Sala d'attesa per le riunioni: impostazione predefinita
+zoom_lobby_0#:#Nessuno deve attendere nella sala d'attesa. La sala d'attesa è disattivata. I partecipanti possono accedere 15 minuti prima dell'inizio della riunione.
+zoom_lobby_1#:#Tutti devono recarsi nella sala d'attesa.
+zoom_lobby_2#:#Gli utenti esterni al tuo account devono accedere alla sala d'attesa.
+zoom_lobby_3#:#Gli utenti esterni al tuo account o quelli non appartenenti ai domini approvati devono accedere alla sala d'attesa.
+zoom_lobby_4#:#Gli utenti che non sono iscritti al corso o al gruppo devono recarsi nella sala d'attesa.
+zoom_rec_only_for_webinars_default#:#Registrazione disponibile solo per i webinar.
+zoom_rec_only_for_webinars_default_info#:#Se questa opzione è abilitata, la registrazione automatica non è disponibile durante le riunioni. Questa opzione dovrebbe essere abilitata nella maggior parte dei casi. Ha effetto solo se le registrazioni sono generalmente consentite.

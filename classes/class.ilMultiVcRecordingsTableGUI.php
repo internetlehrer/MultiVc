@@ -37,7 +37,7 @@ class ilMultiVcRecordingsTableGUI extends ilTable2GUI
         $this->setDefaultOrderDirection('asc');
         $this->enable('sort');
 
-        $this->setRowTemplate('tpl.recordings_table_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+        $this->setRowTemplate('tpl.recordings_table_row.html', 'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->setEnableNumInfo(false);
 
         $this->addCommandButton('confirmDeleteRecords', $DIC->language()->txt('delete'));

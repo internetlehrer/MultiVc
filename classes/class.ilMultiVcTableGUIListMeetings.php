@@ -42,14 +42,7 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
         $this->setDefaultOrderDirection('asc');
         //$this->disable('sort');
 
-        $this->tpl->addBlockFile(
-            "TBL_CONTENT",
-            "tbl_content",
-            'tpl.list_meetings_row.html',
-            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
-        );
-
-        $this->setRowTemplate('tpl.list_meetings_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+        $this->setRowTemplate('tpl.list_meetings_row.html', 'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->setEnableNumInfo(false);
         $this->getDataFromDb();
     }
@@ -80,9 +73,10 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
         #var_dump($ScheduledMeeting);exit;
 
         foreach ($ScheduledMeeting as $a_set) {
+            $meetingTitle = $a_set['title'];
             $json = json_decode($a_set['rel_data']);
             if($this->parent_obj->isEdudip) {
-                $json->title = $json->webinar->title;
+//                $meetingTitle = $json->webinar->title;
             }
 
             $dtMeetingStart = new ilDateTime($a_set['start'], IL_CAL_DATETIME, $a_set['timezone']);
@@ -92,7 +86,7 @@ class ilMultiVcTableGUIListMeetings extends ilTable2GUI
             $meetingEnd = $dtMeetingEnd->get(IL_CAL_FKT_DATE, 'Y-m-d H:i:s', $this->dic->user()->getTimeZone());
 
             $data[] = [
-                'TITLE' => $json->title,
+                'TITLE' => $meetingTitle,
                 'START_TIME' => $meetingStart,
                 'END_TIME' => $meetingEnd,
             ];

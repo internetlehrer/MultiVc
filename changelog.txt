@@ -58,3 +58,10 @@
 - support Zoom
 10.9
 - fix issues with PHP 8.2
+10.13
+- support new edudip-API
+- improve support for learning progress when using zoom
+- features for zoom webinars
+- improve performance for event handler regarding add or remove participants
+- Bugfix for deleting old MultiVC objects from trash
+- Bugfix for 'Block meeting type deletion when objects still reference it'

@@ -54,7 +54,7 @@ class ilMultiVcTableGUIRecordingsBBB extends ilTable2GUI
         $this->setDefaultOrderDirection('asc');
         $this->enable('sort');
 
-        $this->setRowTemplate('tpl.recordings_bbb_table_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+        $this->setRowTemplate('tpl.recordings_bbb_table_row.html', 'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->setEnableNumInfo(false);
 
         if($this->parent_obj->getVcObj()->isUserModerator()) {

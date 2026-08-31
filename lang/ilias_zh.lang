@@ -1,72 +1,72 @@
 <!-- language file start -->
-add_presentation_url#:#开幕演讲
+add_presentation_url#:#开始演示
 add_token#:#添加令牌
 add_token_user#:#新版主/代币
-add_welcome_text#:#个性化欢迎信息
-adm_info_appointment#:#作为管理员或导师，您可以创建房间。但是，参与者只能在课程期间打开房间。
-assigned_roles_info#:#创建此 MultiVc 配置的权限可以限制为属于一个或多个选定角色的用户。
+add_welcome_text#:#添加欢迎文本
+adm_info_appointment#:#作为管理员或导师，您可以创建房间。但参与者只能在课程进行期间打开房间。
+assigned_roles_info#:#可以限制只有属于一个或多个选定角色的用户才能创建此 MultiVc 配置。
 assigned_roles#:#分配的角色
 authorize#:#授权
 bbb_default_server#:#标准 BBB 服务器
 bbb_guest_password_info#:#允许使用字母数字字符和特殊字符，例如：<code>a-Z_09,.#@!?</code>
 bbb_guest_password#:#访客密码
-bbb_secret_expiration_date#:#到期日
+bbb_secret_expiration_date#:#截止日期
 bbb_secret_expiration_date_info#:#密码有效期至所选日期（含当日）。
 bbb_secret_expired_msg#:#访客密码已过期。
-bbb_secret_expires_info#:#如果密码需要设置有效期，请选择此选项。
-bbb_secret_expires#:#到期日
+bbb_secret_expires_info#:#如果您希望密码为临时密码，请选择此选项。
+bbb_secret_expires#:#附有效期。
 big_blue_button#:#BigBlueButton WebRTC
 btn_chat#:#聊天记录可以显示/隐藏
 btn_chat_choose#:#聊天记录可以显示/隐藏：选择选项
-btn_chat_choose_info#:#如果希望具有写入权限的用户能够在设置中“显示/隐藏聊天”选项，请启用此选项。
+btn_chat_choose_info#:#如果您希望具有写入权限的用户在“设置”下拥有“显示/隐藏聊天”选项，请启用此选项。
 btn_chat_default#:#聊天记录可以显示/隐藏：默认设置
 btn_chat_default_info#:#为了简化使用，可以不启用此选项，始终显示聊天窗口。
-btn_chat_info#:#如果您希望显示/隐藏聊天记录按钮，请启用此选项。
-btn_locationshare_choose_info#:#此选项通常应禁用。
+btn_chat_info#:#如果您希望按钮能够隐藏和显示聊天记录，请启用此选项。
+btn_locationshare_choose_info#:#大多数情况下，应禁用此选项。
 btn_locationshare_choose#:#位置选项：选择
 btn_locationshare_default_info#:#只有在咨询数据保护官后才能启用此选项。
 btn_locationshare_default#:#选项位置：默认
-btn_locationshare_info#:#此选项允许用户在聊天中与其他用户分享当前位置，并可接收其他用户的单独会议邀请。出于隐私考虑，应谨慎启用此选项。
+btn_locationshare_info#:#此选项允许用户在聊天中分享当前位置，并可被他人邀请参加单独的会议。出于隐私考虑，应谨慎使用此选项。
 btn_locationshare#:#选项位置
 btn_settings_choose#:#房间设置：选择选项
-btn_settings_choose_info#:#如果具有写入权限的用户应该在“设置”下看到“房间设置”选项，请启用此选项。
-btn_settings_default#:#房间设置：默认
+btn_settings_choose_info#:#如果您希望具有写入权限的用户在“设置”下选择“房间设置”，请激活此选项。
+btn_settings_default#:#房间设置：默认设置
 btn_settings_default_info#:#默认设置通常应该是设置选项和按钮处于非激活状态。
 btn_settings#:#房间布置
-btn_settings_info#:#如果您希望按钮和设置选项在房间内可见，请启用此选项。通常情况下无需启用此选项，因为名称和用户图像会自动从 ILIAS 继承。
+btn_settings_info#:#如果您希望在房间内显示设置按钮和选项，请启用此选项。通常情况下无需启用此选项，因为名称和用户头像将由 ILIAS 自动显示。
 btntext_concurrent_users_check#:#查看是否有货
 btntext_guest_login_button#:#以访客身份登录
 btntext_join_meeting#:#加入会议
 btntext_join_webinar#:#加入网络研讨会
 btntext_start_meeting#:#开始会议
 btntext_start_webinar#:#开始网络研讨会
-cam_mic_only_for_moderator_choose_info#:#如果希望拥有写入权限的用户在设置中拥有相应的选项，请启用此选项。大多数情况下都应启用此选项。
-cam_mic_only_for_moderator_choose#:#参与者不得启用摄像头和麦克风：选项
-cam_mic_only_for_moderator_default_info#:#组织者可以选择性地允许参与者使用麦克风和/或摄像头。未经确认，参与者无法分享或直播。此选项适用于参与人数众多的活动。
-cam_mic_only_for_moderator_default#:#参与者不得启用摄像头和麦克风：默认设置
-cam_mic_only_for_moderator_info#:#主办方将选择性地允许参与者使用麦克风和/或摄像头。未经确认，参与者不得分享或直播。
-cam_mic_only_for_moderator#:#参与者不得开启摄像头和麦克风。
-cam_only_for_moderator_choose_info#:#如果希望拥有写入权限的用户在设置中拥有“仅限管理员查看相机”选项，请启用此选项。大多数情况下都应启用此选项。
-cam_only_for_moderator_choose#:#仅限主持人使用的摄像头：选择选项
-cam_only_for_moderator_default_info#:#大多数情况下应禁用此选项，仅当预计大量参与者会导致性能问题时才启用。主持人可以在会议期间随时更改此设置。
+cam_mic_only_for_moderator_choose_info#:#如果希望拥有写入权限的用户在“设置”中拥有相应的选项，请启用此选项。大多数情况下，应启用此选项。
+cam_mic_only_for_moderator_choose#:#参会者不得启用摄像头和麦克风：选项
+cam_mic_only_for_moderator_default_info#:#主办方特意允许参会者使用麦克风和/或摄像头。未经确认，参会者无法分享。此选项适用于参会人数众多的活动。
+cam_mic_only_for_moderator_default#:#参会者不允许启用摄像头和麦克风：默认设置
+cam_mic_only_for_moderator_info#:#主办方明确允许参会者使用麦克风和/或摄像头。未经确认，参会者不得分享任何内容。
+cam_mic_only_for_moderator#:#与会者不得开启摄像头和麦克风。
+cam_only_for_moderator_choose_info#:#如果您希望拥有写入权限的用户在“设置”中选择“仅限版主使用相机”，请启用此选项。大多数情况下，应启用此选项。
+cam_only_for_moderator_choose#:#仅主持人可使用摄像头：选项
+cam_only_for_moderator_default_info#:#大多数情况下应禁用此选项，仅当预计大量参与者会导致性能问题时才应启用。主持人始终可以在会议期间在 BigBlueButton 中更改此设置。
 cam_only_for_moderator_default#:#仅限管理员使用的摄像头：默认设置
-cam_only_for_moderator_info#:#推荐用于人数众多的会议。
+cam_only_for_moderator_info#:#推荐用于人数较多的会议。
 cam_only_for_moderator_zoom#:#仅供房东使用的摄像头
 cam_only_for_moderator_zoom_info#:#推荐用于人数众多的会议！
-cam_only_for_moderator#:#仅供版主使用的摄像头
+cam_only_for_moderator#:#仅供主持人使用摄像头
 cancel#:#取消
 cat_create_xmvc#:#创建虚拟会议室
-chat_choose_info#:#如果具有写入权限的用户应该在“设置”中看到“允许聊天”选项，请启用此选项。
-chat_choose#:#允许聊天：选项
-chat_default_info#:#启用此功能后，人们可以互相聊天。
+chat_choose_info#:#如果您希望具有写入权限的用户在“设置”中选择“允许私聊”，请启用此选项。
+chat_choose#:#允许聊天：选择选项
+chat_default_info#:#启用后，人们可以互相聊天。
 chat_default#:#允许聊天：默认设置
 chat_info#:#人们可以互相聊天。
 chat#:#允许聊天
 conf_availability_0#:#无法使用
 conf_availability_1#:#现有允许
-conf_availability_2#:#可以生成新的。
+conf_availability_2#:#可以创建新的。
 conf_availability#:#可用性
-config_help_begin#:#设置中的说明文字如下：
+config_help_begin#:#设置中的说明如下：
 configure_add#:#创建配置
 configure#:#配置
 conf_meeting_layout_1#:#自定义布局
@@ -78,182 +78,191 @@ conf_title#:#标题
 conn_deleted#:#会议类型已被删除。
 conn_id#:#会议类型
 copy#:#复制
-create_type#:#定义一种新的会议类型
-cronjob_description#:#启用此功能后，页面停留时间可用于计算学习进度。
-cronjob_title#:#使用 MS Teams 或 Zoom 时，通过 MultiVC 定时任务来确定学习进度
+create_type#:#定义新的会议类型
+cronjob_description#:#如果启用此功能，则可以使用所花费的时间来计算学习进度。
+cronjob_title#:#使用 MS Teams 时，通过 MultiVC 定时任务来确定学习进度
 crs_create_xmvc#:#创建虚拟会议室
 custom_style#:#定制风格
-custom_style_info#:#您可以在此处定义 CSS 样式参数或 CSS 文件。如果是文件，则必须指定以 https:// 开头的 URL。此外，BBB 安装目录下的 settings.yml 文件中的“displayBrandingArea”参数必须设置为 true。
+custom_style_info#:#您可以在此处定义 CSS 样式参数或 CSS 文件。对于文件，必须指定以 https:// 开头的 URL。此外，在 BBB 安装的 settings.yml 文件中，必须将参数“displayBrandingArea”设置为 true。
 delete_conn#:#删除会议类型？
 delete#:#删除
-delete_sess_user_changed#:#所有权变更后的行动
-delete_sess_user_changed_info#:#当用户切换用户时，所有已创建的会话都会被删除。
+delete_sess_user_changed#:#所有权变更行动
+delete_sess_user_changed_info#:#用户更改时删除所有已创建的会话
 delete_token#:#删除令牌
 delete_type#:#删除会议类型
-disable_sip_info#:#此选项允许您禁用SIP拨号连接。禁用后，将无法再使用电话拨号连接。
-disable_sip#:#停用电话拨号功能
+disable_sip_info#:#此选项允许您禁用 SIP 拨入。会议将不支持电话拨入。
+disable_sip#:#禁用电话拨入
 display_name#:#显示名称
 download#:#下载
-download_video#:#下载录音
-duration#:#时间长度
+download_video#:#下载视频
+duration#:#期间
 edit#:#编辑
 edit_properties#:#编辑属性
 edudip_host_email#:#edudip 电子邮件地址
-edudip_host_email_hidden_info#:#用于授权的电子邮件地址仅对对象的拥有者和管理员可见。
-edudip_host_email_info#:#您在 edudip 系统中登记的电子邮件地址必须与此地址一致。
-edudip_meetings_list_downloaded#:#edudip 上已有的网络研讨会已成功整合。
-edudip_meetings_list_unavailabe#:#目前无法访问 Edudip 上的现有网络研讨会。
+edudip_host_email_hidden_info#:#用于授权的电子邮件地址仅对对象的拥有者和管理员显示。
+edudip_host_email_info#:#您在 Edudip 系统中登记的电子邮件地址必须与此地址一致。
+edudip_meetings_list_downloaded#:#edudip提供的网络研讨会已成功整合
+edudip_meetings_list_unavailabe#:#目前无法从 Edudip 检索现有网络研讨会
 end_time#:#结尾
-endtime#:#末日
+endtime#:#结束时间
 err_msg_displayname#:#请输入您的姓名
 err_msg_guest_password#:#访客密码错误。
 err_msg_guest_password_expired#:#访客密码已过期。
-error_admin_no_access_token#:#请通知管理员：令牌丢失
+error_admin_no_access_token#:#请告知管理员：令牌丢失
 error_object_no_access_token#:#请在对象属性中进行授权。
 error_object_no_host_email#:#请确认对象属性中主机用户的电子邮件地址。
-error_start_meeting#:#会议开始时发生错误。
+error_start_meeting#:#会议开始时发生错误
 error_start_webinar#:#启动网络研讨会时发生错误。
 ext_provider_token_user#:#用户/访问令牌
-ext_provider_token_user_info#:#输入拥有版主许可证的用户的电子邮件地址，以及他们的访问令牌。
+ext_provider_token_user_info#:#输入拥有版主许可证的用户的电子邮件地址，然后输入他们的访问令牌。
 fa_expand_default_info#:#此选项通常应禁用。此外，在许多情况下，某些区域（例如聊天窗口）的显示无法放大。
-fa_expand_default#:#最大化显示区域：默认设置
+fa_expand_default#:#最大化显示范围：默认设置
 fold_create_xmvc#:#创建虚拟会议室
 grp_create_xmvc#:#创建虚拟会议室
-guest_displayname_info#:#请注意：由于 BigBlueButton 中用于显示名称的空间有限，详细的标题信息可能会导致可用性问题。
+guest_displayname_info#:#请注意：由于 BigBlueButton 中名称可用的空间有限，详细的标题信息可能会导致可用性问题。
 guest_displayname_input#:#称谓 名字 姓氏
 guest#:#客人
-guestlink_choose#:#访客链接选择选项
-guestlink_choose_info#:#如果具有写入权限的用户应该在“设置”下看到“允许访客链接”选项，请启用此选项。
-guestlink_default#:#访客链接默认
-guestlink_default_info#:#大多数情况下应禁用此选项。应尽可能防止未经授权的使用。访客只能以参与者身份加入已管理的房间。必须已有主持人在线。访客必须同意使用条款，该条款存储在 ILIAS 语言变量中。要编辑此变量，请转到“管理”->“语言”。单击所需的语言，然后在“标识符”字段中输入“rep_robj_xmvc_terms_of_use”。然后单击“应用筛选器”并编辑文本。
+guestlink_choose#:#Guestlink 选择选项
+guestlink_choose_info#:#如果您希望具有写入权限的用户在“设置”中选择“允许访客链接”，请启用此选项。
+guestlink_default#:#Guestlink 默认
+guestlink_default_info#:#大多数情况下应禁用此选项。应尽可能防止未经授权的人员使用。访客始终以成员身份进入已管理的房间。房间内必须已有管理员在场。访客必须同意使用条款，该条款存储在 ILIAS 语言变量中。要编辑语言变量，请转到“管理”->“语言”。单击所需的“语言”，然后在“标识符”中输入“rep_robj_xmvc_terms_of_use”。然后单击“应用筛选器”并编辑文本。
 guestlink#:#访客链接
-guestlink_info#:#版主可以通过链接邀请嘉宾。
-guest_link_pw_info#:#访客必须使用此密码登录。
+guestlink_info#:#主持人可以通过链接邀请嘉宾。
+guest_link_pw_info#:#访客必须使用此密码登录
 guest_password_input_info#:#请在此处输入访客链接的密码。
 guest_password_input#:#访客密码
 headline_welcome_meeting#:#欢迎来到会议室！
 headline_welcome_webinar#:#欢迎参加本次网络研讨会！
 hide_recs_until_date#:#请勿播放录像，直至……
 hide_recs_until_date_info#:#此处指定的录制日期之前的录制内容将不会显示。
-hide_username_logs#:#隐藏用户概览
-hide_username_logs_info#:#如果选中，用户概览仅在插件管理界面可见。否则，MultiVc 对象也会显示用户概览。
-hint_availability_recs#:#如对访问录音有任何疑问或疑虑，请联系这些 BigBlueButton 会议的管理员。
-hint#:#注文本
+hide_username_logs#:#隐藏用户名
+hide_username_logs_info#:#如果选中，用户概览仅在插件管理中可见；否则，在 MultiVc 对象中也可见。
+hint_availability_recs#:#如果您对如何访问录音有任何疑问或担忧，请联系负责这些 BigBlueButton 会议的人员。
+hint#:#提示文本
 hint_pub_recs#:#禁止分享录音链接。
-info_add_presentation_url#:#通过 URL 上传您自己的介绍性演示文稿。URL 结构必须遵循以下格式：<i>https://your.domain/path_to/presentation.pdf</i>
-info_add_welcome_text#:#您可以通过 ILIAS 语言变量定义此个性化欢迎消息。请转到“管理”->“语言”。单击所需的语言，然后在“标识符”字段中输入“rep_robj_xmvc_welcome_text”。然后单击“应用筛选器”并编辑文本。
-info_availability#:#这控制着会议类型在杂志中的可用性。较旧的会议类型可以设置为“保留现有”而不是被删除。
-info_bottom_headline#:#重要使用说明：
-info_bottom#:#<ul><li>请使用耳机</b>以避免恼人的反馈或回声！</li><li><b>如果您的网络连接不佳，请关闭摄像头；如果连接仍然很差，请使用电话会议进行音频传输。</li></ul>
-info_concurrent_users_available#:#虚拟教室的剩余名额：
-info_concurrent_users_none#:#目前已无空位可供注册。请点击“加入会议”按钮，一分钟后再次查看是否有空位。
-info_delete_vc_sure#:#您确定吗？以下虚拟会议室将被删除：
-info_hint#:#解释性文字以彩色高亮显示在对象页面内容的上方。
-info_max_duration#:#会议将在指定的小时数和分钟数后结束。如需无限时长，请在小时数和分钟数处输入“0”。
-info_max_participants#:#每次会议参与人数上限。如需不限参与人数，请输入“0”。
-info_max_participants_webinar#:#每场网络研讨会的参与人数上限请参考您的 Edudip 合同。
+info_add_presentation_url#:#通过 URL 加载您自己的演示文稿。URL 结构必须符合以下格式：<i>https://your.domain/path_to/presentation.pdf</i>
+info_add_welcome_text#:#您可以使用 ILIAS 语言变量定义个性化欢迎文本。切换到“管理”->“语言”。点击所需的“语言”，然后在“标识符”字段中输入“rep_robj_xmvc_welcome_text”。然后点击“应用筛选器”并编辑文本。
+info_availability#:#这控制着会议类型在存储库中的可用性。旧的会议类型可以设置为“允许保留”，而不是删除。
+info_bottom_headline#:#重要提示：
+info_bottom#:#<ul><li>请使用耳机，以避免恼人的反馈或回声！</li><li><b>如果您的网络连接不佳，请关闭摄像头；如果连接仍然很差，请使用电话会议传输声音。</li></ul>
+info_concurrent_users_available#:#虚拟教室的空位数量：
+info_concurrent_users_none#:#目前没有空位可供登录。请在一分钟后再次点击“加入会议”按钮查看是否有空位。
+info_delete_vc_sure#:#您确定吗？此虚拟会议室将被删除。
+info_hint#:#提示文字会高亮显示在对象页面内容的上方。
+info_max_duration#:#会议将在指定的小时数和分钟数后结束。如果会议时长没有限制，请将小时数和分钟数都设置为“0”。
+info_max_participants#:#每次会议参与人数上限。如需无限人数，请输入“0”。
+info_max_participants_webinar#:#每场网络研讨会的最大参与人数。
 info_meeting_layout#:#控制会议的默认布局。
 info_om_svr_public_url#:#示例：https://www.example.com/
-info_platform_chg_reset_data#:#您的选择
-info_platform_chg_reset_data_o#:#请注意，切换 WebRTC 平台时，所有设置都将重置为默认值，并且所有已保存的表单数据都将被删除。要切换 WebRTC 平台，您必须先点击“保存”确认新的选择。下一步，再次保存将覆盖之前的配置。
-info_requirements_bbb#:#BigBlueButton 使用开放标准 WebRTC，越来越多的浏览器支持该标准。目前推荐使用 Google Chrome、基于 Chromium 内核的 Microsoft Edge 浏览器，或在功能受限的情况下使用 Mozilla Firefox。您也可以使用 iOS 12.2 及更高版本的 Safari Mobile 和 Android 6.0 及更高版本的 Chrome Mobile。不支持 Microsoft Internet Explorer 和旧版本的 Edge 浏览器。您的防火墙不得阻止以下端口：TCP/IP 端口 80/443（用于 HTTP/HTTPS）以及 UDP 端口 16384 至 32768。要共享屏幕（桌面共享），您需要高速互联网连接。我们也建议主持人及演示者使用有线网络连接（而非 Wi-Fi）。
+info_platform_chg_reset_data#:#你的选择
+info_platform_chg_reset_data_o#:#请注意，更改 WebRTC 平台时，所有设置都将重置为默认值，并且所有已保存的表单数据都将被删除。要更改 WebRTC 平台，您必须先单击“保存”以确认新的选择。下一步，再次保存将覆盖之前的配置。
+info_requirements_bbb#:#<ul><li>BigBlueButton 使用开放标准 WebRTC，越来越多的浏览器支持该标准。目前推荐使用 Google Chrome、基于 Chromium 内核的 Microsoft Edge 浏览器，或在功能受限的情况下使用 Mozilla Firefox。您也可以使用 iOS 12.2 及更高版本的 Safari Mobile 和 Android 6.0 及更高版本的 Chrome Mobile。不支持 Microsoft Internet Explorer 和旧版本的 Edge 浏览器。</li><li>您使用的防火墙不得阻止以下端口：TCP/IP 端口 80/443（用于 HTTP/HTTPS）以及 UDP 端口 16384 - 32768。</li><li>要进行屏幕共享（桌面共享），您需要高速互联网连接。我们也建议主持人及演示者使用有线网络（而非无线局域网）。</li>
 info_requirements_edudip#:#<ul><li>edudip 使用开放标准 WebRTC，越来越多的浏览器支持该标准。目前推荐使用 Google Chrome、基于 Chromium 内核的 Microsoft Edge 浏览器，或在功能受限的情况下使用 Mozilla Firefox。不支持 Microsoft Internet Explorer 和旧版本的 Edge 浏览器。</li><li>请联系 edudip 技术支持以获取更多信息。</li>
 info_requirements_headline#:#技术要求：
-info_requirements_not_ok#:#<b>您当前使用的浏览器对虚拟会议室的使用非常有限。</b><br/>为了获得最佳体验，请使用 Google Chrome 浏览器，或者在功能受限的情况下使用 Mozilla Firefox 浏览器！如果您没有安装浏览器的权限，可以使用 Google Chrome 便携版。<br/>如果无法更换浏览器，请启动虚拟会议室，并在聊天窗口中说明您当前没有合适的浏览器，并告知其他人无需等待。</br/>
-info_requirements_om#:#<ul><li>OpenMeetings 使用开放标准 WebRTC，越来越多的浏览器支持该标准。目前推荐使用 Google Chrome 浏览器，或在功能受限的情况下使用 Mozilla Firefox 浏览器。您也可以使用最新版本的 Microsoft Edge 浏览器，以及 Safari Mobile（iOS 12.2 及更高版本）和 Chrome Mobile（Android 6.0 及更高版本）。不支持 Microsoft Internet Explorer 和旧版本的 Edge 浏览器。</li><li>您的防火墙不得阻止以下端口：TCP/IP 端口 8888/5443（用于 HTTP/HTTPS）、TCP/UDP 端口 3478 以及 UDP 端口范围 49152–65535。</li><li>要共享屏幕（桌面共享），您应该使用 Google Chrome 浏览器并拥有高速互联网连接。我们也建议主持人及演示者使用有线网络连接（而非 Wi-Fi）。</li>
-info_requirements_partly#:#我们建议您使用谷歌浏览器（Google Chrome），或者在功能受限的情况下使用火狐浏览器（Mozilla Firefox）。您需要自行判断您当前的浏览器是否适合以及在多大程度上适合使用虚拟会议室。请将您的使用体验反馈给任何可用的技术支持人员。
-info_requirements_teams#:#主持人必须使用 Teams 应用。参会者可以通过浏览器启动 Teams。要共享屏幕（桌面共享），您需要高速互联网连接。我们也建议主持人及演示者使用有线网络（而非 Wi-Fi）。
+info_requirements_not_ok#:#<b>您当前使用的浏览器对虚拟会议室的功能限制非常大。</b><br/>建议您使用谷歌浏览器（Google Chrome），或在功能受限的情况下使用火狐浏览器（Mozilla Firefox）！如果您没有安装浏览器的权限，可以尝试使用谷歌浏览器便携版（Google Chrome Portable）。<br/>如果无法更换浏览器，请启动虚拟会议室，并在聊天窗口中说明您当前没有合适的浏览器，并告知其他人不要等待您。</br/>
+info_requirements_om#:#<ul><li>OpenMeetings 使用开放标准 WebRTC，越来越多的浏览器支持该标准。目前推荐使用 Google Chrome 浏览器，或在一定限制条件下使用 Mozilla Firefox 浏览器。您也可以使用最新版本的 Microsoft Edge 浏览器，以及 iOS 12.2 及更高版本的 Safari Mobile 浏览器和 Android 6.0 及更高版本的 Chrome Mobile 浏览器。不支持 Microsoft Internet Explorer 和旧版本的 Edge 浏览器。</li><li>您使用的防火墙不得阻止以下端口：TCP/IP 端口 8888/5443（用于 HTTP/HTTPS）、TCP/UDP 端口 3478 以及 UDP 端口 49152 - 65535。</li><li>要共享屏幕（桌面共享），您应该使用 Google Chrome 浏览器并拥有高速互联网连接。我们也建议主持人及演示者使用有线网络（而非无线局域网）。</li>
+info_requirements_partly#:#我们推荐使用谷歌浏览器（Google Chrome），或在一定限制条件下使用火狐浏览器（Mozilla Firefox）。您当前使用的浏览器是否适合使用虚拟会议室，以及适用程度如何，需要您自行测试。如有技术支持，请将您的使用体验反馈给技术支持团队。
+info_requirements_teams#:#<ul><li>主持人必须使用 Teams 应用。</li><li>参会者可以在浏览器中启动 Teams。</li><li>要共享屏幕（桌面共享），您需要高速互联网连接。我们也建议主持人和演示者使用有线网络（而非 Wi-Fi）。</li>
 info_requirements_webex#:#<ul><li>推荐浏览器：Chrome、Edge、Firefox</li></ul>
 info_requirements_zoom#:#请使用您在ILIAS注册时使用的邮箱地址登录Zoom。该邮箱地址为：
 info_requirements_zoom_lp#:#本次会议的出勤情况将被记录，以便评估您的学习进度。只有当您的出勤时间达到会议预定时间的{%}时，您才有资格获得学分。
-info_set_owner#:#车主已登记
+info_set_owner#:#业主已进入
 info_svr_private_port#:#例如：443
-info_svr_private_url#:#除了 Amazon EC2 之外，这始终对应于公共 URL。
+info_svr_private_url#:#始终对应于公共 URL，但 Amazon EC2 除外。
 info_svr_public_port#:#例如：443
 info_svr_public_url#:#示例：https://www.example.com/bigbluebutton/
 info_svr_salt_om#:#示例：dZ#ls2W!k6l
-info_svr_salt#:#ssh：bbb-conf --secret
+info_svr_salt#:#ssh: bbb-conf --secret
 info_svr_username#:#示例：om_admin
-info_title#:#在为新对象选择会议类型时，将显示此标题。
-info_top_moderated_edudip#:#您拥有审核权限，可以开始网络研讨会。
-info_top_moderated_m_bbb#:#这是一个有主持人的会议室，只有当有主持人在场时，您才能进入会议室。
-info_top_moderated_m_om#:#这是一个有主持人的会议室，只有当有主持人在场时，您才能进入会议室。
-info_top_moderated_webex#:#您拥有主持人权限，可以发起会议。为此，您需要一个 Webex 帐户或 Webex 托管的站点。只有在主持人发起会议后，参会者才能加入。
+info_title#:#此标题用于在新建对象中选择会议类型。
+info_top_moderated_edudip#:#您拥有主持人权限，可以开始会议。
+info_top_moderated_m_bbb#:#这是一个由主持人控制的会议室，只有当具有主持人权限的人员在会议室中时，您才能进入会议室。
+info_top_moderated_m_om#:#这是一个由主持人控制的会议室，只有当具有主持人权限的人员在会议室中时，您才能进入会议室。
+info_top_moderated_webex#:#您拥有主持人权限，可以发起会议。为此，您需要一个 Webex 帐户或 Webex 托管站点的帐户。会议必须由主持人发起后，参会者才能加入。
 info_top_moderated_zoom#:#这是一场网络研讨会。您可以立即开始观看。
-info_top_moderator_bbb#:#<b>这是一个有主持人的会议室，您是该会议室的主持人。</b><br/>只有当有主持人的人在会议室中时，没有主持人角色的人才能进入会议室。
-info_top_moderator_om#:#<b>这是一个有主持人的会议室，您是该会议室的主持人。</b><br/>只有当有主持人的人在会议室中时，没有主持人角色的人才能进入会议室。
-info_top_not_moderated_bbb#:#本会议室为非主持人会议室。因此，您同时拥有主持人权限，并享有更高的权限。您可以限制其他参与者的权限，也可以结束会议。请负责任地使用这些权限。
-info_top_not_moderated_om#:#本会议室为非主持人会议室。因此，您同时拥有主持人权限，并享有更高的权限。您可以限制其他参与者的权限，也可以结束会议。请负责任地使用这些权限。
-info_webex_client_id#:#您可以在 Webex 集成的数据中找到客户端 ID（例如 admin.webex.com、developer.webex.com）。
+info_top_moderator_bbb#:#<b>这是一个有主持人的会议室，您拥有此会议室的主持人权限。</b><br/>只有当拥有主持人权限的人员在会议室中时，没有主持人权限的人员才能进入会议室。
+info_top_moderator_om#:#<b>这是一个有主持人的会议室，您拥有此会议室的主持人权限。</b><br/>只有当拥有主持人权限的人员在会议室中时，没有主持人权限的人员才能进入会议室。
+info_top_not_moderated_bbb#:#此会议室未设管理员。因此，您也拥有管理员权限，可以限制其他用户的权限，也可以结束会议。请负责任地使用这些权限。
+info_top_not_moderated_om#:#此会议室未设管理员。因此，您也拥有管理员权限，可以限制其他用户的权限，也可以结束会议。请负责任地使用这些权限。
+info_webex_client_id#:#客户端 ID 可以在 Webex 集成的数据中找到（例如 admin.webex.com、developer.webex.com）。
 info_webex_client_secret#:#创建/更新 Webex 集成后，客户端密钥会显示一次。
 info_webex_redirect_uri#:#将此地址添加为集成设置中的重定向 URI。
-info_webex_site_url#:#托管站点的名称。.webex.com 之前的子域名，例如：<b>your-company</b>.webex.com 或 <b>your-company</b>.my.webex.com
-integration_admin_auth_method_info#:#管理员通过 MultiVC 插件设置执行授权。OAuth 过程中会请求以下权限范围：
+info_webex_site_url#:#托管站点的名称。.webex.com 之前的子域名，例如 <b>your-company</b>.webex.com 或 <b>your-company</b>.my.webex.com
+integration_admin_auth_method_info#:#管理员通过 MultiVC 插件的设置进行授权。OAuth 过程中会请求以下权限范围：
 integration_admin_auth_scopes_info#:#（以下为管理员权限）会议：控制读取 会议：控制写入 会议：管理员参与者读取 会议：管理员日程读取 会议：管理员日程写入 会议：管理员记录读取 会议：管理员记录写入
 integration_auth_method#:#集成授权
-integration_auth_methods_info#:#授权可通过以下方式进行：- 管理员通过 MultiVC 插件设置进行授权；- 用户通过 MultiVC 对象设置进行授权。相应的 OAuth 流程会请求以下权限范围：
+integration_auth_methods_info#:#授权方式有：{br}- 管理员通过 MultiVC 插件的设置进行授权；{br}- 用户通过 MultiVC 对象的设置进行授权。{br}在相应的 OAuth 过程中，需要以下权限范围：{br}
 integration_user_auth_method_info#:#用户通过 MultiVc 对象的设置进行授权。OAuth 过程中会请求以下权限范围：
 integration_user_auth_scopes_info#:#spark:kms 会议:读取日程 会议:写入日程 会议:读取参与者 会议:写入参与者 会议:读取偏好设置 会议:写入偏好设置
 join_time#:#参与者
 leave_time#:#参与期限至
-list_token_user_info#:#现有版主列表。已保存的令牌无法覆盖。如有必要，请先点击“X”删除条目。
+list_token_user_info#:#已创建的版主列表。已保存的令牌无法覆盖。如有必要，请先点击“X”删除条目。
 list_token_user#:#注册版主
-lock_disable_cam_choose_info#:#确定“锁定参与者摄像头”设置是否适用于该对象。
-lock_disable_cam_choose#:#参与者摄像头锁定选项
-lock_disable_cam_default_info#:#将默认设置设为“锁定参与者摄像头”。
-lock_disable_cam_default#:#锁定参与者摄像头（默认设置）
+lock_disable_cam_choose_info#:#确定对象上是否提供“锁定参与者摄像头”设置。
+lock_disable_cam_choose#:#锁定参与者摄像头（可选）
+lock_disable_cam_default_info#:#设置“锁定参与者摄像头”的默认值。
+lock_disable_cam_default#:#锁定参与者摄像头（默认）
 lock_disable_cam_info#:#启用此选项后，参与者的摄像头（网络摄像头）默认会被锁定。
 lock_disable_cam#:#锁定参与者摄像头
-locked_by#:#被屏蔽
-locked#:#已屏蔽
-lock#:#锁定
+locked_by#:#已锁定
+locked#:#已锁定
+lock#:#锁
 logo_url_info#:#请在此处输入您的徽标网址。网址必须以 https:// 开头。
-logo_url#:#徽标网址
+logo_url#:#Logo URL
 lp_active#:#积极的
-lp_active_info#:#一旦内容被访问，状态“进行中”即被设置。状态“已处理”则取决于活动时长。
+lp_active_info#:#一旦访问内容，状态即设置为“进行中”。“已完成”或“失败”状态则由参与时间决定。
 lp_inactive#:#非活跃状态
-lp_inactive_info#:#该对象未保存任何学习进度。
+lp_inactive_info#:#该对象未存储任何学习进度。
 lp_mode#:#模式
-lp_time_info#:#根据可能的出勤时间，该百分比值必须超过该值，状态才能设置为“已处理”。
-lp_time#:#“已编辑”阈值
+lp_time_info#:#只有当实际出勤时间占总出勤时间的百分比超过该值时，状态才会设置为“已完成”。否则，状态将设置为“失败”。
+lp_time#:#“已完成”的阈值
+manual_mods_choose_info#:#如果您希望具有写入权限的用户能够在“设置”中“手动选择共同版主或共同主持人”，请选择此选项。
+manual_mods_choose#:#手动选择共同主持人：选择选项
+manual_mods_default_info#:#如果您希望课程和小组管理员以及课程导师自动成为“联合主持人”或“联合主讲人”，请禁用此选项。如果启用此选项，则可以通过 MultiVc 对象上显示的选项卡手动分配“联合主持人”或“联合主讲人”。
+manual_mods_default#:#手动选择共同主持人：默认设置
+manual_mods_info_zoom#:#如果您希望课程和小组管理员以及课程导师自动成为联席主持人，请禁用此选项。启用此选项后，您可以使用随后出现的选项卡手动指定联席主持人。
+manual_mods_zoom#:#手动选择共同主持人
 max_duration#:#最长持续时间
 max_meetings#:#会议室最大数量
 max_participants#:#最多参与人数
 max_users#:#用户数量上限
-meeting_collision#:#发生错误。您请求的时间段内已有会话安排。
+meeting_collision#:#发生错误。您请求的时间段内已安排了会议。
 meeting#:#会议
 meeting_end#:#会议结束
-meeting_related_successful#:#会议已成功安排
-meeting_running#:#虚拟会议室已上线。
+meeting_related_successful#:#会议成功相关
+meeting_running#:#虚拟会议室已启动。
 meeting_start#:#会议开始
-member_btn_fileupload_choose#:#允许所有人上传文件：选项
-member_btn_fileupload_choose_info#:#如果具有写入权限的用户应该在“设置”下拥有“允许所有人上传文件”选项，请启用此选项。
-member_btn_fileupload#:#允许所有人上传文件
-member_btn_fileupload_default#:#允许所有人上传文件：默认设置
+meetings_list_downloaded#:#现有会议和网络研讨会已成功整合
+member_btn_fileupload_choose#:#允许任何人上传文件：选择选项
+member_btn_fileupload_choose_info#:#如果您希望具有写入权限的用户在“设置”下拥有“允许任何人上传文件”选项，请启用此选项。
+member_btn_fileupload#:#允许任何人上传文件
+member_btn_fileupload_default#:#允许任何人上传文件：默认设置
 member_btn_fileupload_default_info#:#此选项通常应禁用。
-member_btn_fileupload_info#:#只有当除了具有扩展权限的人员（例如管理员、辅导员等）之外，其他人员也应该能够上传文件时，才启用此选项。
+member_btn_fileupload_info#:#仅当除了具有扩展权限的人员（例如管理员、导师）之外，其他人员也应该能够上传文件时，才激活此选项。
 modal_delete_scheduled_meeting_accept#:#删除会议
-modal_delete_scheduled_meeting_title#:#您确定要删除此会议吗？
+modal_delete_scheduled_meeting_title#:#你真的要删除这个会议吗？
 modal_delete_scheduled_webinar_accept#:#删除网络研讨会
-modal_delete_scheduled_webinar_title#:#您真的要删除本次网络研讨会吗？
+modal_delete_scheduled_webinar_title#:#您确定要删除本次网络研讨会吗？
 modal_details_scheduled_meeting_title#:#会议详情（Webex 回复正文）
 modal_details_scheduled_webinar_title#:#网络研讨会详情（edudip 回复主体）
-moderated_choose_info#:#如果具有写入权限的用户应该能够在“设置”中选择“受管理的房间”，则启用此选项。
-moderated_choose#:#受控空间：选择选项
-moderated_default_info#:#如果您想创建新的房间作为管理房间，请启用此选项。
+moderated_choose_info#:#如果您希望具有写入权限的用户在“设置”中选择“已审核房间”，请启用此选项。
+moderated_choose#:#主持房间：选择选项
+moderated_default_info#:#如果需要创建新的房间并启用管理功能，请激活此选项。
 moderated_default_zoom_info#:#如果需要创建新的房间作为“网络研讨会”，请启用此选项。
-moderated_default#:#已管理房间：默认设置
-moderated_info#:#在设有管理员权限的空间中，管理员拥有更高的权限。其他用户对虚拟空间的访问权限则受到限制。管理员包括所有可以编辑对象属性的用户，以及群组管理员、课程管理员和课程导师。
-moderated_teams_info#:#在受监管的空间中，对象创建者以及群组管理员、课程管理员和课程导师拥有更多权限：他们可以分享和传输内容，并决定是否允许其他人加入。在不受监管的空间中，任何人都可以加入并分享或传输内容，无需确认。
+moderated_default#:#已审核房间：默认设置
+moderated_info#:#在设有管理员权限的房间中，拥有管理员权限的用户享有更高的权限。其他用户则拥有有限的访问权限。拥有管理员权限的用户包括所有可以编辑房间属性的用户，以及群组管理员、课程管理员和课程导师。
+moderated_teams_info#:#在有管理员的聊天室中，主题创建者以及群组管理员、课程管理员和课程导师拥有更多权限：他们可以分享内容并决定其他人是否可以加入。在无管理员的聊天室中，任何人都可以分享内容并加入，无需确认。
 moderated_zoom_info#:#此虚拟空间仅用于网络研讨会，而非会议。请确保您的 Zoom 帐户拥有创建网络研讨会的权限。基础帐户甚至免费帐户均不具备此权限。
-moderated#:#管理空间
-moderated_webex#:#提示：在非管理员控制的聊天室中，参与者不会被匿名化。因此，只有拥有有效 Webex 帐户的用户才能加入。
+moderated#:#管理房间
+moderated_webex#:#<b>提示：</b>在非管理员房间中，加入者不会被匿名化。因此，只有拥有相应 Webex 帐户的用户才能加入。
 moderated_zoom#:#网络研讨会
 moderator#:#主持人
+moderators_info_zoom#:#请确保选定的参与者在 Zoom 中拥有必要的权限。
+moderators_zoom#:#联合主持人
 msg_obj_deleted#:#录音已被删除。
-notification_sending#:#通知正在发送中……
+notification_sending#:#已发送通知……
 notification_sent#:#通知已成功发送。
-obj_ids_special_info#:#极少需要！请在此处输入与课程关联的房间的 ILIAS 对象 ID（以逗号分隔，因此每个房间的 ID 都相同），这些房间需要针对每个课程单独管理。对象 ID 会显示在对象设置中。“特殊房间”选项在需要集中管理多个房间的设置时非常有用，例如，需要逐步启用更多功能。
+obj_ids_special_info#:#仅在极少数情况下需要！请输入与课程关联的房间的 ILIAS 对象 ID（因此始终使用相同的对象 ID），以逗号分隔。对象 ID 会显示在对象设置中。如果需要集中设置多个房间以便依次启用其他功能，则“特殊房间”选项非常有用。
 obj_ids_special#:#特殊房间
 objs_xmvc_duplicate#:#复制虚拟会议室
 objs_xmvc#:#虚拟会议室
@@ -262,45 +271,46 @@ obj_xmvc_duplicate#:#复制
 obj_xmvc_select#:#选择虚拟会议室
 obj_xmvc#:#虚拟会议室
 offline#:#离线
-of_owner_prefix#:#由业主
-om_svr_public_port#:#OpenMeeting 服务器端口
-om_svr_public_url#:#OpenMeeting服务器的URL
+of_owner_prefix#:#所有者
+om_svr_public_port#:#Openmeeting 服务器端口
+om_svr_public_url#:#Openmeeting服务器的URL
 om_svr_username#:#SOAP 用户名
-om_svr_userpass#:#SOAP密码
-overview_uses#:#用途概述
-owners_email_not_unique#:#所有者的电子邮件地址并非唯一，每个 ILIAS 用户只能分配一个。
-playback#:#播放录音
+om_svr_userpass#:#SOAP 密码
+overview_uses#:#概述用途
+owners_email_not_unique#:#所有者的电子邮件地址并非唯一。每个 ILIAS 用户只能分配一次此电子邮件地址。
+playback#:#播放视频
 plugin_configuration#:#配置
-private_chat_choose_info#:#如果具有写入权限的用户应该在“设置”中看到“允许私聊”选项，请启用此选项。
+private_chat_choose_info#:#如果您希望具有写入权限的用户在“设置”中选择“允许私聊”，请启用此选项。
 private_chat_choose#:#允许私聊：选择选项
-private_chat_default_info#:#启用此功能后，即使没有管理员权限的用户也可以进行私聊。拥有管理员权限的用户无法查看这些聊天记录。由于管理员可以随时终止私聊，因此在大多数情况下应启用此选项。
+private_chat_default_info#:#启用此功能后，即使没有管理员权限的用户也可以进行私聊。拥有管理员权限的用户看不到这些聊天记录。由于拥有管理员权限的用户随时可以阻止私聊，因此大多数情况下都应该启用此选项。
 private_chat_default#:#允许私聊：默认设置
-private_chat_info#:#即使没有管理员权限的用户也可以进行私聊。
+private_chat_info#:#即使没有管理员权限，用户之间也可以进行私聊。
 private_chat#:#允许私聊
-properties#:#特征
-protected#:#受保护空间
-pub_recs#:#立即发布录音
+properties#:#设置
+protected#:#受保护房间
+pub_recs#:#立即发布录音。
 pub_recs_choose#:#立即发布录音：选择选项
-pub_recs_choose_info#:#如果具有写入权限的用户应该在“设置”下看到“立即共享录制内容”选项，请启用此选项。
+pub_recs_choose_info#:#如果希望具有写入权限的用户在设置中拥有“立即发布录制内容”选项，请启用此选项。
 pub_recs_default#:#立即发布录音：默认设置
-pub_recs_default_for_object#:#录音将立即提供给参与者。
+pub_recs_default_for_object#:#录音会立即提供给参与者。
 pub_recs_default_info#:#如果录制内容应始终立即发布，或者应为新对象启用“立即发布录制内容”选项，请启用此选项。
-pub_recs_info#:#如果选择此功能，会议结束后将立即发布会议录像。在会议页面的概览中，您可以选择锁定或解锁录像。
+pub_recs_info#:#如果选择此功能，会议录像将在会议结束后立即发布。您可以在会议页面的概览中锁定或解锁录像。
 rbac_create_xmvc#:#创建虚拟会议室
-rec_hidden#:#参与者无法看到此录像。
-recording#:#记录
-recording_autostart#:#录制将从头开始自动进行。ILIAS 用户将会收到相应的通知。
+rec_hidden#:#参与者无法查看此录像。
+recording#:#录音
+recording_autostart#:#录制功能会在开始时自动启动。ILIAS 用户将会收到相关通知。
 recording_choose#:#允许录制：选择选项
-recording_choose_info#:#如果希望拥有写入权限的用户能够在设置中启用“允许录制”选项，请启用此选项。由于录制 URL 可能被泄露给未经授权的人员，因此通常不应启用此选项。
+recording_choose_info#:#如果您希望拥有写入权限的用户在“设置”中选择“允许录制”，请启用此选项。由于录制文件的 URL 可能会被分发给非预期人员，因此在大多数情况下不应启用此选项。
+recording_choose_info_bbb#:#如果希望拥有写入权限的用户在“设置”中拥有“允许录制”选项，请启用此选项。由于泄露录制 URL 可能会使录制内容被未经授权的人员访问，因此在大多数情况下不应启用此选项。
 recording_default#:#允许录制：默认设置
-recording_default_info#:#大多数情况下应该禁用此选项，以防止人们在虚拟空间中使用录制功能。
+recording_default_info#:#大多数情况下应该禁用此选项，以防止用户在虚拟房间中使用录制功能。
 recording_info#:#会议可以录制。
-recording_only_for_moderated_rooms#:#仅在指定房间内录音
+recording_only_for_moderated_rooms#:#仅在受监管的房间内录制
 recording_only_for_moderated_rooms_default#:#仅在指定房间内录音
-recording_only_for_moderated_rooms_default_info#:#大多数情况下应启用此选项。此选项仅在普遍允许录制的情况下适用。
-recording_only_for_moderated_rooms_info#:#只有在设有管理员权限的房间内，拥有管理员权限的用户才能开始录制。
-recording_warning#:#本次会议已启用录制功能！通过积极使用聊天系统、开启个人麦克风/摄像头和/或共享屏幕内容，即表示我同意此信息被录制并存储以供日后使用。
-recs_locked#:#录音已被阻止
+recording_only_for_moderated_rooms_default_info#:#大多数情况下应启用此选项。此选项仅在普遍允许录制的情况下使用。
+recording_only_for_moderated_rooms_info#:#只有在设有管理员权限的房间内，拥有管理员权限的人员才能开始录制。
+recording_warning#:#本次会议已启用录制功能！通过积极使用聊天系统、开启个人麦克风/摄像头和/或共享屏幕内容，我同意这些信息将在录制过程中被采集并存储以供日后使用。
+recs_locked#:#录音已锁定
 recs_published#:#录音已发布
 recurrence_#:#-
 recurrence_daily#:#日常的
@@ -308,185 +318,202 @@ recurrence_monthly#:#月度
 recurrence_weekly#:#每周
 recurrence_yearly#:#每年
 rec_visible#:#参与者可以看到这段录像。
-references#:#链接
-related_meeting#:#已分配
+references#:#参考
+related_meeting#:#有关的
 related_webinar#:#已分配
-relate_meeting#:#分配
+relate_meeting#:#有关的
 relate_webinar#:#分配
 report_log_max#:#使用概述（BBB）
-require_schedule_new_meeting#:#您可以安排会议，并在预定的时间段内开始会议。
+require_schedule_new_meeting#:#您可以创建会议，并在预定的时间段内开始会议。
 require_schedule_new_meeting_zoom#:#您可以创建会议。
 require_schedule_new_webinar#:#您可以创建网络研讨会，并在预定的时间段内开始举办。
-reset_authorization#:#撤销授权
-reseted_tokens#:#代币重置
+require_schedule_new_webinar_zoom#:#您可以创建网络研讨会
+reset_authorization#:#取消授权
+reseted_tokens#:#代币已重置
 root_create_xmvc#:#创建虚拟会议室
 saving_invoked#:#设置已保存
 scheduled_meeting_agenda#:#议程
-scheduled_meeting_both_data_sources#:#全部
+scheduled_meeting_both_data_sources#:#通过 Webex 分配和创建
 scheduled_meeting_create_btn#:#创建会议
 scheduled_meeting_created#:#已创建预定会议
-scheduled_meeting_create#:#创建预定会议
+scheduled_meeting_create#:#创建已安排的会议
 scheduled_meeting_data_source#:#会议
 scheduled_meeting_delete_btn#:#删除会议
-scheduled_meeting_deleted#:#会议已删除
-scheduled_meeting_duration#:#时期
-scheduled_meeting_local_data_sources#:#分配
+scheduled_meeting_deleted#:#删除的会议
+scheduled_meeting_duration#:#一段时间
+scheduled_meeting_local_data_sources#:#指定课程
 scheduled_meeting_not_deleted#:#会议未删除
-scheduled_meeting_overview#:#计划会议概述
-scheduled_meeting_recurrence#:#重复
-scheduled_meetings#:#计划会议
-scheduled_meeting_state#:#地位
-scheduled_meeting_time_ahead#:#会议提前时间
-scheduled_meeting_update_btn#:#最新情况会议
+scheduled_meeting_overview#:#会议安排概览
+scheduled_meeting_recurrence#:#复发
+scheduled_meetings#:#已安排的会议
+scheduled_meeting_state#:#状态
+scheduled_meeting_time_ahead#:#会议准备时间
+scheduled_meeting_update_btn#:#最新会议
 scheduled_meeting_update#:#更新会议安排
+scheduled_meeting_updated#:#已更新预定会议
 scheduled_webinar_agenda#:#议程
 scheduled_webinar_both_data_sources#:#全部
-scheduled_webinar_create_btn#:#创建网络研讨会
-scheduled_webinar_created#:#已创建计划网络研讨会
-scheduled_webinar_create#:#创建网络研讨会（请提供一个独特的标题）
+scheduled_webinar_create_btn#:#创建已安排的网络研讨会
+scheduled_webinar_created#:#已创建预定网络研讨会
+scheduled_webinar_create#:#创建网络研讨会（请指定一个独特的标题）
 scheduled_webinar_data_source#:#网络研讨会
 scheduled_webinar_delete_btn#:#删除网络研讨会
 scheduled_webinar_deleted#:#网络研讨会已删除
-scheduled_webinar_duration#:#时期
+scheduled_webinar_duration#:#时间段
 scheduled_webinar_local_data_sources#:#分配
 scheduled_webinar_not_deleted#:#网络研讨会未被删除
 scheduled_webinar_overview#:#计划网络研讨会概述
 scheduled_webinar_recurrence#:#重复
-scheduled_webinars#:#计划中的网络研讨会
+scheduled_webinars#:#已安排的网络研讨会
 scheduled_webinar_state#:#地位
 scheduled_webinar_time_ahead#:#网络研讨会准备时间
 scheduled_webinar_update_btn#:#更新网络研讨会
-scheduled_webinar_update#:#更新计划中的网络研讨会
-schedule_meeting_duration_less_time#:#会议最短时长为10分钟。请据此调整您的填写内容。
+scheduled_webinar_update#:#更新已安排的网络研讨会
+schedule_meeting_duration_less_time#:#会议最短时长为10分钟。请据此修改您的输入内容。
 schedule_meeting_error#:#发生错误，请检查您的输入内容。
-schedule_webinar_duration_less_time#:#网络研讨会的最短时长为10分钟。请据此调整您的报名时长。
+schedule_webinar_duration_less_time#:#网络研讨会的最短时长为10分钟。请据此修改您的输入内容。
 schedule_webinar_error#:#发生错误，请检查您的输入内容。
 select#:#选择
-service_unavailable#:#暂停服务
-sess_owner_changed#:#身份验证方式已更改。
+service_unavailable#:#服务不可用
+sess_owner_changed#:#身份验证方式已更改
 showcontent#:#WebRTC平台
-show_hint_pub_recs_info#:#会议页面上会向用户显示禁止共享录制链接的警告。如果您不希望显示此警告，请启用此选项。
+show_hint_pub_recs_info#:#会议页面上会向用户显示禁止共享录制链接的提示。如果不想显示此提示，请选中此选项。
 show_hint_pub_recs#:#允许共享录制链接
-start_time#:#开始
+start_time#:#会议开始时间
 starttime#:#开始时间
-start_window#:#在新窗口中打开虚拟会议室
+start_window#:#在新窗口中启动虚拟会议室
 state_active#:#积极的
 state_inprogress#:#跑步
 state_ready#:#准备好
 status#:#地位
 subject_crs#:#课程 {PARENT_TITLE} 中的 {MEETING_TITLE}
-subject_fld#:#{MEETING_TITLE} 在 {PARENT_TITLE} 文件夹中
-subject_grp#:#组 {PARENT_TITLE} 中的 {MEETING_TITLE}
+subject_fld#:#文件夹 {PARENT_TITLE} 中的 {MEETING_TITLE}
+subject_grp#:#会议标题 (MEETING_TITLE) 属于 {PARENT_TITLE} 组
 svr_private_port#:#BBB服务器的私有端口
 svr_private_url#:#BBB服务器的私有URL
 svr_public_port#:#BBB服务器的公共端口
 svr_public_url#:#BBB服务器的公共URL
-svr_salt#:#BBB服务器密码（密钥）
+svr_salt#:#BBB服务器的密码（密钥）
 sysadmin_perm_choose_all#:#作为管理员，您可以编辑此对象的所有属性。
-tab_close#:#请立即关闭此窗口或标签页。
+tab_close#:#请关闭此窗口或标签页。
 teams_client_id#:#客户ID
-teams_client_id_info#:#请在此处输入应用程序 ID / 客户端 ID。
+teams_client_id_info#:#请在此处添加客户端 ID。
 teams_client_secret#:#客户机密
-teams_client_secret_info#:#在 Entra 中为 MultiVc 创建的应用程序创建密钥后，您可以立即复制密钥的值并将其输入到此处。
+teams_client_secret_info#:#在此处添加客户端密钥。
 teams_join_links#:#您可以直接点击此处加入：{br}{JOIN_URL}{br}&nbsp;{br}或者点击：{PERMANENT_LINK}
-teams_lobbybypass#:#绕行候车区
-teams_lobbybypass_choose#:#绕过等候区：可选择
-teams_lobbybypass_choose_info#:#如果希望拥有写入权限的用户能够在设置中选择“绕过等候室”，请启用此选项。此选项控制哪些用户会被安排在等候室/会议大厅。
-teams_lobbybypass_default#:#绕过等候区：默认设置
-teams_lobbybypass_everyone#:#所有人都可以进入会场，无需在等候区等候。
-teams_lobbybypass_invited#:#只有受邀人员才能进入会场，无需经过等候区。
-teams_lobbybypass_organizer#:#参与者将在等候区就座。管理人员和后勤人员将绕过等候区。
-teams_meetings_list_downloaded#:#已成功将现有在线会议集成到 Teams 中。
-teams_tenant_id_info#:#在此处输入租户 ID。别名：目录 ID（客户端）。
+teams_lobbybypass#:#绕过会议大厅
+teams_lobbybypass_choose#:#绕过会议大厅：选择选项
+teams_lobbybypass_choose_info#:#如果具有写入权限的用户应该在“设置”中选择“绕过会议大厅”，请激活此选项。
+teams_lobbybypass_default#:#绕过会议大厅：默认设置
+teams_lobbybypass_everyone#:#所有参会人员均可进入会议室。无需在会议大厅等候。
+teams_lobbybypass_invited#:#只有受邀人员才能进入会议室。所有其他参与者都被安排在会议大厅。
+teams_lobbybypass_organizer#:#参会人员被安排在会议大厅。管理人员和辅导员则无需进入会议大厅。
+teams_meetings_list_downloaded#:#会议已成功从 Teams 下载。
+teams_tenant_id_info#:#在此处添加租户 ID。
 teams_tenant_id#:#租户 ID
-terms_of_use#:#<b>知识产权</b>{br}BigBlueButton 会议中包含的信息和材料，例如文本或图像，通常受版权、商标或专利权保护。{br}必须遵守数据保护法规。这尤其适用于 BigBlueButton 会议的录制。秘密录制视频或音频会议属于刑事犯罪。{br}{br}<b>行为准则</b>{br}您不得发布任何违反法律规定、色情、淫秽、诽谤、侮辱、威胁、煽动仇恨或种族主义的内容。未经授权发布广告以及传播包含病毒、篡改或其他类似有害元素的信息也是被禁止的。使用 BigBlueButton 时，系统会收集以下数据：连接数据（例如，IP 地址、浏览器类型、访问日期和时间）；访问数据（如适用）：用户名、加密形式的密码；内容数据（例如，上传的文件、聊天记录、调查问卷）。系统会临时存储连接数据，特别是 IP 地址，以便将 BigBlueButton 服务交付到用户的计算机。为此，用户的 IP 地址必须在会话期间存储。临时存储数据的法律依据是 GDPR 第 6 条第 1 款 (f) 项。连接数据通常也会存储在日志文件中。日志文件的删除时间由 BigBlueButton 服务器的运营商决定。
+terms_of_use#:#<b>知识产权</b>{br}BigBlueButton 会议中包含的信息和材料，例如文本或图像，通常受版权、商标或专利权保护。{br}必须遵守数据保护法。这尤其适用于 BigBlueButton 会议的录音。秘密录制视频或音频会议属于刑事犯罪。{br}{br}<b>行为准则</b>{br}您不得发布违反法律规定的内容，或发布色情、淫秽、诽谤、侮辱、威胁、煽动仇恨或种族主义的内容。未经许可发布广告以及传输包含病毒、篡改或其他类似有害元素的信息也是被禁止的。{br}{br}<b>处理的数据</b>{br}使用 BigBlueButton 时，系统会收集以下数据：<ul><li>连接数据（例如 IP 地址、浏览器类型、访问日期和时间）</li><li>如适用，访问数据：加密形式的用户名和密码</li><li>内容数据（例如上传的文件、聊天消息和调查问卷）</li></ul>系统临时存储连接数据（特别是 IP 地址）是向用户计算机提供 BigBlueButton 的必要条件。因此，用户的 IP 地址必须在会话期间保持存储。临时存储此数据的法律依据是 GDPR 第 6 条第 1 款 (f) 项。{br}连接数据通常也会存储在日志文件中。日志文件的删除时间由 BigBlueButton 服务器的运营商决定。
 title#:#标题
 token_deleted#:#令牌已删除
 token_not_deleted#:#令牌未删除
-token_not_stored#:#令牌未保存
+token_not_stored#:#令牌未存储
 token_stored#:#已存储的令牌
-unlocked_by#:#发布者
-unlock#:#发布
+unlocked_by#:#解锁
+unlock#:#开锁
 untrashed_usages#:#使用次数
-url_info#:#您也可以在此处输入相对路径（例如，/webconference）。请勿在路径末尾添加“/”。
+url_info#:#您也可以在此处输入相对路径（例如：/webconference）。请勿在末尾输入“/”。
 url#:#URL
-usage#:#占用
-user_end#:#最后一次出发
-user_invite_info#:#您可以使用以下链接邀请嘉宾参加会议：
+usage#:#用法
+user_end#:#最后离开
+user_invite_info#:#您可以通过以下链接邀请嘉宾参加会议：
 user_log#:#用户概览
-user_log_bbb#:#用户概览（BBB/Teams/Zoom）
-user_log_duration#:#记录期
+user_log_bbb#:#用户概览（BBB/团队）
+user_log_duration#:#捕获期
 user_percent#:#百分比
+user_rel_span#:#相关时间
 user_results#:#出勤时间
-user_results_desc#:#仅显示已结束会议的时间。会议必须已达到预定的结束时间。
+user_results_desc#:#仅显示已结束会议的时间。会议还必须达到预定结束时间。
 user_start#:#首次启动
 user_time#:#出勤时间
-wait_join_meeting#:#<b>目前，虚拟会议室中没有具有主持人权限的用户。<br/>请稍等片刻，一分钟后再查看。</b>
-wait_join_meeting_edudip#:#您目前无法参加任何网络研讨会。
-wait_join_meeting_guest#:#<b>目前，虚拟会议室中没有具有主持人权限的用户。<br/>请稍等片刻，一分钟后再次点击“加入会议”按钮。</b>
-wait_join_meeting_teams#:#您目前无法加入会议。如果显示已安排的会议，请在会议开始前最多 15 分钟刷新此页面以加入。
-wait_join_meeting_webex#:#您目前无法加入会议。会议可能尚未开始或已经结束。请刷新此页面以查看会议状态。
-wait_join_meeting_zoom#:#您目前无法加入会议。如果显示已安排的会议，请在会议开始前最多 15 分钟刷新此页面以加入。
-wait_join_webinar#:#<b>目前还没有人开始网络研讨会。<br/>请稍等片刻，一分钟后再查看。</b>
+wait_join_meeting#:#<b>目前虚拟会议室中没有具有主持人权限的人员。<br/>请稍等片刻，一分钟后再访问此页面。</b>
+wait_join_meeting_edudip#:#目前您无法参加任何网络研讨会。
+wait_join_meeting_guest#:#<b>目前虚拟会议室中没有具有主持人权限的用户。<br/>请稍等片刻，一分钟后再次点击“加入会议”。</b>
+wait_join_meeting_teams#:#您目前无法加入任何会议。会议可能尚未开始或已经结束。{br}如有必要，请更新此页面以查看会议状态。
+wait_join_meeting_webex#:#您目前无法加入任何会议。会议可能尚未开始或已经结束。{br}如有必要，请更新此页面以查看会议状态。
+wait_join_meeting_zoom#:#您目前无法加入会议。{br}如果显示了已安排的会议，请在会议开始前最多 15 分钟刷新此页面以加入会议。
+wait_join_webinar#:#<b>目前还没有人开始网络研讨会。<br/>请稍等片刻，稍后再访问此页面。</b>
 webex_client_id#:#Webex 集成客户端 ID
-webex_client_secret#:#Webex 集成客户端密钥
-webex_host_email_hidden_info#:#用于授权的电子邮件地址仅对对象的拥有者和管理员可见。
+webex_client_secret#:#Webex集成客户端密钥。
+webex_host_email_hidden_info#:#用于授权的电子邮件地址仅对对象的拥有者和管理员显示。
 webex_host_email_info#:#Webex 或托管网站已知的电子邮件地址
-webex_host_email#:#Webex Host 电子邮件地址
-webex_integration_auth_info#:#您可以授权访问您的 Webex 帐户。这是使用 MultiVC 插件创建、检索和启动 Webex 会议所必需的。
-webex_logout_user_choose#:#允许从 Webex 注销：选项
-webex_logout_user_choose_info#:#已登录Webex的用户应在加入会议前先退出Webex。
-webex_logout_user_default#:#退出 Webex：默认设置
-webex_logout_user_default_info#:#已登录 Webex 的用户必须先退出 Webex 才能加入会议。
-webex_meetings_list_downloaded#:#已成功下载现有 Webex 会议。
+webex_host_email#:#Webex 主持人电子邮件地址
+webex_integration_auth_info#:#Webex 用户可以通过授权允许他人访问他们的帐户。
+webex_logout_user_choose#:#允许从 Webex 注销：选择选项
+webex_logout_user_choose_info#:#允许已登录 Webex 的用户在加入会议前先注销。
+webex_logout_user_default#:#从 Webex 注销：默认
+webex_logout_user_default_info#:#加入会议前，务必先注销已登录 Webex 的用户。
+webex_meetings_list_downloaded#:#会议已成功从 Webex 下载。
 webex_redirect_uri#:#重定向 URI
 webex_site_url#:#Webex 站点 URL
-webex_user_choose_logout#:#用户决定
-webex_user_do_logout#:#退出登录
-webex_user_do_not_logout#:#请勿登出
-webex_user_logout#:#退出 Webex
-webinar_collision#:#发生错误。您请求的时间已经安排了网络研讨会。
-webinar_event_created#:#网络研讨会已创建
+webex_user_choose_logout#:#用户选择
+webex_user_do_logout#:#注销
+webex_user_do_not_logout#:#未登出
+webex_user_logout#:#从 Webex 注销
+webinar_collision#:#发生错误。您请求的时间段内已安排了网络研讨会。
+webinar_event_created#:#网络研讨会创建
 webinar_event_deleted#:#网络研讨会已删除
-webinar_notification_body#:#您好 {NAME}，{NL}{NL}，以下 {EVENT} 已创建：{NL}{NL}{SUBJECTNLDATERANGENLLINKNLNL}此致，{NLNLFROM}
-webinar_notification_from#:#伊利亚德
+webinar_notification_body#:#您好 {NAME}，{NL}{NL}，以下是 {EVENT}：{NL}{NL}{SUBJECTNLDATERANGENLLINKNLNL}，谨致问候，{NLNLFROM}
+webinar_notification_from#:#伊利亚斯
 webinar_notification_subject#:#事件：主题
 webinar_related_successful#:#网络研讨会已成功分配
 webinar_running#:#网络研讨会已经开始。
 webinar#:#网络研讨会
-welcome_text#:#欢迎{br}进入虚拟会议室{br}<b>{会议标题}</b>{br}{br}如果您在屏幕下方看到一个带斜线的扬声器图标，则其他人将听不到您的声音，您自己也听不到任何声音。点击带斜线的扬声器图标即可启动音频连接。{br}请使用耳机以避免背景噪音和回声。
-window_closed#:#虚拟会议室已结束。
+welcome_text#:#欢迎{br}进入虚拟会议室{br}<b>{会议标题}</b>{br}{br}点击扬声器按钮加入音频会议。{br}请使用耳机，以免给他人造成背景噪音。
+window_closed#:#虚拟会议室已关闭。
 window_close#:#关闭窗口
-window_started#:#虚拟会议室已在新窗口中打开。
-with_chat_choose_info#:#如果具有写入权限的用户应该在“设置”下看到“开始聊天”选项，请启用此选项。
-with_chat_choose#:#开始聊天：选择选项
-with_chat_default_info#:#一般情况下应该启用此功能，尤其是在有管理员的聊天室中。
-with_chat_default#:#从聊天开始：默认设置
-with_chat_info#:#应该启用此选项，尤其是在有管理员的聊天室中。这样聊天室就变成了“等候室”。
-with_chat#:#先聊天
+window_started#:#虚拟会议室在新窗口中打开。
+with_chat_choose_info#:#如果您希望具有写入权限的用户在“设置”中选择“开始聊天”，请启用此选项。
+with_chat_choose#:#先聊天：选项
+with_chat_default_info#:#通常应该启用——尤其是在有管理员的房间里。
+with_chat_default#:#开始聊天：默认设置
+with_chat_info#:#尤其是在设有管理员的聊天室中，应该启用此选项。聊天室将变成一个“等候室”。
+with_chat#:#开始聊天
 xmvc_add#:#添加虚拟会议室
 xmvc_copy#:#复制虚拟会议室
 xmvc_delete#:#删除虚拟会议室
 xmvc_edit_learning_progress#:#编辑学习进度设置
 xmvc_edit_permission#:#更改权限
 xmvc_new#:#新增虚拟会议室
-xmvc_read#:#阅读权限：可以参与虚拟会议室会议
+xmvc_read#:#阅读：可以参加虚拟会议室会议
 xmvc_read_learning_progress#:#查看其他用户的学习进度
-xmvc_visible#:#显示：虚拟会议室可见
+xmvc_visible#:#可见：虚拟会议室可见
 xmvc_write#:#编辑设置
 zoom_account_id#:#Zoom 帐户 ID
 zoom_account_info#:#您可以从 https://developers.zoom.us/docs/internal-apps/create/ 获取 Zoom 帐户 ID、客户端 ID 和客户端密钥。您需要创建一个服务器到服务器的 OAuth 应用。
+zoom_approval_choose#:#注册/身份验证：选择选项
+zoom_approval_choose_info#:#通常情况下，注册时不会使用个性化访问链接。
+zoom_approval_default#:#注册/身份验证：默认设置
+zoom_approval_type#:#注册/身份验证
+zoom_approval_0#:#自动批准：访问链接将通过电子邮件发送。
+zoom_approval_1#:#人工审核：主持人审核并批准参与者后，才会向其发送访问链接。
+zoom_approval_2#:#无需注册。不会生成个性化访问链接。
+zoom_approval_3#:#无需注册，但需要身份验证。始终需要 Zoom 帐户。
 zoom_client_id#:#Zoom客户端ID
 zoom_client_secret#:#Zoom客户端密钥
+zoom_err_scopes#:#创建会议缺少以下权限：
 zoom_err_scopes_webinar#:#您没有创建网络研讨会的权限。可以创建会议。缺少以下权限：
 zoom_exist_meetings#:#本次会议的日期已经确定。
 zoom_exist_webinars#:#本次网络研讨会的日期已经确定。
+zoom_host_email_hidden_info#:#用于授权的电子邮件地址仅对对象的拥有者和管理员可见。
+zoom_host_email_info#:#与 Zoom 关联的电子邮件地址
+zoom_host_email#:#Zoom 主持人电子邮件地址
 zoom_lobby#:#会议等候室
-zoom_lobby_choose#:#候诊室：多种选择
+zoom_lobby_choose#:#会议室等候室：选择选项
 zoom_lobby_choose_info#:#如果希望拥有写入权限的用户在设置中拥有“等候室”选项，请启用此选项。此选项控制哪些用户会被放入等候室。
-zoom_lobby_default#:#候诊室：默认设置
+zoom_lobby_default#:#会议室等候室：默认设置
 zoom_lobby_0#:#无需在等候室等候。等候室已关闭。参会者可在会议开始前15分钟进入。
 zoom_lobby_1#:#所有人都要去候诊室。
 zoom_lobby_2#:#非您账户用户必须进入等候室。
 zoom_lobby_3#:#非本账户用户或非授权域名用户必须进入等候室。
 zoom_lobby_4#:#未参加课程或小组的用户必须前往等候室。
+zoom_rec_only_for_webinars_default#:#仅网络研讨会录制。
+zoom_rec_only_for_webinars_default_info#:#如果启用此选项，会议中将无法自动录制。大多数情况下应启用此选项。此选项仅在普遍允许录制的情况下生效。

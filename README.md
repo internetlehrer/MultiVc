@@ -4,16 +4,16 @@
 
 ## Über
 
-Dieses [ILIAS](https://www.ilias.de) Plugin ermöglicht die Verwendung verschiedener WebRTC-basierter Plattformen für virtuelle Klassenzimmer und Konferenzsysteme.
+Dieses [ILIAS](https://www.ilias.de) Plugin ermöglicht die Verwendung verschiedener Plattformen für virtuelle Klassenzimmer und Konferenzsysteme.
 
 Für die ILIAS-Version 10 nutzen Sie bitte den branch 'release10'. S. https://github.com/internetlehrer/MultiVc/tree/release10
 
 ## Features
 
-- bestimmen Sie, welche WebRTC-basierten Systeme in der Plugin-Kofiguration zur Verfügung stehen
-- erstellen Sie multiple WebRTC-Plattform-Konfigurationen, die dann in MultiVc-Objekten zur Auswahl stehen 
-- weisen Sie den WebRTC-Plattform-Konfigurationen globale und lokale Benutzerrollen zu und steuern Sie, wer welche Plattform-Konfigurationen nutzen darf
-- bestimmen Sie, welche Nutzer WebRTC-Sitzungen in Kursen und Gruppen starten dürfen (Benutzerrollen-basierte Moderatorfunktion) 
+- bestimmen Sie, welche Webkonferenz-Systeme in der Plugin-Kofiguration zur Verfügung stehen
+- erstellen Sie multiple Plattform-Konfigurationen, die dann in MultiVc-Objekten zur Auswahl stehen 
+- weisen Sie den Plattform-Konfigurationen globale und lokale Benutzerrollen zu und steuern Sie, wer welche Plattform-Konfigurationen nutzen darf
+- bestimmen Sie, welche Nutzer Sitzungen in Kursen und Gruppen starten dürfen (Benutzerrollen-basierte Moderatorfunktion) 
 
 Viele weitere Plattformabhängige Features stehen zur Verfügung, wie beispielsweise Aufzeichnungen und Terminplanung.
 
@@ -30,7 +30,7 @@ Wir empfehlen die Nutzung des MultiVc-Plugin mit ILIAS Release 10. Die Mindestvo
 - ILIAS 10.x
 - PHP 8.2, 8.3
 
-Des Weiteren benötigen Sie eine funktionsfähige Installation der gewünschten WebRTC Plattform bzw. ein Kundenkonto beim WebRTC Provider.
+Des Weiteren benötigen Sie eine funktionsfähige Installation des gewünschten Webkonferenz-Systems bzw. ein Kundenkonto beim Provider des Webkonferenz-Systems.
 
 
 
@@ -46,16 +46,16 @@ Des Weiteren benötigen Sie eine funktionsfähige Installation der gewünschten 
 
 - Geben Sie nun ein: `php cli/setup.php update`
 
-- Melden Sie sich auf Ihrer ILIAS-Installation als Administrator an und wählen Sie im Menü `Administration / Plugins`. In der Plugin-Übersicht finden Sie den Eintrag MultiVc. Führen Sie über dessen Dropdown-Menü folgende Aktionen aus:
+- Melden Sie sich auf Ihrer ILIAS-Installation als Administrator an und wählen Sie im Menü `Administration / ILIAS erweitern / Plugins`. In der Plugin-Übersicht finden Sie den Eintrag MultiVc. Führen Sie über dessen Dropdown-Menü folgende Aktionen aus:
   - Installieren
   - Aktivieren
   - Konfigurieren
-- Mit einem Klick auf den Button "Neuen Meeting-Typ definieren", können Sie Ihre gewünschten WebRTC-Plattform-Konfigurationen anlegen.
+- Mit einem Klick auf den Button "Neuen Meeting-Typ definieren", können Sie Ihre gewünschten Plattform-Konfigurationen anlegen.
 
 
 
-# Unterstützte WebRTC-Platformen
-Aktuell werden folgende WebRTC-Platformen unterstützt:
+# Unterstützte Webkonferenz-Systeme
+Aktuell werden folgende Webkonferenz-Systeme unterstützt:
 - BigBlueButton
 - edudip (Webinar)
 - Webex
@@ -103,7 +103,7 @@ Sie können weitere Konfigurationen hirarchisch in drei Prioritäten anlegen. Da
 
 
 ## edudip (Webinar)
-Nachdem Sie in der Plugin-Administration einen Meeting-Typ mit edudip als WebRTC-Plattform angelegt haben,
+Nachdem Sie in der Plugin-Administration einen Meeting-Typ mit edudip als Webkonferenz-System angelegt haben,
 können Sie ILIAS-Benutzer authorisieren, Webinare anzulegen und zu starten.
 
 Bitte beachten Sie, dass Webinare jeweils nur als Einzeltermin angelegt werden.
@@ -314,25 +314,29 @@ s. https://developers.zoom.us/docs/integrations/oauth-scopes-granular/
 
 Rate Limit Label: LIGHT:
 
-meeting:read:meeting:admin
-meeting:read:invitation:admin
-meeting:delete:meeting:admin
-meeting:update:meeting:admin
-meeting:write:meeting:admin
-user:read:user:admin
-webinar:read:webinar:admin
-webinar:delete:webinar:admin
-webinar:update:webinar:admin
-webinar:write:webinar:admin
-meeting:read:past_meeting:admin
-webinar:read:list_past_instances:admin
+- user:read:user:admin
+- meeting:read:invitation:admin
+- meeting:read:meeting:admin
+- meeting:delete:meeting:admin
+- meeting:update:meeting:admin
+- meeting:write:meeting:admin
+- meeting:read:past_meeting:admin
+- webinar:read:webinar:admin
+- webinar:delete:webinar:admin
+- webinar:update:webinar:admin
+- webinar:write:webinar:admin
+- webinar:write:registrant:admin
 
 Rate Limit Label: MEDIUM:
 
-user:read:list_schedulers:admin
-user:read:settings:admin
-meeting:read:list_past_participants:admin
-webinar:read:list_past_participants:admin
+- user:read:list_schedulers:admin
+- user:read:settings:admin
+- meeting:read:list_past_participants:admin
+- webinar:read:list_past_participants:admin
+
+Rate Limit Label: HEAVY:
+
+- report:read:webinar:admin
 
 ### Lernfortschritt
 Mit dem erstmaligen Einrichten von Zoom im MultiVc-Plugin werden die Rechte 'Lernfortschrittseinstellungen bearbeiten' und 'Lernfortschritt anderer Benutzer einsehen' hinzugefügt. Passen Sie ggfs. Objekte und insbesondere die Rollenvorlagen an.
@@ -366,8 +370,6 @@ Grundsätzlich werden die Standard-Zoom-Benachrichtigungen unter Berücksichtigu
 
 # Verwendung
 
-
-
 ## Virtuellen Meetingraum anlegen
 
 Virtuelle Meetingräume sollten in Kursen oder Gruppen angelegt werden. Die Zugriffsrechte auf das Objekt können somit für Benutzer über deren zugewiesene Benutzerrolle eingestellt werden. Wir empfehlen folgende Rollenvorlagen anzupassen:
@@ -382,9 +384,9 @@ Virtuelle Meetingräume sollten in Kursen oder Gruppen angelegt werden. Die Zugr
 
 ## Globale / lokale Rollen zuweisen
 
-Wählen Sie in der Plugin-Konfiguration aus der Übersicht die gewünschte WebRTC-Plattform-Konfiguration mit einem Klick auf Bearbeiten aus. Im Formular finden Sie ein Multi-Selektfeld mit der Bezeichnung "Zugewiesene Rollen". Setzen Sie bei den gewünschten Rollen einen Haken und bestätigen Sie Ihre Eingaben mit einem Klick auf Speichern.
+Wählen Sie in der Plugin-Konfiguration aus der Übersicht die gewünschte Plattform-Konfiguration mit einem Klick auf Bearbeiten aus. Im Formular finden Sie ein Multi-Selektfeld mit der Bezeichnung "Zugewiesene Rollen". Setzen Sie bei den gewünschten Rollen einen Haken und bestätigen Sie Ihre Eingaben mit einem Klick auf Speichern.
 
-Melden Sie sich bei ILIAS als Benutzer mit einer der zugewiesenen Rollen an. Navigieren Sie im Magazin an eine gewünschte Stelle und fügen Sie ein neues Objekt "Virtueller Meetingraum" hinzu. Im nächsten Schritt werden Sie aufgefordert einen Titel anzugeben und eine WebRTC-Plattform auszuwählen (* Pflichtfelder) - in der Liste stehen (nur) die Verbindungen zur Verfügung., denen eine der Rollen ihres aktuellen Benutzers zugewiesen wurde.
+Melden Sie sich bei ILIAS als Benutzer mit einer der zugewiesenen Rollen an. Navigieren Sie im Magazin an eine gewünschte Stelle und fügen Sie ein neues Objekt "Virtueller Meetingraum" hinzu. Im nächsten Schritt werden Sie aufgefordert einen Titel anzugeben und ein Webkonferenz-System auszuwählen (* Pflichtfelder) - in der Liste stehen (nur) die Verbindungen zur Verfügung., denen eine der Rollen ihres aktuellen Benutzers zugewiesen wurde.
 
 ### Nach einem Upgrade stehen zunächst alle Verbindungen im Objekt bereit
 

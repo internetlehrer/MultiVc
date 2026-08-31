@@ -167,6 +167,10 @@ class ilApiZoom implements ilApiInterface
                 'meeting:delete:meeting:admin',
                 'meeting:update:meeting:admin',
                 'meeting:write:meeting:admin',
+//                    'meeting:read:past_meeting',
+                'meeting:read:past_meeting:admin',
+//                    'meeting:read:list_past_participants',
+                'meeting:read:list_past_participants:admin',
                 'user:read:list_schedulers:admin',
                 'user:read:settings:admin',
                 'user:read:user:admin'
@@ -174,12 +178,13 @@ class ilApiZoom implements ilApiInterface
             'classic' => [
                 'meeting:read:admin',
                 'meeting:write:admin',
-                'user:read:admin'
+                'user:read:admin',
+                'meeting:read'
             ]
         ];
         $missingscopes = array_diff($requiredscopes[$scopetype], $scopes);
         if (!empty($missingscopes)) {
-            $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('zoom_err_scopes') . ': ' . implode(', ', $missingscopes), true);
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('rep_robj_xmvc_zoom_err_scopes') . ' ' . implode(', ', $missingscopes), true);
             $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
         } elseif ($this->object->get_moderated()) {
             //webinars
@@ -188,52 +193,23 @@ class ilApiZoom implements ilApiInterface
                     'webinar:read:webinar:admin',
                     'webinar:delete:webinar:admin',
                     'webinar:update:webinar:admin',
-                    'webinar:write:webinar:admin'
+                    'webinar:write:webinar:admin',
+                    'webinar:write:registrant:admin',
+                    'webinar:read:list_past_participants:admin',
+                    'report:read:webinar:admin'
                 ],
                 'classic' => [
                     'webinar:read:admin',
-                    'webinar:write:admin'
+                    'webinar:write:admin',
+                    'webinar:read',
+                    'report:read:admin'
                 ]
             ];
             $missingscopes = array_diff($requiredscopes[$scopetype], $scopes);
             if (!empty($missingscopes)) {
                 $this->object->set_moderated(false);
                 $this->object->doUpdate();
-                $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('zoom_err_scopes_webinar') . ': ' . implode(', ', $missingscopes), true);
-                $this->dic->ctrl()->redirect($this->objGui, 'editProperties');//$this->dic->ctrl()->getCmd());//, 'applyFilterScheduledMeetings');
-            }
-        }
-        if($this->object->getLPMode() != ilObjMultiVc::LP_INACTIVE) {
-            //Rate Limit Label: MEDIUM
-            $requiredscopes = [
-                'granular' => [
-//                    'meeting:read:past_meeting',
-                    'meeting:read:past_meeting:admin',
-//                    'meeting:read:list_past_participants',
-                    'meeting:read:list_past_participants:admin'
-                ],
-                'classic' => [
-                    'meeting:read:admin',
-                    'meeting:read'
-                ]
-            ];
-            if ($this->object->get_moderated()) {
-                $requiredscopes = [
-                    'granular' => [
-                        'webinar:read:list_past_instances:admin',
-                        'webinar:read:list_past_participants:admin'
-                    ],
-                    'classic' => [
-                        'webinar:read:admin',
-                        'webinar:read'
-                    ]
-                ];
-            }
-            $missingscopes = array_diff($requiredscopes[$scopetype], $scopes);
-            if (!empty($missingscopes)) {
-                $this->object->setLPMode(ilObjMultiVc::LP_INACTIVE);
-                $this->object->doUpdate();
-                $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('zoom_err_scopes_lp') . ': ' . implode(', ', $missingscopes), true);
+                $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('rep_robj_xmvc_zoom_err_scopes_webinar') . ' ' . implode(', ', $missingscopes), true);
                 $this->dic->ctrl()->redirect($this->objGui, 'editProperties');//$this->dic->ctrl()->getCmd());//, 'applyFilterScheduledMeetings');
             }
         }
@@ -247,6 +223,7 @@ class ilApiZoom implements ilApiInterface
 
     private static function makeCall(string $token, string $endpoint, array $param = [], string $method = 'GET', ?bool $isUI = true): stdClass {
         global $DIC;
+        $logger = $DIC->logger()->root();
         $method = strtoupper($method);
         $url = self::getApiUrl() . $endpoint;
         $isPost = in_array($method, ['POST', 'PUT', 'PATCH']);
@@ -255,6 +232,9 @@ class ilApiZoom implements ilApiInterface
 
         $json = new stdClass();
         $json->code = 200;
+
+        $logger->debug('endpointUrl: ' . $url);
+        $logger->dump($param, ilLogLevel::DEBUG);
 
         $header = [
             'Authorization: Bearer ' . $token,
@@ -287,15 +267,14 @@ class ilApiZoom implements ilApiInterface
             $curl->setOpt(CURLOPT_URL, $url);
             $curl->setOpt(CURLOPT_RETURNTRANSFER, true);
             $response = $curl->exec();
-            #echo '<pre>'; var_dump($response); exit;
+//            $logger->dump($response, ilLogLevel::DEBUG);
             if (json_decode($response) != null) $json = json_decode($response);
             $code = $curl->getInfo(CURLINFO_HTTP_CODE);
             if ($code != null && isset($json->code)) {
                 $json->code = $code;
             }
-            #echo '<pre>'.$url; var_dump($json); exit;
+            $logger->dump($json, ilLogLevel::DEBUG);
         } catch (ilCurlConnectionException $e) {
-            $logger = $DIC->logger()->root();
             $logger->debug('MulitVc Zoom '. $e->getMessage());
             if ($isUI) {
                 $DIC->ui()->mainTemplate()->setOnScreenMessage('failure',
@@ -305,62 +284,6 @@ class ilApiZoom implements ilApiInterface
         }
         return $json;
     }
-//    public function getUserByMail(string $mail): ?Model\User
-//    {
-//        try {
-//            $graph = new Graph();
-//            $graph->setAccessToken($this->getAccessToken());
-//            $users = [];
-//            $users = $graph->createRequest("GET", "/users?\$filter=mail eq '" . $mail."'")
-//                          ->setReturnType(Model\User::class)
-//                          ->execute();
-//            if(empty($users[0])) {
-//                //ALIAS
-//                $users = $graph->createRequest("GET", "/users?\$filter=proxyAddresses/any(x:x eq 'smtp:" . $mail."')")
-//                              ->setReturnType(Model\User::class)
-//                              ->execute();
-//            }
-//            if(empty($users[0])) {
-//                $user = $graph->createRequest("GET", "/users('" . $mail . "')")
-//                    ->setReturnType(Model\User::class)
-//                    ->execute();
-//                return $user;
-//            }
-//            return $users[0];
-//        } catch (\Exception $e) {
-//            die($e->getMessage());
-//            return null;
-//        }
-//    }
-//    public static function getUserByMailDirect(string $mail, string $clientId, string $clientSecret, string $tenantId): ?Model\User
-//    {
-//        try {
-//            $graph = new Graph();
-//            $graph->setAccessToken(ilApiTeams::getAccessTokenDirect($clientId, $clientSecret, $tenantId));
-//            $user = $graph->createRequest("GET", "/users('" . $mail . "')")
-//                          ->setReturnType(Model\User::class)
-//                          ->execute();
-//            return $user;
-//        } catch (\Exception $e) {
-//            die($e->getMessage());
-//            return null;
-//        }
-//    }
-//    public function getDefaultCalendarByUserMail(string $mail): ?Model\Calendar
-//    {
-//        try {
-//            $graph = new Graph();
-//            $graph->setAccessToken($this->getAccessToken());
-//            $cal = $graph->createRequest("GET", "/users('" . $mail . "')/calendar")
-//                          ->setReturnType(Model\Calendar::class)
-//                          ->execute();
-//            return $cal;
-//        } catch (\Exception $e) {
-//            die($e->getMessage());
-//            return null;
-//        }
-//    }
-
 
 
     protected function getHostId (string $mail): string {
@@ -382,19 +305,65 @@ class ilApiZoom implements ilApiInterface
         return $hostId;
     }
 
-    /**
-     * @throws ilCurlConnectionException
-     * @throws Exception
-     */
-    public function sessionCreateZoom(string $meetingTitle, ilDateTime $utcStart, ilDateTime $utcEnd): array
+    public function sessionUpdateZoom(string $relId, string $meetingTitle, string $meetingAgenda, ilDateTime $utcStart, ilDateTime $utcEnd): bool
     {
         $token = $this->getAccessToken();
         $this->dic->language()->loadLanguageModule('rep_robj_xmvc');
         $duration = ceil(($utcEnd->getUnixTime() - $utcStart->getUnixTime())/60);
-        $start_time = $utcStart->get(IL_CAL_ISO_8601, 'Y-m-dTH:i:s', 'UTC');
-        $timezone = 'UTC';
+        $timezone = $this->dic->user()->getTimeZone(); //'UTC' note: not all ILIAS-TimeZones are supported e.g. US/...
+        $start_time = $utcStart->get(IL_CAL_ISO_8601, 'Y-m-dTH:i:s', $timezone);
+//        $mail = $this->dic->user()->getEmail(); //todo owner?
+        $mail = ilObjUser::_lookupEmail($this->object->getOwner());
+        $hostID = $this->getHostId($mail);
+        //Lizenz abfragen $this->provide_license(
+        $endpoint = '';
+        if ($relId !=="") {
+            if ($this->object->get_moderated()) {
+                $endpoint = 'webinars';
+            } else {
+                $endpoint = 'meetings';
+            }
+            $endpoint .= '/' . $relId;
+        }
+        $param = [];
+//        $subject = $this->dic->language()->txt('rep_robj_xmvc_subject_' . $this->parentObj->getType());
+//        $subject = str_replace('{MEETING_TITLE}', $meetingTitle, $subject);
+//        $subject = str_replace('{PARENT_TITLE}', $this->parentObj->getTitle(), $subject);
+        $param['topic'] = $meetingTitle;
+        $param['agenda'] = $meetingAgenda;
+        $param['schedule_for'] = $mail;
 
-        $mail = $this->dic->user()->getEmail();
+        $param['duration'] = $duration;
+        $param['start_time'] = $start_time;
+        $param['timezone'] = $timezone;
+        $ret = $this->makeCall($token, $endpoint, $param, 'PATCH');
+        if (isset($ret->code) && isset($ret->message)) {
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('error') . ' ' . $ret->code . ": " . $ret->message, true);
+            $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
+        }
+
+        if ($ret->code == 204 || $ret->code == 404) {
+            return true;
+        } else {
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('error') . ' ' . $ret->code);
+            $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
+        }
+        return false;
+    }
+    /**
+     * @throws ilCurlConnectionException
+     * @throws Exception
+     */
+    public function sessionCreateZoom(string $meetingTitle, string $meetingAgenda, ilDateTime $utcStart, ilDateTime $utcEnd): array
+    {
+        $logger = $this->dic->logger()->root();
+        $token = $this->getAccessToken();
+        $this->dic->language()->loadLanguageModule('rep_robj_xmvc');
+        $duration = ceil(($utcEnd->getUnixTime() - $utcStart->getUnixTime())/60);
+        $timezone = $this->dic->user()->getTimeZone(); //'UTC' note: not all ILIAS-TimeZones are supported e.g. US/...
+        $start_time = $utcStart->get(IL_CAL_ISO_8601, 'Y-m-dTH:i:s', $timezone);
+//        $mail = $this->dic->user()->getEmail(); //todo owner?
+        $mail = ilObjUser::_lookupEmail($this->object->getOwner());
         $hostID = $this->getHostId($mail);
         //Lizenz abfragen $this->provide_license(
         $endpoint = 'users/' . $hostID . '/';
@@ -406,11 +375,12 @@ class ilApiZoom implements ilApiInterface
         $param = [];
 
 
-        $subject = $this->dic->language()->txt('rep_robj_xmvc_subject_' . $this->parentObj->getType());
-        $subject = str_replace('{MEETING_TITLE}', $meetingTitle, $subject);
-        $subject = str_replace('{PARENT_TITLE}', $this->parentObj->getTitle(), $subject);
+//        $subject = $this->dic->language()->txt('rep_robj_xmvc_subject_' . $this->parentObj->getType());
+//        $subject = str_replace('{MEETING_TITLE}', $meetingTitle, $subject);
+//        $subject = str_replace('{PARENT_TITLE}', $this->parentObj->getTitle(), $subject);
 
-        $param['agenda'] = $subject; //topic
+        $param['topic'] = $meetingTitle;
+        $param['agenda'] = $meetingAgenda;
 
         $param['schedule_for'] = $mail;
 
@@ -427,17 +397,22 @@ class ilApiZoom implements ilApiInterface
         $settings['email_notification'] = true;
         $settings['host_video'] = true;
         $settings['show_share_button'] = false;
+        $settings['show_join_info'] = false;
+        $settings['auto_recording'] = 'none';
+        if ($this->object->isRecordingAllowed()) {
+            $settings['auto_recording'] = 'cloud';
+            $settings['host_pause_stop_recording'] = true;
+        }
+        $settings['approval_type'] = $this->object->getApprovalType4Api();
+        $settings['meeting_authentication'] = $this->object->isMeetingAuthenticationNecessary();
 
-        if (!$this->object->get_moderated()) {
+        if (!$this->object->get_moderated()) { //Meeting with options
             $settings['mute_upon_entry'] = true;
-            $settings['show_join_info'] = false;
-
             if($this->object->isCamOnlyForModerator()) {
                 $settings['participant_video'] = false;
             } else {
                 $settings['participant_video'] = true;
             }
-
             if ($this->object->getExtraCmd() == 0) {
                 $settings['waiting_room'] = false;
                 $settings['join_before_host'] = true;
@@ -450,42 +425,65 @@ class ilApiZoom implements ilApiInterface
                 $waiting_room_options['who_goes_to_waiting_room'] = $options[$this->object->getExtraCmd()];
                 $settings['waiting_room_options'] = $waiting_room_options;
             }
-
             $settings['continuous_meeting_chat'] = ['enabled' => $this->object->isPrivateChat()];
 
-            $settings['auto_recording'] = 'none';
+        } else {
+            $settings['registrants_confirmation_email'] = true;
+            $settings['registrants_email_notification'] = true;
+            $settings['registration_type'] = 1;
+            $settings['panelist_authentication'] = $this->object->isPanelistAuthenticationNecessary();
+            $settings['practice_session'] = true;
         }
-//        'registrants_confirmation_email' => true,
-//    'registrants_email_notification' => true,
-//    'registration_type' => 1,
-
-
 
         $meeting_invitees = [];
+        $invitees = [];
+        $inviteeNames = [];
         $alternative_hosts_m = [];
         $members = $this->object->getContainerMembers($this->parentObj->getId());
         foreach ($members as $member) {
             $memberMail = ilObjUser::_lookupEmail($member['usr_id']);
             if ($memberMail != $mail) {
-                $meeting_invitees[] = [
-                    'email' => $memberMail
-                ];
-                if (($member['admin'] == 1 || $member['tutor'] == 1)) {
-                    $alternative_hosts_m[] = $memberMail;
+                $invitees[] = $memberMail;
+                $name = ilObjUser::_lookupName($member['usr_id']);
+                $inviteeNames[$memberMail] = [$name['firstname'], $name['lastname']];
+                if ($this->object->getManualMods() == 0) {
+                    if (($member['admin'] == 1 || $member['tutor'] == 1)) {
+                        $alternative_hosts_m[] = $memberMail;
+                        //array invitees aufräumen
+                        $key = array_search($memberMail, $invitees);
+                        if ($key !== false) {
+                            unset($invitees[$key]);
+                        }
+                    }
+                } else {
+                    $manualMods = $this->object->getModerators();
+                    foreach ($manualMods as $mod) {
+                        $m_mail = ilObjUser::_lookupEmail($mod);
+                        $alternative_hosts_m[] = $m_mail;
+                        //array invitees aufräumen
+                        $key = array_search($m_mail, $invitees);
+                        if ($key !== false) {
+                            unset($invitees[$key]);
+                        }
+                    }
                 }
             }
         }
-        if (!$this->object->get_moderated() && count($meeting_invitees) > 0) {
+        if (!$this->object->get_moderated() && count($invitees) > 0) {
+            foreach ($invitees as $invitee) {
+                $meeting_invitees[] = [
+                    'email' => $invitee
+                ];
+            }
             $settings['meeting_invitees'] = $meeting_invitees;
         }
         $param['settings'] = $settings;
 
         $ret = $this->makeCall($token, $endpoint, $param, 'post');
-        if (isset($ret->code)) {
+        if (isset($ret->code) && isset($ret->message)) {
             $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('error') . ' ' . $ret->code . ": " . $ret->message, true);
             $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
         }
-//echo(var_dump($ret));exit();
 
         $htmlContent = $this->dic->language()->txt('rep_robj_xmvc_teams_join_links');
         $htmlContent = str_replace('{JOIN_URL}', $ret->start_url, $htmlContent);
@@ -494,13 +492,15 @@ class ilApiZoom implements ilApiInterface
 
         $rel_data = [
             'id' => $ret->id,
-            'title' => $meetingTitle,
             'uuid' => $ret->uuid,
             'startLink' => $ret->start_url,
             'joinUrl' => $ret->join_url
+            //Agenda
         ];
 
         $retAr = [
+            'title' => $meetingTitle,
+            'agenda' => $meetingAgenda,
             'start' => $utcStart->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC'),
             'end' => $utcEnd->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC'),
             'timezone' => 'UTC',
@@ -509,14 +509,15 @@ class ilApiZoom implements ilApiInterface
             'rel_data' => json_encode($rel_data)
         ];
 
+        $meetingId = $ret->id;
         //Add alternative_hosts if possible
         if (count($alternative_hosts_m) > 0) {
             $param = [];
             $endpoint = "";
             if ($this->object->get_moderated()) {
-                $endpoint = 'webinars/' . $ret->id;
+                $endpoint = 'webinars/' . $meetingId;
             } else {
-                $endpoint = 'meetings/' . $ret->id;
+                $endpoint = 'meetings/' . $meetingId;
                 $param['settings']['alternative_hosts_email_notification'] = true;
                 $param['settings']['alternative_host_manage_meeting_summary'] = true;
                 $param['settings']['alternative_host_manage_cloud_recording'] = true;
@@ -530,12 +531,26 @@ class ilApiZoom implements ilApiInterface
             }
         }
 
+        if ($this->object->get_moderated() && count($invitees) > 0) {
+            foreach ($invitees as $email) {
+                $param['data'] = [];
+                $data['first_name'] = $inviteeNames[$email][0];
+                $data['last_name'] = $inviteeNames[$email][1];
+                $data['email'] = $email;
+                $endpoint = 'webinars/' . $meetingId . '/registrants';
+                $ret = self::makeCall($token, $endpoint, $data, 'POST');
+                $logger->dump($ret, ilLogLevel::DEBUG);
+            }
+        }
+
         return $retAr;
     }
 
     public static function changeParticipant(string $a_event, ilObjMultiVc $multiVcObj, ilMultiVcConfig $multiVcConn, array $upcomingMeeting, int $parentObjId, int $userId): void
     {
         global $DIC;
+        //wenn a_event!="" && meeting_start > now+Einstellung CronJob (z.B. Stunde) Markiere Obj
+
         $logger = $DIC->logger()->root();
         $clientId = $multiVcConn->getSvrUsername();
         $clientSecret = $multiVcConn->getSvrSalt();
@@ -543,47 +558,103 @@ class ilApiZoom implements ilApiInterface
         $token = self::getAccessTokenDirect($clientId, $clientSecret, $accountId);
 
         foreach ($upcomingMeeting as $meeting) {
-            $logger->dump($meeting);
+            $logger->dump($meeting, ilLogLevel::DEBUG);
             $mail = ilObjUser::_lookupEmail($meeting['user_id']);
             $param = [];
             $param['settings'] = [];
 
             $meeting_invitees = [];
+            $invitees = [];
+            $inviteeNames = [];
             $alternative_hosts_m = [];
             $members = $multiVcObj->getContainerMembers($parentObjId);
             foreach ($members as $member) {
                 $memberMail = ilObjUser::_lookupEmail($member['usr_id']);
                 if ($memberMail != $mail) {
-                    $meeting_invitees[] = [
-                        'email' => $memberMail
-                    ];
-                    if (($member['admin'] == 1 || $member['tutor'] == 1)) {
-                        $alternative_hosts_m[] = $memberMail;
+                    $invitees[] = $memberMail;
+                    $name = ilObjUser::_lookupName($member['usr_id']);
+                    $inviteeNames[$memberMail] = [$name['firstname'], $name['lastname']];
+                    if ($multiVcObj->getManualMods() == 0) {
+                        if (($member['admin'] == 1 || $member['tutor'] == 1)) {
+                            $alternative_hosts_m[] = $memberMail;
+                            //array invitees aufräumen
+                            $key = array_search($memberMail, $invitees);
+                            if ($key !== false) {
+                                unset($invitees[$key]);
+                            }
+                        }
+                    } else {
+                        $manualMods = $multiVcObj->getModerators();
+                        foreach ($manualMods as $mod) {
+                            $m_mail = ilObjUser::_lookupEmail($mod);
+                            $alternative_hosts_m[] = $m_mail;
+                            //array invitees aufräumen
+                            $key = array_search($m_mail, $invitees);
+                            if ($key !== false) {
+                                unset($invitees[$key]);
+                            }
+                        }
                     }
                 }
             }
-            if (count($meeting_invitees) > 0) {
-                //note: 100 requests per day. The rate limit is applied to the userId of the webinar host used to make the request.
-                //https://developers.zoom.us/docs/api/meetings/#tag/webinars/patch/webinars/{webinarId}
-                if (!$multiVcObj->get_moderated()) { //not moderated = Meeting - no action for webinars
+            //note: 100 requests per day. The rate limit is applied to the userId of the webinar host used to make the request.
+            //https://developers.zoom.us/docs/api/meetings/#tag/webinars/patch/webinars/{webinarId}
+            if (count($invitees) > 0) {
+                if (!$multiVcObj->get_moderated()) { //not moderated = Meeting
+                    foreach ($invitees as $invitee) {
+                        $meeting_invitees[] = [
+                            'email' => $invitee
+                        ];
+                    }
                     $param['settings']['meeting_invitees'] = $meeting_invitees;
-                    $ret = self::makeCall($token, 'meetings/'.$meeting['rel_id'], $param, 'PATCH');
-                    $logger->dump($ret);
+                    $logger->dump($param, ilLogLevel::DEBUG);
+                    $ret = self::makeCall($token, 'meetings/' . $meeting['rel_id'], $param, 'PATCH');
+                    $logger->dump($ret, ilLogLevel::DEBUG);
+                } else {
+                    $endpoint = 'webinars/' . $meeting['rel_id'] . '/registrants?page_size=300';
+                    $ret = self::makeCall($token, $endpoint, [], 'GET', false);
+                    $logger->dump($ret, ilLogLevel::DEBUG);
+                    $registered = [];
+                    $registrants = $ret->registrants;
+                    for ($k = 0; $k < count($registrants); $k++) {
+                        $registrant = $registrants[$k];
+                        $registered[] = $registrant->email;
+                    }
+                    //event?
+                    $not_registered = array_diff($invitees, $registered);
+                    if (count($not_registered) > 0) {
+                        foreach ($not_registered as $email) {
+                            $param['data'] = [];
+                            $data['first_name'] = $inviteeNames[$email][0];
+                            $data['last_name'] = $inviteeNames[$email][1];
+                            $data['email'] = $email;
+                            $logger->dump($not_registered, ilLogLevel::DEBUG);
+                            $endpoint = 'webinars/' . $meeting['rel_id'] . '/registrants';
+                            $ret = self::makeCall($token, $endpoint, $data, 'POST');
+                        }
+                    }
+                        //wenn in $invitees noch nicht drin, dann
+                    // https://developers.zoom.us/docs/api/meetings/#tag/webinars/post/webinars/{webinarId}/registrants
+                    //oder einfach absetzen mit Auswertung Rückgabewert
+                    //wenn in registrants jemand drin ist, aber nicht mehr in $invitees dann status cancelled
                 }
             }
+
+            $param['settings'] = [];
+            $param['settings']['alternative_hosts'] = "";
             if (count($alternative_hosts_m) > 0) {
-                $param['settings'] = [];
                 $param['settings']['alternative_hosts'] = implode(';', $alternative_hosts_m);
+                $param['settings']['alternative_host_update_polls'] = true;
                 $param['settings']['alternative_hosts_email_notification'] = true;
                 if (!$multiVcObj->get_moderated()) { //not moderaated = Meeting
-                    $param['settings']['alternative_host_update_polls'] = true;
                     $param['settings']['alternative_host_manage_meeting_summary'] = true;
                     $param['settings']['alternative_host_manage_cloud_recording'] = true;
+                    $logger->dump($param, ilLogLevel::DEBUG);
                     $ret = self::makeCall($token, 'meetings/'.$meeting['rel_id'], $param, 'PATCH');
                 } else {
                     $ret = self::makeCall($token, 'webinars/'.$meeting['rel_id'], $param, 'PATCH');
                 }
-                $logger->dump($ret);
+                $logger->dump($ret, ilLogLevel::DEBUG);
             }
         }
     }
@@ -900,16 +971,6 @@ class ilApiZoom implements ilApiInterface
         $this->end = $end;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(?string $email): void
-    {
-        $this->email = $email;
-    }
-
     public function getWebLink(): ?string
     {
         return $this->webLink;
@@ -929,9 +990,9 @@ class ilApiZoom implements ilApiInterface
         $dbRefId = $db->quote($refId, 'integer');
         $meetingIds = [];
         $starts = [];
-        $owner = ilObject::_lookupOwner($objId);
-        $objOwner = new ilObjUser($owner);
-        $ownerEmail = $objOwner->getEmail();
+//        $owner = ilObject::_lookupOwner($objId);
+//        $objOwner = new ilObjUser($owner);
+//        $ownerEmail = $objOwner->getEmail();
         //$token = $this->getAccessToken();
 
         //assign users by email
@@ -953,7 +1014,7 @@ class ilApiZoom implements ilApiInterface
                 . " GROUP BY usr_data.email";
             $res = $db->query($query);
             while ($row = $db->fetchAssoc($res)) {
-                $emails[(int) $row['max_usr_id']] = $row['email'];
+                $emails[(int) $row['max_usr_id']] = strtolower($row['email']);
             }
         }
 
@@ -987,83 +1048,84 @@ class ilApiZoom implements ilApiInterface
             $timeCorrection = false;
             //list
             if ($moderated == 1) {
-                $startDb = new ilDateTime($starts[$i], IL_CAL_DATETIME, 'UTC');
-                $endDb = new ilDateTime($ends[$i], IL_CAL_DATETIME, 'UTC');
-                $sumTimeDiff = $endDb->get(IL_CAL_UNIX) - $startDb->get(IL_CAL_UNIX);
+                $endpoint = 'report/webinars/' . $meetingId;
+//                $startDb = new ilDateTime($starts[$i], IL_CAL_DATETIME, 'UTC');
+//                $endDb = new ilDateTime($ends[$i], IL_CAL_DATETIME, 'UTC');
+//                $sumTimeDiff = $endDb->get(IL_CAL_UNIX) - $startDb->get(IL_CAL_UNIX);
             } elseif ($moderated == 0) {
                 $endpoint = 'past_meetings/' . $meetingId; //Check webinare
-
-                $ret0 = self::makeCall($token, $endpoint, [],'GET', false);
-                    //$this->dic->ctrl()->redirect($this->objGui, 'userLog');
-
-                if(isset($ret0->participants_count) && $ret0->participants_count != "0") {
-                    $attendanceRecord = "";
-
-                    $startDb = new ilDateTime($starts[$i], IL_CAL_DATETIME, 'UTC');
-                    $endDb = new ilDateTime($ends[$i], IL_CAL_DATETIME, 'UTC');
-
-                    $meetingStartDateTime = $ret0->start_time;
-                    $meetingEndDateTime = $ret0->end_time;
-
-                    $utcTmpStart = new ilDateTime($meetingStartDateTime, IL_CAL_DATETIME, 'UTC');
-                    $utcTmpEnd = new ilDateTime($meetingEndDateTime, IL_CAL_DATETIME, 'UTC');
-                    if ($utcTmpStart < $endDb && $utcTmpEnd > $startDb) {
-                        $attendanceRecord = $ret0->id;
-                        $utcStart = $utcTmpStart;
-                        $utcEnd = $utcTmpEnd;
-                    }
-
-                    if ($attendanceRecord !== "") {
-
-                        $meassureStart = $utcStart;
-                        if ($startDb > $utcStart) {
-                            $meassureStart = $startDb;
-                        }
-                        $meassureEnd = $utcEnd;
-                        if ($endDb < $utcEnd) {
-                            $meassureEnd = $endDb;
-                        }
-                        $timediff = $meassureEnd->get(IL_CAL_UNIX) - $meassureStart->get(IL_CAL_UNIX);
-                        if ($timediff > 0) {
-                            $sumTimeDiff += $timediff;
-                        }
-
-                        $logger->debug("startDb=" . $startDb . ", utcStart=" . $utcStart . ", meassureStart=" . $meassureStart
-                            . ", endDb=" . $endDb . ", utcEnd=" . $utcEnd . ", meassureEnd=" . $meassureEnd
-                            . " -> timediff=" . $timediff . ", sumTimeDiff=" . $sumTimeDiff);
-
-                        $start = $utcStart->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC');
-                        $end = $utcEnd->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC');
-
-                        $values = [
-                            'start' => ['datetime', $start],
-                            'end' => ['datetime', $end]
-                        ];
-                        $where = [
-                            'obj_id' => ['integer', $objId],
-                            'rel_id' => ['string', $meetingId]
-                        ];
-                        $db->update('rep_robj_xmvc_session', $values, $where);
-                        $timeCorrection = true;
-                    }
-                }
             }
-            if ($moderated == 1 || $timeCorrection === true) {
+
+            $ret0 = self::makeCall($token, $endpoint, [],'GET', false);
+                //$this->dic->ctrl()->redirect($this->objGui, 'userLog');
+
+            if(isset($ret0->participants_count) && $ret0->participants_count != "0") {
+                $attendanceRecord = "";
+
+                $startDb = new ilDateTime($starts[$i], IL_CAL_DATETIME, 'UTC');
+                $endDb = new ilDateTime($ends[$i], IL_CAL_DATETIME, 'UTC');
+
+                $meetingStartDateTime = $ret0->start_time;
+                $meetingEndDateTime = $ret0->end_time;
+
+                $utcTmpStart = new ilDateTime($meetingStartDateTime, IL_CAL_DATETIME, 'UTC');
+                $utcTmpEnd = new ilDateTime($meetingEndDateTime, IL_CAL_DATETIME, 'UTC');
+                if ($utcTmpStart < $endDb && $utcTmpEnd > $startDb) {
+                    $attendanceRecord = $ret0->id;
+                    $utcStart = $utcTmpStart;
+                    $utcEnd = $utcTmpEnd;
+                }
+
+                if ($attendanceRecord !== "") {
+
+                    $meassureStart = $utcStart;
+                    if ($startDb > $utcStart) {
+                        $meassureStart = $startDb;
+                    }
+                    $meassureEnd = $utcEnd;
+                    if ($endDb < $utcEnd) {
+                        $meassureEnd = $endDb;
+                    }
+                    $timediff = $meassureEnd->get(IL_CAL_UNIX) - $meassureStart->get(IL_CAL_UNIX);
+                    if ($timediff > 0) {
+                        $sumTimeDiff += $timediff;
+                    }
+
+                    $logger->debug("startDb=" . $startDb . ", utcStart=" . $utcStart . ", meassureStart=" . $meassureStart
+                        . ", endDb=" . $endDb . ", utcEnd=" . $utcEnd . ", meassureEnd=" . $meassureEnd
+                        . " -> timediff=" . $timediff . ", sumTimeDiff=" . $sumTimeDiff);
+
+                    $start = $utcStart->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC');
+                    $end = $utcEnd->get(IL_CAL_DATETIME, 'Y-m-d H:i:s', 'UTC');
+
+                    $values = [
+                        'start' => ['datetime', $start],
+                        'end' => ['datetime', $end]
+                    ];
+                    $where = [
+                        'obj_id' => ['integer', $objId],
+                        'rel_id' => ['string', $meetingId]
+                    ];
+                    $db->update('rep_robj_xmvc_session', $values, $where);
+                    $timeCorrection = true;
+                }
+//            }
+//            if ($moderated == 1 || $timeCorrection === true) {
+                //delete guest-entries
+                $db->query("DELETE FROM rep_robj_xmvc_user_log WHERE user_id = 0 AND ref_id = " . $dbRefId);
+
                 if ($moderated == 0) {
                     //effektive start und endzeiten mit Sekunden eintragen mit Flag geholt
-                    $endpoint = 'past_meetings/' . $meetingId . '/participants';
+                    $endpoint = 'past_meetings/' . $meetingId . '/participants?page_size=300';
                 } else {
                     $endpoint = 'past_webinars/' . $meetingId . '/participants?page_size=300';
                 }
-                $ret = self::makeCall($token, $endpoint, [],'GET', false);
-
-                if ($ret != null) {
-//                    $logger->debug("/onlineMeetings/" . $meetingId . "/attendanceReports/" . $attendanceRecord . "/attendanceRecords");
-                    //                $logger->dump($ret->getBody()["value"]);
-                    for ($k = 0; $k < count($ret->participants); $k++) {
-                        $entry = $ret->participants[$k];
-                        $isModerator = 0;
-                        $userId = 0;
+                $participants = self::getArrayForAttendanceReport($token, $endpoint, [], "");
+                $logger->dump($participants, ilLogLevel::DEBUG);
+                for ($k = 0; $k < count($participants); $k++) {
+                    $entry = $participants[$k];
+                    $isModerator = 0;
+                    $userId = 0;
 
 //                            if (isset($entry["role"])) {
 //                                $role = $entry["role"];
@@ -1071,81 +1133,110 @@ class ilApiZoom implements ilApiInterface
 //                                    $isModerator = 1;
 //                                }
 //                            }
-                        if (isset($entry->user_email)) {
-                            $emailAdress = $entry->user_email;
-                            $userIdTmp = array_search($emailAdress, $emails);
-                            if ($userIdTmp > 0) {
-                                $userId = $userIdTmp;
-                            }
+                    if (isset($entry->user_email)) {
+                        $emailAdress = strtolower($entry->user_email);
+                        $userIdTmp = array_search($emailAdress, $emails);
+                        if ($userIdTmp > 0) {
+                            $userId = $userIdTmp;
                         }
-                        $name = $entry->name;
-                        if (!isset($sumSeconds[$userId])) {
-                            $sumSeconds[$userId] = 0;
-                        }
-                        //toDo mehrere LogIns
+                    }
+                    $name = $entry->name;
+                    if (!isset($sumSeconds[$userId])) {
+                        $sumSeconds[$userId] = 0;
+                    }
+                    $values = [];
+                    $joinDate = $entry->join_time;
+                    //umwandeln von UTC
+                    $leaveDate = $entry->leave_time;
+                    //umwandeln von UTC
+                    $joinTime = new ilDateTime($joinDate, IL_CAL_DATETIME, 'UTC');
+                    $leaveTime = new ilDateTime($leaveDate, IL_CAL_DATETIME, 'UTC');
 
-//                            if (isset($entry["attendanceIntervals"])) {
-                        //                        $logger->dump($entry);
-//                                for ($j = 0; $j < count($entry["attendanceIntervals"]); $j++) {
-                        $values = [];
-                        $joinDate = $entry->join_time;
-                        //umwandeln von UTC
-                        $leaveDate = $entry->leave_time;
-                        //umwandeln von UTC
-                        $durationSeconds = (int) $entry->duration;
-                        $sumSeconds[$userId] += $durationSeconds; //CHECK $sumSeconds +
-                        //hole userId unter Berücksichtigung obj_id
-                        //die($joinDate);
-                        $joinTime = new ilDateTime($joinDate, IL_CAL_DATETIME, 'UTC');
-                        $leaveTime = new ilDateTime($leaveDate, IL_CAL_DATETIME, 'UTC');
-                        //die(var_dump(count($entry["attendanceIntervals"])).'cc'.$joinTime);
-                        $primaryKeys = [
-                            'ref_id' => ['integer', $refId],
-                            'user_id' => ['integer', $userId],
-                            'display_name' => ['text', $name],
-                            'join_time' => ['integer', (int) $joinTime->getUnixTime()]
-                        ];
-                        $values = [
-                            'ref_id' => ['integer', $refId],
-                            'user_id' => ['integer', $userId],
-                            'display_name' => ['text', $name],
-                            'is_moderator' => ['integer', $isModerator],
-                            'join_time' => ['integer', (int) $joinTime->getUnixTime()],
-                            'meeting_id' => ['text', $meetingId],
-                            'leave_time' => ['integer', (int) $leaveTime->getUnixTime()],
-                            'duration_seconds' => ['integer', $durationSeconds]
-                        ];
-                        try {
-                            $db->replace('rep_robj_xmvc_user_log', $primaryKeys, $values);
-                        } catch (Exception $e) {
-                            $logger->info("Zoom-Log not possible for ref_id=" . $refId . ", user_id=" . $userId . ", display_name=" . $name . ", join_date=" . $joinDate . ", join_time=" . $joinTime . "=" . $joinTime->getUnixTime());
-//                            die();
+                    //wenn leave_time > meassure_end, dann ziehe von duration differenz leave_time - measure_end ab
+                    $durationSeconds = (int) $entry->duration;
+                    if ($joinTime < $meassureStart) {
+                        //to shorten time
+                        $shortenedTime = ($meassureStart->getUnixTime() - $joinTime->getUnixTime());
+                        if ($shortenedTime < $durationSeconds) {
+                            $durationSeconds -= $shortenedTime;
+                        } else {
+                            $durationSeconds = 0;
                         }
-//                                }
-//                            }
-                        if ($LPMode == ilObjMultiVc::LP_ACTIVE) {
-                            $status = ilLPStatus::LP_STATUS_IN_PROGRESS_NUM;
-                            $percentage = 0;
-                            if ($sumTimeDiff > 0) {
-                                round($percentage = $sumSeconds[$userId] * 100 / $sumTimeDiff);
-                            }
-                            if ($percentage > 100) {
-                                $percentage = 100;
-                            }
-                            if ($percentage > $LpTime) {
-                                $status = ilLPStatus::LP_STATUS_COMPLETED_NUM;
-                            }
-                            if ($userId > 0) {
-                                ilLPStatus::writeStatus($objId, $userId, $status, (int) $percentage, true);
-                            }
+                        $logger->debug('durationSeconds: ' . $durationSeconds . ' (shortened: ' . $shortenedTime . '), joinTime: ' . $joinTime . ', meassureStart: ' . $meassureStart);
+                    }
+                    if ($leaveTime > $meassureEnd) {
+                        //to shorten time
+                        $shortenedTime = ($leaveTime->getUnixTime() - $meassureEnd->getUnixTime());
+                        if ($shortenedTime < $durationSeconds) {
+                            $durationSeconds -= $shortenedTime;
+                        } else {
+                            $durationSeconds = 0;
+                        }
+                        $logger->debug('durationSeconds: ' . $durationSeconds. ' (shortened: ' . $shortenedTime . '), leaveTime ' . $leaveTime . ' meassureEnd ' . $meassureEnd);
+                    }
+                    $sumSeconds[$userId] += $durationSeconds; //CHECK $sumSeconds +
+
+                    //die(var_dump(count($entry["attendanceIntervals"])).'cc'.$joinTime);
+                    $primaryKeys = [
+                        'ref_id' => ['integer', $refId],
+                        'user_id' => ['integer', $userId],
+                        'display_name' => ['text', $name],
+                        'join_time' => ['integer', (int) $joinTime->getUnixTime()]
+                    ];
+                    $values = [
+                        'ref_id' => ['integer', $refId],
+                        'user_id' => ['integer', $userId],
+                        'display_name' => ['text', $name],
+                        'is_moderator' => ['integer', $isModerator],
+                        'join_time' => ['integer', (int) $joinTime->getUnixTime()],
+                        'meeting_id' => ['text', $meetingId],
+                        'leave_time' => ['integer', (int) $leaveTime->getUnixTime()],
+                        'duration_seconds' => ['integer', $durationSeconds]
+                    ];
+                    try {
+                        $db->replace('rep_robj_xmvc_user_log', $primaryKeys, $values);
+                    } catch (Exception $e) {
+                        $logger->info("Zoom-Log not possible for ref_id=" . $refId . ", user_id=" . $userId . ", display_name=" . $name . ", join_date=" . $joinDate . ", join_time=" . $joinTime . "=" . $joinTime->getUnixTime());
+                    }
+                    if ($LPMode == ilObjMultiVc::LP_ACTIVE) {
+                        $status = ilLPStatus::LP_STATUS_IN_PROGRESS_NUM;
+                        $percentage = 0;
+                        if ($sumTimeDiff > 0) {
+                            round($percentage = $sumSeconds[$userId] * 100 / $sumTimeDiff);
+                        }
+                        if ($percentage > 100) {
+                            $percentage = 100;
+                        }
+                        if ($percentage > $LpTime) {
+                            $status = ilLPStatus::LP_STATUS_COMPLETED_NUM;
+                        }
+                        if ($userId > 0) {
+                            ilLPStatus::writeStatus($objId, $userId, $status, (int) $percentage, true);
                         }
                     }
                 }
-
             }
         }
         return $meetingIds;
     }
 
-
+    public static function getArrayForAttendanceReport(string $token, string $endpoint, array $participants, string $next_page_token) : array
+    {
+        global $DIC;
+        $logger = $DIC->logger()->root();
+        $endpointC = $endpoint;
+        if ($next_page_token != "") {
+            $endpointC .= '&next_page_token=' . $next_page_token;
+        }
+        $ret = self::makeCall($token, $endpointC, [], 'GET', false);
+        if ($ret != null && isset($ret->participants)) {
+            $participants = array_merge($participants, $ret->participants);
+            if (isset($ret->next_page_token) && $ret->next_page_token != "") {
+                $logger->debug('Count Participants: '.count($participants) .'; next: ' .$endpoint. '&next_page_token=' . $ret->next_page_token);
+                return self::getArrayForAttendanceReport($token, $endpoint, $participants, $ret->next_page_token);
+            }
+        }
+        $logger->debug('End Count Participants: '.count($participants));
+        return $participants;
+    }
 }

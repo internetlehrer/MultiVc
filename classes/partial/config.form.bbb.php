@@ -129,7 +129,7 @@ $combo->addSubItem($cb);
 // RECORDING
 $cb = new ilCheckboxInputGUI($pl->txt("recording_choose"), "recording_choose");
 $cb->setRequired(false);
-$cb->setInfo($pl->txt("recording_choose_info"));
+$cb->setInfo($pl->txt("recording_choose_info_bbb"));
 $combo->addSubItem($cb);
 
 $cb = new ilCheckboxInputGUI($pl->txt("recording_default"), "recording_default");

@@ -297,9 +297,29 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $this->dic->ui()->mainTemplate()->setContent($this->form->getHTML());
     }
 
-    private function deleteMultiVcConn()
+    private function getConnIdFromRequest(): int
     {
-        $this->object = ilMultiVcConfig::getInstance($this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int()));
+        return $this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int());
+    }
+
+    private function redirectOnDeleteWithUsages(int $connId): void
+    {
+        if (ilMultiVcConfig::_countAllUsages($connId) > 0) {
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage(
+                ilGlobalTemplateInterface::MESSAGE_TYPE_FAILURE,
+                $this->dic->language()->txt('rep_robj_xmvc_conn_delete_blocked'),
+                true
+            );
+            $this->dic->ctrl()->redirect($this, 'configure');
+        }
+    }
+
+    private function deleteMultiVcConn(): void
+    {
+        $connId = $this->getConnIdFromRequest();
+        $this->redirectOnDeleteWithUsages($connId);
+
+        $this->object = ilMultiVcConfig::getInstance($connId);
 
         $gui = new ilConfirmationGUI();
         $gui->setFormAction($this->dic->ctrl()->getFormAction($this));
@@ -311,11 +331,12 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $this->dic->ui()->mainTemplate()->setContent($gui->getHTML());
     }
 
-    private function deleteMultiVcConnConfirmed()
+    private function deleteMultiVcConnConfirmed(): void
     {
-        $this->object = ilMultiVcConfig::getInstance($this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int()));
+        $connId = $this->getConnIdFromRequest();
+        $this->redirectOnDeleteWithUsages($connId);
 
-        ilMultiVcConfig::_deleteMultiVcConn($this->dic->http()->wrapper()->query()->retrieve('conn_id', $this->dic->refinery()->kindlyTo()->int()));
+        ilMultiVcConfig::_deleteMultiVcConn($connId);
         $this->dic->ui()->mainTemplate()->setOnScreenMessage('success', $this->dic->language()->txt('rep_robj_xmvc_conn_deleted'), true);
         $this->dic->ctrl()->redirect($this, 'configure');
     }
@@ -430,7 +451,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         }
 
         if($platform === 'edudip' && !$this->dic->http()->wrapper()->query()->has('configureNewMultiVcConn')) {
-            $this->dic->ui()->mainTemplate()->addJavaScript(ILIAS_HTTP_PATH . '/public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/js/modal.config.edudip.js');
+            $this->dic->ui()->mainTemplate()->addJavaScript('Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/src/js/modal.config.edudip.js');
         }
 
         $ti = new ilTextInputGUI($pl->txt("title"), "title");
@@ -613,6 +634,10 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $values["integration_auth_method"] = $this->object->getAuthMethod();
         $values["extra_cmd_choose"] = $this->object->getExtraCmdChoose();
         $values["extra_cmd_default"] = $this->object->getExtraCmdDefault();
+        $values["manual_mods_choose"] = $this->object->getManualModsChoose();
+        $values["manual_mods_default"] = $this->object->getManualModsDefault();
+        $values["approval_type_choose"] = $this->object->getApprovalTypeChoose();
+        $values["approval_type_default"] = $this->object->getApprovalTypeDefault();
         $values["style"] = $this->object->getStyle();
         $values["logo"] = $this->object->getLogo();
         $values["meeting_layout"] = $this->object->getMeetingLayout();
@@ -844,7 +869,11 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
                 $this->object->setRefreshToken( $form->getInput("refresh_token") );
                 */
                 $this->object->setExtraCmdChoose((bool) $form->getInput("extra_cmd_choose"));
-                $this->object->setExtraCmdDefault((bool) $form->getInput("extra_cmd_default"));
+                $this->object->setExtraCmdDefault((int) $form->getInput("extra_cmd_default"));
+                $this->object->setManualModsChoose((bool) $form->getInput("manual_mods_choose"));
+                $this->object->setManualModsDefault((int) $form->getInput("manual_mods_default"));
+                $this->object->setApprovalTypeChoose((bool) $form->getInput("approval_type_choose"));
+                $this->object->setApprovalTypeDefault((int) $form->getInput("approval_type_default"));
                 $this->object->setStyle($form->getInput("style"));
                 $this->object->setLogo(trim($form->getInput("logo")));
                 $this->object->setMeetingLayout((int) $form->getInput('meeting_layout'));
@@ -953,7 +982,7 @@ class ilMultiVcConfigGUI extends ilPluginConfigGUI
         $values["hide_username_logs"] = 1;
         $values["api"] = '';
         $values["integration_auth_method"] = '';
-        $values["access_token"] = (string) $this->object->getAccessToken();
+        $values["access_token"] = $this->object->getAccessToken();
         $values["refresh_token"] = $this->object->getRefreshToken();
         $values["token_user"] = $this->object->getAccessToken();
         $values["style"] = $this->object->getStyle();

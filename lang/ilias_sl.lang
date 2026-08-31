@@ -1,259 +1,268 @@
 <!-- language file start -->
-add_presentation_url#:#Otvoritvena predstavitev
+add_presentation_url#:#Začni predstavitev
 add_token#:#Dodaj žeton
 add_token_user#:#Nov moderator / žeton
-add_welcome_text#:#Prilagojeno pozdravno sporočilo
-adm_info_appointment#:#Kot administrator ali mentor lahko odprete sobo. Udeleženci pa jo lahko odprejo le med trajanjem seje.
-assigned_roles_info#:#Ustvarjanje te konfiguracije MultiVc je lahko omejeno na uporabnike, ki pripadajo eni ali več izbranim vlogam.
+add_welcome_text#:#Dodajte pozdravno besedilo
+adm_info_appointment#:#Kot administrator ali mentor lahko sobo odprete. Udeleženci pa jo lahko odprejo le med sejo.
+assigned_roles_info#:#Ustvarjanje te konfiguracije MultiVc je lahko omejeno za uporabnike, ki pripadajo eni ali več izbranim vlogam.
 assigned_roles#:#Dodeljene vloge
-authorize#:#odobriti
+authorize#:#Avtoriziraj
 bbb_default_server#:#Standardni strežnik BBB
-bbb_guest_password_info#:#Dovoljeni so alfanumerični in posebni znaki, kot na primer: <code>a-Z_09, .#@!?</code>
+bbb_guest_password_info#:#Dovoljeni so alfanumerični in posebni znaki, kot so: <code>a-Z_09,.#@!?</code>
 bbb_guest_password#:#Geslo za goste
 bbb_secret_expiration_date#:#Datum poteka veljavnosti
 bbb_secret_expiration_date_info#:#Geslo je veljavno do izbranega datuma vključno.
-bbb_secret_expired_msg#:#Geslo gosta je poteklo.
-bbb_secret_expires_info#:#Izberite to možnost, če naj ima geslo omejeno obdobje veljavnosti.
-bbb_secret_expires#:#Datum poteka veljavnosti
+bbb_secret_expired_msg#:#Geslo za gosta je poteklo
+bbb_secret_expires_info#:#Izberite to možnost, če želite, da je geslo začasno.
+bbb_secret_expires#:#Z datumom poteka veljavnosti.
 big_blue_button#:#BigBlueButton WebRTC
 btn_chat#:#Klepet je mogoče prikazati/skriti
 btn_chat_choose#:#Klepet je mogoče prikazati/skriti: Možnost izbire
-btn_chat_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Prikaži/skrij klepet«.
+btn_chat_choose_info#:#To možnost aktivirajte, če želite, da imajo uporabniki z dostopom za pisanje možnost »Prikaži/skrij klepet« v nastavitvah.
 btn_chat_default#:#Klepet je mogoče prikazati/skriti: Privzeta nastavitev
-btn_chat_default_info#:#Za poenostavitev uporabe je morda koristno, da te možnosti ne aktivirate in da klepet vedno prikažete.
-btn_chat_info#:#Omogočite to možnost, če želite, da gumb za prikaz/skrivanje klepeta prikaže.
-btn_locationshare_choose_info#:#Ta možnost bi morala biti običajno onemogočena.
+btn_chat_default_info#:#Za poenostavitev uporabe je lahko koristno, da te možnosti ne aktivirate in da klepet vedno prikažete.
+btn_chat_info#:#Aktivirajte to možnost, če želite, da se gumb skrije in prikaže klepet.
+btn_locationshare_choose_info#:#V večini primerov je treba to možnost deaktivirati
 btn_locationshare_choose#:#Možnost lokacije: Izbira
-btn_locationshare_default_info#:#To možnost aktivirajte šele po posvetovanju s pooblaščeno osebo za varstvo podatkov.
+btn_locationshare_default_info#:#To možnost aktivirajte šele po posvetovanju s pooblaščenimi osebami za varstvo podatkov.
 btn_locationshare_default#:#Možnost Lokacija: Privzeto
-btn_locationshare_info#:#Ta možnost uporabnikom omogoča, da v klepetu delijo svojo trenutno lokacijo z drugimi in da jih drugi povabijo na ločen sestanek. Zaradi zasebnosti je treba to možnost omogočiti le previdno.
+btn_locationshare_info#:#Ta možnost uporabnikom omogoča, da v klepetu delijo svojo trenutno lokacijo in da jih drugi povabijo na ločen sestanek. Zaradi zasebnosti je treba to možnost uporabljati previdno.
 btn_locationshare#:#Možnost Lokacija
-btn_settings_choose#:#Nastavitve sobe: Možnost izbire
-btn_settings_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje možnost »Nastavitve v sobi« v nastavitvah.
-btn_settings_default#:#Nastavitve sobe: Privzeto
-btn_settings_default_info#:#Privzeta nastavitev bi morala biti, da možnost in gumb za nastavitve običajno nista aktivna.
-btn_settings#:#Nastavitve sobe
-btn_settings_info#:#To možnost omogočite, če želite, da so gumbi in možnosti nastavitev vidni v sobi. To običajno ni potrebno, saj se ime in uporabniška slika samodejno podedujeta iz ILIAS.
+btn_settings_choose#:#Nastavitve v sobi: Možnost izbire
+btn_settings_choose_info#:#To možnost aktivirajte, če želite, da uporabniki z dovoljenji za pisanje v nastavitvah izberejo »Nastavitve v sobi«.
+btn_settings_default#:#Nastavitve v sobi: Privzeta nastavitev
+btn_settings_default_info#:#Privzeta nastavitev bi običajno morala biti, da možnost in gumb za nastavitve nista aktivna.
+btn_settings#:#Nastavitve v sobi
+btn_settings_info#:#To možnost aktivirajte, če želite, da so gumb in možnosti za nastavitve vidni v sobi. Običajno to ni potrebno, saj bo ILIAS prevzel ime in sliko uporabnika.
 btntext_concurrent_users_check#:#Preveri razpoložljivost
 btntext_guest_login_button#:#Prijava kot gost
 btntext_join_meeting#:#Pridruži se sestanku
 btntext_join_webinar#:#Pridružite se spletnemu seminarju
 btntext_start_meeting#:#Začni sestanek
 btntext_start_webinar#:#Začni spletni seminar
-cam_mic_only_for_moderator_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje ustrezno izbiro v nastavitvah. Ta možnost bi morala biti omogočena v večini primerov.
+cam_mic_only_for_moderator_choose_info#:#To možnost aktivirajte, če želite, da imajo uporabniki z dovoljenji za pisanje ustrezno izbiro v nastavitvah. Ta možnost bi morala biti aktivirana v večini primerov.
 cam_mic_only_for_moderator_choose#:#Udeleženci ne smejo aktivirati kamere in mikrofona: Možnost
-cam_mic_only_for_moderator_default_info#:#Organizatorji lahko udeležencem selektivno dovolijo uporabo mikrofona in/ali kamere. Udeleženci ne morejo deliti ali oddajati vsebine brez potrditve. Ta možnost je uporabna za dogodke z zelo velikim številom udeležencev.
-cam_mic_only_for_moderator_default#:#Udeleženci ne smejo aktivirati kamere in mikrofona: privzeta nastavitev
-cam_mic_only_for_moderator_info#:#Organizatorji bodo udeležencem selektivno omogočili uporabo mikrofona in/ali kamere. Udeleženci ne morejo deliti ali oddajati vsebine brez potrditve.
-cam_mic_only_for_moderator#:#Udeleženci ne smejo aktivirati kamere in mikrofona.
-cam_only_for_moderator_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Kamera samo za moderatorje«. Ta možnost bi morala biti omogočena v večini primerov.
-cam_only_for_moderator_choose#:#Kamera samo za moderatorje: Možnost izbire
-cam_only_for_moderator_default_info#:#To možnost je treba v večini primerov onemogočiti in jo omogočiti le, če se pri velikem številu udeležencev pričakujejo težave z delovanjem. Moderatorji lahko to nastavitev med sejo vedno spremenijo.
+cam_mic_only_for_moderator_default_info#:#Organizatorji udeležencem posebej dovolijo uporabo mikrofona in/ali kamere. Udeleženci ne morejo deliti vsebine brez potrditve. Ta možnost je uporabna za dogodke z velikim številom udeležencev.
+cam_mic_only_for_moderator_default#:#Udeleženci ne smejo aktivirati kamere in mikrofona: Privzeta nastavitev
+cam_mic_only_for_moderator_info#:#Organizatorji udeležencem posebej dovoljujejo uporabo mikrofona in/ali kamere. Udeleženci ne morejo deliti vsebine brez potrditve.
+cam_mic_only_for_moderator#:#Udeleženci ne smejo aktivirati kamere in mikrofona
+cam_only_for_moderator_choose_info#:#To možnost aktivirajte, če želite, da uporabniki z dostopom za pisanje v nastavitvah izberejo »Kamera samo za moderatorje«. Ta možnost bi morala biti aktivirana v večini primerov.
+cam_only_for_moderator_choose#:#Kamera samo za moderatorje: Možnost
+cam_only_for_moderator_default_info#:#To možnost je treba v večini primerov deaktivirati in jo aktivirati le, če se pri velikem številu udeležencev pričakujejo težave z delovanjem. Moderatorji imajo vedno možnost, da med sejo spremenijo nastavitev v BigBlueButton.
 cam_only_for_moderator_default#:#Kamera samo za moderatorje: Privzeta nastavitev
-cam_only_for_moderator_info#:#Priporočljivo za sestanke z zelo velikim številom ljudi.
+cam_only_for_moderator_info#:#Priporočljivo za srečanja z velikim številom ljudi.
 cam_only_for_moderator_zoom#:#Kamera samo za gostitelje
 cam_only_for_moderator_zoom_info#:#Priporočljivo za srečanja z zelo velikim številom ljudi!
 cam_only_for_moderator#:#Kamera samo za moderatorje
-cancel#:#prekliči
-cat_create_xmvc#:#Ustvarite virtualno sejno sobo
-chat_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje možnost »Dovoli klepet« v nastavitvah.
-chat_choose#:#Dovoli klepet: Možnost
-chat_default_info#:#Če je omogočeno, se lahko ljudje pogovarjajo med seboj.
+cancel#:#Prekliči
+cat_create_xmvc#:#ustvarite virtualno sejno sobo
+chat_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah izbrano možnost »Dovoli zasebni klepet«.
+chat_choose#:#Dovoli klepet: Možnost izbire
+chat_default_info#:#Če je aktivirano, se lahko ljudje pogovarjajo med seboj.
 chat_default#:#Dovoli klepet: Privzeta nastavitev
-chat_info#:#Ljudje se lahko pogovarjajo med seboj.
+chat_info#:#Ljudje se lahko med seboj pogovarjajo.
 chat#:#Dovoli klepet
 conf_availability_0#:#Ni na voljo
 conf_availability_1#:#Obstoječe dovoljeno
-conf_availability_2#:#Lahko se ustvarijo novi
+conf_availability_2#:#Ustvariti je mogoče nove
 conf_availability#:#Razpoložljivost
-config_help_begin#:#Razlaga v nastavitvah se glasi:
+config_help_begin#:#Razlaga v nastavitvah je naslednja:
 configure_add#:#Ustvari konfiguracijo
-configure#:#konfiguracija
+configure#:#Konfiguracija
 conf_meeting_layout_1#:#POSTAVITEV PO MERI
 conf_meeting_layout_2#:#PAMETNA_POSTAVITEV
 conf_meeting_layout_3#:#PREZENTATION_FOCUS
 conf_meeting_layout_4#:#VIDEO_FOCUS
 conf_meeting_layout#:#Postavitev sestanka
-conf_title#:#naslov
+conf_title#:#Naslov
 conn_deleted#:#Vrsta sestanka je bila izbrisana.
 conn_id#:#Vrsta sestanka
 copy#:#Kopiraj
 create_type#:#Določite novo vrsto sestanka
-cronjob_description#:#Ko je aktivirano, se lahko čas, preživet na strani, uporabi za izračun učnega napredka.
-cronjob_title#:#Cron opravilo MultiVc za določanje napredka učenja pri uporabi MS Teams ali Zoom
-crs_create_xmvc#:#Ustvarite virtualno sejno sobo
+cronjob_description#:#Če je aktivirano, se lahko porabljeni čas uporabi za izračun učnega napredka.
+cronjob_title#:#Cronjob MultiVc za določanje napredka učenja pri uporabi MS Teams
+crs_create_xmvc#:#ustvarite virtualno sejno sobo
 custom_style#:#Slog po meri
-custom_style_info#:#Tukaj lahko definirate parametre sloga CSS ali datoteko CSS. Za datoteko je treba navesti URL, ki se začne s https://. Poleg tega mora biti parameter »displayBrandingArea« v datoteki settings.yml namestitve BBB nastavljen na true.
+custom_style_info#:#Tukaj lahko definirate parametre sloga CSS ali datoteko CSS. Za datoteko je treba navesti URL, ki se začne s https://. Poleg tega mora biti v datoteki settings.yml namestitve BBB parameter »displayBrandingArea« nastavljen na true.
 delete_conn#:#Želite izbrisati vrsto sestanka?
-delete#:#Izbriši
-delete_sess_user_changed#:#Ukrepi ob spremembi lastništva
-delete_sess_user_changed_info#:#Ko uporabnik zamenja uporabnika, se vse ustvarjene seje izbrišejo.
+delete#:#izbriši
+delete_sess_user_changed#:#Dejanje ob spremembi lastnika
+delete_sess_user_changed_info#:#Izbriši vse ustvarjene seje ob spremembi uporabnika
 delete_token#:#Izbriši žeton
 delete_type#:#Izbriši vrsto sestanka
-disable_sip_info#:#Ta možnost vam omogoča, da onemogočite SIP klicno povezavo. Telefonska klicna povezava nato ne bo več mogoča.
-disable_sip#:#Deaktivirajte telefonsko klicno povezavo
-display_name#:#Prikazano ime
+disable_sip_info#:#Ta možnost vam omogoča, da onemogočite klicanje prek SIP-a. Telefonsko klicanje za sestanke ni mogoče.
+disable_sip#:#Onemogoči klicanje prek telefona
+display_name#:#Prikazno ime
 download#:#Prenesi
-download_video#:#Prenesi posnetek
-duration#:#Dolžina časa
+download_video#:#Prenesi video
+duration#:#Trajanje
 edit#:#Uredi
 edit_properties#:#Urejanje lastnosti
 edudip_host_email#:#e-poštni naslov edudip
-edudip_host_email_hidden_info#:#E-poštni naslov, uporabljen za avtorizacijo, je viden samo lastnikom in skrbnikom objekta.
+edudip_host_email_hidden_info#:#E-poštni naslov, uporabljen za avtorizacijo, je prikazan samo lastnikom objekta in administratorjem.
 edudip_host_email_info#:#Vaš e-poštni naslov, ki ga pozna edudip, se mora ujemati s tem.
-edudip_meetings_list_downloaded#:#Spletni seminarji, ki so že na voljo na edudip, so bili uspešno integrirani.
-edudip_meetings_list_unavailabe#:#Dostop do obstoječih spletnih seminarjev na platformi edudip trenutno ni mogoč.
+edudip_meetings_list_downloaded#:#Spletni seminarji, ki so na voljo na edudip, so bili uspešno integrirani
+edudip_meetings_list_unavailabe#:#Pridobitev obstoječih spletnih seminarjev iz edudipa trenutno ni mogoča.
 end_time#:#Konec
-endtime#:#Končni časi
+endtime#:#Končni čas
 err_msg_displayname#:#Prosimo, vnesite svoje ime
 err_msg_guest_password#:#Geslo gosta je napačno.
 err_msg_guest_password_expired#:#Geslo gosta je poteklo.
-error_admin_no_access_token#:#Obvestite svojega skrbnika: Manjka žeton
+error_admin_no_access_token#:#Prosimo, obvestite svojega skrbnika: Manjka žeton
 error_object_no_access_token#:#Prosimo, izvedite avtorizacijo v lastnostih objekta.
 error_object_no_host_email#:#Prosimo, potrdite e-poštni naslov gostiteljskega uporabnika v lastnostih objekta.
-error_start_meeting#:#Pri začetku sestanka je prišlo do napake.
+error_start_meeting#:#Pri začetku sestanka je prišlo do napake
 error_start_webinar#:#Med zagonom spletnega seminarja je prišlo do napake.
 ext_provider_token_user#:#Uporabniški/dostopni žeton
-ext_provider_token_user_info#:#Vnesite e-poštni naslov uporabnikov z moderatorsko licenco, ki mu sledi njihov dostopni žeton.
-fa_expand_default_info#:#Ta možnost bi morala biti na splošno onemogočena. Prav tako v mnogih primerih prikaza določenih območij (npr. klepeta) ni mogoče povečati.
-fa_expand_default#:#Maksimiranje prikaza območij: Privzeta nastavitev
-fold_create_xmvc#:#Ustvarite virtualno sejno sobo
-grp_create_xmvc#:#Ustvarite virtualno sejno sobo
-guest_displayname_info#:#Opomba: Podrobni podatki o naslovu lahko povzročijo težave z uporabnostjo zaradi omejenega prostora, ki je na voljo za ime v BigBlueButton.
+ext_provider_token_user_info#:#Vnesite e-poštni naslov uporabnikov z moderatorsko licenco in nato njihov dostopni žeton.
+fa_expand_default_info#:#Ta možnost bi morala biti običajno onemogočena. Prav tako v mnogih primerih prikaza območij (npr. klepeta) ni mogoče povečati.
+fa_expand_default#:#Povečaj prikaz obsegov: Privzeta nastavitev
+fold_create_xmvc#:#ustvarite virtualno sejno sobo
+grp_create_xmvc#:#ustvarite virtualno sejno sobo
+guest_displayname_info#:#Opomba: Podrobni podatki o naslovu lahko povzročijo težave z uporabnostjo zaradi omejene dolžine prostora, ki je na voljo za ime v BigBlueButton.
 guest_displayname_input#:#Naziv Ime Priimek
-guest#:#Gost
+guest#:#gost
 guestlink_choose#:#Možnost izbire povezave za goste
-guestlink_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje možnost »Dovoli povezavo za goste« v nastavitvah.
-guestlink_default#:#Privzeta povezava za goste
-guestlink_default_info#:#To možnost bi bilo treba v večini primerov onemogočiti. Nepooblaščena uporaba bi morala biti v veliki meri preprečena. Gostje se lahko pridružijo moderirani sobi le kot udeleženci. Moderator mora biti že prisoten. Gostje se morajo strinjati s pogoji uporabe, ki so shranjeni kot jezikovna spremenljivka ILIAS. Če želite to urediti, pojdite v Administracija -> Jeziki. Kliknite želeni jezik in v polje »Identifikator« vnesite »rep_robj_xmvc_terms_of_use«. Nato kliknite »Uporabi filter« in uredite besedilo.
+guestlink_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah izbrano možnost »Dovoli povezavo za goste«.
+guestlink_default#:#Privzeto za povezavo gosta
+guestlink_default_info#:#To možnost je treba v večini primerov onemogočiti. Uporaba s strani nepooblaščenih oseb bi morala biti v veliki meri preprečena. Gostje vedno vstopijo v moderirano sobo samo kot člani. Moderator mora biti tam že prisoten. Gostje se morajo strinjati s pogoji uporabe, ki so shranjeni kot jezikovna spremenljivka ILIAS. Če želite urediti jezikovno spremenljivko, pojdite v Administracija -> Jeziki. Kliknite želeni »jezik« in v polje »Identifikator« vnesite »rep_robj_xmvc_terms_of_use«. Nato kliknite »Uporabi filter« in uredite besedilo.
 guestlink#:#Povezava za goste
-guestlink_info#:#Moderatorji lahko povabijo goste prek povezave.
-guest_link_pw_info#:#Gostje se morajo prijaviti s tem geslom.
+guestlink_info#:#Moderatorji lahko povabijo goste prek povezave
+guest_link_pw_info#:#Gostje se morajo prijaviti s tem geslom
 guest_password_input_info#:#Prosimo, vnesite geslo za povezavo za goste tukaj.
 guest_password_input#:#Geslo za goste
 headline_welcome_meeting#:#Dobrodošli v sejni sobi!
 headline_welcome_webinar#:#Dobrodošli na spletnem seminarju!
 hide_recs_until_date#:#Ne prikazuj posnetkov, dokler
 hide_recs_until_date_info#:#Posnetki do tukaj navedenega datuma snemanja ne bodo prikazani.
-hide_username_logs#:#Skrij pregled uporabnikov
-hide_username_logs_info#:#Če je izbrano, je pregled uporabnikov viden samo v administraciji vtičnikov. V nasprotnem primeru se pregled uporabnikov prikaže tudi za objekt MultiVc.
-hint_availability_recs#:#Za vprašanja in pomisleke glede dostopa do posnetkov se obrnite na administratorje teh srečanj BigBlueButton.
-hint#:#Besedilo opombe
+hide_username_logs#:#Skrij uporabniško ime
+hide_username_logs_info#:#Če je izbrano, je pregled uporabnikov viden samo v administraciji vtičnikov, sicer pa tudi pri objektu MultiVc.
+hint_availability_recs#:#Za vprašanja in pomisleke glede omogočanja dostopnosti posnetkov se obrnite na osebe, odgovorne za ta srečanja BigBlueButton.
+hint#:#Namig
 hint_pub_recs#:#Deljenje povezav do posnetkov ni dovoljeno.
-info_add_presentation_url#:#Naložite svojo uvodno predstavitev prek URL-ja. Struktura URL-ja mora slediti tej obliki: <i>https://vaša.domena/pot_do/predstavitve.pdf</i>
-info_add_welcome_text#:#To prilagojeno pozdravno sporočilo je mogoče definirati prek jezikovne spremenljivke ILIAS. Pojdite v Administracija -> Jeziki. Kliknite želeni jezik in v polje »Identifikator« vnesite »rep_robj_xmvc_welcome_text«. Nato kliknite »Uporabi filter« in uredite besedilo.
-info_availability#:#To nadzoruje razpoložljivost vrste sestanka v reviji. Starejše vrste je mogoče nastaviti na »Obstoječe dovoljeno«, namesto da se izbrišejo.
-info_bottom_headline#:#Pomembna navodila za uporabo:
-info_bottom#:#<ul><li>Prosimo, <b>uporabljajte slušalke</b>, da se izognete nadležnim povratnim informacijam ali odmevom!</li><li><b>Če je vaša internetna povezava slaba, izklopite kamero (spletno kamero), če pa je povezava še slabša, uporabite konferenčni klic za prenos zvoka.</li></ul>
+info_add_presentation_url#:#Naložite svojo začetno predstavitev prek URL-ja. Struktura URL-ja mora izpolnjevati naslednjo obliko: <i>https://vaša.domena/pot_do/predstavitve.pdf</i>
+info_add_welcome_text#:#Posamezno pozdravno besedilo je mogoče definirati z jezikovno spremenljivko ILIAS. Preklopite na Administracija -> Jeziki. Kliknite želeni »Jezik« in v polje »Identifikator« vnesite »rep_robj_xmvc_welcome_text«. Nato kliknite »Uporabi filter« in uredite besedilo.
+info_availability#:#To nadzoruje razpoložljivost vrste sestanka v repozitoriju. Stare vrste je mogoče nastaviti na »Obstoječe dovoljeno« namesto izbrisa.
+info_bottom_headline#:#Pomembne opombe:
+info_bottom#:#<ul><li>Prosimo, <b>uporabljajte slušalke</b>, da se izognete nadležnim povratnim informacijam ali odmevom!</li><li><b>Če je vaša internetna povezava slaba</b>, izklopite kamero (spletno kamero), če pa je povezava še slabša, za prenos zvoka uporabite telefonsko konferenco.</li></ul>
 info_concurrent_users_available#:#Število prostih mest v virtualni učilnici:
-info_concurrent_users_none#:#Trenutno ni več prostih mest za registracijo. Prosimo, preverite razpoložljivost čez eno minuto s klikom na gumb »Pridruži se sestanku«.
-info_delete_vc_sure#:#Ste prepričani? Naslednja virtualna sejna soba bo izbrisana:
-info_hint#:#Pojasnjevalno besedilo je nad vsebino strani predmeta označeno z barvo.
-info_max_duration#:#Sestanek se bo končal po določenem številu ur in minut. Za neomejeno trajanje vnesite »0« za vsako.
-info_max_participants#:#Največje število udeležencev na sestanek. Za neomejeno število udeležencev vnesite »0«.
-info_max_participants_webinar#:#Največje število udeležencev na spletni seminar. Prosimo, glejte svojo pogodbo edudip.
+info_concurrent_users_none#:#Trenutno ni več na voljo mest za prijavo. Čez minuto preverite razpoložljivost s <b>levim klikom</b> na gumb <b>»Pridruži se sestanku«</b>.
+info_delete_vc_sure#:#Ste prepričani? Ta virtualna sejna soba bo izbrisana:
+info_hint#:#Besedilo namiga je označeno nad vsebino strani predmeta.
+info_max_duration#:#Sestanek se bo končal po določenih vrednostih za ure in minute. Če je trajanje neomejeno, za vsako navedite »0«.
+info_max_participants#:#Največje število udeležencev na sestanek. Za neomejeno število vnesite »0«.
+info_max_participants_webinar#:#Največje število udeležencev na spletni seminar.
 info_meeting_layout#:#Nadzira privzeto postavitev za sestanek.
 info_om_svr_public_url#:#Primer: https://www.example.com/
 info_platform_chg_reset_data#:#Vaša izbira
-info_platform_chg_reset_data_o#:#Upoštevajte, da se bodo pri preklapljanju med platformami WebRTC vse nastavitve ponastavile na privzete vrednosti in vsi shranjeni podatki obrazcev bodo izbrisani. Če želite preklopiti med platformami WebRTC, morate najprej potrditi novo izbiro s klikom na »Shrani«. V naslednjem koraku bo prejšnja konfiguracija prepisana s ponovnim shranjevanjem.
-info_requirements_bbb#:#BigBlueButton uporablja odprti standard WebRTC, ki ga podpira vse več brskalnikov. Trenutno priporočamo Google Chrome, brskalnik Microsoft Edge, ki temelji na Chromiumu, ali, z omejitvami, Mozilla Firefox. Uporabite lahko tudi Safari Mobile od iOS 12.2 naprej in Chrome Mobile od Android 6.0 naprej. Microsoft Internet Explorer in starejše različice Edge niso podprte. Vaš požarni zid ne sme blokirati naslednjih vrat: vrata TCP/IP 80/443 (za HTTP/HTTPS) in vrata UDP v območju 16384–32768. Za skupno rabo zaslona (skupna raba namizja) morate imeti visokozmogljivo internetno povezavo. Priporočamo tudi, da moderatorji in predstavitelji uporabljajo žično omrežno povezavo (ne Wi-Fi).
-info_requirements_edudip#:#<ul><li>edudip uporablja odprti standard WebRTC, ki ga podpira vse več brskalnikov. Trenutno priporočamo Google Chrome, brskalnik Microsoft Edge, ki temelji na Chromiumu, ali, z omejitvami, Mozilla Firefox. Microsoft Internet Explorer in starejše različice Edgea niso podprte.</li><li>Za dodatne informacije se obrnite na podporo za edudip.</li>
+info_platform_chg_reset_data_o#:#Upoštevajte, da se pri spremembi platforme WebRTC vse nastavitve ponastavijo na privzete vrednosti in vsi shranjeni podatki obrazcev se izbrišejo. Če želite spremeniti platformo WebRTC, morate najprej potrditi novo izbiro s klikom na »Shrani«. V naslednjem koraku bo prejšnja konfiguracija prepisana s ponovnim shranjevanjem.
+info_requirements_bbb#:#<ul><li>BigBlueButton uporablja odprti standard WebRTC, ki ga podpira vse več brskalnikov. Trenutno priporočamo Google Chrome, brskalnik Microsoft Edge, ki temelji na Chromiumu, ali z omejitvami Mozilla Firefox. Uporabite lahko tudi Safari Mobile od iOS 12.2 naprej in Chrome Mobile od Android 6.0 naprej. Microsoft Internet Explorer in starejše različice Edgea niso podprte.</li><li>Požarni zid, ki ga uporabljate, ne sme blokirati naslednjih vrat: vrata TCP/IP 80/443 (za HTTP/HTTPS) in vrata UDP v območju 16384–32768.</li><li>Za prenos zaslona (deljenje namizja) morate imeti visokozmogljivo internetno povezavo. Moderatorjem in predstaviteljem priporočamo tudi uporabo žičnega omrežja (brez WLAN).
+info_requirements_edudip#:#<ul><li>edudip uporablja odprti standard WebRTC, ki ga podpira vse več brskalnikov. Trenutno priporočamo Google Chrome, brskalnik Microsoft Edge, ki temelji na Chromiumu, ali, z omejitvami, Mozilla Firefox. Microsoft Internet Explorer in starejše različice Edgea niso podprte.</li><li>Za več informacij se obrnite na podporo za edudip.</li>
 info_requirements_headline#:#Tehnične zahteve:
-info_requirements_not_ok#:#<b>Virtualno sejno sobo lahko z brskalnikom, ki ga trenutno uporabljate, uporabljate le v zelo omejenem obsegu.</b><br/>Za najboljše rezultate uporabite Google Chrome ali, z omejitvami, Mozilla Firefox! Če nimate pravic za namestitev brskalnika, lahko uporabite Google Chrome Portable.<br/>Če brskalnika ni mogoče spremeniti, zaženite virtualno sejno sobo in v klepet napišite, da trenutno nimate ustreznega brskalnika in da vas nihče ne sme čakati.
-info_requirements_om#:#<ul><li>Openmeetings uporablja odprti standard WebRTC, ki ga podpira vse več brskalnikov. Trenutno priporočamo Google Chrome ali, z omejitvami, Mozilla Firefox. Uporabite lahko tudi najnovejšo različico brskalnika Microsoft Edge, pa tudi Safari Mobile (iOS 12.2 in novejši) in Chrome Mobile (Android 6.0 in novejši). Microsoft Internet Explorer in starejše različice brskalnika Edge niso podprte.</li><li>Vaš požarni zid ne sme blokirati naslednjih vrat: vrata TCP/IP 8888/5443 (za HTTP/HTTPS), TCP/UDP 3478 in vrata UDP v območju 49152–65535.</li><li>Za skupno rabo zaslona (skupno rabo namizja) morate uporabljati Google Chrome in imeti visokozmogljivo internetno povezavo. Priporočamo tudi, da moderatorji in predstavitelji uporabljajo žično omrežno povezavo (ne Wi-Fi).
-info_requirements_partly#:#Priporočamo uporabo brskalnika Google Chrome ali, z določenimi omejitvami, Mozilla Firefox. Sami boste morali ugotoviti, ali in v kolikšni meri je vaš trenutni brskalnik primeren za uporabo virtualne sejne sobe. Prosimo, da svoje izkušnje sporočite morebitni tehnični podpori.
-info_requirements_teams#:#Moderatorji morajo uporabljati aplikacijo Teams. Udeleženci lahko zaženejo Teams prek brskalnika. Za skupno rabo zaslona (skupna raba namizja) morate imeti visokozmogljivo internetno povezavo. Priporočamo tudi, da moderatorji in predstavitelji uporabljajo žično omrežje (ne Wi-Fi).
+info_requirements_not_ok#:#<b> Z brskalnikom, ki ga trenutno uporabljate, lahko virtualno sejno sobo uporabljate le v zelo omejenem obsegu.</b><br/> Najbolje je, da kot brskalnik uporabite Google Chrome ali, z omejitvami, Mozilla Firefox! Če nimate pravic za namestitev brskalnika, boste morda lahko uporabili Google Chrome Portable.<br/>Če brskalnika ni mogoče spremeniti, zaženite virtualno sejno sobo in v klepetu napišite, da trenutno nimate ustreznega brskalnika in da vas nihče ne sme čakati.
+info_requirements_om#:#<ul><li>Openmeetings uporablja odprti standard WebRTC, ki ga podpira vse več brskalnikov. Trenutno priporočamo Google Chrome ali, z omejitvami, Mozilla Firefox. Uporabite lahko tudi najnovejšo različico brskalnika Microsoft Edge, pa tudi Safari Mobile od iOS 12.2 naprej in Chrome Mobile od Android 6.0 naprej. Microsoft Internet Explorer in starejše različice Edgea niso podprte.</li><li>Požarni zid, ki ga uporabljate, ne sme blokirati naslednjih vrat: vrata TCP/IP 8888/5443 (za HTTP/HTTPS), TCP/UDP 3478 in vrata UDP v območju 49152–65535.</li><li>Za prenos zaslona (deljenje namizja) morate uporabljati Google Chrome in imeti visokozmogljivo internetno povezavo. Moderatorjem in predstaviteljem priporočamo tudi uporabo žičnega omrežja (brez WLAN).
+info_requirements_partly#:#Kot brskalnik priporočamo Google Chrome ali z omejitvami Mozilla Firefox. Ali in v kolikšni meri je brskalnik, ki ga trenutno uporabljate, primeren za uporabo virtualne sejne sobe, morate ugotoviti sami. Prosimo, da svoje izkušnje sporočite ekipi za tehnično podporo, če je na voljo.
+info_requirements_teams#:#<ul><li>Moderatorji morajo uporabljati aplikacijo Teams.</li><li>Udeleženci lahko zaženejo Teams v svojem brskalniku.</li><li>Za skupno rabo zaslona (skupna raba namizja) morate imeti visokozmogljivo internetno povezavo. Priporočamo tudi, da moderatorji in predstavitelji uporabljajo žično omrežje (ne Wi-Fi).
 info_requirements_webex#:#<ul><li>Priporočeni brskalniki: Chrome, Edge, Firefox</li></ul>
 info_requirements_zoom#:#Prijavite se v Zoom z e-poštnim naslovom, ki ste ga registrirali pri ILIAS. To je:
-info_requirements_zoom_lp#:#Vaša udeležba na tem sestanku mora biti zabeležena, da se ugotovi vaš učni napredek. Do točk boste upravičeni le, če boste prisotni {%} predvidenega časa med začetkom in koncem sestanka.
-info_set_owner#:#Lastnik registriran
+info_requirements_zoom_lp#:#Vaša prisotnost na tem sestanku mora biti zabeležena, da se ugotovi vaš učni napredek. Do točk boste upravičeni le, če boste prisotni {%} predvidenega časa med začetkom in koncem sestanka.
+info_set_owner#:#lastnik je vnesel
 info_svr_private_port#:#Primer: 443
-info_svr_private_url#:#Z izjemo Amazon EC2 to vedno ustreza javnemu URL-ju.
+info_svr_private_url#:#Vedno ustreza javnemu URL-ju, z izjemo Amazon EC2
 info_svr_public_port#:#Primer: 443
 info_svr_public_url#:#Primer: https://www.example.com/bigbluebutton/
 info_svr_salt_om#:#Primer: dZ#ls2W!k6l
 info_svr_salt#:#ssh: bbb-conf --skrivnost
 info_svr_username#:#Primer: om_admin
-info_title#:#Ta naslov se prikaže pri izbiri vrste sestanka za nove objekte.
-info_top_moderated_edudip#:#Imate pravice moderiranja in lahko začnete spletni seminar.
-info_top_moderated_m_bbb#:#To je moderirana soba in vanjo lahko vstopite le, če je v sobi oseba z moderatorskimi funkcijami.
-info_top_moderated_m_om#:#To je moderirana soba in vanjo lahko vstopite le, če je v sobi oseba z moderatorskimi funkcijami.
-info_top_moderated_webex#:#Imate moderatorske pravice in lahko začnete sestanek. Za to potrebujete račun pri Webexu ali spletnem mestu, ki ga gosti Webex. Udeleženci se lahko pridružijo šele, ko sestanek začne moderator.
+info_title#:#Ta naslov se prikaže za izbiro vrste sestanka za nove objekte.
+info_top_moderated_edudip#:#Imate pravice moderatorja in lahko začnete sestanek.
+info_top_moderated_m_bbb#:#To je moderirana soba in vanjo lahko vstopite le, če je v sobi oseba z moderatorsko funkcijo.
+info_top_moderated_m_om#:#To je moderirana soba in vanjo lahko vstopite le, če je v sobi oseba z moderatorsko funkcijo.
+info_top_moderated_webex#:#Imate moderatorske pravice in lahko začnete sestanek. Za to potrebujete račun pri Webexu ali na spletnem mestu, ki ga gosti Webex. Udeleženci se ne morejo pridružiti, dokler sestanka ne začne moderator.
 info_top_moderated_zoom#:#To je spletni seminar. Spletni seminar lahko začnete zdaj.
-info_top_moderator_bbb#:#<b>To je moderirana soba in v njej imate vlogo moderatorja.</b><br/>Osebe brez vloge moderatorja lahko vstopijo v sejno sobo le, če je v sobi že oseba z vlogo moderatorja.
-info_top_moderator_om#:#<b>To je moderirana soba in v njej imate vlogo moderatorja.</b><br/>Osebe brez vloge moderatorja lahko vstopijo v sejno sobo le, če je v sobi že oseba z vlogo moderatorja.
-info_top_not_moderated_bbb#:#Ta sejna soba ni moderirana. Zato imate tudi moderatorske pravice in posledično razširjene pravice. Pravice drugih udeležencev lahko omejite in tudi končate sejo. Prosimo, da te razširjene pravice uporabljate odgovorno.
-info_top_not_moderated_om#:#Ta sejna soba ni moderirana. Zato imate tudi moderatorske pravice in posledično razširjene pravice. Pravice drugih udeležencev lahko omejite in tudi končate sejo. Prosimo, da te razširjene pravice uporabljate odgovorno.
+info_top_moderator_bbb#:#<b>To je moderirana soba in v njej imate funkcijo moderatorja.</b><br/>Osebe brez funkcije moderatorja lahko vstopijo v sejno sobo le, če je v sobi oseba z moderatorsko funkcijo.
+info_top_moderator_om#:#<b>To je moderirana soba in v njej imate funkcijo moderatorja.</b><br/>Osebe brez funkcije moderatorja lahko vstopijo v sejno sobo le, če je v sobi oseba z moderatorsko funkcijo.
+info_top_not_moderated_bbb#:#Ta sejna soba ni moderirana. Zato imate tudi funkcijo moderatorja in s tem razširjene pravice. Pravice drugih oseb lahko omejite in tudi končate sejo. Prosimo, da razširjene pravice uporabljate odgovorno.
+info_top_not_moderated_om#:#Ta sejna soba ni moderirana. Zato imate tudi funkcijo moderatorja in s tem razširjene pravice. Pravice drugih oseb lahko omejite in tudi končate sejo. Prosimo, da razširjene pravice uporabljate odgovorno.
 info_webex_client_id#:#ID odjemalca najdete v podatkih za vašo integracijo Webex (npr. admin.webex.com, developer.webex.com).
 info_webex_client_secret#:#Skrivnost odjemalca se prikaže enkrat po ustvarjanju/posodobitvi integracije Webex.
 info_webex_redirect_uri#:#Ta naslov dodajte kot URI za preusmeritev v nastavitvah integracije.
-info_webex_site_url#:#Ime gostovanega spletnega mesta. Poddomena pred .webex.com, npr. Npr. <b>vaše-podjetje</b>.webex.com ali <b>vaše-podjetje</b>.moje.webex.com
+info_webex_site_url#:#Ime gostovanega spletnega mesta. Poddomena pred .webex.com, npr. <b>vase-podjetje</b>.webex.com ali <b>vase-podjetje</b>.moje.webex.com
 integration_admin_auth_method_info#:#Avtorizacijo izvede skrbnik prek nastavitev vtičnika MultiVc. Med postopkom OAuth se zahtevajo naslednji obsegi:
 integration_admin_auth_scopes_info#:#(sledi za administratorje) meeting:controls_read meeting:controls_write meeting:admin_participants_read meeting:admin_schedule_read meeting:admin_schedule_write meeting:admin_recordings_read meeting:admin_recordings_write meeting:admin_recordings_write
 integration_auth_method#:#Avtorizacija integracije
-integration_auth_methods_info#:#Avtorizacijo lahko izvede: - skrbnik prek nastavitev vtičnika MultiVc - uporabnik prek nastavitev objekta MultiVc. Med ustreznim postopkom OAuth se zahtevajo naslednji obsegi:
+integration_auth_methods_info#:#Avtorizacijo lahko izvede:{br}- skrbnik prek nastavitev vtičnika MultiVc;{br}- uporabnik prek nastavitev objekta MultiVc.{br}Med ustreznim postopkom OAuth se zahtevajo naslednji obsegi:{br}
 integration_user_auth_method_info#:#Avtorizacijo izvede uporabnik prek nastavitev objekta MultiVc. Med postopkom OAuth se zahtevajo naslednji obsegi:
 integration_user_auth_scopes_info#:#spark:kms srečanje:schedules_read srečanje:schedules_write srečanje:participants_read srečanje:participants_write srečanje:preferences_read srečanje:preferences_write
 join_time#:#Udeležba od
 leave_time#:#Sodelovanje do
-list_token_user_info#:#Seznam obstoječih moderatorjev. Shranjenih žetonov ni mogoče prepisati. Po potrebi najprej izbrišite vnos s klikom na X.
+list_token_user_info#:#Seznam že ustvarjenih moderatorjev. Shranjenih žetonov ni mogoče prepisati. Po potrebi najprej izbrišite vnos s klikom na X.
 list_token_user#:#Registrirani moderatorji
 lock_disable_cam_choose_info#:#Določite, ali je za objekt na voljo nastavitev »Zakleni kamero udeleženca«.
 lock_disable_cam_choose#:#Izbira zaklepanja kamere udeleženca
-lock_disable_cam_default_info#:#Privzeto nastavite na »Zakleni kamero udeleženca«.
-lock_disable_cam_default#:#Zakleni kamero udeleženca (privzeta nastavitev)
+lock_disable_cam_default_info#:#Nastavite privzeto vrednost za »Zakleni kamero udeleženca«.
+lock_disable_cam_default#:#Zakleni kamero udeleženca Privzeto
 lock_disable_cam_info#:#Z aktiviranjem te možnosti je kamera (spletna kamera) udeležencev privzeto blokirana.
 lock_disable_cam#:#Zakleni kamero udeleženca
-locked_by#:#Blokirano s strani
-locked#:#Blokirano
-lock#:#Zakleni
-logo_url_info#:#Tukaj vnesite URL svojega logotipa. URL se mora začeti s https://.
+locked_by#:#Zaklenjeno s strani
+locked#:#Zaklenjeno
+lock#:#Zaklepanje
+logo_url_info#:#Tukaj vnesite URL svojega logotipa. URL se mora začeti s https://
 logo_url#:#URL logotipa
 lp_active#:#Aktivno
-lp_active_info#:#Status »V obdelavi« se nastavi takoj, ko dostopate do vsebine. Status »Obdelano« je določen z urami aktivnosti.
+lp_active_info#:#Status »V teku« se nastavi takoj, ko dostopate do vsebine. Status »Zaključeno« ali »Neuspešno« je določen glede na čas prisotnosti.
 lp_inactive#:#Neaktivno
-lp_inactive_info#:#Za ta predmet se ne shrani noben učni napredek.
-lp_mode#:#način
-lp_time_info#:#Ta odstotna vrednost, ki temelji na možnih časih prisotnosti, mora biti presežena, da se status nastavi na »Obdelano«.
-lp_time#:#Prag za »Urejeno«
+lp_inactive_info#:#Za ta objekt ni shranjen noben učni napredek.
+lp_mode#:#Način
+lp_time_info#:#Ta odstotek vrednosti glede na možne čase prisotnosti mora biti presežen, da se status nastavi na »Zaključeno«. V nasprotnem primeru se status nastavi na »Neuspešno«.
+lp_time#:#Prag za »Dokončano«
+manual_mods_choose_info#:#To možnost izberite, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Ročno izbrati somoderatorje ali sogostitelje«.
+manual_mods_choose#:#Ročna izbira so-moderatorjev: Možnost izbire
+manual_mods_default_info#:#To možnost onemogočite, če želite, da skrbniki tečajev in skupin ter mentorji tečajev samodejno postanejo »so-moderatorji« ali »so-gostitelji«. Če je omogočena, lahko »so-moderatorje« ali »so-gostitelje« ročno dodelite prek zavihka, ki se prikaže na objektu MultiVc.
+manual_mods_default#:#Ročna izbira so-moderatorjev: Privzeta nastavitev
+manual_mods_info_zoom#:#To možnost onemogočite, če želite, da skrbniki tečajev in skupin ter mentorji tečajev samodejno postanejo sogostitelji. Če je omogočena, lahko sogostitelje ročno določite z zavihkom, ki se bo nato prikazal.
+manual_mods_zoom#:#Ročna izbira sogostiteljev
 max_duration#:#Najdaljše trajanje
 max_meetings#:#Največje število sejnih sob
 max_participants#:#Največje število udeležencev
 max_users#:#Največje število uporabnikov
-meeting_collision#:#Prišlo je do napake. Za zahtevani čas je že načrtovana seja.
-meeting#:#srečanje
+meeting_collision#:#Prišlo je do napake. Sestanek je že načrtovan za zahtevano časovno obdobje.
+meeting#:#Sestanek
 meeting_end#:#Konec sestanka
-meeting_related_successful#:#Sestanek je bil uspešno dodeljen
-meeting_running#:#Virtualna sejna soba je bila odprta.
+meeting_related_successful#:#sestanek uspešno povezan
+meeting_running#:#Virtualna sejna soba se je začela.
 meeting_start#:#Začetek sestanka
-member_btn_fileupload_choose#:#Dovoli vsem nalaganje datotek: Možnost
-member_btn_fileupload_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Dovoli vsem nalaganje datotek«.
-member_btn_fileupload#:#Dovoli nalaganje datotek za vse
-member_btn_fileupload_default#:#Dovoli vsem nalaganje datotek: Privzeta nastavitev
+meetings_list_downloaded#:#Obstoječi sestanki in spletni seminarji so bili uspešno integrirani
+member_btn_fileupload_choose#:#Dovoli nalaganje datotek vsem: Možnost izbire
+member_btn_fileupload_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Dovoli nalaganje datotek vsem«.
+member_btn_fileupload#:#Dovoli nalaganje datotek vsem
+member_btn_fileupload_default#:#Dovoli nalaganje datotek vsem: Privzeta nastavitev
 member_btn_fileupload_default_info#:#Ta možnost bi morala biti običajno onemogočena.
-member_btn_fileupload_info#:#To možnost aktivirajte le, če želite, da poleg oseb z razširjenimi pravicami (npr. skrbnikov, morebiti tutorjev) datoteke lahko nalagajo tudi druge osebe.
+member_btn_fileupload_info#:#To možnost aktivirajte le, če želite, da imajo poleg oseb z razširjenimi pravicami (npr. skrbniki, mentorji) datoteke lahko nalagati tudi druge osebe.
 modal_delete_scheduled_meeting_accept#:#Izbriši sestanek
-modal_delete_scheduled_meeting_title#:#Ali ste prepričani, da želite izbrisati ta sestanek?
-modal_delete_scheduled_webinar_accept#:#Izbriši spletni seminar
-modal_delete_scheduled_webinar_title#:#Ali res želite izbrisati ta spletni seminar?
+modal_delete_scheduled_meeting_title#:#Ali res želite izbrisati ta sestanek?
+modal_delete_scheduled_webinar_accept#:#izbriši spletni seminar
+modal_delete_scheduled_webinar_title#:#Ali ste prepričani, da želite izbrisati ta spletni seminar?
 modal_details_scheduled_meeting_title#:#Podrobnosti o sestanku (telo odgovora Webex)
-modal_details_scheduled_webinar_title#:#Podrobnosti spletnega seminarja (odziv edudip)
-moderated_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje možnost izbire »moderirane sobe« v nastavitvah.
-moderated_choose#:#moderiran prostor: možnost izbire
-moderated_default_info#:#Aktivirajte to možnost, če želite ustvariti nove sobe kot moderirane sobe.
+modal_details_scheduled_webinar_title#:#Podrobnosti spletnega seminarja (telo odgovora edudip)
+moderated_choose_info#:#Aktivirajte to možnost, če želite, da uporabniki z dostopom za pisanje v nastavitvah izberejo »moderirano sobo«.
+moderated_choose#:#moderirana soba: možnost izbire
+moderated_default_info#:#To možnost aktivirajte, če želite ustvariti nove sobe kot moderirane sobe.
 moderated_default_zoom_info#:#To možnost aktivirajte, če želite ustvariti nove sobe kot »spletne seminarje«.
 moderated_default#:#moderirana soba: privzeta nastavitev
-moderated_info#:#V moderiranem prostoru imajo moderatorji razširjene pravice. Drugi uporabniki imajo le omejen dostop do virtualnega prostora. Moderatorji vključujejo vse, ki lahko urejajo lastnosti objekta, pa tudi skrbnike skupin, skrbnike tečajev in mentorje tečajev.
-moderated_teams_info#:#V moderiranem prostoru ima ustvarjalec predmeta, pa tudi skrbniki skupin, skrbniki tečajev in mentorji tečajev, več pravic: lahko delijo in prenašajo vsebino ter odločajo, ali se lahko pridružijo tudi drugi. V nemoderiranem prostoru se lahko pridruži kdorkoli in deli ali prenaša vsebino brez potrditve.
+moderated_info#:#V moderirani sobi imajo osebe z moderatorsko funkcijo razširjene pravice. Druge osebe imajo prav tako omejene pravice dostopa do virtualne sobe. Osebe z moderatorsko funkcijo so vsi, ki lahko urejajo lastnosti objekta, pa tudi skrbniki skupin, skrbniki tečajev in tutorji tečajev.
+moderated_teams_info#:#V moderirani sobi imajo ustvarjalec predmeta, skrbniki skupin, skrbniki tečajev in mentorji tečajev več pravic: lahko delijo in odločajo, ali se lahko pridružijo drugi ljudje. V nemoderirani sobi lahko deli in se pridruži kdorkoli brez potrditve.
 moderated_zoom_info#:#Virtualni prostor je namenjen spletnemu seminarju, ne sestanku. Prosimo, poskrbite, da ima vaš Zoom račun dovoljenje za ustvarjanje spletnih seminarjev. Osnovni ali celo brezplačni račun tega dovoljenja nima.
-moderated#:#moderiran prostor
-moderated_webex#:#Nasvet: V nemoderiranih sobah udeleženci niso psevdonimizirani. Zato se lahko pridružijo le posamezniki z ustreznim računom Webex.
+moderated#:#Moderirana soba
+moderated_webex#:#<b>Nasvet:</b> V nemoderiranih sobah udeleženci niso psevdonimizirani. Zato se lahko pridružijo le osebe z ustreznim računom Webex.
 moderated_zoom#:#Spletni seminar
 moderator#:#Moderator
+moderators_info_zoom#:#Prepričajte se, da imajo izbrani udeleženci potrebna dovoljenja v Zoomu.
+moderators_zoom#:#Sogostitelji
 msg_obj_deleted#:#Posnetek je bil izbrisan.
-notification_sending#:#Obvestila se pošiljajo ...
-notification_sent#:#Obvestila so bila uspešno poslana.
-obj_ids_special_info#:#Le redko potrebno! Tukaj vnesite ID-je objektov ILIAS za sobe, povezane s tečaji, ločene z vejicami (torej vedno isti ID objekta), ki jih je treba obravnavati ločeno za vsak tečaj. ID objekta je prikazan v nastavitvah objekta. Možnost »Posebne sobe« je uporabna, če je treba nastavitve več sob upravljati centralno, na primer za postopno omogočanje dodatnih funkcij.
+notification_sending#:#obvestila se pošiljajo ...
+notification_sent#:#obvestila uspešno poslana.
+obj_ids_special_info#:#Potrebno le v redkih primerih! Vnesite ID-je objektov ILIAS za sobe, povezane s tečaji (torej vedno isti ID objekta), ločene z vejicami. ID objekta je prikazan v nastavitvah objekta. Možnost »posebne sobe« je uporabna, če je treba nastavitve več sob izvajati centralno, da se nadaljnje funkcije sprostijo postopno.
 obj_ids_special#:#Posebne sobe
 objs_xmvc_duplicate#:#Kopiraj virtualno sejno sobo
 objs_xmvc#:#Virtualne sejne sobe
@@ -262,45 +271,46 @@ obj_xmvc_duplicate#:#Kopiraj
 obj_xmvc_select#:#Izberite virtualno sejno sobo
 obj_xmvc#:#Virtualna sejna soba
 offline#:#Brez povezave
-of_owner_prefix#:#lastnik
-om_svr_public_port#:#Vrata strežnika OpenMeeting
-om_svr_public_url#:#URL strežnika OpenMeeting
+of_owner_prefix#:#lastnika
+om_svr_public_port#:#Vrata strežnika Openmeeting
+om_svr_public_url#:#URL strežnika Openmeeting
 om_svr_username#:#Uporabniško ime SOAP
 om_svr_userpass#:#Geslo SOAP
-overview_uses#:#Pregled uporab
-owners_email_not_unique#:#E-poštni naslov lastnika ni edinstven. Uporabniku ILIAS ga je mogoče dodeliti le enkrat.
-playback#:#Predvajaj posnetek
-plugin_configuration#:#konfiguracija
-private_chat_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Dovoli zasebni klepet«.
+overview_uses#:#Pregled uporabe
+owners_email_not_unique#:#E-poštni naslov lastnika ni enoličen. Uporabniku ILIAS ga je mogoče dodeliti le enkrat.
+playback#:#Predvajaj video
+plugin_configuration#:#Konfiguracija
+private_chat_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah izbrano možnost »Dovoli zasebni klepet«.
 private_chat_choose#:#Dovoli zasebni klepet: Možnost izbire
-private_chat_default_info#:#Če je omogočena, lahko uporabniki brez moderatorskih pravic med seboj vodijo zasebne klepete. Uporabniki z moderatorskimi pravicami teh klepetov ne morejo videti. Ker lahko moderatorji zasebne klepete kadar koli prekinejo, bi morala biti ta možnost v večini primerov omogočena.
+private_chat_default_info#:#Če je ta možnost aktivirana, lahko tudi osebe brez moderatorske funkcije zasebno klepetajo med seboj. Osebe z moderatorsko funkcijo teh klepetov ne vidijo. Ker lahko osebe z moderatorsko funkcijo kadar koli preprečijo zasebne klepete, bi morala biti ta možnost v večini primerov aktivirana.
 private_chat_default#:#Dovoli zasebni klepet: Privzeta nastavitev
-private_chat_info#:#Tudi ljudje brez moderatorskih pravic se lahko zasebno pogovarjajo med seboj.
+private_chat_info#:#Tudi ljudje brez moderatorske funkcije lahko med seboj zasebno klepetajo.
 private_chat#:#Dovoli zasebni klepet
-properties#:#Značilnosti
-protected#:#Zaščiteni prostori
-pub_recs#:#Takojšnja objava posnetkov
+properties#:#Nastavitve
+protected#:#Zaščitene sobe
+pub_recs#:#Takoj objavite posnetke.
 pub_recs_choose#:#Takojšnja objava posnetkov: možnost izbire
-pub_recs_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Takoj deli posnetke«.
+pub_recs_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Takoj objavi posnetke«.
 pub_recs_default#:#Takojšnja objava posnetkov: Privzeta nastavitev
 pub_recs_default_for_object#:#Posnetki so udeležencem takoj na voljo.
-pub_recs_default_info#:#Omogočite to možnost, če želite, da se posnetki vedno takoj objavijo ali če želite, da je za nove objekte omogočena možnost »Takoj objavi posnetke«.
-pub_recs_info#:#Če je izbrana ta možnost, bo posnetek sestanka objavljen takoj po koncu sestanka. V pregledu na strani sestanka imate možnost zakleniti ali odkleniti posnetke.
-rbac_create_xmvc#:#Ustvarite virtualno sejno sobo
+pub_recs_default_info#:#Omogočite to možnost, če želite, da se posnetki vedno objavijo takoj ali če želite, da je za nove objekte omogočena možnost »Objavi posnetke takoj«.
+pub_recs_info#:#Če je izbrana ta možnost, bo posnetek sestanka objavljen takoj po njegovem koncu. V pregledu na strani sestanka imate možnost zakleniti ali odkleniti posnetke.
+rbac_create_xmvc#:#ustvarite virtualno sejno sobo
 rec_hidden#:#Ta posnetek ni viden udeležencem.
-recording#:#zapisi
-recording_autostart#:#Snemanje se bo samodejno začelo na začetku. Uporabniki ILIAS bodo o tem ustrezno obveščeni.
-recording_choose#:#Dovoli snemanje: možnost izbire
-recording_choose_info#:#To možnost omogočite, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Dovoli snemanje«. Ker bi lahko URL posnetka delili z nepooblaščenimi osebami, če bi postal znan, te možnosti običajno ne bi smeli omogočiti.
-recording_default#:#Dovoli snemanje: Privzeta nastavitev
-recording_default_info#:#To možnost je treba v večini primerov onemogočiti, da se prepreči uporaba funkcije snemanja v virtualnem prostoru.
+recording#:#Posnetki
+recording_autostart#:#Snemanje se na začetku samodejno zažene. Uporabniki ILIAS bodo o tem obveščeni.
+recording_choose#:#Dovoli snemanje: Možnost izbire
+recording_choose_info#:#To možnost aktivirajte, če želite, da uporabniki z dovoljenji za pisanje v nastavitvah izberejo »Dovoli zajemanje«. Ker je znano, da se URL posnetka distribuira nenamernim osebam, te možnosti v večini primerov ne bi smeli aktivirati.
+recording_choose_info_bbb#:#To možnost omogočite, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Dovoli posnetke«. Ker bi razkritje URL-ja posnetka lahko omogočilo dostop do posnetka nepooblaščenim osebam, te možnosti v večini primerov ne bi smeli omogočiti.
+recording_default#:#Dovoli posnetke: Privzeta nastavitev
+recording_default_info#:#To možnost je treba v večini primerov deaktivirati, da ljudje ne morejo uporabljati funkcije snemanja v virtualni sobi.
 recording_info#:#Seje se lahko snemajo.
 recording_only_for_moderated_rooms#:#Snemanje samo v moderiranih sobah
 recording_only_for_moderated_rooms_default#:#Snemanje samo v moderiranih sobah
-recording_only_for_moderated_rooms_default_info#:#Ta možnost bi morala biti omogočena v večini primerov. Velja le, če je snemanje na splošno dovoljeno.
-recording_only_for_moderated_rooms_info#:#Samo v moderiranih sobah lahko osebe z moderatorskimi funkcijami začnejo snemati.
-recording_warning#:#Snemanje tega sestanka je omogočeno! Z aktivno uporabo klepetalnega sistema, vklopom osebnega mikrofona/kamere in/ali deljenjem vsebine zaslona soglašam s snemanjem in shranjevanjem teh podatkov za kasnejšo uporabo.
-recs_locked#:#Posnetek(ki) blokiran(i)
+recording_only_for_moderated_rooms_default_info#:#To možnost je treba aktivirati v večini primerov. Možnost se uporablja le, če so snemanja na splošno dovoljena.
+recording_only_for_moderated_rooms_info#:#Samo v moderiranih sobah lahko osebe z moderatorsko funkcijo začnejo snemati.
+recording_warning#:#Za ta sestanek je bila aktivirana možnost snemanja! Z aktivno uporabo klepetalnega sistema, vklopom osebnega mikrofona/kamere in/ali deljenjem vsebine zaslona se strinjam, da bodo te informacije med snemanjem zajete in shranjene za kasnejšo uporabo.
+recs_locked#:#Posnetki zaklenjeni
 recs_published#:#Izdani posnetki
 recurrence_#:#-
 recurrence_daily#:#Dnevno
@@ -308,72 +318,74 @@ recurrence_monthly#:#Mesečno
 recurrence_weekly#:#Tedensko
 recurrence_yearly#:#Letno
 rec_visible#:#Ta posnetek je viden udeležencem.
-references#:#Povezave
-related_meeting#:#Dodeljeno
+references#:#Reference
+related_meeting#:#sorodno
 related_webinar#:#Dodeljeno
-relate_meeting#:#Dodeli
+relate_meeting#:#sorodno
 relate_webinar#:#Dodeli
 report_log_max#:#Pregled uporabe (BBB)
-require_schedule_new_meeting#:#Sestanke lahko načrtujete in začnete v načrtovanih časovnih intervalih.
+require_schedule_new_meeting#:#Sestanke lahko ustvarite in jih začnete v načrtovanih časovnih intervalih.
 require_schedule_new_meeting_zoom#:#Lahko ustvarite sestanke.
 require_schedule_new_webinar#:#Spletne seminarje lahko ustvarite in jih začnete v predvidenih časovnih intervalih.
-reset_authorization#:#Preklic avtorizacije
-reseted_tokens#:#Ponastavitev žetonov
-root_create_xmvc#:#Ustvarite virtualno sejno sobo
+require_schedule_new_webinar_zoom#:#Lahko ustvarite spletne seminarje
+reset_authorization#:#Prekliči avtorizacijo
+reseted_tokens#:#Žetoni ponastavljeni
+root_create_xmvc#:#ustvarite virtualno sejno sobo
 saving_invoked#:#Nastavitve shranjene
-scheduled_meeting_agenda#:#dnevni red
-scheduled_meeting_both_data_sources#:#vse
+scheduled_meeting_agenda#:#Dnevni red
+scheduled_meeting_both_data_sources#:#dodeljeno in ustvarjeno prek Webexa
 scheduled_meeting_create_btn#:#Ustvari sestanek
 scheduled_meeting_created#:#Načrtovani sestanek je bil ustvarjen
 scheduled_meeting_create#:#Ustvari načrtovani sestanek
-scheduled_meeting_data_source#:#Sestanki
+scheduled_meeting_data_source#:#sestanki
 scheduled_meeting_delete_btn#:#Izbriši sestanek
-scheduled_meeting_deleted#:#Sestanek izbrisan
-scheduled_meeting_duration#:#Obdobje
-scheduled_meeting_local_data_sources#:#dodeljen
-scheduled_meeting_not_deleted#:#Sestanek ni bil izbrisan
-scheduled_meeting_overview#:#Pregled načrtovanih srečanj
-scheduled_meeting_recurrence#:#Ponavljanje
+scheduled_meeting_deleted#:#izbrisan sestanek
+scheduled_meeting_duration#:#Časovno obdobje
+scheduled_meeting_local_data_sources#:#dodeljene seje
+scheduled_meeting_not_deleted#:#sestanek ni bil izbrisan
+scheduled_meeting_overview#:#Pregled načrtovanih sestankov
+scheduled_meeting_recurrence#:#Ponovitev
 scheduled_meetings#:#Načrtovani sestanki
-scheduled_meeting_state#:#stanje
-scheduled_meeting_time_ahead#:#Čas priprave na sestanek
+scheduled_meeting_state#:#Država
+scheduled_meeting_time_ahead#:#Predhodni čas sestanka
 scheduled_meeting_update_btn#:#Posodobi sestanek
 scheduled_meeting_update#:#Posodobi načrtovani sestanek
-scheduled_webinar_agenda#:#dnevni red
+scheduled_meeting_updated#:#Načrtovani sestanek posodobljen
+scheduled_webinar_agenda#:#Dnevni red
 scheduled_webinar_both_data_sources#:#vse
-scheduled_webinar_create_btn#:#Ustvarite spletni seminar
-scheduled_webinar_created#:#Načrtovani spletni seminar ustvarjen
-scheduled_webinar_create#:#Ustvarite spletni seminar (prosimo, navedite edinstven naslov)
+scheduled_webinar_create_btn#:#Ustvari načrtovani spletni seminar
+scheduled_webinar_created#:#Načrtovani spletni seminar je bil ustvarjen
+scheduled_webinar_create#:#Ustvari spletni seminar (prosimo, navedite edinstven naslov)
 scheduled_webinar_data_source#:#Spletni seminarji
 scheduled_webinar_delete_btn#:#Izbriši spletni seminar
 scheduled_webinar_deleted#:#Spletni seminar izbrisan
-scheduled_webinar_duration#:#Obdobje
+scheduled_webinar_duration#:#Časovno obdobje
 scheduled_webinar_local_data_sources#:#dodeljen
 scheduled_webinar_not_deleted#:#Spletni seminar ni bil izbrisan
 scheduled_webinar_overview#:#Pregled načrtovanih spletnih seminarjev
 scheduled_webinar_recurrence#:#Ponavljanje
 scheduled_webinars#:#Načrtovani spletni seminarji
-scheduled_webinar_state#:#stanje
+scheduled_webinar_state#:#Stanje
 scheduled_webinar_time_ahead#:#Čas izvedbe spletnega seminarja
 scheduled_webinar_update_btn#:#Posodobitev spletnega seminarja
 scheduled_webinar_update#:#Posodobi načrtovani spletni seminar
-schedule_meeting_duration_less_time#:#Najkrajše trajanje sestanka je 10 minut. Prosimo, da ustrezno prilagodite svoje vnose.
+schedule_meeting_duration_less_time#:#Najkrajše trajanje sestanka je 10 minut. Prosimo, da ustrezno popravite svoje vnose.
 schedule_meeting_error#:#Prišlo je do napake. Preverite vnose.
-schedule_webinar_duration_less_time#:#Najkrajše trajanje spletnega seminarja je 10 minut. Prosimo, prilagodite svoje vnose temu primerno.
+schedule_webinar_duration_less_time#:#Najkrajše trajanje spletnega seminarja je 10 minut. Prosimo, da ustrezno popravite svoje vnose.
 schedule_webinar_error#:#Prišlo je do napake. Preverite vnose.
 select#:#Izberite
 service_unavailable#:#Storitev ni na voljo
-sess_owner_changed#:#Avtentikacija je bila spremenjena.
+sess_owner_changed#:#Preverjanje pristnosti je bilo spremenjeno
 showcontent#:#Platforma WebRTC
-show_hint_pub_recs_info#:#Uporabnikom se na strani sestanka prikaže opozorilo o prepovedi deljenja povezav za posnetke. Omogočite to možnost, če ne želite, da se to opozorilo prikaže.
+show_hint_pub_recs_info#:#Na strani sestanka se uporabnikom prikaže namig, ki prepoveduje deljenje povezav za posnetke. Označite to možnost, če tega namiga <u>ne</u>želite prikazati.
 show_hint_pub_recs#:#Dovoli deljenje povezav za posnetke
-start_time#:#začetek
+start_time#:#Začetni čas sestanka
 starttime#:#Začetni čas
 start_window#:#Začni virtualno sejno sobo v novem oknu
 state_active#:#Aktivno
 state_inprogress#:#Tek
 state_ready#:#Pripravljen
-status#:#stanje
+status#:#Stanje
 subject_crs#:#{MEETING_TITLE} v predmetu {PARENT_TITLE}
 subject_fld#:#{MEETING_TITLE} v mapi {PARENT_TITLE}
 subject_grp#:#{MEETING_TITLE} v skupini {PARENT_TITLE}
@@ -381,112 +393,127 @@ svr_private_port#:#Zasebna vrata strežnika BBB
 svr_private_url#:#Zasebni URL strežnika BBB
 svr_public_port#:#Javna vrata strežnika BBB
 svr_public_url#:#Javni URL strežnika BBB
-svr_salt#:#Geslo strežnika BBB (skrivnost)
+svr_salt#:#Geslo (skrivnost) strežnika BBB
 sysadmin_perm_choose_all#:#Kot skrbnik lahko urejate vse lastnosti tega objekta.
-tab_close#:#Prosim, zaprite to okno ali zavihek zdaj.
+tab_close#:#Prosim, zaprite to okno ali zavihek.
 teams_client_id#:#ID stranke
-teams_client_id_info#:#Tukaj vnesite ID aplikacije / ID odjemalca.
+teams_client_id_info#:#Tukaj dodajte ID stranke.
 teams_client_secret#:#Skrivnost odjemalca
-teams_client_secret_info#:#Takoj ko v Entri ustvarite tajni ključ za aplikacijo, ustvarjeno za MultiVc, lahko kopirate vrednost ključa in jo vnesete tukaj.
-teams_join_links#:#Pridružite se lahko neposredno tukaj: {br}{JOIN_URL}{br}&nbsp;{br}ali pa kliknite na: {PERMANENT_LINK}
-teams_lobbybypass#:#Obvoz čakalnega območja
-teams_lobbybypass_choose#:#Obhod čakalnega območja: Možnost izbire
-teams_lobbybypass_choose_info#:#Omogočite to možnost, če želite, da imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Zaobiti čakalnico«. To nadzoruje, kdo je nameščen v čakalnici/preddverju sestankov.
-teams_lobbybypass_default#:#Obhod čakalnega območja: Privzeta nastavitev
-teams_lobbybypass_everyone#:#Na sestanek bodo sprejeti vsi. Nihče ne bo nameščen v čakalnici.
-teams_lobbybypass_invited#:#Na sestanek bodo sprejete samo povabljene osebe, ki bodo zaobšle čakalnico.
-teams_lobbybypass_organizer#:#Udeleženci bodo sedeli v čakalnici. Administratorji in podporno osebje bodo čakalnico obšli.
-teams_meetings_list_downloaded#:#Obstoječe spletne sestanke sem uspešno integriral v Teams.
-teams_tenant_id_info#:#Tukaj vnesite ID najemnika. Druga imena so: ID imenika (odjemalec).
+teams_client_secret_info#:#Tukaj dodajte skrivnost odjemalca.
+teams_join_links#:#Pridružite se lahko neposredno tukaj: {br}{JOIN_URL}{br}&nbsp;{br}ali kliknite na: {PERMANENT_LINK}
+teams_lobbybypass#:#Obidite preddverje sej
+teams_lobbybypass_choose#:#Obidi preddverje sestankov: možnost izbire
+teams_lobbybypass_choose_info#:#To možnost aktivirajte, če želijo imeti uporabniki z dostopom za pisanje v nastavitvah možnost »Zaobidi preddverje sestanka«.
+teams_lobbybypass_default#:#Obhod preddverja sestanka: privzeta nastavitev
+teams_lobbybypass_everyone#:#Vsi so sprejeti v sestanek. Noben udeleženec ni postavljen v preddverje sestanka.
+teams_lobbybypass_invited#:#Na sestanek so dovoljene samo povabljene osebe. Vsi ostali udeleženci so nameščeni v preddverju sestanka.
+teams_lobbybypass_organizer#:#Udeleženci so nameščeni v avli sestanka. Administratorji in mentorji se avle sestanka ne umaknejo.
+teams_meetings_list_downloaded#:#Sestanki so bili uspešno preneseni iz aplikacije Teams.
+teams_tenant_id_info#:#Tukaj dodajte ID najemnika.
 teams_tenant_id#:#ID najemnika
-terms_of_use#:#<b>Pravice intelektualne lastnine</b>{br}Informacije in gradiva, ki jih vsebujejo konference BigBlueButton, kot so besedila ali slike, so na splošno zaščiteni z avtorskimi pravicami, pravicami blagovnih znamk ali patentnimi pravicami.{br}Upoštevati je treba predpise o varstvu podatkov. To velja zlasti za snemanje konferenc BigBlueButton. Skrivaj snemanje video ali avdio konferenc je kaznivo dejanje.{br}{br}<b>Kodeks ravnanja</b>{br}Ne smete objavljati vsebin, ki kršijo zakonske določbe, so pornografske, obscene, obrekljive, klevetniške, žaljive, grozilne, spodbujajo sovraštvo ali so rasistične. Prepovedano je tudi objavljanje oglasov brez dovoljenja in posredovanje informacij, ki vsebujejo viruse, manipulacije ali podobne škodljive elemente. Obdelani podatki Pri uporabi BigBlueButton se zbirajo naslednji podatki: podatki o povezavi (npr. IP-naslov, vrsta brskalnika, datum in čas dostopa) podatki o dostopu (če je primerno): uporabniško ime, geslo v šifrirani obliki podatki o vsebini (npr. naložene datoteke, prispevki v klepetu, ankete) Začasno shranjevanje podatkov o povezavi, zlasti IP-naslova, s strani sistema je potrebno, da se omogoči dostava BigBlueButton na uporabnikov računalnik. V ta namen je treba uporabnikov IP-naslov shraniti za čas trajanja seje. Pravna podlaga za začasno shranjevanje podatkov je člen 6(1)(f) GDPR. Podatki o povezavi se običajno shranjujejo tudi v dnevniških datotekah. Čas brisanja določi upravljavec strežnika BigBlueButton.
-title#:#naslov
+terms_of_use#:#<b>Pravice intelektualne lastnine</b>{br}Informacije in gradiva, ki jih vsebujejo konference BigBlueButton, kot so besedila ali slike, so na splošno zaščiteni z avtorskimi pravicami, pravicami blagovnih znamk ali patenti.{br}Upoštevati je treba zakone o varstvu podatkov. To velja zlasti za posnetke konferenc BigBlueButton. Skrivaj snemanje video ali avdio konferenc je kaznivo dejanje.{br}{br}<b>Pravila ravnanja</b>{br}Ne smete objavljati vsebin, ki kršijo zakonske določbe, ali vsebin, ki so pornografske, obscene, obrekljive, žaljive, grozeče, spodbujajo sovraštvo ali so rasistične. Prav tako je prepovedano objavljanje oglasov brez dovoljenja in posredovanje informacij, ki vsebujejo virus, manipulacijo ali podobne škodljive elemente.{br}{br}<b>Obdelani podatki</b>{br}Pri uporabi BigBlueButton se zbirajo naslednji podatki:<ul><li>Podatki o povezavi (npr. IP-naslov, vrsta brskalnika, datum in čas dostopa)</li><li>Kjer je to primerno, podatki o dostopu: uporabniško ime in geslo v šifrirani obliki</li><li>Podatki o vsebini (npr. naložene datoteke, sporočila v klepetu in ankete)</li></ul>Začasno shranjevanje podatkov o povezavi, zlasti IP-naslova, s strani sistema je potrebno za dostavo BigBlueButton uporabnikovemu računalniku. IP-naslov uporabnika mora zato ostati shranjen ves čas trajanja seje. Pravna podlaga za začasno shranjevanje teh podatkov je člen 6(1)(f) GDPR.{br}Podatki o povezavi se običajno shranjujejo tudi v dnevniških datotekah. Čas brisanja določi upravljavec strežnika BigBlueButton.
+title#:#Naslov
 token_deleted#:#Žeton izbrisan
 token_not_deleted#:#Žeton ni bil izbrisan
 token_not_stored#:#Žeton ni shranjen
 token_stored#:#Žeton shranjen
-unlocked_by#:#Izdal
-unlock#:#Izdaja
+unlocked_by#:#Odklenjeno s strani
+unlock#:#Odkleni
 untrashed_usages#:#Število uporab
-url_info#:#Tukaj lahko vnesete tudi relativne poti (npr. /spletnakonferenca). Prosimo, ne vključujte končne črke '/'.
+url_info#:#Tukaj lahko vnesete tudi relativne poti (npr.: /spletnakonferenca). Na koncu ne vstavljajte ločitve '/'.
 url#:#URL-naslov
-usage#:#Zasedenost
+usage#:#Uporaba
 user_end#:#zadnji odhod
-user_invite_info#:#Goste lahko na sestanek povabite prek naslednje povezave:
+user_invite_info#:#Goste lahko povabite na sestanek s pomočjo naslednje povezave:
 user_log#:#Pregled uporabnikov
-user_log_bbb#:#Pregled uporabnikov (BBB/Teams/Zoom)
-user_log_duration#:#Obdobje beleženja
-user_percent#:#odstotek
+user_log_bbb#:#Pregled uporabnikov (BBB/Teams)
+user_log_duration#:#Obdobje zajemanja
+user_percent#:#Odstotek
+user_rel_span#:#Relevantni čas
 user_results#:#Čas prisotnosti
-user_results_desc#:#Časi so prikazani samo za sestanke, ki so se že končali. Sestanki morajo doseči tudi predvideni končni čas.
+user_results_desc#:#Čas je prikazan samo za sestanke, ki so se že končali. Sestanki morajo prav tako doseči načrtovani konec.
 user_start#:#prvi zagon
-user_time#:#čas prisotnosti
-wait_join_meeting#:#<b>Trenutno v virtualni sejni sobi ni nikogar s pravicami moderatorja.<br/>Počakajte in preverite znova čez minuto.</b>
+user_time#:#Čas prisotnosti
+wait_join_meeting#:#<b>Trenutno v virtualni sejni sobi ni prisotne osebe z moderatorsko funkcijo.<br/>Počakajte in čez minuto ponovno pokličite to stran.</b>
 wait_join_meeting_edudip#:#Trenutno se ne morete pridružiti nobenemu spletnemu seminarju.
-wait_join_meeting_guest#:#<b>Trenutno v virtualni sejni sobi ni nikogar s pravicami moderatorja.<br/>Počakajte in čez minuto znova kliknite gumb »Pridruži se sestanku«.</b>
-wait_join_meeting_teams#:#Trenutno se ne morete pridružiti sestanku. Če se prikaže načrtovani sestanek, osvežite to stran do 15 minut pred načrtovanim sestankom, da se mu pridružite.
-wait_join_meeting_webex#:#Trenutno se ne morete pridružiti sestanku. Sestanek se morda še ni začel ali pa se je že končal. Osvežite to stran, da preverite stanje sestanka.
-wait_join_meeting_zoom#:#Trenutno se ne morete pridružiti sestanku. Če se prikaže načrtovani sestanek, osvežite to stran do 15 minut pred načrtovanim sestankom, da se mu pridružite.
-wait_join_webinar#:#<b>Spletnega seminarja še nihče ni začel.<br/>Počakajte in preverite znova čez minuto.</b>
-webex_client_id#:#ID odjemalca za integracijo Webexa
-webex_client_secret#:#Skrivnost odjemalca za integracijo Webexa
-webex_host_email_hidden_info#:#E-poštni naslov, uporabljen za avtorizacijo, je viden samo lastnikom in skrbnikom objekta.
-webex_host_email_info#:#E-poštni naslov, znan Webexu ali gostovanemu spletnemu mestu
+wait_join_meeting_guest#:#<b>Trenutno v virtualni sejni sobi ni prisotne osebe z moderatorsko funkcijo.<br/>Počakajte in čez minuto znova kliknite »Pridruži se sestanku«.</b>
+wait_join_meeting_teams#:#Trenutno se ne morete pridružiti nobenemu sestanku. Sestanek se morda še ni začel ali pa se je že končal. {br}Po potrebi posodobite to stran, da preverite stanje sestanka.
+wait_join_meeting_webex#:#Trenutno se ne morete pridružiti nobenemu sestanku. Sestanek se morda še ni začel ali pa se je že končal. {br}Po potrebi posodobite to stran, da preverite stanje sestanka.
+wait_join_meeting_zoom#:#Trenutno se ne morete pridružiti sestanku.{br}Če je prikazan načrtovani sestanek, osvežite to stran, da se mu pridružite do 15 minut pred načrtovanim sestankom.
+wait_join_webinar#:#<b>Trenutno še nihče ni začel spletnega seminarja.<br/>Počakajte in čez minuto znova odprite to stran.</b>
+webex_client_id#:#ID odjemalca za integracijo Webex
+webex_client_secret#:#Skrivnost odjemalca za integracijo Webex.
+webex_host_email_hidden_info#:#E-poštni naslov, uporabljen za avtorizacijo, je prikazan samo lastnikom objekta in administratorjem.
+webex_host_email_info#:#Znani e-poštni naslov Webexa ali gostovanega spletnega mesta
 webex_host_email#:#E-poštni naslov gostitelja Webex
-webex_integration_auth_info#:#Do svojega računa Webex lahko dovolite dostop. To je potrebno za ustvarjanje, pridobivanje in začetek sestankov Webex z uporabo vtičnika MultiVC.
-webex_logout_user_choose#:#Dovoli odjave iz Webexa: Možnost
-webex_logout_user_choose_info#:#Uporabniki, ki so že prijavljeni v Webex, se morajo pred pridružitvijo sestanku odjaviti iz Webexa.
-webex_logout_user_default#:#Odjava iz Webexa: Privzeta nastavitev
-webex_logout_user_default_info#:#Uporabniki, ki so že prijavljeni v Webex, se morajo pred pridružitvijo sestanku vedno odjaviti iz Webexa.
-webex_meetings_list_downloaded#:#Obstoječi sestanki Webex so bili uspešno preneseni.
+webex_integration_auth_info#:#Uporabnik Webexa lahko dovoli dostop do svojega računa z avtorizacijo.
+webex_logout_user_choose#:#Dovoli odjavo iz Webexa: možnost izbire
+webex_logout_user_choose_info#:#Dovoli uporabnikom, ki so že prijavljeni v Webex, da se odjavijo, preden se pridružijo sestanku.
+webex_logout_user_default#:#Odjava iz Webexa: Privzeto
+webex_logout_user_default_info#:#Pred pridružitvijo sestanku vedno odjavite uporabnike, ki so že prijavljeni v Webex.
+webex_meetings_list_downloaded#:#Sestanki so bili uspešno preneseni iz Webexa.
 webex_redirect_uri#:#URI za preusmeritev
 webex_site_url#:#URL spletnega mesta Webex
-webex_user_choose_logout#:#Uporabnik se odloči
+webex_user_choose_logout#:#uporabnik izbere
 webex_user_do_logout#:#Odjava
-webex_user_do_not_logout#:#Ne odjavljaj se
+webex_user_do_not_logout#:#Ni odjava
 webex_user_logout#:#Odjava iz Webexa
-webinar_collision#:#Prišlo je do napake. Spletni seminar je že načrtovan za zahtevani čas.
-webinar_event_created#:#Spletni seminar ustvarjen
-webinar_event_deleted#:#Spletni seminar izbrisan
-webinar_notification_body#:#Pozdravljeni, {NAME},{NL}{NL} ustvarjen je bil naslednji {DOGODEK}:{NL}{NL}{ZADEVA}{NL}{OBČ. OBČ.}{NL}{LINK}{NL}{NL}Lep pozdrav,{NL}{NL}{OD}
-webinar_notification_from#:#ILIADA
+webinar_collision#:#Prišlo je do napake. Spletni seminar je že načrtovan za zahtevano časovno obdobje.
+webinar_event_created#:#ustvarjen spletni seminar
+webinar_event_deleted#:#spletni seminar izbrisan
+webinar_notification_body#:#Pozdravljeni {NAME},{NL}{NL}naslednji {DOGODEK}:{NL}{NL}{ZADEVA}{NL}{OBRAZEC DATERANGE}{NL}{POVEZAVA}{NL}{NL}Z lepimi pozdravi{NL}{NL}{OD}
+webinar_notification_from#:#ILIAS
 webinar_notification_subject#:#{DOGODEK}: {ZADEVA}
 webinar_related_successful#:#Spletni seminar je bil uspešno dodeljen
 webinar_running#:#Spletni seminar se je začel.
 webinar#:#Spletni seminar
-welcome_text#:#Dobrodošli {br}v virtualni sejni sobi{br}<b>{MEETING_TITLE</b>{br}{br}Če na sredini zaslona spodaj vidite ikono zvočnika s črto, vas drugi ne bodo mogli slišati in tudi vi ne boste mogli ničesar slišati. Kliknite ikono zvočnika s črto, da začnete zvočno povezavo.{br}Uporabite slušalke, da se izognete hrupu v ozadju in povratnim informacijam.
-window_closed#:#Virtualna sejna soba je končana.
+welcome_text#:#Dobrodošli{br}v virtualni sejni sobi{br}<b>{MEETING_TITLE</b>{br}{br}Če se želite pridružiti zvočnemu mostu, kliknite gumb za zvočnik.{br}Uporabite slušalke, da se izognete hrupu v ozadju za druge.
+window_closed#:#Virtualna sejna soba je bila zaprta.
 window_close#:#Zapri okno
-window_started#:#Virtualna sejna soba je bila odprta v novem oknu.
-with_chat_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje možnost »Začni s klepetom« v nastavitvah.
-with_chat_choose#:#Začni s klepetom: možnost izbire
-with_chat_default_info#:#To bi moralo biti na splošno aktivirano – še posebej v moderiranih sobah.
+window_started#:#Virtualna sejna soba se je odprla v novem oknu.
+with_chat_choose_info#:#To možnost aktivirajte, če želite, da uporabniki z dostopom za pisanje v nastavitvah izberejo »Začni s klepetom«.
+with_chat_choose#:#Začni s klepetom: Možnost
+with_chat_default_info#:#Običajno bi moralo biti aktivirano - še posebej v moderiranih sobah.
 with_chat_default#:#Začni s klepetom: Privzeta nastavitev
-with_chat_info#:#To možnost je treba omogočiti, zlasti v moderiranih sobah. Klepet nato postane »čakalnica«.
+with_chat_info#:#To možnost je treba aktivirati še posebej v moderiranih sobah. Klepet postane 'čakalnica'.
 with_chat#:#Začni s klepetom
 xmvc_add#:#Dodaj virtualno sejno sobo
 xmvc_copy#:#Kopiraj virtualno sejno sobo
 xmvc_delete#:#Izbriši virtualno sejno sobo
-xmvc_edit_learning_progress#:#Urejanje nastavitev napredka učenja
+xmvc_edit_learning_progress#:#Urejanje nastavitev učnega napredka
 xmvc_edit_permission#:#Spremeni dovoljenja
 xmvc_new#:#Dodaj novo virtualno sejno sobo
-xmvc_read#:#Dostop za branje: Sodelovanje v virtualni sejni sobi je možno
-xmvc_read_learning_progress#:#Oglejte si učni napredek drugih uporabnikov
-xmvc_visible#:#Prikaz: Virtualna sejna soba je vidna
+xmvc_read#:#Preberite: Sodelovanje v virtualni sejni sobi je možno
+xmvc_read_learning_progress#:#Ogled učnega napredka drugih uporabnikov
+xmvc_visible#:#Vidno: Virtualna sejna soba je vidna
 xmvc_write#:#Urejanje nastavitev
 zoom_account_id#:#ID računa Zoom
 zoom_account_info#:#ID računa Zoom, ID odjemalca in skrivno kodo odjemalca lahko dobite na https://developers.zoom.us/docs/internal-apps/create/. Ustvariti morate aplikacijo OAuth med strežniki.
+zoom_approval_choose#:#Registracija/avtentikacija: Možnost izbire
+zoom_approval_choose_info#:#Registracija s personalizirano dostopno povezavo se pogosto ne uporablja.
+zoom_approval_default#:#Registracija/avtentikacija: Privzeta nastavitev
+zoom_approval_type#:#Registracija / overitev
+zoom_approval_0#:#Samodejna odobritev: Povezava za dostop je poslana po e-pošti.
+zoom_approval_1#:#Ročna odobritev: Gostitelji pregledajo in odobrijo udeležence, preden ti prejmejo povezavo za dostop.
+zoom_approval_2#:#Registracija ni potrebna. Osebna povezava za dostop se ne ustvari.
+zoom_approval_3#:#Registracija ni potrebna, potrebna pa je avtentikacija. Vedno je potreben Zoom račun.
 zoom_client_id#:#ID odjemalca Zoom
 zoom_client_secret#:#Skrivnost odjemalca Zoom
+zoom_err_scopes#:#Za ustvarjanje sestanka manjkajo naslednja dovoljenja:
 zoom_err_scopes_webinar#:#Nimate dovoljenja za ustvarjanje spletnega seminarja. Sestanki so možni. Manjkajo naslednja dovoljenja:
 zoom_exist_meetings#:#Datumi za ta sestanek so že določeni.
 zoom_exist_webinars#:#Datumi za ta spletni seminar so že določeni.
+zoom_host_email_hidden_info#:#E-poštni naslov, uporabljen za avtorizacijo, je viden samo lastnikom objekta in skrbnikom.
+zoom_host_email_info#:#E-poštni naslov, povezan z Zoomom
+zoom_host_email#:#E-poštni naslov gostitelja Zooma
 zoom_lobby#:#Čakalnica za sestanke
-zoom_lobby_choose#:#Čakalnica: Izbira možnosti
+zoom_lobby_choose#:#Čakalnica za sestanke: Možnost izbire
 zoom_lobby_choose_info#:#Omogočite to možnost, če naj imajo uporabniki z dovoljenji za pisanje v nastavitvah možnost »Čakalnica«. To nadzoruje, kdo je nameščen v čakalnici.
-zoom_lobby_default#:#Čakalnica: Privzeta nastavitev
+zoom_lobby_default#:#Čakalnica za sestanke: Privzeta nastavitev
 zoom_lobby_0#:#V čakalnici ni treba čakati. Čakalnica je deaktivirana. Udeleženci lahko vstopijo 15 minut pred začetkom sestanka.
 zoom_lobby_1#:#Vsi morajo v čakalnico.
 zoom_lobby_2#:#Uporabniki zunaj vašega računa morajo vstopiti v čakalnico.
 zoom_lobby_3#:#Uporabniki zunaj vašega računa ali tisti, ki niso na odobrenih domenah, morajo vstopiti v čakalnico.
 zoom_lobby_4#:#Uporabniki, ki niso v tečaju ali skupini, morajo v čakalnico.
+zoom_rec_only_for_webinars_default#:#Snemanje samo v spletnih seminarjih.
+zoom_rec_only_for_webinars_default_info#:#Če je ta možnost omogočena, samodejno snemanje na sestankih ni na voljo. Ta možnost bi morala biti omogočena v večini primerov. Velja le, če so snemanja na splošno dovoljena.

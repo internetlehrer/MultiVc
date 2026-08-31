@@ -45,14 +45,7 @@ class ilMultiVcReportLogMaxTableGUI extends ilTable2GUI
         // ToDo: check
         // $this->addCommandButton('viewLogs', $lng->txt('rep_robj_xxcf_view_logs'));
 
-        $this->tpl->addBlockFile(
-            "TBL_CONTENT",
-            "tbl_content",
-            'tpl.report_log_max_concurrent_row.html',
-            'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc/'
-        );
-
-        $this->setRowTemplate('tpl.report_log_max_concurrent_row.html', 'Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
+        $this->setRowTemplate('tpl.report_log_max_concurrent_row.html', 'public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc');
         $this->getMyDataFromDb();
 
     }

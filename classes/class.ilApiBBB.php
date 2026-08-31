@@ -416,7 +416,7 @@ class ilApiBBB implements ilApiInterface
     private function setDisplayName(): void
     {
         global $DIC;
-        $this->displayName = $DIC->user()->firstname . ' ' . $DIC->user()->lastname;
+        $this->displayName = $DIC->user()->getFirstname() . ' ' . $DIC->user()->getLastname();
     }
 
     public function setUserAvatar(string $userAvatar): void
@@ -528,9 +528,17 @@ class ilApiBBB implements ilApiInterface
             ->setAllowStartStopRecording($this->isMeetingRecordable())
             ->setRecord($this->isMeetingRecordable())
             ->setAutoStartRecording(false)
-            ->setWebcamsOnlyForModerator((bool) $this->object->isCamOnlyForModerator())
+            ->setWebcamsOnlyForModerator(
+                $this->settings->isCamOnlyForModeratorChoose()
+                    ? (bool) $this->object->isCamOnlyForModerator()
+                    : $this->settings->isCamOnlyForModeratorDefault()
+            )
             ->setLogoutUrl($joinBtnUrl)
-            ->setLockSettingsDisablePrivateChat(!(bool) $this->object->isPrivateChat())
+            ->setLockSettingsDisablePrivateChat(
+                $this->settings->isPrivateChatChoose()
+                    ? !(bool) $this->object->isPrivateChat()
+                    : !$this->settings->isPrivateChatDefault()
+            )
             ->setLogo(filter_var($this->settings->getLogo(), FILTER_SANITIZE_URL))
             ->setLockSettingsDisableCam(
                 !$this->settings->getLockDisableCamChoose()

@@ -6,7 +6,8 @@ class ilApiEdudip implements ilApiInterface
     public const PLUGIN_PATH = './public/Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc';
     public const PLAYBACKURL_SPLIT = '2.0/playback.html?meetingId=';
 
-    public const API_URL = 'https://api.edudip-next.com/api/';
+//    public const API_URL = 'https://api.edudip-next.com/api/';
+    public const API_URL = 'https://api.v2.edudip.com/api/v1/';
 
     public const ENDPOINT_WEBINAR = 'webinars';
 
@@ -85,20 +86,38 @@ class ilApiEdudip implements ilApiInterface
 
     public function sessionCreate(array $param = [], string $type = 'webinar'): bool|string
     {
+        $s_response = $this->restfulApiCall('users/self', 'get');
+        $response = json_decode($s_response, true);
+        $ownerID = (int) $response['id'];
+//        die(var_dump($response['id']));
+
         $dates = [];
+        $utcStart = new ilDateTime($param['dateStart'], IL_CAL_DATETIME, $this->dic->user()->getTimeZone());
+        $dateStart = $utcStart->get(IL_CAL_ISO_8601, 'Y-m-dTH:i:s', $this->dic->user()->getTimeZone());
         $dates[] = [
             'date' => $param['dateStart'],
             'duration' => $param['duration']
         ];
+        $initialWebinarDates = [];
+        $initialWebinarDates[] = [
+            'date' => $dateStart,//$param['dateStart'],
+            'durationMinutes' => $param['duration'],
+            'title' => $param['title']
+        ];
 
         $param = [
             'title' => $param['title'],
-            'max_participants' => $param['max_participants'], # 1 -
+            'maxParticipants' => $param['max_participants'], # 1 -
+            'language' => 'de',
+            'ownerId' => $ownerID,
             'recording' => 0, # 1
-            'registration_type' => 'date', # series
+//            'WebinarRegistrationType' => 'date', # series
             'access' => 'all', # invitation all
-            'dates' => json_encode($dates),
+//            'dates' => json_encode($dates),
+            'initialWebinarDates' => $initialWebinarDates
         ];
+//        die(var_dump($param));
+//        die(var_dump($this->restfulApiCall(self::ENDPOINT_WEBINAR, 'post', $param)));
         return $this->restfulApiCall(self::ENDPOINT_WEBINAR, 'post', $param);
     }
 
@@ -106,7 +125,11 @@ class ilApiEdudip implements ilApiInterface
     {
         $response = $this->restfulApiCall(self::ENDPOINT_WEBINAR . '/' . $sessId, 'delete');
         $json = json_decode($response, 1);
-        return isset($json['success']) && $json['success'] === true;
+        //404 = webinar not found - may be deleted in edudip itself
+        if (isset($json['http_code']) && ($json['http_code'] == 204 || $json['http_code'] == 404)) {
+            return true;
+        }
+        return false;
     }
 
     public function sessionGet(?int $sessId = null): bool|string
@@ -119,32 +142,55 @@ class ilApiEdudip implements ilApiInterface
 
     public function sessionList(): string|bool
     {
-        return $this->restfulApiCall(self::ENDPOINT_WEBINAR, 'GET');
+        return $this->restfulApiCall(self::ENDPOINT_WEBINAR .'?limit=99&sort=desc&startDate=2021-01-01', 'GET');
+    }
+
+    public function sessionDates(string $id): string|bool
+    {
+        return $this->restfulApiCall(self::ENDPOINT_WEBINAR . '/' . $id . '/webinarDates', 'GET');
     }
 
     public function sessionParticipantAdd(int $sessId, string $sessDate, string $firstname, string $lastname, ?string $email = null): bool|string
     {
-        $endPoint = self::ENDPOINT_WEBINAR . '/' . $sessId . '/register-participant';
+        $endPoint = self::ENDPOINT_WEBINAR . '/' . $sessId . '/register';
         $param = [
             'email' => $email ?? date('YmdHis') . uniqid() . '@example.com',
             'firstname' => $firstname,
             'lastname' => $lastname,
+            'timezone' => $this->dic->user()->getTimeZone(),
             'webinar_date' => $sessDate
         ];
         return $this->restfulApiCall($endPoint, 'post', $param);
     }
 
-    public function sessionModeratorAdd(int $sessId, string $firstname, string $lastname, string $email): bool|string
+    public function sessionModeratorAdd(int $sessId, string $firstname, string $lastname, string $email): array
     {
-        $endPoint = self::ENDPOINT_WEBINAR . '/' . $sessId . '/moderators/add';
+        $endPoint = self::ENDPOINT_WEBINAR . '/' . $sessId . '/moderators';
+        $s_result = $this->restfulApiCall($endPoint, 'get');
+        $result = json_decode($s_result, true);
+        $moderators = $result['moderators'];
+        for ($i = 0; $i < count($moderators); $i++) {
+            if($moderators[$i]['email'] === $email) {
+                return ['id' => $moderators[$i]['id'], 'webLink' => $moderators[$i]['roomAuthLink']];
+            }
+        }
+
+        $endPoint = self::ENDPOINT_WEBINAR . '/' . $sessId . '/moderators';
         $param = [
             'email' => $email,
             'firstname' => $firstname,
             'lastname' => $lastname,
-            #'webinar_date'  => $sessDate
+            'timezone' => $this->dic->user()->getTimeZone()
         ];
-        return $this->restfulApiCall($endPoint, 'post', $param);
+        $s_result = $this->restfulApiCall($endPoint, 'post', $param);
+        $result = json_decode($s_result, true);
+        if (isset($result['error'])) {
+            return $result;
+        } else {
+            return ['id' => $result['id'], 'webLink' => $result['roomAuthLink']];
+        }
     }
+
 
     public function restfulApiCall(?string $endpoint = null, string $method = 'GET', array $param = [], string $contentType = 'application/json;charset=UTF-8'): bool|string
     {
@@ -193,8 +239,9 @@ class ilApiEdudip implements ilApiInterface
             $json = json_decode($response, true);
             $json['http_code'] = $code;
             $json['called_param'] = $param;
-            if(isset($json['error']) && substr($json['error'], -1) !== '.') {
-                $json['error'] .= '.';
+            if(isset($json['error'])) {//&& substr($json['error'], -1) !== '.') {
+//                die(var_dump($json['error']));
+                //$json['error'] .= '.';
             }
             $json['called_endpoint'] = $endpoint;
             $json['called_method'] = $method;
@@ -204,12 +251,11 @@ class ilApiEdudip implements ilApiInterface
                 'success' => false,
                 'error' => $e->getMessage()
             ];
-            if((bool) strlen($json['error'])) {
+            if(strlen($json['error']) > 0) {
                 $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', $this->dic->language()->txt('error') . '<br />' . $json['error'], true);
                 $this->dic->ctrl()->redirect($this->objGui, 'applyFilterScheduledMeetings');
             }
         }
-
 
         return json_encode($json);
 
@@ -359,7 +405,7 @@ class ilApiEdudip implements ilApiInterface
     private function setDisplayName(): void
     {
         global $DIC;
-        $this->displayName = $DIC->user()->firstname . ' ' . $DIC->user()->lastname;
+        $this->displayName = $DIC->user()->getFirstname() . ' ' . $DIC->user()->getLastname();
     }
 
     public function getParentObj(): bool|ilObject
