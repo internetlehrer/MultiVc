@@ -167,13 +167,10 @@ class JoinMeetingByGuestLink
             'ref_id' => ['integer', $this->refId],
             'user_id' => ['integer', 0],
             'join_time' => ['integer', $dateTime->getTimestamp()],
-            'display_name' => ['text', $this->displayName],
+            'display_name' => ['text', substr($this->displayName, 0, 64)],
             'is_moderator' => ['integer', 0],
             'meeting_id' => ['text', $this->bbb->getMeetingInfo(
-                new \BigBlueButton\Parameters\GetMeetingInfoParameters(
-                    $this->meetingId,
-                    $this->pluginConfig->getSvrSalt()
-                )
+                new \BigBlueButton\Parameters\GetMeetingInfoParameters($this->meetingId)
             )->getMeeting()->getInternalMeetingId()]
         ];
 
@@ -334,7 +331,7 @@ class JoinMeetingByGuestLink
         $score = 0;
 
         if ($this->dic->http()->wrapper()->post()->has('display_name')) {
-            $this->displayName = trim($this->dic->http()->wrapper()->post()->retrieve('display_name', $this->dic->refinery()->kindlyTo()->string()));
+            $this->displayName = htmlspecialchars(trim($this->dic->http()->wrapper()->post()->retrieve('display_name', $this->dic->refinery()->kindlyTo()->string())), ENT_COMPAT, 'UTF-8');
             $score += 2;
             if($this->displayName == '') {
                 $score -= 2;

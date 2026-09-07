@@ -787,15 +787,15 @@ class ilObjMultiVc extends ilObjectPlugin implements ilLPStatusPluginInterface
     {
         $select = "SELECT ref_id, user_id, display_name, is_moderator,join_time, meeting_id, leave_time";//entfernt: min(join_time)
         $from = " FROM " . self::TABLE_USER_LOG;
-        $where = []; //[" WHERE ref_id = " . ($refId ?? '.')];
+        $where = [];
         if(!is_null($refId)) {
-            $where[] = "ref_id = " . $refId;
+            $where[] = "ref_id = " . $this->db->quote($refId, 'integer');
         }
         if(!is_null($dateFrom)) {
-            $where[] = "join_time >= " . $dateFrom;
+            $where[] = "join_time >= " . $this->db->quote($dateFrom, 'integer');
         }
         if(!is_null($dateTo)) {
-            $where[] = "join_time <= " . $dateTo;
+            $where[] = "join_time <= " . $this->db->quote($dateTo, 'integer');
         }
         $where = (bool) sizeof($where) ? " WHERE " . implode(' AND ', $where) : '';
 

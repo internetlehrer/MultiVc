@@ -405,7 +405,7 @@ class ilApiEdudip implements ilApiInterface
     private function setDisplayName(): void
     {
         global $DIC;
-        $this->displayName = $DIC->user()->firstname . ' ' . $DIC->user()->lastname;
+        $this->displayName = $DIC->user()->getFirstname() . ' ' . $DIC->user()->getLastname();
     }
 
     public function getParentObj(): bool|ilObject
